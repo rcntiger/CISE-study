@@ -104,8 +104,8 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 .ans-body p,.ans-body li{font-size:13.8px}
 .hidden{display:none !important}
 /* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
-@media (min-width:1000px){body{zoom:1.18}.wrap{max-width:900px;padding:0 24px 80px}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
-@media (min-width:1600px){body{zoom:1.32}}
+@media (min-width:1000px){body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1600px){body{zoom:1.38}}
 @media print{header{background:none;color:#000}.tools,.q-star{display:none}}
 """
 
@@ -267,7 +267,7 @@ def points_page(n, src):
         for ct, cl in cards:
             h = f"<h4>{inline(ct)}</h4>" if ct else ""
             parts.append(f'<div class="card" data-title="{html.escape(t_clean)}{" · " + html.escape(ct) if ct else ""}">{h}{render_blocks(cl)}</div>')
-        body.append(f'<section class="section" id="{sid}"><div class="section-head"><div class="duality"><span class="n">{num}</span>{html.escape(t_clean)}</div><div class="section-line"></div></div>\n' + "\n".join(parts) + "</section>")
+        body.append(f'<section class="section" id="{sid}"><div class="section-head"><div class="duality"><span class="n">{num}</span>{html.escape(t_clean)}</div><div class="section-line"></div></div>\n' + '<div class="cards">' + "\n".join(parts) + "</div></section>")
     header = f"""<header>
   <a class="back" href="index.html">← 목록으로</a>
   <span class="tab">{n}과목 · 기출포인트</span>
@@ -375,7 +375,7 @@ def roadmap_page(src):
         num, t = sec_title(st)
         toc.append(f'<a href="#r{si}"><span class="n">{num}</span>{html.escape(t)}</a>')
         parts = [f'<div class="card" data-title="{html.escape(t)}">' + (f"<h4>{inline(ct)}</h4>" if ct else "") + render_blocks(cl) + "</div>" for ct, cl in cards]
-        body.append(f'<section class="section" id="r{si}"><div class="section-head"><div class="duality"><span class="n">{num}</span>{html.escape(t)}</div><div class="section-line"></div></div>\n' + "\n".join(parts) + "</section>")
+        body.append(f'<section class="section" id="r{si}"><div class="section-head"><div class="duality"><span class="n">{num}</span>{html.escape(t)}</div><div class="section-line"></div></div>\n' + '<div class="cards">' + "\n".join(parts) + "</div></section>")
     header = f"""<header>
   <a class="back" href="index.html">← 목록으로</a>
   <span class="tab">로드맵</span>
