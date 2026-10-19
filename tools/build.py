@@ -56,6 +56,10 @@ h1{font-weight:700;font-size:clamp(24px,6.6vw,34px);margin:0 0 10px;line-height:
 .toc::-webkit-scrollbar{display:none}
 .toc a{flex:0 0 auto;font-size:12.5px;text-decoration:none;color:var(--hero-ink);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px 12px;white-space:nowrap}
 .toc a .n{font-weight:700;color:var(--yellow);margin-right:5px}
+.toc a.ch{color:#111;background:var(--yellow);border-color:var(--yellow);font-weight:700}
+.chapter{margin:38px 0 -12px;scroll-margin-top:64px;padding:12px 14px 12px 16px;border-radius:14px;background:var(--hero);color:var(--hero-ink);border-left:6px solid var(--yellow)}
+.chapter .k{display:block;font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--yellow)}
+.chapter .t{font-size:17px;font-weight:700}
 .section{margin-top:30px;scroll-margin-top:64px}
 .section-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .duality{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
@@ -89,6 +93,8 @@ footer a{color:var(--accent,var(--c1));font-weight:600}
 .tools .count{font-size:12px;color:var(--ink-soft);margin-left:auto}
 .q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .q-num{font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
+.q-ch{font-size:11.5px;color:var(--ink-soft);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:1px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+select.btn{max-width:100%;appearance:auto}
 .q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
 .q.marked .q-star{color:#E0A200}
 .q.marked{border-color:#F2C94C}
@@ -256,8 +262,14 @@ def sec_title(t):
 def points_page(n, src):
     name, accent = SUBJECTS[n]
     _, intro, sections = split_doc(src)
-    toc, body = [], []
+    toc, body, topics = [], [], 0
     for si, (st, cards) in enumerate(sections, 1):
+        ch = re.match(r"^CHAPTER (\d+)\s*·\s*(.*)$", st)
+        if ch:
+            toc.append(f'<a class="ch" href="#c{ch.group(1)}">CH{ch.group(1)} {html.escape(ch.group(2))}</a>')
+            body.append(f'<div class="chapter" id="c{ch.group(1)}"><span class="k">CHAPTER {ch.group(1)}</span><span class="t">{html.escape(ch.group(2))}</span></div>')
+            continue
+        topics += 1
         num, t = sec_title(st)
         sid = f"t{si}"
         star = "⭐" in t
@@ -279,7 +291,7 @@ def points_page(n, src):
     bank = f'<a href="s{n}-bank.html">{n}과목 문제은행</a>에서 바로 문제로 확인해 보세요. ' if n in BANKS else ""
     doc = HEAD.format(title=f"{n}과목 기출포인트 · {name}", css=CSS, accent=accent) + header + "\n".join(body) + FOOT.format(extra=bank, script="")
     (OUT / f"s{n}-points.html").write_text(doc, encoding="utf-8")
-    return len(sections)
+    return topics
 
 
 BANK_JS = """<script>
@@ -306,13 +318,20 @@ BANK_JS = """<script>
     openAll.textContent=on?'정답 모두 접기':'정답 모두 펼치기';
     document.querySelectorAll('details.ans').forEach(function(d){d.open=on});
   });
-  onlyStar.addEventListener('click',function(){
-    var on=!onlyStar.classList.contains('on');onlyStar.classList.toggle('on',on);
-    qs.forEach(function(q){q.classList.toggle('hidden',on&&!q.classList.contains('marked'))});
+  var chSel=document.getElementById('chSel');
+  function filter(){
+    var star=onlyStar.classList.contains('on'),ch=chSel?chSel.value:'';
+    qs.forEach(function(q){q.classList.toggle('hidden',(star&&!q.classList.contains('marked'))||(ch&&q.dataset.ch!==ch))});
     document.querySelectorAll('.section').forEach(function(s){
-      s.classList.toggle('hidden',on&&!s.querySelector('.q.marked'));
+      s.classList.toggle('hidden',!s.querySelector('.q:not(.hidden)'));
     });
-  });
+  }
+  onlyStar.addEventListener('click',function(){onlyStar.classList.toggle('on');filter()});
+  if(chSel){
+    try{chSel.value=sessionStorage.getItem(key+'-ch')||''}catch(e){}
+    chSel.addEventListener('change',function(){try{sessionStorage.setItem(key+'-ch',chSel.value)}catch(e){}filter()});
+    filter();
+  }
 })();
 </script>"""
 
@@ -320,6 +339,17 @@ BANK_JS = """<script>
 def bank_page(n, src):
     name, accent = SUBJECTS[n]
     _, intro, sections = split_doc(src)
+    # 교재 챕터별 문항: "- CHAPTER 01 이름 (n문항): 1~3, 7"
+    chapters, q_ch = [], {}
+    for l in intro:
+        m = re.match(r"^- CHAPTER (\d+) (.+?) \((\d+)문항\): (.*)$", l)
+        if not m:
+            continue
+        chapters.append((m.group(1), m.group(2), int(m.group(3))))
+        for part in re.findall(r"\d+(?:~\d+)?", m.group(4)):
+            a, _, b = part.partition("~")
+            for q in range(int(a), int(b or a) + 1):
+                q_ch[q] = m.group(1)
     if "**목차**" in intro:
         intro = intro[:intro.index("**목차**")]
     intro = [l for l in intro if l.startswith("- ")]
@@ -345,13 +375,19 @@ def bank_page(n, src):
             stem = [l for l in q_lines if l not in opts]
             stem_html = "<br>".join(inline(l) for l in stem)
             opts_html = "".join(f"<li>{inline(o)}</li>" for o in opts)
-            parts.append(f"""<div class="card q" data-q="{qn}" data-title="{qn}번">
-<div class="q-head"><span class="q-num">{qn}번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+            cid = q_ch.get(int(qn), "")
+            chip = f'<span class="q-ch">CH{cid} {html.escape(dict((c[0], c[1]) for c in chapters)[cid])}</span>' if cid else ""
+            parts.append(f"""<div class="card q" data-q="{qn}" data-ch="{cid}" data-title="{qn}번">
+<div class="q-head"><span class="q-num">{qn}번</span>{chip}<button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">{stem_html}</p>
 <ul class="opts">{opts_html}</ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body">{render_blocks(ans_part.splitlines())}</div></details>
 </div>""")
         body.append(f'<section class="section" id="{sid}"><div class="section-head"><div class="duality"><span class="n">{html.escape(num)}</span>{html.escape(t)}</div><div class="section-line"></div></div>\n' + "\n".join(parts) + "</section>")
+    opts = "".join(f'<option value="{c}">CH{c} {html.escape(t)} ({k})</option>' for c, t, k in chapters if k)
+    ch_sel = f'<select class="btn" id="chSel" aria-label="교재 챕터별 보기"><option value="">교재 챕터: 전체</option>{opts}</select>' if chapters else ""
+    if chapters:
+        intro = intro + ["- 아래 **교재 챕터** 선택으로 에듀윌 교재 챕터별 문제만 골라 볼 수 있습니다. 문제 번호는 그대로입니다."]
     header = f"""<header>
   <a class="back" href="index.html">← 목록으로</a>
   <span class="tab">{n}과목 · 문제은행</span>
@@ -360,7 +396,7 @@ def bank_page(n, src):
   {intro_list(intro + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.'])}
   <nav class="toc">{''.join(toc)}</nav>
 </header>
-<div class="tools"><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div>"""
+<div class="tools">{ch_sel}<button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div>"""
     extra = f'개념이 막히면 <a href="s{n}-points.html">{n}과목 기출포인트</a>를 먼저 보세요. '
     doc = HEAD.format(title=f"{n}과목 문제은행 · {name}", css=CSS, accent=accent).replace(
         f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="s{n}">') + header + "\n".join(body) + FOOT.format(extra=extra, script=BANK_JS)

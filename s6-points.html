@@ -40,6 +40,10 @@ h1{font-weight:700;font-size:clamp(24px,6.6vw,34px);margin:0 0 10px;line-height:
 .toc::-webkit-scrollbar{display:none}
 .toc a{flex:0 0 auto;font-size:12.5px;text-decoration:none;color:var(--hero-ink);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px 12px;white-space:nowrap}
 .toc a .n{font-weight:700;color:var(--yellow);margin-right:5px}
+.toc a.ch{color:#111;background:var(--yellow);border-color:var(--yellow);font-weight:700}
+.chapter{margin:38px 0 -12px;scroll-margin-top:64px;padding:12px 14px 12px 16px;border-radius:14px;background:var(--hero);color:var(--hero-ink);border-left:6px solid var(--yellow)}
+.chapter .k{display:block;font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--yellow)}
+.chapter .t{font-size:17px;font-weight:700}
 .section{margin-top:30px;scroll-margin-top:64px}
 .section-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .duality{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
@@ -73,6 +77,8 @@ footer a{color:var(--accent,var(--c1));font-weight:600}
 .tools .count{font-size:12px;color:var(--ink-soft);margin-left:auto}
 .q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .q-num{font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
+.q-ch{font-size:11.5px;color:var(--ink-soft);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:1px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+select.btn{max-width:100%;appearance:auto}
 .q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
 .q.marked .q-star{color:#E0A200}
 .q.marked{border-color:#F2C94C}
@@ -100,34 +106,29 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
   <span class="tab">6과목 · 기출포인트</span>
   <div class="eyebrow">산업안전기사 필기 · 6과목</div>
   <h1>건설공사 안전관리</h1>
-  <ul class="sub"><li>건설공사 안전관리(건설안전기술) 출제 경향 요약이며 기출 원문은 아닙니다.</li><li>법령 수치는 시험 전 최신 개정 사항으로 확인하세요.</li><li>⭐ 표시는 특히 자주 나오는 항목입니다.</li></ul>
-  <nav class="toc"><a href="#t1"><span class="n">1</span>산업안전보건관리비 ★</a><a href="#t2"><span class="n">2</span>유해위험방지계획서 (건설업) ★</a><a href="#t3"><span class="n">3</span>지반조사와 사전조사</a><a href="#t4"><span class="n">4</span>굴착면 기울기 ★</a><a href="#t5"><span class="n">5</span>흙막이와 히빙·보일링 ★</a><a href="#t6"><span class="n">6</span>토석붕괴·사면·옹벽 ★</a><a href="#t7"><span class="n">7</span>추락방지 ★</a><a href="#t8"><span class="n">8</span>추락방호망·낙하물방지망 ★</a><a href="#t9"><span class="n">9</span>비계 ★</a><a href="#t10"><span class="n">10</span>통로·계단·사다리 ★</a><a href="#t11"><span class="n">11</span>거푸집·동바리·콘크리트 ★</a><a href="#t12"><span class="n">12</span>철골공사 ★</a><a href="#t13"><span class="n">13</span>양중기·와이어로프·강풍 ★</a><a href="#t14"><span class="n">14</span>차량계 건설기계·항타기 ★</a><a href="#t15"><span class="n">15</span>터널·잠함·발파 ★</a><a href="#t16"><span class="n">16</span>해체공사·가설구조물</a></nav>
-</header><section class="section" id="t1"><div class="section-head"><div class="duality"><span class="n">1</span>산업안전보건관리비</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="산업안전보건관리비"><div class="subnote">2026년 기준으로 알고 있는 내용입니다.<br>요율·사용기준은 고시 개정이 잦으니 확인하세요.</div>
-<ul class="chk"><li><b>계상 대상</b><br>총 공사금액 <b>2천만 원 이상</b> 건설공사</li><li><b>계상 방법</b><br>대상액(재료비 + 직접노무비) × 요율<br>(5억~50억 구간은 + 기초액)</li><li><b>대상액이 구분 안 될 때</b><br>총 공사금액의 <b>70%</b>를 대상액으로</li><li>발주자가 재료를 따로 주면<br>재료비 포함 계상액이<br>제외 계상액의 <b>1.2배</b>를 넘지 않게</li><li>공사 종류: 건축, 토목, 중건설, 특수건설<br>(예전 일반건설 갑·을 분류는 개정됨)</li></ul>
-<p>⭐ <b>사용 항목</b></p>
-<ul class="chk"><li>안전관리자·보건관리자 임금</li><li>안전시설비</li><li>보호구 구입비</li><li>안전보건진단비</li><li>안전보건교육비</li><li>근로자 건강장해예방비</li><li>건설재해예방전문지도기관 기술지도비</li><li>본사 전담조직 근로자 임금</li><li>위험성평가 등에 따른 소요비용</li></ul>
-<p><b>사용할 수 없는 것</b></p>
-<ul class="chk"><li>공사 목적물에 해당하는 시설</li><li>다른 법령상 의무 사항</li><li>작업 수행에 원래 필요한 것<br>(교통통제 신호수, 일반 경비원 등)</li></ul></div></div></section>
-<section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">2</span>유해위험방지계획서 (건설업)</div><div class="section-line"></div></div>
+  <ul class="sub"><li>건설공사 안전관리(건설안전기술) 출제 경향 요약이며 기출 원문은 아닙니다.</li><li>법령 수치는 시험 전 최신 개정 사항으로 확인하세요.</li><li>⭐ 표시는 특히 자주 나오는 항목입니다.</li><li>주제는 에듀윌 교재의 챕터(CHAPTER) 순서로 묶었습니다.</li></ul>
+  <nav class="toc"><a class="ch" href="#c01">CH01 건설공사 특성분석</a><a href="#t2"><span class="n">1</span>유해위험방지계획서 (건설업) ★</a><a class="ch" href="#c02">CH02 건설공사 위험성</a><a href="#t4"><span class="n">2</span>지반조사와 사전조사</a><a href="#t5"><span class="n">3</span>굴착면 기울기 ★</a><a href="#t6"><span class="n">4</span>흙막이와 히빙·보일링 ★</a><a href="#t7"><span class="n">5</span>토석붕괴·사면·옹벽 ★</a><a class="ch" href="#c03">CH03 건설업 산업안전보건관리비 관리</a><a href="#t9"><span class="n">6</span>산업안전보건관리비 ★</a><a class="ch" href="#c04">CH04 건설현장 안전시설 관리</a><a href="#t11"><span class="n">7</span>추락방지 ★</a><a href="#t12"><span class="n">8</span>추락방호망·낙하물방지망 ★</a><a href="#t13"><span class="n">9</span>통로·계단·사다리 ★</a><a class="ch" href="#c05">CH05 비계·거푸집 가시설 위험방지</a><a href="#t15"><span class="n">10</span>비계 ★</a><a href="#t16"><span class="n">11</span>거푸집·동바리·콘크리트 ★</a><a class="ch" href="#c06">CH06 공사 및 작업 종류별 안전</a><a href="#t18"><span class="n">12</span>철골공사 ★</a><a href="#t19"><span class="n">13</span>양중기·와이어로프·강풍 ★</a><a href="#t20"><span class="n">14</span>차량계 건설기계·항타기 ★</a><a href="#t21"><span class="n">15</span>터널·잠함·발파 ★</a><a href="#t22"><span class="n">16</span>해체공사·가설구조물</a></nav>
+</header><div class="chapter" id="c01"><span class="k">CHAPTER 01</span><span class="t">건설공사 특성분석</span></div>
+<section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">1</span>유해위험방지계획서 (건설업)</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="유해위험방지계획서 (건설업)"><p>⭐ <b>제출 대상 공사</b></p>
 <ul class="chk"><li>지상높이 <b>31m 이상</b> 건축물·인공구조물</li><li>연면적 <b>3만㎡ 이상</b> 건축물</li><li>연면적 <b>5천㎡ 이상</b> 시설<br>문화·집회(전시장, 동·식물원 제외),<br>판매, 운수, 종교, 의료(종합병원),<br>숙박(관광숙박), 지하도상가,<br>냉동·냉장 창고</li><li>연면적 5천㎡ 이상 냉동·냉장 창고<br><b>단열공사</b></li><li>최대 지간길이 <b>50m 이상</b> 다리</li><li><b>터널</b> 건설</li><li>다목적댐·발전용댐<br>저수용량 <b>2천만 톤 이상</b> 용수전용댐·<br>지방상수도 전용댐</li><li>깊이 <b>10m 이상</b> 굴착공사</li></ul>
 <p><b>제출</b></p>
 <ul class="chk"><li>시기: 공사 <b>착공 전날까지</b></li><li>제출처: 한국산업안전보건공단, <b>2부</b></li><li>확인: 공사 중 <b>6개월 이내마다</b></li></ul>
 <p><b>첨부서류(건설업)</b><br>공사 개요, 안전보건관리계획,<br>작업 공사 종류별 유해위험방지계획</p></div></div></section>
-<section class="section" id="t3"><div class="section-head"><div class="duality"><span class="n">3</span>지반조사와 사전조사</div><div class="section-line"></div></div>
+<div class="chapter" id="c02"><span class="k">CHAPTER 02</span><span class="t">건설공사 위험성</span></div>
+<section class="section" id="t4"><div class="section-head"><div class="duality"><span class="n">2</span>지반조사와 사전조사</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="지반조사와 사전조사"><p>⭐ <b>표준관입시험(SPT)</b><br>63.5kg 해머를 <b>76cm</b> 높이에서 낙하<br>30cm 관입에 필요한 타격횟수 = <b>N값</b><br>(사질토 지반에 주로 사용)</p>
 <ul class="chk"><li><b>베인시험:</b> 연약 점토 전단강도</li><li><b>평판재하시험:</b> 지반 지지력</li><li><b>보링:</b> 땅을 뚫어 시료 채취<br>(회전식, 충격식, 수세식, 오거)</li><li><b>사운딩:</b> 로드를 넣어 저항 측정</li></ul>
 <p><b>굴착작업 사전조사</b></p>
 <ul class="chk"><li>형상·지질·지층 상태</li><li>균열·함수·용수·동결 상태</li><li>매설물 유무</li><li>지반의 지하수위 상태</li></ul></div></div></section>
-<section class="section" id="t4"><div class="section-head"><div class="duality"><span class="n">4</span>굴착면 기울기</div><div class="section-line"></div></div>
+<section class="section" id="t5"><div class="section-head"><div class="duality"><span class="n">3</span>굴착면 기울기</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="굴착면 기울기"><div class="subnote">2023년 개정 기준입니다. 확인하세요.</div>
 <ul class="chk"><li><b>모래:</b> 1 : <b>1.8</b></li><li><b>연암·풍화암:</b> 1 : <b>1.0</b></li><li><b>경암:</b> 1 : <b>0.5</b></li><li><b>그 밖의 흙:</b> 1 : <b>1.2</b></li></ul>
 <p>(비율은 수직 : 수평)</p>
 <p><b>예전 기준</b> (구기출에 나옴)<br>보통흙 습지 1:1~1:1.5<br>보통흙 건지 1:0.5~1:1<br>풍화암·연암 1:1.0, 경암 1:0.5</p>
 <p><b>굴착 시 안전조치</b></p>
 <ul class="chk"><li>흙막이 지보공 설치</li><li>방호망 설치</li><li>근로자 출입 금지</li><li>비가 올 때 측구·비닐로 빗물 차단</li></ul></div></div></section>
-<section class="section" id="t5"><div class="section-head"><div class="duality"><span class="n">5</span>흙막이와 히빙·보일링</div><div class="section-line"></div></div>
+<section class="section" id="t6"><div class="section-head"><div class="duality"><span class="n">4</span>흙막이와 히빙·보일링</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="흙막이와 히빙·보일링"><p>⭐ <b>히빙(Heaving)</b></p>
 <ul class="chk"><li>지반: <b>연약 점토</b></li><li>현상: 흙막이 배면 흙 무게가<br>굴착 바닥 지지력보다 커져<br>바닥이 <b>부풀어 오름</b></li><li>대책: 흙막이 근입 깊이 증가,<br>지반 개량, 배면 상재하중 제거,<br>부분 굴착</li></ul>
 <p>⭐ <b>보일링(Boiling)</b></p>
@@ -137,7 +138,7 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <ul class="chk"><li><b>지하수위계:</b> 지하수위 변화</li><li><b>간극수압계:</b> 간극수압</li><li><b>하중계:</b> 버팀보·어스앵커 축력</li><li><b>변형률계:</b> 부재 응력</li><li><b>지중경사계(인클리노미터):</b><br>지중 수평변위</li><li><b>건물경사계(틸트미터):</b><br>인접 건물 기울기</li><li><b>지표침하계:</b> 지표면 침하</li></ul>
 <p><b>흙막이 지보공 정기점검</b></p>
 <ul class="chk"><li>부재 손상·변형·부식·변위·탈락</li><li>버팀대 <b>긴압</b> 정도</li><li>부재 접속부·부착부·교차부 상태</li><li>침하 정도</li></ul></div></div></section>
-<section class="section" id="t6"><div class="section-head"><div class="duality"><span class="n">6</span>토석붕괴·사면·옹벽</div><div class="section-line"></div></div>
+<section class="section" id="t7"><div class="section-head"><div class="duality"><span class="n">5</span>토석붕괴·사면·옹벽</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="토석붕괴·사면·옹벽"><p>⭐ <b>토석붕괴 외적 원인</b></p>
 <ul class="chk"><li>사면·법면의 경사·기울기 증가</li><li>절토·성토 높이 증가</li><li>공사 진동·반복하중</li><li>지표수·지하수 침투로 흙 무게 증가</li><li>지진, 차량, 구조물 하중</li><li>토사·암석 혼합층 두께</li></ul>
 <p><b>내적 원인</b></p>
@@ -146,7 +147,16 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <ul class="chk"><li>적절한 경사면 기울기</li><li>배수(지표수·지하수 처리)</li><li>활동할 흙 제거, 말뚝·앵커로 보강</li><li>상부 하중 제거</li></ul>
 <p><b>옹벽 안정 조건 3가지</b><br><b>전도, 활동, 지지력(침하)</b><br>(안전율 전도 2.0, 활동 1.5, 지지력 3.0)</p>
 <p><b>사면 보호공법</b><br>식생공, 블록·돌 쌓기, 뿜어붙이기,<br>억지말뚝, 앵커</p></div></div></section>
-<section class="section" id="t7"><div class="section-head"><div class="duality"><span class="n">7</span>추락방지</div><div class="section-line"></div></div>
+<div class="chapter" id="c03"><span class="k">CHAPTER 03</span><span class="t">건설업 산업안전보건관리비 관리</span></div>
+<section class="section" id="t9"><div class="section-head"><div class="duality"><span class="n">6</span>산업안전보건관리비</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="산업안전보건관리비"><div class="subnote">2026년 기준으로 알고 있는 내용입니다.<br>요율·사용기준은 고시 개정이 잦으니 확인하세요.</div>
+<ul class="chk"><li><b>계상 대상</b><br>총 공사금액 <b>2천만 원 이상</b> 건설공사</li><li><b>계상 방법</b><br>대상액(재료비 + 직접노무비) × 요율<br>(5억~50억 구간은 + 기초액)</li><li><b>대상액이 구분 안 될 때</b><br>총 공사금액의 <b>70%</b>를 대상액으로</li><li>발주자가 재료를 따로 주면<br>재료비 포함 계상액이<br>제외 계상액의 <b>1.2배</b>를 넘지 않게</li><li>공사 종류: 건축, 토목, 중건설, 특수건설<br>(예전 일반건설 갑·을 분류는 개정됨)</li></ul>
+<p>⭐ <b>사용 항목</b></p>
+<ul class="chk"><li>안전관리자·보건관리자 임금</li><li>안전시설비</li><li>보호구 구입비</li><li>안전보건진단비</li><li>안전보건교육비</li><li>근로자 건강장해예방비</li><li>건설재해예방전문지도기관 기술지도비</li><li>본사 전담조직 근로자 임금</li><li>위험성평가 등에 따른 소요비용</li></ul>
+<p><b>사용할 수 없는 것</b></p>
+<ul class="chk"><li>공사 목적물에 해당하는 시설</li><li>다른 법령상 의무 사항</li><li>작업 수행에 원래 필요한 것<br>(교통통제 신호수, 일반 경비원 등)</li></ul></div></div></section>
+<div class="chapter" id="c04"><span class="k">CHAPTER 04</span><span class="t">건설현장 안전시설 관리</span></div>
+<section class="section" id="t11"><div class="section-head"><div class="duality"><span class="n">7</span>추락방지</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="추락방지"><p><b>높이 2m 이상</b> 추락 위험 장소<br>→ 작업발판 → 추락방호망 → 안전대</p>
 <p>⭐ <b>안전난간</b></p>
 <ul class="chk"><li>구성: 상부난간대, 중간난간대,<br>발끝막이판, 난간기둥</li><li>상부난간대: 바닥에서 <b>90cm 이상</b></li><li>상부를 <b>120cm 이하</b>에 두면<br>중간난간대는 그 중간에 1단</li><li><b>120cm 이상</b>이면 중간난간대<br><b>2단 이상</b> 균등, 상하 간격 <b>60cm 이하</b></li><li>발끝막이판: 바닥에서 <b>10cm 이상</b></li><li>난간기둥 간격 25cm 이하면<br>중간난간대 생략 가능</li><li>견딜 하중: 가장 취약한 지점에서<br><b>100kg 이상</b></li><li>난간대: 지름 <b>2.7cm 이상</b> 금속제 파이프</li></ul>
@@ -154,7 +164,7 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <ul class="chk"><li>폭 <b>40cm 이상</b></li><li>발판재료 사이 틈 <b>3cm 이하</b></li><li>2개 이상 지지물에 고정</li><li>선박·보트 건조 등은 폭 30cm 이상 가능</li></ul>
 <p><b>개구부 방호</b><br>안전난간, 울타리, 수직형 추락방망,<br><b>덮개</b>(뒤집히지 않게, 표시)</p>
 <p><b>슬레이트 지붕</b><br>폭 <b>30cm 이상</b> 발판 또는 방망</p></div></div></section>
-<section class="section" id="t8"><div class="section-head"><div class="duality"><span class="n">8</span>추락방호망·낙하물방지망</div><div class="section-line"></div></div>
+<section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">8</span>추락방호망·낙하물방지망</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="추락방호망·낙하물방지망"><p>⭐ <b>추락방호망</b></p>
 <ul class="chk"><li>설치 위치: 작업면에서 망까지<br>수직거리 <b>10m 이하</b></li><li>처짐: 짧은 변 길이의 <b>12% 이상</b></li><li>내민 길이: 벽면에서 <b>3m 이상</b></li><li>그물코: <b>10cm 이하</b></li></ul>
 <p>⭐ <b>방망사 인장강도 (신품 / 폐기)</b></p>
@@ -162,7 +172,17 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p>⭐ <b>낙하물방지망</b></p>
 <ul class="chk"><li>설치 높이: <b>10m 이내</b>마다</li><li>내민 길이: 벽면에서 <b>2m 이상</b></li><li>수평면과 각도: <b>20~30도</b></li></ul>
 <p><b>낙하·비래 방지</b><br>낙하물방지망, 수직보호망,<br>방호선반, 출입금지구역, 보호구</p></div></div></section>
-<section class="section" id="t9"><div class="section-head"><div class="duality"><span class="n">9</span>비계</div><div class="section-line"></div></div>
+<section class="section" id="t13"><div class="section-head"><div class="duality"><span class="n">9</span>통로·계단·사다리</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="통로·계단·사다리"><p>⭐ <b>가설통로</b></p>
+<ul class="chk"><li>경사: <b>30도 이하</b><br>(계단 설치, 높이 2m 미만 손잡이 예외)</li><li>경사 <b>15도 초과</b>: 미끄럼막이</li><li>추락 위험 장소: 안전난간</li><li>수직갱 길이 <b>15m 이상</b><br>→ <b>10m 이내</b>마다 계단참</li><li>건설공사 비계다리 높이 <b>8m 이상</b><br>→ <b>7m 이내</b>마다 계단참</li></ul>
+<p>⭐ <b>사다리식 통로</b></p>
+<ul class="chk"><li>폭 <b>30cm 이상</b></li><li>발판과 벽 사이 <b>15cm 이상</b></li><li>상단은 걸친 지점에서 <b>60cm 이상</b> 올라오게</li><li>길이 <b>10m 이상</b>: <b>5m 이내</b>마다 계단참</li><li>기울기 <b>75도 이하</b><br>(고정식 90도 이하, 높이 7m 이상이면<br>바닥에서 2.5m 지점부터 등받이울)</li></ul>
+<p><b>계단</b></p>
+<ul class="chk"><li>강도 <b>500kg/㎡ 이상</b>, 안전율 <b>4 이상</b></li><li>폭 <b>1m 이상</b></li><li>높이 <b>3m 초과</b>: 3m 이내마다<br>너비 <b>1.2m 이상</b> 계단참</li><li>위로 <b>2m 이내</b> 장애물 없게</li><li>높이 <b>1m 이상</b>: 개방측 안전난간</li></ul>
+<p><b>통로 조명:</b> <b>75럭스 이상</b></p>
+<p><b>승강설비:</b> 높이·깊이 <b>2m 초과</b> 장소</p></div></div></section>
+<div class="chapter" id="c05"><span class="k">CHAPTER 05</span><span class="t">비계·거푸집 가시설 위험방지</span></div>
+<section class="section" id="t15"><div class="section-head"><div class="duality"><span class="n">10</span>비계</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="비계"><p>⭐ <b>강관비계</b></p>
 <ul class="chk"><li>비계기둥 간격<br>띠장 방향 <b>1.85m 이하</b><br>장선 방향 <b>1.5m 이하</b></li><li>띠장 간격: <b>2.0m 이하</b></li><li>비계기둥 맨 위에서 <b>31m</b> 아래<br>부분은 강관 <b>2개</b>로 묶어 세움</li><li>기둥 사이 적재하중: <b>400kg 이하</b></li></ul>
 <p>⭐ <b>벽이음 간격</b></p>
@@ -175,16 +195,7 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p><b>이동식 비계</b></p>
 <ul class="chk"><li>바퀴: 브레이크·쐐기로 고정,<br>아웃트리거 설치</li><li>작업발판 최대 적재하중 <b>250kg 이하</b></li><li>승강용 사다리, 안전난간 설치</li><li>비계 위에서 사다리 사용 금지</li></ul>
 <p><b>말비계</b><br>지주부재와 수평면 각도 <b>75도 이하</b>,<br>높이 2m 초과 시 작업발판 폭 <b>40cm 이상</b></p></div></div></section>
-<section class="section" id="t10"><div class="section-head"><div class="duality"><span class="n">10</span>통로·계단·사다리</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="통로·계단·사다리"><p>⭐ <b>가설통로</b></p>
-<ul class="chk"><li>경사: <b>30도 이하</b><br>(계단 설치, 높이 2m 미만 손잡이 예외)</li><li>경사 <b>15도 초과</b>: 미끄럼막이</li><li>추락 위험 장소: 안전난간</li><li>수직갱 길이 <b>15m 이상</b><br>→ <b>10m 이내</b>마다 계단참</li><li>건설공사 비계다리 높이 <b>8m 이상</b><br>→ <b>7m 이내</b>마다 계단참</li></ul>
-<p>⭐ <b>사다리식 통로</b></p>
-<ul class="chk"><li>폭 <b>30cm 이상</b></li><li>발판과 벽 사이 <b>15cm 이상</b></li><li>상단은 걸친 지점에서 <b>60cm 이상</b> 올라오게</li><li>길이 <b>10m 이상</b>: <b>5m 이내</b>마다 계단참</li><li>기울기 <b>75도 이하</b><br>(고정식 90도 이하, 높이 7m 이상이면<br>바닥에서 2.5m 지점부터 등받이울)</li></ul>
-<p><b>계단</b></p>
-<ul class="chk"><li>강도 <b>500kg/㎡ 이상</b>, 안전율 <b>4 이상</b></li><li>폭 <b>1m 이상</b></li><li>높이 <b>3m 초과</b>: 3m 이내마다<br>너비 <b>1.2m 이상</b> 계단참</li><li>위로 <b>2m 이내</b> 장애물 없게</li><li>높이 <b>1m 이상</b>: 개방측 안전난간</li></ul>
-<p><b>통로 조명:</b> <b>75럭스 이상</b></p>
-<p><b>승강설비:</b> 높이·깊이 <b>2m 초과</b> 장소</p></div></div></section>
-<section class="section" id="t11"><div class="section-head"><div class="duality"><span class="n">11</span>거푸집·동바리·콘크리트</div><div class="section-line"></div></div>
+<section class="section" id="t16"><div class="section-head"><div class="duality"><span class="n">11</span>거푸집·동바리·콘크리트</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="거푸집·동바리·콘크리트"><p>⭐ <b>파이프 서포트 동바리</b></p>
 <ul class="chk"><li><b>3개 이상</b> 이어서 사용 금지</li><li>이을 때 <b>4개 이상 볼트</b><br>또는 전용 철물</li><li>높이 <b>3.5m 초과</b>: <b>2m 이내</b>마다<br>수평연결재 <b>2개 방향</b></li></ul>
 <p><b>강관틀 동바리</b><br>최상단과 <b>5단 이내</b>마다 수평연결재,<br>최상단과 <b>5개 틀 이내</b>마다<br>교차가새 방향 띠장틀</p>
@@ -194,14 +205,15 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p>⭐ <b>콘크리트 타설 작업</b></p>
 <ul class="chk"><li>당일 작업 전 거푸집·동바리 점검</li><li>작업 중 <b>감시자</b> 배치, 이상 시 대피</li><li><b>편심</b>이 없게 골고루 분산 타설</li><li>설계도서의 양생기간 지난 뒤 해체</li><li>진동기는 적절히(과다 사용 금지)</li></ul>
 <p><b>거푸집 해체</b><br>관리감독자 배치, 비·눈·바람 시 중지,<br>재료 달줄·달포대로 내림</p></div></div></section>
-<section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">12</span>철골공사</div><div class="section-line"></div></div>
+<div class="chapter" id="c06"><span class="k">CHAPTER 06</span><span class="t">공사 및 작업 종류별 안전</span></div>
+<section class="section" id="t18"><div class="section-head"><div class="duality"><span class="n">12</span>철골공사</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="철골공사"><p>⭐ <b>작업 중지 기준</b></p>
 <ul class="chk"><li>풍속: 초당 <b>10m 이상</b></li><li>강우량: 시간당 <b>1mm 이상</b></li><li>강설량: 시간당 <b>1cm 이상</b></li></ul>
 <p>⭐ <b>자립도 검토 대상 (외압 대비)</b></p>
 <ul class="chk"><li>높이 <b>20m 이상</b> 구조물</li><li>폭 : 높이 = <b>1 : 4 이상</b></li><li>단면 구조에 현저한 차이</li><li>연면적당 철골량 <b>50kg/㎡ 이하</b></li><li>기둥이 <b>타이플레이트형</b></li><li>이음부가 <b>현장 용접</b></li><li>외벽에 대형 간판·차양 설치</li></ul>
 <p><b>철골 승강용 트랩</b><br>답단 간격 <b>30cm 이내</b></p>
 <p><b>철골 건립 순서 계획 시</b><br>기초 앵커볼트 매립 정밀도 확인,<br>건립 중 가볼트 체결 수 확인</p></div></div></section>
-<section class="section" id="t13"><div class="section-head"><div class="duality"><span class="n">13</span>양중기·와이어로프·강풍</div><div class="section-line"></div></div>
+<section class="section" id="t19"><div class="section-head"><div class="duality"><span class="n">13</span>양중기·와이어로프·강풍</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="양중기·와이어로프·강풍"><p><b>양중기 5종</b><br>크레인(호이스트 포함), 이동식 크레인,<br>리프트(이삿짐용은 0.1톤 이상),<br>곤돌라, 승강기</p>
 <p>⭐ <b>와이어로프 안전계수</b></p>
 <ul class="chk"><li>근로자 탑승 운반구: <b>10 이상</b></li><li>화물 하중 직접 지지: <b>5 이상</b></li><li>훅·샤클·클램프·리프팅빔: <b>3 이상</b></li><li>그 밖의 경우: <b>4 이상</b></li></ul>
@@ -209,7 +221,7 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <ul class="chk"><li><b>10m/s 초과</b><br>타워크레인 설치·수리·점검·해체 중지</li><li><b>15m/s 초과</b><br>타워크레인 운전 중지</li><li><b>30m/s 초과</b> 예상<br>옥외 주행 크레인 이탈방지장치 작동</li><li><b>30m/s 초과</b> 바람 뒤 또는<br><b>중진 이상 지진</b> 뒤<br>작업 전 크레인 각 부위 점검</li><li><b>35m/s 초과</b> 예상<br>건설용 리프트·옥외 승강기<br>받침 수 늘려 붕괴 방지</li></ul>
 <p>⚠️ 기준은 모두 <b>'초과'</b><br>⚠️ <b>20m/s</b>는 법령에 없는 기준<br>→ 보기에 나오면 오답</p>
 <p><b>방호장치</b><br>과부하방지장치, 권과방지장치,<br>비상정지장치, 제동장치, 훅 해지장치</p></div></div></section>
-<section class="section" id="t14"><div class="section-head"><div class="duality"><span class="n">14</span>차량계 건설기계·항타기</div><div class="section-line"></div></div>
+<section class="section" id="t20"><div class="section-head"><div class="duality"><span class="n">14</span>차량계 건설기계·항타기</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="차량계 건설기계·항타기"><p><b>차량계 건설기계</b><br>불도저, 모터그레이더, 로더, 스크레이퍼,<br>굴착기, 항타기·항발기, 천공기 등</p>
 <p>⭐ <b>전도·전락 방지</b></p>
 <ul class="chk"><li><b>유도자</b> 배치</li><li>지반 부동침하 방지</li><li>갓길 붕괴 방지</li><li>도로 폭 유지</li></ul>
@@ -221,7 +233,7 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p><b>무너짐 방지</b></p>
 <ul class="chk"><li>연약지반: 깔판·받침목</li><li>버팀대만으로 지지: <b>3개 이상</b></li><li>버팀줄만으로 지지: <b>3개 이상</b> 같은 간격</li><li>레일 위: 레일클램프·쐐기</li></ul>
 <p><b>도르래 위치</b><br>드럼축과 첫 도르래 축 거리<br>= 드럼 폭의 <b>15배 이상</b></p></div></div></section>
-<section class="section" id="t15"><div class="section-head"><div class="duality"><span class="n">15</span>터널·잠함·발파</div><div class="section-line"></div></div>
+<section class="section" id="t21"><div class="section-head"><div class="duality"><span class="n">15</span>터널·잠함·발파</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="터널·잠함·발파"><p><b>터널 계측(NATM)</b><br>내공변위, <b>천단침하</b>, 지중변위,<br>록볼트 축력, 숏크리트 응력</p>
 <p>⭐ <b>자동경보장치 작업 전 점검</b><br>계기 이상, 검지부 이상, 경보장치 작동</p>
 <p><b>터널 지보공 점검</b></p>
@@ -231,7 +243,7 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <ul class="chk"><li>산소농도 측정, 송기설비</li><li>굴착 깊이 <b>20m 초과</b>: 통신설비</li><li>급격한 침하 방지<br>침하관계도에 따라 굴착·재하량 결정<br>바닥에서 천장·보까지 <b>1.8m 이상</b></li></ul>
 <p>⭐ <b>발파 작업</b></p>
 <ul class="chk"><li>장전: 마찰·충격 없는 기구</li><li>점화 전 대피 확인, 경보</li><li>불발 시 접근 금지 시간<br>전기뇌관: <b>5분 이상</b><br>그 밖: <b>15분 이상</b></li><li>전기발파: <b>도통시험</b>, 저항 측정</li></ul></div></div></section>
-<section class="section" id="t16"><div class="section-head"><div class="duality"><span class="n">16</span>해체공사·가설구조물</div><div class="section-line"></div></div>
+<section class="section" id="t22"><div class="section-head"><div class="duality"><span class="n">16</span>해체공사·가설구조물</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="해체공사·가설구조물"><p><b>해체 공법(기구)</b><br>압쇄기, 대형·핸드 브레이커,<br>철제 해머, 화약류, 팽창제,<br>절단톱, 잭, 쐐기타입기,<br>화염방사기, 절단줄톱</p>
 <ul class="chk"><li><b>압쇄기:</b> 소음·진동 적음</li><li><b>팽창제:</b> 무소음·무진동</li></ul>
 <p><b>해체 작업계획서 내용</b></p>
