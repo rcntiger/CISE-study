@@ -40,6 +40,10 @@ h1{font-weight:700;font-size:clamp(24px,6.6vw,34px);margin:0 0 10px;line-height:
 .toc::-webkit-scrollbar{display:none}
 .toc a{flex:0 0 auto;font-size:12.5px;text-decoration:none;color:var(--hero-ink);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px 12px;white-space:nowrap}
 .toc a .n{font-weight:700;color:var(--yellow);margin-right:5px}
+.toc a.ch{color:#111;background:var(--yellow);border-color:var(--yellow);font-weight:700}
+.chapter{margin:38px 0 -12px;scroll-margin-top:64px;padding:12px 14px 12px 16px;border-radius:14px;background:var(--hero);color:var(--hero-ink);border-left:6px solid var(--yellow)}
+.chapter .k{display:block;font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--yellow)}
+.chapter .t{font-size:17px;font-weight:700}
 .section{margin-top:30px;scroll-margin-top:64px}
 .section-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .duality{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
@@ -73,6 +77,8 @@ footer a{color:var(--accent,var(--c1));font-weight:600}
 .tools .count{font-size:12px;color:var(--ink-soft);margin-left:auto}
 .q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .q-num{font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
+.q-ch{font-size:11.5px;color:var(--ink-soft);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:1px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+select.btn{max-width:100%;appearance:auto}
 .q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
 .q.marked .q-star{color:#E0A200}
 .q.marked{border-color:#F2C94C}
@@ -100,44 +106,29 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
   <span class="tab">1과목 · 기출포인트</span>
   <div class="eyebrow">산업안전기사 필기 · 1과목</div>
   <h1>산업재해 예방 및 안전보건교육</h1>
-  <ul class="sub"><li>출제 경향을 정리한 요약이며 기출 원문은 아닙니다.</li><li>법령 수치는 시험 전 최신 개정 사항으로 확인하세요.</li><li>⭐ 표시는 특히 자주 나오는 항목입니다.</li></ul>
-  <nav class="toc"><a href="#t1"><span class="n">1</span>재해 이론</a><a href="#t2"><span class="n">2</span>재해 통계 ★</a><a href="#t3"><span class="n">3</span>재해 조사·분석</a><a href="#t4"><span class="n">4</span>안전관리조직과 무재해운동</a><a href="#t5"><span class="n">5</span>보호구 ★</a><a href="#t6"><span class="n">6</span>안전보건표지 ★</a><a href="#t7"><span class="n">7</span>산업심리</a><a href="#t8"><span class="n">8</span>안전보건교육 ★</a><a href="#t9"><span class="n">9</span>안전보건관리체제 ★</a><a href="#t10"><span class="n">10</span>산업재해 보고와 중대재해 ★</a><a href="#t11"><span class="n">11</span>안전인증·자율안전확인·안전검사 ★</a><a href="#t12"><span class="n">12</span>리더십과 집단 ★</a><a href="#t13"><span class="n">13</span>인간의 특성과 적응기제 ★</a><a href="#t14"><span class="n">14</span>피로와 안전점검</a><a href="#t15"><span class="n">15</span>법령 추가 ★</a><a href="#t16"><span class="n">16</span>교육 방법과 평가 ★</a></nav>
-</header><section class="section" id="t1"><div class="section-head"><div class="duality"><span class="n">1</span>재해 이론</div><div class="section-line"></div></div>
+  <ul class="sub"><li>출제 경향을 정리한 요약이며 기출 원문은 아닙니다.</li><li>법령 수치는 시험 전 최신 개정 사항으로 확인하세요.</li><li>⭐ 표시는 특히 자주 나오는 항목입니다.</li><li>주제는 에듀윌 교재의 챕터(CHAPTER) 순서로 묶었습니다.</li></ul>
+  <nav class="toc"><a class="ch" href="#c01">CH01 산업재해예방 계획 수립</a><a href="#t2"><span class="n">1</span>재해 이론</a><a href="#t3"><span class="n">2</span>재해 통계 ★</a><a href="#t4"><span class="n">3</span>재해 조사·분석</a><a href="#t5"><span class="n">4</span>안전관리조직과 무재해운동</a><a href="#t6"><span class="n">5</span>안전보건관리체제 ★</a><a class="ch" href="#c02">CH02 안전보호구 관리</a><a href="#t8"><span class="n">6</span>보호구 ★</a><a href="#t9"><span class="n">7</span>안전보건표지 ★</a><a class="ch" href="#c03">CH03 산업안전심리</a><a href="#t11"><span class="n">8</span>산업심리</a><a href="#t12"><span class="n">9</span>인간의 특성과 적응기제 ★</a><a class="ch" href="#c04">CH04 인간의 행동과학</a><a href="#t14"><span class="n">10</span>리더십과 집단 ★</a><a href="#t15"><span class="n">11</span>피로와 안전점검</a><a class="ch" href="#c05">CH05 안전보건교육의 내용 및 방법</a><a href="#t17"><span class="n">12</span>안전보건교육 ★</a><a href="#t18"><span class="n">13</span>교육 방법과 평가 ★</a><a class="ch" href="#c06">CH06 산업안전관계법규</a><a href="#t20"><span class="n">14</span>산업재해 보고와 중대재해 ★</a><a href="#t21"><span class="n">15</span>안전인증·자율안전확인·안전검사 ★</a><a href="#t22"><span class="n">16</span>법령 추가 ★</a></nav>
+</header><div class="chapter" id="c01"><span class="k">CHAPTER 01</span><span class="t">산업재해예방 계획 수립</span></div>
+<section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">1</span>재해 이론</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="재해 이론 · 하인리히"><h4>하인리히</h4><ul class="chk"><li><b>도미노 5단계</b><br>사회적 환경·유전<br>→ 개인적 결함<br>→ <b>불안전한 행동·상태</b><br>→ 사고<br>→ 재해</li><li><b>핵심:</b> 3단계(직접원인) 제거</li><li class="star"><b>재해구성비율</b><br>중상 1 : 경상 29 : 무상해 300<br>(총 330)</li></ul></div>
 <div class="card" data-title="재해 이론 · 버드"><h4>버드</h4><ul class="chk"><li><b>도미노 5단계</b><br>통제(관리) 부족<br>→ 기본원인<br>→ 직접원인<br>→ 사고<br>→ 상해</li><li><b>핵심:</b> 1단계(관리) 강조</li><li class="star"><b>재해구성비율</b><br>중상 1 : 경상 10 :<br>물적손실 30 : 아차사고 600</li></ul></div>
 <div class="card" data-title="재해 이론 · 그 밖에"><h4>그 밖에</h4><ul class="chk"><li><b>하인리히 재해 원인 비율</b><br>불안전한 행동 <b>88%</b><br>불안전한 상태 <b>10%</b><br>불가항력 <b>2%</b></li><li class="star"><b>하인리히 사고예방대책 5단계</b><br>1. 안전조직<br>2. 사실의 발견<br>3. 분석·평가<br>4. 시정방법 선정<br>5. 시정책 적용 (<b>3E</b>: 기술·교육·관리)</li><li class="star"><b>재해예방 4원칙</b><br>손실우연, 원인계기(원인연계),<br>예방가능, 대책선정</li><li><b>재해 발생 형태</b><br>단순자극형(집중형), 연쇄형, 복합형</li></ul></div></div></section>
-<section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">2</span>재해 통계</div><div class="section-line"></div></div>
+<section class="section" id="t3"><div class="section-head"><div class="duality"><span class="n">2</span>재해 통계</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="재해 통계"><p>계산 문제 단골입니다.</p>
 <ul class="chk"><li><b>도수율</b><br>재해건수 ÷ 연근로시간 × 1,000,000</li><li><b>강도율</b><br>근로손실일수 ÷ 연근로시간 × 1,000</li><li><b>연천인율</b><br>재해자수 ÷ 연평균근로자수 × 1,000<br>= <b>도수율 × 2.4</b></li><li><b>종합재해지수</b><br>√(도수율 × 강도율)</li><li><b>환산도수율</b><br>도수율 ÷ 10<br>(평생 근로시간 10만 시간 기준)</li><li><b>환산강도율</b><br>강도율 × 100</li></ul>
 <p><b>연근로시간</b><br>근로자수 × 1일 근로시간 × 연 근로일수<br>조건이 없으면 1인 연 2,400시간</p>
 <p><b>근로손실일수 (신체장해등급별)</b></p>
 <ul class="chk"><li>사망·1~3급: <b>7,500일</b></li><li>4급 5,500 · 5급 4,000</li><li>6급 3,000 · 7급 2,200</li><li>8급 1,500 · 9급 1,000</li><li>10급 600 · 11급 400</li><li>12급 200 · 13급 100</li><li>14급 50</li></ul>
 <p><b>휴업일수 환산</b><br>휴업일수 × 300/365 를<br>근로손실일수에 더함</p></div></div></section>
-<section class="section" id="t3"><div class="section-head"><div class="duality"><span class="n">3</span>재해 조사·분석</div><div class="section-line"></div></div>
+<section class="section" id="t4"><div class="section-head"><div class="duality"><span class="n">3</span>재해 조사·분석</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="재해 조사·분석"><p>⭐ <b>통계적 원인분석</b></p>
 <ul class="chk"><li><b>파레토도:</b> 큰 순서 막대</li><li><b>특성요인도:</b> 물고기뼈</li><li><b>클로즈 분석:</b> 2개 이상 요인 관계</li><li><b>관리도:</b> 시간 추이</li></ul>
 <p><b>재해조사 순서</b></p>
 <ul class="chk"><li>1. 사실 확인</li><li>2. 직접원인·문제점 확인</li><li>3. 기본원인·근본 문제 결정</li><li>4. 대책 수립</li></ul></div></div></section>
-<section class="section" id="t4"><div class="section-head"><div class="duality"><span class="n">4</span>안전관리조직과 무재해운동</div><div class="section-line"></div></div>
+<section class="section" id="t5"><div class="section-head"><div class="duality"><span class="n">4</span>안전관리조직과 무재해운동</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="안전관리조직과 무재해운동 · 안전관리조직"><h4>안전관리조직</h4><ul class="chk"><li><b>라인형(직계식)</b><br>규모: 100명 미만<br>지시 전달이 빠름<br>안전 전문지식 부족</li><li><b>스태프형(참모식)</b><br>규모: 100~1,000명<br>안전 전문가가 계획·조언<br>생산라인과 마찰 가능</li><li><b>라인-스태프형</b><br>규모: 1,000명 이상<br>두 방식의 장점 결합</li></ul></div>
 <div class="card" data-title="안전관리조직과 무재해운동 · 무재해운동"><h4>무재해운동</h4><ul class="chk"><li class="star"><b>3원칙</b><br><b>무</b>의 원칙<br><b>선취(안전제일)</b>의 원칙<br><b>참가</b>의 원칙</li><li><b>3요소(3기둥)</b><br>최고경영자의 경영자세<br>관리감독자의 안전활동(라인화)<br>직장 소집단 자주활동</li><li class="star"><b>위험예지훈련 4라운드</b><br>1. 현상파악<br>2. 본질추구<br>3. 대책수립<br>4. 목표설정</li><li><b>TBM(Tool Box Meeting)</b><br>작업 전 현장에서 짧게 하는<br>위험예지 미팅</li></ul></div></div></section>
-<section class="section" id="t5"><div class="section-head"><div class="duality"><span class="n">5</span>보호구</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="보호구"><p><b>안전모</b><br>A(낙하·비래), B(추락), E(감전·내전압성)<br>조합: <b>AB, AE, ABE</b>종</p>
-<p><b>방독마스크 정화통 색</b></p>
-<ul class="chk"><li>유기화합물: <b>갈색</b></li><li>할로겐·황화수소·시안화수소: <b>회색</b></li><li>아황산: <b>노란색</b></li><li>암모니아: <b>녹색</b></li></ul>
-<p><b>방진마스크(분리식) 분진포집효율</b></p>
-<ul class="chk"><li>특급: 99.95% 이상</li><li>1급: 94% 이상</li><li>2급: 80% 이상</li></ul></div></div></section>
-<section class="section" id="t6"><div class="section-head"><div class="duality"><span class="n">6</span>안전보건표지</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="안전보건표지"><ul class="chk"><li>🔴 <b>빨간색</b><br>금지, 경고(화학물질)<br>예: 출입금지, 소화설비</li><li>🟡 <b>노란색</b><br>경고<br>예: 낙하물 경고, 고압전기 경고</li><li>🔵 <b>파란색</b><br>지시<br>예: 보호구 착용</li><li>🟢 <b>녹색</b><br>안내<br>예: 비상구, 응급구호</li></ul>
-<p><b>색도 기준</b></p>
-<ul class="chk"><li>빨강 7.5R 4/14</li><li>노랑 5Y 8.5/12</li><li>파랑 2.5PB 4/10</li><li>녹색 2.5G 4/10</li></ul></div></div></section>
-<section class="section" id="t7"><div class="section-head"><div class="duality"><span class="n">7</span>산업심리</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="산업심리"><ul class="chk"><li class="star"><b>매슬로우 5단계</b> ("생안사존자")<br>생리 → 안전 → 사회적<br>→ 존경 → 자아실현</li><li><b>알더퍼 ERG</b><br>존재(E) – 관계(R) – 성장(G)</li><li><b>허즈버그</b><br>위생요인: 임금·작업조건 (불만 제거)<br>동기요인: 성취·인정 (만족 증가)</li><li><b>맥그리거</b><br>X이론: 게으름, 통제 필요<br>Y이론: 자율, 책임감</li><li class="star"><b>레윈: B = f(P·E)</b><br>P는 개체(사람)<br>E는 환경(인간관계 포함)</li><li><b>주의의 특성</b><br>선택성, 변동성, 방향성</li><li><b>생체리듬</b><br>육체 23일 · 감성 28일 · 지성 33일</li></ul></div></div></section>
-<section class="section" id="t8"><div class="section-head"><div class="duality"><span class="n">8</span>안전보건교육</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="안전보건교육"><ul class="chk"><li><b>교육 3단계</b><br>지식 → 기능 → 태도</li><li><b>교육 진행 4단계</b><br>도입 → 제시 → 적용 → 확인</li><li><b>하버드학파 5단계 교수법</b><br>준비 → 교시 → 연합<br>→ 총괄 → 응용</li><li><b>OJT</b><br>현장 1:1, 개별 지도, 즉시 적용</li><li><b>Off-JT</b><br>집합교육, 다수 인원 체계적 교육</li><li><b>학습이론</b><br>파블로프: 조건반사<br>손다이크: 시행착오<br>스키너: 조작적 조건화<br>쾰러: 통찰</li></ul>
-<p><b>근로자 교육시간</b> (개정 확인 필요)</p>
-<ul class="chk"><li><b>정기교육</b><br>사무직: 매반기 6시간 이상<br>그 외: 매반기 12시간 이상</li><li><b>채용 시</b><br>8시간 이상<br>(일용·1주 이하 기간제 1시간 이상)</li><li><b>작업내용 변경 시</b><br>2시간 이상<br>(일용·1주 이하 기간제 1시간 이상)</li><li><b>특별교육</b><br>16시간 이상<br>(일용·1주 이하 기간제 2시간 이상)</li></ul></div></div></section>
-<section class="section" id="t9"><div class="section-head"><div class="duality"><span class="n">9</span>안전보건관리체제</div><div class="section-line"></div></div>
+<section class="section" id="t6"><div class="section-head"><div class="duality"><span class="n">5</span>안전보건관리체제</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="안전보건관리체제"><div class="subnote">2026년 기준으로 알고 있는 내용입니다.<br>시험 전 최신 법령으로 확인하세요.</div>
 <ul class="chk"><li><b>안전보건관리책임자</b><br>역할: 사업장 실질 총괄(공장장 등)<br>선임: 상시근로자 100명 이상<br>(제조업 등은 50명 이상)<br>건설업 공사금액 20억 원 이상</li><li><b>관리감독자</b><br>역할: 생산 업무를 직접 지휘·감독<br>선임: 해당 부서장·직위자</li><li><b>안전관리자</b><br>역할: 안전 기술 지도·조언<br>선임: 상시근로자 50명 이상<br>건설업 공사금액 50억 원 이상</li><li><b>보건관리자</b><br>역할: 보건 기술 지도·조언<br>선임: 상시근로자 50명 이상</li><li><b>안전보건관리담당자</b><br>역할: 소규모 사업장 안전보건 담당<br>선임: 20명 이상 50명 미만<br>(제조업, 임업, 하수·폐기물,<br>원료재생, 환경정화·복원업)</li><li><b>안전보건총괄책임자</b><br>역할: 도급 시 도급인 사업장 총괄<br>선임: 관계수급인 포함 100명 이상<br>(일부 업종 50명)<br>건설업 20억 원 이상</li></ul>
 <p><b>안전관리자의 업무</b></p>
@@ -145,33 +136,21 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p><b>관리감독자의 업무</b></p>
 <ul class="chk"><li>기계·설비 안전 점검</li><li>보호구 착용 지도</li><li>작업장 정리정돈</li><li>산업재해 보고와 응급조치</li></ul></div>
 <div class="card" data-title="안전보건관리체제 · 산업안전보건위원회 ⭐"><h4>산업안전보건위원회 ⭐</h4><ul class="chk"><li>근로자위원과 사용자위원을 <b>같은 수</b>로 구성</li><li>정기회의: <b>분기마다</b></li><li>임시회의: 위원장이 필요할 때</li><li>위원장: 위원 중에서 호선<br>(근로자·사용자위원 각 1명을<br>공동위원장으로 할 수 있음)</li><li><b>설치 대상</b><br>상시근로자 100명 이상<br>(일부 업종 50명 이상)<br>건설업 공사금액 120억 원 이상<br>(토목공사 150억 원 이상)</li></ul></div></div></section>
-<section class="section" id="t10"><div class="section-head"><div class="duality"><span class="n">10</span>산업재해 보고와 중대재해</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="산업재해 보고와 중대재해"><p><b>산업재해조사표 제출</b><br>사망자 또는 <b>3일 이상 휴업</b> 부상·질병<br>→ <b>1개월 이내</b> 제출</p>
-<p><b>중대재해 정의</b> (산업안전보건법)</p>
-<ul class="chk"><li>사망자 1명 이상</li><li>3개월 이상 요양 부상자가<br>동시에 2명 이상</li><li>부상자 또는 직업성 질병자가<br>동시에 10명 이상</li></ul>
-<p>중대재해 발생 시 <b>지체 없이</b><br>지방고용노동관서에 보고</p></div></div></section>
-<section class="section" id="t11"><div class="section-head"><div class="duality"><span class="n">11</span>안전인증·자율안전확인·안전검사</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="안전인증·자율안전확인·안전검사 · 안전인증 대상"><h4>안전인증 대상</h4><p><b>기계·설비 (9종)</b></p>
-<ul class="chk"><li>프레스</li><li>전단기·절곡기</li><li>크레인</li><li>리프트</li><li>압력용기</li><li>롤러기</li><li>사출성형기</li><li>고소작업대</li><li>곤돌라</li></ul>
-<p><b>방호장치</b></p>
-<ul class="chk"><li>프레스·전단기 방호장치</li><li>양중기용 과부하방지장치</li><li>보일러·압력용기 압력방출용 안전밸브</li><li>압력용기 파열판</li><li>절연용 방호구·활선작업용 기구</li><li>방폭구조 전기기계·기구</li><li>가설기자재</li><li>산업용 로봇 방호장치</li></ul>
-<p><b>보호구 (12종)</b></p>
-<ul class="chk"><li>추락·감전 방지용 안전모</li><li>안전화</li><li>안전장갑</li><li>방진마스크</li><li>방독마스크</li><li>송기마스크</li><li>전동식 호흡보호구</li><li>보호복</li><li>안전대</li><li>차광·비산물 방지용 보안경</li><li>용접용 보안면</li><li>방음용 귀마개·귀덮개</li></ul></div>
-<div class="card" data-title="안전인증·자율안전확인·안전검사 · 자율안전확인 대상 보호구"><h4>자율안전확인 대상 보호구</h4><p>안전인증 대상이 <b>아닌</b><br>안전모, 보안경, 보안면</p>
-<p>("안전인증 대상 보호구가 아닌 것은?"<br>형태로 출제)</p></div>
-<div class="card" data-title="안전인증·자율안전확인·안전검사 · 안전검사 대상"><h4>안전검사 대상</h4><ul class="chk"><li>프레스</li><li>전단기</li><li>크레인 (정격하중 2톤 미만 제외)</li><li>리프트</li><li>압력용기</li><li>곤돌라</li><li>국소배기장치 (이동식 제외)</li><li>원심기 (산업용)</li><li>롤러기 (밀폐형 제외)</li><li>사출성형기</li><li>고소작업대</li><li>컨베이어</li><li>산업용 로봇</li><li>혼합기</li><li>파쇄기·분쇄기</li></ul></div>
-<div class="card" data-title="안전인증·자율안전확인·안전검사 · 안전검사 주기 ⭐"><h4>안전검사 주기 ⭐</h4><ul class="chk"><li><b>크레인, 리프트, 곤돌라</b><br>최초: 설치 후 3년 이내<br>이후: 2년마다<br>(건설현장은 <b>6개월마다</b>)</li><li>**이동식 크레인,<br>이삿짐운반용 리프트, 고소작업대**<br>최초: 신규 등록 후 3년 이내<br>이후: 2년마다</li><li><b>그 밖의 대상</b><br>최초: 설치 후 3년 이내<br>이후: 2년마다<br>(공정안전보고서 확인 압력용기는<br><b>4년마다</b>)</li></ul></div></div></section>
-<section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">12</span>리더십과 집단</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="리더십과 집단"><p><b>리더십 유형</b></p>
-<ul class="chk"><li><b>권위형(독재형):</b> 리더가 모든 결정</li><li><b>민주형:</b> 집단 토의로 결정</li><li><b>자유방임형:</b> 구성원에게 맡김</li></ul>
-<p>⭐ <b>헤드십 vs 리더십</b></p>
-<ul class="chk"><li><b>헤드십</b><br>권한 근거: 조직이 임명 (법적·공식)<br>지휘 형태: 권위주의적<br>부하와의 간격: 넓음<br>관계: 지배적</li><li><b>리더십</b><br>권한 근거: 구성원이 인정 (개인 능력)<br>지휘 형태: 민주주의적<br>부하와의 간격: 좁음<br>관계: 개인적 영향</li></ul>
-<p>⭐ <b>리더의 권한</b></p>
-<ul class="chk"><li><b>조직이 부여하는 권한</b><br>보상적, 강압적, 합법적 권한</li><li><b>리더 스스로 만드는 권한</b><br>위임된 권한, 전문성의 권한</li></ul>
-<p><b>모랄 서베이 (사기 조사)</b><br>근로자의 심리·욕구를 파악해<br>경영 개선 자료로 쓰는 조사</p>
-<ul class="chk"><li>방법: 통계에 의한 방법, 사례연구법,<br>관찰법, 실험연구법,<br>태도조사법(질문지·면접·집단토의·투사법)</li></ul>
-<p><b>집단의 효과:</b> 동조 효과, 시너지 효과, 견제 효과</p></div></div></section>
-<section class="section" id="t13"><div class="section-head"><div class="duality"><span class="n">13</span>인간의 특성과 적응기제</div><div class="section-line"></div></div>
+<div class="chapter" id="c02"><span class="k">CHAPTER 02</span><span class="t">안전보호구 관리</span></div>
+<section class="section" id="t8"><div class="section-head"><div class="duality"><span class="n">6</span>보호구</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="보호구"><p><b>안전모</b><br>A(낙하·비래), B(추락), E(감전·내전압성)<br>조합: <b>AB, AE, ABE</b>종</p>
+<p><b>방독마스크 정화통 색</b></p>
+<ul class="chk"><li>유기화합물: <b>갈색</b></li><li>할로겐·황화수소·시안화수소: <b>회색</b></li><li>아황산: <b>노란색</b></li><li>암모니아: <b>녹색</b></li></ul>
+<p><b>방진마스크(분리식) 분진포집효율</b></p>
+<ul class="chk"><li>특급: 99.95% 이상</li><li>1급: 94% 이상</li><li>2급: 80% 이상</li></ul></div></div></section>
+<section class="section" id="t9"><div class="section-head"><div class="duality"><span class="n">7</span>안전보건표지</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="안전보건표지"><ul class="chk"><li>🔴 <b>빨간색</b><br>금지, 경고(화학물질)<br>예: 출입금지, 소화설비</li><li>🟡 <b>노란색</b><br>경고<br>예: 낙하물 경고, 고압전기 경고</li><li>🔵 <b>파란색</b><br>지시<br>예: 보호구 착용</li><li>🟢 <b>녹색</b><br>안내<br>예: 비상구, 응급구호</li></ul>
+<p><b>색도 기준</b></p>
+<ul class="chk"><li>빨강 7.5R 4/14</li><li>노랑 5Y 8.5/12</li><li>파랑 2.5PB 4/10</li><li>녹색 2.5G 4/10</li></ul></div></div></section>
+<div class="chapter" id="c03"><span class="k">CHAPTER 03</span><span class="t">산업안전심리</span></div>
+<section class="section" id="t11"><div class="section-head"><div class="duality"><span class="n">8</span>산업심리</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="산업심리"><ul class="chk"><li class="star"><b>매슬로우 5단계</b> ("생안사존자")<br>생리 → 안전 → 사회적<br>→ 존경 → 자아실현</li><li><b>알더퍼 ERG</b><br>존재(E) – 관계(R) – 성장(G)</li><li><b>허즈버그</b><br>위생요인: 임금·작업조건 (불만 제거)<br>동기요인: 성취·인정 (만족 증가)</li><li><b>맥그리거</b><br>X이론: 게으름, 통제 필요<br>Y이론: 자율, 책임감</li><li class="star"><b>레윈: B = f(P·E)</b><br>P는 개체(사람)<br>E는 환경(인간관계 포함)</li><li><b>주의의 특성</b><br>선택성, 변동성, 방향성</li><li><b>생체리듬</b><br>육체 23일 · 감성 28일 · 지성 33일</li></ul></div></div></section>
+<section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">9</span>인간의 특성과 적응기제</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="인간의 특성과 적응기제"><p>⭐ <b>의식수준 5단계 (하시모토)</b></p>
 <ul class="chk"><li><b>Phase 0:</b> 무의식·실신<br>신뢰도 0</li><li><b>Phase I:</b> 의식 둔화 (피로·단조로움)<br>신뢰도 0.9 이하</li><li><b>Phase II:</b> 정상·이완 (휴식, 정상작업)<br>신뢰도 0.99~0.99999</li><li><b>Phase III:</b> 정상·명쾌 (적극 활동)<br>신뢰도 0.999999 이상 ← <b>가장 좋음</b></li><li><b>Phase IV:</b> 과긴장 (긴급·일점집중)<br>신뢰도 0.9 이하</li></ul>
 <p><b>부주의 현상</b><br>의식의 단절, 의식의 우회,<br>의식수준 저하, 의식의 혼란, 의식의 과잉</p>
@@ -183,7 +162,18 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <ul class="chk"><li><b>자동운동:</b> 암실의 정지된 광점이<br>움직이는 것처럼 보임</li><li><b>유도운동:</b> 정지한 물체가 움직여 보임<br>(구름 사이 달이 움직여 보임)</li><li><b>가현운동(β운동):</b> 정지 대상을<br>연달아 보여 주면 움직여 보임 (영화)</li></ul>
 <p>⭐ <b>적응기제</b></p>
 <ul class="chk"><li><b>방어기제</b><br>보상, 합리화, 승화, 동일시, 투사</li><li><b>도피기제</b><br>고립, 퇴행, 억압, 백일몽</li><li><b>공격기제</b><br>직접적 공격, 간접적 공격</li></ul></div></div></section>
-<section class="section" id="t14"><div class="section-head"><div class="duality"><span class="n">14</span>피로와 안전점검</div><div class="section-line"></div></div>
+<div class="chapter" id="c04"><span class="k">CHAPTER 04</span><span class="t">인간의 행동과학</span></div>
+<section class="section" id="t14"><div class="section-head"><div class="duality"><span class="n">10</span>리더십과 집단</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="리더십과 집단"><p><b>리더십 유형</b></p>
+<ul class="chk"><li><b>권위형(독재형):</b> 리더가 모든 결정</li><li><b>민주형:</b> 집단 토의로 결정</li><li><b>자유방임형:</b> 구성원에게 맡김</li></ul>
+<p>⭐ <b>헤드십 vs 리더십</b></p>
+<ul class="chk"><li><b>헤드십</b><br>권한 근거: 조직이 임명 (법적·공식)<br>지휘 형태: 권위주의적<br>부하와의 간격: 넓음<br>관계: 지배적</li><li><b>리더십</b><br>권한 근거: 구성원이 인정 (개인 능력)<br>지휘 형태: 민주주의적<br>부하와의 간격: 좁음<br>관계: 개인적 영향</li></ul>
+<p>⭐ <b>리더의 권한</b></p>
+<ul class="chk"><li><b>조직이 부여하는 권한</b><br>보상적, 강압적, 합법적 권한</li><li><b>리더 스스로 만드는 권한</b><br>위임된 권한, 전문성의 권한</li></ul>
+<p><b>모랄 서베이 (사기 조사)</b><br>근로자의 심리·욕구를 파악해<br>경영 개선 자료로 쓰는 조사</p>
+<ul class="chk"><li>방법: 통계에 의한 방법, 사례연구법,<br>관찰법, 실험연구법,<br>태도조사법(질문지·면접·집단토의·투사법)</li></ul>
+<p><b>집단의 효과:</b> 동조 효과, 시너지 효과, 견제 효과</p></div></div></section>
+<section class="section" id="t15"><div class="section-head"><div class="duality"><span class="n">11</span>피로와 안전점검</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="피로와 안전점검"><p>⭐ <b>휴식시간 계산 (머렐 공식)</b><br>R = 60 × (E − 5) ÷ (E − 1.5)</p>
 <ul class="chk"><li>R: 1시간 중 필요한 휴식시간(분)</li><li>E: 작업 시 에너지 소비량(kcal/분)</li><li>5: 평균 에너지 소비량 기준(kcal/분)</li><li>1.5: 휴식 중 에너지 소비량(kcal/분)</li></ul>
 <p>예) E = 8 → 60 × 3 ÷ 6.5 ≈ <b>27.7분</b></p>
@@ -193,7 +183,36 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <ul class="chk"><li><b>일상(수시)점검:</b> 작업 전·중·후 매일</li><li><b>정기점검:</b> 일정 기간마다</li><li><b>특별점검:</b> 신설·변경·고장·수리 후,<br>천재지변 후</li><li><b>임시점검:</b> 이상 발견 시 임시로</li></ul>
 <p><b>체크리스트 작성 시 유의점</b></p>
 <ul class="chk"><li>사업장에 맞는 독자적 내용으로</li><li>위험성 높은 것, 긴급한 것부터</li><li>정기적으로 검토·개정</li><li>누구나 알기 쉬운 표현으로</li></ul></div></div></section>
-<section class="section" id="t15"><div class="section-head"><div class="duality"><span class="n">15</span>법령 추가</div><div class="section-line"></div></div>
+<div class="chapter" id="c05"><span class="k">CHAPTER 05</span><span class="t">안전보건교육의 내용 및 방법</span></div>
+<section class="section" id="t17"><div class="section-head"><div class="duality"><span class="n">12</span>안전보건교육</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="안전보건교육"><ul class="chk"><li><b>교육 3단계</b><br>지식 → 기능 → 태도</li><li><b>교육 진행 4단계</b><br>도입 → 제시 → 적용 → 확인</li><li><b>하버드학파 5단계 교수법</b><br>준비 → 교시 → 연합<br>→ 총괄 → 응용</li><li><b>OJT</b><br>현장 1:1, 개별 지도, 즉시 적용</li><li><b>Off-JT</b><br>집합교육, 다수 인원 체계적 교육</li><li><b>학습이론</b><br>파블로프: 조건반사<br>손다이크: 시행착오<br>스키너: 조작적 조건화<br>쾰러: 통찰</li></ul>
+<p><b>근로자 교육시간</b> (개정 확인 필요)</p>
+<ul class="chk"><li><b>정기교육</b><br>사무직: 매반기 6시간 이상<br>그 외: 매반기 12시간 이상</li><li><b>채용 시</b><br>8시간 이상<br>(일용·1주 이하 기간제 1시간 이상)</li><li><b>작업내용 변경 시</b><br>2시간 이상<br>(일용·1주 이하 기간제 1시간 이상)</li><li><b>특별교육</b><br>16시간 이상<br>(일용·1주 이하 기간제 2시간 이상)</li></ul></div></div></section>
+<section class="section" id="t18"><div class="section-head"><div class="duality"><span class="n">13</span>교육 방법과 평가</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="교육 방법과 평가"><p>⭐ <b>토의법 종류</b></p>
+<ul class="chk"><li><b>포럼:</b> 새로운 자료를 제시하고<br>문제를 제기해 질의응답으로 토의</li><li><b>심포지엄:</b> 여러 전문가가 견해를<br>발표한 뒤 참가자가 질문·토의</li><li><b>패널 디스커션:</b> 패널 4~5명이 토의하고<br>이어서 청중도 참여</li><li><b>버즈세션(6-6회의):</b> 6명씩 나눠<br>6분씩 소집단 토의</li><li><b>사례연구법:</b> 실제 사례 분석·토론</li><li><b>역할연기법(롤플레잉):</b> 역할을 맡아<br>직접 연기하며 학습</li></ul>
+<p><b>교육 지도 8원칙</b></p>
+<ul class="chk"><li>피교육자 중심 (상대 입장에서)</li><li>동기부여</li><li>쉬운 것에서 어려운 것으로</li><li>반복</li><li>한 번에 하나씩</li><li>인상의 강화</li><li>오감 활용</li><li>기능적 이해</li></ul>
+<p><b>교육 평가</b></p>
+<ul class="chk"><li><b>커크패트릭 4단계</b><br>반응 → 학습 → 행동 → 결과</li><li><b>평가 기준 4요소</b><br>타당성, 신뢰성, 객관성, 실용성</li></ul></div></div></section>
+<div class="chapter" id="c06"><span class="k">CHAPTER 06</span><span class="t">산업안전관계법규</span></div>
+<section class="section" id="t20"><div class="section-head"><div class="duality"><span class="n">14</span>산업재해 보고와 중대재해</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="산업재해 보고와 중대재해"><p><b>산업재해조사표 제출</b><br>사망자 또는 <b>3일 이상 휴업</b> 부상·질병<br>→ <b>1개월 이내</b> 제출</p>
+<p><b>중대재해 정의</b> (산업안전보건법)</p>
+<ul class="chk"><li>사망자 1명 이상</li><li>3개월 이상 요양 부상자가<br>동시에 2명 이상</li><li>부상자 또는 직업성 질병자가<br>동시에 10명 이상</li></ul>
+<p>중대재해 발생 시 <b>지체 없이</b><br>지방고용노동관서에 보고</p></div></div></section>
+<section class="section" id="t21"><div class="section-head"><div class="duality"><span class="n">15</span>안전인증·자율안전확인·안전검사</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="안전인증·자율안전확인·안전검사 · 안전인증 대상"><h4>안전인증 대상</h4><p><b>기계·설비 (9종)</b></p>
+<ul class="chk"><li>프레스</li><li>전단기·절곡기</li><li>크레인</li><li>리프트</li><li>압력용기</li><li>롤러기</li><li>사출성형기</li><li>고소작업대</li><li>곤돌라</li></ul>
+<p><b>방호장치</b></p>
+<ul class="chk"><li>프레스·전단기 방호장치</li><li>양중기용 과부하방지장치</li><li>보일러·압력용기 압력방출용 안전밸브</li><li>압력용기 파열판</li><li>절연용 방호구·활선작업용 기구</li><li>방폭구조 전기기계·기구</li><li>가설기자재</li><li>산업용 로봇 방호장치</li></ul>
+<p><b>보호구 (12종)</b></p>
+<ul class="chk"><li>추락·감전 방지용 안전모</li><li>안전화</li><li>안전장갑</li><li>방진마스크</li><li>방독마스크</li><li>송기마스크</li><li>전동식 호흡보호구</li><li>보호복</li><li>안전대</li><li>차광·비산물 방지용 보안경</li><li>용접용 보안면</li><li>방음용 귀마개·귀덮개</li></ul></div>
+<div class="card" data-title="안전인증·자율안전확인·안전검사 · 자율안전확인 대상 보호구"><h4>자율안전확인 대상 보호구</h4><p>안전인증 대상이 <b>아닌</b><br>안전모, 보안경, 보안면</p>
+<p>("안전인증 대상 보호구가 아닌 것은?"<br>형태로 출제)</p></div>
+<div class="card" data-title="안전인증·자율안전확인·안전검사 · 안전검사 대상"><h4>안전검사 대상</h4><ul class="chk"><li>프레스</li><li>전단기</li><li>크레인 (정격하중 2톤 미만 제외)</li><li>리프트</li><li>압력용기</li><li>곤돌라</li><li>국소배기장치 (이동식 제외)</li><li>원심기 (산업용)</li><li>롤러기 (밀폐형 제외)</li><li>사출성형기</li><li>고소작업대</li><li>컨베이어</li><li>산업용 로봇</li><li>혼합기</li><li>파쇄기·분쇄기</li></ul></div>
+<div class="card" data-title="안전인증·자율안전확인·안전검사 · 안전검사 주기 ⭐"><h4>안전검사 주기 ⭐</h4><ul class="chk"><li><b>크레인, 리프트, 곤돌라</b><br>최초: 설치 후 3년 이내<br>이후: 2년마다<br>(건설현장은 <b>6개월마다</b>)</li><li>**이동식 크레인,<br>이삿짐운반용 리프트, 고소작업대**<br>최초: 신규 등록 후 3년 이내<br>이후: 2년마다</li><li><b>그 밖의 대상</b><br>최초: 설치 후 3년 이내<br>이후: 2년마다<br>(공정안전보고서 확인 압력용기는<br><b>4년마다</b>)</li></ul></div></div></section>
+<section class="section" id="t22"><div class="section-head"><div class="duality"><span class="n">16</span>법령 추가</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="법령 추가"><div class="subnote">법령 수치는 시험 전 최신 기준으로 확인하세요.</div>
 <p><b>안전보건관리규정</b></p>
 <ul class="chk"><li>대상: 상시근로자 100명 이상<br>(일부 업종 300명 이상)</li><li>작성 기한: 사유 발생 <b>30일 이내</b></li><li>산업안전보건위원회 심의·의결<br>(위원회가 없으면 근로자대표 동의)</li><li>내용: 안전보건관리조직과 직무,<br>안전보건교육, 작업장 안전·보건관리,<br>사고조사와 대책수립</li></ul>
@@ -202,13 +221,6 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p>⭐ <b>위험성평가 절차</b> (2023 개정 고시)</p>
 <ul class="chk"><li>1. 사전준비</li><li>2. 유해·위험요인 파악</li><li>3. 위험성 결정</li><li>4. 위험성 감소대책 수립·실행</li><li>5. 위험성평가 결과 공유</li><li>6. 기록·보존 (<b>3년</b>)</li></ul>
 <ul class="chk"><li>실시 시기: 최초평가, 수시평가,<br>정기평가(매년)</li><li>개정으로 "위험성 추정" 단계는<br>"위험성 결정"에 합쳐졌습니다.</li></ul></div></div></section>
-<section class="section" id="t16"><div class="section-head"><div class="duality"><span class="n">16</span>교육 방법과 평가</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="교육 방법과 평가"><p>⭐ <b>토의법 종류</b></p>
-<ul class="chk"><li><b>포럼:</b> 새로운 자료를 제시하고<br>문제를 제기해 질의응답으로 토의</li><li><b>심포지엄:</b> 여러 전문가가 견해를<br>발표한 뒤 참가자가 질문·토의</li><li><b>패널 디스커션:</b> 패널 4~5명이 토의하고<br>이어서 청중도 참여</li><li><b>버즈세션(6-6회의):</b> 6명씩 나눠<br>6분씩 소집단 토의</li><li><b>사례연구법:</b> 실제 사례 분석·토론</li><li><b>역할연기법(롤플레잉):</b> 역할을 맡아<br>직접 연기하며 학습</li></ul>
-<p><b>교육 지도 8원칙</b></p>
-<ul class="chk"><li>피교육자 중심 (상대 입장에서)</li><li>동기부여</li><li>쉬운 것에서 어려운 것으로</li><li>반복</li><li>한 번에 하나씩</li><li>인상의 강화</li><li>오감 활용</li><li>기능적 이해</li></ul>
-<p><b>교육 평가</b></p>
-<ul class="chk"><li><b>커크패트릭 4단계</b><br>반응 → 학습 → 행동 → 결과</li><li><b>평가 기준 4요소</b><br>타당성, 신뢰성, 객관성, 실용성</li></ul></div></div></section>
 <footer><a href="s1-bank.html">1과목 문제은행</a>에서 바로 문제로 확인해 보세요. 출제 경향을 정리한 유형 노트이며 기출 원문이 아닙니다. 법령·KEC 수치는 시험 전에 최신 개정 사항으로 확인하세요.</footer>
 </div>
 
