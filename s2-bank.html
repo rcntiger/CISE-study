@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1C2733">
+<title>2과목 문제은행 · 인간공학 및 위험성 평가·관리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F8;--surface:#FFFFFF;--surface2:#F7F8FA;--ink:#121A24;--ink-soft:#5A6573;--line:#E3E7EC;
+  --hero:#1C2733;--hero-ink:#F4F6F8;--hero-soft:#AEB8C4;
+  --yellow:#FFC21A;--yellow-soft:#FFF3C9;--mark:#FFE58A;
+  --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
+    --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans KR','Noto Sans KR',sans-serif;font-size:15px;line-height:1.7;font-variant-numeric:tabular-nums}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 72px}
+header{margin:0 -16px;padding:18px 20px 22px;background:var(--hero);color:var(--hero-ink);border-radius:0 0 22px 22px;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 12px,#111 12px 24px)}
+.back{display:inline-block;margin:6px 0 14px;font-size:12.5px;color:var(--hero-ink);text-decoration:none;background:rgba(255,255,255,.1);padding:4px 12px;border-radius:999px}
+.tab{display:inline-block;margin-left:6px;font-size:11.5px;font-weight:700;color:#111;background:var(--accent,var(--yellow));padding:3px 10px;border-radius:999px;vertical-align:1px}
+.eyebrow{font-size:12px;font-weight:600;color:var(--yellow);letter-spacing:.06em;margin:0 0 6px}
+h1{font-weight:700;font-size:clamp(24px,6.6vw,34px);margin:0 0 10px;line-height:1.3;letter-spacing:-.02em}
+.sub{font-size:13px;color:var(--hero-soft);margin:0;padding-left:18px}
+.sub li{margin-bottom:2px}
+.sub b{color:var(--hero-ink)}
+.toc{display:flex;gap:6px;overflow-x:auto;margin:16px -20px -4px;padding:2px 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:0 0 auto;font-size:12.5px;text-decoration:none;color:var(--hero-ink);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px 12px;white-space:nowrap}
+.toc a .n{font-weight:700;color:var(--yellow);margin-right:5px}
+.section{margin-top:30px;scroll-margin-top:64px}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.duality{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.duality .n{flex:0 0 auto;min-width:30px;height:30px;padding:0 8px;border-radius:9px;background:var(--accent,var(--c1));color:#fff;font-size:13.5px;display:inline-flex;align-items:center;justify-content:center}
+.duality .n:empty{display:none}
+.section-line{display:none}
+.card{background:var(--surface);border-radius:16px;padding:16px 16px 10px;margin-bottom:12px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.card h4{margin:0 0 10px;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+.card h4::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--accent,var(--c1))}
+.card p{margin:0 0 10px;font-size:14px}
+.card b{font-weight:700;background:linear-gradient(transparent 60%,var(--mark) 60%);padding:0 1px}
+.card code{font-size:13px}
+ul.chk{list-style:none;margin:0 0 10px;padding:0}
+ul.chk>li{position:relative;padding:9px 0 9px 18px;font-size:14px;border-top:1px solid var(--line)}
+ul.chk>li:first-child{border-top:0;padding-top:2px}
+ul.chk>li::before{content:"";position:absolute;left:2px;top:19px;width:6px;height:6px;border-radius:50%;background:var(--accent,var(--c1))}
+ul.chk>li:first-child::before{top:12px}
+ul.chk>li.star{background:var(--yellow-soft);margin:0 -10px;padding-left:28px;padding-right:10px;border-radius:10px;border-top-color:transparent}
+ul.chk>li.star::before{display:none}
+ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E0A200;font-size:13px}
+ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
+ul.sub2 li{margin-bottom:3px}
+.subnote{margin:0 0 12px;padding:9px 12px;background:var(--surface2);border-radius:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+.subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
+footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
+footer a{color:var(--accent,var(--c1));font-weight:600}
+/* 문제은행 */
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:sticky;top:0;z-index:5;margin:0 -16px;padding:10px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn{font:inherit;font-size:13px;font-weight:600;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+.btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tools .count{font-size:12px;color:var(--ink-soft);margin-left:auto}
+.q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.q-num{font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
+.q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
+.q.marked .q-star{color:#E0A200}
+.q.marked{border-color:#F2C94C}
+.q-body{font-size:15px;font-weight:500;margin:0 0 10px}
+.opts{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:6px}
+.opts li{font-size:14px;padding:8px 12px;background:var(--surface2);border:1px solid var(--line);border-radius:10px}
+details.ans{margin:8px 0 6px}
+details.ans summary{cursor:pointer;list-style:none;text-align:center;font-size:13.5px;font-weight:700;color:#111;background:var(--yellow);border-radius:10px;padding:9px}
+details.ans summary::-webkit-details-marker{display:none}
+details.ans[open] summary{background:var(--surface2);color:var(--ink-soft)}
+details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:inline}
+.ans-body{margin-top:10px;padding:12px 12px 4px;background:var(--surface2);border-radius:12px}
+.ans-body p,.ans-body li{font-size:13.8px}
+.hidden{display:none !important}
+/* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
+@media (min-width:1000px){body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1600px){body{zoom:1.38}}
+@media print{header{background:none;color:#000}.tools,.q-star{display:none}}
+</style>
+</head>
+<body style="--accent:var(--c2)" data-subject="s2">
+<div class="wrap">
+<header>
+  <a class="back" href="index.html">← 목록으로</a>
+  <span class="tab">2과목 · 문제은행</span>
+  <div class="eyebrow">산업안전기사 필기 · 2과목 · 100문항</div>
+  <h1>인간공학 및 위험성 평가·관리<br>문제은행</h1>
+  <ul class="sub"><li>정답과 해설은 <b>"정답 보기"를 눌러야</b> 펼쳐집니다.</li><li>실제 기출 원문이 아니라 출제 경향을 반영한 유형 문제입니다.</li><li>법령 수치는 시험 전에 최신 기준으로 확인하세요.</li><li>헷갈린 문제는 오른쪽 위 <b>★</b>을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.</li></ul>
+  <nav class="toc"><a href="#g1"><span class="n">A</span>인간공학 개요·인간-기계 체계 (1~8)</a><a href="#g2"><span class="n">B</span>정보이론·표시장치 (9~18)</a><a href="#g3"><span class="n">C</span>청각·소음 (19~26)</a><a href="#g4"><span class="n">D</span>조종장치·양립성 (27~32)</a><a href="#g5"><span class="n">E</span>휴먼에러 (33~41)</a><a href="#g6"><span class="n">F</span>신뢰도 계산 (42~53)</a><a href="#g7"><span class="n">G</span>시스템 안전 기법·HAZOP (54~65)</a><a href="#g8"><span class="n">H</span>FTA (66~77)</a><a href="#g9"><span class="n">I</span>인체측정·작업생리·작업환경 (78~89)</a><a href="#g10"><span class="n">J</span>근골격계·동작경제·위험성 평가 (90~100)</a></nav>
+</header>
+<div class="tools"><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">A</span>인간공학 개요·인간-기계 체계 (1~8)</div><div class="section-line"></div></div>
+<div class="card q" data-q="1" data-title="1번">
+<div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인간공학의 정의로 가장 적절한 것은?</p>
+<ul class="opts"><li>① 인간을 기계의 특성에 맞추도록 훈련하는 학문</li><li>② 인간의 특성과 한계를 고려해 기계·작업·환경을 인간에게 맞추는 학문</li><li>③ 생산성 극대화를 위해 작업을 표준화하는 학문</li><li>④ 기계의 성능 향상만을 연구하는 학문</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 인간의 특성과 한계를 고려해 기계·작업·환경을 인간에게 맞추는 학문</b></p>
+<p>📌 핵심은 "기계를 인간에게 맞춘다". 사람을 기계에 맞추는 것이 아님</p>
+<ul class="chk"><li>목적: 안전성 향상, 능률 향상, 쾌적성 향상. 정의 관련 학자는 차파니스</li></ul></div></details>
+</div>
+<div class="card q" data-q="2" data-title="2번">
+<div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인간이 기계보다 우수한 기능은?</p>
+<ul class="opts"><li>① 반복 작업을 장시간 일관되게 수행</li><li>② 연역적 추리</li><li>③ 여러 작업을 동시에 수행</li><li>④ 예기치 못한 사건을 감지</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 예기치 못한 사건을 감지</b></p>
+<p>📌 인간 우수: 예기치 못한 사건 감지, 귀납적 추리, 융통성, 경험 활용, 낮은 수준의 자극 감지</p>
+<ul class="chk"><li>연역적 추리, 반복 작업, 동시 수행은 기계가 우수</li></ul></div></details>
+</div>
+<div class="card q" data-q="3" data-title="3번">
+<div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">기계가 인간보다 우수한 기능으로 옳은 것은?</p>
+<ul class="opts"><li>① 정량적 정보를 빠르고 정확하게 처리</li><li>② 귀납적 추리</li><li>③ 낮은 수준의 자극 감지</li><li>④ 경험을 활용해 융통성 있게 대처</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 정량적 정보를 빠르고 정확하게 처리</b></p>
+<p>📌 기계 우수: 연역적 추리, 반복·장시간 작업, 빠르고 큰 힘, 정량적 정보 처리, 동시 수행</p>
+<ul class="chk"><li>귀납적 추리·융통성·낮은 자극 감지는 인간 쪽</li></ul></div></details>
+</div>
+<div class="card q" data-q="4" data-title="4번">
+<div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인간공학 연구 기준(평가 척도)의 요건이 <b>아닌</b> 것은?</p>
+<ul class="opts"><li>① 적절성</li><li>② 무오염성</li><li>③ 경제성</li><li>④ 신뢰성</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 경제성</b></p>
+<p>📌 연구 기준 요건: 적절성(타당성), 무오염성, 신뢰성(반복성), 민감도</p>
+<ul class="chk"><li>"경제성"은 그럴듯한 함정 선지</li></ul></div></details>
+</div>
+<div class="card q" data-q="5" data-title="5번">
+<div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">자동 체계에서 인간이 주로 담당하는 역할은?</p>
+<ul class="opts"><li>① 동력원 제공</li><li>② 직접 조종</li><li>③ 감시·보전·프로그램</li><li>④ 수공구를 사용한 동력 및 제어</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 감시·보전·프로그램</b></p>
+<p>📌 자동 체계: 기계가 감지·결정·실행, 인간은 감시·보전·프로그램</p>
+<ul class="chk"><li>수동 체계: 인간이 동력+제어 / 기계화 체계: 동력은 기계, 제어는 인간</li></ul></div></details>
+</div>
+<div class="card q" data-q="6" data-title="6번">
+<div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">동력은 기계가 제공하고 제어는 인간이 담당하는 체계(예: 자동차 운전)는?</p>
+<ul class="opts"><li>① 기계화 체계(반자동)</li><li>② 수동 체계</li><li>③ 자동 체계</li><li>④ 감시 체계</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 기계화 체계(반자동)</b></p>
+<p>📌 수동(인간이 동력+제어) → 기계화(동력 기계, 제어 인간) → 자동(기계가 모두, 인간은 감시)</p></div></details>
+</div>
+<div class="card q" data-q="7" data-title="7번">
+<div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인간-기계 체계의 기본 기능이 <b>아닌</b> 것은?</p>
+<ul class="opts"><li>① 감지(정보 입력)</li><li>② 정보 보관</li><li>③ 정보 처리 및 의사결정</li><li>④ 기능 할당</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 기능 할당</b></p>
+<p>📌 기본 기능: 감지 → 정보 보관 → 정보 처리·의사결정 → 행동</p>
+<ul class="chk"><li>기능 할당은 체계 설계 3단계(기본 설계)에 속하는 활동</li></ul></div></details>
+</div>
+<div class="card q" data-q="8" data-title="8번">
+<div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인간-기계 체계 설계 단계 중 "기능 할당"이 이루어지는 단계는?</p>
+<ul class="opts"><li>① 목표 및 성능 명세 결정</li><li>② 기본 설계</li><li>③ 계면(인터페이스) 설계</li><li>④ 촉진물 설계</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 기본 설계</b></p>
+<p>📌 순서: 목표·성능 명세 → 체계 정의 → 기본 설계(기능 할당, 작업 설계) → 계면 설계 → 촉진물 설계 → 시험·평가</p></div></details>
+</div></section>
+<section class="section" id="g2"><div class="section-head"><div class="duality"><span class="n">B</span>정보이론·표시장치 (9~18)</div><div class="section-line"></div></div>
+<div class="card q" data-q="9" data-title="9번">
+<div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">발생 확률이 같은 대안이 16개일 때 정보량은?</p>
+<ul class="opts"><li>① 4 bit</li><li>② 8 bit</li><li>③ 2 bit</li><li>④ 16 bit</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 4 bit</b></p>
+<p>📌 H = log₂ n = log₂ 16 = 4 bit (2⁴ = 16)</p>
+<ul class="chk"><li>대안 수를 그대로 쓰거나 절반으로 나누는 실수에 주의</li></ul></div></details>
+</div>
+<div class="card q" data-q="10" data-title="10번">
+<div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">네 가지 신호의 발생 확률이 각각 0.5, 0.25, 0.125, 0.125일 때 평균 정보량은?</p>
+<ul class="opts"><li>① 1.5 bit</li><li>② 1.25 bit</li><li>③ 1.75 bit</li><li>④ 2.0 bit</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 1.75 bit</b></p>
+<p>📌 H = Σ p × log₂(1/p)</p>
+<ul class="chk"><li>0.5×1 + 0.25×2 + 0.125×3 + 0.125×3 = 0.5 + 0.5 + 0.375 + 0.375 = 1.75</li><li>확률이 같다면 log₂ 4 = 2 bit. 확률이 다르면 정보량은 그보다 작다</li></ul></div></details>
+</div>
+<div class="card q" data-q="11" data-title="11번">
+<div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">힉-하이만(Hick-Hyman) 법칙에 대한 설명으로 옳은 것은?</p>
+<ul class="opts"><li>① 동작시간은 이동 거리와 목표 크기에 따라 달라진다</li><li>② 반응시간은 자극의 정보량에 비례해 증가한다</li><li>③ 감각의 크기는 자극 강도의 로그에 비례한다</li><li>④ 변화감지역은 기준 자극의 크기에 비례한다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 반응시간은 자극의 정보량에 비례해 증가한다</b></p>
+<p>📌 RT = a + b·H (H: 정보량 bit)</p>
+<ul class="chk"><li>①은 피츠 법칙, ③은 페히너 법칙, ④는 웨버 법칙</li></ul></div></details>
+</div>
+<div class="card q" data-q="12" data-title="12번">
+<div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">피츠(Fitts) 법칙 MT = a + b·log₂(2D/W)에 따를 때 동작시간이 가장 긴 조건은? (D: 거리, W: 목표 폭)</p>
+<ul class="opts"><li>① D = 10cm, W = 4cm</li><li>② D = 20cm, W = 8cm</li><li>③ D = 10cm, W = 2cm</li><li>④ D = 40cm, W = 2cm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ D = 40cm, W = 2cm</b></p>
+<p>📌 거리가 멀고 목표가 작을수록 동작시간 증가</p>
+<ul class="chk"><li>2D/W 값: ① 5, ② 5, ③ 10, ④ 40 → ④가 가장 크다</li></ul></div></details>
+</div>
+<div class="card q" data-q="13" data-title="13번">
+<div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">정확한 수치를 읽어야 할 때 판독 오차가 가장 적은 표시장치는?</p>
+<ul class="opts"><li>① 동침형</li><li>② 동목형</li><li>③ 정성적 표시장치</li><li>④ 계수형(디지털)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 계수형(디지털)</b></p>
+<p>📌 정확한 값 읽기 → 계수형이 가장 유리</p>
+<ul class="chk"><li>변화 방향·속도 파악은 동침형이 유리</li></ul></div></details>
+</div>
+<div class="card q" data-q="14" data-title="14번">
+<div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">눈금이 고정되어 있고 지침이 움직이며, 값의 변화 방향과 속도를 파악하기 좋은 표시장치는?</p>
+<ul class="opts"><li>① 동목형</li><li>② 동침형</li><li>③ 계수형</li><li>④ 묘사적 표시장치</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 동침형</b></p>
+<p>📌 동침형: 눈금 고정, 지침 이동 / 동목형: 지침 고정, 눈금 이동(표시 범위가 넓을 때)</p></div></details>
+</div>
+<div class="card q" data-q="15" data-title="15번">
+<div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">청각 표시장치가 시각 표시장치보다 유리한 경우는?</p>
+<ul class="opts"><li>① 메시지가 길고 복잡할 때</li><li>② 메시지를 나중에 다시 참조할 때</li><li>③ 메시지가 즉각적인 행동을 요구할 때</li><li>④ 소음이 심한 장소일 때</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 메시지가 즉각적인 행동을 요구할 때</b></p>
+<p>📌 청각 유리: 짧고 단순, 즉각 행동, 시간적 사건, 수신자 이동, 조명 어둡거나 시각 과부하</p>
+<ul class="chk"><li>①②④는 모두 시각 표시장치가 유리한 조건</li></ul></div></details>
+</div>
+<div class="card q" data-q="16" data-title="16번">
+<div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">시각 표시장치가 청각 표시장치보다 유리한 경우는?</p>
+<ul class="opts"><li>① 메시지가 공간적 위치를 다룰 때</li><li>② 수신자가 자주 움직일 때</li><li>③ 메시지가 짧고 단순할 때</li><li>④ 메시지가 시간적 사건을 다룰 때</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 메시지가 공간적 위치를 다룰 때</b></p>
+<p>📌 시각 = 공간, 청각 = 시간 으로 짝지어 외우기</p>
+<ul class="chk"><li>시각 유리: 길고 복잡, 나중에 참조, 즉각 행동 불필요, 소음 심한 곳</li></ul></div></details>
+</div>
+<div class="card q" data-q="17" data-title="17번">
+<div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">표시장치 암호화(코딩)의 요건이 <b>아닌</b> 것은?</p>
+<ul class="opts"><li>① 검출성</li><li>② 경제성</li><li>③ 판별성</li><li>④ 양립성</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 경제성</b></p>
+<p>📌 암호화 요건: 검출성, 판별성, 양립성, 부호의 의미, 표준화, 다차원 암호</p></div></details>
+</div>
+<div class="card q" data-q="18" data-title="18번">
+<div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">정성적 표시장치의 주된 용도로 옳은 것은?</p>
+<ul class="opts"><li>① 정상·위험 같은 상태나 변화 추세 확인</li><li>② 정확한 수치 판독</li><li>③ 공간적 위치의 정밀 표시</li><li>④ 문자 정보의 장기 보관</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 정상·위험 같은 상태나 변화 추세 확인</b></p>
+<p>📌 정성적 표시장치는 색 구간 등을 이용해 상태·추세를 보여 준다</p>
+<ul class="chk"><li>정확한 수치는 정량적 표시장치(특히 계수형)</li></ul></div></details>
+</div></section>
+<section class="section" id="g3"><div class="section-head"><div class="duality"><span class="n">C</span>청각·소음 (19~26)</div><div class="section-line"></div></div>
+<div class="card q" data-q="19" data-title="19번">
+<div class="q-head"><span class="q-num">19번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">음원에서 10m 떨어진 곳의 음압수준이 100dB일 때, 40m 떨어진 곳의 음압수준은 약 얼마인가?</p>
+<ul class="opts"><li>① 75dB</li><li>② 80dB</li><li>③ 94dB</li><li>④ 88dB</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 88dB</b></p>
+<p>📌 dB₂ = dB₁ − 20 log(d₂/d₁)</p>
+<ul class="chk"><li>100 − 20 log(40/10) = 100 − 20 × 0.602 ≈ 100 − 12 = 88dB</li><li>거리 2배마다 약 6dB 감소 → 4배는 약 12dB 감소</li></ul></div></details>
+</div>
+<div class="card q" data-q="20" data-title="20번">
+<div class="q-head"><span class="q-num">20번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">60phon인 음의 크기는 몇 sone인가?</p>
+<ul class="opts"><li>① 1sone</li><li>② 2sone</li><li>③ 4sone</li><li>④ 6sone</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 4sone</b></p>
+<p>📌 sone = 2^((phon − 40)/10)</p>
+<ul class="chk"><li>2^((60 − 40)/10) = 2² = 4sone</li><li>40phon = 1sone, 10phon 오를 때마다 sone 2배</li></ul></div></details>
+</div>
+<div class="card q" data-q="21" data-title="21번">
+<div class="q-head"><span class="q-num">21번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">음의 크기가 8sone인 음은 몇 phon인가?</p>
+<ul class="opts"><li>① 50phon</li><li>② 60phon</li><li>③ 70phon</li><li>④ 80phon</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 70phon</b></p>
+<p>📌 8 = 2³ → (phon − 40)/10 = 3 → phon = 70</p>
+<ul class="chk"><li>1sone(40) → 2sone(50) → 4sone(60) → 8sone(70)</li></ul></div></details>
+</div>
+<div class="card q" data-q="22" data-title="22번">
+<div class="q-head"><span class="q-num">22번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">phon은 어떤 주파수의 순음을 기준으로 한 음의 크기 수준인가?</p>
+<ul class="opts"><li>① 100Hz</li><li>② 500Hz</li><li>③ 3,000Hz</li><li>④ 1,000Hz</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 1,000Hz</b></p>
+<p>📌 40phon = 1,000Hz 순음 40dB와 같은 크기로 들리는 음</p>
+<ul class="chk"><li>phon은 크기 "수준", sone은 크기 자체</li></ul></div></details>
+</div>
+<div class="card q" data-q="23" data-title="23번">
+<div class="q-head"><span class="q-num">23번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">한 음 때문에 다른 음이 잘 들리지 않게 되는 현상은?</p>
+<ul class="opts"><li>① 은폐(masking)</li><li>② 순응</li><li>③ 청각 피로</li><li>④ 공명</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 은폐(masking)</b></p>
+<p>📌 은폐: 한 음의 존재로 다른 음의 가청 역치가 높아지는 현상</p>
+<ul class="chk"><li>가청 범위 20~20,000Hz, 민감한 영역 500~3,000Hz</li></ul></div></details>
+</div>
+<div class="card q" data-q="24" data-title="24번">
+<div class="q-head"><span class="q-num">24번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">경보음이 장애물이나 칸막이를 통과해야 할 때 사용하는 주파수로 적절한 것은?</p>
+<ul class="opts"><li>① 1,000Hz 이상</li><li>② 500Hz 이하</li><li>③ 3,000Hz 이상</li><li>④ 5,000Hz 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 500Hz 이하</b></p>
+<p>📌 장애물·칸막이 통과: 500Hz 이하 / 장거리(300m 이상): 1,000Hz 이하</p>
+<ul class="chk"><li>저주파일수록 회절이 잘 되어 멀리, 장애물 너머까지 전달</li></ul></div></details>
+</div>
+<div class="card q" data-q="25" data-title="25번">
+<div class="q-head"><span class="q-num">25번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">소음 노출 기준이 8시간 90dB(A)이고 5dB 증가할 때마다 허용시간이 절반이 될 때, 100dB(A)의 허용 노출시간은?</p>
+<ul class="opts"><li>① 2시간</li><li>② 4시간</li><li>③ 1시간</li><li>④ 30분</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 2시간</b></p>
+<p>📌 90dB 8시간 → 95dB 4시간 → 100dB 2시간</p>
+<ul class="chk"><li>105dB는 1시간. 충격소음은 최대 140dB(A)</li></ul></div></details>
+</div>
+<div class="card q" data-q="26" data-title="26번">
+<div class="q-head"><span class="q-num">26번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">소음작업은 1일 8시간 작업 기준으로 몇 dB 이상의 소음이 발생하는 작업인가?</p>
+<ul class="opts"><li>① 80dB</li><li>② 90dB</li><li>③ 95dB</li><li>④ 85dB</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 85dB</b></p>
+<p>📌 소음작업 85dB 이상, 노출기준 8시간 90dB(A) — 두 수치를 구분</p>
+<ul class="chk"><li>법령 수치는 시험 전 최신 기준 확인</li></ul></div></details>
+</div></section>
+<section class="section" id="g4"><div class="section-head"><div class="duality"><span class="n">D</span>조종장치·양립성 (27~32)</div><div class="section-line"></div></div>
+<div class="card q" data-q="27" data-title="27번">
+<div class="q-head"><span class="q-num">27번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">반지름 5cm인 조종 노브를 90° 돌렸을 때 표시장치 지침이 2cm 움직였다. C/R비는 약 얼마인가?</p>
+<ul class="opts"><li>① 1.96</li><li>② 3.93</li><li>③ 7.85</li><li>④ 15.7</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 3.93</b></p>
+<p>📌 C/R비 = (a/360 × 2πL) ÷ 표시장치 이동거리</p>
+<ul class="chk"><li>조종장치 이동 = 90/360 × 2π × 5 ≈ 7.85cm</li><li>7.85 ÷ 2 ≈ 3.93 (③은 나누기를 빠뜨린 값)</li></ul></div></details>
+</div>
+<div class="card q" data-q="28" data-title="28번">
+<div class="q-head"><span class="q-num">28번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">C/R비가 작을 때(민감한 조종장치)의 특성으로 옳은 것은?</p>
+<ul class="opts"><li>① 이동시간이 길고 조정시간이 짧다</li><li>② 이동시간과 조정시간이 모두 짧다</li><li>③ 이동시간이 짧고 조정시간이 길다</li><li>④ 이동시간과 조정시간이 모두 길다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 이동시간이 짧고 조정시간이 길다</b></p>
+<p>📌 C/R비 작음(민감): 이동 빠름, 미세 조정 오래 / C/R비 큼(둔감): 그 반대</p>
+<ul class="chk"><li>최적 C/R비는 이동시간 + 조정시간의 합이 최소인 점</li></ul></div></details>
+</div>
+<div class="card q" data-q="29" data-title="29번">
+<div class="q-head"><span class="q-num">29번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">빨간색을 "정지·위험"으로 받아들이는 것처럼 의미가 사람의 기대와 일치하는 양립성은?</p>
+<ul class="opts"><li>① 공간적 양립성</li><li>② 운동적 양립성</li><li>③ 양식 양립성</li><li>④ 개념적 양립성</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 개념적 양립성</b></p>
+<p>📌 개념적 = 의미, 공간적 = 위치, 운동적 = 방향, 양식 = 자극·응답 형태</p></div></details>
+</div>
+<div class="card q" data-q="30" data-title="30번">
+<div class="q-head"><span class="q-num">30번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">조종 노브를 오른쪽으로 돌리면 표시값이 증가하도록 설계한 것은 어떤 양립성인가?</p>
+<ul class="opts"><li>① 운동적 양립성</li><li>② 개념적 양립성</li><li>③ 공간적 양립성</li><li>④ 양식 양립성</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 운동적 양립성</b></p>
+<p>📌 조종장치의 움직임 방향과 표시장치·기계의 반응 방향이 일치</p>
+<ul class="chk"><li>왼쪽 버튼 → 왼쪽 표시처럼 "배치"가 일치하면 공간적 양립성</li></ul></div></details>
+</div>
+<div class="card q" data-q="31" data-title="31번">
+<div class="q-head"><span class="q-num">31번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">청각적 자극에는 음성으로 응답하도록 하는 것이 유리하다는 것과 관련된 양립성은?</p>
+<ul class="opts"><li>① 개념적 양립성</li><li>② 공간적 양립성</li><li>③ 양식(modality) 양립성</li><li>④ 운동적 양립성</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 양식(modality) 양립성</b></p>
+<p>📌 자극과 응답의 양식(청각-음성, 시각-수동)이 맞으면 반응이 빠르고 정확</p></div></details>
+</div>
+<div class="card q" data-q="32" data-title="32번">
+<div class="q-head"><span class="q-num">32번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">조종장치를 식별하기 위한 코딩 방법으로 거리가 <b>먼</b> 것은?</p>
+<ul class="opts"><li>① 형상</li><li>② 소리</li><li>③ 크기</li><li>④ 촉감</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 소리</b></p>
+<p>📌 조종장치 코딩: 형상, 크기, 색, 촉감, 위치, 조작법</p></div></details>
+</div></section>
+<section class="section" id="g5"><div class="section-head"><div class="duality"><span class="n">E</span>휴먼에러 (33~41)</div><div class="section-line"></div></div>
+<div class="card q" data-q="33" data-title="33번">
+<div class="q-head"><span class="q-num">33번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">스웨인(Swain)의 분류에서 필요한 작업이나 절차를 빠뜨려서 생기는 오류는?</p>
+<ul class="opts"><li>① 실행 오류(commission)</li><li>② 생략 오류(omission)</li><li>③ 순서 오류(sequential)</li><li>④ 시간 오류(time)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 생략 오류(omission)</b></p>
+<p>📌 생략 = 빠뜨림, 실행 = 잘못 수행, 순서 = 순서 틀림, 시간 = 너무 빠르거나 늦음</p>
+<ul class="chk"><li>하지 않아도 될 일을 하면 불필요한 행동(extraneous) 오류</li></ul></div></details>
+</div>
+<div class="card q" data-q="34" data-title="34번">
+<div class="q-head"><span class="q-num">34번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">스웨인(Swain)의 행위적 관점 휴먼에러 분류에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 생략 오류</li><li>② 실행 오류</li><li>③ 착오(mistake)</li><li>④ 불필요한 행동 오류</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 착오(mistake)</b></p>
+<p>📌 착오·실수·건망·위반은 리즌·라스무센의 원인적 관점 분류</p>
+<ul class="chk"><li>스웨인: 생략, 실행, 순서, 시간, 불필요한 행동</li></ul></div></details>
+</div>
+<div class="card q" data-q="35" data-title="35번">
+<div class="q-head"><span class="q-num">35번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">의도(계획)는 올바르지만 실행 과정에서 잘못 행동한 오류는?</p>
+<ul class="opts"><li>① 착오(mistake)</li><li>② 건망(lapse)</li><li>③ 위반(violation)</li><li>④ 실수(slip)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 실수(slip)</b></p>
+<p>📌 실수 = 의도 OK, 실행 잘못 / 착오 = 계획 자체가 잘못</p>
+<ul class="chk"><li>건망은 기억 실패, 위반은 알면서 규칙을 어김</li></ul></div></details>
+</div>
+<div class="card q" data-q="36" data-title="36번">
+<div class="q-head"><span class="q-num">36번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">상황 해석을 잘못하거나 목표를 잘못 설정해 계획 자체가 틀린 오류는?</p>
+<ul class="opts"><li>① 착오(mistake)</li><li>② 실수(slip)</li><li>③ 건망(lapse)</li><li>④ 위반(violation)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 착오(mistake)</b></p>
+<p>📌 착오는 "판단·계획 단계"의 오류라 실행을 정확히 해도 결과가 틀린다</p></div></details>
+</div>
+<div class="card q" data-q="37" data-title="37번">
+<div class="q-head"><span class="q-num">37번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">라스무센(Rasmussen)의 인간 행동 수준 분류에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 숙련 기반(skill-based)</li><li>② 규칙 기반(rule-based)</li><li>③ 감각 기반(sense-based)</li><li>④ 지식 기반(knowledge-based)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 감각 기반(sense-based)</b></p>
+<p>📌 라스무센 3수준: 숙련 기반 → 규칙 기반 → 지식 기반 (SRK 모델)</p></div></details>
+</div>
+<div class="card q" data-q="38" data-title="38번">
+<div class="q-head"><span class="q-num">38번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">작업자가 잘못 조작하더라도 사고로 이어지지 않도록 하는 설계(예: 인터록)는?</p>
+<ul class="opts"><li>① 페일세이프(fail-safe)</li><li>② 풀프루프(fool-proof)</li><li>③ 리던던시(redundancy)</li><li>④ 록아웃(lock-out)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 풀프루프(fool-proof)</b></p>
+<p>📌 풀프루프 = 사람의 실수 대비 / 페일세이프 = 기계의 고장 대비</p>
+<ul class="chk"><li>대책 순서: 배타설계 → 보호설계(풀프루프) → 안전설계(페일세이프)</li></ul></div></details>
+</div>
+<div class="card q" data-q="39" data-title="39번">
+<div class="q-head"><span class="q-num">39번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">기계나 설비에 고장이 발생해도 안전한 쪽으로 작동하도록 하는 설계는?</p>
+<ul class="opts"><li>① 페일세이프(fail-safe)</li><li>② 풀프루프(fool-proof)</li><li>③ 배타설계</li><li>④ 보호설계</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 페일세이프(fail-safe)</b></p>
+<p>📌 "고장(fail)이 나도 안전(safe)" 으로 이름 그대로 기억</p></div></details>
+</div>
+<div class="card q" data-q="40" data-title="40번">
+<div class="q-head"><span class="q-num">40번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">어떤 작업에서 오류가 발생할 수 있는 기회가 500회였고 실제 오류가 2회 발생했다. 인간 오류 확률(HEP)은?</p>
+<ul class="opts"><li>① 0.002</li><li>② 0.04</li><li>③ 0.25</li><li>④ 0.004</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 0.004</b></p>
+<p>📌 HEP = 오류 수 ÷ 오류 기회 수 = 2 ÷ 500 = 0.004</p>
+<ul class="chk"><li>인간 신뢰도 = 1 − HEP = 0.996</li></ul></div></details>
+</div>
+<div class="card q" data-q="41" data-title="41번">
+<div class="q-head"><span class="q-num">41번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인간의 실수율을 예측하는 정량적 인간 신뢰도 분석 기법은?</p>
+<ul class="opts"><li>① THERP</li><li>② PHA</li><li>③ HAZOP</li><li>④ 체크리스트</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① THERP</b></p>
+<p>📌 THERP: Technique for Human Error Rate Prediction, 인간 실수율 예측(정량적)</p>
+<ul class="chk"><li>PHA·HAZOP·체크리스트는 정성적 기법</li></ul></div></details>
+</div></section>
+<section class="section" id="g6"><div class="section-head"><div class="duality"><span class="n">F</span>신뢰도 계산 (42~53)</div><div class="section-line"></div></div>
+<div class="card q" data-q="42" data-title="42번">
+<div class="q-head"><span class="q-num">42번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">신뢰도가 각각 0.9, 0.8, 0.7인 부품 3개를 직렬로 연결한 시스템의 신뢰도는?</p>
+<ul class="opts"><li>① 0.7</li><li>② 0.994</li><li>③ 0.504</li><li>④ 0.8</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 0.504</b></p>
+<p>📌 직렬 R = R₁ × R₂ × R₃</p>
+<ul class="chk"><li>0.9 × 0.8 = 0.72 → 0.72 × 0.7 = 0.504</li><li>②는 병렬로 계산한 값: 1 − 0.1×0.2×0.3 = 0.994</li></ul></div></details>
+</div>
+<div class="card q" data-q="43" data-title="43번">
+<div class="q-head"><span class="q-num">43번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">신뢰도 0.8인 부품 2개를 병렬로 연결한 시스템의 신뢰도는?</p>
+<ul class="opts"><li>① 0.64</li><li>② 0.8</li><li>③ 0.9</li><li>④ 0.96</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 0.96</b></p>
+<p>📌 병렬 R = 1 − (1−R₁)(1−R₂)</p>
+<ul class="chk"><li>1 − 0.2 × 0.2 = 1 − 0.04 = 0.96</li><li>①은 직렬(0.8 × 0.8)로 계산한 함정</li></ul></div></details>
+</div>
+<div class="card q" data-q="44" data-title="44번">
+<div class="q-head"><span class="q-num">44번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">신뢰도 0.9인 부품 A에, 신뢰도 0.8인 부품 B와 C를 병렬로 묶은 블록이 직렬로 연결되어 있다. 시스템 신뢰도는?</p>
+<ul class="opts"><li>① 0.576</li><li>② 0.864</li><li>③ 0.96</li><li>④ 0.72</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 0.864</b></p>
+<p>📌 병렬 블록부터 계산 → 그다음 직렬</p>
+<ul class="chk"><li>B·C 병렬 = 1 − 0.2 × 0.2 = 0.96</li><li>0.9 × 0.96 = 0.864</li></ul></div></details>
+</div>
+<div class="card q" data-q="45" data-title="45번">
+<div class="q-head"><span class="q-num">45번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">신뢰도 0.9인 부품 3개 중 2개 이상이 작동하면 정상인 시스템(3중 2 구조)의 신뢰도는?</p>
+<ul class="opts"><li>① 0.729</li><li>② 0.999</li><li>③ 0.81</li><li>④ 0.972</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 0.972</b></p>
+<p>📌 R = (3개 모두 정상) + (정확히 2개 정상)</p>
+<ul class="chk"><li>3개 정상: 0.9³ = 0.729</li><li>2개 정상: 3 × 0.9² × 0.1 = 3 × 0.081 = 0.243</li><li>0.729 + 0.243 = 0.972</li></ul></div></details>
+</div>
+<div class="card q" data-q="46" data-title="46번">
+<div class="q-head"><span class="q-num">46번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">어떤 설비가 총 5,000시간 가동하는 동안 10회 고장 났다. 평균 고장 간격(MTBF)은?</p>
+<ul class="opts"><li>① 500시간</li><li>② 50시간</li><li>③ 1,000시간</li><li>④ 5,000시간</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 500시간</b></p>
+<p>📌 λ = 고장 건수 ÷ 총 가동시간 = 10 ÷ 5,000 = 0.002/시간</p>
+<ul class="chk"><li>MTBF = 1/λ = 1 ÷ 0.002 = 500시간</li></ul></div></details>
+</div>
+<div class="card q" data-q="47" data-title="47번">
+<div class="q-head"><span class="q-num">47번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">고장률이 시간당 0.001로 일정한 부품을 100시간 사용할 때 신뢰도는 약 얼마인가?</p>
+<ul class="opts"><li>① 0.819</li><li>② 0.905</li><li>③ 0.990</li><li>④ 0.100</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 0.905</b></p>
+<p>📌 지수분포 신뢰도 R(t) = e^(−λt)</p>
+<ul class="chk"><li>λt = 0.001 × 100 = 0.1 → e^(−0.1) ≈ 0.905</li><li>①은 e^(−0.2)로, 200시간일 때의 값</li></ul></div></details>
+</div>
+<div class="card q" data-q="48" data-title="48번">
+<div class="q-head"><span class="q-num">48번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">MTBF가 90시간, MTTR이 10시간인 설비의 가용도는?</p>
+<ul class="opts"><li>① 0.1</li><li>② 0.8</li><li>③ 0.9</li><li>④ 0.99</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 0.9</b></p>
+<p>📌 가용도 = MTBF ÷ (MTBF + MTTR)</p>
+<ul class="chk"><li>90 ÷ (90 + 10) = 0.9</li></ul></div></details>
+</div>
+<div class="card q" data-q="49" data-title="49번">
+<div class="q-head"><span class="q-num">49번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">MTTF가 각각 1,000시간인 동일 부품 2개를 병렬로 연결한 시스템의 MTTF는?</p>
+<ul class="opts"><li>① 500시간</li><li>② 1,500시간</li><li>③ 2,000시간</li><li>④ 1,000시간</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 1,500시간</b></p>
+<p>📌 병렬 n개 MTTF = MTTF × (1 + 1/2 + … + 1/n)</p>
+<ul class="chk"><li>1,000 × (1 + 1/2) = 1,500시간</li><li>①은 직렬 2개(1,000 ÷ 2)의 값</li></ul></div></details>
+</div>
+<div class="card q" data-q="50" data-title="50번">
+<div class="q-head"><span class="q-num">50번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">MTTF가 각각 900시간인 동일 부품 3개를 직렬로 연결한 시스템의 MTTF는?</p>
+<ul class="opts"><li>① 900시간</li><li>② 2,700시간</li><li>③ 1,650시간</li><li>④ 300시간</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 300시간</b></p>
+<p>📌 직렬 n개 MTTF = MTTF ÷ n = 900 ÷ 3 = 300시간</p>
+<ul class="chk"><li>③은 병렬 3개: 900 × (1 + 1/2 + 1/3) = 1,650시간</li></ul></div></details>
+</div>
+<div class="card q" data-q="51" data-title="51번">
+<div class="q-head"><span class="q-num">51번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">욕조곡선의 초기고장 기간에 고장률을 줄이기 위한 방법은?</p>
+<ul class="opts"><li>① 예방보전(PM)</li><li>② 안전계수 고려</li><li>③ 번인(burn-in)과 디버깅</li><li>④ 사후보전</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 번인(burn-in)과 디버깅</b></p>
+<p>📌 초기(고장률 감소) → 번인·디버깅 / 우발(일정) → 안전계수 / 마모(증가) → 예방보전</p></div></details>
+</div>
+<div class="card q" data-q="52" data-title="52번">
+<div class="q-head"><span class="q-num">52번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">욕조곡선에서 고장률이 거의 일정하고 고장을 예측하기 어려운 기간은?</p>
+<ul class="opts"><li>① 우발고장 기간</li><li>② 초기고장 기간</li><li>③ 마모고장 기간</li><li>④ 설계고장 기간</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 우발고장 기간</b></p>
+<p>📌 우발고장: 고장률 일정, 지수분포 R(t) = e^(−λt) 를 적용하는 구간</p></div></details>
+</div>
+<div class="card q" data-q="53" data-title="53번">
+<div class="q-head"><span class="q-num">53번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">신뢰도 0.9인 부품을 병렬로 연결해 시스템 신뢰도를 0.999 이상으로 만들려면 최소 몇 개가 필요한가?</p>
+<ul class="opts"><li>① 2개</li><li>② 3개</li><li>③ 4개</li><li>④ 5개</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 3개</b></p>
+<p>📌 병렬 R = 1 − (0.1)ⁿ ≥ 0.999 → (0.1)ⁿ ≤ 0.001</p>
+<ul class="chk"><li>n = 2: 1 − 0.01 = 0.99 (부족)</li><li>n = 3: 1 − 0.001 = 0.999 (충족)</li></ul></div></details>
+</div></section>
+<section class="section" id="g7"><div class="section-head"><div class="duality"><span class="n">G</span>시스템 안전 기법·HAZOP (54~65)</div><div class="section-line"></div></div>
+<div class="card q" data-q="54" data-title="54번">
+<div class="q-head"><span class="q-num">54번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">시스템 수명주기의 구상 단계에서 최초로 실시하는 정성적 위험분석 기법은?</p>
+<ul class="opts"><li>① FMEA</li><li>② FTA</li><li>③ PHA(예비위험분석)</li><li>④ OSHA(운용위험분석)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ PHA(예비위험분석)</b></p>
+<p>📌 수명주기: 구상 → 정의 → 개발 → 생산 → 운용 → 폐기. PHA는 구상 단계, 최초</p>
+<ul class="chk"><li>OSHA(운용위험분석)는 운용·보전 단계</li></ul></div></details>
+</div>
+<div class="card q" data-q="55" data-title="55번">
+<div class="q-head"><span class="q-num">55번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">MIL-STD-882의 위험 범주 중 범주 Ⅱ에 해당하는 것은?</p>
+<ul class="opts"><li>① 위기적(중대)</li><li>② 파국적</li><li>③ 한계적</li><li>④ 무시가능</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 위기적(중대)</b></p>
+<p>📌 Ⅰ 파국적 → Ⅱ 위기적(중대) → Ⅲ 한계적 → Ⅳ 무시가능</p></div></details>
+</div>
+<div class="card q" data-q="56" data-title="56번">
+<div class="q-head"><span class="q-num">56번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">부품·요소의 고장 형태별로 시스템에 미치는 영향을 검토하는 귀납적·정성적 기법은?</p>
+<ul class="opts"><li>① FTA</li><li>② FMEA</li><li>③ ETA</li><li>④ MORT</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② FMEA</b></p>
+<p>📌 FMEA: 고장형태와 영향분석, 정성적·귀납적</p>
+<ul class="chk"><li>FTA는 연역적·정량적, ETA는 귀납적·정량적</li></ul></div></details>
+</div>
+<div class="card q" data-q="57" data-title="57번">
+<div class="q-head"><span class="q-num">57번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">FMEA의 단점으로 옳은 것은?</p>
+<ul class="opts"><li>① 인적 원인과 2개 이상 요소의 동시 고장 분석이 곤란하다</li><li>② 연역적 기법이라 정상사상을 먼저 정해야 한다</li><li>③ 정량적 기법이라 고장률 자료가 반드시 필요하다</li><li>④ 구상 단계에서만 적용할 수 있다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 인적 원인과 2개 이상 요소의 동시 고장 분석이 곤란하다</b></p>
+<p>📌 FMEA는 부품 하나씩의 고장 형태를 보는 방식이라 동시 고장·인적 원인 분석에 약함</p></div></details>
+</div>
+<div class="card q" data-q="58" data-title="58번">
+<div class="q-head"><span class="q-num">58번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">사건수 분석(ETA)의 특징으로 옳은 것은?</p>
+<ul class="opts"><li>① 연역적, 정성적</li><li>② 연역적, 정량적</li><li>③ 귀납적, 정성적</li><li>④ 귀납적, 정량적</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 귀납적, 정량적</b></p>
+<p>📌 ETA: 초기 사건 → 성공·실패로 분기하며 결과 추적 (귀납적·정량적)</p>
+<ul class="chk"><li>FTA: 정상사상 → 원인으로 내려감 (연역적·정량적)</li></ul></div></details>
+</div>
+<div class="card q" data-q="59" data-title="59번">
+<div class="q-head"><span class="q-num">59번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">FMECA는 FMEA에 어떤 분석을 더한 것인가?</p>
+<ul class="opts"><li>① FTA</li><li>② ETA</li><li>③ CA(위험도 분석)</li><li>④ HAZOP</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ CA(위험도 분석)</b></p>
+<p>📌 FMECA = FMEA + CA. 고장의 치명도(위험도)를 정량 평가</p></div></details>
+</div>
+<div class="card q" data-q="60" data-title="60번">
+<div class="q-head"><span class="q-num">60번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">관리·설계·생산·보전 등 넓은 범위의 안전을 확보하기 위해 FTA와 같은 논리 기법을 사용하는 분석은?</p>
+<ul class="opts"><li>① THERP</li><li>② MORT</li><li>③ FHA</li><li>④ PHA</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② MORT</b></p>
+<p>📌 MORT(Management Oversight and Risk Tree): 관리 측면까지 포함, FTA 논리 사용</p></div></details>
+</div>
+<div class="card q" data-q="61" data-title="61번">
+<div class="q-head"><span class="q-num">61번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">여러 업체가 서브시스템을 나누어 개발할 때 서브시스템 단위로 실시하는 위험분석은?</p>
+<ul class="opts"><li>① PHA</li><li>② OSHA</li><li>③ CA</li><li>④ FHA(결함위험분석)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ FHA(결함위험분석)</b></p>
+<p>📌 FHA: 서브시스템 분석, 분업 개발 시 서브시스템 간 인터페이스 위험 검토</p></div></details>
+</div>
+<div class="card q" data-q="62" data-title="62번">
+<div class="q-head"><span class="q-num">62번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">HAZOP 가이드워드 "As well as"의 의미는?</p>
+<ul class="opts"><li>① 양의 증가</li><li>② 성질상의 증가(다른 것이 추가됨)</li><li>③ 완전한 대체</li><li>④ 설계 의도의 완전한 부정</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 성질상의 증가(다른 것이 추가됨)</b></p>
+<p>📌 As well as = 성질상 증가 / Part of = 성질상 감소</p>
+<ul class="chk"><li>양의 증가는 More, 완전한 대체는 Other than, 완전한 부정은 No/Not</li></ul></div></details>
+</div>
+<div class="card q" data-q="63" data-title="63번">
+<div class="q-head"><span class="q-num">63번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">HAZOP 가이드워드 중 설계 의도의 완전한 부정을 뜻하는 것은?</p>
+<ul class="opts"><li>① No / Not</li><li>② Reverse</li><li>③ Other than</li><li>④ Less</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① No / Not</b></p>
+<p>📌 Reverse = 반대 방향, Other than = 완전한 대체, Less = 양의 감소</p></div></details>
+</div>
+<div class="card q" data-q="64" data-title="64번">
+<div class="q-head"><span class="q-num">64번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">HAZOP 가이드워드 "Part of"의 의미는?</p>
+<ul class="opts"><li>① 양의 감소</li><li>② 성질상의 증가</li><li>③ 성질상의 감소(일부만 달성)</li><li>④ 반대 방향</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 성질상의 감소(일부만 달성)</b></p>
+<p>📌 More/Less는 "양", As well as/Part of는 "성질"의 증가·감소</p></div></details>
+</div>
+<div class="card q" data-q="65" data-title="65번">
+<div class="q-head"><span class="q-num">65번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">시스템의 운용 및 보전 단계에서 발생하는 위험을 분석하는 기법은?</p>
+<ul class="opts"><li>① PHA</li><li>② OSHA(운용위험분석)</li><li>③ FHA</li><li>④ CA</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② OSHA(운용위험분석)</b></p>
+<p>📌 운용위험분석(Operating and Support Hazard Analysis): 운용·보전 단계</p>
+<ul class="chk"><li>산업안전보건청(OSHA)과 약자가 같아 헷갈리기 쉬움</li></ul></div></details>
+</div></section>
+<section class="section" id="g8"><div class="section-head"><div class="duality"><span class="n">H</span>FTA (66~77)</div><div class="section-line"></div></div>
+<div class="card q" data-q="66" data-title="66번">
+<div class="q-head"><span class="q-num">66번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">결함수 분석(FTA)의 특징으로 옳은 것은?</p>
+<ul class="opts"><li>① 귀납적, 정성적</li><li>② 귀납적, 정량적</li><li>③ 연역적, 정량적</li><li>④ 연역적, 정성적만 가능</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 연역적, 정량적</b></p>
+<p>📌 FTA: 정상(톱)사상에서 원인으로 내려가는 Top-down, 연역적·정량적</p></div></details>
+</div>
+<div class="card q" data-q="67" data-title="67번">
+<div class="q-head"><span class="q-num">67번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">FTA에서 원(○) 기호가 나타내는 것은?</p>
+<ul class="opts"><li>① 기본사상</li><li>② 결함사상</li><li>③ 생략사상</li><li>④ 통상사상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 기본사상</b></p>
+<p>📌 원 = 기본사상(더 분해 안 함), 직사각형 = 결함사상</p>
+<ul class="chk"><li>마름모 = 생략사상, 집 모양 = 통상사상, 삼각형 = 전이기호</li></ul></div></details>
+</div>
+<div class="card q" data-q="68" data-title="68번">
+<div class="q-head"><span class="q-num">68번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">FTA에서 집 모양(오각형) 기호가 나타내는 것은?</p>
+<ul class="opts"><li>① 기본사상</li><li>② 생략사상</li><li>③ 전이기호</li><li>④ 통상사상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 통상사상</b></p>
+<p>📌 통상사상: 정상적인 가동 상태에서 일어날 것으로 기대되는 사상</p></div></details>
+</div>
+<div class="card q" data-q="69" data-title="69번">
+<div class="q-head"><span class="q-num">69번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">FTA에서 정보 부족 등으로 더 이상 전개하지 않는 사상을 나타내는 마름모(◇) 기호는?</p>
+<ul class="opts"><li>① 통상사상</li><li>② 기본사상</li><li>③ 생략사상</li><li>④ 결함사상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 생략사상</b></p>
+<p>📌 마름모 = 생략사상(정보 부족·분석 불필요)</p></div></details>
+</div>
+<div class="card q" data-q="70" data-title="70번">
+<div class="q-head"><span class="q-num">70번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">AND 게이트의 입력 사상 발생 확률이 각각 0.3, 0.4일 때 출력 사상의 발생 확률은?</p>
+<ul class="opts"><li>① 0.7</li><li>② 0.58</li><li>③ 0.35</li><li>④ 0.12</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 0.12</b></p>
+<p>📌 AND 게이트: P = P₁ × P₂ = 0.3 × 0.4 = 0.12</p>
+<ul class="chk"><li>②는 OR 게이트로 계산한 값</li></ul></div></details>
+</div>
+<div class="card q" data-q="71" data-title="71번">
+<div class="q-head"><span class="q-num">71번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">OR 게이트의 입력 사상 발생 확률이 각각 0.3, 0.4일 때 출력 사상의 발생 확률은?</p>
+<ul class="opts"><li>① 0.12</li><li>② 0.58</li><li>③ 0.70</li><li>④ 0.42</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 0.58</b></p>
+<p>📌 OR 게이트: P = 1 − (1−P₁)(1−P₂)</p>
+<ul class="chk"><li>1 − 0.7 × 0.6 = 1 − 0.42 = 0.58</li><li>단순히 더한 0.70은 오답</li></ul></div></details>
+</div>
+<div class="card q" data-q="72" data-title="72번">
+<div class="q-head"><span class="q-num">72번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">정상사상 T가 사상 A와 중간사상 G의 OR 게이트로 연결되고, G는 사상 B와 C의 AND 게이트이다. A, B, C의 발생 확률이 각각 0.1, 0.2, 0.5일 때 T의 발생 확률은?</p>
+<ul class="opts"><li>① 0.19</li><li>② 0.20</li><li>③ 0.01</li><li>④ 0.55</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 0.19</b></p>
+<p>📌 아래(G)부터 계산 → 위(T)로</p>
+<ul class="chk"><li>G = 0.2 × 0.5 = 0.1</li><li>T = 1 − (1 − 0.1)(1 − 0.1) = 1 − 0.81 = 0.19</li></ul></div></details>
+</div>
+<div class="card q" data-q="73" data-title="73번">
+<div class="q-head"><span class="q-num">73번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">정상사상 T = (A + B)·(A + C)일 때 최소 컷셋은? (+는 OR, ·는 AND)</p>
+<ul class="opts"><li>① {A}, {B, C}</li><li>② {A, B}, {A, C}</li><li>③ {A}, {B}, {C}</li><li>④ {A, B, C}</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① {A}, {B, C}</b></p>
+<p>📌 전개: A·A + A·C + A·B + B·C</p>
+<ul class="chk"><li>A·A = A, A + A·C + A·B = A (흡수법칙) → T = A + B·C</li><li>따라서 최소 컷셋은 {A}, {B, C}</li></ul></div></details>
+</div>
+<div class="card q" data-q="74" data-title="74번">
+<div class="q-head"><span class="q-num">74번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">FTA에서 최소 컷셋(minimal cut set)이 의미하는 것은?</p>
+<ul class="opts"><li>① 시스템의 신뢰성</li><li>② 시스템의 위험성</li><li>③ 시스템의 경제성</li><li>④ 시스템의 보전성</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 시스템의 위험성</b></p>
+<p>📌 최소 컷셋 → 위험성 / 최소 패스셋 → 신뢰성</p>
+<ul class="chk"><li>컷셋: 동시에 발생하면 정상사상을 일으키는 기본사상 집합</li></ul></div></details>
+</div>
+<div class="card q" data-q="75" data-title="75번">
+<div class="q-head"><span class="q-num">75번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">그 사상들이 발생하지 않으면 정상사상이 일어나지 않는 최소한의 집합으로, 시스템의 신뢰성을 나타내는 것은?</p>
+<ul class="opts"><li>① 최소 컷셋</li><li>② 컷셋</li><li>③ 정상사상</li><li>④ 최소 패스셋</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 최소 패스셋</b></p>
+<p>📌 패스셋 = "안 일어나면 시스템이 산다" → 신뢰성</p>
+<ul class="chk"><li>최소 컷셋은 퍼셀(MOCUS) 알고리즘으로 구함: AND는 가로, OR는 세로로 전개</li></ul></div></details>
+</div>
+<div class="card q" data-q="76" data-title="76번">
+<div class="q-head"><span class="q-num">76번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">입력 사상이 정해진 순서대로 발생해야만 출력이 생기는 FTA 게이트는?</p>
+<ul class="opts"><li>① 억제 게이트</li><li>② 조합 AND 게이트</li><li>③ 우선적 AND 게이트</li><li>④ 배타적 OR 게이트</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 우선적 AND 게이트</b></p>
+<p>📌 우선적 AND = 순서대로 / 조합 AND = 3개 중 2개 등 / 억제 = 조건 만족 시 출력</p>
+<ul class="chk"><li>배타적 OR: 2개 이상 동시에 발생하면 출력 없음</li></ul></div></details>
+</div>
+<div class="card q" data-q="77" data-title="77번">
+<div class="q-head"><span class="q-num">77번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">FTA 실시 순서에서 가장 먼저 하는 단계는?</p>
+<ul class="opts"><li>① FT도 작성</li><li>② 개선계획 작성</li><li>③ 사상별 재해 원인 규명</li><li>④ 정상사상 선정</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 정상사상 선정</b></p>
+<p>📌 정상사상 선정 → 원인 규명 → FT도 작성 → 개선계획 작성 → 개선안 실시</p></div></details>
+</div></section>
+<section class="section" id="g9"><div class="section-head"><div class="duality"><span class="n">I</span>인체측정·작업생리·작업환경 (78~89)</div><div class="section-line"></div></div>
+<div class="card q" data-q="78" data-title="78번">
+<div class="q-head"><span class="q-num">78번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">출입문 높이를 설계할 때 적용하는 인체측정치 설계 원칙은?</p>
+<ul class="opts"><li>① 평균치 설계</li><li>② 최소치(5퍼센타일) 설계</li><li>③ 최대치(95퍼센타일) 설계</li><li>④ 조절식 설계</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 최대치(95퍼센타일) 설계</b></p>
+<p>📌 최대치: 출입문 높이, 비상구, 통로 폭 / 최소치: 조종장치 거리, 선반 높이, 버튼 누르는 힘</p>
+<ul class="chk"><li>큰 사람이 통과하면 작은 사람도 통과한다는 논리</li></ul></div></details>
+</div>
+<div class="card q" data-q="79" data-title="79번">
+<div class="q-head"><span class="q-num">79번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인체측정치를 적용한 설계 원칙 중 가장 먼저 고려해야 하는 것은?</p>
+<ul class="opts"><li>① 조절식 설계</li><li>② 극단치 설계</li><li>③ 평균치 설계</li><li>④ 중앙치 설계</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 조절식 설계</b></p>
+<p>📌 우선순위: 조절식(5~95% 범위) → 극단치 → 평균치(최후)</p>
+<ul class="chk"><li>평균치 예: 은행 창구, 공공장소 의자</li></ul></div></details>
+</div>
+<div class="card q" data-q="80" data-title="80번">
+<div class="q-head"><span class="q-num">80번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">정밀 작업을 하는 입식 작업대의 높이로 적절한 것은?</p>
+<ul class="opts"><li>① 팔꿈치 높이보다 10~20cm 낮게</li><li>② 팔꿈치 높이보다 5~10cm 높게</li><li>③ 팔꿈치 높이보다 5~10cm 낮게</li><li>④ 팔꿈치 높이와 같게</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 팔꿈치 높이보다 5~10cm 높게</b></p>
+<p>📌 정밀 작업 5~10cm 높게 / 경작업 5~10cm 낮게 / 중작업 10~20cm 낮게</p></div></details>
+</div>
+<div class="card q" data-q="81" data-title="81번">
+<div class="q-head"><span class="q-num">81번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">부품 배치의 4원칙 중 부품의 "위치"를 결정하는 원칙으로 짝지어진 것은?</p>
+<ul class="opts"><li>① 기능별 배치, 사용순서</li><li>② 중요성, 사용빈도</li><li>③ 기능별 배치, 중요성</li><li>④ 사용순서, 사용빈도</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 중요성, 사용빈도</b></p>
+<p>📌 위치 결정: 중요성·사용빈도 / 배열 결정: 기능별·사용순서</p></div></details>
+</div>
+<div class="card q" data-q="82" data-title="82번">
+<div class="q-head"><span class="q-num">82번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">작업 시 소비에너지가 9kcal/min, 안정 시 소비에너지가 1.5kcal/min, 기초대사량이 1.5kcal/min일 때 에너지대사율(RMR)과 작업 강도는?</p>
+<ul class="opts"><li>① 5, 중(重)작업</li><li>② 5, 중(中)작업</li><li>③ 6, 중(重)작업</li><li>④ 7.5, 초중작업</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 5, 중(重)작업</b></p>
+<p>📌 RMR = (작업 시 − 안정 시) ÷ 기초대사량</p>
+<ul class="chk"><li>(9 − 1.5) ÷ 1.5 = 7.5 ÷ 1.5 = 5</li><li>0~2 경작업, 2~4 중(中)작업, 4~7 중(重)작업, 7 이상 초중작업</li></ul></div></details>
+</div>
+<div class="card q" data-q="83" data-title="83번">
+<div class="q-head"><span class="q-num">83번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">작업자가 분당 1.5L의 산소를 소비할 때 에너지 소비량은 약 얼마인가?</p>
+<ul class="opts"><li>① 1.5kcal/min</li><li>② 5kcal/min</li><li>③ 7.5kcal/min</li><li>④ 10kcal/min</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 7.5kcal/min</b></p>
+<p>📌 산소 1L 소비 ≈ 5kcal</p>
+<ul class="chk"><li>1.5 × 5 = 7.5kcal/min</li></ul></div></details>
+</div>
+<div class="card q" data-q="84" data-title="84번">
+<div class="q-head"><span class="q-num">84번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">광도 100cd인 점광원에서 2m 떨어진 곳의 조도는?</p>
+<ul class="opts"><li>① 50lux</li><li>② 200lux</li><li>③ 400lux</li><li>④ 25lux</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 25lux</b></p>
+<p>📌 조도 = 광도 ÷ (거리)²</p>
+<ul class="chk"><li>100 ÷ 2² = 100 ÷ 4 = 25lux</li><li>거리를 제곱하지 않으면 50lux가 나오는 함정</li></ul></div></details>
+</div>
+<div class="card q" data-q="85" data-title="85번">
+<div class="q-head"><span class="q-num">85번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">실내 면의 권장 반사율이 가장 높아야 하는 곳은?</p>
+<ul class="opts"><li>① 바닥</li><li>② 벽</li><li>③ 천장</li><li>④ 가구</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 천장</b></p>
+<p>📌 천장 80~90% &gt; 벽 40~60% &gt; 가구 25~45% &gt; 바닥 20~40%</p>
+<ul class="chk"><li>위로 갈수록 반사율을 높게</li></ul></div></details>
+</div>
+<div class="card q" data-q="86" data-title="86번">
+<div class="q-head"><span class="q-num">86번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">배경의 반사율이 80%, 표적의 반사율이 20%일 때 대비는?</p>
+<ul class="opts"><li>① 60%</li><li>② 75%</li><li>③ 25%</li><li>④ 300%</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 75%</b></p>
+<p>📌 대비 = (배경 − 표적) ÷ 배경 × 100</p>
+<ul class="chk"><li>(80 − 20) ÷ 80 × 100 = 75%</li><li>분모에 표적을 넣으면 300%가 나오는 함정</li></ul></div></details>
+</div>
+<div class="card q" data-q="87" data-title="87번">
+<div class="q-head"><span class="q-num">87번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">작업장 조도 기준에서 정밀 작업에 필요한 조도는?</p>
+<ul class="opts"><li>① 75lux 이상</li><li>② 150lux 이상</li><li>③ 750lux 이상</li><li>④ 300lux 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 300lux 이상</b></p>
+<p>📌 초정밀 750 / 정밀 300 / 보통 150 / 그 밖의 작업 75 (lux 이상)</p>
+<ul class="chk"><li>법령 수치는 시험 전 최신 기준 확인</li></ul></div></details>
+</div>
+<div class="card q" data-q="88" data-title="88번">
+<div class="q-head"><span class="q-num">88번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">태양광이 내리쬐는 옥외에서 자연습구온도 25℃, 흑구온도 40℃, 건구온도 30℃일 때 WBGT는?</p>
+<ul class="opts"><li>① 28.5℃</li><li>② 29.5℃</li><li>③ 30.0℃</li><li>④ 27.5℃</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 28.5℃</b></p>
+<p>📌 옥외 WBGT = 0.7 × 자연습구 + 0.2 × 흑구 + 0.1 × 건구</p>
+<ul class="chk"><li>0.7×25 + 0.2×40 + 0.1×30 = 17.5 + 8 + 3 = 28.5℃</li><li>②는 옥내 공식(0.7 × 자연습구 + 0.3 × 흑구)을 쓴 값</li></ul></div></details>
+</div>
+<div class="card q" data-q="89" data-title="89번">
+<div class="q-head"><span class="q-num">89번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">건구온도 30℃, 습구온도 25℃일 때 불쾌지수는?</p>
+<ul class="opts"><li>① 80.2</li><li>② 75.6</li><li>③ 84.2</li><li>④ 70.2</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 80.2</b></p>
+<p>📌 불쾌지수 = 0.72 × (건구 + 습구) + 40.6 (℃ 기준)</p>
+<ul class="chk"><li>0.72 × 55 + 40.6 = 39.6 + 40.6 = 80.2 → 80 이상, 대부분 불쾌</li><li>옥스퍼드 지수(WD) = 0.85 × 습구 + 0.15 × 건구 와 구분</li></ul></div></details>
+</div></section>
+<section class="section" id="g10"><div class="section-head"><div class="duality"><span class="n">J</span>근골격계·동작경제·위험성 평가 (90~100)</div><div class="section-line"></div></div>
+<div class="card q" data-q="90" data-title="90번">
+<div class="q-head"><span class="q-num">90번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">NIOSH 들기 지침에서 권장무게한계(RWL)가 10kg인 작업에서 15kg의 물체를 든다면 들기지수(LI)는?</p>
+<ul class="opts"><li>① 0.67</li><li>② 5</li><li>③ 25</li><li>④ 1.5</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 1.5</b></p>
+<p>📌 LI = 작업물 무게 ÷ RWL = 15 ÷ 10 = 1.5</p>
+<ul class="chk"><li>LI &gt; 1 이면 위험. ①은 분자·분모를 뒤집은 값</li><li>RWL = 23kg × HM × VM × DM × AM × FM × CM</li></ul></div></details>
+</div>
+<div class="card q" data-q="91" data-title="91번">
+<div class="q-head"><span class="q-num">91번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">팔·목·어깨 등 상지 중심의 작업 자세를 평가하는 도구는?</p>
+<ul class="opts"><li>① REBA</li><li>② RULA</li><li>③ NIOSH 들기 지침(NLE)</li><li>④ OWAS</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② RULA</b></p>
+<p>📌 RULA = 상지(Upper Limb) / REBA = 전신(Body) / OWAS = 허리·팔·다리·하중 조합</p>
+<ul class="chk"><li>JSI는 손·손목 부위 평가</li></ul></div></details>
+</div>
+<div class="card q" data-q="92" data-title="92번">
+<div class="q-head"><span class="q-num">92번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">근골격계 부담작업에 대한 정기 유해요인조사 주기는?</p>
+<ul class="opts"><li>① 1년마다</li><li>② 2년마다</li><li>③ 3년마다</li><li>④ 5년마다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 3년마다</b></p>
+<p>📌 최초: 신설 사업장 1년 이내 / 정기: 3년마다 / 수시: 질환자 발생 등</p>
+<ul class="chk"><li>법령 수치는 시험 전 최신 기준 확인</li></ul></div></details>
+</div>
+<div class="card q" data-q="93" data-title="93번">
+<div class="q-head"><span class="q-num">93번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">바안즈(Barnes)의 동작경제 원칙 중 신체 사용에 관한 원칙으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 양손은 동시에 동작을 시작하고 끝낸다</li><li>② 양팔은 반대 방향, 대칭으로 움직인다</li><li>③ 관성을 이용한 탄도동작을 활용한다</li><li>④ 가능한 높은 등급의 동작을 사용한다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 가능한 높은 등급의 동작을 사용한다</b></p>
+<p>📌 원칙은 "가능한 <b>낮은</b> 등급의 동작" (손가락 &lt; 손목 &lt; 팔꿈치 &lt; 어깨 순으로 작게)</p>
+<ul class="chk"><li>휴식 시간 외에는 양손이 동시에 쉬지 않도록 한다</li></ul></div></details>
+</div>
+<div class="card q" data-q="94" data-title="94번">
+<div class="q-head"><span class="q-num">94번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">수공구 설계 원칙으로 옳은 것은?</p>
+<ul class="opts"><li>① 손목을 곧게 유지할 수 있도록 설계한다</li><li>② 손바닥 중앙에 압력이 집중되도록 한다</li><li>③ 반복적인 손가락 동작을 많이 쓰도록 한다</li><li>④ 힘 작업용 손잡이 직경은 1cm 정도로 가늘게 한다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 손목을 곧게 유지할 수 있도록 설계한다</b></p>
+<p>📌 손목은 곧게, 조직(손바닥) 압력 피하기, 반복 손가락 동작 피하기</p>
+<ul class="chk"><li>힘 작업 손잡이 직경은 약 3~4cm</li></ul></div></details>
+</div>
+<div class="card q" data-q="95" data-title="95번">
+<div class="q-head"><span class="q-num">95번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">위험성 감소대책 중 가장 먼저 검토해야 하는 것은?</p>
+<ul class="opts"><li>① 개인보호구 사용</li><li>② 교육·작업절차 등 관리적 대책</li><li>③ 위험 제거·대체 등 본질적 대책</li><li>④ 방호장치·환기 등 공학적 대책</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 위험 제거·대체 등 본질적 대책</b></p>
+<p>📌 우선순위: 제거·대체 → 공학적 → 관리적 → 개인보호구</p>
+<ul class="chk"><li>개인보호구는 최후의 수단</li></ul></div></details>
+</div>
+<div class="card q" data-q="96" data-title="96번">
+<div class="q-head"><span class="q-num">96번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">다음 중 정량적 위험성평가 기법은?</p>
+<ul class="opts"><li>① 사고예상질문(What-if)</li><li>② FTA</li><li>③ 체크리스트</li><li>④ 작업안전분석(JSA)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② FTA</b></p>
+<p>📌 정량적: FTA, ETA, CA, 원인결과분석(CCA), HEA·THERP</p>
+<ul class="chk"><li>정성적: 체크리스트, What-if, HAZOP, FMEA, JSA, 4M</li></ul></div></details>
+</div>
+<div class="card q" data-q="97" data-title="97번">
+<div class="q-head"><span class="q-num">97번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">4M 위험성평가에서 Media(작업매체)에 해당하는 요인은?</p>
+<ul class="opts"><li>① 작업자의 심리·생리적 요인</li><li>② 설비 결함, 방호장치 불량</li><li>③ 관리조직, 규정, 교육</li><li>④ 작업 방법, 작업 정보, 작업 환경</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 작업 방법, 작업 정보, 작업 환경</b></p>
+<p>📌 Man = 인간, Machine = 기계, Media = 작업 방법·정보·환경, Management = 관리</p>
+<ul class="chk"><li>①은 Man, ②는 Machine, ③은 Management</li></ul></div></details>
+</div>
+<div class="card q" data-q="98" data-title="98번">
+<div class="q-head"><span class="q-num">98번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">안전성 평가 6단계 중 3단계에 해당하는 것은?</p>
+<ul class="opts"><li>① 관계 자료의 정비·검토</li><li>② 정성적 평가</li><li>③ 안전대책</li><li>④ 정량적 평가</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 정량적 평가</b></p>
+<p>📌 자료 정비 → 정성적 평가 → 정량적 평가 → 안전대책 → 재해 정보로 재평가 → FTA로 재평가</p></div></details>
+</div>
+<div class="card q" data-q="99" data-title="99번">
+<div class="q-head"><span class="q-num">99번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">근골격계 부담작업의 예로 옳은 것은?</p>
+<ul class="opts"><li>① 하루에 10회 이상 25kg 이상의 물체를 드는 작업</li><li>② 하루에 총 1시간 키보드·마우스를 조작하는 작업</li><li>③ 하루에 5회 10kg 물체를 허리 높이에서 드는 작업</li><li>④ 하루에 총 30분 목을 구부리는 작업</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 하루에 10회 이상 25kg 이상의 물체를 드는 작업</b></p>
+<p>📌 고시 기준 11가지. 키보드·마우스 하루 4시간 이상, 목·허리 굽힘 하루 2시간 이상 등</p>
+<ul class="chk"><li>법령 수치는 시험 전 최신 기준 확인</li></ul></div></details>
+</div>
+<div class="card q" data-q="100" data-title="100번">
+<div class="q-head"><span class="q-num">100번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">위험성평가에서 위험성을 구하는 방법으로 옳은 것은?</p>
+<ul class="opts"><li>① 빈도 + 강도</li><li>② 강도 ÷ 빈도</li><li>③ 빈도(가능성) × 강도(중대성)</li><li>④ 빈도 ÷ 강도</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 빈도(가능성) × 강도(중대성)</b></p>
+<p>📌 위험성 = 가능성(빈도) × 중대성(강도) → 허용 가능 여부를 판단해 위험성 결정</p></div></details>
+</div></section>
+<footer>개념이 막히면 <a href="s2-points.html">2과목 기출포인트</a>를 먼저 보세요. 출제 경향을 정리한 유형 노트이며 기출 원문이 아닙니다. 법령·KEC 수치는 시험 전에 최신 개정 사항으로 확인하세요.</footer>
+</div>
+<script>
+(function(){
+  var key='sanan-star-'+document.body.dataset.subject;
+  var marked={};
+  try{marked=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+  function save(){try{localStorage.setItem(key,JSON.stringify(marked))}catch(e){}}
+  var qs=[].slice.call(document.querySelectorAll('.q'));
+  var cnt=document.getElementById('starCount');
+  function upd(){cnt.textContent='★ 다시 볼 문제 '+Object.keys(marked).length+'개'}
+  qs.forEach(function(q){
+    var id=q.dataset.q;
+    if(marked[id])q.classList.add('marked');
+    q.querySelector('.q-star').addEventListener('click',function(){
+      if(marked[id]){delete marked[id];q.classList.remove('marked')}else{marked[id]=1;q.classList.add('marked')}
+      save();upd();
+    });
+  });
+  upd();
+  var openAll=document.getElementById('openAll'),onlyStar=document.getElementById('onlyStar');
+  openAll.addEventListener('click',function(){
+    var on=!openAll.classList.contains('on');openAll.classList.toggle('on',on);
+    openAll.textContent=on?'정답 모두 접기':'정답 모두 펼치기';
+    document.querySelectorAll('details.ans').forEach(function(d){d.open=on});
+  });
+  onlyStar.addEventListener('click',function(){
+    var on=!onlyStar.classList.contains('on');onlyStar.classList.toggle('on',on);
+    qs.forEach(function(q){q.classList.toggle('hidden',on&&!q.classList.contains('marked'))});
+    document.querySelectorAll('.section').forEach(function(s){
+      s.classList.toggle('hidden',on&&!s.querySelector('.q.marked'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -387,7 +387,7 @@ def roadmap_page(src):
     (OUT / "roadmap.html").write_text(doc, encoding="utf-8")
 
 
-BANKS = {1: SRC / "1과목_문제은행_1-100.md"}
+BANKS = {n: SRC / f"{n}과목_문제은행_1-100.md" for n in SUBJECTS if (SRC / f"{n}과목_문제은행_1-100.md").exists()}
 counts = {n: points_page(n, SRC / f"{n}과목_기출포인트.md") for n in SUBJECTS}
 bank_counts = {n: bank_page(n, p) for n, p in BANKS.items()}
 roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
