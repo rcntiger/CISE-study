@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1C2733">
+<title>3과목 문제은행 · 기계·기구 및 설비 안전관리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F8;--surface:#FFFFFF;--surface2:#F7F8FA;--ink:#121A24;--ink-soft:#5A6573;--line:#E3E7EC;
+  --hero:#1C2733;--hero-ink:#F4F6F8;--hero-soft:#AEB8C4;
+  --yellow:#FFC21A;--yellow-soft:#FFF3C9;--mark:#FFE58A;
+  --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
+    --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans KR','Noto Sans KR',sans-serif;font-size:15px;line-height:1.7;font-variant-numeric:tabular-nums}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 72px}
+header{margin:0 -16px;padding:18px 20px 22px;background:var(--hero);color:var(--hero-ink);border-radius:0 0 22px 22px;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 12px,#111 12px 24px)}
+.back{display:inline-block;margin:6px 0 14px;font-size:12.5px;color:var(--hero-ink);text-decoration:none;background:rgba(255,255,255,.1);padding:4px 12px;border-radius:999px}
+.tab{display:inline-block;margin-left:6px;font-size:11.5px;font-weight:700;color:#111;background:var(--accent,var(--yellow));padding:3px 10px;border-radius:999px;vertical-align:1px}
+.eyebrow{font-size:12px;font-weight:600;color:var(--yellow);letter-spacing:.06em;margin:0 0 6px}
+h1{font-weight:700;font-size:clamp(24px,6.6vw,34px);margin:0 0 10px;line-height:1.3;letter-spacing:-.02em}
+.sub{font-size:13px;color:var(--hero-soft);margin:0;padding-left:18px}
+.sub li{margin-bottom:2px}
+.sub b{color:var(--hero-ink)}
+.toc{display:flex;gap:6px;overflow-x:auto;margin:16px -20px -4px;padding:2px 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:0 0 auto;font-size:12.5px;text-decoration:none;color:var(--hero-ink);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px 12px;white-space:nowrap}
+.toc a .n{font-weight:700;color:var(--yellow);margin-right:5px}
+.section{margin-top:30px;scroll-margin-top:64px}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.duality{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.duality .n{flex:0 0 auto;min-width:30px;height:30px;padding:0 8px;border-radius:9px;background:var(--accent,var(--c1));color:#fff;font-size:13.5px;display:inline-flex;align-items:center;justify-content:center}
+.duality .n:empty{display:none}
+.section-line{display:none}
+.card{background:var(--surface);border-radius:16px;padding:16px 16px 10px;margin-bottom:12px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.card h4{margin:0 0 10px;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+.card h4::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--accent,var(--c1))}
+.card p{margin:0 0 10px;font-size:14px}
+.card b{font-weight:700;background:linear-gradient(transparent 60%,var(--mark) 60%);padding:0 1px}
+.card code{font-size:13px}
+ul.chk{list-style:none;margin:0 0 10px;padding:0}
+ul.chk>li{position:relative;padding:9px 0 9px 18px;font-size:14px;border-top:1px solid var(--line)}
+ul.chk>li:first-child{border-top:0;padding-top:2px}
+ul.chk>li::before{content:"";position:absolute;left:2px;top:19px;width:6px;height:6px;border-radius:50%;background:var(--accent,var(--c1))}
+ul.chk>li:first-child::before{top:12px}
+ul.chk>li.star{background:var(--yellow-soft);margin:0 -10px;padding-left:28px;padding-right:10px;border-radius:10px;border-top-color:transparent}
+ul.chk>li.star::before{display:none}
+ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E0A200;font-size:13px}
+ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
+ul.sub2 li{margin-bottom:3px}
+.subnote{margin:0 0 12px;padding:9px 12px;background:var(--surface2);border-radius:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+.subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
+footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
+footer a{color:var(--accent,var(--c1));font-weight:600}
+/* 문제은행 */
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:sticky;top:0;z-index:5;margin:0 -16px;padding:10px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn{font:inherit;font-size:13px;font-weight:600;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+.btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tools .count{font-size:12px;color:var(--ink-soft);margin-left:auto}
+.q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.q-num{font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
+.q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
+.q.marked .q-star{color:#E0A200}
+.q.marked{border-color:#F2C94C}
+.q-body{font-size:15px;font-weight:500;margin:0 0 10px}
+.opts{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:6px}
+.opts li{font-size:14px;padding:8px 12px;background:var(--surface2);border:1px solid var(--line);border-radius:10px}
+details.ans{margin:8px 0 6px}
+details.ans summary{cursor:pointer;list-style:none;text-align:center;font-size:13.5px;font-weight:700;color:#111;background:var(--yellow);border-radius:10px;padding:9px}
+details.ans summary::-webkit-details-marker{display:none}
+details.ans[open] summary{background:var(--surface2);color:var(--ink-soft)}
+details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:inline}
+.ans-body{margin-top:10px;padding:12px 12px 4px;background:var(--surface2);border-radius:12px}
+.ans-body p,.ans-body li{font-size:13.8px}
+.hidden{display:none !important}
+/* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
+@media (min-width:1000px){body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1600px){body{zoom:1.38}}
+@media print{header{background:none;color:#000}.tools,.q-star{display:none}}
+</style>
+</head>
+<body style="--accent:var(--c3)" data-subject="s3">
+<div class="wrap">
+<header>
+  <a class="back" href="index.html">← 목록으로</a>
+  <span class="tab">3과목 · 문제은행</span>
+  <div class="eyebrow">산업안전기사 필기 · 3과목 · 100문항</div>
+  <h1>기계·기구 및 설비 안전관리<br>문제은행</h1>
+  <ul class="sub"><li>정답과 해설은 <b>"정답 보기"를 눌러야</b> 펼쳐집니다.</li><li>실제 기출 원문이 아니라 출제 경향을 반영한 유형 문제입니다.</li><li>법령 수치는 시험 전에 최신 기준으로 확인하세요.</li><li>헷갈린 문제는 오른쪽 위 <b>★</b>을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.</li></ul>
+  <nav class="toc"><a href="#g1"><span class="n">A</span>기계의 위험점·방호장치·안전설계 (1~12)</a><a href="#g2"><span class="n">B</span>안전율·응력 (13~18)</a><a href="#g3"><span class="n">C</span>프레스·전단기 (19~30)</a><a href="#g4"><span class="n">D</span>롤러기·연삭기 (31~44)</a><a href="#g5"><span class="n">E</span>공작기계·목재가공용 둥근톱 (45~54)</a><a href="#g6"><span class="n">F</span>가스용접·보일러·압력용기 (55~68)</a><a href="#g7"><span class="n">G</span>양중기 (69~82)</a><a href="#g8"><span class="n">H</span>지게차·컨베이어·산업용 로봇 (83~92)</a><a href="#g9"><span class="n">I</span>비파괴검사·그 밖의 설비 (93~100)</a></nav>
+</header>
+<div class="tools"><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">A</span>기계의 위험점·방호장치·안전설계 (1~12)</div><div class="section-line"></div></div>
+<div class="card q" data-q="1" data-title="1번">
+<div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">벨트와 풀리, 체인과 스프로킷처럼 회전하는 부분의 접선 방향으로 물려 들어가는 위험점은?</p>
+<ul class="opts"><li>① 물림점</li><li>② 끼임점</li><li>③ 접선물림점</li><li>④ 회전말림점</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 접선물림점</b></p>
+<p>📌 접선물림점: 벨트–풀리, 체인–스프로킷, 랙–피니언</p>
+<ul class="chk"><li>물림점은 서로 반대로 맞물려 도는 두 회전체(롤러–롤러, 기어–기어)</li></ul></div></details>
+</div>
+<div class="card q" data-q="2" data-title="2번">
+<div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">프레스 금형의 상형과 하형 사이처럼 왕복운동 부분과 고정 부분 사이에 생기는 위험점은?</p>
+<ul class="opts"><li>① 협착점</li><li>② 끼임점</li><li>③ 절단점</li><li>④ 물림점</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 협착점</b></p>
+<p>📌 협착점 = 왕복운동 + 고정부분 (프레스 금형, 전단기 누름판)</p>
+<ul class="chk"><li>끼임점은 <b>회전</b>운동 + 고정부분</li></ul></div></details>
+</div>
+<div class="card q" data-q="3" data-title="3번">
+<div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">연삭숫돌과 작업대, 교반기 날개와 하우징 사이처럼 회전운동 부분과 고정 부분 사이에 형성되는 위험점은?</p>
+<ul class="opts"><li>① 협착점</li><li>② 끼임점</li><li>③ 절단점</li><li>④ 접선물림점</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 끼임점</b></p>
+<p>📌 끼임점 = 회전운동 + 고정부분</p>
+<ul class="chk"><li>왕복운동 + 고정부분이면 협착점</li></ul></div></details>
+</div>
+<div class="card q" data-q="4" data-title="4번">
+<div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">위험점과 그 예의 연결이 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 절단점 – 밀링 커터</li><li>② 물림점 – 기어와 기어</li><li>③ 회전말림점 – 드릴, 커플링</li><li>④ 협착점 – 벨트와 풀리</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 협착점 – 벨트와 풀리</b></p>
+<p>📌 벨트와 풀리는 <b>접선물림점</b></p>
+<ul class="chk"><li>협착점 예: 프레스 금형, 전단기 누름판</li></ul></div></details>
+</div>
+<div class="card q" data-q="5" data-title="5번">
+<div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">방호장치의 분류 중 프레스의 양수조작식 방호장치가 해당하는 것은?</p>
+<ul class="opts"><li>① 격리형</li><li>② 위치제한형</li><li>③ 접근거부형</li><li>④ 접근반응형</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 위치제한형</b></p>
+<p>📌 양손으로 버튼을 누르게 해 손을 위험 범위 밖에 두게 함 → 위치제한형</p>
+<ul class="chk"><li>손쳐내기식·수인식은 접근거부형, 광전자식은 접근반응형</li></ul></div></details>
+</div>
+<div class="card q" data-q="6" data-title="6번">
+<div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">프레스의 광전자식 방호장치처럼 신체가 위험 영역에 들어오면 이를 감지하여 기계를 정지시키는 방호장치 형식은?</p>
+<ul class="opts"><li>① 포집형</li><li>② 접근거부형</li><li>③ 접근반응형</li><li>④ 격리형</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 접근반응형</b></p>
+<p>📌 감지 → 정지 = 접근반응형 (광전자식)</p>
+<ul class="chk"><li>접근거부형은 신체를 밀어내거나 끌어냄(손쳐내기식, 수인식)</li></ul></div></details>
+</div>
+<div class="card q" data-q="7" data-title="7번">
+<div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">프레스의 손쳐내기식과 수인식 방호장치가 해당하는 방호장치 형식은?</p>
+<ul class="opts"><li>① 위치제한형</li><li>② 격리형</li><li>③ 접근반응형</li><li>④ 접근거부형</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 접근거부형</b></p>
+<p>📌 다가오는 손을 쳐내거나(손쳐내기식) 끌어당겨(수인식) 위험점에서 멀리함</p>
+<ul class="chk"><li>감지 후 정지시키는 광전자식과 구분</li></ul></div></details>
+</div>
+<div class="card q" data-q="8" data-title="8번">
+<div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">연삭숫돌의 덮개나 목재가공기의 반발예방장치처럼 튀거나 날아오는 위험원을 잡아 두는 방호장치 형식은?</p>
+<ul class="opts"><li>① 격리형</li><li>② 포집형</li><li>③ 위치제한형</li><li>④ 접근반응형</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 포집형</b></p>
+<p>📌 위험원(파편·가공물)을 붙잡아 작업자 쪽으로 오지 못하게 함 → 포집형</p>
+<ul class="chk"><li>격리형은 위험점 주위를 덮개·울·방책으로 차단</li></ul></div></details>
+</div>
+<div class="card q" data-q="9" data-title="9번">
+<div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">페일세이프(Fail safe) 중 병렬 계통 등을 이용하여 부품이 고장 나도 다음 정비 때까지 운전을 계속할 수 있는 가장 바람직한 형태는?</p>
+<ul class="opts"><li>① Fail passive</li><li>② Fail active</li><li>③ Fail operational</li><li>④ Fool proof</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ Fail operational</b></p>
+<p>📌 passive = 고장 시 정지 / active = 경보 + 짧은 시간 운전 / operational = 운전 계속</p>
+<ul class="chk"><li>Fool proof는 사람의 실수에 대한 대책이라 페일세이프 종류가 아님</li></ul></div></details>
+</div>
+<div class="card q" data-q="10" data-title="10번">
+<div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">풀프루프(Fool proof)에 대한 설명으로 옳은 것은?</p>
+<ul class="opts"><li>① 작업자가 실수를 하더라도 재해로 이어지지 않도록 하는 설계</li><li>② 기계가 고장 나면 자동으로 안전 쪽으로 동작하는 설계</li><li>③ 고장 시 경보를 울리며 짧은 시간 동안 운전을 계속하는 설계</li><li>④ 마모된 부품을 예방보전으로 미리 교체하는 관리 방식</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 작업자가 실수를 하더라도 재해로 이어지지 않도록 하는 설계</b></p>
+<p>📌 풀프루프 = 사람 실수 대비 (인터록, 가드, 양수조작) / 페일세이프 = 기계 고장 대비</p>
+<ul class="chk"><li>②는 페일세이프, ③은 Fail active</li></ul></div></details>
+</div>
+<div class="card q" data-q="11" data-title="11번">
+<div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">고장률 욕조곡선에서 고장률이 시간이 지날수록 증가하며, 예방보전으로 대응해야 하는 구간은?</p>
+<ul class="opts"><li>① 초기고장 구간</li><li>② 우발고장 구간</li><li>③ 디버깅 구간</li><li>④ 마모고장 구간</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 마모고장 구간</b></p>
+<p>📌 초기고장 = 감소(디버깅·번인) / 우발고장 = 일정 / 마모고장 = 증가(예방보전)</p>
+<ul class="chk"><li>디버깅은 초기고장을 줄이는 방법</li></ul></div></details>
+</div>
+<div class="card q" data-q="12" data-title="12번">
+<div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">기계설비의 위험요인이 되는 운동 형태 4가지에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 회전운동</li><li>② 횡축운동</li><li>③ 낙하운동</li><li>④ 진동운동</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 낙하운동</b></p>
+<p>📌 4가지: 회전운동, 횡축운동, 왕복운동, 진동운동</p>
+<ul class="chk"><li>"왕복운동"이 빠진 자리에 그럴듯한 말을 넣는 함정</li></ul></div></details>
+</div></section>
+<section class="section" id="g2"><div class="section-head"><div class="duality"><span class="n">B</span>안전율·응력 (13~18)</div><div class="section-line"></div></div>
+<div class="card q" data-q="13" data-title="13번">
+<div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인장강도가 400MPa이고 허용응력이 100MPa인 재료의 안전율은?</p>
+<ul class="opts"><li>① 0.25</li><li>② 2</li><li>③ 4</li><li>④ 40</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 4</b></p>
+<p>📌 안전율 = 인장강도 ÷ 허용응력</p>
+<ul class="chk"><li>400 ÷ 100 = 4. 안전율은 항상 1보다 크므로 0.25는 바로 제외</li></ul></div></details>
+</div>
+<div class="card q" data-q="14" data-title="14번">
+<div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인장강도 500MPa인 강재를 안전율 4로 설계할 때 허용응력은?</p>
+<ul class="opts"><li>① 100MPa</li><li>② 125MPa</li><li>③ 200MPa</li><li>④ 2,000MPa</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 125MPa</b></p>
+<p>📌 허용응력 = 인장강도 ÷ 안전율</p>
+<ul class="chk"><li>500 ÷ 4 = 125MPa. 곱하면(2,000) 오답</li></ul></div></details>
+</div>
+<div class="card q" data-q="15" data-title="15번">
+<div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">파괴하중이 2,000kg인 부재를 안전율 5로 사용할 때 최대사용하중은?</p>
+<ul class="opts"><li>① 400kg</li><li>② 1,000kg</li><li>③ 2,500kg</li><li>④ 10,000kg</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 400kg</b></p>
+<p>📌 안전율 = 파괴하중 ÷ 최대사용하중 → 최대사용하중 = 파괴하중 ÷ 안전율</p>
+<ul class="chk"><li>2,000 ÷ 5 = 400kg</li></ul></div></details>
+</div>
+<div class="card q" data-q="16" data-title="16번">
+<div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">단면적이 100mm²인 봉에 20kN의 인장하중이 작용할 때 발생하는 인장응력은?</p>
+<ul class="opts"><li>① 0.2MPa</li><li>② 2MPa</li><li>③ 20MPa</li><li>④ 200MPa</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 200MPa</b></p>
+<p>📌 σ = W ÷ A, 1MPa = 1N/mm²</p>
+<ul class="chk"><li>20kN = 20,000N → 20,000 ÷ 100 = 200N/mm² = 200MPa</li></ul></div></details>
+</div>
+<div class="card q" data-q="17" data-title="17번">
+<div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">안전율에 관한 설명으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 안전율 = 극한강도 ÷ 허용응력</li><li>② 안전율 = 파괴하중 ÷ 최대사용하중</li><li>③ 안전율은 1보다 작은 값으로 정한다</li><li>④ 허용응력 = 인장강도 ÷ 안전율</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 안전율은 1보다 작은 값으로 정한다</b></p>
+<p>📌 안전율은 항상 <b>1보다 크다</b> (허용응력이 강도보다 작아야 하므로)</p>
+<ul class="chk"><li>안전율을 크게 잡을수록 허용응력은 작아진다</li></ul></div></details>
+</div>
+<div class="card q" data-q="18" data-title="18번">
+<div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">절단하중이 6,000kg인 와이어로프로 화물의 하중을 직접 지지할 때(안전계수 5 이상) 걸 수 있는 최대 하중은?</p>
+<ul class="opts"><li>① 1,200kg</li><li>② 1,500kg</li><li>③ 2,000kg</li><li>④ 600kg</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 1,200kg</b></p>
+<p>📌 최대하중 = 절단하중 ÷ 안전계수</p>
+<ul class="chk"><li>6,000 ÷ 5 = 1,200kg. 근로자 탑승용(10)을 적용하면 600kg이 되는 함정</li></ul></div></details>
+</div></section>
+<section class="section" id="g3"><div class="section-head"><div class="duality"><span class="n">C</span>프레스·전단기 (19~30)</div><div class="section-line"></div></div>
+<div class="card q" data-q="19" data-title="19번">
+<div class="q-head"><span class="q-num">19번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">광전자식 방호장치를 단 프레스에서 손이 광선을 차단한 뒤 급정지기구가 작동하기까지의 시간과 슬라이드가 정지하기까지의 시간 합계(Tl + Ts)가 60ms일 때 최소 안전거리는?</p>
+<ul class="opts"><li>① 37.5mm</li><li>② 60mm</li><li>③ 96mm</li><li>④ 160mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 96mm</b></p>
+<p>📌 D(mm) = 1.6 × (Tl + Ts) [ms], 1.6 = 손의 속도 1.6m/s</p>
+<ul class="chk"><li>1.6 × 60 = 96mm. 나누면(37.5) 오답</li></ul></div></details>
+</div>
+<div class="card q" data-q="20" data-title="20번">
+<div class="q-head"><span class="q-num">20번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">광전자식 방호장치에서 급정지기구 작동까지의 시간(Tl)이 30ms, 급정지기구 작동 후 슬라이드 정지까지의 시간(Ts)이 70ms일 때 안전거리는?</p>
+<ul class="opts"><li>① 64mm</li><li>② 100mm</li><li>③ 112mm</li><li>④ 160mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 160mm</b></p>
+<p>📌 D = 1.6 × (Tl + Ts)</p>
+<ul class="chk"><li>1.6 × (30 + 70) = 1.6 × 100 = 160mm</li><li>Ts만 넣으면 112mm, Tl만 넣으면 48mm</li></ul></div></details>
+</div>
+<div class="card q" data-q="21" data-title="21번">
+<div class="q-head"><span class="q-num">21번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">광전자식 방호장치의 설치 위치를 위험한계에서 240mm로 할 때, 허용되는 Tl + Ts의 최대값은?</p>
+<ul class="opts"><li>① 150ms</li><li>② 240ms</li><li>③ 384ms</li><li>④ 96ms</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 150ms</b></p>
+<p>📌 D = 1.6 × (Tl + Ts) → Tl + Ts = D ÷ 1.6</p>
+<ul class="chk"><li>240 ÷ 1.6 = 150ms. 곱하면(384) 오답</li></ul></div></details>
+</div>
+<div class="card q" data-q="22" data-title="22번">
+<div class="q-head"><span class="q-num">22번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">클러치 맞물림 개소수가 4개, 매분 행정수(SPM)가 200인 양수기동식 프레스의 안전거리는?</p>
+<ul class="opts"><li>① 225mm</li><li>② 360mm</li><li>③ 400mm</li><li>④ 480mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 360mm</b></p>
+<p>📌 D = 1.6 × Tm, Tm = (1/2 + 1/클러치 개소수) × 60,000 ÷ SPM</p>
+<ul class="chk"><li>Tm = (0.5 + 0.25) × 60,000 ÷ 200 = 0.75 × 300 = 225ms</li><li>D = 1.6 × 225 = 360mm (225는 Tm 값이라 함정)</li></ul></div></details>
+</div>
+<div class="card q" data-q="23" data-title="23번">
+<div class="q-head"><span class="q-num">23번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">클러치 맞물림 개소수가 4개, 매분 행정수가 250인 양수기동식 프레스의 안전거리는?</p>
+<ul class="opts"><li>① 180mm</li><li>② 240mm</li><li>③ 288mm</li><li>④ 384mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 288mm</b></p>
+<p>📌 Tm = (1/2 + 1/4) × 60,000 ÷ 250</p>
+<ul class="chk"><li>Tm = 0.75 × 240 = 180ms → D = 1.6 × 180 = 288mm</li></ul></div></details>
+</div>
+<div class="card q" data-q="24" data-title="24번">
+<div class="q-head"><span class="q-num">24번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">프레스 방호장치 중 손쳐내기식 방호장치의 표시 기호는?</p>
+<ul class="opts"><li>① A</li><li>② B</li><li>③ C</li><li>④ D</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ D</b></p>
+<p>📌 광전자식 A(A-1, A-2) / 양수조작식 B(B-1, B-2) / 가드식 C / 손쳐내기식 D / 수인식 E</p>
+<ul class="chk"><li>순서대로 "광·양·가·손·수"로 외운다</li></ul></div></details>
+</div>
+<div class="card q" data-q="25" data-title="25번">
+<div class="q-head"><span class="q-num">25번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">양수조작식 방호장치에서 누름버튼 상호 간의 내측거리는 몇 mm 이상이어야 하는가?</p>
+<ul class="opts"><li>① 100mm</li><li>② 200mm</li><li>③ 300mm</li><li>④ 400mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 300mm</b></p>
+<p>📌 버튼 간격 300mm 이상 → 한 손으로 두 버튼을 동시에 누를 수 없게 함</p>
+<ul class="chk"><li>양손 동시 조작은 0.5초 이내, 한 손이라도 떼면 정지</li></ul></div></details>
+</div>
+<div class="card q" data-q="26" data-title="26번">
+<div class="q-head"><span class="q-num">26번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">손쳐내기식 방호장치를 사용할 수 있는 프레스의 조건으로 옳은 것은?</p>
+<ul class="opts"><li>① SPM 120 이하, 행정길이 40mm 이상</li><li>② SPM 100 이하, 행정길이 50mm 이상</li><li>③ SPM 150 이하, 행정길이 30mm 이상</li><li>④ SPM 200 이하, 행정길이 20mm 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① SPM 120 이하, 행정길이 40mm 이상</b></p>
+<p>📌 손쳐내기식 120·40 / 수인식 100·50</p>
+<ul class="chk"><li>방호판 폭은 금형 폭의 1/2 이상</li></ul></div></details>
+</div>
+<div class="card q" data-q="27" data-title="27번">
+<div class="q-head"><span class="q-num">27번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">수인식 방호장치를 사용할 수 있는 프레스의 조건으로 옳은 것은?</p>
+<ul class="opts"><li>① SPM 120 이하, 행정길이 40mm 이상</li><li>② SPM 150 이하, 행정길이 30mm 이상</li><li>③ SPM 200 이하, 행정길이 20mm 이상</li><li>④ SPM 100 이하, 행정길이 50mm 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ SPM 100 이하, 행정길이 50mm 이상</b></p>
+<p>📌 수인식은 손을 끌어당기므로 더 느리고(100) 행정이 길어야(50) 함</p>
+<ul class="chk"><li>①은 손쳐내기식 조건</li></ul></div></details>
+</div>
+<div class="card q" data-q="28" data-title="28번">
+<div class="q-head"><span class="q-num">28번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">프레스 금형에서 상형과 하형의 틈새 등에 손가락이 들어가지 않도록 하려면 틈새를 몇 mm 이하로 해야 하는가?</p>
+<ul class="opts"><li>① 5mm</li><li>② 8mm</li><li>③ 12mm</li><li>④ 15mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 8mm</b></p>
+<p>📌 금형 틈새 8mm 이하 → 손가락이 들어가지 않음</p>
+<ul class="chk"><li>12mm는 둥근톱 분할날과 톱날 간격(12mm 이내)과 헷갈리게 하는 함정</li></ul></div></details>
+</div>
+<div class="card q" data-q="29" data-title="29번">
+<div class="q-head"><span class="q-num">29번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">프레스 작업시작 전 점검사항에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 클러치 및 브레이크의 기능</li><li>② 1행정 1정지기구·급정지장치 및 비상정지장치의 기능</li><li>③ 금형 및 볼스터의 상태</li><li>④ 압력방출장치의 기능</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 압력방출장치의 기능</b></p>
+<p>📌 프레스 점검: 클러치·브레이크, 크랭크축·플라이휠·슬라이드 등 풀림, 1행정 1정지기구, 방호장치, 금형·볼스터, 전단기 칼날·테이블</p>
+<ul class="chk"><li>압력방출장치는 보일러·압력용기의 방호장치</li></ul></div></details>
+</div>
+<div class="card q" data-q="30" data-title="30번">
+<div class="q-head"><span class="q-num">30번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">양수조작식 방호장치에 대한 설명으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 누름버튼 사이 내측거리는 300mm 이상으로 한다</li><li>② 양손으로 동시에(0.5초 이내) 조작해야 기동한다</li><li>③ 한 손이라도 떼면 슬라이드가 정지한다</li><li>④ 한 손으로 두 버튼을 함께 누를 수 있도록 간격을 좁게 한다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 한 손으로 두 버튼을 함께 누를 수 있도록 간격을 좁게 한다</b></p>
+<p>📌 양수조작식의 목적은 두 손을 모두 버튼에 묶어 두는 것</p>
+<ul class="chk"><li>그래서 간격을 300mm 이상 띄운다</li></ul></div></details>
+</div></section>
+<section class="section" id="g4"><div class="section-head"><div class="duality"><span class="n">D</span>롤러기·연삭기 (31~44)</div><div class="section-line"></div></div>
+<div class="card q" data-q="31" data-title="31번">
+<div class="q-head"><span class="q-num">31번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">롤러기 급정지장치 중 복부조작식 조작부의 설치 위치는?</p>
+<ul class="opts"><li>① 밑면에서 0.8m 이상 1.1m 이내</li><li>② 밑면에서 1.8m 이내</li><li>③ 밑면에서 0.4m 이상 0.6m 이내</li><li>④ 밑면에서 1.1m 이상 1.4m 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 밑면에서 0.8m 이상 1.1m 이내</b></p>
+<p>📌 손조작식 1.8m 이내 / 복부조작식 0.8~1.1m / 무릎조작식 0.4~0.6m</p>
+<ul class="chk"><li>신체 부위 높이(손 &gt; 배 &gt; 무릎) 순으로 떠올리면 쉽다</li></ul></div></details>
+</div>
+<div class="card q" data-q="32" data-title="32번">
+<div class="q-head"><span class="q-num">32번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">롤러기 급정지장치 중 손조작식 조작부의 설치 위치는?</p>
+<ul class="opts"><li>① 밑면에서 0.6m 이내</li><li>② 밑면에서 1.1m 이내</li><li>③ 밑면에서 1.5m 이내</li><li>④ 밑면에서 1.8m 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 밑면에서 1.8m 이내</b></p>
+<p>📌 손조작식 1.8m 이내</p>
+<ul class="chk"><li>1.1m는 복부조작식의 상한</li></ul></div></details>
+</div>
+<div class="card q" data-q="33" data-title="33번">
+<div class="q-head"><span class="q-num">33번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">롤러기 급정지장치 중 무릎조작식 조작부의 설치 위치는?</p>
+<ul class="opts"><li>① 밑면에서 0.2m 이상 0.4m 이내</li><li>② 밑면에서 0.4m 이상 0.6m 이내</li><li>③ 밑면에서 0.8m 이상 1.1m 이내</li><li>④ 밑면에서 1.8m 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 밑면에서 0.4m 이상 0.6m 이내</b></p>
+<p>📌 무릎조작식 0.4~0.6m (0.6m 이내)</p>
+<ul class="chk"><li>③은 복부조작식, ④는 손조작식</li></ul></div></details>
+</div>
+<div class="card q" data-q="34" data-title="34번">
+<div class="q-head"><span class="q-num">34번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">앞면 롤러의 지름이 360mm, 회전수가 50rpm인 롤러기의 급정지거리는 얼마 이내여야 하는가?</p>
+<ul class="opts"><li>① 1,131mm</li><li>② 565mm</li><li>③ 452mm</li><li>④ 377mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 452mm</b></p>
+<p>📌 V = π × D × N ÷ 1,000 → 30m/min 이상이면 원주의 1/2.5, 미만이면 1/3</p>
+<ul class="chk"><li>V = π × 360 × 50 ÷ 1,000 ≈ 56.5m/min → 30 이상</li><li>원주 = π × 360 ≈ 1,131mm → 1,131 ÷ 2.5 ≈ 452mm (1/3로 하면 377mm 함정)</li></ul></div></details>
+</div>
+<div class="card q" data-q="35" data-title="35번">
+<div class="q-head"><span class="q-num">35번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">앞면 롤러의 지름이 300mm, 회전수가 30rpm인 롤러기의 급정지거리는 약 얼마 이내여야 하는가?</p>
+<ul class="opts"><li>① 314mm</li><li>② 377mm</li><li>③ 471mm</li><li>④ 942mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 314mm</b></p>
+<p>📌 표면속도 30m/min <b>미만</b>이면 원주의 1/3 이내</p>
+<ul class="chk"><li>V = π × 300 × 30 ÷ 1,000 ≈ 28.3m/min → 30 미만</li><li>원주 = π × 300 ≈ 942mm → 942 ÷ 3 ≈ 314mm (1/2.5면 377mm 함정)</li></ul></div></details>
+</div>
+<div class="card q" data-q="36" data-title="36번">
+<div class="q-head"><span class="q-num">36번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">앞면 롤러의 지름이 200mm, 회전수가 100rpm인 롤러기의 표면속도는 약 얼마인가?</p>
+<ul class="opts"><li>① 6.28m/min</li><li>② 20m/min</li><li>③ 62.8m/min</li><li>④ 628m/min</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 62.8m/min</b></p>
+<p>📌 V(m/min) = π × D(mm) × N(rpm) ÷ 1,000</p>
+<ul class="chk"><li>π × 200 × 100 ÷ 1,000 ≈ 62.8m/min</li></ul></div></details>
+</div>
+<div class="card q" data-q="37" data-title="37번">
+<div class="q-head"><span class="q-num">37번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">롤러기의 위험점에서 가드까지의 거리(X)가 100mm일 때 가드 개구부 간격(Y)의 최대값은?</p>
+<ul class="opts"><li>① 6mm</li><li>② 15mm</li><li>③ 30mm</li><li>④ 21mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 21mm</b></p>
+<p>📌 X &lt; 160mm이면 Y = 6 + 0.15X, X ≥ 160mm이면 Y = 30mm</p>
+<ul class="chk"><li>6 + 0.15 × 100 = 6 + 15 = 21mm</li></ul></div></details>
+</div>
+<div class="card q" data-q="38" data-title="38번">
+<div class="q-head"><span class="q-num">38번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">일반적인 탁상용 연삭기 덮개의 노출각도는?</p>
+<ul class="opts"><li>① 60° 이내</li><li>② 90° 이내</li><li>③ 125° 이내</li><li>④ 180° 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 90° 이내</b></p>
+<p>📌 탁상용 일반 90° 이내 (수평면 위쪽 노출 50° 이내)</p>
+<ul class="chk"><li>숫돌 상부 사용 60°, 그 밖의 탁상용 125°</li></ul></div></details>
+</div>
+<div class="card q" data-q="39" data-title="39번">
+<div class="q-head"><span class="q-num">39번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">원통연삭기, 휴대용 연삭기, 스윙연삭기, 스라브연삭기 덮개의 노출각도는?</p>
+<ul class="opts"><li>① 90° 이내</li><li>② 125° 이내</li><li>③ 150° 이내</li><li>④ 180° 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 180° 이내</b></p>
+<p>📌 원통·휴대용·스윙·스라브 = 180° 이내</p>
+<ul class="chk"><li>평면·절단 연삭기는 150° 이내</li></ul></div></details>
+</div>
+<div class="card q" data-q="40" data-title="40번">
+<div class="q-head"><span class="q-num">40번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">평면연삭기와 절단연삭기 덮개의 노출각도는?</p>
+<ul class="opts"><li>① 60° 이내</li><li>② 90° 이내</li><li>③ 150° 이내</li><li>④ 180° 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 150° 이내</b></p>
+<p>📌 평면·절단 = 150° 이내 (수평면 아래쪽 15° 이상은 덮음)</p>
+<ul class="chk"><li>180°는 원통·휴대용·스윙·스라브</li></ul></div></details>
+</div>
+<div class="card q" data-q="41" data-title="41번">
+<div class="q-head"><span class="q-num">41번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">탁상용 연삭기에서 숫돌의 상부를 사용하는 것을 목적으로 하는 경우 덮개의 노출각도는?</p>
+<ul class="opts"><li>① 60° 이내</li><li>② 90° 이내</li><li>③ 125° 이내</li><li>④ 150° 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 60° 이내</b></p>
+<p>📌 숫돌 상부 사용 탁상용 = 60° 이내 (탁상용 중 가장 좁음)</p>
+<ul class="chk"><li>일반 탁상용 90°, 그 밖의 탁상용 125°</li></ul></div></details>
+</div>
+<div class="card q" data-q="42" data-title="42번">
+<div class="q-head"><span class="q-num">42번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">연삭기의 사용 기준으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 직경 5cm 이상인 연삭숫돌에는 덮개를 설치한다</li><li>② 작업 시작 전 1분 이상, 숫돌 교체 후 3분 이상 시운전한다</li><li>③ 측면용 숫돌이 아니면 측면을 사용하지 않는다</li><li>④ 워크레스트와 숫돌의 간격은 10mm 이하로 한다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 워크레스트와 숫돌의 간격은 10mm 이하로 한다</b></p>
+<p>📌 워크레스트–숫돌 간격 <b>3mm 이하</b></p>
+<ul class="chk"><li>시운전 "작업 전 1분, 교체 후 3분"도 자주 묻는다</li></ul></div></details>
+</div>
+<div class="card q" data-q="43" data-title="43번">
+<div class="q-head"><span class="q-num">43번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">연삭숫돌을 고정하는 플랜지의 직경은 숫돌 직경의 얼마 이상이어야 하는가?</p>
+<ul class="opts"><li>① 1/2</li><li>② 1/3</li><li>③ 1/4</li><li>④ 1/5</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 1/3</b></p>
+<p>📌 플랜지 직경 ≥ 숫돌 직경 × 1/3</p>
+<ul class="chk"><li>플랜지 불량은 숫돌 파괴 원인 중 하나</li></ul></div></details>
+</div>
+<div class="card q" data-q="44" data-title="44번">
+<div class="q-head"><span class="q-num">44번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">직경 200mm인 연삭숫돌이 3,000rpm으로 회전할 때 원주속도는 약 얼마인가?</p>
+<ul class="opts"><li>① 1,885m/min</li><li>② 600m/min</li><li>③ 3,770m/min</li><li>④ 18,850m/min</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 1,885m/min</b></p>
+<p>📌 V(m/min) = π × D(mm) × N(rpm) ÷ 1,000</p>
+<ul class="chk"><li>π × 200 × 3,000 ÷ 1,000 ≈ 1,885m/min (약 31.4m/s)</li><li>최고사용회전속도를 넘기면 숫돌 파괴 위험</li></ul></div></details>
+</div></section>
+<section class="section" id="g5"><div class="section-head"><div class="duality"><span class="n">E</span>공작기계·목재가공용 둥근톱 (45~54)</div><div class="section-line"></div></div>
+<div class="card q" data-q="45" data-title="45번">
+<div class="q-head"><span class="q-num">45번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">선반에서 가늘고 긴 공작물을 지지하기 위해 방진구를 사용하는 기준은 공작물 길이가 직경의 몇 배 이상일 때인가?</p>
+<ul class="opts"><li>① 5배</li><li>② 8배</li><li>③ 12배</li><li>④ 20배</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 12배</b></p>
+<p>📌 방진구: 길이가 직경의 12배 이상인 가늘고 긴 공작물 지지</p>
+<ul class="chk"><li>공작물이 휘거나 떨리는 것을 막는다</li></ul></div></details>
+</div>
+<div class="card q" data-q="46" data-title="46번">
+<div class="q-head"><span class="q-num">46번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">선반 작업에서 길게 이어지는 칩을 짧게 끊어 주는 장치는?</p>
+<ul class="opts"><li>① 방진구</li><li>② 칩 브레이커</li><li>③ 척 커버</li><li>④ 실드</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 칩 브레이커</b></p>
+<p>📌 칩 브레이커 = 칩을 짧게 끊음 / 방진구 = 긴 공작물 지지</p>
+<ul class="chk"><li>척 커버·실드·브레이크도 선반 방호장치</li></ul></div></details>
+</div>
+<div class="card q" data-q="47" data-title="47번">
+<div class="q-head"><span class="q-num">47번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">공작기계 작업의 안전수칙으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 칩은 장갑을 낀 손으로 신속히 제거한다</li><li>② 회전 중인 기계를 다룰 때는 장갑을 끼지 않는다</li><li>③ 밀링 커터가 회전하는 중에는 측정이나 청소를 하지 않는다</li><li>④ 드릴 작업 시 작은 공작물은 바이스나 지그로 고정한다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 칩은 장갑을 낀 손으로 신속히 제거한다</b></p>
+<p>📌 칩은 손이 아닌 <b>브러시·갈고리</b>로 제거, 회전 중 <b>장갑 착용 금지</b></p>
+<ul class="chk"><li>장갑이 회전부에 말려 들어가는 사고가 많다</li></ul></div></details>
+</div>
+<div class="card q" data-q="48" data-title="48번">
+<div class="q-head"><span class="q-num">48번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">드릴 작업 시 안전수칙으로 옳은 것은?</p>
+<ul class="opts"><li>① 작은 공작물은 손으로 단단히 잡고 뚫는다</li><li>② 드릴을 끼운 뒤 척 핸들은 꽂아 둔 채로 작업한다</li><li>③ 손을 보호하기 위해 면장갑을 착용한다</li><li>④ 구멍이 거의 뚫릴 무렵에는 이송 압력을 줄인다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 구멍이 거의 뚫릴 무렵에는 이송 압력을 줄인다</b></p>
+<p>📌 관통 직전에 공작물이 딸려 돌기 쉬우므로 이송 압력을 줄임</p>
+<ul class="chk"><li>작은 공작물은 바이스·지그로 고정, 척 핸들은 빼 두기, 장갑 금지</li></ul></div></details>
+</div>
+<div class="card q" data-q="49" data-title="49번">
+<div class="q-head"><span class="q-num">49번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">셰이퍼 작업의 안전수칙으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 바이트는 가능한 한 짧게 물린다</li><li>② 방책과 칩받이를 설치한다</li><li>③ 가공 상태는 램 행정 방향의 정면에서 관찰한다</li><li>④ 행정 길이를 조정한 뒤에는 고정 상태를 확인한다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 가공 상태는 램 행정 방향의 정면에서 관찰한다</b></p>
+<p>📌 셰이퍼는 램이 앞뒤로 움직이므로 <b>행정 방향 정면에 서지 않는다</b></p>
+<ul class="chk"><li>칩과 바이트가 정면으로 튈 수 있다</li></ul></div></details>
+</div>
+<div class="card q" data-q="50" data-title="50번">
+<div class="q-head"><span class="q-num">50번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">밀링 작업에서 커터의 회전 방향과 공작물의 이송 방향이 같아 백래시 제거장치가 필요한 절삭 방법은?</p>
+<ul class="opts"><li>① 상향절삭</li><li>② 하향절삭</li><li>③ 정면절삭</li><li>④ 측면절삭</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 하향절삭</b></p>
+<p>📌 상향절삭 = 날 방향과 이송 반대 / 하향절삭 = 같은 방향(백래시 제거 필요)</p>
+<ul class="chk"><li>가공 중 얼굴을 커터에 가까이 대지 않는다</li></ul></div></details>
+</div>
+<div class="card q" data-q="51" data-title="51번">
+<div class="q-head"><span class="q-num">51번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">목재가공용 둥근톱의 반발예방장치에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 분할날</li><li>② 반발방지기구(finger)</li><li>③ 반발방지롤</li><li>④ 톱날접촉예방장치</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 톱날접촉예방장치</b></p>
+<p>📌 반발예방장치: 분할날, 반발방지기구, 반발방지롤</p>
+<ul class="chk"><li>톱날접촉예방장치(가동식·고정식 덮개)는 손이 톱날에 닿는 것을 막는 별도 장치</li></ul></div></details>
+</div>
+<div class="card q" data-q="52" data-title="52번">
+<div class="q-head"><span class="q-num">52번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">둥근톱의 톱 두께가 2mm, 치진폭이 3mm일 때 분할날의 두께(t)로 적합한 범위는?</p>
+<ul class="opts"><li>① 1.8mm ≤ t &lt; 2.0mm</li><li>② 2.0mm ≤ t &lt; 2.2mm</li><li>③ 2.2mm ≤ t &lt; 3.0mm</li><li>④ 3.0mm ≤ t &lt; 3.3mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 2.2mm ≤ t &lt; 3.0mm</b></p>
+<p>📌 1.1 × 톱 두께 ≤ 분할날 두께 &lt; 치진폭</p>
+<ul class="chk"><li>1.1 × 2 = 2.2mm 이상, 치진폭 3mm 미만</li></ul></div></details>
+</div>
+<div class="card q" data-q="53" data-title="53번">
+<div class="q-head"><span class="q-num">53번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">둥근톱 분할날의 설치 기준으로 옳은 것은?</p>
+<ul class="opts"><li>① 톱 후면날의 2/3 이상을 덮고, 톱날과의 간격은 12mm 이내</li><li>② 톱 후면날의 1/2 이상을 덮고, 톱날과의 간격은 20mm 이내</li><li>③ 톱 후면날의 1/3 이상을 덮고, 톱날과의 간격은 3mm 이내</li><li>④ 톱 후면날 전체를 덮고, 톱날에 밀착</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 톱 후면날의 2/3 이상을 덮고, 톱날과의 간격은 12mm 이내</b></p>
+<p>📌 분할날 길이: 표준 테이블 위 톱 후면날의 2/3 이상 / 간격 12mm 이내</p>
+<ul class="chk"><li>두께는 톱 두께의 1.1배 이상, 치진폭 미만</li></ul></div></details>
+</div>
+<div class="card q" data-q="54" data-title="54번">
+<div class="q-head"><span class="q-num">54번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">목재가공용 둥근톱 작업에서 가공재가 튀어 오르는 반발의 원인이 <b>아닌</b> 것은?</p>
+<ul class="opts"><li>① 목재의 옹이나 결</li><li>② 톱날의 무딤</li><li>③ 이송 속도 과다</li><li>④ 분할날의 적정 설치</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 분할날의 적정 설치</b></p>
+<p>📌 반발 원인: 옹이·결, 톱날 무딤, 이송 과다, <b>분할날 미설치</b></p>
+<ul class="chk"><li>분할날은 반발을 막는 장치</li></ul></div></details>
+</div></section>
+<section class="section" id="g6"><div class="section-head"><div class="duality"><span class="n">F</span>가스용접·보일러·압력용기 (55~68)</div><div class="section-line"></div></div>
+<div class="card q" data-q="55" data-title="55번">
+<div class="q-head"><span class="q-num">55번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">아세틸렌 용접장치를 사용하여 금속을 용접하는 경우, 게이지압력이 얼마를 초과하는 아세틸렌을 발생시켜 사용하면 안 되는가?</p>
+<ul class="opts"><li>① 98kPa</li><li>② 127kPa</li><li>③ 147kPa</li><li>④ 196kPa</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 127kPa</b></p>
+<p>📌 아세틸렌 게이지압력 127kPa(약 1.3kgf/cm²) 초과 사용 금지</p>
+<ul class="chk"><li>고압이 되면 분해폭발 위험이 커진다</li></ul></div></details>
+</div>
+<div class="card q" data-q="56" data-title="56번">
+<div class="q-head"><span class="q-num">56번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">아세틸렌 용접장치에서 아세틸라이드 생성을 막기 위해 사용을 금지하는 재료는?</p>
+<ul class="opts"><li>① 구리 50% 이상 합금</li><li>② 구리 60% 이상 합금</li><li>③ 구리 70% 이상 합금</li><li>④ 구리 80% 이상 합금</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 구리 70% 이상 합금</b></p>
+<p>📌 구리 또는 구리 70% 이상 합금 사용 금지 → 폭발성 아세틸라이드 생성 방지</p>
+<ul class="chk"><li>아세틸렌은 구리·은·수은과 화합폭발</li></ul></div></details>
+</div>
+<div class="card q" data-q="57" data-title="57번">
+<div class="q-head"><span class="q-num">57번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">아세틸렌 용접장치의 발생기실은 화기를 사용하는 설비로부터 몇 m 이상 떨어진 곳에 설치해야 하는가?</p>
+<ul class="opts"><li>① 3m</li><li>② 1.5m</li><li>③ 5m</li><li>④ 10m</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 3m</b></p>
+<p>📌 발생기실: 화기 설비에서 3m 이상, 벽과 발생기 간격 1.5m 이상</p>
+<ul class="chk"><li>가스집합 용접장치는 5m 이상</li></ul></div></details>
+</div>
+<div class="card q" data-q="58" data-title="58번">
+<div class="q-head"><span class="q-num">58번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">가스집합 용접장치는 화기를 사용하는 설비로부터 몇 m 이상 떨어진 장소에 설치해야 하는가?</p>
+<ul class="opts"><li>① 1.5m</li><li>② 3m</li><li>③ 10m</li><li>④ 5m</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 5m</b></p>
+<p>📌 가스집합 용접장치 5m 이상 / 아세틸렌 발생기실 3m 이상</p>
+<ul class="chk"><li>가스장치실에 설치하고 주관·분기관에 안전기 설치</li></ul></div></details>
+</div>
+<div class="card q" data-q="59" data-title="59번">
+<div class="q-head"><span class="q-num">59번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">용해 아세틸렌 용기에서 아세틸렌을 녹여 충전하는 데 쓰는 용제는?</p>
+<ul class="opts"><li>① 물</li><li>② 아세톤</li><li>③ 벤젠</li><li>④ 메탄올</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 아세톤</b></p>
+<p>📌 용해 아세틸렌 = 다공질 물질 + 아세톤에 녹여 충전</p>
+<ul class="chk"><li>용기 온도는 40℃ 이하 유지</li></ul></div></details>
+</div>
+<div class="card q" data-q="60" data-title="60번">
+<div class="q-head"><span class="q-num">60번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">가스 용기의 도색 구분에서 아세틸렌 용기의 색은?</p>
+<ul class="opts"><li>① 녹색</li><li>② 주황색</li><li>③ 회색</li><li>④ 황색</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 황색</b></p>
+<p>📌 산소 녹색 / 아세틸렌 황색 / 수소 주황색 / LPG·질소 등 회색</p>
+<ul class="chk"><li>산소와 아세틸렌을 바꿔 내는 함정이 많다</li></ul></div></details>
+</div>
+<div class="card q" data-q="61" data-title="61번">
+<div class="q-head"><span class="q-num">61번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">아세틸렌 용접장치에 관한 기준으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 발생기와 벽의 간격은 0.5m 이상으로 한다</li><li>② 취관마다 안전기를 설치한다</li><li>③ 용기의 온도는 40℃ 이하로 유지한다</li><li>④ 발생기실은 건물의 최상층에 설치한다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 발생기와 벽의 간격은 0.5m 이상으로 한다</b></p>
+<p>📌 발생기와 벽 간격 <b>1.5m 이상</b></p>
+<ul class="chk"><li>안전기는 취관마다 설치(주관·분기관에 설치하면 예외)</li></ul></div></details>
+</div>
+<div class="card q" data-q="62" data-title="62번">
+<div class="q-head"><span class="q-num">62번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">최고사용압력이 1MPa인 보일러에 압력방출장치를 2개 설치할 때, 1개는 1MPa 이하에서 작동하게 하고 나머지 1개는 몇 MPa 이하에서 작동하게 해야 하는가?</p>
+<ul class="opts"><li>① 1.0MPa</li><li>② 1.05MPa</li><li>③ 1.1MPa</li><li>④ 1.5MPa</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 1.05MPa</b></p>
+<p>📌 2개 이상이면 1개는 최고사용압력 이하, 나머지는 최고사용압력의 1.05배 이하</p>
+<ul class="chk"><li>1 × 1.05 = 1.05MPa</li></ul></div></details>
+</div>
+<div class="card q" data-q="63" data-title="63번">
+<div class="q-head"><span class="q-num">63번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">보일러의 압력방출장치는 원칙적으로 얼마마다 토출압력을 시험한 후 납으로 봉인해야 하는가?</p>
+<ul class="opts"><li>① 매년 1회 이상</li><li>② 6개월마다 1회 이상</li><li>③ 2년마다 1회 이상</li><li>④ 4년마다 1회 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 매년 1회 이상</b></p>
+<p>📌 압력방출장치: 매년 1회 이상 토출압력 시험 후 봉인</p>
+<ul class="chk"><li>공정안전보고서 이행 수준이 우수한 사업장은 4년마다 1회 이상(예외 규정이라 함정)</li></ul></div></details>
+</div>
+<div class="card q" data-q="64" data-title="64번">
+<div class="q-head"><span class="q-num">64번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">보일러 관수가 급격히 끓어 물방울이 증기와 함께 튀어 오르는 현상은?</p>
+<ul class="opts"><li>① 포밍</li><li>② 캐리오버</li><li>③ 프라이밍</li><li>④ 워터해머</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 프라이밍</b></p>
+<p>📌 프라이밍 = 급격한 비등으로 물방울이 튐 / 포밍 = 불순물로 거품</p>
+<ul class="chk"><li>캐리오버는 증기에 물방울·불순물이 섞여 나가는 현상</li></ul></div></details>
+</div>
+<div class="card q" data-q="65" data-title="65번">
+<div class="q-head"><span class="q-num">65번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">보일러수에 유지분 등 불순물이 많아 수면에 거품이 생기는 현상은?</p>
+<ul class="opts"><li>① 포밍</li><li>② 프라이밍</li><li>③ 수격작용</li><li>④ 캐리오버</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 포밍</b></p>
+<p>📌 포밍(Foaming) = 거품(foam)으로 기억</p>
+<ul class="chk"><li>수격작용(워터해머)은 응축수가 관 안에서 충격을 일으키는 현상</li></ul></div></details>
+</div>
+<div class="card q" data-q="66" data-title="66번">
+<div class="q-head"><span class="q-num">66번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">보일러의 방호장치에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 압력방출장치</li><li>② 압력제한스위치</li><li>③ 고저수위 조절장치</li><li>④ 권과방지장치</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 권과방지장치</b></p>
+<p>📌 보일러: 압력방출장치, 압력제한스위치, 고저수위 조절장치, 화염검출기</p>
+<ul class="chk"><li>권과방지장치는 양중기 방호장치</li></ul></div></details>
+</div>
+<div class="card q" data-q="67" data-title="67번">
+<div class="q-head"><span class="q-num">67번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">압력용기 등에 파열판을 설치해야 하는 경우에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 반응폭주 등으로 압력이 급격히 상승할 우려가 있는 경우</li><li>② 압력이 서서히 오르고 깨끗한 공기만 취급하는 경우</li><li>③ 독성물질이 누출되면 위험한 경우</li><li>④ 운전 중 이상물질이 퇴적되어 안전밸브가 작동하지 않을 우려가 있는 경우</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 압력이 서서히 오르고 깨끗한 공기만 취급하는 경우</b></p>
+<p>📌 파열판 대상: 급격한 압력 상승, 독성물질 누출 위험, 이상물질 퇴적으로 안전밸브 작동 불량 우려</p>
+<ul class="chk"><li>일반적인 경우에는 안전밸브로 충분</li></ul></div></details>
+</div>
+<div class="card q" data-q="68" data-title="68번">
+<div class="q-head"><span class="q-num">68번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">안전밸브와 파열판을 직렬로 설치할 때 그 사이에 설치해야 하는 것은?</p>
+<ul class="opts"><li>① 역화방지기</li><li>② 압력지시계 또는 자동경보장치</li><li>③ 체크밸브</li><li>④ 화염방지기</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 압력지시계 또는 자동경보장치</b></p>
+<p>📌 파열판이 새거나 터졌는지 알 수 있도록 사이에 압력지시계·경보장치</p>
+<ul class="chk"><li>압력용기 표시: 최고사용압력, 제조연월일, 제조회사명</li></ul></div></details>
+</div></section>
+<section class="section" id="g7"><div class="section-head"><div class="duality"><span class="n">G</span>양중기 (69~82)</div><div class="section-line"></div></div>
+<div class="card q" data-q="69" data-title="69번">
+<div class="q-head"><span class="q-num">69번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">산업안전보건법령상 양중기에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 크레인(호이스트 포함)</li><li>② 곤돌라</li><li>③ 지게차</li><li>④ 승강기</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 지게차</b></p>
+<p>📌 양중기: 크레인(호이스트 포함), 이동식 크레인, 리프트, 곤돌라, 승강기</p>
+<ul class="chk"><li>리프트 중 이삿짐운반용은 적재하중 0.1톤 이상만 해당</li></ul></div></details>
+</div>
+<div class="card q" data-q="70" data-title="70번">
+<div class="q-head"><span class="q-num">70번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">근로자가 탑승하는 운반구를 지지하는 와이어로프의 안전계수는 얼마 이상이어야 하는가?</p>
+<ul class="opts"><li>① 3</li><li>② 4</li><li>③ 5</li><li>④ 10</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 10</b></p>
+<p>📌 사람 탑승 10 / 화물 직접 지지 5 / 훅·샤클·클램프·리프팅빔 3 / 그 밖 4</p>
+<ul class="chk"><li>사람이 탈수록 숫자가 커진다</li></ul></div></details>
+</div>
+<div class="card q" data-q="71" data-title="71번">
+<div class="q-head"><span class="q-num">71번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">화물의 하중을 직접 지지하는 달기 와이어로프의 안전계수는 얼마 이상이어야 하는가?</p>
+<ul class="opts"><li>① 3</li><li>② 5</li><li>③ 4</li><li>④ 10</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 5</b></p>
+<p>📌 화물 하중 직접 지지 와이어로프·달기체인 = 5 이상</p>
+<ul class="chk"><li>10은 근로자 탑승 운반구</li></ul></div></details>
+</div>
+<div class="card q" data-q="72" data-title="72번">
+<div class="q-head"><span class="q-num">72번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">양중기의 훅, 샤클, 클램프, 리프팅빔의 안전계수는 얼마 이상이어야 하는가?</p>
+<ul class="opts"><li>① 3</li><li>② 4</li><li>③ 5</li><li>④ 10</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 3</b></p>
+<p>📌 훅·샤클·클램프·리프팅빔 = 3 이상</p>
+<ul class="chk"><li>그 밖의 경우는 4 이상</li></ul></div></details>
+</div>
+<div class="card q" data-q="73" data-title="73번">
+<div class="q-head"><span class="q-num">73번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">양중기에 사용하는 와이어로프의 사용 금지 기준에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 이음매가 있는 것</li><li>② 한 꼬임에서 소선 수의 10% 이상이 절단된 것</li><li>③ 지름 감소가 공칭지름의 5%인 것</li><li>④ 꼬이거나 심하게 변형·부식된 것</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 지름 감소가 공칭지름의 5%인 것</b></p>
+<p>📌 지름 감소가 공칭지름의 <b>7% 초과</b>일 때 사용 금지</p>
+<ul class="chk"><li>5% 감소는 아직 기준 이내</li></ul></div></details>
+</div>
+<div class="card q" data-q="74" data-title="74번">
+<div class="q-head"><span class="q-num">74번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">공칭지름 20mm인 와이어로프의 지름이 몇 mm 미만으로 줄어들면 사용할 수 없는가?</p>
+<ul class="opts"><li>① 18.0mm</li><li>② 18.6mm</li><li>③ 19.0mm</li><li>④ 19.4mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 18.6mm</b></p>
+<p>📌 지름 감소가 공칭지름의 7% 초과 → 사용 금지</p>
+<ul class="chk"><li>20 × 0.07 = 1.4mm → 20 − 1.4 = 18.6mm 미만이면 금지</li></ul></div></details>
+</div>
+<div class="card q" data-q="75" data-title="75번">
+<div class="q-head"><span class="q-num">75번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">제조 당시 길이가 1,000mm인 달기체인이 몇 mm를 초과하여 늘어나면 사용할 수 없는가?</p>
+<ul class="opts"><li>① 1,100mm</li><li>② 1,070mm</li><li>③ 1,050mm</li><li>④ 1,030mm</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 1,050mm</b></p>
+<p>📌 달기체인: 길이 <b>5% 초과</b> 늘어남, 링 단면 지름 <b>10% 초과</b> 감소 시 금지</p>
+<ul class="chk"><li>1,000 × 1.05 = 1,050mm</li></ul></div></details>
+</div>
+<div class="card q" data-q="76" data-title="76번">
+<div class="q-head"><span class="q-num">76번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">크레인 권과방지장치는 훅 등 달기구의 윗면과 드럼·도르래 등의 아랫면 간격이 몇 m 이상이 되도록 조정해야 하는가? (직동식 제외)</p>
+<ul class="opts"><li>① 0.25m</li><li>② 0.05m</li><li>③ 0.1m</li><li>④ 0.5m</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 0.25m</b></p>
+<p>📌 권과방지장치 간격 0.25m 이상 (직동식은 0.05m 이상)</p>
+<ul class="chk"><li>0.05m는 직동식 기준이라 함정</li></ul></div></details>
+</div>
+<div class="card q" data-q="77" data-title="77번">
+<div class="q-head"><span class="q-num">77번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">타워크레인의 운전 작업을 중지해야 하는 순간풍속 기준은?</p>
+<ul class="opts"><li>① 10m/s 초과</li><li>② 15m/s 초과</li><li>③ 20m/s 초과</li><li>④ 30m/s 초과</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 15m/s 초과</b></p>
+<p>📌 순간풍속 10 초과 = 설치·수리·점검·해체 중지 / 15 초과 = 운전 중지</p>
+<ul class="chk"><li>20m/s는 기준에 없는 오답 함정</li></ul></div></details>
+</div>
+<div class="card q" data-q="78" data-title="78번">
+<div class="q-head"><span class="q-num">78번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">타워크레인의 설치·수리·점검 또는 해체 작업을 중지해야 하는 순간풍속 기준은?</p>
+<ul class="opts"><li>① 10m/s 초과</li><li>② 15m/s 초과</li><li>③ 20m/s 초과</li><li>④ 35m/s 초과</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 10m/s 초과</b></p>
+<p>📌 설치·해체 등 작업 중지 10 초과 &lt; 운전 중지 15 초과</p>
+<ul class="chk"><li>사람이 높은 곳에서 조립하는 작업이 더 위험하므로 기준이 낮다</li></ul></div></details>
+</div>
+<div class="card q" data-q="79" data-title="79번">
+<div class="q-head"><span class="q-num">79번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">순간풍속이 얼마를 초과하는 바람이 불어올 우려가 있을 때 옥외에 설치된 승강기에 붕괴방지 조치를 해야 하는가?</p>
+<ul class="opts"><li>① 15m/s</li><li>② 20m/s</li><li>③ 30m/s</li><li>④ 35m/s</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 35m/s</b></p>
+<p>📌 30m/s 초과 = 옥외 주행 크레인 이탈방지 / 35m/s 초과 = 옥외 승강기 붕괴방지</p>
+<ul class="chk"><li>30m/s 초과 바람 뒤에는 크레인 각 부위 점검</li></ul></div></details>
+</div>
+<div class="card q" data-q="80" data-title="80번">
+<div class="q-head"><span class="q-num">80번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">1,000kg의 화물을 두 줄 걸이로 들어 올릴 때 두 줄 사이의 각도가 60°이면 한 줄에 걸리는 장력은 약 얼마인가?</p>
+<ul class="opts"><li>① 500kg</li><li>② 707kg</li><li>③ 577kg</li><li>④ 1,000kg</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 577kg</b></p>
+<p>📌 T = (W ÷ 2) ÷ cos(θ/2)</p>
+<ul class="chk"><li>500 ÷ cos30° = 500 ÷ 0.866 ≈ 577kg</li></ul></div></details>
+</div>
+<div class="card q" data-q="81" data-title="81번">
+<div class="q-head"><span class="q-num">81번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">2,000kg의 화물을 두 줄 걸이로 들어 올릴 때 두 줄 사이의 각도가 90°이면 한 줄에 걸리는 장력은 약 얼마인가?</p>
+<ul class="opts"><li>① 1,000kg</li><li>② 1,155kg</li><li>③ 2,000kg</li><li>④ 1,414kg</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 1,414kg</b></p>
+<p>📌 T = (W ÷ 2) ÷ cos(θ/2)</p>
+<ul class="chk"><li>1,000 ÷ cos45° = 1,000 ÷ 0.707 ≈ 1,414kg</li><li>각도가 커질수록 장력 증가 → 60° 이내 권장</li></ul></div></details>
+</div>
+<div class="card q" data-q="82" data-title="82번">
+<div class="q-head"><span class="q-num">82번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">크레인의 방호장치에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 역주행방지장치</li><li>② 과부하방지장치</li><li>③ 권과방지장치</li><li>④ 비상정지장치</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 역주행방지장치</b></p>
+<p>📌 양중기 방호장치: 과부하방지장치, 권과방지장치, 비상정지장치, 제동장치</p>
+<ul class="chk"><li>역주행방지장치는 컨베이어 방호장치</li></ul></div></details>
+</div></section>
+<section class="section" id="g8"><div class="section-head"><div class="duality"><span class="n">H</span>지게차·컨베이어·산업용 로봇 (83~92)</div><div class="section-line"></div></div>
+<div class="card q" data-q="83" data-title="83번">
+<div class="q-head"><span class="q-num">83번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">최대하중 5톤 미만 지게차의 하역작업 시 전후 안정도 기준은?</p>
+<ul class="opts"><li>① 4% 이내</li><li>② 6% 이내</li><li>③ 18% 이내</li><li>④ 40% 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 4% 이내</b></p>
+<p>📌 하역 전후 4%(5톤 이상 3.5%) / 주행 전후 18% / 하역 좌우 6% / 주행 좌우 15 + 1.1V</p>
+<ul class="chk"><li>하역작업이 주행보다 기준이 엄격하다</li></ul></div></details>
+</div>
+<div class="card q" data-q="84" data-title="84번">
+<div class="q-head"><span class="q-num">84번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">최고속도가 10km/h인 지게차의 주행 시 좌우 안정도 기준은?</p>
+<ul class="opts"><li>① 18% 이내</li><li>② 25% 이내</li><li>③ 26% 이내</li><li>④ 40% 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 26% 이내</b></p>
+<p>📌 주행 시 좌우 안정도 = (15 + 1.1V)% 이내, 최대 40%</p>
+<ul class="chk"><li>15 + 1.1 × 10 = 15 + 11 = 26%</li></ul></div></details>
+</div>
+<div class="card q" data-q="85" data-title="85번">
+<div class="q-head"><span class="q-num">85번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">지게차의 주행 시 전후 안정도 기준은?</p>
+<ul class="opts"><li>① 4% 이내</li><li>② 6% 이내</li><li>③ 15% 이내</li><li>④ 18% 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 18% 이내</b></p>
+<p>📌 주행 시 전후 18% 이내</p>
+<ul class="chk"><li>4%는 하역 시 전후, 6%는 하역 시 좌우</li></ul></div></details>
+</div>
+<div class="card q" data-q="86" data-title="86번">
+<div class="q-head"><span class="q-num">86번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">지게차의 하역작업 시 좌우 안정도 기준은?</p>
+<ul class="opts"><li>① 4% 이내</li><li>② 6% 이내</li><li>③ 18% 이내</li><li>④ 26% 이내</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 6% 이내</b></p>
+<p>📌 하역 시: 전후 4%, 좌우 6%</p>
+<ul class="chk"><li>주행 시: 전후 18%, 좌우 (15 + 1.1V)%</li></ul></div></details>
+</div>
+<div class="card q" data-q="87" data-title="87번">
+<div class="q-head"><span class="q-num">87번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">자체 중량 3,000kg인 지게차에서 앞바퀴부터 지게차 무게중심까지의 거리가 1.0m, 앞바퀴부터 화물 무게중심까지의 거리가 1.5m일 때 안정을 유지할 수 있는 화물의 최대 중량은?</p>
+<ul class="opts"><li>① 1,500kg</li><li>② 3,000kg</li><li>③ 2,000kg</li><li>④ 4,500kg</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 2,000kg</b></p>
+<p>📌 안정 조건 W × a ≤ G × b</p>
+<ul class="chk"><li>W × 1.5 ≤ 3,000 × 1.0 → W ≤ 2,000kg</li></ul></div></details>
+</div>
+<div class="card q" data-q="88" data-title="88번">
+<div class="q-head"><span class="q-num">88번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">지게차 헤드가드의 기준으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 최대하중의 2배(4톤을 넘으면 4톤) 등분포정하중에 견딜 것</li><li>② 입식 운전자의 경우 운전자 머리까지 높이가 1.5m 이상일 것</li><li>③ 상부틀 각 개구의 폭 또는 길이가 16cm 미만일 것</li><li>④ 좌식 운전자의 경우 운전자 머리까지 높이가 0.903m 이상일 것</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 입식 운전자의 경우 운전자 머리까지 높이가 1.5m 이상일 것</b></p>
+<p>📌 헤드가드 높이: 좌식 0.903m 이상, 입식 <b>1.88m 이상</b></p>
+<ul class="chk"><li>개구 16cm 미만, 강도는 최대하중 2배(최대 4톤)</li></ul></div></details>
+</div>
+<div class="card q" data-q="89" data-title="89번">
+<div class="q-head"><span class="q-num">89번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">지게차에서 포크에 실은 화물이 마스트 뒤쪽(운전석 쪽)으로 떨어지는 것을 막기 위한 장치는?</p>
+<ul class="opts"><li>① 헤드가드</li><li>② 리프트 체인</li><li>③ 틸트 실린더</li><li>④ 백레스트</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 백레스트</b></p>
+<p>📌 백레스트 = 화물 후방 낙하 방지 / 헤드가드 = 위에서 떨어지는 물체로부터 운전자 보호</p>
+<ul class="chk"><li>지게차 작업 전 점검: 제동·조종장치, 하역·유압장치, 바퀴, 전조등·후미등·방향지시기·경보장치</li></ul></div></details>
+</div>
+<div class="card q" data-q="90" data-title="90번">
+<div class="q-head"><span class="q-num">90번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">컨베이어의 역주행방지장치 형식에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 수인식</li><li>② 라쳇식</li><li>③ 밴드식</li><li>④ 전기브레이크</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 수인식</b></p>
+<p>📌 역주행방지장치: 라쳇식, 롤러식, 밴드식, 전기브레이크</p>
+<ul class="chk"><li>수인식은 프레스 방호장치(접근거부형)</li></ul></div></details>
+</div>
+<div class="card q" data-q="91" data-title="91번">
+<div class="q-head"><span class="q-num">91번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">산업용 로봇의 운전 중 근로자가 로봇에 부딪힐 위험을 막기 위해 설치하는 울타리(방책)의 높이는?</p>
+<ul class="opts"><li>① 1.5m 이상</li><li>② 1.8m 이상</li><li>③ 2.0m 이상</li><li>④ 1.2m 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 1.8m 이상</b></p>
+<p>📌 산업용 로봇 운전 중 위험 방지 → 높이 1.8m 이상 울타리</p>
+<ul class="chk"><li>교시 작업 시에는 작업 지침, 즉시 정지 조치, "작업 중" 표시</li></ul></div></details>
+</div>
+<div class="card q" data-q="92" data-title="92번">
+<div class="q-head"><span class="q-num">92번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">산업용 로봇의 교시 작업을 시작하기 전 점검사항에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 외부 전선의 피복 또는 외장의 손상 유무</li><li>② 하역장치 및 유압장치 기능</li><li>③ 매니퓰레이터 작동의 이상 유무</li><li>④ 제동장치 및 비상정지장치의 기능</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 하역장치 및 유압장치 기능</b></p>
+<p>📌 로봇 교시 전 점검: 외부 전선 피복·외장, 매니퓰레이터 작동, 제동·비상정지장치</p>
+<ul class="chk"><li>하역장치·유압장치는 지게차 점검사항</li></ul></div></details>
+</div></section>
+<section class="section" id="g9"><div class="section-head"><div class="duality"><span class="n">I</span>비파괴검사·그 밖의 설비 (93~100)</div><div class="section-line"></div></div>
+<div class="card q" data-q="93" data-title="93번">
+<div class="q-head"><span class="q-num">93번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">알루미늄 같은 비자성체 재료의 표면에 열린 결함을 찾는 데 적합한 비파괴검사는?</p>
+<ul class="opts"><li>① 방사선투과검사(RT)</li><li>② 자분탐상검사(MT)</li><li>③ 침투탐상검사(PT)</li><li>④ 초음파탐상검사(UT)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 침투탐상검사(PT)</b></p>
+<p>📌 비자성체 표면결함 = PT / 강자성체 표면 = MT</p>
+<ul class="chk"><li>MT는 자화가 되어야 하므로 비자성체에 못 쓴다</li></ul></div></details>
+</div>
+<div class="card q" data-q="94" data-title="94번">
+<div class="q-head"><span class="q-num">94번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">재료가 변형될 때 발생하는 음향을 검출하여 가동 중 진행하는 균열을 감시하는 비파괴검사는?</p>
+<ul class="opts"><li>① 음향방출검사(AE)</li><li>② 와류탐상검사(ET)</li><li>③ 육안검사(VT)</li><li>④ 방사선투과검사(RT)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 음향방출검사(AE)</b></p>
+<p>📌 AE = 진행 중인 균열 감시(가동 중 검사)</p>
+<ul class="chk"><li>초음파를 쏘아 반사를 보는 UT와 구분</li></ul></div></details>
+</div>
+<div class="card q" data-q="95" data-title="95번">
+<div class="q-head"><span class="q-num">95번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">용접부의 내부결함을 검사하는 데 적합한 비파괴검사 방법으로 짝지은 것은?</p>
+<ul class="opts"><li>① MT, PT</li><li>② RT, UT</li><li>③ PT, ET</li><li>④ VT, MT</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② RT, UT</b></p>
+<p>📌 내부결함 = RT, UT / 표면결함 = MT, PT, ET</p>
+<ul class="chk"><li>RT는 필름으로 기록을 보존할 수 있다</li></ul></div></details>
+</div>
+<div class="card q" data-q="96" data-title="96번">
+<div class="q-head"><span class="q-num">96번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">강자성체의 표면 및 표면 바로 아래 결함을 검출하는 데 적합한 비파괴검사는?</p>
+<ul class="opts"><li>① 초음파탐상검사(UT)</li><li>② 방사선투과검사(RT)</li><li>③ 음향방출검사(AE)</li><li>④ 자분탐상검사(MT)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 자분탐상검사(MT)</b></p>
+<p>📌 MT = 강자성체 표면·표면 바로 아래 결함</p>
+<ul class="chk"><li>비자성체라면 PT</li></ul></div></details>
+</div>
+<div class="card q" data-q="97" data-title="97번">
+<div class="q-head"><span class="q-num">97번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">도체에 와전류를 유도하여 튜브나 배관의 표면결함을 검사하는 방법은?</p>
+<ul class="opts"><li>① 와류탐상검사(ET)</li><li>② 침투탐상검사(PT)</li><li>③ 방사선투과검사(RT)</li><li>④ 음향방출검사(AE)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 와류탐상검사(ET)</b></p>
+<p>📌 ET = Eddy current(와전류), 도체 표면결함, 튜브·배관 검사</p>
+<ul class="chk"><li>도체가 아니면 쓸 수 없다</li></ul></div></details>
+</div>
+<div class="card q" data-q="98" data-title="98번">
+<div class="q-head"><span class="q-num">98번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">동력차단장치에 관한 설명으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 기계마다 설치한다</li><li>② 스위치, 클러치, 벨트이동장치 등을 사용한다</li><li>③ 접촉이나 진동에도 쉽게 작동하도록 민감하게 설치한다</li><li>④ 근로자가 쉽게 조작할 수 있는 위치에 설치한다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 접촉이나 진동에도 쉽게 작동하도록 민감하게 설치한다</b></p>
+<p>📌 동력차단장치는 쉽게 조작하되, 접촉·진동 등으로 <b>불시에 작동하지 않게</b> 한다</p>
+<ul class="chk"><li>불시 기동은 오히려 재해 원인이 된다</li></ul></div></details>
+</div>
+<div class="card q" data-q="99" data-title="99번">
+<div class="q-head"><span class="q-num">99번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">고소작업대를 와이어로프로 상승·하강시키는 경우 와이어로프의 안전율은 얼마 이상이어야 하는가?</p>
+<ul class="opts"><li>① 3</li><li>② 5</li><li>③ 4</li><li>④ 10</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 5</b></p>
+<p>📌 고소작업대 와이어로프 안전율 5 이상</p>
+<ul class="chk"><li>고소작업대 방호장치: 과상승방지장치, 비상정지장치</li></ul></div></details>
+</div>
+<div class="card q" data-q="100" data-title="100번">
+<div class="q-head"><span class="q-num">100번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">사출성형기에서 금형 사이에 신체가 끼이는 것을 막기 위한 방호장치로 가장 적절한 것은?</p>
+<ul class="opts"><li>① 게이트가드(인터록)</li><li>② 반발예방장치</li><li>③ 권과방지장치</li><li>④ 역주행방지장치</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 게이트가드(인터록)</b></p>
+<p>📌 사출성형기: 게이트가드(인터록), 양수조작식, 가열 부위 덮개</p>
+<ul class="chk"><li>반발예방장치는 둥근톱, 권과방지장치는 양중기, 역주행방지장치는 컨베이어</li></ul></div></details>
+</div></section>
+<footer>개념이 막히면 <a href="s3-points.html">3과목 기출포인트</a>를 먼저 보세요. 출제 경향을 정리한 유형 노트이며 기출 원문이 아닙니다. 법령·KEC 수치는 시험 전에 최신 개정 사항으로 확인하세요.</footer>
+</div>
+<script>
+(function(){
+  var key='sanan-star-'+document.body.dataset.subject;
+  var marked={};
+  try{marked=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+  function save(){try{localStorage.setItem(key,JSON.stringify(marked))}catch(e){}}
+  var qs=[].slice.call(document.querySelectorAll('.q'));
+  var cnt=document.getElementById('starCount');
+  function upd(){cnt.textContent='★ 다시 볼 문제 '+Object.keys(marked).length+'개'}
+  qs.forEach(function(q){
+    var id=q.dataset.q;
+    if(marked[id])q.classList.add('marked');
+    q.querySelector('.q-star').addEventListener('click',function(){
+      if(marked[id]){delete marked[id];q.classList.remove('marked')}else{marked[id]=1;q.classList.add('marked')}
+      save();upd();
+    });
+  });
+  upd();
+  var openAll=document.getElementById('openAll'),onlyStar=document.getElementById('onlyStar');
+  openAll.addEventListener('click',function(){
+    var on=!openAll.classList.contains('on');openAll.classList.toggle('on',on);
+    openAll.textContent=on?'정답 모두 접기':'정답 모두 펼치기';
+    document.querySelectorAll('details.ans').forEach(function(d){d.open=on});
+  });
+  onlyStar.addEventListener('click',function(){
+    var on=!onlyStar.classList.contains('on');onlyStar.classList.toggle('on',on);
+    qs.forEach(function(q){q.classList.toggle('hidden',on&&!q.classList.contains('marked'))});
+    document.querySelectorAll('.section').forEach(function(s){
+      s.classList.toggle('hidden',on&&!s.querySelector('.q.marked'));
+    });
+  });
+})();
+</script>
+</body>
+</html>

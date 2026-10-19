@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1C2733">
+<title>5과목 문제은행 · 화학설비 안전관리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F8;--surface:#FFFFFF;--surface2:#F7F8FA;--ink:#121A24;--ink-soft:#5A6573;--line:#E3E7EC;
+  --hero:#1C2733;--hero-ink:#F4F6F8;--hero-soft:#AEB8C4;
+  --yellow:#FFC21A;--yellow-soft:#FFF3C9;--mark:#FFE58A;
+  --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
+    --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans KR','Noto Sans KR',sans-serif;font-size:15px;line-height:1.7;font-variant-numeric:tabular-nums}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 72px}
+header{margin:0 -16px;padding:18px 20px 22px;background:var(--hero);color:var(--hero-ink);border-radius:0 0 22px 22px;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 12px,#111 12px 24px)}
+.back{display:inline-block;margin:6px 0 14px;font-size:12.5px;color:var(--hero-ink);text-decoration:none;background:rgba(255,255,255,.1);padding:4px 12px;border-radius:999px}
+.tab{display:inline-block;margin-left:6px;font-size:11.5px;font-weight:700;color:#111;background:var(--accent,var(--yellow));padding:3px 10px;border-radius:999px;vertical-align:1px}
+.eyebrow{font-size:12px;font-weight:600;color:var(--yellow);letter-spacing:.06em;margin:0 0 6px}
+h1{font-weight:700;font-size:clamp(24px,6.6vw,34px);margin:0 0 10px;line-height:1.3;letter-spacing:-.02em}
+.sub{font-size:13px;color:var(--hero-soft);margin:0;padding-left:18px}
+.sub li{margin-bottom:2px}
+.sub b{color:var(--hero-ink)}
+.toc{display:flex;gap:6px;overflow-x:auto;margin:16px -20px -4px;padding:2px 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:0 0 auto;font-size:12.5px;text-decoration:none;color:var(--hero-ink);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px 12px;white-space:nowrap}
+.toc a .n{font-weight:700;color:var(--yellow);margin-right:5px}
+.section{margin-top:30px;scroll-margin-top:64px}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.duality{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.duality .n{flex:0 0 auto;min-width:30px;height:30px;padding:0 8px;border-radius:9px;background:var(--accent,var(--c1));color:#fff;font-size:13.5px;display:inline-flex;align-items:center;justify-content:center}
+.duality .n:empty{display:none}
+.section-line{display:none}
+.card{background:var(--surface);border-radius:16px;padding:16px 16px 10px;margin-bottom:12px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.card h4{margin:0 0 10px;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+.card h4::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--accent,var(--c1))}
+.card p{margin:0 0 10px;font-size:14px}
+.card b{font-weight:700;background:linear-gradient(transparent 60%,var(--mark) 60%);padding:0 1px}
+.card code{font-size:13px}
+ul.chk{list-style:none;margin:0 0 10px;padding:0}
+ul.chk>li{position:relative;padding:9px 0 9px 18px;font-size:14px;border-top:1px solid var(--line)}
+ul.chk>li:first-child{border-top:0;padding-top:2px}
+ul.chk>li::before{content:"";position:absolute;left:2px;top:19px;width:6px;height:6px;border-radius:50%;background:var(--accent,var(--c1))}
+ul.chk>li:first-child::before{top:12px}
+ul.chk>li.star{background:var(--yellow-soft);margin:0 -10px;padding-left:28px;padding-right:10px;border-radius:10px;border-top-color:transparent}
+ul.chk>li.star::before{display:none}
+ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E0A200;font-size:13px}
+ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
+ul.sub2 li{margin-bottom:3px}
+.subnote{margin:0 0 12px;padding:9px 12px;background:var(--surface2);border-radius:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+.subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
+footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
+footer a{color:var(--accent,var(--c1));font-weight:600}
+/* 문제은행 */
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:sticky;top:0;z-index:5;margin:0 -16px;padding:10px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn{font:inherit;font-size:13px;font-weight:600;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+.btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tools .count{font-size:12px;color:var(--ink-soft);margin-left:auto}
+.q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.q-num{font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
+.q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
+.q.marked .q-star{color:#E0A200}
+.q.marked{border-color:#F2C94C}
+.q-body{font-size:15px;font-weight:500;margin:0 0 10px}
+.opts{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:6px}
+.opts li{font-size:14px;padding:8px 12px;background:var(--surface2);border:1px solid var(--line);border-radius:10px}
+details.ans{margin:8px 0 6px}
+details.ans summary{cursor:pointer;list-style:none;text-align:center;font-size:13.5px;font-weight:700;color:#111;background:var(--yellow);border-radius:10px;padding:9px}
+details.ans summary::-webkit-details-marker{display:none}
+details.ans[open] summary{background:var(--surface2);color:var(--ink-soft)}
+details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:inline}
+.ans-body{margin-top:10px;padding:12px 12px 4px;background:var(--surface2);border-radius:12px}
+.ans-body p,.ans-body li{font-size:13.8px}
+.hidden{display:none !important}
+/* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
+@media (min-width:1000px){body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1600px){body{zoom:1.38}}
+@media print{header{background:none;color:#000}.tools,.q-star{display:none}}
+</style>
+</head>
+<body style="--accent:var(--c5)" data-subject="s5">
+<div class="wrap">
+<header>
+  <a class="back" href="index.html">← 목록으로</a>
+  <span class="tab">5과목 · 문제은행</span>
+  <div class="eyebrow">산업안전기사 필기 · 5과목 · 100문항</div>
+  <h1>화학설비 안전관리<br>문제은행</h1>
+  <ul class="sub"><li>정답과 해설은 <b>"정답 보기"를 눌러야</b> 펼쳐집니다.</li><li>실제 기출 원문이 아니라 출제 경향을 반영한 유형 문제입니다.</li><li>법령 수치는 시험 전에 최신 기준으로 확인하세요.</li><li>헷갈린 문제는 오른쪽 위 <b>★</b>을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.</li></ul>
+  <nav class="toc"><a href="#g1"><span class="n">A</span>연소의 기초·인화점·발화점 (1~12)</a><a href="#g2"><span class="n">B</span>폭발범위와 위험도 (13~24)</a><a href="#g3"><span class="n">C</span>혼합가스·Cst·최소산소농도 계산 (25~36)</a><a href="#g4"><span class="n">D</span>폭발의 종류와 폭발 방호 (37~48)</a><a href="#g5"><span class="n">E</span>산안법상 위험물질 분류 (49~58)</a><a href="#g6"><span class="n">F</span>자연발화·금수성·혼재 (59~66)</a><a href="#g7"><span class="n">G</span>화학설비·안전밸브·안전거리 (67~78)</a><a href="#g8"><span class="n">H</span>화재 분류와 소화 (79~86)</a><a href="#g9"><span class="n">I</span>공정안전보고서·MSDS·노출기준 (87~94)</a><a href="#g10"><span class="n">J</span>건조설비·가스누출·저장 (95~100)</a></nav>
+</header>
+<div class="tools"><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">A</span>연소의 기초·인화점·발화점 (1~12)</div><div class="section-line"></div></div>
+<div class="card q" data-q="1" data-title="1번">
+<div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">연소의 3요소에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 가연물</li><li>② 산소공급원</li><li>③ 점화원</li><li>④ 연쇄반응</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 연쇄반응</b></p>
+<p>📌 3요소: 가연물 + 산소공급원 + 점화원</p>
+<ul class="chk"><li>연쇄반응을 더하면 연소 4요소. 연쇄반응을 끊는 것이 억제(부촉매)소화</li></ul></div></details>
+</div>
+<div class="card q" data-q="2" data-title="2번">
+<div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">가연물이 되기 쉬운 조건으로 옳은 것은?</p>
+<ul class="opts"><li>① 열전도율이 클 것</li><li>② 활성화에너지가 작을 것</li><li>③ 산소와의 친화력이 작을 것</li><li>④ 표면적이 작을 것</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 활성화에너지가 작을 것</b></p>
+<p>📌 가연물 조건: 산소 친화력 큼, 발열량 큼, 표면적 넓음, 열전도율 <b>작음</b>, 활성화에너지 <b>작음</b></p>
+<ul class="chk"><li>열전도율이 작아야 열이 쌓여 불이 잘 붙는다</li></ul></div></details>
+</div>
+<div class="card q" data-q="3" data-title="3번">
+<div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">다음 중 가연물이 될 수 <b>없는</b> 것은?</p>
+<ul class="opts"><li>① 일산화탄소</li><li>② 수소</li><li>③ 이산화탄소</li><li>④ 황</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 이산화탄소</b></p>
+<p>📌 이미 산화된 물질(CO₂, H₂O)은 더 타지 않는다</p>
+<ul class="chk"><li>일산화탄소는 아직 산화될 여지가 있어 가연성 가스(폭발범위 12.5~74%)</li><li>불활성기체(He, Ne, Ar)와 흡열반응 물질 질소도 가연물이 아님</li></ul></div></details>
+</div>
+<div class="card q" data-q="4" data-title="4번">
+<div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">목재, 종이, 석탄처럼 가열하면 열분해로 생긴 가연성 가스가 타는 연소 형태는?</p>
+<ul class="opts"><li>① 분해연소</li><li>② 증발연소</li><li>③ 표면연소</li><li>④ 자기연소</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 분해연소</b></p>
+<p>📌 분해연소: 목재·종이·석탄·플라스틱</p>
+<ul class="chk"><li>증발연소: 알코올·휘발유·황·나프탈렌 / 표면연소: 숯·코크스·금속분</li></ul></div></details>
+</div>
+<div class="card q" data-q="5" data-title="5번">
+<div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">숯, 코크스, 금속분처럼 표면에서 산소와 직접 반응하여 불꽃 없이 타는 연소 형태는?</p>
+<ul class="opts"><li>① 증발연소</li><li>② 확산연소</li><li>③ 자기연소</li><li>④ 표면연소</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 표면연소</b></p>
+<p>📌 표면연소 = 숯·코크스·금속분 (작열연소라고도 함)</p>
+<ul class="chk"><li>확산연소는 수소·아세틸렌 같은 가스의 연소 형태</li></ul></div></details>
+</div>
+<div class="card q" data-q="6" data-title="6번">
+<div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">니트로셀룰로오스, TNT처럼 분자 안에 산소를 가지고 있어 외부 산소 없이도 연소하는 형태는?</p>
+<ul class="opts"><li>① 분해연소</li><li>② 자기연소</li><li>③ 증발연소</li><li>④ 확산연소</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 자기연소</b></p>
+<p>📌 자기연소 = 분자 내 산소 보유 (니트로셀룰로오스, TNT)</p>
+<ul class="chk"><li>그래서 질식소화가 잘 듣지 않는다</li></ul></div></details>
+</div>
+<div class="card q" data-q="7" data-title="7번">
+<div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">다음 중 증발연소를 하는 물질로만 짝지어진 것은?</p>
+<ul class="opts"><li>① 숯, 코크스</li><li>② 목재, 석탄</li><li>③ 휘발유, 나프탈렌</li><li>④ TNT, 니트로셀룰로오스</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 휘발유, 나프탈렌</b></p>
+<p>📌 증발연소: 알코올, 휘발유, 황, 나프탈렌</p>
+<ul class="chk"><li>고체라도 황·나프탈렌은 녹거나 승화한 증기가 타므로 증발연소</li></ul></div></details>
+</div>
+<div class="card q" data-q="8" data-title="8번">
+<div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인화점에 대한 설명으로 옳은 것은?</p>
+<ul class="opts"><li>① 점화원 없이 스스로 불이 붙는 최저 온도</li><li>② 점화원이 있을 때 불이 붙는 최저 온도</li><li>③ 인화 후 연소가 계속되는 최저 온도</li><li>④ 폭발범위의 상한에 해당하는 온도</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 점화원이 있을 때 불이 붙는 최저 온도</b></p>
+<p>📌 인화점 = 점화원 있음 / 발화점(착화점) = 점화원 없음</p>
+<ul class="chk"><li>③은 연소점. 보통 인화점보다 5~10℃ 높다</li></ul></div></details>
+</div>
+<div class="card q" data-q="9" data-title="9번">
+<div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">발화점이 낮아지는 조건으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 압력이 높을 때</li><li>② 산소농도가 높을 때</li><li>③ 분자구조가 간단할 때</li><li>④ 발열량이 클 때</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 분자구조가 간단할 때</b></p>
+<p>📌 발화점 낮아짐: 압력↑, 산소농도↑, 발열량↑, 화학적 활성도↑, 분자구조 <b>복잡</b></p>
+<ul class="chk"><li>분자구조가 복잡할수록 발화점이 낮아진다</li></ul></div></details>
+</div>
+<div class="card q" data-q="10" data-title="10번">
+<div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">다음 물질 중 인화점이 가장 낮은 것은?</p>
+<ul class="opts"><li>① 디에틸에테르</li><li>② 아세톤</li><li>③ 벤젠</li><li>④ 에탄올</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 디에틸에테르</b></p>
+<p>📌 디에틸에테르 −45℃ &lt; 아세톤 −18℃ &lt; 벤젠 −11℃ &lt; 에탄올 13℃</p>
+<ul class="chk"><li>가솔린 −43℃, 이황화탄소 −30℃도 매우 낮은 편</li></ul></div></details>
+</div>
+<div class="card q" data-q="11" data-title="11번">
+<div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">발화점이 약 100℃로 매우 낮아 증기배관에 닿기만 해도 발화할 수 있는 물질은?</p>
+<ul class="opts"><li>① 벤젠</li><li>② 메탄올</li><li>③ 등유</li><li>④ 이황화탄소</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 이황화탄소</b></p>
+<p>📌 발화점이 특히 낮은 것: 이황화탄소 약 100℃, 디에틸에테르 약 180℃</p>
+<ul class="chk"><li>이황화탄소는 인화점도 −30℃로 낮다</li></ul></div></details>
+</div>
+<div class="card q" data-q="12" data-title="12번">
+<div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인화점이 상온보다 높아 상대적으로 인화 위험이 낮은 물질은?</p>
+<ul class="opts"><li>① 가솔린</li><li>② 등유</li><li>③ 아세톤</li><li>④ 메탄올</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 등유</b></p>
+<p>📌 등유 인화점 40~70℃ (상온보다 높음)</p>
+<ul class="chk"><li>가솔린 −43℃, 아세톤 −18℃, 메탄올 11℃는 상온에서 인화 가능</li></ul></div></details>
+</div></section>
+<section class="section" id="g2"><div class="section-head"><div class="duality"><span class="n">B</span>폭발범위와 위험도 (13~24)</div><div class="section-line"></div></div>
+<div class="card q" data-q="13" data-title="13번">
+<div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">수소의 폭발범위가 4~75vol%일 때 위험도(H)는?</p>
+<ul class="opts"><li>① 9.5</li><li>② 14.25</li><li>③ 17.75</li><li>④ 18.75</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 17.75</b></p>
+<p>📌 H = (UEL − LEL) ÷ LEL</p>
+<ul class="chk"><li>(75 − 4) ÷ 4 = 71 ÷ 4 = 17.75</li></ul></div></details>
+</div>
+<div class="card q" data-q="14" data-title="14번">
+<div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">메탄의 폭발범위가 5~15vol%일 때 위험도는?</p>
+<ul class="opts"><li>① 2</li><li>② 3</li><li>③ 10</li><li>④ 0.67</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 2</b></p>
+<p>📌 H = (15 − 5) ÷ 5 = 10 ÷ 5 = 2</p>
+<ul class="chk"><li>분모는 반드시 <b>하한값</b>. 상한으로 나누면 0.67이 나오는 함정</li></ul></div></details>
+</div>
+<div class="card q" data-q="15" data-title="15번">
+<div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">아세틸렌의 폭발범위가 2.5~81vol%일 때 위험도는?</p>
+<ul class="opts"><li>① 24.3</li><li>② 27.5</li><li>③ 32.4</li><li>④ 31.4</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 31.4</b></p>
+<p>📌 H = (81 − 2.5) ÷ 2.5 = 78.5 ÷ 2.5 = 31.4</p>
+<ul class="chk"><li>아세틸렌은 폭발범위가 가장 넓은 가스로 자주 출제</li></ul></div></details>
+</div>
+<div class="card q" data-q="16" data-title="16번">
+<div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">프로판의 폭발범위가 2.1~9.5vol%일 때 위험도는 약 얼마인가?</p>
+<ul class="opts"><li>① 2.52</li><li>② 3.52</li><li>③ 4.52</li><li>④ 7.40</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 3.52</b></p>
+<p>📌 H = (9.5 − 2.1) ÷ 2.1 = 7.4 ÷ 2.1 ≈ 3.52</p>
+<ul class="chk"><li>7.4는 폭발범위 폭일 뿐, 하한으로 나눠야 위험도</li></ul></div></details>
+</div>
+<div class="card q" data-q="17" data-title="17번">
+<div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">일산화탄소의 폭발범위가 12.5~74vol%일 때 위험도는 약 얼마인가?</p>
+<ul class="opts"><li>① 3.92</li><li>② 4.92</li><li>③ 5.92</li><li>④ 61.5</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 4.92</b></p>
+<p>📌 H = (74 − 12.5) ÷ 12.5 = 61.5 ÷ 12.5 = 4.92</p>
+<ul class="chk"><li>범위는 넓어 보여도 하한이 높아 위험도는 크지 않다</li></ul></div></details>
+</div>
+<div class="card q" data-q="18" data-title="18번">
+<div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">다음 가스 중 위험도가 가장 큰 것은? (폭발범위: 아세틸렌 2.5~81, 수소 4~75, 이황화탄소 1.2~44, 디에틸에테르 1.9~48 vol%)</p>
+<ul class="opts"><li>① 아세틸렌</li><li>② 수소</li><li>③ 디에틸에테르</li><li>④ 이황화탄소</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 이황화탄소</b></p>
+<p>📌 이황화탄소 (44 − 1.2) ÷ 1.2 ≈ 35.7</p>
+<ul class="chk"><li>아세틸렌 31.4, 디에틸에테르 ≈ 24.3, 수소 17.75</li><li>범위가 가장 넓은 것(아세틸렌)과 위험도가 가장 큰 것은 다를 수 있다</li></ul></div></details>
+</div>
+<div class="card q" data-q="19" data-title="19번">
+<div class="q-head"><span class="q-num">19번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">다음 가스 중 폭발범위가 가장 넓은 것은?</p>
+<ul class="opts"><li>① 아세틸렌</li><li>② 수소</li><li>③ 일산화탄소</li><li>④ 에틸렌</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 아세틸렌</b></p>
+<p>📌 아세틸렌 2.5~81% (폭 78.5)</p>
+<ul class="chk"><li>수소 4~75, 일산화탄소 12.5~74, 에틸렌 2.7~36</li></ul></div></details>
+</div>
+<div class="card q" data-q="20" data-title="20번">
+<div class="q-head"><span class="q-num">20번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">폭발범위가 5~15vol%인 가스는?</p>
+<ul class="opts"><li>① 프로판</li><li>② 부탄</li><li>③ 메탄</li><li>④ 암모니아</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 메탄</b></p>
+<p>📌 메탄 5~15, 프로판 2.1~9.5, 부탄 1.8~8.4, 암모니아 15~28</p>
+<ul class="chk"><li>메탄·프로판·수소·아세틸렌 네 개는 반드시 외워 둘 것</li></ul></div></details>
+</div>
+<div class="card q" data-q="21" data-title="21번">
+<div class="q-head"><span class="q-num">21번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">암모니아의 폭발범위가 15~28vol%일 때 위험도는 약 얼마인가?</p>
+<ul class="opts"><li>① 0.87</li><li>② 0.46</li><li>③ 1.87</li><li>④ 13</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 0.87</b></p>
+<p>📌 H = (28 − 15) ÷ 15 = 13 ÷ 15 ≈ 0.87</p>
+<ul class="chk"><li>하한이 높고 범위가 좁아 위험도가 1보다 작다</li></ul></div></details>
+</div>
+<div class="card q" data-q="22" data-title="22번">
+<div class="q-head"><span class="q-num">22번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">폭발범위에 대한 설명으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 온도가 높아지면 일반적으로 폭발범위가 넓어진다</li><li>② 일산화탄소는 압력이 높아지면 폭발범위가 넓어진다</li><li>③ 불활성가스를 첨가하면 폭발범위가 좁아진다</li><li>④ 산소 중에서는 공기 중보다 폭발범위가 넓어진다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 일산화탄소는 압력이 높아지면 폭발범위가 넓어진다</b></p>
+<p>📌 일반적으로 온도·압력↑ → 범위 넓어짐 (주로 상한 상승)</p>
+<ul class="chk"><li>예외: 일산화탄소는 압력이 오르면 범위가 <b>좁아짐</b></li></ul></div></details>
+</div>
+<div class="card q" data-q="23" data-title="23번">
+<div class="q-head"><span class="q-num">23번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">압력이 높아질 때 폭발범위의 변화로 가장 적절한 것은? (일반적인 탄화수소 기준)</p>
+<ul class="opts"><li>① 하한이 크게 올라가 범위가 좁아진다</li><li>② 상한과 하한 모두 변하지 않는다</li><li>③ 주로 상한이 올라가 범위가 넓어진다</li><li>④ 상한이 내려가 범위가 좁아진다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 주로 상한이 올라가 범위가 넓어진다</b></p>
+<p>📌 온도·압력 상승 → 폭발범위 확대, 특히 상한 상승 효과가 큼</p>
+<ul class="chk"><li>하한은 크게 변하지 않는다</li></ul></div></details>
+</div>
+<div class="card q" data-q="24" data-title="24번">
+<div class="q-head"><span class="q-num">24번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">부탄의 폭발범위가 1.8~8.4vol%일 때 위험도는 약 얼마인가?</p>
+<ul class="opts"><li>① 2.67</li><li>② 3.67</li><li>③ 0.79</li><li>④ 4.67</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 3.67</b></p>
+<p>📌 H = (8.4 − 1.8) ÷ 1.8 = 6.6 ÷ 1.8 ≈ 3.67</p>
+<ul class="chk"><li>상한으로 나누면 0.79가 되는 함정</li></ul></div></details>
+</div></section>
+<section class="section" id="g3"><div class="section-head"><div class="duality"><span class="n">C</span>혼합가스·Cst·최소산소농도 계산 (25~36)</div><div class="section-line"></div></div>
+<div class="card q" data-q="25" data-title="25번">
+<div class="q-head"><span class="q-num">25번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">메탄 70%, 프로판 20%, 부탄 10%로 이루어진 혼합가스의 폭발하한은 약 몇 vol%인가? (폭발하한: 메탄 5, 프로판 2.1, 부탄 1.8 vol%)</p>
+<ul class="opts"><li>① 2.84</li><li>② 3.44</li><li>③ 4.14</li><li>④ 5.00</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 3.44</b></p>
+<p>📌 르샤틀리에: 100 ÷ L = V₁/L₁ + V₂/L₂ + V₃/L₃</p>
+<ul class="chk"><li>70/5 + 20/2.1 + 10/1.8 = 14 + 9.52 + 5.56 = 29.08</li><li>L = 100 ÷ 29.08 ≈ 3.44 vol%</li></ul></div></details>
+</div>
+<div class="card q" data-q="26" data-title="26번">
+<div class="q-head"><span class="q-num">26번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">메탄 60%, 수소 40%로 이루어진 혼합가스의 폭발하한은 약 몇 vol%인가? (폭발하한: 메탄 5, 수소 4 vol%)</p>
+<ul class="opts"><li>① 4.24</li><li>② 4.40</li><li>③ 4.55</li><li>④ 4.60</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 4.55</b></p>
+<p>📌 100 ÷ L = 60/5 + 40/4 = 12 + 10 = 22</p>
+<ul class="chk"><li>L = 100 ÷ 22 ≈ 4.55 vol%</li><li>단순 가중평균(0.6×5 + 0.4×4 = 4.6)으로 풀면 오답</li></ul></div></details>
+</div>
+<div class="card q" data-q="27" data-title="27번">
+<div class="q-head"><span class="q-num">27번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">메탄 50%, 프로판 30%, 부탄 20%인 혼합가스의 폭발하한은 약 몇 vol%인가? (폭발하한: 메탄 5, 프로판 2.1, 부탄 1.8 vol%)</p>
+<ul class="opts"><li>① 2.83</li><li>② 3.21</li><li>③ 3.54</li><li>④ 3.89</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 2.83</b></p>
+<p>📌 100 ÷ L = 50/5 + 30/2.1 + 20/1.8</p>
+<ul class="chk"><li>= 10 + 14.29 + 11.11 = 35.40</li><li>L = 100 ÷ 35.40 ≈ 2.83 vol%</li></ul></div></details>
+</div>
+<div class="card q" data-q="28" data-title="28번">
+<div class="q-head"><span class="q-num">28번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">메탄 70%, 프로판 30%인 혼합가스의 폭발상한은 약 몇 vol%인가? (폭발상한: 메탄 15, 프로판 9.5 vol%)</p>
+<ul class="opts"><li>① 11.5</li><li>② 12.0</li><li>③ 13.4</li><li>④ 12.8</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 12.8</b></p>
+<p>📌 상한도 같은 르샤틀리에 식에 상한값을 넣는다</p>
+<ul class="chk"><li>100 ÷ U = 70/15 + 30/9.5 = 4.67 + 3.16 = 7.83</li><li>U = 100 ÷ 7.83 ≈ 12.8 vol%</li></ul></div></details>
+</div>
+<div class="card q" data-q="29" data-title="29번">
+<div class="q-head"><span class="q-num">29번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">르샤틀리에 공식 100/L = V₁/L₁ + V₂/L₂ + … 에서 V가 뜻하는 것은?</p>
+<ul class="opts"><li>① 각 성분의 폭발하한</li><li>② 혼합가스 전체의 부피</li><li>③ 각 성분의 부피비(%)</li><li>④ 각 성분의 분자량</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 각 성분의 부피비(%)</b></p>
+<p>📌 L = 혼합가스 폭발한계, V = 각 성분 부피비(%), L₁·L₂ = 각 성분 폭발한계</p>
+<ul class="chk"><li>V의 합이 100이 되도록 넣는다</li></ul></div></details>
+</div>
+<div class="card q" data-q="30" data-title="30번">
+<div class="q-head"><span class="q-num">30번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">프로판(C₃H₈)의 완전연소 조성농도(Cst)는 약 몇 vol%인가? (공기 중 산소는 20.95%로 한다)</p>
+<ul class="opts"><li>① 4.02</li><li>② 3.12</li><li>③ 5.65</li><li>④ 9.48</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 4.02</b></p>
+<p>📌 Cst = 100 ÷ (1 + 4.773 × O₂), O₂ = n + m/4</p>
+<ul class="chk"><li>O₂ = 3 + 8/4 = 5</li><li>Cst = 100 ÷ (1 + 4.773 × 5) = 100 ÷ 24.87 ≈ 4.02%</li><li>3.12는 부탄, 5.65는 에탄, 9.48은 메탄의 Cst</li></ul></div></details>
+</div>
+<div class="card q" data-q="31" data-title="31번">
+<div class="q-head"><span class="q-num">31번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">메탄(CH₄)의 완전연소 조성농도(Cst)는 약 몇 vol%인가?</p>
+<ul class="opts"><li>① 4.02</li><li>② 7.73</li><li>③ 11.2</li><li>④ 9.48</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 9.48</b></p>
+<p>📌 O₂ = n + m/4 = 1 + 4/4 = 2</p>
+<ul class="chk"><li>Cst = 100 ÷ (1 + 4.773 × 2) = 100 ÷ 10.55 ≈ 9.48%</li></ul></div></details>
+</div>
+<div class="card q" data-q="32" data-title="32번">
+<div class="q-head"><span class="q-num">32번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">존스(Jones)식으로 부탄(C₄H₁₀)의 폭발하한을 추정하면 약 몇 vol%인가?</p>
+<ul class="opts"><li>① 1.2</li><li>② 1.7</li><li>③ 2.2</li><li>④ 3.1</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 1.7</b></p>
+<p>📌 LEL ≈ 0.55 × Cst</p>
+<ul class="chk"><li>O₂ = 4 + 10/4 = 6.5</li><li>Cst = 100 ÷ (1 + 4.773 × 6.5) = 100 ÷ 32.02 ≈ 3.12%</li><li>LEL ≈ 0.55 × 3.12 ≈ 1.7% (실측 1.8%와 비슷)</li></ul></div></details>
+</div>
+<div class="card q" data-q="33" data-title="33번">
+<div class="q-head"><span class="q-num">33번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">존스(Jones)식에서 폭발하한과 폭발상한을 Cst로 추정하는 계수로 옳은 것은?</p>
+<ul class="opts"><li>① 하한 0.45, 상한 2.50</li><li>② 하한 0.55, 상한 4.80</li><li>③ 하한 0.55, 상한 3.50</li><li>④ 하한 0.65, 상한 3.50</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 하한 0.55, 상한 3.50</b></p>
+<p>📌 LEL ≈ 0.55 × Cst, UEL ≈ 3.50 × Cst</p>
+<ul class="chk"><li>Cst의 4.773은 공기 중 산소 비율의 역수(1 ÷ 0.2095)</li></ul></div></details>
+</div>
+<div class="card q" data-q="34" data-title="34번">
+<div class="q-head"><span class="q-num">34번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">프로판(C₃H₈)의 폭발하한이 2.1vol%일 때 최소산소농도(MOC)는 몇 vol%인가?</p>
+<ul class="opts"><li>① 6.3</li><li>② 8.4</li><li>③ 12.5</li><li>④ 10.5</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 10.5</b></p>
+<p>📌 MOC = LEL × 산소 몰수</p>
+<ul class="chk"><li>C₃H₈ + 5O₂ → 3CO₂ + 4H₂O → 산소 몰수 5</li><li>MOC = 2.1 × 5 = 10.5% (이보다 산소를 낮추면 연소하지 않음)</li></ul></div></details>
+</div>
+<div class="card q" data-q="35" data-title="35번">
+<div class="q-head"><span class="q-num">35번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">부탄(C₄H₁₀)의 폭발하한이 1.8vol%일 때 최소산소농도(MOC)는 약 몇 vol%인가?</p>
+<ul class="opts"><li>① 11.7</li><li>② 7.2</li><li>③ 9.0</li><li>④ 13.0</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 11.7</b></p>
+<p>📌 산소 몰수 = 4 + 10/4 = 6.5</p>
+<ul class="chk"><li>MOC = 1.8 × 6.5 = 11.7%</li><li>7.2는 산소 몰수를 4로 잘못 잡은 값</li></ul></div></details>
+</div>
+<div class="card q" data-q="36" data-title="36번">
+<div class="q-head"><span class="q-num">36번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">에탄(C₂H₆) 1몰이 완전연소할 때 필요한 산소의 몰수는?</p>
+<ul class="opts"><li>① 2</li><li>② 3</li><li>③ 3.5</li><li>④ 7</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 3.5</b></p>
+<p>📌 CₙHₘ의 산소 몰수 = n + m/4</p>
+<ul class="chk"><li>2 + 6/4 = 3.5 (2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O)</li><li>7은 에탄 2몰 기준이라 함정</li></ul></div></details>
+</div></section>
+<section class="section" id="g4"><div class="section-head"><div class="duality"><span class="n">D</span>폭발의 종류와 폭발 방호 (37~48)</div><div class="section-line"></div></div>
+<div class="card q" data-q="37" data-title="37번">
+<div class="q-head"><span class="q-num">37번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">다음 중 물리적 폭발에 해당하는 것은?</p>
+<ul class="opts"><li>① 분진폭발</li><li>② 분해폭발</li><li>③ 중합폭발</li><li>④ 수증기폭발</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 수증기폭발</b></p>
+<p>📌 물리적 폭발: 보일러 폭발, 수증기 폭발, BLEVE (상변화·압력이 원인)</p>
+<ul class="chk"><li>산화·분해·중합 폭발, 가스·분진폭발은 화학적 폭발</li></ul></div></details>
+</div>
+<div class="card q" data-q="38" data-title="38번">
+<div class="q-head"><span class="q-num">38번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">분진폭발을 가스폭발과 비교한 설명으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 연소속도가 가스폭발보다 작다</li><li>② 연소시간이 길다</li><li>③ 발생에너지가 가스폭발보다 작다</li><li>④ 불완전연소로 일산화탄소 중독 위험이 있다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 발생에너지가 가스폭발보다 작다</b></p>
+<p>📌 분진폭발: 연소속도·폭발압력 <b>작음</b>, 연소시간 <b>김</b>, 발생에너지 <b>큼</b></p>
+<ul class="chk"><li>쌓인 분진이 날려 2차·3차 폭발로 번지기 쉽다</li></ul></div></details>
+</div>
+<div class="card q" data-q="39" data-title="39번">
+<div class="q-head"><span class="q-num">39번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">다음 중 분진폭발을 일으키지 <b>않는</b> 물질은?</p>
+<ul class="opts"><li>① 알루미늄분</li><li>② 생석회</li><li>③ 밀가루</li><li>④ 석탄분</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 생석회</b></p>
+<p>📌 분진폭발하지 않는 것: 시멘트, 생석회, 석회석, 모래</p>
+<ul class="chk"><li>금속분·곡물가루·석탄분은 대표적 폭발성 분진</li></ul></div></details>
+</div>
+<div class="card q" data-q="40" data-title="40번">
+<div class="q-head"><span class="q-num">40번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">분진폭발의 위험성이 커지는 조건으로 옳은 것은?</p>
+<ul class="opts"><li>① 입자가 작고 수분이 적을수록</li><li>② 입자가 크고 수분이 많을수록</li><li>③ 입자가 작고 수분이 많을수록</li><li>④ 입자가 크고 수분이 적을수록</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 입자가 작고 수분이 적을수록</b></p>
+<p>📌 입자 작을수록 표면적↑, 수분 적을수록 부유·착화 쉬움</p></div></details>
+</div>
+<div class="card q" data-q="41" data-title="41번">
+<div class="q-head"><span class="q-num">41번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">액화가스 저장탱크가 외부 화재로 가열되어 탱크가 파열되고 내용물이 급격히 기화하며 화구(Fire Ball)를 만드는 현상은?</p>
+<ul class="opts"><li>① BLEVE</li><li>② 보일오버</li><li>③ UVCE</li><li>④ 슬롭오버</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① BLEVE</b></p>
+<p>📌 BLEVE = 비등액체팽창증기폭발, 화구 발생</p>
+<ul class="chk"><li>대책: 탱크 냉각 살수, 감압, 방액제, 외부 단열</li></ul></div></details>
+</div>
+<div class="card q" data-q="42" data-title="42번">
+<div class="q-head"><span class="q-num">42번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">대기 중에 다량 누출된 가연성 증기가 구름처럼 퍼진 뒤 점화되어 일어나는 폭발은?</p>
+<ul class="opts"><li>① BLEVE</li><li>② UVCE</li><li>③ 분해폭발</li><li>④ 분진폭발</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② UVCE</b></p>
+<p>📌 UVCE = 개방계 증기운폭발</p>
+<ul class="chk"><li>대책: 누출 방지, 가스누출감지기, 긴급차단장치, 점화원 관리</li></ul></div></details>
+</div>
+<div class="card q" data-q="43" data-title="43번">
+<div class="q-head"><span class="q-num">43번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">산소 없이도 분해폭발을 일으킬 수 있는 가스가 <b>아닌</b> 것은?</p>
+<ul class="opts"><li>① 아세틸렌</li><li>② 산화에틸렌</li><li>③ 히드라진</li><li>④ 프로판</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 프로판</b></p>
+<p>📌 분해폭발 가스: 아세틸렌, 산화에틸렌, 에틸렌, 히드라진</p>
+<ul class="chk"><li>프로판은 공기(산소)와 섞여야 폭발하는 일반 가연성 가스</li></ul></div></details>
+</div>
+<div class="card q" data-q="44" data-title="44번">
+<div class="q-head"><span class="q-num">44번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">폭굉(Detonation)에 대한 설명으로 옳은 것은?</p>
+<ul class="opts"><li>① 화염 전파속도가 음속보다 느리다</li><li>② 화염 전파속도가 음속보다 빠르다</li><li>③ 관경이 굵을수록 폭굉유도거리가 짧아진다</li><li>④ 압력이 낮을수록 폭굉유도거리가 짧아진다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 화염 전파속도가 음속보다 빠르다</b></p>
+<p>📌 폭굉 전파속도 약 1,000~3,500m/s (음속 초과)</p>
+<ul class="chk"><li>폭굉유도거리는 관경이 <b>가늘수록</b>, 압력이 <b>높을수록</b> 짧아진다</li></ul></div></details>
+</div>
+<div class="card q" data-q="45" data-title="45번">
+<div class="q-head"><span class="q-num">45번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인화성 액체·가스를 저장·취급하는 설비에서 증기를 외부로 방출하는 통기관 상단에 설치하여 역화를 막는 장치는?</p>
+<ul class="opts"><li>① 화염방지기</li><li>② 파열판</li><li>③ 긴급차단밸브</li><li>④ 체크밸브</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 화염방지기</b></p>
+<p>📌 화염방지기(Flame arrester): 가는 금속망으로 화염을 냉각해 역화 방지, 통기관 <b>상단</b>에 설치</p></div></details>
+</div>
+<div class="card q" data-q="46" data-title="46번">
+<div class="q-head"><span class="q-num">46번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">폭발 초기의 압력 상승을 감지하여 소화제를 자동으로 분사해 폭발을 진압하는 방호 대책은?</p>
+<ul class="opts"><li>① 봉쇄(Containment)</li><li>② 차단(Isolation)</li><li>③ 폭발방산(Venting)</li><li>④ 폭발억제(Suppression)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 폭발억제(Suppression)</b></p>
+<p>📌 억제 = 감지 후 소화제 자동 분사</p>
+<ul class="chk"><li>봉쇄: 견디는 구조 / 차단: 밸브로 전파 차단 / 방산: 파열판·폭압방산구로 압력 배출</li></ul></div></details>
+</div>
+<div class="card q" data-q="47" data-title="47번">
+<div class="q-head"><span class="q-num">47번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">불활성화(퍼지) 방법 중 용기에 액체를 채운 뒤 액체를 빼내면서 불활성가스를 주입하는 방식으로, 큰 용기에 경제적인 것은?</p>
+<ul class="opts"><li>① 진공 퍼지</li><li>② 압력 퍼지</li><li>③ 사이폰 퍼지</li><li>④ 스위프 퍼지</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 사이폰 퍼지</b></p>
+<p>📌 사이폰 퍼지 = 액체 채우고 빼며 불활성가스 주입</p>
+<ul class="chk"><li>스위프 퍼지: 한쪽 주입, 다른 쪽 배출(연속) / 진공 퍼지: 진공 후 주입</li></ul></div></details>
+</div>
+<div class="card q" data-q="48" data-title="48번">
+<div class="q-head"><span class="q-num">48번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">최소발화에너지(MIE)에 대한 설명으로 옳은 것은?</p>
+<ul class="opts"><li>① 압력이 높을수록 커진다</li><li>② 산소농도가 높을수록 커진다</li><li>③ 온도가 높을수록 커진다</li><li>④ 수소·아세틸렌은 약 0.02mJ 수준으로 매우 작다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 수소·아세틸렌은 약 0.02mJ 수준으로 매우 작다</b></p>
+<p>📌 MIE는 압력·온도·산소농도가 높을수록 <b>작아짐</b></p>
+<ul class="chk"><li>수소·아세틸렌·이황화탄소는 약 0.02mJ로 매우 작다</li></ul></div></details>
+</div></section>
+<section class="section" id="g5"><div class="section-head"><div class="duality"><span class="n">E</span>산안법상 위험물질 분류 (49~58)</div><div class="section-line"></div></div>
+<div class="card q" data-q="49" data-title="49번">
+<div class="q-head"><span class="q-num">49번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">산업안전보건기준에 관한 규칙상 인화성 액체 중 "인화점 23℃ 미만, 초기끓는점 35℃ 이하"에 해당하는 물질은?</p>
+<ul class="opts"><li>① 에틸에테르</li><li>② 아세톤</li><li>③ 크실렌</li><li>④ 등유</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 에틸에테르</b></p>
+<p>📌 23℃ 미만·끓는점 35℃ 이하: 에틸에테르, 가솔린, 아세트알데히드, 산화프로필렌</p>
+<ul class="chk"><li>아세톤은 23℃ 미만·35℃ 초과, 크실렌·등유는 23℃ 이상 60℃ 이하</li></ul></div></details>
+</div>
+<div class="card q" data-q="50" data-title="50번">
+<div class="q-head"><span class="q-num">50번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인화성 액체 중 "인화점 23℃ 이상 60℃ 이하"에 해당하는 물질은?</p>
+<ul class="opts"><li>① 노르말헥산</li><li>② 아세트산</li><li>③ 메틸에틸케톤</li><li>④ 이황화탄소</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 아세트산</b></p>
+<p>📌 23~60℃: 크실렌, 아세트산아밀, 등유, 경유, 테레핀유, 아세트산</p>
+<ul class="chk"><li>노르말헥산·메틸에틸케톤·이황화탄소는 23℃ 미만·끓는점 35℃ 초과</li></ul></div></details>
+</div>
+<div class="card q" data-q="51" data-title="51번">
+<div class="q-head"><span class="q-num">51번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인화성 가스의 기준으로 옳은 것은? (20℃, 101.3kPa에서 가스 상태)</p>
+<ul class="opts"><li>① 폭발하한 13% 이하 또는 상하한 차이 12% 이상</li><li>② 폭발하한 10% 이하 또는 상하한 차이 20% 이상</li><li>③ 폭발하한 12% 이하 또는 상하한 차이 13% 이상</li><li>④ 폭발하한 15% 이하 또는 상하한 차이 10% 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 폭발하한 13% 이하 또는 상하한 차이 12% 이상</b></p>
+<p>📌 인화성 가스 = 하한 <b>13%</b> 이하 또는 범위 폭 <b>12%</b> 이상</p>
+<ul class="chk"><li>13과 12의 순서를 바꾼 ③이 대표 함정</li></ul></div></details>
+</div>
+<div class="card q" data-q="52" data-title="52번">
+<div class="q-head"><span class="q-num">52번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">부식성 물질 중 농도 20% 이상일 때 해당하는 산으로만 짝지어진 것은?</p>
+<ul class="opts"><li>① 인산, 아세트산</li><li>② 염산, 불산</li><li>③ 염산, 황산</li><li>④ 아세트산, 질산</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 염산, 황산</b></p>
+<p>📌 산 20% 이상: 염산, 황산, 질산 / 60% 이상: 인산, 아세트산, 불산</p>
+<ul class="chk"><li>염기(수산화나트륨, 수산화칼륨)는 40% 이상</li></ul></div></details>
+</div>
+<div class="card q" data-q="53" data-title="53번">
+<div class="q-head"><span class="q-num">53번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">부식성 염기류로서 수산화나트륨이 해당하는 농도 기준은?</p>
+<ul class="opts"><li>① 20% 이상</li><li>② 40% 이상</li><li>③ 30% 이상</li><li>④ 60% 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 40% 이상</b></p>
+<p>📌 부식성 염기: 수산화나트륨·수산화칼륨 <b>40%</b> 이상</p>
+<ul class="chk"><li>산은 20% 또는 60% 기준</li></ul></div></details>
+</div>
+<div class="card q" data-q="54" data-title="54번">
+<div class="q-head"><span class="q-num">54번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">급성 독성 물질 기준 중 LD50(경구, 쥐)의 기준은?</p>
+<ul class="opts"><li>① 50mg/kg 이하</li><li>② 1,000mg/kg 이하</li><li>③ 2,500mg/kg 이하</li><li>④ 300mg/kg 이하</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 300mg/kg 이하</b></p>
+<p>📌 경구 LD50 <b>300</b>mg/kg, 경피 LD50 <b>1,000</b>mg/kg</p>
+<ul class="chk"><li>LC50(가스) 2,500ppm, 증기 10mg/L, 분진·미스트 1mg/L</li></ul></div></details>
+</div>
+<div class="card q" data-q="55" data-title="55번">
+<div class="q-head"><span class="q-num">55번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">급성 독성 물질 기준 중 가스를 쥐에게 4시간 흡입시켰을 때의 LC50 기준은?</p>
+<ul class="opts"><li>① 2,500ppm 이하</li><li>② 1,000ppm 이하</li><li>③ 300ppm 이하</li><li>④ 10ppm 이하</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 2,500ppm 이하</b></p>
+<p>📌 LC50: 가스 2,500ppm / 증기 10mg/L / 분진·미스트 1mg/L</p></div></details>
+</div>
+<div class="card q" data-q="56" data-title="56번">
+<div class="q-head"><span class="q-num">56번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">산안법상 "물반응성 물질 및 인화성 고체"에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 리튬</li><li>② 황린</li><li>③ 과염소산</li><li>④ 마그네슘 분말</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 과염소산</b></p>
+<p>📌 과염소산은 <b>산화성 액체 및 산화성 고체</b></p>
+<ul class="chk"><li>물반응성·인화성 고체: 리튬, 칼륨, 나트륨, 황, 황린, 적린, 알킬알루미늄, 금속 분말 등</li></ul></div></details>
+</div>
+<div class="card q" data-q="57" data-title="57번">
+<div class="q-head"><span class="q-num">57번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">산안법상 "폭발성 물질 및 유기과산화물"에 해당하는 것은?</p>
+<ul class="opts"><li>① 질산에스테르류</li><li>② 염소산 및 그 염류</li><li>③ 칼슘탄화물</li><li>④ 셀룰로이드류</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 질산에스테르류</b></p>
+<p>📌 폭발성 물질: 질산에스테르류, 니트로·니트로소화합물, 아조·디아조화합물, 하이드라진 유도체, 유기과산화물</p>
+<ul class="chk"><li>염소산은 산화성, 칼슘탄화물·셀룰로이드류는 물반응성·인화성 고체</li></ul></div></details>
+</div>
+<div class="card q" data-q="58" data-title="58번">
+<div class="q-head"><span class="q-num">58번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">산안법상 "산화성 액체 및 산화성 고체"에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 질산</li><li>② 과산화수소</li><li>③ 과망간산 및 그 염류</li><li>④ 알킬리튬</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 알킬리튬</b></p>
+<p>📌 산화성: 차아염소산·아염소산·염소산·과염소산, 브롬산, 요오드산, 과산화수소, 질산, 과망간산, 중크롬산</p>
+<ul class="chk"><li>알킬알루미늄·알킬리튬은 물반응성 물질</li></ul></div></details>
+</div></section>
+<section class="section" id="g6"><div class="section-head"><div class="duality"><span class="n">F</span>자연발화·금수성·혼재 (59~66)</div><div class="section-line"></div></div>
+<div class="card q" data-q="59" data-title="59번">
+<div class="q-head"><span class="q-num">59번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">자연발화가 일어나기 쉬운 조건으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 표면적이 넓을 것</li><li>② 열전도율이 클 것</li><li>③ 발열량이 클 것</li><li>④ 주위 온도가 높을 것</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 열전도율이 클 것</b></p>
+<p>📌 열전도율이 <b>작아야</b> 열이 쌓여 자연발화한다</p>
+<ul class="chk"><li>적당한 수분도 촉매 역할을 해 자연발화를 돕는다</li></ul></div></details>
+</div>
+<div class="card q" data-q="60" data-title="60번">
+<div class="q-head"><span class="q-num">60번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">아마인유 같은 건성유가 묻은 걸레가 쌓여 자연발화하는 주된 원인은?</p>
+<ul class="opts"><li>① 분해열</li><li>② 흡착열</li><li>③ 중합열</li><li>④ 산화열</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 산화열</b></p>
+<p>📌 산화열: 건성유(아마인유), 석탄</p>
+<ul class="chk"><li>분해열: 셀룰로이드·니트로셀룰로오스 / 흡착열: 활성탄·목탄 / 중합열: 시안화수소·산화에틸렌</li></ul></div></details>
+</div>
+<div class="card q" data-q="61" data-title="61번">
+<div class="q-head"><span class="q-num">61번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">자연발화의 원인과 물질의 연결이 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 분해열 - 셀룰로이드</li><li>② 흡착열 - 활성탄</li><li>③ 산화열 - 시안화수소</li><li>④ 미생물 - 퇴비</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 산화열 - 시안화수소</b></p>
+<p>📌 시안화수소·산화에틸렌은 <b>중합열</b></p>
+<ul class="chk"><li>산화열은 건성유·석탄</li></ul></div></details>
+</div>
+<div class="card q" data-q="62" data-title="62번">
+<div class="q-head"><span class="q-num">62번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">탄화칼슘(카바이드)이 물과 반응할 때 발생하는 가스는?</p>
+<ul class="opts"><li>① 아세틸렌</li><li>② 수소</li><li>③ 포스핀</li><li>④ 메탄</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 아세틸렌</b></p>
+<p>📌 탄화칼슘 + 물 → 아세틸렌</p>
+<ul class="chk"><li>칼륨·나트륨·리튬 → 수소, 인화칼슘 → 포스핀</li></ul></div></details>
+</div>
+<div class="card q" data-q="63" data-title="63번">
+<div class="q-head"><span class="q-num">63번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">인화칼슘이 물과 반응하여 발생하는 유독성 가스는?</p>
+<ul class="opts"><li>① 수소</li><li>② 포스핀</li><li>③ 아세틸렌</li><li>④ 일산화탄소</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 포스핀</b></p>
+<p>📌 인화칼슘 + 물 → 포스핀(인화수소)</p></div></details>
+</div>
+<div class="card q" data-q="64" data-title="64번">
+<div class="q-head"><span class="q-num">64번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">금속 칼륨이나 나트륨의 저장 방법으로 가장 적절한 것은?</p>
+<ul class="opts"><li>① 물속에 저장</li><li>② 석유(등유) 속에 저장</li><li>③ 공기 중에 개방 저장</li><li>④ 알코올 속에 저장</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 석유(등유) 속에 저장</b></p>
+<p>📌 칼륨·나트륨은 물과 반응해 수소 발생 → 석유 속 저장</p>
+<ul class="chk"><li>반대로 황린은 공기 중 자연발화하므로 <b>물속</b> 저장</li></ul></div></details>
+</div>
+<div class="card q" data-q="65" data-title="65번">
+<div class="q-head"><span class="q-num">65번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">위험물의 류별 혼재 기준에서 제4류(인화성 액체)와 혼재할 수 있는 것은?</p>
+<ul class="opts"><li>① 제1류</li><li>② 제6류</li><li>③ 제2류</li><li>④ 제1류와 제6류</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 제2류</b></p>
+<p>📌 혼재 가능 암기: "423, 524, 61"</p>
+<ul class="chk"><li>4류는 2·3·5류와 혼재 가능 (5류의 "524"에 4가 있음)</li><li>1류·6류(산화성)는 4류와 혼재 불가</li></ul></div></details>
+</div>
+<div class="card q" data-q="66" data-title="66번">
+<div class="q-head"><span class="q-num">66번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">위험물의 류별 혼재 기준에서 제6류(산화성 액체)와 혼재할 수 있는 것은?</p>
+<ul class="opts"><li>① 제1류</li><li>② 제2류</li><li>③ 제3류</li><li>④ 제4류</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 제1류</b></p>
+<p>📌 "61": 6류는 1류와만 혼재 가능</p>
+<ul class="chk"><li>둘 다 산화성 물질(1류 산화성 고체, 6류 산화성 액체)</li></ul></div></details>
+</div></section>
+<section class="section" id="g7"><div class="section-head"><div class="duality"><span class="n">G</span>화학설비·안전밸브·안전거리 (67~78)</div><div class="section-line"></div></div>
+<div class="card q" data-q="67" data-title="67번">
+<div class="q-head"><span class="q-num">67번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">특수화학설비의 기준 중 운전 조건으로 옳은 것은?</p>
+<ul class="opts"><li>① 온도 350℃ 이상 또는 게이지압력 980kPa 이상</li><li>② 온도 250℃ 이상 또는 게이지압력 980kPa 이상</li><li>③ 온도 350℃ 이상 또는 게이지압력 490kPa 이상</li><li>④ 온도 500℃ 이상 또는 게이지압력 1MPa 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 온도 350℃ 이상 또는 게이지압력 980kPa 이상</b></p>
+<p>📌 특수화학설비: <b>350℃</b> 이상 또는 <b>980kPa</b> 이상으로 운전하는 설비</p>
+<ul class="chk"><li>그 밖에 발열반응 반응장치, 증류·정류 등 분리장치, 가열로 등</li></ul></div></details>
+</div>
+<div class="card q" data-q="68" data-title="68번">
+<div class="q-head"><span class="q-num">68번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">특수화학설비에 설치해야 하는 계측장치로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 온도계</li><li>② 유량계</li><li>③ 압력계</li><li>④ 비중계</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 비중계</b></p>
+<p>📌 계측장치 = 온도계·유량계·압력계</p>
+<ul class="chk"><li>그 밖에 자동경보장치, 긴급차단장치, 예비동력원 설치</li></ul></div></details>
+</div>
+<div class="card q" data-q="69" data-title="69번">
+<div class="q-head"><span class="q-num">69번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">다음 중 특수화학설비에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 발열반응이 일어나는 반응장치</li><li>② 증류·정류·증발·추출 등 분리장치</li><li>③ 상온·상압에서 운전하는 물 저장탱크</li><li>④ 가열로 또는 가열기</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 상온·상압에서 운전하는 물 저장탱크</b></p>
+<p>📌 특수화학설비: 발열반응장치, 분리장치, 분해온도·발화점 이상 운전 설비, 반응폭주 우려 설비, 350℃·980kPa 이상 설비, 가열로·가열기</p></div></details>
+</div>
+<div class="card q" data-q="70" data-title="70번">
+<div class="q-head"><span class="q-num">70번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">반응폭주에 대한 대책으로 가장 거리가 <b>먼</b> 것은?</p>
+<ul class="opts"><li>① 반응기 냉각</li><li>② 원료 공급 차단</li><li>③ 반응억제제 투입</li><li>④ 반응기 가열량 증가</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 반응기 가열량 증가</b></p>
+<p>📌 반응폭주 대책: 냉각, 원료 공급 차단, 반응억제제 투입, 긴급 방출</p></div></details>
+</div>
+<div class="card q" data-q="71" data-title="71번">
+<div class="q-head"><span class="q-num">71번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">안전밸브를 2개 이상 설치하는 경우, 1개는 최고사용압력 이하에서 작동하고 나머지는 최고사용압력의 몇 배 이하에서 작동하도록 설정하는가?</p>
+<ul class="opts"><li>① 1.03배</li><li>② 1.05배</li><li>③ 1.1배</li><li>④ 1.5배</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 1.05배</b></p>
+<p>📌 1개는 최고사용압력 이하, 나머지는 <b>1.05배</b> 이하</p>
+<ul class="chk"><li>외부 화재 대비용 안전밸브는 <b>1.1배</b> 이하</li></ul></div></details>
+</div>
+<div class="card q" data-q="72" data-title="72번">
+<div class="q-head"><span class="q-num">72번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">외부 화재를 대비하여 설치하는 안전밸브의 작동 설정 압력은?</p>
+<ul class="opts"><li>① 최고사용압력의 1.1배 이하</li><li>② 최고사용압력의 1.05배 이하</li><li>③ 최고사용압력의 1.5배 이하</li><li>④ 최고사용압력의 2배 이하</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 최고사용압력의 1.1배 이하</b></p>
+<p>📌 일반 1개: 최고사용압력 이하 / 복수 설치 나머지: 1.05배 / 외부 화재용: <b>1.1배</b></p></div></details>
+</div>
+<div class="card q" data-q="73" data-title="73번">
+<div class="q-head"><span class="q-num">73번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">화학공정 유체와 안전밸브의 디스크 또는 시트가 직접 접촉될 수 있도록 설치된 안전밸브의 검사 주기는?</p>
+<ul class="opts"><li>① 매년 1회 이상</li><li>② 2년마다 1회 이상</li><li>③ 3년마다 1회 이상</li><li>④ 4년마다 1회 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 매년 1회 이상</b></p>
+<p>📌 직접 접촉: 매년 1회 / 전단에 파열판 설치: 2년마다 1회 / PSM 평가 우수: 4년마다 1회</p></div></details>
+</div>
+<div class="card q" data-q="74" data-title="74번">
+<div class="q-head"><span class="q-num">74번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">안전밸브 전단에 파열판이 설치된 경우 안전밸브 검사 주기는?</p>
+<ul class="opts"><li>① 매년 1회 이상</li><li>② 4년마다 1회 이상</li><li>③ 2년마다 1회 이상</li><li>④ 6개월마다 1회 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 2년마다 1회 이상</b></p>
+<p>📌 파열판이 유체를 먼저 막아 주므로 주기가 <b>2년</b>으로 늘어난다</p>
+<ul class="chk"><li>PSM 이행상태 평가 결과 우수 사업장은 4년마다 1회</li></ul></div></details>
+</div>
+<div class="card q" data-q="75" data-title="75번">
+<div class="q-head"><span class="q-num">75번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">파열판을 설치해야 하는 경우로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 반응폭주 등 급격한 압력 상승 우려가 있는 경우</li><li>② 급성 독성물질 누출로 주위 환경이 오염될 우려가 있는 경우</li><li>③ 압력이 서서히 오르고 재사용이 필요한 경우</li><li>④ 이상물질이 쌓여 안전밸브가 작동하지 못할 우려가 있는 경우</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 압력이 서서히 오르고 재사용이 필요한 경우</b></p>
+<p>📌 파열판: 급격한 압력 상승, 독성물질 누출 우려, 안전밸브 작동 불능 우려</p>
+<ul class="chk"><li>파열판은 한 번 터지면 교체해야 하는 <b>재사용 불가</b> 장치</li></ul></div></details>
+</div>
+<div class="card q" data-q="76" data-title="76번">
+<div class="q-head"><span class="q-num">76번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">안전밸브를 설치해야 하는 대상이 <b>아닌</b> 것은?</p>
+<ul class="opts"><li>① 압력용기</li><li>② 정변위 압축기</li><li>③ 정변위 펌프의 토출측</li><li>④ 대기압으로 개방된 상압 저장조</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 대기압으로 개방된 상압 저장조</b></p>
+<p>📌 대상: 압력용기, 정변위 압축기, 정변위 펌프(토출측), 2개 이상 밸브로 막힌 배관(열팽창 우려), 최고사용압력 초과 우려 설비</p></div></details>
+</div>
+<div class="card q" data-q="77" data-title="77번">
+<div class="q-head"><span class="q-num">77번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">단위공정설비로부터 다른 단위공정설비 사이의 안전거리는 설비 바깥면부터 몇 m 이상인가?</p>
+<ul class="opts"><li>① 5m</li><li>② 20m</li><li>③ 10m</li><li>④ 30m</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 10m</b></p>
+<p>📌 단위공정설비 ↔ 단위공정설비: <b>10m</b> 이상</p>
+<ul class="chk"><li>플레어스택, 위험물질 저장탱크, 사무실 관련 거리는 모두 <b>20m</b> 이상</li></ul></div></details>
+</div>
+<div class="card q" data-q="78" data-title="78번">
+<div class="q-head"><span class="q-num">78번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">플레어스택으로부터 단위공정설비 및 위험물질 저장탱크까지의 안전거리는?</p>
+<ul class="opts"><li>① 반경 10m 이상</li><li>② 반경 20m 이상</li><li>③ 반경 15m 이상</li><li>④ 반경 30m 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 반경 20m 이상</b></p>
+<p>📌 플레어스택 ↔ 단위공정설비·저장탱크·하역설비: 반경 <b>20m</b> 이상</p>
+<ul class="chk"><li>방호벽 등을 설치하면 예외 인정</li></ul></div></details>
+</div></section>
+<section class="section" id="g8"><div class="section-head"><div class="duality"><span class="n">H</span>화재 분류와 소화 (79~86)</div><div class="section-line"></div></div>
+<div class="card q" data-q="79" data-title="79번">
+<div class="q-head"><span class="q-num">79번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">화재 분류와 표시색의 연결로 옳은 것은?</p>
+<ul class="opts"><li>① A급 - 황색</li><li>② B급 - 백색</li><li>③ C급 - 청색</li><li>④ D급 - 적색</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ C급 - 청색</b></p>
+<p>📌 A급 일반 백색, B급 유류 황색, C급 전기 청색, D급 금속(표시색 없음)</p></div></details>
+</div>
+<div class="card q" data-q="80" data-title="80번">
+<div class="q-head"><span class="q-num">80번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">할론, 분말 소화약제처럼 연쇄반응을 차단하여 소화하는 방법은?</p>
+<ul class="opts"><li>① 냉각소화</li><li>② 질식소화</li><li>③ 억제소화</li><li>④ 제거소화</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 억제소화</b></p>
+<p>📌 억제(부촉매)소화 = 연쇄반응 차단 → 할론, 분말</p>
+<ul class="chk"><li>질식소화는 산소를 약 15% 이하로 낮춤(CO₂, 포)</li></ul></div></details>
+</div>
+<div class="card q" data-q="81" data-title="81번">
+<div class="q-head"><span class="q-num">81번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">가스 화재 시 가스 밸브를 잠가 불을 끄는 소화 방법은?</p>
+<ul class="opts"><li>① 냉각소화</li><li>② 제거소화</li><li>③ 희석소화</li><li>④ 억제소화</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 제거소화</b></p>
+<p>📌 제거소화 = 가연물 자체를 없앰 (밸브 잠금, 가연물 이동)</p></div></details>
+</div>
+<div class="card q" data-q="82" data-title="82번">
+<div class="q-head"><span class="q-num">82번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">A, B, C급 화재에 모두 사용할 수 있는 제3종 분말 소화약제의 주성분은?</p>
+<ul class="opts"><li>① 탄산수소나트륨</li><li>② 탄산수소칼륨</li><li>③ 탄산수소칼륨 + 요소</li><li>④ 제1인산암모늄</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 제1인산암모늄</b></p>
+<p>📌 3종 분말: NH₄H₂PO₄, <b>ABC급</b>, 담홍색</p>
+<ul class="chk"><li>1종 NaHCO₃(백색), 2종 KHCO₃(담회색), 4종 KHCO₃+요소(회색)는 BC급</li></ul></div></details>
+</div>
+<div class="card q" data-q="83" data-title="83번">
+<div class="q-head"><span class="q-num">83번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">식용유 화재에서 비누화 반응으로 재발화를 억제하는 효과가 있는 분말 소화약제는?</p>
+<ul class="opts"><li>① 제1종 분말(탄산수소나트륨)</li><li>② 제2종 분말(탄산수소칼륨)</li><li>③ 제3종 분말(제1인산암모늄)</li><li>④ 제4종 분말(탄산수소칼륨 + 요소)</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 제1종 분말(탄산수소나트륨)</b></p>
+<p>📌 1종 분말: NaHCO₃, BC급, 백색, 식용유 화재에 효과(비누화)</p></div></details>
+</div>
+<div class="card q" data-q="84" data-title="84번">
+<div class="q-head"><span class="q-num">84번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">할론 1301의 화학식으로 옳은 것은?</p>
+<ul class="opts"><li>① CF₂ClBr</li><li>② CF₃Br</li><li>③ C₂F₄Br₂</li><li>④ CH₃Br</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② CF₃Br</b></p>
+<p>📌 할론 번호는 C-F-Cl-Br 순서의 원자 수: 1301 = C1, F3, Cl0, Br1</p>
+<ul class="chk"><li>1211 = CF₂ClBr, 2402 = C₂F₄Br₂</li></ul></div></details>
+</div>
+<div class="card q" data-q="85" data-title="85번">
+<div class="q-head"><span class="q-num">85번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">마그네슘 분말 화재(D급)의 소화 방법으로 가장 적절한 것은?</p>
+<ul class="opts"><li>① 물 분무</li><li>② 이산화탄소 소화기</li><li>③ 마른 모래 또는 팽창질석</li><li>④ 포 소화기</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 마른 모래 또는 팽창질석</b></p>
+<p>📌 금속화재: 마른 모래, 팽창질석·팽창진주암</p>
+<ul class="chk"><li>물·CO₂는 사용 금지 (반응해 화재를 키울 수 있음)</li></ul></div></details>
+</div>
+<div class="card q" data-q="86" data-title="86번">
+<div class="q-head"><span class="q-num">86번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">이산화탄소 소화기에 대한 설명으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 질식과 냉각 효과가 있다</li><li>② 전기화재에 적합하다</li><li>③ 밀폐공간에서 사용하면 질식 위험이 있다</li><li>④ 금속화재(D급)에 가장 효과적이다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 금속화재(D급)에 가장 효과적이다</b></p>
+<p>📌 CO₂: 질식·냉각, 전기화재 적합, 밀폐공간 질식 주의</p>
+<ul class="chk"><li>금속화재에는 CO₂ 사용 금지</li></ul></div></details>
+</div></section>
+<section class="section" id="g9"><div class="section-head"><div class="duality"><span class="n">I</span>공정안전보고서·MSDS·노출기준 (87~94)</div><div class="section-line"></div></div>
+<div class="card q" data-q="87" data-title="87번">
+<div class="q-head"><span class="q-num">87번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">공정안전보고서에 포함해야 할 사항이 <b>아닌</b> 것은?</p>
+<ul class="opts"><li>① 공정안전자료</li><li>② 공정위험성 평가서</li><li>③ 비상조치계획</li><li>④ 작업환경측정 결과</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 작업환경측정 결과</b></p>
+<p>📌 PSM 4가지: 공정안전자료, 공정위험성 평가서, 안전운전계획, 비상조치계획</p></div></details>
+</div>
+<div class="card q" data-q="88" data-title="88번">
+<div class="q-head"><span class="q-num">88번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">공정안전보고서는 설비의 설치·이전·주요구조 변경 공사 착공일 며칠 전까지 제출해야 하는가?</p>
+<ul class="opts"><li>① 15일</li><li>② 30일</li><li>③ 60일</li><li>④ 7일</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 30일</b></p>
+<p>📌 착공일 <b>30일 전</b>까지 한국산업안전보건공단에 <b>2부</b> 제출</p></div></details>
+</div>
+<div class="card q" data-q="89" data-title="89번">
+<div class="q-head"><span class="q-num">89번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">No, More, Less, Reverse 같은 가이드워드를 사용하여 공정의 이탈을 검토하는 위험성 평가 기법은?</p>
+<ul class="opts"><li>① FTA</li><li>② ETA</li><li>③ FMEA</li><li>④ HAZOP</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ HAZOP</b></p>
+<p>📌 HAZOP = 가이드워드로 설계 의도에서의 이탈 검토</p>
+<ul class="chk"><li>FTA: 정상사상 → 원인(연역적) / ETA: 초기사상 → 결과(귀납적) / FMEA: 부품 고장형태별 영향</li></ul></div></details>
+</div>
+<div class="card q" data-q="90" data-title="90번">
+<div class="q-head"><span class="q-num">90번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">다음 중 공정안전보고서 제출 대상 업종에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 원유 정제처리업</li><li>② 질소 화학비료 제조업</li><li>③ 화약 및 불꽃제품 제조업</li><li>④ 단순혼합·배합에 의한 복합비료 제조업</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 단순혼합·배합에 의한 복합비료 제조업</b></p>
+<p>📌 복합비료·기타 화학비료 제조업은 대상이지만 <b>단순혼합·배합은 제외</b></p>
+<ul class="chk"><li>화학 살균·살충제 및 농업용 약제 제조업도 원제 제조만 해당</li></ul></div></details>
+</div>
+<div class="card q" data-q="91" data-title="91번">
+<div class="q-head"><span class="q-num">91번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">물질안전보건자료(MSDS) 작성 항목에 해당하지 <b>않는</b> 것은?</p>
+<ul class="opts"><li>① 응급조치 요령</li><li>② 독성 정보</li><li>③ 제품 판매 가격</li><li>④ 폐기 시 주의사항</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 제품 판매 가격</b></p>
+<p>📌 MSDS 16개 항목: 회사 정보, 유해·위험성, 구성성분, 응급조치, 화재 대처, 누출 대처, 취급·저장, 노출방지·보호구, 물리화학적 특성, 안정성·반응성, 독성, 환경 영향, 폐기, 운송, 법적 규제, 기타</p></div></details>
+</div>
+<div class="card q" data-q="92" data-title="92번">
+<div class="q-head"><span class="q-num">92번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">단시간 노출기준(STEL)에 대한 설명으로 옳은 것은?</p>
+<ul class="opts"><li>① 1일 8시간 작업의 평균 농도이다</li><li>② 15분간 노출 기준이며 1일 4회 이하, 노출 간격 60분 이상이어야 한다</li><li>③ 어떤 순간에도 넘어서는 안 되는 농도이다</li><li>④ 30분간 노출 기준이며 1일 2회 이하로 노출해야 한다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 15분간 노출 기준이며 1일 4회 이하, 노출 간격 60분 이상이어야 한다</b></p>
+<p>📌 STEL: 15분, 1회 15분 이하, 1일 4회 이하, 간격 60분 이상</p>
+<ul class="chk"><li>①은 TWA, ③은 C(최고노출기준)</li></ul></div></details>
+</div>
+<div class="card q" data-q="93" data-title="93번">
+<div class="q-head"><span class="q-num">93번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">작업장 공기 중에 톨루엔 50ppm(노출기준 50ppm), 크실렌 50ppm(노출기준 100ppm)이 함께 있을 때 혼합물의 노출지수와 판정은?</p>
+<ul class="opts"><li>① 0.75, 기준 이하</li><li>② 1.0, 기준 이하</li><li>③ 1.5, 기준 초과</li><li>④ 2.0, 기준 초과</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 1.5, 기준 초과</b></p>
+<p>📌 R = C₁/T₁ + C₂/T₂, R &gt; 1이면 노출기준 초과</p>
+<ul class="chk"><li>50/50 + 50/100 = 1 + 0.5 = 1.5 → 초과</li></ul></div></details>
+</div>
+<div class="card q" data-q="94" data-title="94번">
+<div class="q-head"><span class="q-num">94번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">어떤 작업장에 A물질 200ppm(노출기준 400ppm), B물질 30ppm(노출기준 50ppm), C물질 20ppm(노출기준 100ppm)이 있다. 노출지수(R)와 판정으로 옳은 것은?</p>
+<ul class="opts"><li>① 1.3, 노출기준 초과</li><li>② 0.9, 노출기준 이하</li><li>③ 1.1, 노출기준 초과</li><li>④ 0.7, 노출기준 이하</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 1.3, 노출기준 초과</b></p>
+<p>📌 R = 200/400 + 30/50 + 20/100</p>
+<ul class="chk"><li>= 0.5 + 0.6 + 0.2 = 1.3 → R &gt; 1이므로 초과</li></ul></div></details>
+</div></section>
+<section class="section" id="g10"><div class="section-head"><div class="duality"><span class="n">J</span>건조설비·가스누출·저장 (95~100)</div><div class="section-line"></div></div>
+<div class="card q" data-q="95" data-title="95번">
+<div class="q-head"><span class="q-num">95번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">위험물 건조설비 중 건조실을 독립된 단층건물로 해야 하는 기준은?</p>
+<ul class="opts"><li>① 건조실 내용적 1㎥ 이상</li><li>② 건조실 내용적 5㎥ 이상</li><li>③ 건조실 내용적 10㎥ 이상</li><li>④ 건조실 내용적 0.5㎥ 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 건조실 내용적 1㎥ 이상</b></p>
+<p>📌 위험물 건조설비: 내용적 <b>1㎥</b> 이상</p>
+<ul class="chk"><li>위험물이 아닌 건조설비: 고체·액체 연료 10kg/h, 기체 1㎥/h, 전기 10kW 이상</li></ul></div></details>
+</div>
+<div class="card q" data-q="96" data-title="96번">
+<div class="q-head"><span class="q-num">96번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">위험물이 아닌 물질을 가열·건조하는 건조설비 중 독립 단층건물로 해야 하는 기준으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 고체 연료 최대사용량 10kg/h 이상</li><li>② 액체 연료 최대사용량 10kg/h 이상</li><li>③ 기체 연료 최대사용량 1㎥/h 이상</li><li>④ 전기 정격용량 5kW 이상</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 전기 정격용량 5kW 이상</b></p>
+<p>📌 전기 사용 건조설비는 정격용량 <b>10kW</b> 이상</p>
+<ul class="chk"><li>내화구조 건물이면 최상층에 설치 가능</li></ul></div></details>
+</div>
+<div class="card q" data-q="97" data-title="97번">
+<div class="q-head"><span class="q-num">97번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">가연성 가스의 가스누출감지경보기 경보 설정값으로 옳은 것은?</p>
+<ul class="opts"><li>① 폭발하한의 50% 이하</li><li>② 폭발하한의 25% 이하</li><li>③ 폭발상한의 25% 이하</li><li>④ 노출기준(TWA) 이하</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 폭발하한의 25% 이하</b></p>
+<p>📌 가연성: 폭발하한 <b>25%</b> 이하 / 독성: 노출기준(TWA) 이하</p>
+<ul class="chk"><li>경보 정밀도: 가연성 ±25% 이하, 독성 ±30% 이하</li></ul></div></details>
+</div>
+<div class="card q" data-q="98" data-title="98번">
+<div class="q-head"><span class="q-num">98번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">LPG처럼 공기보다 무거운 가스의 가스누출감지기 설치 위치로 가장 적절한 것은?</p>
+<ul class="opts"><li>① 바닥 가까이</li><li>② 천장 가까이</li><li>③ 작업자 호흡 높이</li><li>④ 출입문 상부</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 바닥 가까이</b></p>
+<p>📌 무거운 가스(LPG) → 바닥 / 가벼운 가스(수소·메탄) → 천장</p></div></details>
+</div>
+<div class="card q" data-q="99" data-title="99번">
+<div class="q-head"><span class="q-num">99번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">공업용 가스 용기의 색 구분으로 옳은 것은?</p>
+<ul class="opts"><li>① 산소 - 녹색</li><li>② 수소 - 황색</li><li>③ 아세틸렌 - 주황색</li><li>④ 액화염소 - 백색</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 산소 - 녹색</b></p>
+<p>📌 산소 녹색, 수소 주황색, 아세틸렌 황색, 액화탄산가스 청색, 액화암모니아 백색, 액화염소 갈색</p>
+<ul class="chk"><li>수소와 아세틸렌의 색을 맞바꾼 것이 대표 함정</li></ul></div></details>
+</div>
+<div class="card q" data-q="100" data-title="100번">
+<div class="q-head"><span class="q-num">100번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">아세틸렌 취급에 대한 설명으로 옳지 <b>않은</b> 것은?</p>
+<ul class="opts"><li>① 구리·은·수은과의 접촉을 피한다</li><li>② 용기는 세워서 보관한다</li><li>③ 아세톤·DMF에 녹여 다공물질에 충전한다</li><li>④ 구리 합금 배관을 사용하면 폭발 위험이 줄어든다</li></ul>
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 구리 합금 배관을 사용하면 폭발 위험이 줄어든다</b></p>
+<p>📌 아세틸렌 + 구리·은·수은 → 폭발성 아세틸리드 생성</p>
+<ul class="chk"><li>분해폭발 위험 때문에 고압으로 쓰지 않는다</li></ul></div></details>
+</div></section>
+<footer>개념이 막히면 <a href="s5-points.html">5과목 기출포인트</a>를 먼저 보세요. 출제 경향을 정리한 유형 노트이며 기출 원문이 아닙니다. 법령·KEC 수치는 시험 전에 최신 개정 사항으로 확인하세요.</footer>
+</div>
+<script>
+(function(){
+  var key='sanan-star-'+document.body.dataset.subject;
+  var marked={};
+  try{marked=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+  function save(){try{localStorage.setItem(key,JSON.stringify(marked))}catch(e){}}
+  var qs=[].slice.call(document.querySelectorAll('.q'));
+  var cnt=document.getElementById('starCount');
+  function upd(){cnt.textContent='★ 다시 볼 문제 '+Object.keys(marked).length+'개'}
+  qs.forEach(function(q){
+    var id=q.dataset.q;
+    if(marked[id])q.classList.add('marked');
+    q.querySelector('.q-star').addEventListener('click',function(){
+      if(marked[id]){delete marked[id];q.classList.remove('marked')}else{marked[id]=1;q.classList.add('marked')}
+      save();upd();
+    });
+  });
+  upd();
+  var openAll=document.getElementById('openAll'),onlyStar=document.getElementById('onlyStar');
+  openAll.addEventListener('click',function(){
+    var on=!openAll.classList.contains('on');openAll.classList.toggle('on',on);
+    openAll.textContent=on?'정답 모두 접기':'정답 모두 펼치기';
+    document.querySelectorAll('details.ans').forEach(function(d){d.open=on});
+  });
+  onlyStar.addEventListener('click',function(){
+    var on=!onlyStar.classList.contains('on');onlyStar.classList.toggle('on',on);
+    qs.forEach(function(q){q.classList.toggle('hidden',on&&!q.classList.contains('marked'))});
+    document.querySelectorAll('.section').forEach(function(s){
+      s.classList.toggle('hidden',on&&!s.querySelector('.q.marked'));
+    });
+  });
+})();
+</script>
+</body>
+</html>
