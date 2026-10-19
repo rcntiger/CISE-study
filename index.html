@@ -3,196 +3,173 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1C2733">
 <title>산업안전기사 학습 노트</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#EFE8D6;--paper2:#E6DFC9;--ink:#232A35;--ink-soft:#4B5563;--rule:#C9BFA0;
-  --red:#B4362C;--green:#3F6D4E;--hl:#EFC94C;--blue:#3E5C86;--purple:#6E5482;
-  --heuk:#7C848F;--orange:#B8661F;
+  --bg:#F3F5F8;--surface:#FFFFFF;--surface2:#F7F8FA;--ink:#121A24;--ink-soft:#5A6573;--line:#E3E7EC;
+  --hero:#1C2733;--hero-ink:#F4F6F8;--hero-soft:#AEB8C4;
+  --yellow:#FFC21A;--yellow-soft:#FFF3C9;--mark:#FFE58A;
+  --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
+    --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
+  }
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{
-  background:var(--paper);color:var(--ink);font-family:'Noto Sans KR',sans-serif;
-  font-weight:400;line-height:1.7;font-size:15px;
-  background-image:repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 34px);
-}
-.wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
-header{padding:40px 0 20px;border-bottom:3px double var(--ink);position:relative}
-.back{position:absolute;left:0;top:14px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);text-decoration:none}
-.tab{position:absolute;top:0;right:0;background:var(--accent,var(--red));color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;padding:5px 10px;border-radius:0 0 2px 2px}
-.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--ink-soft);text-transform:uppercase;margin-bottom:10px}
-h1{font-family:'Gowun Batang',serif;font-weight:700;font-size:clamp(26px,7vw,38px);margin:0 0 10px;letter-spacing:-.01em;line-height:1.3}
-.sub{font-size:13.5px;color:var(--ink-soft);margin:0;padding-left:18px}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans KR','Noto Sans KR',sans-serif;font-size:15px;line-height:1.7;font-variant-numeric:tabular-nums}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 72px}
+header{margin:0 -16px;padding:18px 20px 22px;background:var(--hero);color:var(--hero-ink);border-radius:0 0 22px 22px;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 12px,#111 12px 24px)}
+.back{display:inline-block;margin:6px 0 14px;font-size:12.5px;color:var(--hero-ink);text-decoration:none;background:rgba(255,255,255,.1);padding:4px 12px;border-radius:999px}
+.tab{display:inline-block;margin-left:6px;font-size:11.5px;font-weight:700;color:#111;background:var(--accent,var(--yellow));padding:3px 10px;border-radius:999px;vertical-align:1px}
+.eyebrow{font-size:12px;font-weight:600;color:var(--yellow);letter-spacing:.06em;margin:0 0 6px}
+h1{font-weight:700;font-size:clamp(24px,6.6vw,34px);margin:0 0 10px;line-height:1.3;letter-spacing:-.02em}
+.sub{font-size:13px;color:var(--hero-soft);margin:0;padding-left:18px}
 .sub li{margin-bottom:2px}
-.sub b{color:var(--ink)}
-.toc{display:flex;flex-wrap:wrap;gap:6px;margin:20px 0 4px}
-.toc a{font-size:12.5px;text-decoration:none;color:var(--ink);background:var(--paper2);border:1px solid var(--rule);border-radius:3px;padding:4px 9px;line-height:1.4}
-.toc a:hover{border-color:var(--ink)}
-.toc a .n{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);margin-right:4px}
-.section{margin-top:38px;scroll-margin-top:12px}
-.section-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.duality{font-family:'Gowun Batang',serif;font-weight:700;font-size:19px;color:var(--ink)}
-.duality .n{color:var(--accent,var(--red));margin-right:6px}
-.section-line{flex:1;height:1px;background:repeating-linear-gradient(90deg, var(--rule) 0 4px, transparent 4px 8px)}
-.card{background:var(--paper2);border:1px solid var(--rule);border-radius:4px;padding:14px 16px 12px;margin-bottom:10px}
-.card h4{margin:0 0 8px;font-family:'Gowun Batang',serif;font-size:16px;font-weight:700}
-.card p{margin:0 0 8px;font-size:14px}
-.card b{font-weight:700;background:linear-gradient(transparent 62%, var(--hl) 62%);padding:0 1px}
-.card code{font-family:'IBM Plex Mono',monospace;font-size:13px}
-ul.chk{list-style:none;margin:0 0 8px;padding:0}
-ul.chk>li{position:relative;padding-left:22px;margin-bottom:7px;font-size:14px}
-ul.chk>li::before{content:"☐";position:absolute;left:0;top:0;color:var(--ink-soft);font-size:13px}
-ul.chk>li.star::before{content:"★";color:var(--red)}
-ul.sub2{margin:4px 0 0;padding-left:16px;font-size:13.5px;color:var(--ink-soft)}
+.sub b{color:var(--hero-ink)}
+.toc{display:flex;gap:6px;overflow-x:auto;margin:16px -20px -4px;padding:2px 20px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:0 0 auto;font-size:12.5px;text-decoration:none;color:var(--hero-ink);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px 12px;white-space:nowrap}
+.toc a .n{font-weight:700;color:var(--yellow);margin-right:5px}
+.section{margin-top:30px;scroll-margin-top:64px}
+.section-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.duality{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.duality .n{flex:0 0 auto;min-width:30px;height:30px;padding:0 8px;border-radius:9px;background:var(--accent,var(--c1));color:#fff;font-size:13.5px;display:inline-flex;align-items:center;justify-content:center}
+.duality .n:empty{display:none}
+.section-line{display:none}
+.card{background:var(--surface);border-radius:16px;padding:16px 16px 10px;margin-bottom:12px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.card h4{margin:0 0 10px;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+.card h4::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--accent,var(--c1))}
+.card p{margin:0 0 10px;font-size:14px}
+.card b{font-weight:700;background:linear-gradient(transparent 60%,var(--mark) 60%);padding:0 1px}
+.card code{font-size:13px}
+ul.chk{list-style:none;margin:0 0 10px;padding:0}
+ul.chk>li{position:relative;padding:9px 0 9px 18px;font-size:14px;border-top:1px solid var(--line)}
+ul.chk>li:first-child{border-top:0;padding-top:2px}
+ul.chk>li::before{content:"";position:absolute;left:2px;top:19px;width:6px;height:6px;border-radius:50%;background:var(--accent,var(--c1))}
+ul.chk>li:first-child::before{top:12px}
+ul.chk>li.star{background:var(--yellow-soft);margin:0 -10px;padding-left:28px;padding-right:10px;border-radius:10px;border-top-color:transparent}
+ul.chk>li.star::before{display:none}
+ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E0A200;font-size:13px}
+ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
 ul.sub2 li{margin-bottom:3px}
-.subnote{margin:0 0 10px;padding:8px 10px;background:var(--paper);border-left:3px solid var(--red);font-size:12.5px;color:var(--ink-soft);line-height:1.6;border-radius:0 2px 2px 0}
-footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--ink-soft);line-height:1.75}
-footer a{color:var(--ink)}
+.subnote{margin:0 0 12px;padding:9px 12px;background:var(--surface2);border-radius:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+.subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
+footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
+footer a{color:var(--accent,var(--c1));font-weight:600}
 /* 문제은행 */
-.tools{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;position:sticky;top:0;z-index:5;background:var(--paper);padding:8px 0;border-bottom:1px solid var(--rule)}
-.btn{font-family:'Noto Sans KR',sans-serif;font-size:12.5px;background:var(--paper2);color:var(--ink);border:1px solid var(--rule);border-radius:3px;padding:6px 10px;cursor:pointer}
-.btn.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.tools .count{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);align-self:center;margin-left:auto}
-.q{position:relative}
-.q-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.q-num{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;color:var(--paper);background:var(--accent,var(--red));border-radius:12px;padding:1px 9px}
-.q-star{margin-left:auto;background:none;border:0;font-size:19px;cursor:pointer;color:var(--ink-soft);padding:0 2px;line-height:1}
-.q.marked .q-star{color:var(--red)}
-.q.marked{border-color:var(--red)}
-.q-body{font-size:14.5px;margin:0 0 8px}
-.opts{list-style:none;margin:0 0 6px;padding:0}
-.opts li{font-size:14px;padding:3px 0}
-details.ans{margin-top:6px;border-top:1px dashed var(--rule);padding-top:8px}
-details.ans summary{cursor:pointer;font-size:12.5px;color:var(--accent,var(--red));font-weight:500;list-style:none}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;position:sticky;top:0;z-index:5;margin:0 -16px;padding:10px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn{font:inherit;font-size:13px;font-weight:600;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+.btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tools .count{font-size:12px;color:var(--ink-soft);margin-left:auto}
+.q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.q-num{font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
+.q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
+.q.marked .q-star{color:#E0A200}
+.q.marked{border-color:#F2C94C}
+.q-body{font-size:15px;font-weight:500;margin:0 0 10px}
+.opts{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:6px}
+.opts li{font-size:14px;padding:8px 12px;background:var(--surface2);border:1px solid var(--line);border-radius:10px}
+details.ans{margin:8px 0 6px}
+details.ans summary{cursor:pointer;list-style:none;text-align:center;font-size:13.5px;font-weight:700;color:#111;background:var(--yellow);border-radius:10px;padding:9px}
 details.ans summary::-webkit-details-marker{display:none}
-details.ans summary::before{content:"▸ "}
-details.ans[open] summary::before{content:"▾ "}
-.ans-body{margin-top:8px;padding:8px 10px;background:var(--paper);border-left:3px solid var(--accent,var(--red));border-radius:0 2px 2px 0}
-.ans-body p,.ans-body li{font-size:13.5px}
+details.ans[open] summary{background:var(--surface2);color:var(--ink-soft)}
+details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:inline}
+.ans-body{margin-top:10px;padding:12px 12px 4px;background:var(--surface2);border-radius:12px}
+.ans-body p,.ans-body li{font-size:13.8px}
 .hidden{display:none !important}
-@media print{body{background:#fff;font-size:12px}.tools,.q-star{display:none}details.ans{display:block}}
+@media print{header{background:none;color:#000}.tools,.q-star{display:none}}
 
-.card-link{display:block;background:var(--paper2);border:1px solid var(--rule);border-radius:4px;padding:14px 16px;margin-bottom:10px;text-decoration:none;color:inherit;position:relative;transition:border-color .15s}
-.card-link::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:currentColor;border-radius:4px 0 0 4px}
-.card-link:hover{border-color:var(--ink)}
-.card-link .idx{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);letter-spacing:.1em}
-.card-link h3{font-family:'Gowun Batang',serif;font-weight:700;font-size:17px;margin:3px 0 5px;color:var(--ink);padding-right:44px}
-.card-link p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.6;padding-right:44px}
-.card-link .go{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-family:'IBM Plex Mono',monospace;font-size:11px;color:currentColor;opacity:.7}
-.card-link.disabled{opacity:.5;cursor:default;pointer-events:none}
-.tl{display:flex;flex-wrap:wrap;border:1px solid var(--ink);border-radius:3px;overflow:hidden;margin-top:22px}
-.tl-node{flex:1 1 15%;min-width:96px;padding:8px 4px 7px;text-align:center;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--paper2);font-size:12px;color:var(--ink-soft);line-height:1.5}
-.tl-node b{display:block;font-size:13px;color:var(--ink)}
-.search-wrap{margin:24px 0 4px}
-.search-input{width:100%;padding:12px 14px;border:1px solid var(--rule);border-radius:4px;background:var(--paper2);color:var(--ink);font-family:'Noto Sans KR',sans-serif;font-size:14.5px}
-.search-input:focus{outline:none;border-color:var(--ink)}
-.search-status{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-soft);margin-top:7px;min-height:14px}
-.search-result{display:block;background:var(--paper2);border:1px solid var(--rule);border-radius:4px;padding:12px 14px;margin-bottom:8px;text-decoration:none;color:inherit}
-.search-result:hover{border-color:var(--ink)}
-.search-result h4{margin:0 0 4px;font-family:'Gowun Batang',serif;font-weight:700;font-size:15px}
-.search-result p{margin:0;font-size:12.8px;color:var(--ink-soft);line-height:1.65}
-.search-result mark{background:var(--hl);color:var(--ink);padding:0 1px;border-radius:2px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.hero-meta span{font-size:12px;color:var(--hero-ink);background:rgba(255,255,255,.08);border-radius:999px;padding:3px 11px}
+.hero-meta b{color:var(--yellow)}
+.search-wrap{margin:-20px 4px 0;position:relative;z-index:2}
+.search-input{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);font:inherit;font-size:15px;box-shadow:var(--shadow)}
+.search-input:focus{outline:2px solid var(--yellow);outline-offset:1px}
+.search-status{font-size:12px;color:var(--ink-soft);margin:8px 4px 0;min-height:14px}
+.search-result{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px;text-decoration:none;color:inherit}
+.search-result h4{margin:0 0 4px;font-size:14.5px;font-weight:700}
+.search-result p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.6}
+.search-result mark{background:var(--mark);color:inherit;border-radius:3px;padding:0 1px}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:560px){.grid{grid-template-columns:1fr 1fr}}
+.subj{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.subj-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.subj-no{width:40px;height:40px;border-radius:12px;background:var(--c);color:#fff;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.subj h3{margin:0;font-size:16px;line-height:1.35;letter-spacing:-.01em}
+.subj p{margin:0 0 12px;font-size:12.8px;color:var(--ink-soft);line-height:1.6;flex:1}
+.subj-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.subj-btns a{display:block;text-align:center;text-decoration:none;border-radius:11px;padding:9px 6px;font-size:13px;font-weight:700;line-height:1.35}
+.subj-btns a small{display:block;font-weight:500;font-size:11.5px;opacity:.8}
+.subj-btns .pt{background:color-mix(in srgb,var(--c) 13%,transparent);color:var(--c)}
+.subj-btns .bk{background:var(--c);color:#fff}
+.subj-btns .off{background:var(--surface2);color:var(--ink-soft);pointer-events:none}
+.plan{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow)}
+.plan .ic{width:40px;height:40px;border-radius:12px;background:var(--yellow);color:#111;display:flex;align-items:center;justify-content:center;font-size:19px;flex:0 0 auto}
+.plan b{display:block;font-size:15px}
+.plan span{font-size:12.8px;color:var(--ink-soft)}
+.plan .go{margin-left:auto;color:var(--ink-soft);font-size:18px}
 </style>
 </head>
-<body style="--accent:var(--green)">
+<body style="--accent:var(--c1)">
 <div class="wrap">
 <header>
-  <div class="eyebrow">산업안전기사 필기 · 학습 노트 모음</div>
-  <h1>과목별 기출포인트 · 문제은행</h1>
-  <p class="sub" style="padding:0">6과목 × 20문항, 과목별 40점 이상 · 평균 60점 이상이면 합격. 기출포인트로 핵심을 잡고 문제은행으로 바로 확인하세요.</p>
-  <div class="tl"><div class="tl-node"><b>1과목</b>산업재해</div><div class="tl-node"><b>2과목</b>인간공학</div><div class="tl-node"><b>3과목</b>기계·기구</div><div class="tl-node"><b>4과목</b>전기설비</div><div class="tl-node"><b>5과목</b>화학설비</div><div class="tl-node"><b>6과목</b>건설공사</div></div>
+  <div class="eyebrow" style="margin-top:14px">CISE · 산업안전기사 필기</div>
+  <h1>과목별 기출포인트와<br>문제은행</h1>
+  <p class="sub" style="padding:0">기출포인트로 핵심을 잡고, 문제은행으로 바로 확인하세요.</p>
+  <div class="hero-meta"><span>6과목 × <b>20문항</b></span><span>과목별 <b>40점↑</b></span><span>평균 <b>60점↑</b> 합격</span></div>
+  <div style="height:22px"></div>
 </header>
 
 <div class="search-wrap">
-  <input type="search" id="siteSearch" class="search-input" placeholder="키워드로 전체 검색 — 예: 도수율, 파열판, 접지, 비계" autocomplete="off">
+  <input type="search" id="siteSearch" class="search-input" placeholder="🔍 전체 검색 — 도수율, 파열판, 접지, 비계" autocomplete="off">
   <div class="search-status" id="searchStatus"></div>
 </div>
 <div class="search-results hidden" id="searchResults"></div>
 
 <div id="allSections">
-<section class="section">
-  <div class="section-head"><div class="duality">빠른 참조</div><div class="section-line"></div></div>
-  <a class="card-link" style="color:var(--green)" href="roadmap.html">
-    <span class="idx">PLAN · 전체 과목</span>
-    <h3>산업안전기사 12주 로드맵</h3>
-    <p>필기·실기 시험 구조, 과목별 난이도와 공부 순서, 주차별 계획</p>
-    <span class="go">열기 →</span>
-  </a>
+<section class="section" style="margin-top:14px">
+  <a class="plan" href="roadmap.html"><div class="ic">🗓</div><div><b>12주 로드맵</b><span>시험 구조 · 과목별 난이도 · 주차별 계획</span></div><div class="go">›</div></a>
 </section>
 
 <section class="section">
-  <div class="section-head"><div class="duality">과목별 기출포인트</div><div class="section-line"></div></div>
-  <p style="font-size:12.5px;color:var(--ink-soft);margin:0 0 12px"><b style="color:var(--red)">★</b> 표시는 특히 자주 나오는 항목입니다.</p>
-  <a class="card-link" style="color:var(--green)" href="s1-points.html">
-    <span class="idx">1과목 · 16주제</span>
-    <h3>산업재해 예방 및 안전보건교육</h3>
+  <div class="section-head"><div class="duality">과목</div></div>
+  <div class="grid">
+  <div class="subj" style="--c:var(--c1)">
+    <div class="subj-top"><div class="subj-no">1</div><h3>산업재해 예방 및 안전보건교육</h3></div>
     <p>재해 이론·통계 계산, 안전보건관리체제, 보호구·표지, 산업심리, 안전보건교육</p>
-    <span class="go">열기 →</span>
-  </a><a class="card-link" style="color:var(--blue)" href="s2-points.html">
-    <span class="idx">2과목 · 16주제</span>
-    <h3>인간공학 및 위험성 평가·관리</h3>
+    <div class="subj-btns"><a class="pt" href="s1-points.html">기출포인트<small>16주제</small></a><a class="bk" href="s1-bank.html">문제은행<small>100문항</small></a></div>
+  </div><div class="subj" style="--c:var(--c2)">
+    <div class="subj-top"><div class="subj-no">2</div><h3>인간공학 및 위험성 평가·관리</h3></div>
     <p>인간-기계 체계, 신뢰도·FTA 계산, HAZOP, 인체측정, 근골격계, 위험성 평가</p>
-    <span class="go">열기 →</span>
-  </a><a class="card-link" style="color:var(--heuk)" href="s3-points.html">
-    <span class="idx">3과목 · 16주제</span>
-    <h3>기계·기구 및 설비 안전관리</h3>
+    <div class="subj-btns"><a class="pt" href="s2-points.html">기출포인트<small>16주제</small></a><a class="off" href="#" aria-disabled="true">문제은행<small>준비 중</small></a></div>
+  </div><div class="subj" style="--c:var(--c3)">
+    <div class="subj-top"><div class="subj-no">3</div><h3>기계·기구 및 설비 안전관리</h3></div>
     <p>위험점·방호장치, 프레스·롤러·연삭기 수치, 양중기·지게차, 보일러, 비파괴검사</p>
-    <span class="go">열기 →</span>
-  </a><a class="card-link" style="color:var(--red)" href="s4-points.html">
-    <span class="idx">4과목 · 16주제</span>
-    <h3>전기설비 안전관리</h3>
+    <div class="subj-btns"><a class="pt" href="s3-points.html">기출포인트<small>16주제</small></a><a class="off" href="#" aria-disabled="true">문제은행<small>준비 중</small></a></div>
+  </div><div class="subj" style="--c:var(--c4)">
+    <div class="subj-top"><div class="subj-no">4</div><h3>전기설비 안전관리</h3></div>
     <p>감전·심실세동 계산, 누전차단기, KEC 접지, 정전기, 방폭·온도등급 — 과락 위험 1순위</p>
-    <span class="go">열기 →</span>
-  </a><a class="card-link" style="color:var(--purple)" href="s5-points.html">
-    <span class="idx">5과목 · 16주제</span>
-    <h3>화학설비 안전관리</h3>
+    <div class="subj-btns"><a class="pt" href="s4-points.html">기출포인트<small>16주제</small></a><a class="off" href="#" aria-disabled="true">문제은행<small>준비 중</small></a></div>
+  </div><div class="subj" style="--c:var(--c5)">
+    <div class="subj-top"><div class="subj-no">5</div><h3>화학설비 안전관리</h3></div>
     <p>인화점·폭발범위·위험도 계산, 위험물질 분류, 안전밸브·파열판, 소화, PSM·MSDS</p>
-    <span class="go">열기 →</span>
-  </a><a class="card-link" style="color:var(--orange)" href="s6-points.html">
-    <span class="idx">6과목 · 16주제</span>
-    <h3>건설공사 안전관리</h3>
+    <div class="subj-btns"><a class="pt" href="s5-points.html">기출포인트<small>16주제</small></a><a class="off" href="#" aria-disabled="true">문제은행<small>준비 중</small></a></div>
+  </div><div class="subj" style="--c:var(--c6)">
+    <div class="subj-top"><div class="subj-no">6</div><h3>건설공사 안전관리</h3></div>
     <p>산업안전보건관리비, 굴착 기울기, 흙막이, 추락방지·비계, 거푸집·철골, 해체공사</p>
-    <span class="go">열기 →</span>
-  </a>
-</section>
-
-<section class="section">
-  <div class="section-head"><div class="duality">과목별 문제은행</div><div class="section-line"></div></div>
-  <a class="card-link" style="color:var(--green)" href="s1-bank.html">
-    <span class="idx">1과목 · 100문항</span>
-    <h3>산업재해 예방 및 안전보건교육 문제은행</h3>
-    <p>문제 → 정답 → 핵심 정리(📌). 정답은 눌러야 펼쳐지고, 헷갈린 문제는 ★로 모아 다시 풀 수 있음</p>
-    <span class="go">풀기 →</span>
-  </a><a class="card-link disabled" style="color:var(--blue)" href="#">
-    <span class="idx">2과목 · 준비 중</span>
-    <h3>인간공학 및 위험성 평가·관리 문제은행</h3>
-    <p>기출포인트 16주제 기준으로 100문항 준비 중</p>
-    <span class="go">준비 중</span>
-  </a><a class="card-link disabled" style="color:var(--heuk)" href="#">
-    <span class="idx">3과목 · 준비 중</span>
-    <h3>기계·기구 및 설비 안전관리 문제은행</h3>
-    <p>기출포인트 16주제 기준으로 100문항 준비 중</p>
-    <span class="go">준비 중</span>
-  </a><a class="card-link disabled" style="color:var(--red)" href="#">
-    <span class="idx">4과목 · 준비 중</span>
-    <h3>전기설비 안전관리 문제은행</h3>
-    <p>기출포인트 16주제 기준으로 100문항 준비 중</p>
-    <span class="go">준비 중</span>
-  </a><a class="card-link disabled" style="color:var(--purple)" href="#">
-    <span class="idx">5과목 · 준비 중</span>
-    <h3>화학설비 안전관리 문제은행</h3>
-    <p>기출포인트 16주제 기준으로 100문항 준비 중</p>
-    <span class="go">준비 중</span>
-  </a><a class="card-link disabled" style="color:var(--orange)" href="#">
-    <span class="idx">6과목 · 준비 중</span>
-    <h3>건설공사 안전관리 문제은행</h3>
-    <p>기출포인트 16주제 기준으로 100문항 준비 중</p>
-    <span class="go">준비 중</span>
-  </a>
+    <div class="subj-btns"><a class="pt" href="s6-points.html">기출포인트<small>16주제</small></a><a class="off" href="#" aria-disabled="true">문제은행<small>준비 중</small></a></div>
+  </div>
+  </div>
 </section>
 </div>
 
