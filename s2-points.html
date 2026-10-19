@@ -87,6 +87,9 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 .ans-body{margin-top:10px;padding:12px 12px 4px;background:var(--surface2);border-radius:12px}
 .ans-body p,.ans-body li{font-size:13.8px}
 .hidden{display:none !important}
+/* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
+@media (min-width:1000px){body{zoom:1.18}.wrap{max-width:900px;padding:0 24px 80px}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1600px){body{zoom:1.32}}
 @media print{header{background:none;color:#000}.tools,.q-star{display:none}}
 </style>
 </head>

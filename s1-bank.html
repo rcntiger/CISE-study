@@ -87,6 +87,9 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 .ans-body{margin-top:10px;padding:12px 12px 4px;background:var(--surface2);border-radius:12px}
 .ans-body p,.ans-body li{font-size:13.8px}
 .hidden{display:none !important}
+/* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
+@media (min-width:1000px){body{zoom:1.18}.wrap{max-width:900px;padding:0 24px 80px}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1600px){body{zoom:1.32}}
 @media print{header{background:none;color:#000}.tools,.q-star{display:none}}
 </style>
 </head>
@@ -97,7 +100,7 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
   <span class="tab">1과목 · 문제은행</span>
   <div class="eyebrow">산업안전기사 필기 · 1과목 · 100문항</div>
   <h1>산업재해 예방 및 안전보건교육<br>문제은행</h1>
-  <ul class="sub"><li>정답과 해설은 <b>"정답 보기"를 눌러야</b> 펼쳐집니다.</li><li>실제 기출 원문이 아니라 출제 경향을 반영한 유형 문제입니다.</li><li>법령 수치는 시험 전에 최신 기준으로 확인하세요.</li><li>기초 1. 재해이론·통계 (1~10)</li><li>기초 2. 조직·심리·표지·교육 (11~20)</li><li>기초 3. 법령·심리·보호구 (21~30)</li><li>A. 재해 통계·이론 (31~42)</li><li>B. 안전관리 조직·점검 (43~50)</li><li>C. 산업안전보건법 (51~62)</li><li>D. 안전보건표지 (63~68)</li><li>E. 보호구 (69~78)</li><li>F. 산업심리 (79~90)</li><li>G. 안전보건교육 (91~100)</li><li>헷갈린 문제는 오른쪽 위 <b>★</b>을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.</li></ul>
+  <ul class="sub"><li>정답과 해설은 <b>"정답 보기"를 눌러야</b> 펼쳐집니다.</li><li>실제 기출 원문이 아니라 출제 경향을 반영한 유형 문제입니다.</li><li>법령 수치는 시험 전에 최신 기준으로 확인하세요.</li><li>헷갈린 문제는 오른쪽 위 <b>★</b>을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.</li></ul>
   <nav class="toc"><a href="#g1"><span class="n">기초 1</span>재해이론·통계 (1~10)</a><a href="#g2"><span class="n">기초 2</span>조직·심리·표지·교육 (11~20)</a><a href="#g3"><span class="n">기초 3</span>법령·심리·보호구 (21~30)</a><a href="#g4"><span class="n">A</span>재해 통계·이론 (31~42)</a><a href="#g5"><span class="n">B</span>안전관리 조직·점검 (43~50)</a><a href="#g6"><span class="n">C</span>산업안전보건법 (51~62)</a><a href="#g7"><span class="n">D</span>안전보건표지 (63~68)</a><a href="#g8"><span class="n">E</span>보호구 (69~78)</a><a href="#g9"><span class="n">F</span>산업심리 (79~90)</a><a href="#g10"><span class="n">G</span>안전보건교육 (91~100)</a></nav>
 </header>
 <div class="tools"><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">기초 1</span>재해이론·통계 (1~10)</div><div class="section-line"></div></div>
