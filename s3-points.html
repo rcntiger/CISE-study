@@ -68,6 +68,8 @@ ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
 ul.sub2 li{margin-bottom:3px}
 .subnote{margin:0 0 12px;padding:9px 12px;background:var(--surface2);border-radius:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 .subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
+.subnote.std{background:transparent;border:1px dashed var(--line,#ccc);padding:7px 11px;font-size:12px}
+.subnote.std::before{content:""}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
 footer a{color:var(--accent,var(--c1));font-weight:600}
 /* 문제은행 */
@@ -106,37 +108,89 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
   <span class="tab">3과목 · 기출포인트</span>
   <div class="eyebrow">산업안전기사 필기 · 3과목</div>
   <h1>기계·기구 및 설비 안전관리</h1>
-  <ul class="sub"><li>기계·기구 및 설비 안전관리 출제 경향 요약이며 기출 원문은 아닙니다.</li><li>법령·고시 수치는 시험 전 최신 개정 사항으로 확인하세요.</li><li>⭐ 표시는 특히 자주 나오는 항목입니다.</li><li>주제는 에듀윌 교재의 챕터(CHAPTER) 순서로 묶었습니다.</li></ul>
-  <nav class="toc"><a class="ch" href="#c01">CH01 기계공정의 안전, 기계안전시설 관리</a><a href="#t2"><span class="n">1</span>기계의 위험점 ★</a><a href="#t3"><span class="n">2</span>방호장치와 안전설계 ★</a><a href="#t4"><span class="n">3</span>안전율 ★</a><a class="ch" href="#c03">CH03 공작기계의 안전</a><a href="#t6"><span class="n">4</span>연삭기 ★</a><a href="#t7"><span class="n">5</span>공작기계 (선반·밀링·드릴·셰이퍼)</a><a class="ch" href="#c04">CH04 프레스 및 전단기의 안전</a><a href="#t9"><span class="n">6</span>프레스·전단기 ★</a><a class="ch" href="#c05">CH05 기타 산업용 기계·기구</a><a href="#t11"><span class="n">7</span>롤러기 ★</a><a href="#t12"><span class="n">8</span>목재가공용 둥근톱 ★</a><a href="#t13"><span class="n">9</span>가스 용접 ★</a><a href="#t14"><span class="n">10</span>보일러 ★</a><a href="#t15"><span class="n">11</span>압력용기</a><a href="#t16"><span class="n">12</span>그 밖의 설비</a><a class="ch" href="#c06">CH06 운반기계 및 양중기</a><a href="#t18"><span class="n">13</span>양중기 ★</a><a href="#t19"><span class="n">14</span>지게차 ★</a><a href="#t20"><span class="n">15</span>컨베이어와 산업용 로봇</a><a class="ch" href="#c07">CH07 설비진단 및 검사</a><a href="#t22"><span class="n">16</span>비파괴검사 ★</a></nav>
+  <ul class="sub"><li>기계·기구 및 설비 안전관리 출제 경향 요약이며 기출 원문은 아닙니다.</li><li>법령·고시 수치는 시험 전 최신 개정 사항으로 확인하세요.</li><li>⭐ 표시는 특히 자주 나오는 항목입니다.</li><li>주제는 에듀윌 교재의 챕터(CHAPTER) 순서로 묶었습니다.</li><li>📋는 출제기준(2024~2026 적용) 세부항목 번호이고, 맨 아래에 대조표가 있습니다.</li><li>➕는 출제기준과 대조해 새로 보강한 주제, 🔸는 세부항목 밖이지만 기출 빈출이라 남긴 내용입니다.</li></ul>
+  <nav class="toc"><a class="ch" href="#c01">CH01 기계공정의 안전, 기계안전시설 관리</a><a href="#t2"><span class="n">1</span>기계의 위험점 ★</a><a href="#t3"><span class="n">2</span>방호장치와 안전설계 ★</a><a href="#t4"><span class="n">3</span>안전율 ★</a><a href="#t5"><span class="n">4</span>공정 특수성 분석과 ISO 12100 ➕</a><a class="ch" href="#c02">CH02 기계분야 산업재해 조사 및 관리</a><a href="#t7"><span class="n">5</span>재해조사와 발생 시 조치 ➕</a><a href="#t8"><span class="n">6</span>재해 분류와 재해손실비 ➕</a><a href="#t9"><span class="n">7</span>안전점검과 안전진단 ➕</a><a class="ch" href="#c03">CH03 공작기계의 안전</a><a href="#t11"><span class="n">8</span>연삭기 ★</a><a href="#t12"><span class="n">9</span>공작기계 (선반·밀링·드릴·셰이퍼)</a><a href="#t13"><span class="n">10</span>소성가공 ➕</a><a class="ch" href="#c04">CH04 프레스 및 전단기의 안전</a><a href="#t15"><span class="n">11</span>프레스·전단기 ★</a><a class="ch" href="#c05">CH05 기타 산업용 기계·기구</a><a href="#t17"><span class="n">12</span>롤러기 ★</a><a href="#t18"><span class="n">13</span>목재가공용 둥근톱 ★</a><a href="#t19"><span class="n">14</span>가스 용접 ★</a><a href="#t20"><span class="n">15</span>보일러 ★</a><a href="#t21"><span class="n">16</span>압력용기</a><a href="#t22"><span class="n">17</span>그 밖의 설비</a><a href="#t23"><span class="n">18</span>고속회전체 ➕</a><a class="ch" href="#c06">CH06 운반기계 및 양중기</a><a href="#t25"><span class="n">19</span>양중기 ★</a><a href="#t26"><span class="n">20</span>지게차 ★</a><a href="#t27"><span class="n">21</span>컨베이어와 산업용 로봇</a><a class="ch" href="#c07">CH07 설비진단 및 검사</a><a href="#t29"><span class="n">22</span>비파괴검사 ★</a><a href="#t30"><span class="n">23</span>소음·진동 방지 ➕</a><a class="ch" href="#std">출제기준 대조표</a></nav>
 </header><div class="chapter" id="c01"><span class="k">CHAPTER 01</span><span class="t">기계공정의 안전, 기계안전시설 관리</span></div>
 <section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">1</span>기계의 위험점</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="기계의 위험점"><p>"어떤 위험점인가?" 형태로 매회 나옵니다.</p>
+<div class="cards"><div class="card" data-title="기계의 위험점"><div class="subnote std">📋 출제기준 1-2 기계의 위험 안전조건 분석 · 4-2 안전시설 설치하기</div>
+<p>"어떤 위험점인가?" 형태로 매회 나옵니다.</p>
 <ul class="chk"><li><b>협착점</b><br>왕복운동 부분 + 고정 부분 사이<br>예: 프레스 금형, 전단기 누름판</li><li><b>끼임점</b><br>회전운동 부분 + 고정 부분 사이<br>예: 연삭숫돌과 작업대,<br>교반기 날개와 하우징</li><li><b>절단점</b><br>회전하는 운동부 자체의 날<br>예: 밀링 커터, 둥근톱 날</li><li><b>물림점</b><br>서로 반대로 맞물려 도는 두 회전체<br>예: 롤러와 롤러, 기어와 기어</li><li class="star"><b>접선물림점</b><br>회전부의 접선 방향으로 물려 들어감<br>예: 벨트와 풀리, 체인과 스프로킷,<br>랙과 피니언</li><li><b>회전말림점</b><br>돌출된 회전체에 옷·머리카락이 말림<br>예: 회전축, 드릴, 커플링</li></ul>
 <p><b>기계설비 위험요인 4가지</b><br>회전운동, 횡축운동, 왕복운동, 진동운동</p></div></div></section>
 <section class="section" id="t3"><div class="section-head"><div class="duality"><span class="n">2</span>방호장치와 안전설계</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="방호장치와 안전설계 · 방호장치 분류"><h4>방호장치 분류</h4><ul class="chk"><li><b>격리형</b><br>위험점 주위를 덮개·울로 차단<br>예: 완전차단형, 덮개형, 안전방책</li><li><b>위치제한형</b><br>손을 위험 범위 밖에 두게 함<br>예: 프레스 <b>양수조작식</b></li><li><b>접근거부형</b><br>다가오는 신체를 밀어내거나 끌어냄<br>예: <b>손쳐내기식, 수인식</b></li><li><b>접근반응형</b><br>신체가 들어오면 감지해 정지<br>예: <b>광전자식</b></li><li><b>포집형</b><br>튀거나 날아오는 위험원을 잡아 둠<br>예: 연삭숫돌 덮개, 반발예방장치</li></ul></div>
+<div class="cards"><div class="card" data-title="방호장치와 안전설계"><div class="subnote std">📋 출제기준 1-2 기계의 위험 안전조건 분석 · 4-1 안전시설 관리 계획하기</div></div>
+<div class="card" data-title="방호장치와 안전설계 · 방호장치 분류"><h4>방호장치 분류</h4><ul class="chk"><li><b>격리형</b><br>위험점 주위를 덮개·울로 차단<br>예: 완전차단형, 덮개형, 안전방책</li><li><b>위치제한형</b><br>손을 위험 범위 밖에 두게 함<br>예: 프레스 <b>양수조작식</b></li><li><b>접근거부형</b><br>다가오는 신체를 밀어내거나 끌어냄<br>예: <b>손쳐내기식, 수인식</b></li><li><b>접근반응형</b><br>신체가 들어오면 감지해 정지<br>예: <b>광전자식</b></li><li><b>포집형</b><br>튀거나 날아오는 위험원을 잡아 둠<br>예: 연삭숫돌 덮개, 반발예방장치</li></ul></div>
 <div class="card" data-title="방호장치와 안전설계 · 풀프루프와 페일세이프 ⭐"><h4>풀프루프와 페일세이프 ⭐</h4><ul class="chk"><li><b>풀프루프(Fool proof)</b><br>사람이 <b>실수해도</b> 안전<br>예: 인터록, 가드, 양수조작</li><li><b>페일세이프(Fail safe)</b><br>기계가 <b>고장 나도</b> 안전 쪽으로 동작<ul class="sub2"><li><b>Fail passive:</b> 고장 시 정지 (일반적)</li><li><b>Fail active:</b> 경보 + 짧은 시간 운전</li><li><b>Fail operational:</b> 병렬 계통으로<br>다음 정비까지 운전 계속 (가장 바람직)</li></ul></li></ul></div>
 <div class="card" data-title="방호장치와 안전설계 · 기계설비의 안전조건"><h4>기계설비의 안전조건</h4><p>외형, 기능, 구조, 작업, 보전 안전화</p>
 <p><b>고장률 욕조곡선</b></p>
 <ul class="chk"><li>초기고장: 고장률 <b>감소</b> (디버깅·번인)</li><li>우발고장: 고장률 <b>일정</b></li><li>마모고장: 고장률 <b>증가</b> (예방보전)</li></ul></div></div></section>
 <section class="section" id="t4"><div class="section-head"><div class="duality"><span class="n">3</span>안전율</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="안전율"><ul class="chk"><li><b>안전율</b><br>= 인장강도(극한강도) ÷ 허용응력<br>= 파괴하중 ÷ 최대사용하중</li><li>안전율은 항상 <b>1보다 큼</b></li><li>허용응력 = 인장강도 ÷ 안전율</li></ul>
+<div class="cards"><div class="card" data-title="안전율"><div class="subnote std">📋 출제기준 1-2 기계의 위험 안전조건 분석</div>
+<ul class="chk"><li><b>안전율</b><br>= 인장강도(극한강도) ÷ 허용응력<br>= 파괴하중 ÷ 최대사용하중</li><li>안전율은 항상 <b>1보다 큼</b></li><li>허용응력 = 인장강도 ÷ 안전율</li></ul>
 <p>예) 인장강도 400MPa, 허용응력 100MPa<br>→ 안전율 = <b>4</b></p>
 <p>예) 파괴하중 2,000kg, 안전율 5<br>→ 최대사용하중 = <b>400kg</b></p>
 <p><b>응력</b><br>σ = 하중(W) ÷ 단면적(A)</p></div></div></section>
+<section class="section" id="t5"><div class="section-head"><div class="duality"><span class="n">4</span>공정 특수성 분석과 ISO 12100 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="공정 특수성 분석과 ISO 12100 ➕"><div class="subnote std">📋 출제기준 1-1 기계공정의 특수성 분석 · 4-3 안전시설 유지·관리하기<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<p><b>기계공정의 특수성 분석</b></p>
+<ul class="chk"><li>설비 도면·장비사양서를 검토해<br>위험요인과 안전지침을 도출</li><li>통계적 원인분석 도구<br>파레토도, 특성요인도, 클로즈 분석,<br>관리도 (1과목 기출포인트 3번 주제 참고)</li><li>공정도로 작업 흐름을 분석<br>(2과목 '작업관리와 개선 절차' 참고)</li></ul>
+<p><b>표준안전작업절차서(SOP)</b><br>작업 순서별로 위험요인과<br>안전조치, 필요한 보호구를 적은 문서</p>
+<p><b>특수 작업의 조건 예</b><br>밀폐공간, 고열·고압, 고소,<br>중량물 취급, 유해물질 취급</p>
+<p>⭐ <b>ISO 12100 위험 감소 3단계</b><br>(기계류 안전 설계 일반원칙)</p>
+<ul class="chk"><li>1. <b>본질적 안전설계</b><br>위험원을 설계로 없애거나 줄임</li><li>2. <b>안전방호·보완 방호조치</b><br>가드, 방호장치, 비상정지</li><li>3. <b>사용상 정보</b><br>경고 표지, 사용설명서, 교육</li></ul>
+<p><b>본질적 안전</b><br>작업자가 실수하거나 기계가 고장 나도<br>안전이 확보되는 상태<br>(풀프루프·페일세이프, 2번 주제)</p></div></div></section>
+<div class="chapter" id="c02"><span class="k">CHAPTER 02</span><span class="t">기계분야 산업재해 조사 및 관리</span></div>
+<section class="section" id="t7"><div class="section-head"><div class="duality"><span class="n">5</span>재해조사와 발생 시 조치 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="재해조사와 발생 시 조치 ➕"><div class="subnote std">📋 출제기준 2-1 재해조사<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<p><b>재해조사의 목적</b><br>같은 재해·비슷한 재해의 재발 방지<br>(책임 추궁이 목적이 아님)</p>
+<p>⭐ <b>재해 발생 시 조치 순서</b></p>
+<ul class="chk"><li>1. 산업재해 발생</li><li>2. <b>긴급처리</b></li><li>3. 재해조사</li><li>4. 원인 분석</li><li>5. 대책 수립</li><li>6. 대책 실시 계획</li><li>7. 실시</li><li>8. 평가</li></ul>
+<p>⭐ <b>긴급처리 순서</b></p>
+<ul class="chk"><li>1. 피재 기계의 <b>정지</b></li><li>2. 피재자 구출·<b>응급조치</b></li><li>3. 관계자에게 통보</li><li>4. <b>2차 재해 방지</b></li><li>5. 현장 보존</li></ul>
+<p><b>재해조사 시 유의사항</b></p>
+<ul class="chk"><li>사실을 있는 그대로 수집</li><li>목격자 증언은 사실과 추측을 구분</li><li>조사는 신속하게, 2인 이상이 실시</li><li>책임 추궁보다 재발 방지 우선</li><li>피해자·관계자 진술을 폭넓게 들음</li></ul>
+<p><b>재해조사 순서와 통계적 원인분석</b>은<br>1과목 기출포인트 3번 주제 참고</p></div></div></section>
+<section class="section" id="t8"><div class="section-head"><div class="duality"><span class="n">6</span>재해 분류와 재해손실비 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="재해 분류와 재해손실비 ➕"><div class="subnote std">📋 출제기준 2-2 산재분류 및 통계 분석<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<p><b>재해 발생형태 (산재 분류)</b><br>떨어짐, 넘어짐, 깔림·뒤집힘, 부딪힘,<br>물체에 맞음, 무너짐, 끼임,<br>절단·베임·찔림, 감전, 폭발, 화재 등</p>
+<p>⭐ <b>기인물과 가해물</b></p>
+<ul class="chk"><li><b>기인물:</b> 재해를 일으킨 근원이 된<br>기계·장치·물체·환경</li><li><b>가해물:</b> 사람에게 직접 닿아<br>피해를 준 물체·물질</li></ul>
+<p><b>재해 통계 계산</b>(도수율·강도율 등)은<br>1과목 기출포인트 2번 주제 참고</p>
+<p>⭐ <b>하인리히 방식</b></p>
+<ul class="chk"><li>총재해비용 = 직접비 + 간접비</li><li><b>직접비 : 간접비 = 1 : 4</b></li><li><b>직접비:</b> 법적 보상비<br>요양, 휴업, 장해, 유족, 장의비 등</li><li><b>간접비:</b> 인적·물적·생산 손실 등<br>직접비 외의 모든 손실</li></ul>
+<p>예) 직접비 1,000만 원<br>→ 총재해비용 = 1,000 × 5 = <b>5,000만 원</b></p>
+<p>⭐ <b>시몬즈 방식</b></p>
+<ul class="chk"><li>총재해비용 = <b>보험 코스트</b><br>+ <b>비보험 코스트</b></li><li>비보험 코스트<br>= A × 휴업상해 건수<br>+ B × 통원상해 건수<br>+ C × 응급조치 건수<br>+ D × 무상해사고 건수<br>(A~D는 상해 정도별 평균 비보험 비용)</li><li>사망·영구 전노동불능은 제외</li></ul>
+<p><b>버드 방식</b><br>보험비 1 : 비보험 비용 5~50 (빙산 원리)</p>
+<p><b>콤페스 방식</b><br>총재해비용 = 개별 비용비 + 공용 비용비</p></div></div></section>
+<section class="section" id="t9"><div class="section-head"><div class="duality"><span class="n">7</span>안전점검과 안전진단 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="안전점검과 안전진단 ➕"><div class="subnote std">📋 출제기준 2-3 안전점검·검사·인증 및 진단<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<div class="subnote">법령 내용은 시험 전 최신 기준으로 확인하세요.</div>
+<p><b>안전점검 종류</b>(일상·정기·특별·임시)와<br>체크리스트 작성 요령은 1과목 기출포인트 14번 주제,<br>안전검사·안전인증 대상과 주기는<br>1과목 기출포인트 20번 주제 참고</p>
+<p><b>점검 방법</b></p>
+<ul class="chk"><li><b>육안점검:</b> 눈으로 부식·마모 확인</li><li><b>기능점검:</b> 간단히 조작해 기능 확인</li><li><b>기기점검:</b> 측정기·시험기로 확인</li><li><b>정밀점검:</b> 분해 등으로 상세 확인</li></ul>
+<p>⭐ <b>안전보건진단</b></p>
+<ul class="chk"><li>고용노동부장관이 명령,<br>지정된 <b>안전보건진단기관</b>이 실시</li><li>종류: <b>종합진단</b>, 안전기술진단,<br>보건기술진단</li><li>대상 사업장<br>중대재해 발생 사업장<br>안전보건개선계획 수립 명령 사업장<br>추락·폭발·붕괴 등 재해 위험이<br>현저히 높다고 인정되는 사업장</li></ul></div></div></section>
 <div class="chapter" id="c03"><span class="k">CHAPTER 03</span><span class="t">공작기계의 안전</span></div>
-<section class="section" id="t6"><div class="section-head"><div class="duality"><span class="n">4</span>연삭기</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="연삭기 · 덮개 노출각도"><h4>덮개 노출각도</h4><ul class="chk"><li><b>탁상용 일반</b><br><b>90° 이내</b><br>(수평면 위쪽 노출 50° 이내)</li><li><b>탁상용, 숫돌 상부 사용</b><br><b>60° 이내</b></li><li><b>그 밖의 탁상용</b><br><b>125° 이내</b><br>(수평면 위쪽 65° 이내)</li><li><b>원통·휴대용·스윙·스라브</b><br><b>180° 이내</b></li><li><b>평면·절단</b><br><b>150° 이내</b><br>(수평면 아래 15° 이상 덮음)</li></ul></div>
+<section class="section" id="t11"><div class="section-head"><div class="duality"><span class="n">8</span>연삭기</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="연삭기"><div class="subnote std">📋 출제기준 3-1 공작기계의 안전</div></div>
+<div class="card" data-title="연삭기 · 덮개 노출각도"><h4>덮개 노출각도</h4><ul class="chk"><li><b>탁상용 일반</b><br><b>90° 이내</b><br>(수평면 위쪽 노출 50° 이내)</li><li><b>탁상용, 숫돌 상부 사용</b><br><b>60° 이내</b></li><li><b>그 밖의 탁상용</b><br><b>125° 이내</b><br>(수평면 위쪽 65° 이내)</li><li><b>원통·휴대용·스윙·스라브</b><br><b>180° 이내</b></li><li><b>평면·절단</b><br><b>150° 이내</b><br>(수평면 아래 15° 이상 덮음)</li></ul></div>
 <div class="card" data-title="연삭기 · 사용 기준 ⭐"><h4>사용 기준 ⭐</h4><ul class="chk"><li>덮개 설치: 숫돌 직경 <b>5cm 이상</b></li><li>시운전<br>작업 시작 전: <b>1분 이상</b><br>숫돌 교체 후: <b>3분 이상</b></li><li>플랜지 직경: 숫돌 직경의 <b>1/3 이상</b></li><li>워크레스트와 숫돌 간격: <b>3mm 이하</b></li><li>최고사용회전속도 초과 금지</li><li>측면 사용 금지 (측면용 숫돌 제외)</li></ul>
 <p><b>숫돌 파괴 원인</b><br>회전속도 과다, 균열, 측면 사용,<br>플랜지 불량, 숫돌 중심 불량, 충격</p>
 <p><b>원주속도</b><br>V(m/min) = π × D(mm) × N(rpm) ÷ 1,000</p>
 <p>예) D = 300mm, N = 1,500rpm<br>→ V ≈ <b>1,414m/min</b> (약 23.6m/s)</p></div></div></section>
-<section class="section" id="t7"><div class="section-head"><div class="duality"><span class="n">5</span>공작기계 (선반·밀링·드릴·셰이퍼)</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="공작기계 (선반·밀링·드릴·셰이퍼)"><p>공통: 회전 중 <b>장갑 착용 금지</b>,<br>칩은 손이 아닌 <b>브러시·갈고리</b>로 제거</p>
+<section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">9</span>공작기계 (선반·밀링·드릴·셰이퍼)</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="공작기계 (선반·밀링·드릴·셰이퍼)"><div class="subnote std">📋 출제기준 3-1 공작기계의 안전</div>
+<p>공통: 회전 중 <b>장갑 착용 금지</b>,<br>칩은 손이 아닌 <b>브러시·갈고리</b>로 제거</p>
 <ul class="chk"><li><b>선반</b><br>칩 브레이커: 칩을 짧게 끊음<br>⭐ 방진구: 길이가 직경의 <b>12배 이상</b>인<br>가늘고 긴 공작물 지지<br>척 커버, 실드, 브레이크<br>바이트는 짧게 물림</li><li><b>밀링</b><br>커터 회전 중 측정·청소 금지<br>상향절삭: 날 방향과 이송이 반대<br>하향절삭: 같은 방향 (백래시 제거 필요)<br>가공 중 얼굴을 가까이 대지 않기</li><li><b>드릴</b><br>작은 공작물은 <b>바이스·지그</b>로 고정<br>구멍이 뚫릴 무렵 이송 압력 줄임<br>드릴 끼우고 척 핸들은 빼 둠</li><li><b>셰이퍼</b><br>램 행정 방향 정면에 서지 않기<br>바이트는 짧게, 방책·칩받이 설치<br>행정 길이 조정 후 고정 확인</li></ul></div></div></section>
+<section class="section" id="t13"><div class="section-head"><div class="duality"><span class="n">10</span>소성가공 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="소성가공 ➕"><div class="subnote std">📋 출제기준 3-1 공작기계의 안전<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<p><b>소성가공</b><br>재료에 힘을 가해 영구 변형시켜<br>모양을 만드는 가공</p>
+<ul class="chk"><li><b>단조:</b> 두드려서 성형</li><li><b>압연:</b> 회전하는 롤 사이로 통과</li><li><b>인발:</b> 다이 구멍으로 잡아당김</li><li><b>압출:</b> 다이 구멍으로 밀어냄</li><li><b>프레스 가공:</b> 전단, 굽힘, 드로잉</li></ul>
+<p><b>방호 포인트</b><br>프레스 방호장치(11번 주제),<br>롤러기 급정지장치(12번 주제)와 연결</p></div></div></section>
 <div class="chapter" id="c04"><span class="k">CHAPTER 04</span><span class="t">프레스 및 전단기의 안전</span></div>
-<section class="section" id="t9"><div class="section-head"><div class="duality"><span class="n">6</span>프레스·전단기</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="프레스·전단기 · 방호장치 종류와 표시"><h4>방호장치 종류와 표시</h4><ul class="chk"><li><b>광전자식:</b> A-1, A-2</li><li><b>양수조작식:</b> B-1, B-2</li><li><b>가드식:</b> C</li><li><b>손쳐내기식:</b> D</li><li><b>수인식:</b> E</li></ul></div>
+<section class="section" id="t15"><div class="section-head"><div class="duality"><span class="n">11</span>프레스·전단기</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="프레스·전단기"><div class="subnote std">📋 출제기준 3-2 프레스 및 전단기의 안전</div></div>
+<div class="card" data-title="프레스·전단기 · 방호장치 종류와 표시"><h4>방호장치 종류와 표시</h4><ul class="chk"><li><b>광전자식:</b> A-1, A-2</li><li><b>양수조작식:</b> B-1, B-2</li><li><b>가드식:</b> C</li><li><b>손쳐내기식:</b> D</li><li><b>수인식:</b> E</li></ul></div>
 <div class="card" data-title="프레스·전단기 · 안전거리 공식 ⭐"><h4>안전거리 공식 ⭐</h4><p>계산 문제 단골입니다.</p>
 <ul class="chk"><li><b>광전자식</b><br>D(mm) = 1.6 × (Tl + Ts)<br>Tl: 손이 광선을 차단한 뒤<br>급정지기구가 작동하기까지 시간(ms)<br>Ts: 급정지기구 작동 후<br>슬라이드가 정지하기까지 시간(ms)<br>1.6: 손의 속도 1.6m/s</li><li><b>양수기동식</b><br>D(mm) = 1.6 × Tm<br>Tm = (1/2 + 1/클러치 맞물림 개소수)<br>× 60,000 ÷ 매분 행정수(SPM)</li></ul>
 <p>예) Tl + Ts = 60ms<br>→ D = 1.6 × 60 = <b>96mm</b></p>
@@ -145,35 +199,47 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p><b>금형 안전</b><br>상형과 하형 틈새 등 손가락이 들어가지<br>않도록 <b>8mm 이하</b></p></div>
 <div class="card" data-title="프레스·전단기 · 작업시작 전 점검"><h4>작업시작 전 점검</h4><ul class="chk"><li>클러치·브레이크 기능</li><li>크랭크축·플라이휠·슬라이드·<br>연결봉·연결나사의 풀림</li><li>1행정 1정지기구, 급정지장치,<br>비상정지장치 기능</li><li>슬라이드·칼날의 기능</li><li>방호장치 기능</li><li>금형·볼스터 상태</li><li>전단기 칼날·테이블 상태</li></ul></div></div></section>
 <div class="chapter" id="c05"><span class="k">CHAPTER 05</span><span class="t">기타 산업용 기계·기구</span></div>
-<section class="section" id="t11"><div class="section-head"><div class="duality"><span class="n">7</span>롤러기</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="롤러기 · 급정지장치 조작부 위치"><h4>급정지장치 조작부 위치</h4><ul class="chk"><li><b>손조작식:</b> 밑면에서 <b>1.8m 이내</b></li><li><b>복부조작식:</b> 밑면에서 <b>0.8~1.1m</b></li><li><b>무릎조작식:</b> 밑면에서 <b>0.4~0.6m</b><br>(0.6m 이내)</li></ul></div>
+<section class="section" id="t17"><div class="section-head"><div class="duality"><span class="n">12</span>롤러기</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="롤러기"><div class="subnote std">📋 출제기준 3-3 기타 산업용 기계 기구</div></div>
+<div class="card" data-title="롤러기 · 급정지장치 조작부 위치"><h4>급정지장치 조작부 위치</h4><ul class="chk"><li><b>손조작식:</b> 밑면에서 <b>1.8m 이내</b></li><li><b>복부조작식:</b> 밑면에서 <b>0.8~1.1m</b></li><li><b>무릎조작식:</b> 밑면에서 <b>0.4~0.6m</b><br>(0.6m 이내)</li></ul></div>
 <div class="card" data-title="롤러기 · 급정지거리 ⭐"><h4>급정지거리 ⭐</h4><ul class="chk"><li>표면속도 <b>30m/min 미만</b><br>→ 앞면 롤러 원주의 <b>1/3 이내</b></li><li>표면속도 <b>30m/min 이상</b><br>→ 앞면 롤러 원주의 <b>1/2.5 이내</b></li></ul>
 <p><b>표면속도</b><br>V(m/min) = π × D(mm) × N(rpm) ÷ 1,000</p>
 <p>예) D = 360mm, N = 50rpm<br>→ V = π × 360 × 50 ÷ 1,000 ≈ 56.5m/min<br>→ 30 이상이므로 1/2.5 적용<br>→ 원주 π × 360 ≈ 1,131mm<br>→ 급정지거리 <b>452mm 이내</b></p></div>
 <div class="card" data-title="롤러기 · 가드 개구부 간격"><h4>가드 개구부 간격</h4><ul class="chk"><li>X &lt; 160mm: Y = 6 + 0.15X</li><li>X ≥ 160mm: Y = 30mm<br>(X: 위험점에서 가드까지 거리,<br>Y: 개구부 간격)</li></ul></div></div></section>
-<section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">8</span>목재가공용 둥근톱</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="목재가공용 둥근톱 · 방호장치"><h4>방호장치</h4><ul class="chk"><li><b>톱날접촉예방장치</b><br>톱날 덮개 (가동식·고정식)</li><li><b>반발예방장치</b><br>분할날, 반발방지기구(finger),<br>반발방지롤</li></ul></div>
+<section class="section" id="t18"><div class="section-head"><div class="duality"><span class="n">13</span>목재가공용 둥근톱</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="목재가공용 둥근톱"><div class="subnote std">📋 출제기준 3-3 기타 산업용 기계 기구</div></div>
+<div class="card" data-title="목재가공용 둥근톱 · 방호장치"><h4>방호장치</h4><ul class="chk"><li><b>톱날접촉예방장치</b><br>톱날 덮개 (가동식·고정식)</li><li><b>반발예방장치</b><br>분할날, 반발방지기구(finger),<br>반발방지롤</li></ul></div>
 <div class="card" data-title="목재가공용 둥근톱 · 분할날 기준 ⭐"><h4>분할날 기준 ⭐</h4><ul class="chk"><li><b>두께</b><br>톱 두께의 <b>1.1배 이상</b>,<br>치진폭 <b>미만</b><br>1.1t₁ ≤ t₂ &lt; b</li><li><b>길이</b><br>표준 테이블 위 톱 후면날의<br><b>2/3 이상</b> 덮도록</li><li><b>톱날과의 간격</b>: <b>12mm 이내</b></li></ul>
 <p><b>반발 원인</b><br>목재의 옹이·결, 톱날 무딤,<br>이송 과다, 분할날 미설치</p>
 <p><b>띠톱기계</b><br>톱날 덮개, 날접촉예방장치</p></div></div></section>
-<section class="section" id="t13"><div class="section-head"><div class="duality"><span class="n">9</span>가스 용접</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="가스 용접 · 아세틸렌 용접장치"><h4>아세틸렌 용접장치</h4><ul class="chk"><li class="star">게이지압력 <b>127kPa(1.3kgf/cm²)</b><br>초과 아세틸렌 사용 금지</li><li>발생기실<br>건물 최상층에 설치<br>화기 사용 설비에서 <b>3m 이상</b><br>벽과 발생기 간격 <b>1.5m 이상</b><br>출입구 문은 두께 1.5mm 이상 철판</li><li><b>안전기</b><br>취관마다 설치<br>(주관·분기관에 설치 시 예외)</li><li>구리 또는 <b>구리 70% 이상</b> 합금<br>사용 금지 (아세틸라이드 생성)</li><li>용기 온도 <b>40℃ 이하</b> 유지</li></ul>
+<section class="section" id="t19"><div class="section-head"><div class="duality"><span class="n">14</span>가스 용접</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="가스 용접"><div class="subnote std">📋 출제기준 3-3 기타 산업용 기계 기구</div></div>
+<div class="card" data-title="가스 용접 · 아세틸렌 용접장치"><h4>아세틸렌 용접장치</h4><ul class="chk"><li class="star">게이지압력 <b>127kPa(1.3kgf/cm²)</b><br>초과 아세틸렌 사용 금지</li><li>발생기실<br>건물 최상층에 설치<br>화기 사용 설비에서 <b>3m 이상</b><br>벽과 발생기 간격 <b>1.5m 이상</b><br>출입구 문은 두께 1.5mm 이상 철판</li><li><b>안전기</b><br>취관마다 설치<br>(주관·분기관에 설치 시 예외)</li><li>구리 또는 <b>구리 70% 이상</b> 합금<br>사용 금지 (아세틸라이드 생성)</li><li>용기 온도 <b>40℃ 이하</b> 유지</li></ul>
 <p><b>아세틸렌 폭발 형태</b><br>분해폭발, 화합폭발(구리·은·수은),<br>산화폭발</p>
 <p><b>용해 아세틸렌</b><br>다공질 물질 + <b>아세톤</b>에 녹여 충전</p></div>
 <div class="card" data-title="가스 용접 · 가스집합 용접장치"><h4>가스집합 용접장치</h4><ul class="chk"><li>화기 사용 설비에서 <b>5m 이상</b></li><li>가스장치실에 설치</li><li>주관·분기관에 안전기 설치</li><li>역화방지기 설치</li></ul>
 <p><b>용기 도색</b></p>
 <ul class="chk"><li>산소: 녹색</li><li>아세틸렌: 황색</li><li>수소: 주황색</li><li>LPG·질소 등: 회색</li></ul></div></div></section>
-<section class="section" id="t14"><div class="section-head"><div class="duality"><span class="n">10</span>보일러</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="보일러 · 방호장치"><h4>방호장치</h4><ul class="chk"><li><b>압력방출장치(안전밸브)</b><br>1개 이상, <b>최고사용압력 이하</b>에서 작동<br>2개 이상이면 1개는 최고사용압력 이하,<br>나머지는 <b>1.05배 이하</b>에서 작동</li><li class="star">압력방출장치 점검<br><b>매년 1회 이상</b> 토출압력 시험 후 봉인<br>(공정안전보고서 이행 우수 사업장은<br><b>4년마다</b> 1회 이상)</li><li><b>압력제한스위치</b><br>최고사용압력 도달 시 버너 연소 차단</li><li><b>고저수위 조절장치</b><br>수위 이상 시 경보·연소 차단</li><li><b>화염검출기</b></li></ul></div>
+<section class="section" id="t20"><div class="section-head"><div class="duality"><span class="n">15</span>보일러</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="보일러"><div class="subnote std">📋 출제기준 3-3 기타 산업용 기계 기구</div></div>
+<div class="card" data-title="보일러 · 방호장치"><h4>방호장치</h4><ul class="chk"><li><b>압력방출장치(안전밸브)</b><br>1개 이상, <b>최고사용압력 이하</b>에서 작동<br>2개 이상이면 1개는 최고사용압력 이하,<br>나머지는 <b>1.05배 이하</b>에서 작동</li><li class="star">압력방출장치 점검<br><b>매년 1회 이상</b> 토출압력 시험 후 봉인<br>(공정안전보고서 이행 우수 사업장은<br><b>4년마다</b> 1회 이상)</li><li><b>압력제한스위치</b><br>최고사용압력 도달 시 버너 연소 차단</li><li><b>고저수위 조절장치</b><br>수위 이상 시 경보·연소 차단</li><li><b>화염검출기</b></li></ul></div>
 <div class="card" data-title="보일러 · 이상 현상 ⭐"><h4>이상 현상 ⭐</h4><ul class="chk"><li><b>프라이밍</b><br>관수가 급격히 끓어 물방울이 증기와<br>함께 튀어 오름</li><li><b>포밍</b><br>유지분 등 불순물로 거품 발생</li><li><b>캐리오버</b><br>증기에 물방울·불순물이 섞여 나감</li><li><b>수격작용(워터해머)</b><br>응축수가 관 안에서 충격을 일으킴</li></ul></div></div></section>
-<section class="section" id="t15"><div class="section-head"><div class="duality"><span class="n">11</span>압력용기</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="압력용기"><ul class="chk"><li><b>안전밸브</b> 설치, 최고사용압력 이하 작동</li><li class="star"><b>파열판</b> 설치 대상<ul class="sub2"><li>반응폭주 등 <b>급격한 압력 상승</b> 우려</li><li>독성물질 누출 시 위험</li><li>운전 중 이상물질 퇴적으로<br>안전밸브가 작동하지 않을 우려</li></ul></li><li>안전밸브와 파열판 직렬 설치 시<br>사이에 <b>압력지시계 또는 경보장치</b></li><li>압력용기 표시: 최고사용압력,<br>제조연월일, 제조회사명</li></ul></div></div></section>
-<section class="section" id="t16"><div class="section-head"><div class="duality"><span class="n">12</span>그 밖의 설비</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="그 밖의 설비"><ul class="chk"><li><b>동력차단장치</b><br>기계마다 설치 (스위치, 클러치, 벨트이동장치)<br>쉽게 조작, 접촉·진동으로 불시 작동하지 않게</li><li><b>원심기</b><br>회전체 접촉예방 덮개<br>최고사용회전수 초과 금지</li><li><b>분쇄기·혼합기</b><br>덮개·울, 투입구 손 접근 방지</li><li><b>사출성형기</b><br>게이트가드(인터록), 양수조작식<br>가열 부위 덮개</li><li><b>고소작업대</b><br>과상승방지장치, 비상정지장치,<br>와이어로프 안전율 <b>5 이상</b></li></ul>
+<section class="section" id="t21"><div class="section-head"><div class="duality"><span class="n">16</span>압력용기</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="압력용기"><div class="subnote std">📋 출제기준 3-3 기타 산업용 기계 기구</div>
+<ul class="chk"><li><b>안전밸브</b> 설치, 최고사용압력 이하 작동</li><li class="star"><b>파열판</b> 설치 대상<ul class="sub2"><li>반응폭주 등 <b>급격한 압력 상승</b> 우려</li><li>독성물질 누출 시 위험</li><li>운전 중 이상물질 퇴적으로<br>안전밸브가 작동하지 않을 우려</li></ul></li><li>안전밸브와 파열판 직렬 설치 시<br>사이에 <b>압력지시계 또는 경보장치</b></li><li>압력용기 표시: 최고사용압력,<br>제조연월일, 제조회사명</li></ul></div></div></section>
+<section class="section" id="t22"><div class="section-head"><div class="duality"><span class="n">17</span>그 밖의 설비</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="그 밖의 설비"><div class="subnote std">📋 출제기준 3-3 기타 산업용 기계 기구 · 1-2 기계의 위험 안전조건 분석</div>
+<ul class="chk"><li><b>동력차단장치</b><br>기계마다 설치 (스위치, 클러치, 벨트이동장치)<br>쉽게 조작, 접촉·진동으로 불시 작동하지 않게</li><li><b>원심기</b><br>회전체 접촉예방 덮개<br>최고사용회전수 초과 금지</li><li><b>분쇄기·혼합기</b><br>덮개·울, 투입구 손 접근 방지</li><li><b>사출성형기</b><br>게이트가드(인터록), 양수조작식<br>가열 부위 덮개</li><li><b>고소작업대</b><br>과상승방지장치, 비상정지장치,<br>와이어로프 안전율 <b>5 이상</b></li></ul>
 <div class="subnote">법령·고시 수치는 시험 전 최신 기준으로 확인하세요.</div></div></div></section>
+<section class="section" id="t23"><div class="section-head"><div class="duality"><span class="n">18</span>고속회전체 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="고속회전체 ➕"><div class="subnote std">📋 출제기준 3-3 기타 산업용 기계 기구<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<div class="subnote">산업안전보건기준에 관한 규칙 기준입니다.<br>시험 전 확인하세요.</div>
+<p>⭐ <b>회전시험 시 방호</b><br>원심기·연삭숫돌 제외<br>원주속도 <b>25m/s 초과</b> 고속회전체의<br>회전시험은 <b>전용 견고한 시설</b> 안이나<br>견고한 장벽 등을 설치한 장소에서</p>
+<p>⭐ <b>비파괴검사 대상</b><br>회전축 중량 <b>1톤 초과</b>이고<br>원주속도 <b>120m/s 이상</b>인 고속회전체<br>→ 회전시험 전에 비파괴검사로<br>결함 유무 확인</p></div></div></section>
 <div class="chapter" id="c06"><span class="k">CHAPTER 06</span><span class="t">운반기계 및 양중기</span></div>
-<section class="section" id="t18"><div class="section-head"><div class="duality"><span class="n">13</span>양중기</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="양중기 · 양중기 종류"><h4>양중기 종류</h4><p>크레인(호이스트 포함), 이동식 크레인,<br>리프트(이삿짐운반용은 적재하중 0.1톤 이상),<br>곤돌라, 승강기</p></div>
+<section class="section" id="t25"><div class="section-head"><div class="duality"><span class="n">19</span>양중기</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="양중기"><div class="subnote std">📋 출제기준 3-4 운반기계 및 양중기</div></div>
+<div class="card" data-title="양중기 · 양중기 종류"><h4>양중기 종류</h4><p>크레인(호이스트 포함), 이동식 크레인,<br>리프트(이삿짐운반용은 적재하중 0.1톤 이상),<br>곤돌라, 승강기</p></div>
 <div class="card" data-title="양중기 · 방호장치 ⭐"><h4>방호장치 ⭐</h4><ul class="chk"><li><b>과부하방지장치</b></li><li><b>권과방지장치</b><br>훅 등 윗면과 드럼·도르래 간격<br><b>0.25m 이상</b> (직동식 0.05m 이상)</li><li><b>비상정지장치</b></li><li><b>제동장치</b></li><li>그 밖: 훅 해지장치, 파이널 리미트<br>스위치, 조속기, 출입문 인터록</li></ul></div>
 <div class="card" data-title="양중기 · 와이어로프 안전계수 ⭐"><h4>와이어로프 안전계수 ⭐</h4><ul class="chk"><li>근로자가 탑승하는 운반구를 지지하는<br>와이어로프·달기체인: <b>10 이상</b></li><li>화물 하중을 직접 지지하는<br>와이어로프·달기체인: <b>5 이상</b></li><li>훅·샤클·클램프·리프팅빔: <b>3 이상</b></li><li>그 밖의 경우: <b>4 이상</b></li></ul></div>
 <div class="card" data-title="양중기 · 사용 금지 기준 ⭐"><h4>사용 금지 기준 ⭐</h4><p><b>와이어로프</b></p>
@@ -185,22 +251,39 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p>각도가 커질수록 장력 증가 (60° 이내 권장)</p></div>
 <div class="card" data-title="양중기 · 풍속 기준 (6과목과 겹침)"><h4>풍속 기준 (6과목과 겹침)</h4><ul class="chk"><li>순간풍속 <b>10m/s 초과</b><br>타워크레인 설치·수리·점검·해체 중지</li><li><b>15m/s 초과</b><br>타워크레인 운전 중지</li><li><b>30m/s 초과</b><br>옥외 주행 크레인 이탈방지 조치</li><li><b>30m/s 초과</b> 바람·중진 이상 지진 뒤<br>크레인 각 부위 점검</li><li><b>35m/s 초과</b><br>옥외 승강기 붕괴방지 조치</li></ul>
 <p>⚠️ <b>20m/s</b>는 오답 함정</p></div></div></section>
-<section class="section" id="t19"><div class="section-head"><div class="duality"><span class="n">14</span>지게차</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="지게차 · 안정도 기준 ⭐"><h4>안정도 기준 ⭐</h4><ul class="chk"><li>하역작업 시 전후: <b>4% 이내</b><br>(5톤 이상은 <b>3.5%</b>)</li><li>주행 시 전후: <b>18% 이내</b></li><li>하역작업 시 좌우: <b>6% 이내</b></li><li>주행 시 좌우: <b>(15 + 1.1V)% 이내</b><br>최대 40% (V: 최고속도 km/h)</li></ul>
+<section class="section" id="t26"><div class="section-head"><div class="duality"><span class="n">20</span>지게차</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="지게차"><div class="subnote std">📋 출제기준 3-4 운반기계 및 양중기</div></div>
+<div class="card" data-title="지게차 · 안정도 기준 ⭐"><h4>안정도 기준 ⭐</h4><ul class="chk"><li>하역작업 시 전후: <b>4% 이내</b><br>(5톤 이상은 <b>3.5%</b>)</li><li>주행 시 전후: <b>18% 이내</b></li><li>하역작업 시 좌우: <b>6% 이내</b></li><li>주행 시 좌우: <b>(15 + 1.1V)% 이내</b><br>최대 40% (V: 최고속도 km/h)</li></ul>
 <p>예) V = 10km/h → 15 + 11 = <b>26%</b></p>
 <p><b>안정 조건</b><br>W × a ≤ G × b<br>(W: 화물 중량, a: 앞바퀴~화물 중심,<br>G: 지게차 중량, b: 앞바퀴~지게차 중심)</p></div>
 <div class="card" data-title="지게차 · 헤드가드 ⭐"><h4>헤드가드 ⭐</h4><ul class="chk"><li>강도: 최대하중의 <b>2배</b><br>(4톤 넘으면 4톤) 등분포정하중에 견딤</li><li>상부틀 개구 폭·길이: <b>16cm 미만</b></li><li>운전자 머리까지 높이<br>좌식: <b>0.903m 이상</b><br>입식: <b>1.88m 이상</b></li></ul>
 <p><b>백레스트</b>: 화물이 운전석 쪽으로<br>떨어지는 것 방지</p></div>
 <div class="card" data-title="지게차 · 작업시작 전 점검"><h4>작업시작 전 점검</h4><ul class="chk"><li>제동장치·조종장치 기능</li><li>하역장치·유압장치 기능</li><li>바퀴 이상 유무</li><li>전조등·후미등·방향지시기·경보장치</li></ul></div></div></section>
-<section class="section" id="t20"><div class="section-head"><div class="duality"><span class="n">15</span>컨베이어와 산업용 로봇</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="컨베이어와 산업용 로봇 · 컨베이어"><h4>컨베이어</h4><ul class="chk"><li class="star"><b>역주행방지장치</b><br>라쳇식, 롤러식, 밴드식,<br>전기브레이크</li><li><b>비상정지장치</b><br>이상 시 즉시 정지</li><li>덮개·울: 화물 낙하 위험 부위</li><li>건널다리: 컨베이어 위를 넘어갈 때</li><li>이탈방지장치</li></ul>
+<section class="section" id="t27"><div class="section-head"><div class="duality"><span class="n">21</span>컨베이어와 산업용 로봇</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="컨베이어와 산업용 로봇"><div class="subnote std">📋 출제기준 3-4 운반기계 및 양중기 · 3-3 기타 산업용 기계 기구</div></div>
+<div class="card" data-title="컨베이어와 산업용 로봇 · 컨베이어"><h4>컨베이어</h4><ul class="chk"><li class="star"><b>역주행방지장치</b><br>라쳇식, 롤러식, 밴드식,<br>전기브레이크</li><li><b>비상정지장치</b><br>이상 시 즉시 정지</li><li>덮개·울: 화물 낙하 위험 부위</li><li>건널다리: 컨베이어 위를 넘어갈 때</li><li>이탈방지장치</li></ul>
 <p><b>작업시작 전 점검</b><br>원동기·풀리 기능, 이탈방지장치,<br>비상정지장치, 덮개·울</p></div>
 <div class="card" data-title="컨베이어와 산업용 로봇 · 산업용 로봇"><h4>산업용 로봇</h4><ul class="chk"><li class="star">운전 중 위험 방지<br>높이 <b>1.8m 이상</b> 울타리(방책)</li><li>교시(티칭) 작업 시<br>작업 지침 작성·준수<br>즉시 정지할 수 있는 조치<br>"작업 중" 표시</li><li><b>작업시작 전 점검(교시 시)</b><br>외부 전선 피복·외장 손상<br>매니퓰레이터 작동 이상<br>제동장치·비상정지장치 기능</li></ul></div></div></section>
 <div class="chapter" id="c07"><span class="k">CHAPTER 07</span><span class="t">설비진단 및 검사</span></div>
-<section class="section" id="t22"><div class="section-head"><div class="duality"><span class="n">16</span>비파괴검사</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="비파괴검사"><ul class="chk"><li><b>RT (방사선투과)</b><br>X선·γ선으로 <b>내부결함</b> 확인<br>용접부 검사, 기록 보존 가능</li><li><b>UT (초음파탐상)</b><br>초음파 반사로 <b>내부결함·두께</b> 측정</li><li><b>MT (자분탐상)</b><br><b>강자성체</b>의 표면·표면 바로 아래 결함</li><li><b>PT (침투탐상)</b><br>표면에 열린 결함, <b>비자성체도 가능</b></li><li><b>ET (와류탐상)</b><br>도체에 와전류를 유도해 표면결함<br>(튜브·배관)</li><li><b>AE (음향방출)</b><br>재료가 변형될 때 나오는 음향으로<br><b>진행 중인 균열</b> 감시 (가동 중 검사)</li><li><b>VT (육안검사)</b>: 가장 기본</li></ul>
+<section class="section" id="t29"><div class="section-head"><div class="duality"><span class="n">22</span>비파괴검사</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="비파괴검사"><div class="subnote std">📋 출제기준 5-1 비파괴검사의 종류 및 특징</div>
+<ul class="chk"><li><b>RT (방사선투과)</b><br>X선·γ선으로 <b>내부결함</b> 확인<br>용접부 검사, 기록 보존 가능</li><li><b>UT (초음파탐상)</b><br>초음파 반사로 <b>내부결함·두께</b> 측정</li><li><b>MT (자분탐상)</b><br><b>강자성체</b>의 표면·표면 바로 아래 결함</li><li><b>PT (침투탐상)</b><br>표면에 열린 결함, <b>비자성체도 가능</b></li><li><b>ET (와류탐상)</b><br>도체에 와전류를 유도해 표면결함<br>(튜브·배관)</li><li><b>AE (음향방출)</b><br>재료가 변형될 때 나오는 음향으로<br><b>진행 중인 균열</b> 감시 (가동 중 검사)</li><li><b>VT (육안검사)</b>: 가장 기본</li></ul>
 <p><b>자주 나오는 질문</b></p>
 <ul class="chk"><li>내부결함: RT, UT</li><li>표면결함: MT, PT, ET</li><li>비자성체 표면: <b>PT</b></li><li>가동 중 결함 진행 감시: <b>AE</b></li></ul></div></div></section>
+<section class="section" id="t30"><div class="section-head"><div class="duality"><span class="n">23</span>소음·진동 방지 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="소음·진동 방지 ➕"><div class="subnote std">📋 출제기준 5-2 소음·진동 방지 기술<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<p>⭐ <b>소음 방지 대책</b></p>
+<ul class="chk"><li><b>발생원 대책</b><br>저소음 기계로 교체, 소음기 설치,<br>방음 커버, 방진(진동 차단),<br>기계 정비·급유</li><li><b>전파경로 대책</b><br>거리 확보(거리 감쇠), 차음벽,<br>흡음재, 음원 방향 바꾸기</li><li><b>수음자 대책</b><br>귀마개·귀덮개, 방음 부스,<br>노출시간 단축</li></ul>
+<p><b>흡음과 차음</b></p>
+<ul class="chk"><li><b>흡음:</b> 소리 에너지를 흡수<br>(다공질 재료, 실내 반사음 감소)</li><li><b>차음:</b> 소리가 건너가지 못하게 막음<br>(무겁고 밀도 큰 벽)</li></ul>
+<p><b>방음 보호구</b></p>
+<ul class="chk"><li><b>귀마개 1종(EP-1):</b> 저음부터 고음까지</li><li><b>귀마개 2종(EP-2):</b> 주로 고음 차단</li><li><b>귀덮개(EM)</b></li></ul>
+<p>⭐ <b>진동 방지 대책</b></p>
+<ul class="chk"><li><b>발생원:</b> 가진력 줄이기, 회전체<br>균형(밸런싱), 탄성 지지</li><li><b>전파경로:</b> 방진구(도랑), 거리 확보</li><li><b>수진측:</b> 방진장갑, 작업시간 제한</li></ul>
+<p><b>방진재 종류</b><br>금속 스프링, 방진고무, 공기 스프링,<br>코르크·펠트</p></div></div></section>
+<section class="section" id="std"><div class="section-head"><div class="duality">출제기준 대조표</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="출제기준 대조표"><ul class="chk"><li>✅ 기존 주제로 다룸</li><li>✅➕ 기존 주제에 보강 주제를 더함</li><li>➕ 기존에 없어 보강 주제로 새로 다룸</li><li>화살표 뒤 숫자는 주제 번호입니다.</li></ul>
+<ul class="chk"><li><b>1. 기계공정의 안전</b><ul class="sub2"><li>➕ 1-1 기계공정의 특수성 분석 → 4</li><li>✅ 1-2 기계의 위험 안전조건 분석 → 1, 2, 3, 17</li></ul></li><li><b>2. 기계분야 산업재해 조사 및 관리</b><ul class="sub2"><li>➕ 2-1 재해조사 → 5</li><li>➕ 2-2 산재분류 및 통계 분석 → 6</li><li>➕ 2-3 안전점검·검사·인증 및 진단 → 7</li></ul></li><li><b>3. 기계설비 위험요인 분석</b><ul class="sub2"><li>✅➕ 3-1 공작기계의 안전 → 8, 9, 10</li><li>✅ 3-2 프레스 및 전단기의 안전 → 11</li><li>✅➕ 3-3 기타 산업용 기계 기구 → 12, 13, 14, 15, 16, 17, 18, 21</li><li>✅ 3-4 운반기계 및 양중기 → 19, 20, 21</li></ul></li><li><b>4. 기계안전시설 관리</b><ul class="sub2"><li>✅ 4-1 안전시설 관리 계획하기 → 2</li><li>✅ 4-2 안전시설 설치하기 → 1</li><li>➕ 4-3 안전시설 유지·관리하기 → 4</li></ul></li><li><b>5. 설비진단 및 검사</b><ul class="sub2"><li>✅ 5-1 비파괴검사의 종류 및 특징 → 22</li><li>➕ 5-2 소음·진동 방지 기술 → 23</li></ul></li></ul></div></div></section>
 <footer><a href="s3-bank.html">3과목 문제은행</a>에서 바로 문제로 확인해 보세요. 출제 경향을 정리한 유형 노트이며 기출 원문이 아닙니다. 법령·KEC 수치는 시험 전에 최신 개정 사항으로 확인하세요.</footer>
 </div>
 

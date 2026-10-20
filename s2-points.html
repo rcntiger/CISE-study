@@ -68,6 +68,8 @@ ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
 ul.sub2 li{margin-bottom:3px}
 .subnote{margin:0 0 12px;padding:9px 12px;background:var(--surface2);border-radius:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 .subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
+.subnote.std{background:transparent;border:1px dashed var(--line,#ccc);padding:7px 11px;font-size:12px}
+.subnote.std::before{content:""}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
 footer a{color:var(--accent,var(--c1));font-weight:600}
 /* 문제은행 */
@@ -106,48 +108,61 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
   <span class="tab">2과목 · 기출포인트</span>
   <div class="eyebrow">산업안전기사 필기 · 2과목</div>
   <h1>인간공학 및 위험성 평가·관리</h1>
-  <ul class="sub"><li>출제 경향을 정리한 요약이며 기출 원문은 아닙니다.</li><li>법령 수치는 시험 전 최신 개정 사항으로 확인하세요.</li><li>⭐ 표시는 특히 자주 나오는 항목입니다.</li><li>주제는 에듀윌 교재의 챕터(CHAPTER) 순서로 묶었습니다.</li></ul>
-  <nav class="toc"><a class="ch" href="#c01">CH01 안전과 인간공학</a><a href="#t2"><span class="n">1</span>인간공학 개요</a><a href="#t3"><span class="n">2</span>인간-기계 체계 ★</a><a href="#t4"><span class="n">3</span>정보이론 ★</a><a href="#t5"><span class="n">4</span>표시장치 ★</a><a href="#t6"><span class="n">5</span>청각과 소음 ★</a><a href="#t7"><span class="n">6</span>조종장치와 양립성 ★</a><a href="#t8"><span class="n">7</span>휴먼에러 ★</a><a href="#t9"><span class="n">8</span>신뢰도 계산 ★</a><a class="ch" href="#c02">CH02 위험성 파악·결정</a><a href="#t11"><span class="n">9</span>시스템 안전 기법 ★</a><a href="#t12"><span class="n">10</span>HAZOP 가이드워드 ★</a><a href="#t13"><span class="n">11</span>FTA (결함수 분석) ★</a><a href="#t14"><span class="n">12</span>위험성 평가·관리 ★</a><a class="ch" href="#c04">CH04 근골격계질환 예방관리</a><a href="#t16"><span class="n">13</span>근골격계 질환 ★</a><a class="ch" href="#c06">CH06 작업환경 관리</a><a href="#t18"><span class="n">14</span>인체측정과 작업공간 ★</a><a href="#t19"><span class="n">15</span>작업생리와 작업환경 ★</a><a href="#t20"><span class="n">16</span>동작경제 원칙 ★</a></nav>
+  <ul class="sub"><li>출제 경향을 정리한 요약이며 기출 원문은 아닙니다.</li><li>법령 수치는 시험 전 최신 개정 사항으로 확인하세요.</li><li>⭐ 표시는 특히 자주 나오는 항목입니다.</li><li>주제는 에듀윌 교재의 챕터(CHAPTER) 순서로 묶었습니다.</li><li>📋는 출제기준(2024~2026 적용) 세부항목 번호이고, 맨 아래에 대조표가 있습니다.</li><li>➕는 출제기준과 대조해 새로 보강한 주제, 🔸는 세부항목 밖이지만 기출 빈출이라 남긴 내용입니다.</li></ul>
+  <nav class="toc"><a class="ch" href="#c01">CH01 안전과 인간공학</a><a href="#t2"><span class="n">1</span>인간공학 개요</a><a href="#t3"><span class="n">2</span>인간-기계 체계 ★</a><a href="#t4"><span class="n">3</span>촉진물 설계와 감성공학 ➕</a><a href="#t5"><span class="n">4</span>정보이론 ★</a><a href="#t6"><span class="n">5</span>표시장치 ★</a><a href="#t7"><span class="n">6</span>청각과 소음 ★</a><a href="#t8"><span class="n">7</span>조종장치와 양립성 ★</a><a href="#t9"><span class="n">8</span>휴먼에러 ★</a><a href="#t10"><span class="n">9</span>신뢰도 계산 ★</a><a class="ch" href="#c02">CH02 위험성 파악·결정</a><a href="#t12"><span class="n">10</span>시스템 안전 기법 ★</a><a href="#t13"><span class="n">11</span>HAZOP 가이드워드 ★</a><a href="#t14"><span class="n">12</span>FTA (결함수 분석) ★</a><a href="#t15"><span class="n">13</span>위험성 평가·관리 ★</a><a class="ch" href="#c03">CH03 위험성 감소대책 수립·실행</a><a href="#t17"><span class="n">14</span>위험성 감소대책과 허용 위험수준 ➕</a><a class="ch" href="#c04">CH04 근골격계질환 예방관리</a><a href="#t19"><span class="n">15</span>근골격계 질환 ★</a><a href="#t20"><span class="n">16</span>작업관리와 개선 절차 ➕</a><a class="ch" href="#c05">CH05 유해요인 관리</a><a href="#t22"><span class="n">17</span>물리·화학·생물학적 유해요인 ➕</a><a class="ch" href="#c06">CH06 작업환경 관리</a><a href="#t24"><span class="n">18</span>인체측정과 작업공간 ★</a><a href="#t25"><span class="n">19</span>작업생리와 작업환경 ★</a><a href="#t26"><span class="n">20</span>작업측정과 표준시간 ➕</a><a href="#t27"><span class="n">21</span>진동·VDT·이상환경 ➕</a><a href="#t28"><span class="n">22</span>동작경제 원칙 ★</a><a class="ch" href="#std">출제기준 대조표</a></nav>
 </header><div class="chapter" id="c01"><span class="k">CHAPTER 01</span><span class="t">안전과 인간공학</span></div>
 <section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">1</span>인간공학 개요</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="인간공학 개요"><ul class="chk"><li><b>정의</b><br>인간의 특성과 한계를 고려해<br>기계·작업·환경을 인간에게 맞추는 학문<br>(사람을 기계에 맞추는 것이 아님)</li><li><b>목적</b><br>안전성 향상, 사고 방지<br>작업 능률·생산성 향상<br>쾌적성·만족도 향상</li><li><b>차파니스(Chapanis)</b><br>인간공학 정의로 자주 나오는 학자</li></ul>
+<div class="cards"><div class="card" data-title="인간공학 개요"><div class="subnote std">📋 출제기준 1-1 인간공학의 정의</div>
+<ul class="chk"><li><b>정의</b><br>인간의 특성과 한계를 고려해<br>기계·작업·환경을 인간에게 맞추는 학문<br>(사람을 기계에 맞추는 것이 아님)</li><li><b>목적</b><br>안전성 향상, 사고 방지<br>작업 능률·생산성 향상<br>쾌적성·만족도 향상</li><li><b>차파니스(Chapanis)</b><br>인간공학 정의로 자주 나오는 학자</li></ul>
 <p>⭐ <b>인간 vs 기계의 장점</b></p>
 <ul class="chk"><li><b>인간이 우수</b><br>예기치 못한 사건 감지<br>귀납적 추리, 융통성<br>경험 활용, 원칙 적용<br>낮은 수준의 자극 감지</li><li><b>기계가 우수</b><br>연역적 추리, 반복 작업<br>장시간 일관된 작업<br>빠르고 큰 힘, 정량적 정보 처리<br>여러 작업 동시 수행</li></ul>
 <p><b>인간공학 연구 기준(평가 척도)의 요건</b></p>
 <ul class="chk"><li>적절성(타당성)</li><li>무오염성</li><li>신뢰성(반복성)</li><li>민감도</li></ul></div></div></section>
 <section class="section" id="t3"><div class="section-head"><div class="duality"><span class="n">2</span>인간-기계 체계</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="인간-기계 체계"><ul class="chk"><li><b>수동 체계</b><br>인간이 동력원 + 제어<br>수공구 사용</li><li><b>기계화 체계(반자동)</b><br>동력은 기계, 제어는 인간<br>예: 자동차 운전</li><li><b>자동 체계</b><br>기계가 감지·결정·실행<br>인간은 <b>감시·보전·프로그램</b></li></ul>
+<div class="cards"><div class="card" data-title="인간-기계 체계"><div class="subnote std">📋 출제기준 1-2 인간-기계체계 · 1-3 체계설계와 인간요소</div>
+<ul class="chk"><li><b>수동 체계</b><br>인간이 동력원 + 제어<br>수공구 사용</li><li><b>기계화 체계(반자동)</b><br>동력은 기계, 제어는 인간<br>예: 자동차 운전</li><li><b>자동 체계</b><br>기계가 감지·결정·실행<br>인간은 <b>감시·보전·프로그램</b></li></ul>
 <p><b>인간-기계 체계의 기본 기능</b></p>
 <p>감지(정보 입력)<br>→ 정보 보관(저장)<br>→ 정보 처리·의사결정<br>→ 행동</p>
 <p><b>체계 설계 순서</b></p>
 <ul class="chk"><li>1. 목표·성능 명세 결정</li><li>2. 체계 정의</li><li>3. 기본 설계 (기능 할당, 작업 설계)</li><li>4. 계면(인터페이스) 설계</li><li>5. 촉진물 설계</li><li>6. 시험·평가</li></ul></div></div></section>
-<section class="section" id="t4"><div class="section-head"><div class="duality"><span class="n">3</span>정보이론</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="정보이론"><ul class="chk"><li><b>정보량 단위:</b> bit</li><li class="star"><b>같은 확률 대안 n개</b><br>H = <b>log₂ n</b></li><li><b>확률이 다른 경우</b><br>H = Σ p × log₂(1/p)</li></ul>
+<section class="section" id="t4"><div class="section-head"><div class="duality"><span class="n">3</span>촉진물 설계와 감성공학 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="촉진물 설계와 감성공학 ➕"><div class="subnote std">📋 출제기준 1-3 체계설계와 인간요소<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<p><b>촉진물 설계</b><br>체계설계 5단계로, 인간의 성능을<br>높여 주는 보조물을 설계하는 단계<br>예: 작업지시서, 매뉴얼, 훈련 프로그램</p>
+<p><b>시험 및 평가</b><br>설계한 체계가 목표·성능 명세를<br>만족하는지 확인하는 마지막 단계</p>
+<p>⭐ <b>감성공학</b><br>인간의 감성(느낌·이미지)을<br>정량적으로 측정해<br>제품 설계에 반영하는 기술</p>
+<ul class="chk"><li><b>1류:</b> 감성 어휘(형용사)를 모아<br>디자인 요소로 연결</li><li><b>2류:</b> 개인의 연령·성별, 문화·생활<br>양식까지 고려</li><li><b>3류:</b> 감성을 측정해 수학적 모델·<br>컴퓨터 시스템으로 설계에 연결</li></ul></div></div></section>
+<section class="section" id="t5"><div class="section-head"><div class="duality"><span class="n">4</span>정보이론</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="정보이론"><div class="subnote std">📋 출제기준 1-2 인간-기계체계 · 6-2 신체활동의 생리학적 측정법</div>
+<ul class="chk"><li><b>정보량 단위:</b> bit</li><li class="star"><b>같은 확률 대안 n개</b><br>H = <b>log₂ n</b></li><li><b>확률이 다른 경우</b><br>H = Σ p × log₂(1/p)</li></ul>
 <p>예) 대안 8개 동일 확률<br>→ log₂ 8 = <b>3 bit</b></p>
 <p>예) 확률 0.5, 0.25, 0.25<br>→ 0.5×1 + 0.25×2 + 0.25×2<br>= <b>1.5 bit</b></p>
 <ul class="chk"><li><b>힉-하이만 법칙</b><br>반응시간은 자극 정보량에 비례<br>RT = a + b·H</li><li><b>피츠 법칙</b><br>동작시간은 거리가 멀고<br>목표가 작을수록 증가<br>MT = a + b·log₂(2D/W)</li></ul></div></div></section>
-<section class="section" id="t5"><div class="section-head"><div class="duality"><span class="n">4</span>표시장치</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="표시장치"><p><b>정량적 표시장치</b></p>
+<section class="section" id="t6"><div class="section-head"><div class="duality"><span class="n">5</span>표시장치</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="표시장치"><div class="subnote std">📋 출제기준 6-1 인체계측 및 체계제어 · 1-3 체계설계와 인간요소</div>
+<p><b>정량적 표시장치</b></p>
 <ul class="chk"><li><b>동침형:</b> 눈금 고정, 지침 이동<br>변화 방향·속도 파악에 유리</li><li><b>동목형:</b> 지침 고정, 눈금 이동<br>표시 범위가 넓을 때</li><li><b>계수형(디지털):</b> 정확한 값 읽기에<br>가장 유리 (판독 오차 적음)</li></ul>
 <p><b>정성적 표시장치</b><br>상태(정상·위험), 변화 추세 확인<br>색 구간 표시 활용</p>
 <p>⭐ <b>시각 vs 청각 표시장치 선택</b></p>
 <ul class="chk"><li><b>청각이 유리</b><br>메시지가 짧고 단순<br>즉각 행동 요구<br>시간적 사건 표시<br>수신자가 자주 움직임<br>조명이 어둡거나 시각 과부하</li><li><b>시각이 유리</b><br>메시지가 길고 복잡<br>나중에 다시 참조<br>공간적 위치 표시<br>즉각 행동 불필요<br>소음이 심한 장소</li></ul>
 <p><b>암호화(코딩) 요건</b><br>검출성, 판별성, 양립성,<br>부호의 의미, 표준화, 다차원 암호</p></div></div></section>
-<section class="section" id="t6"><div class="section-head"><div class="duality"><span class="n">5</span>청각과 소음</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="청각과 소음"><ul class="chk"><li><b>dB(음압수준)</b><br>SPL = 20 log(P/P₀)</li><li><b>거리와 음압</b><br>거리 2배 → 약 <b>6dB 감소</b><br>dB₂ = dB₁ − 20 log(d₂/d₁)</li><li class="star"><b>phon</b><br>1,000Hz 순음 기준 음의 크기 <b>수준</b><br>(40phon = 1,000Hz 40dB와 같은 크기)</li><li class="star"><b>sone</b><br>음의 <b>크기</b> 단위<br>40phon = <b>1sone</b><br>10phon 증가 → sone <b>2배</b><br>sone = 2^((phon − 40)/10)</li></ul>
+<section class="section" id="t7"><div class="section-head"><div class="duality"><span class="n">6</span>청각과 소음</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="청각과 소음"><div class="subnote std">📋 출제기준 6-5 작업환경과 인간공학 · 6-1 인체계측 및 체계제어 · 5-1 물리적 유해요인 관리</div>
+<ul class="chk"><li><b>dB(음압수준)</b><br>SPL = 20 log(P/P₀)</li><li><b>거리와 음압</b><br>거리 2배 → 약 <b>6dB 감소</b><br>dB₂ = dB₁ − 20 log(d₂/d₁)</li><li class="star"><b>phon</b><br>1,000Hz 순음 기준 음의 크기 <b>수준</b><br>(40phon = 1,000Hz 40dB와 같은 크기)</li><li class="star"><b>sone</b><br>음의 <b>크기</b> 단위<br>40phon = <b>1sone</b><br>10phon 증가 → sone <b>2배</b><br>sone = 2^((phon − 40)/10)</li></ul>
 <p>예) 60phon → 2^2 = <b>4sone</b></p>
 <ul class="chk"><li><b>은폐(masking)</b><br>한 음 때문에 다른 음이<br>잘 안 들리는 현상</li><li><b>가청 범위:</b> 20~20,000Hz<br>민감한 영역 500~3,000Hz</li><li><b>경보음 설계</b><br>장거리(300m 이상): <b>1,000Hz 이하</b><br>장애물·칸막이 통과: <b>500Hz 이하</b></li></ul>
 <p><b>소음 노출 기준</b> (시험 전 확인)</p>
 <ul class="chk"><li>8시간 <b>90dB(A)</b></li><li>5dB 증가 시 허용시간 절반<br>95dB 4시간, 100dB 2시간</li><li>충격소음 최대 140dB(A)</li><li><b>소음작업:</b> 8시간 85dB 이상</li></ul></div></div></section>
-<section class="section" id="t7"><div class="section-head"><div class="duality"><span class="n">6</span>조종장치와 양립성</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="조종장치와 양립성"><p>⭐ <b>C/R비 (조종-반응 비율)</b><br>조종장치 이동량 ÷ 표시장치 이동량</p>
+<section class="section" id="t8"><div class="section-head"><div class="duality"><span class="n">7</span>조종장치와 양립성</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="조종장치와 양립성"><div class="subnote std">📋 출제기준 6-1 인체계측 및 체계제어</div>
+<p>⭐ <b>C/R비 (조종-반응 비율)</b><br>조종장치 이동량 ÷ 표시장치 이동량</p>
 <ul class="chk"><li><b>회전형 C/R비</b><br>(a/360 × 2πL) ÷ 표시장치 이동거리<br>a: 회전각, L: 반지름</li><li><b>C/R비 작음 (민감)</b><br>이동시간 짧음, 조정시간 김</li><li><b>C/R비 큼 (둔감)</b><br>이동시간 김, 조정시간 짧음</li><li>최적 C/R비: 두 시간의 합이 최소</li></ul>
 <p>예) 반지름 10cm 노브를 30° 돌릴 때<br>지침 1cm 이동<br>→ (30/360 × 2π × 10) ÷ 1<br>≈ <b>5.24</b></p>
 <p>⭐ <b>양립성 종류</b></p>
 <ul class="chk"><li><b>개념적:</b> 의미가 기대와 일치<br>(빨강 = 정지, 위험)</li><li><b>공간적:</b> 위치 배치 일치<br>(왼쪽 버튼 → 왼쪽 표시)</li><li><b>운동적:</b> 움직임 방향 일치<br>(오른쪽으로 돌리면 증가)</li><li><b>양식(modality):</b> 청각 자극 → 음성 응답</li></ul>
 <p><b>조종장치 코딩 방법</b><br>형상, 크기, 색, 촉감, 위치, 조작법</p></div></div></section>
-<section class="section" id="t8"><div class="section-head"><div class="duality"><span class="n">7</span>휴먼에러</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="휴먼에러"><p>⭐ <b>스웨인(Swain)의 분류 (행위적 관점)</b></p>
+<section class="section" id="t9"><div class="section-head"><div class="duality"><span class="n">8</span>휴먼에러</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="휴먼에러"><div class="subnote std">📋 출제기준 1-4 인간요소와 휴먼에러</div>
+<p>⭐ <b>스웨인(Swain)의 분류 (행위적 관점)</b></p>
 <ul class="chk"><li><b>생략 오류(omission)</b><br>필요한 작업을 빠뜨림</li><li><b>실행 오류(commission)</b><br>작업을 잘못 수행</li><li><b>순서 오류(sequential)</b><br>순서를 틀림</li><li><b>시간 오류(time)</b><br>너무 빠르거나 늦음</li><li><b>불필요한 행동(extraneous)</b><br>하지 않아도 될 일을 함</li></ul>
 <p>⭐ <b>리즌·라스무센 분류 (원인적 관점)</b></p>
 <ul class="chk"><li><b>착오(mistake)</b><br>상황 해석·목표 설정이 잘못됨<br>(계획 자체 오류)</li><li><b>실수(slip)</b><br>의도는 맞는데 실행을 잘못함</li><li><b>건망(lapse)</b><br>기억 실패로 잊어버림</li><li><b>위반(violation)</b><br>알면서 규칙을 어김</li></ul>
@@ -156,25 +171,29 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p><b>대책</b><br>배타설계(실수 불가능하게)<br>→ 보호설계(풀프루프)<br>→ 안전설계(페일세이프)</p>
 <ul class="chk"><li><b>풀프루프:</b> 잘못 조작해도 사고가 안 남<br>(인터록 등)</li><li><b>페일세이프:</b> 고장 나도<br>안전한 쪽으로 작동</li></ul>
 <p><b>인간 신뢰도 분석 기법</b><br>THERP, 휴먼에러율 예측<br>HEP = 오류 수 ÷ 오류 기회 수</p></div></div></section>
-<section class="section" id="t9"><div class="section-head"><div class="duality"><span class="n">8</span>신뢰도 계산</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="신뢰도 계산"><p>계산 문제 단골입니다.</p>
+<section class="section" id="t10"><div class="section-head"><div class="duality"><span class="n">9</span>신뢰도 계산</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="신뢰도 계산"><div class="subnote std">📋 출제기준 2-2 시스템 위험성 추정 및 결정</div>
+<p>계산 문제 단골입니다.</p>
 <ul class="chk"><li class="star"><b>직렬</b><br>R = R₁ × R₂ × … × Rₙ</li><li class="star"><b>병렬</b><br>R = 1 − (1−R₁)(1−R₂)…(1−Rₙ)</li></ul>
 <p>예) 0.9 직렬 2개 → <b>0.81</b><br>예) 0.9 병렬 2개 → 1 − 0.01 = <b>0.99</b></p>
 <ul class="chk"><li><b>n중 k 구조</b><br>n개 중 k개 이상 작동하면 정상</li><li><b>고장률 λ</b><br>고장 건수 ÷ 총 가동시간</li><li class="star"><b>MTBF = 1/λ</b><br>(수리 가능, 평균 고장 간격)</li><li><b>MTTF:</b> 수리 불가, 고장까지 평균시간</li><li><b>MTTR:</b> 평균 수리시간</li><li><b>가용도</b><br>MTBF ÷ (MTBF + MTTR)</li><li><b>지수분포 신뢰도</b><br>R(t) = e^(−λt)</li><li><b>병렬 n개 MTTF</b><br>MTTF × (1 + 1/2 + … + 1/n)</li><li><b>직렬 n개 MTTF</b><br>MTTF ÷ n</li></ul>
 <p>⭐ <b>욕조곡선</b></p>
 <ul class="chk"><li><b>초기고장:</b> 고장률 감소<br>디버깅, 번인(burn-in)으로 줄임</li><li><b>우발고장:</b> 고장률 일정<br>예측 불가, 안전계수 고려</li><li><b>마모고장:</b> 고장률 증가<br>예방보전(PM)으로 대응</li></ul></div></div></section>
 <div class="chapter" id="c02"><span class="k">CHAPTER 02</span><span class="t">위험성 파악·결정</span></div>
-<section class="section" id="t11"><div class="section-head"><div class="duality"><span class="n">9</span>시스템 안전 기법</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="시스템 안전 기법"><p>⭐ <b>시스템 수명주기 단계</b><br>구상 → 정의 → 개발 → 생산 → 운용 → 폐기</p>
+<section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">10</span>시스템 안전 기법</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="시스템 안전 기법"><div class="subnote std">📋 출제기준 2-2 시스템 위험성 추정 및 결정</div>
+<p>⭐ <b>시스템 수명주기 단계</b><br>구상 → 정의 → 개발 → 생산 → 운용 → 폐기</p>
 <ul class="chk"><li class="star"><b>PHA (예비위험분석)</b><br><b>구상 단계</b>, 최초로 실시<br>정성적<br>위험 범주: 파국적 → 중대<br>→ 한계적 → 무시가능</li><li><b>FHA (결함위험분석)</b><br>서브시스템 분석,<br>여러 업체가 나눠 개발할 때</li><li class="star"><b>FMEA (고장형태와 영향분석)</b><br>부품·요소의 고장 형태별 영향 검토<br>정성적, <b>귀납적</b><br>단점: 인적 원인·<br>2개 이상 동시 고장 분석 곤란</li><li><b>CA (위험도 분석)</b><br>고장의 위험도(치명도)를 정량 평가<br>FMECA = FMEA + CA</li><li class="star"><b>ETA (사건수 분석)</b><br>초기 사건에서 성공·실패로 갈라지며<br>결과를 추적, <b>귀납적, 정량적</b></li><li class="star"><b>FTA (결함수 분석)</b><br>정상(톱)사상에서 원인을 찾아 내려감<br><b>연역적, 정량적</b></li><li><b>HAZOP (위험과 운전분석)</b><br>화학공정 이탈을 가이드워드로 검토</li><li><b>MORT</b><br>관리·설계·생산·보전 전반의<br>안전 확보, FTA와 같은 논리 사용</li><li><b>THERP</b><br>인간 실수율 예측 (정량적)</li><li><b>OSHA(운용위험분석)</b><br>운용·보전 단계 위험 분석</li></ul>
 <p><b>위험 범주 (MIL-STD-882)</b></p>
 <ul class="chk"><li>Ⅰ 파국적</li><li>Ⅱ 위기적(중대)</li><li>Ⅲ 한계적</li><li>Ⅳ 무시가능</li></ul></div></div></section>
-<section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">10</span>HAZOP 가이드워드</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="HAZOP 가이드워드"><ul class="chk"><li><b>No / Not:</b> 설계 의도의 완전한 부정</li><li><b>More / Less:</b> 양의 증가·감소</li><li><b>As well as:</b> 성질상 증가<br>(다른 것이 추가됨)</li><li><b>Part of:</b> 성질상 감소<br>(일부만 달성)</li><li><b>Reverse:</b> 반대 방향</li><li><b>Other than:</b> 완전한 대체</li></ul>
+<section class="section" id="t13"><div class="section-head"><div class="duality"><span class="n">11</span>HAZOP 가이드워드</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="HAZOP 가이드워드"><div class="subnote std">📋 출제기준 2-2 시스템 위험성 추정 및 결정</div>
+<ul class="chk"><li><b>No / Not:</b> 설계 의도의 완전한 부정</li><li><b>More / Less:</b> 양의 증가·감소</li><li><b>As well as:</b> 성질상 증가<br>(다른 것이 추가됨)</li><li><b>Part of:</b> 성질상 감소<br>(일부만 달성)</li><li><b>Reverse:</b> 반대 방향</li><li><b>Other than:</b> 완전한 대체</li></ul>
 <p><b>HAZOP 전제조건</b></p>
 <ul class="chk"><li>두 개 이상 기기 고장이나<br>사고는 동시에 일어나지 않음</li><li>조작자는 위험 상황에서<br>필요한 조치를 취함</li><li>안전장치는 필요할 때 작동</li></ul></div></div></section>
-<section class="section" id="t13"><div class="section-head"><div class="duality"><span class="n">11</span>FTA (결함수 분석)</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="FTA (결함수 분석)"><p>⭐ <b>주요 기호</b></p>
+<section class="section" id="t14"><div class="section-head"><div class="duality"><span class="n">12</span>FTA (결함수 분석)</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="FTA (결함수 분석)"><div class="subnote std">📋 출제기준 2-2 시스템 위험성 추정 및 결정</div>
+<p>⭐ <b>주요 기호</b></p>
 <ul class="chk"><li><b>직사각형:</b> 결함사상(중간사상)</li><li><b>원:</b> 기본사상 (더 분해 안 함)</li><li><b>마름모:</b> 생략사상 (정보 부족)</li><li><b>집 모양:</b> 통상사상 (정상적으로 발생)</li><li><b>삼각형:</b> 전이기호 (in/out)</li></ul>
 <p>⭐ <b>게이트</b></p>
 <ul class="chk"><li><b>AND 게이트</b><br>입력이 <b>모두</b> 발생해야 출력<br>P = P₁ × P₂</li><li><b>OR 게이트</b><br>입력 중 <b>하나만</b> 발생해도 출력<br>P = 1 − (1−P₁)(1−P₂)</li><li><b>억제 게이트:</b> 조건 만족 시 출력</li><li><b>우선적 AND:</b> 순서대로 발생 시</li><li><b>조합 AND:</b> 3개 중 2개 등</li><li><b>배타적 OR:</b> 2개 이상 동시면 출력 없음</li></ul>
@@ -183,10 +202,11 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <ul class="chk"><li><b>컷셋:</b> 동시에 발생하면<br>정상사상을 일으키는 기본사상 집합</li><li><b>최소 컷셋</b><br>필요 최소한의 컷셋<br>→ 시스템의 <b>위험성</b>을 나타냄</li><li><b>패스셋:</b> 발생하지 않으면<br>정상사상이 일어나지 않는 집합</li><li><b>최소 패스셋</b><br>→ 시스템의 <b>신뢰성</b>을 나타냄</li><li>구하는 법: <b>퍼셀(MOCUS) 알고리즘</b><br>AND는 가로, OR는 세로로 전개</li><li>불 대수: A·A = A, A + A·B = A</li></ul>
 <p><b>FTA 순서</b></p>
 <ul class="chk"><li>1. 정상사상 선정</li><li>2. 사상별 재해 원인 규명</li><li>3. FT도 작성</li><li>4. 개선계획 작성</li><li>5. 개선안 실시</li></ul></div></div></section>
-<section class="section" id="t14"><div class="section-head"><div class="duality"><span class="n">12</span>위험성 평가·관리</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="위험성 평가·관리"><div class="subnote">법령·고시 수치는 시험 전 최신 기준으로 확인하세요.</div>
+<section class="section" id="t15"><div class="section-head"><div class="duality"><span class="n">13</span>위험성 평가·관리</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="위험성 평가·관리"><div class="subnote std">📋 출제기준 2-1 위험성 평가 · 3-1 위험성 감소대책 수립 및 실행</div>
+<div class="subnote">법령·고시 수치는 시험 전 최신 기준으로 확인하세요.</div>
 <p><b>위험성 = 빈도(가능성) × 강도(중대성)</b></p>
-<ul class="chk"><li>1과목 기출포인트 16번 주제의 위험성평가 절차와 연결</li><li><b>위험성 결정:</b> 허용 가능 여부 판단</li><li><b>감소대책 우선순위</b><br>1. 위험 제거·대체 (본질적 대책)<br>2. 공학적 대책 (방호장치·환기)<br>3. 관리적 대책 (교육·작업절차)<br>4. 개인보호구</li></ul>
+<ul class="chk"><li>1과목 기출포인트 21번 주제의 위험성평가 절차와 연결</li><li><b>위험성 결정:</b> 허용 가능 여부 판단</li><li><b>감소대책 우선순위</b><br>1. 위험 제거·대체 (본질적 대책)<br>2. 공학적 대책 (방호장치·환기)<br>3. 관리적 대책 (교육·작업절차)<br>4. 개인보호구</li></ul>
 <p>⭐ <b>정성적 위험성평가 기법</b></p>
 <ul class="chk"><li>체크리스트</li><li>사고예상질문(What-if)</li><li>HAZOP</li><li>FMEA</li><li>작업안전분석(JSA)</li><li>4M 위험성평가<br>Man, Machine, Media, Management</li></ul>
 <p><b>정량적 기법</b><br>FTA, ETA, CA, 원인결과분석(CCA),<br>작업자 실수 분석(HEA, THERP)</p>
@@ -195,18 +215,53 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p><b>공정안전보고서(PSM) 연계</b><br>화학설비 위험성평가 기법은<br>5과목에서 더 자주 나옵니다.</p>
 <p><b>안전성 평가 6단계</b></p>
 <ul class="chk"><li>1. 관계 자료 정비·검토</li><li>2. 정성적 평가</li><li>3. 정량적 평가</li><li>4. 안전대책</li><li>5. 재해 정보로 재평가</li><li>6. FTA로 재평가</li></ul></div></div></section>
+<div class="chapter" id="c03"><span class="k">CHAPTER 03</span><span class="t">위험성 감소대책 수립·실행</span></div>
+<section class="section" id="t17"><div class="section-head"><div class="duality"><span class="n">14</span>위험성 감소대책과 허용 위험수준 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="위험성 감소대책과 허용 위험수준 ➕"><div class="subnote std">📋 출제기준 3-1 위험성 감소대책 수립 및 실행<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<div class="subnote">위험성평가 고시 기준입니다. 시험 전 확인하세요.</div>
+<p>⭐ <b>감소대책 우선순위</b></p>
+<ul class="chk"><li>1. 위험 제거·대체 (본질적 대책)</li><li>2. 공학적 대책</li><li>3. 관리적 대책</li><li>4. 개인보호구 사용</li></ul>
+<ul class="chk"><li><b>공학적 대책 예</b><br>방호장치·가드, 인터록,<br>국소배기장치, 격리·밀폐, 방음벽</li><li><b>관리적 대책 예</b><br>작업절차서, 작업허가, 교육·훈련,<br>작업시간 단축·순환 배치, 표지 부착</li></ul>
+<p><b>허용 가능한 위험수준</b></p>
+<ul class="chk"><li>위험성 결정 단계에서<br>위험이 <b>허용 가능한지</b> 판단</li><li>허용 불가하면 감소대책을 세우고<br>실행 후 <b>다시 평가</b></li><li>감소대책 후에도 남는 위험을<br><b>잔류위험</b>이라 하며 근로자에게 알림</li></ul>
+<p>⭐ <b>ALARP 원칙</b><br>As Low As Reasonably Practicable<br>합리적으로 실행 가능한 한 낮게</p>
+<ul class="chk"><li><b>허용 불가 영역:</b> 반드시 대책 필요</li><li><b>ALARP 영역:</b> 비용 대비 효과를<br>따져 가능한 만큼 낮춤</li><li><b>허용 가능 영역:</b> 추가 대책 불필요</li></ul>
+<p><b>감소대책 효과 분석</b></p>
+<ul class="chk"><li>대책 실행 후 빈도·강도를<br>다시 산정해 위험성 비교</li><li>대책 비용과 줄어든 손실을 비교</li></ul></div></div></section>
 <div class="chapter" id="c04"><span class="k">CHAPTER 04</span><span class="t">근골격계질환 예방관리</span></div>
-<section class="section" id="t16"><div class="section-head"><div class="duality"><span class="n">13</span>근골격계 질환</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="근골격계 질환"><p><b>근골격계 부담작업</b> (시험 전 확인)<br>고시 기준 <b>11가지</b>, 예시:</p>
+<section class="section" id="t19"><div class="section-head"><div class="duality"><span class="n">15</span>근골격계 질환</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="근골격계 질환"><div class="subnote std">📋 출제기준 4-1 근골격계 유해요인 · 4-2 인간공학적 유해요인 평가 · 6-6 중량물 취급 작업</div>
+<p><b>근골격계 부담작업</b> (시험 전 확인)<br>고시 기준 <b>11가지</b>, 예시:</p>
 <ul class="chk"><li>하루 4시간 이상 키보드·마우스 조작</li><li>하루 2시간 이상 목·허리를<br>구부리거나 비튼 자세</li><li>하루 10회 이상 25kg 이상 물체 들기</li><li>하루 25회 이상 10kg 이상 물체를<br>무릎 아래·어깨 위·팔 뻗어 들기</li><li>분당 2회 이상 4.5kg 이상 들기</li></ul>
 <p><b>유해요인조사</b></p>
 <ul class="chk"><li><b>최초:</b> 신설 사업장 1년 이내</li><li><b>정기:</b> <b>3년마다</b></li><li>수시: 질환자 발생 등</li></ul>
 <p>⭐ <b>평가 도구</b></p>
 <ul class="chk"><li><b>NIOSH 들기 지침 (NLE)</b><br>들기 작업 평가<br>권장무게한계(RWL)<br>= 23kg × HM × VM × DM<br>× AM × FM × CM<br><b>들기지수(LI) = 작업물 무게 ÷ RWL</b><br>LI &gt; 1 이면 위험</li><li><b>RULA</b><br>상지(팔·목·어깨) 중심 평가</li><li><b>REBA</b><br>전신 평가 (RULA 보완)<br>간호·서비스업 등</li><li><b>OWAS</b><br>허리·팔·다리·하중 조합으로<br>작업 자세 평가, 현장 적용 쉬움</li><li><b>JSI(Strain Index)</b><br>손·손목 부위 평가</li></ul>
 <p><b>근골격계 질환 원인</b><br>반복성, 부자연스러운 자세,<br>과도한 힘, 접촉 스트레스, 진동, 저온</p></div></div></section>
+<section class="section" id="t20"><div class="section-head"><div class="duality"><span class="n">16</span>작업관리와 개선 절차 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="작업관리와 개선 절차 ➕"><div class="subnote std">📋 출제기준 4-3 근골격계 유해요인 관리<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<p><b>작업관리 = 방법연구 + 작업측정</b></p>
+<ul class="chk"><li><b>방법연구:</b> 더 좋은 작업방법을<br>찾아 표준화</li><li><b>작업측정:</b> 표준시간 설정<br>(작업측정과 표준시간 주제 참고)</li></ul>
+<p><b>작업관리의 목적</b><br>생산성 향상, 최선의 작업방법 개발과<br>표준화, 표준시간 설정,<br>작업자의 안전과 건강</p>
+<p>⭐ <b>문제해결 절차 (기본 5단계)</b></p>
+<ul class="chk"><li>1. 연구대상 선정</li><li>2. 현재 작업방법 분석·기록</li><li>3. 분석 자료 검토</li><li>4. 개선안 수립</li><li>5. 개선안 도입</li></ul>
+<p>⭐ <b>작업개선 원리 ECRS</b></p>
+<ul class="chk"><li><b>E (Eliminate):</b> 불필요한 작업 제거</li><li><b>C (Combine):</b> 작업 결합</li><li><b>R (Rearrange):</b> 순서 재배열</li><li><b>S (Simplify):</b> 단순화</li></ul>
+<p><b>SEARCH 원칙</b><br>Simplify(단순화), Eliminate(제거),<br>Alter sequence(순서 변경),<br>Requirements(요구조건),<br>Combine(결합), How often(빈도)</p>
+<p>⭐ <b>공정도 기호 (ASME)</b></p>
+<ul class="chk"><li>○ <b>작업(가공)</b></li><li>⇨ <b>운반</b></li><li>□ <b>검사</b></li><li>D <b>지연(정체)</b></li><li>▽ <b>저장</b></li></ul></div></div></section>
+<div class="chapter" id="c05"><span class="k">CHAPTER 05</span><span class="t">유해요인 관리</span></div>
+<section class="section" id="t22"><div class="section-head"><div class="duality"><span class="n">17</span>물리·화학·생물학적 유해요인 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="물리·화학·생물학적 유해요인 ➕"><div class="subnote std">📋 출제기준 5-1 물리적 유해요인 관리 · 5-2 화학적 유해요인 관리 · 5-3 생물학적 유해요인 관리<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<div class="subnote">노출기준은 고용노동부 고시 기준입니다.<br>시험 전 확인하세요.</div>
+<p><b>관리대책 기본 순서</b><br>대체 → 공학적 대책(격리·밀폐, 국소배기,<br>전체환기) → 관리적 대책 → 보호구</p></div>
+<div class="card" data-title="물리·화학·생물학적 유해요인 ➕ · 물리적 유해요인"><h4>물리적 유해요인</h4><ul class="chk"><li><b>소음:</b> 8시간 90dB(A)<br>(6번 주제 참고)</li><li><b>진동:</b> 국소진동은 <b>레이노 현상</b><br>(손가락 혈관 장해, 백지증)<br>전신진동은 허리·내장 장해</li><li><b>고열·한랭:</b> 열사병, 열경련, 열피로,<br>동상, 참호족</li><li><b>이상기압:</b> 감압병(잠함병),<br>질소 기포가 원인</li><li><b>방사선:</b> 전리방사선(X선, γ선),<br>비전리방사선(자외선, 적외선, 마이크로파)</li></ul></div>
+<div class="card" data-title="물리·화학·생물학적 유해요인 ➕ · 화학적 유해요인"><h4>화학적 유해요인</h4><ul class="chk"><li><b>입자상 물질:</b> 분진, 흄, 미스트</li><li><b>가스상 물질:</b> 가스, 증기</li><li class="star"><b>노출기준</b><br>TWA(8시간 평균), STEL(15분),<br>C(최고노출기준)<br>(5과목 기출포인트 MSDS·노출기준 참고)</li><li>혼합물 노출지수 R &gt; 1 이면 초과</li></ul></div>
+<div class="card" data-title="물리·화학·생물학적 유해요인 ➕ · 생물학적 유해요인"><h4>생물학적 유해요인</h4><ul class="chk"><li><b>혈액매개 감염:</b> B형·C형 간염, HIV</li><li><b>공기매개 감염:</b> 결핵, 홍역, 수두</li><li><b>곤충·동물매개 감염:</b><br>쯔쯔가무시증, 렙토스피라증,<br>신증후군출혈열</li><li><b>관리대책</b><br>예방접종, 보호구(장갑·마스크),<br>손 씻기, 주사침 뚜껑 다시 씌우기 금지,<br>오염 폐기물 전용 용기</li></ul></div></div></section>
 <div class="chapter" id="c06"><span class="k">CHAPTER 06</span><span class="t">작업환경 관리</span></div>
-<section class="section" id="t18"><div class="section-head"><div class="duality"><span class="n">14</span>인체측정과 작업공간</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="인체측정과 작업공간"><p>⭐ <b>인체측정치 설계 원칙</b></p>
+<section class="section" id="t24"><div class="section-head"><div class="duality"><span class="n">18</span>인체측정과 작업공간</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="인체측정과 작업공간"><div class="subnote std">📋 출제기준 6-1 인체계측 및 체계제어 · 6-3 작업공간 및 작업자세</div>
+<p>⭐ <b>인체측정치 설계 원칙</b></p>
 <ul class="chk"><li><b>조절식 설계 (1순위)</b><br>5~95% 범위 조절<br>예: 의자 높이, 자동차 좌석</li><li><b>극단치 설계</b><br>최대치(95%): 출입문 높이,<br>비상구, 통로 폭<br>최소치(5%): 조종장치 거리,<br>선반 높이, 버튼 누르는 힘</li><li><b>평균치 설계 (최후)</b><br>예: 은행 창구, 공공장소 의자</li></ul>
 <p><b>측정 방법</b></p>
 <ul class="chk"><li><b>구조적(정적):</b> 정지 자세</li><li><b>기능적(동적):</b> 움직이는 자세</li></ul>
@@ -215,21 +270,46 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 <p><b>작업 영역</b></p>
 <ul class="chk"><li><b>정상 작업역:</b> 위팔을 붙이고<br>아래팔만 뻗은 범위</li><li><b>최대 작업역:</b> 팔 전체를 뻗은 범위</li></ul>
 <p>⭐ <b>부품 배치 4원칙</b><br>중요성, 사용빈도<br>(위치 결정)<br>기능별, 사용순서<br>(배열 결정)</p></div></div></section>
-<section class="section" id="t19"><div class="section-head"><div class="duality"><span class="n">15</span>작업생리와 작업환경</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="작업생리와 작업환경"><p>⭐ <b>에너지대사율 (RMR)</b><br>(작업 시 소비에너지 − 안정 시)<br>÷ 기초대사량</p>
+<section class="section" id="t25"><div class="section-head"><div class="duality"><span class="n">19</span>작업생리와 작업환경</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="작업생리와 작업환경"><div class="subnote std">📋 출제기준 6-2 신체활동의 생리학적 측정법 · 6-5 작업환경과 인간공학</div>
+<p>⭐ <b>에너지대사율 (RMR)</b><br>(작업 시 소비에너지 − 안정 시)<br>÷ 기초대사량</p>
 <ul class="chk"><li>0~2: 경작업</li><li>2~4: 중(中)작업</li><li>4~7: 중(重)작업</li><li>7 이상: 초중작업</li></ul>
-<ul class="chk"><li><b>산소부채</b><br>작업 후에도 산소 소비가<br>높게 유지되는 현상</li><li>1L 산소 소비 ≈ <b>5kcal</b></li><li>휴식시간 계산은 머렐 공식<br>(1과목 기출포인트 11번 주제 참고)</li></ul>
+<ul class="chk"><li><b>산소부채</b><br>작업 후에도 산소 소비가<br>높게 유지되는 현상</li><li>1L 산소 소비 ≈ <b>5kcal</b></li><li>휴식시간 계산은 머렐 공식<br>(1과목 기출포인트 14번 주제 참고)</li></ul>
 <p>⭐ <b>조도와 반사율</b></p>
 <ul class="chk"><li><b>조도(lux)</b><br>광도 ÷ (거리)²</li><li><b>반사율(%)</b><br>휘도 ÷ 조도 × 100</li><li class="star"><b>권장 반사율</b><br>천장 <b>80~90%</b><br>벽 <b>40~60%</b><br>가구 <b>25~45%</b><br>바닥 <b>20~40%</b><br>(위로 갈수록 높게)</li><li><b>대비</b><br>(배경 − 표적) ÷ 배경 × 100</li></ul>
 <p>⭐ <b>작업장 조도 기준</b> (시험 전 확인)</p>
 <ul class="chk"><li>초정밀 작업: <b>750lux 이상</b></li><li>정밀 작업: <b>300lux 이상</b></li><li>보통 작업: <b>150lux 이상</b></li><li>그 밖의 작업: <b>75lux 이상</b></li></ul>
 <p>⭐ <b>온열 지수</b></p>
 <ul class="chk"><li><b>옥스퍼드 지수(WD)</b><br>0.85 × 습구 + 0.15 × 건구</li><li><b>실효온도(감각온도)</b><br>온도·습도·기류의 영향 종합<br>상대습도 100%, 무풍 기준</li><li><b>WBGT (옥외, 태양광)</b><br>0.7 × 자연습구 + 0.2 × 흑구<br>+ 0.1 × 건구</li><li><b>WBGT (옥내)</b><br>0.7 × 자연습구 + 0.3 × 흑구</li><li><b>불쾌지수</b><br>0.72 × (건구 + 습구) + 40.6 (℃)<br>70 이상 불쾌 시작, 80 이상 대부분 불쾌</li></ul></div></div></section>
-<section class="section" id="t20"><div class="section-head"><div class="duality"><span class="n">16</span>동작경제 원칙</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="동작경제 원칙"><p><b>바안즈(Barnes)의 3원칙</b></p>
+<section class="section" id="t26"><div class="section-head"><div class="duality"><span class="n">20</span>작업측정과 표준시간 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="작업측정과 표준시간 ➕"><div class="subnote std">📋 출제기준 6-4 작업측정<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<p>⭐ <b>표준시간 = 정미시간 + 여유시간</b></p>
+<ul class="chk"><li><b>정미시간</b><br>관측시간 × 레이팅계수(수행도 평가)</li><li class="star"><b>외경법</b><br>여유율 = 여유시간 ÷ 정미시간<br>표준시간 = 정미시간 × (1 + 여유율)</li><li class="star"><b>내경법</b><br>여유율 = 여유시간 ÷ (정미시간 + 여유시간)<br>표준시간 = 정미시간 × 1 ÷ (1 − 여유율)</li></ul>
+<p>예) 정미시간 10분, 여유율 20%<br>외경법 → 10 × 1.2 = <b>12분</b><br>내경법 → 10 ÷ 0.8 = <b>12.5분</b></p>
+<p>⭐ <b>워크샘플링(work sampling)</b></p>
+<ul class="chk"><li>무작위 순간에 작업 상태를 관측해<br>각 활동의 <b>비율</b>을 추정</li><li>장점: 관측자 부담이 적음,<br>여러 작업자를 동시에 관측</li><li>단점: 주기가 짧은 반복 작업에는<br>부적합, 개별 동작 분석 불가</li></ul>
+<p><b>측정 방법</b></p>
+<ul class="chk"><li><b>직접측정:</b> 스톱워치법, 촬영법,<br>워크샘플링</li><li><b>간접측정:</b> PTS법, 표준자료법</li></ul>
+<p>⭐ <b>PTS (기정시간 표준)</b></p>
+<ul class="chk"><li><b>MTM:</b> 시간 단위 <b>1TMU</b><br>= 0.00001시간 = <b>0.036초</b></li><li><b>WF (Work Factor)</b></li></ul></div></div></section>
+<section class="section" id="t27"><div class="section-head"><div class="duality"><span class="n">21</span>진동·VDT·이상환경 ➕</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="진동·VDT·이상환경 ➕"><div class="subnote std">📋 출제기준 6-5 작업환경과 인간공학<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
+<div class="subnote">VDT 기준은 고용노동부 고시(VDT 작업 지침) 기준입니다.<br>시험 전 확인하세요.</div>
+<p><b>진동과 가속도</b></p>
+<ul class="chk"><li><b>전신진동:</b> 약 1~80Hz<br>4~8Hz에서 인체 공진으로 영향 큼</li><li><b>국소진동:</b> 약 8~1,500Hz<br>착암기·그라인더 등 공구,<br>레이노 현상(백지증)</li><li>진동은 <b>시력</b>과 추적 작업 능력을<br>떨어뜨림</li></ul>
+<p>⭐ <b>VDT 작업 자세</b></p>
+<ul class="chk"><li>눈과 화면 거리: <b>40cm 이상</b></li><li>화면 상단은 눈높이와 같거나 약간 낮게</li><li>시선은 수평선 아래 <b>10~15°</b></li><li>팔꿈치 내각 <b>90° 이상</b></li><li>무릎 내각 <b>90° 전후</b></li><li>화면 바탕 조도 <b>300~500lux</b></li></ul>
+<p><b>이상환경과 장해</b></p>
+<ul class="chk"><li><b>고열:</b> 열사병(체온조절 중추 이상),<br>열경련(염분 부족), 열피로, 열발진</li><li><b>한랭:</b> 동상, 참호족, 저체온증</li><li><b>고기압·감압:</b> 감압병(잠함병)</li><li><b>고도(저기압):</b> 산소 부족, 고산병</li></ul></div></div></section>
+<section class="section" id="t28"><div class="section-head"><div class="duality"><span class="n">22</span>동작경제 원칙</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="동작경제 원칙"><div class="subnote std">📋 출제기준 6-3 작업공간 및 작업자세 · 6-1 인체계측 및 체계제어 · 4-3 근골격계 유해요인 관리</div>
+<p><b>바안즈(Barnes)의 3원칙</b></p>
 <ul class="chk"><li><b>신체 사용에 관한 원칙</b><br>양손을 동시에 시작·종료<br>휴식 외에는 양손이 동시에 쉬지 않음<br>양팔은 반대·대칭 방향으로<br>가능한 낮은 등급 동작 사용<br>탄도동작(관성) 활용</li><li><b>작업장 배치에 관한 원칙</b><br>공구·재료는 정해진 위치에<br>사용 위치 가까이<br>중력 이송 활용<br>적절한 조명, 작업대·의자 높이</li><li><b>공구·설비 설계에 관한 원칙</b><br>치공구로 손의 부담 줄이기<br>공구 기능 결합<br>공구·재료는 미리 위치시킴</li></ul>
 <p><b>공구 설계 원칙</b></p>
 <ul class="chk"><li>손목은 <b>곧게</b> 유지</li><li>손잡이 직경 힘 작업 약 3~4cm<br>(정밀 작업은 더 작게)</li><li>조직(손바닥)에 압력 피하기</li><li>반복적 손가락 동작 피하기</li></ul></div></div></section>
+<section class="section" id="std"><div class="section-head"><div class="duality">출제기준 대조표</div><div class="section-line"></div></div>
+<div class="cards"><div class="card" data-title="출제기준 대조표"><ul class="chk"><li>✅ 기존 주제로 다룸</li><li>✅➕ 기존 주제에 보강 주제를 더함</li><li>➕ 기존에 없어 보강 주제로 새로 다룸</li><li>화살표 뒤 숫자는 주제 번호입니다.</li></ul>
+<ul class="chk"><li><b>1. 안전과 인간공학</b><ul class="sub2"><li>✅ 1-1 인간공학의 정의 → 1</li><li>✅ 1-2 인간-기계체계 → 2, 4</li><li>✅➕ 1-3 체계설계와 인간요소 → 2, 3, 5</li><li>✅ 1-4 인간요소와 휴먼에러 → 8</li></ul></li><li><b>2. 위험성 파악·결정</b><ul class="sub2"><li>✅ 2-1 위험성 평가 → 13</li><li>✅ 2-2 시스템 위험성 추정 및 결정 → 9, 10, 11, 12</li></ul></li><li><b>3. 위험성 감소대책 수립·실행</b><ul class="sub2"><li>✅➕ 3-1 위험성 감소대책 수립 및 실행 → 13, 14</li></ul></li><li><b>4. 근골격계질환 예방관리</b><ul class="sub2"><li>✅ 4-1 근골격계 유해요인 → 15</li><li>✅ 4-2 인간공학적 유해요인 평가 → 15</li><li>✅➕ 4-3 근골격계 유해요인 관리 → 16, 22</li></ul></li><li><b>5. 유해요인 관리</b><ul class="sub2"><li>✅➕ 5-1 물리적 유해요인 관리 → 6, 17</li><li>➕ 5-2 화학적 유해요인 관리 → 17</li><li>➕ 5-3 생물학적 유해요인 관리 → 17</li></ul></li><li><b>6. 작업환경 관리</b><ul class="sub2"><li>✅ 6-1 인체계측 및 체계제어 → 5, 6, 7, 18, 22</li><li>✅ 6-2 신체활동의 생리학적 측정법 → 4, 19</li><li>✅ 6-3 작업공간 및 작업자세 → 18, 22</li><li>➕ 6-4 작업측정 → 20</li><li>✅➕ 6-5 작업환경과 인간공학 → 6, 19, 21</li><li>✅ 6-6 중량물 취급 작업 → 15</li></ul></li></ul></div></div></section>
 <footer><a href="s2-bank.html">2과목 문제은행</a>에서 바로 문제로 확인해 보세요. 출제 경향을 정리한 유형 노트이며 기출 원문이 아닙니다. 법령·KEC 수치는 시험 전에 최신 개정 사항으로 확인하세요.</footer>
 </div>
 
