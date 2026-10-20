@@ -84,6 +84,8 @@ ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
 ul.sub2 li{margin-bottom:3px}
 .subnote{margin:0 0 12px;padding:9px 12px;background:var(--surface2);border-radius:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 .subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
+.subnote.std{background:transparent;border:1px dashed var(--line,#ccc);padding:7px 11px;font-size:12px}
+.subnote.std::before{content:""}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
 footer a{color:var(--accent,var(--c1));font-weight:600}
 /* 문제은행 */
@@ -190,7 +192,8 @@ def render_blocks(lines):
             while i < len(lines) and lines[i].startswith(">"):
                 buf.append(inline(lines[i].lstrip("> ")))
                 i += 1
-            out.append('<div class="subnote">' + "<br>".join(buf) + "</div>")
+            cls = "subnote std" if buf and buf[0].startswith("📋") else "subnote"
+            out.append(f'<div class="{cls}">' + "<br>".join(buf) + "</div>")
             continue
         m = BULLET.match(l)
         if m and indent(l) == 0:
@@ -268,6 +271,10 @@ def points_page(n, src):
         if ch:
             toc.append(f'<a class="ch" href="#c{ch.group(1)}">CH{ch.group(1)} {html.escape(ch.group(2))}</a>')
             body.append(f'<div class="chapter" id="c{ch.group(1)}"><span class="k">CHAPTER {ch.group(1)}</span><span class="t">{html.escape(ch.group(2))}</span></div>')
+            continue
+        if st.startswith("출제기준"):
+            toc.append(f'<a class="ch" href="#std">{html.escape(st)}</a>')
+            body.append(f'<section class="section" id="std"><div class="section-head"><div class="duality">{html.escape(st)}</div><div class="section-line"></div></div>\n<div class="cards">' + "\n".join(f'<div class="card" data-title="{html.escape(st)}">{render_blocks(cl)}</div>' for _, cl in cards) + "</div></section>")
             continue
         topics += 1
         num, t = sec_title(st)
