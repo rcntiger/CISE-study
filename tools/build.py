@@ -134,7 +134,7 @@ HEAD = """<!DOCTYPE html>
 """
 
 FOOT = """
-<footer>{extra}출제 경향을 정리한 유형 노트이며 기출 원문이 아닙니다. 법령·KEC 수치는 시험 전에 최신 개정 사항으로 확인하세요.</footer>
+<footer>{extra}</footer>
 </div>
 {script}
 </body>
