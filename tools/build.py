@@ -343,7 +343,7 @@ BANK_JS = """<script>
 </script>"""
 
 
-def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None):
+def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True):
     """과목 문제은행. 실기처럼 과목이 아닌 문제집은 slug 등 키워드로 넘김."""
     if n in SUBJECTS:
         name, accent = SUBJECTS[n]
@@ -411,7 +411,7 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
   <span class="tab">{tab}</span>
   <div class="eyebrow">{eyebrow} · {total}문항</div>
   <h1>{h1}</h1>
-  {intro_list(intro + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.'])}
+  {intro_list(intro + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.']) if notes else ""}
   <nav class="toc">{''.join(toc)}</nav>
 </header>
 <div class="tools">{ch_sel}<button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div>"""
@@ -447,12 +447,12 @@ roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
 PRACTICAL = SRC / "실기_필답형_258제.md"
 practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실기 · 필답형",
     eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심 258제",
-    title="실기 필답형 핵심 258제", accent="var(--c7)",
+    title="실기 필답형 핵심 258제", accent="var(--c7)", notes=False,
     extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
 CORE = SRC / "필기_핵심요약_226제.md"
 core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약",
     eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기 핵심요약<br>226제",
-    title="필기 핵심요약 226제", accent="var(--c8)",
+    title="필기 핵심요약 226제", accent="var(--c8)", notes=False,
     extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
 print(counts, bank_counts, practical_count, core_count)
 
