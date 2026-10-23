@@ -871,6 +871,8 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
   var qs=[].slice.call(document.querySelectorAll('.q'));
   var cnt=document.getElementById('starCount');
   function upd(){cnt.textContent='★ 다시 볼 문제 '+Object.keys(marked).length+'개'}
+  var ids={};qs.forEach(function(q){ids[q.dataset.q]=1});
+  Object.keys(marked).forEach(function(id){if(!ids[id])delete marked[id]});
   qs.forEach(function(q){
     var id=q.dataset.q;
     if(marked[id])q.classList.add('marked');
