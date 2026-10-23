@@ -444,17 +444,7 @@ BANKS = {n: SRC / f"{n}과목_문제은행_1-100.md" for n in SUBJECTS if (SRC /
 counts = {n: points_page(n, SRC / f"{n}과목_기출포인트.md") for n in SUBJECTS}
 bank_counts = {n: bank_page(n, p) for n, p in BANKS.items()}
 roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
-PRACTICAL = SRC / "실기_필답형_258제.md"
-practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실기 · 필답형",
-    eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심 258제",
-    title="실기 필답형 핵심 258제", accent="var(--c7)",
-    extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
-CORE = SRC / "필기_핵심요약_226제.md"
-core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약",
-    eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기 핵심요약<br>226제",
-    title="필기 핵심요약 226제", accent="var(--c8)",
-    extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
-print(counts, bank_counts, practical_count, core_count)
+print(counts, bank_counts)
 
 
 INDEX_CSS = CSS + """
@@ -533,10 +523,6 @@ INDEX_JS = """<script>
 
 def index_page():
     tiles, pages = [], [{"name": "12주 로드맵", "href": "roadmap.html"}]
-    if core_count:
-        pages.append({"name": "필기 핵심요약", "href": "core226.html"})
-    if practical_count:
-        pages.append({"name": "실기 필답형", "href": "practical.html"})
     for n, (name, color) in SUBJECTS.items():
         pages.append({"name": f"{n}과목 기출포인트", "href": f"s{n}-points.html"})
         if n in bank_counts:
@@ -549,14 +535,6 @@ def index_page():
     <p>{BLURB[n]}</p>
     <div class="subj-btns"><a class="pt" href="s{n}-points.html">기출포인트<small>{counts[n]}주제</small></a>{bank}</div>
   </div>""")
-    core = f"""<section class="section">
-  <div class="section-head"><div class="duality">필기 요약</div></div>
-  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심요약 226제</b><span>2018~2025 기출 2,880문항 분석 · 6과목 · {core_count}문항</span></div><div class="go">›</div></a>
-</section>""" if core_count else ""
-    practical = f"""<section class="section">
-  <div class="section-head"><div class="duality">실기</div></div>
-  <a class="plan" href="practical.html"><div class="ic" style="background:var(--c7);color:#fff">✍</div><div><b>필답형 핵심 258제</b><span>2016~2026 기출 · 14개 주제 · {practical_count}문항</span></div><div class="go">›</div></a>
-</section>""" if practical_count else ""
     body = f"""<header>
   <div class="eyebrow" style="margin-top:14px">CISE · 산업안전기사 필기</div>
   <h1>과목별 기출포인트와<br>문제은행</h1>
@@ -575,8 +553,6 @@ def index_page():
 <section class="section" style="margin-top:14px">
   <a class="plan" href="roadmap.html"><div class="ic">🗓</div><div><b>12주 로드맵</b><span>시험 구조 · 과목별 난이도 · 주차별 계획</span></div><div class="go">›</div></a>
 </section>
-{core}
-{practical}
 
 <section class="section">
   <div class="section-head"><div class="duality">과목</div></div>
