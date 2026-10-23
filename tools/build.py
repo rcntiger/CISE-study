@@ -29,7 +29,7 @@ CSS = """
   --bg:#F3F5F8;--surface:#FFFFFF;--surface2:#F7F8FA;--ink:#121A24;--ink-soft:#5A6573;--line:#E3E7EC;
   --hero:#1C2733;--hero-ink:#F4F6F8;--hero-soft:#AEB8C4;
   --yellow:#FFC21A;--yellow-soft:#FFF3C9;--mark:#FFE58A;
-  --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;
+  --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
 }
 @media (prefers-color-scheme:dark){
@@ -343,8 +343,10 @@ BANK_JS = """<script>
 </script>"""
 
 
-def bank_page(n, src):
-    name, accent = SUBJECTS[n]
+def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None):
+    """과목 문제은행. 실기처럼 과목이 아닌 문제집은 slug 등 키워드로 넘김."""
+    if n in SUBJECTS:
+        name, accent = SUBJECTS[n]
     _, intro, sections = split_doc(src)
     # 교재 챕터별 문항: "- CHAPTER 01 이름 (n문항): 1~3, 7"
     chapters, q_ch = [], {}
@@ -364,6 +366,8 @@ def bank_page(n, src):
     for si, (st, cards) in enumerate(sections, 1):
         if "틀린 문제" in st:
             continue
+        if not any(ct for ct, _ in cards):
+            continue
         sid = f"g{si}"
         num, t = sec_title(st)
         toc.append(f'<a href="#{sid}"><span class="n">{html.escape(num)}</span>{html.escape(t)}</a>')
@@ -380,7 +384,7 @@ def bank_page(n, src):
             q_lines = [l for l in q_part.splitlines() if l.strip() and l.strip() != "---"]
             opts = [l for l in q_lines if l.strip()[:1] in "①②③④⑤"]
             stem = [l for l in q_lines if l not in opts]
-            stem_html = "<br>".join(inline(l) for l in stem)
+            stem_html = "<br>".join("· " + inline(l[2:]) if l.startswith("- ") else inline(l) for l in stem)
             opts_html = "".join(f"<li>{inline(o)}</li>" for o in opts)
             cid = q_ch.get(int(qn), "")
             chip = f'<span class="q-ch">CH{cid} {html.escape(dict((c[0], c[1]) for c in chapters)[cid])}</span>' if cid else ""
@@ -395,19 +399,25 @@ def bank_page(n, src):
     ch_sel = f'<select class="btn" id="chSel" aria-label="교재 챕터별 보기"><option value="">교재 챕터: 전체</option>{opts}</select>' if chapters else ""
     if chapters:
         intro = intro + ["- 아래 **교재 챕터** 선택으로 에듀윌 교재 챕터별 문제만 골라 볼 수 있습니다. 문제 번호는 그대로입니다."]
+    slug = slug or f"s{n}-bank"
+    tab = tab or f"{n}과목 · 문제은행"
+    eyebrow = eyebrow or f"산업안전기사 필기 · {n}과목"
+    h1 = h1 or f"{name}<br>문제은행"
+    title = title or f"{n}과목 문제은행 · {name}"
+    if extra is None:
+        extra = f'개념이 막히면 <a href="s{n}-points.html">{n}과목 기출포인트</a>를 먼저 보세요. '
     header = f"""<header>
   <a class="back" href="index.html">← 목록으로</a>
-  <span class="tab">{n}과목 · 문제은행</span>
-  <div class="eyebrow">산업안전기사 필기 · {n}과목 · {total}문항</div>
-  <h1>{name}<br>문제은행</h1>
+  <span class="tab">{tab}</span>
+  <div class="eyebrow">{eyebrow} · {total}문항</div>
+  <h1>{h1}</h1>
   {intro_list(intro + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.'])}
   <nav class="toc">{''.join(toc)}</nav>
 </header>
 <div class="tools">{ch_sel}<button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div>"""
-    extra = f'개념이 막히면 <a href="s{n}-points.html">{n}과목 기출포인트</a>를 먼저 보세요. '
-    doc = HEAD.format(title=f"{n}과목 문제은행 · {name}", css=CSS, accent=accent).replace(
-        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="s{n}">') + header + "\n".join(body) + FOOT.format(extra=extra, script=BANK_JS)
-    (OUT / f"s{n}-bank.html").write_text(doc, encoding="utf-8")
+    doc = HEAD.format(title=title, css=CSS, accent=accent).replace(
+        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="{slug.replace("-bank", "")}">') + header + "\n".join(body) + FOOT.format(extra=extra, script=BANK_JS)
+    (OUT / f"{slug}.html").write_text(doc, encoding="utf-8")
     return total
 
 
@@ -434,8 +444,12 @@ BANKS = {n: SRC / f"{n}과목_문제은행_1-100.md" for n in SUBJECTS if (SRC /
 counts = {n: points_page(n, SRC / f"{n}과목_기출포인트.md") for n in SUBJECTS}
 bank_counts = {n: bank_page(n, p) for n, p in BANKS.items()}
 roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
-pass
-print(counts, bank_counts)
+PRACTICAL = SRC / "실기_필답형_258제.md"
+practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실기 · 필답형",
+    eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심 258제",
+    title="실기 필답형 핵심 258제", accent="var(--c7)",
+    extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
+print(counts, bank_counts, practical_count)
 
 
 INDEX_CSS = CSS + """
@@ -514,6 +528,8 @@ INDEX_JS = """<script>
 
 def index_page():
     tiles, pages = [], [{"name": "12주 로드맵", "href": "roadmap.html"}]
+    if practical_count:
+        pages.append({"name": "실기 필답형", "href": "practical.html"})
     for n, (name, color) in SUBJECTS.items():
         pages.append({"name": f"{n}과목 기출포인트", "href": f"s{n}-points.html"})
         if n in bank_counts:
@@ -526,6 +542,10 @@ def index_page():
     <p>{BLURB[n]}</p>
     <div class="subj-btns"><a class="pt" href="s{n}-points.html">기출포인트<small>{counts[n]}주제</small></a>{bank}</div>
   </div>""")
+    practical = f"""<section class="section">
+  <div class="section-head"><div class="duality">실기</div></div>
+  <a class="plan" href="practical.html"><div class="ic" style="background:var(--c7);color:#fff">✍</div><div><b>필답형 핵심 258제</b><span>2016~2026 기출 · 14개 주제 · {practical_count}문항</span></div><div class="go">›</div></a>
+</section>""" if practical_count else ""
     body = f"""<header>
   <div class="eyebrow" style="margin-top:14px">CISE · 산업안전기사 필기</div>
   <h1>과목별 기출포인트와<br>문제은행</h1>
@@ -544,6 +564,7 @@ def index_page():
 <section class="section" style="margin-top:14px">
   <a class="plan" href="roadmap.html"><div class="ic">🗓</div><div><b>12주 로드맵</b><span>시험 구조 · 과목별 난이도 · 주차별 계획</span></div><div class="go">›</div></a>
 </section>
+{practical}
 
 <section class="section">
   <div class="section-head"><div class="duality">과목</div></div>
