@@ -31,11 +31,13 @@ CSS = """
   --yellow:#FFC21A;--yellow-soft:#FFF3C9;--mark:#FFE58A;
   --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
+  --cf:#6D3FD1;--cf-soft:#F1EBFF;
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
+    --cf:#B79CFF;--cf-soft:#2A2340;
   }
 }
 *{box-sizing:border-box}
@@ -80,6 +82,9 @@ ul.chk>li:first-child::before{top:12px}
 ul.chk>li.star{background:var(--yellow-soft);margin:0 -10px;padding-left:28px;padding-right:10px;border-radius:10px;border-top-color:transparent}
 ul.chk>li.star::before{display:none}
 ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E0A200;font-size:13px}
+ul.chk>li.cf{background:var(--cf-soft);margin:4px -10px;padding:8px 10px 8px 12px;border-radius:10px;border:0;border-left:3px solid var(--cf)}
+ul.chk>li.cf::before{display:none}
+ul.chk>li.cf .cf-tag{display:inline-block;margin-right:6px;font-size:12px;font-weight:700;color:var(--cf)}
 ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
 ul.sub2 li{margin-bottom:3px}
 .subnote{margin:0 0 12px;padding:9px 12px;background:var(--surface2);border-radius:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
@@ -154,6 +159,7 @@ def indent(l):
 
 
 BULLET = re.compile(r"^(-|\d+\.)\s+")
+CF_LABEL = "헷갈리는 선지:"  # 시험 보기에서 정답처럼 나오는 틀린 선지 줄
 
 
 def render_item(lines):
@@ -216,8 +222,15 @@ def render_blocks(lines):
             lis = []
             for it in items:
                 star = "⭐" in it[0]
-                body = render_item([it[0].replace("⭐", "").strip()] + it[1:])
-                lis.append(f'<li{" class=\"star\"" if star else ""}>{body}</li>')
+                cf = it[0].startswith(CF_LABEL)
+                first = it[0].replace("⭐", "").strip()
+                if cf:
+                    first = first[len(CF_LABEL):].strip()
+                body = render_item([first] + it[1:])
+                if cf:
+                    body = '<span class="cf-tag">🔀 헷갈리는 선지</span>' + body
+                cls = " class=\"cf\"" if cf else " class=\"star\"" if star else ""
+                lis.append(f'<li{cls}>{body}</li>')
             out.append('<ul class="chk">' + "".join(lis) + "</ul>")
             continue
         buf = []
