@@ -363,9 +363,9 @@ LOCK_JS = """<script>
       return crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(data.s),iterations:data.i,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['decrypt']);
     }).then(function(k){return crypto.subtle.decrypt({name:'AES-GCM',iv:b64(data.iv)},k,b64(data.c))}).then(function(buf){
       var box=document.createElement('div');box.innerHTML=new TextDecoder().decode(buf);
+      var toc=box.querySelector('nav.toc');if(toc)document.querySelector('header').appendChild(toc);
       while(box.firstChild)form.parentNode.insertBefore(box.firstChild,form);
       form.remove();
-      try{sessionStorage.setItem(key,code)}catch(e){}
       var sc=document.createElement('script');sc.textContent=document.getElementById('bankjs').textContent;document.body.appendChild(sc);
     });
   }
@@ -375,9 +375,8 @@ LOCK_JS = """<script>
     btn.disabled=true;err.textContent='확인 중…';
     open(pw.value).catch(function(){err.textContent='암호가 맞지 않습니다.';pw.value='';pw.focus()}).then(function(){btn.disabled=false});
   });
-  var saved=null;try{saved=sessionStorage.getItem(key)}catch(e){}
-  if(saved)open(saved).catch(function(){try{sessionStorage.removeItem(key)}catch(e){}});
-  else pw.focus();
+  try{sessionStorage.removeItem(key)}catch(e){}
+  pw.focus();
 })();
 </script>"""
 
