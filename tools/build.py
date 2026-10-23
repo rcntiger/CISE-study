@@ -310,6 +310,8 @@ BANK_JS = """<script>
   var qs=[].slice.call(document.querySelectorAll('.q'));
   var cnt=document.getElementById('starCount');
   function upd(){cnt.textContent='★ 다시 볼 문제 '+Object.keys(marked).length+'개'}
+  var ids={};qs.forEach(function(q){ids[q.dataset.q]=1});
+  Object.keys(marked).forEach(function(id){if(!ids[id])delete marked[id]});
   qs.forEach(function(q){
     var id=q.dataset.q;
     if(marked[id])q.classList.add('marked');
@@ -405,8 +407,9 @@ def lock_html(secret_html, pw):
 <script type="application/json" id="locked">{data}</script>"""
 
 
-def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True, locked=False):
-    """과목 문제은행. 실기처럼 과목이 아닌 문제집은 slug 등 키워드로 넘김."""
+def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True, locked=False, per_section=False):
+    """과목 문제은행. 실기처럼 과목이 아닌 문제집은 slug 등 키워드로 넘김.
+    per_section=True면 번호가 묶음마다 1번부터라 ★ 저장 키를 "묶음-번호"로 씀."""
     if n in SUBJECTS:
         name, accent = SUBJECTS[n]
     _, intro, sections = split_doc(src)
@@ -438,6 +441,7 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
             if not ct:
                 continue
             qn = re.sub(r"\D", "", ct)
+            qid = f"{num}-{qn}" if per_section else qn
             total += 1
             text = "\n".join(cl)
             q_part, _, rest = text.partition("<details>")
@@ -450,7 +454,7 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
             opts_html = "".join(f"<li>{inline(o)}</li>" for o in opts)
             cid = q_ch.get(int(qn), "")
             chip = f'<span class="q-ch">CH{cid} {html.escape(dict((c[0], c[1]) for c in chapters)[cid])}</span>' if cid else ""
-            parts.append(f"""<div class="card q" data-q="{qn}" data-ch="{cid}" data-title="{qn}번">
+            parts.append(f"""<div class="card q" data-q="{qid}" data-ch="{cid}" data-title="{qn}번">
 <div class="q-head"><span class="q-num">{qn}번</span>{chip}<button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">{stem_html}</p>
 <ul class="opts">{opts_html}</ul>
@@ -517,13 +521,13 @@ roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
 PRACTICAL = SRC / "실기_필답형_258제.md"
 practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실기 · 필답형",
     eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심 258제",
-    title="실기 필답형 핵심 258제", accent="var(--c7)", notes=False, locked=True,
-    extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
+    title="실기 필답형 핵심 258제", accent="var(--c7)", notes=False, locked=True, per_section=True,
+    extra="번호는 주제마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
 CORE = SRC / "필기_핵심요약_226제.md"
 core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약",
     eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기 핵심요약<br>226제",
-    title="필기 핵심요약 226제", accent="var(--c8)", notes=False, locked=True,
-    extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
+    title="필기 핵심요약 226제", accent="var(--c8)", notes=False, locked=True, per_section=True,
+    extra="번호는 과목마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
 print(counts, bank_counts, practical_count, core_count)
 
 
