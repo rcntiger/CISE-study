@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """study-plan/*.md → sanan-notes HTML 페이지 생성 (한능검 노트와 같은 종이 노트 스타일)."""
-import html, re, sys, json
+import html, re, sys, json, os, base64, secrets
 from pathlib import Path
 
 SRC = Path(sys.argv[1])
@@ -343,7 +343,70 @@ BANK_JS = """<script>
 </script>"""
 
 
-def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True):
+LOCK_ITER = 600000
+LOCK_CSS = """<style>
+.lock{max-width:340px;margin:28px auto;text-align:center;padding:22px 18px 18px}
+.lock b{background:none;display:block;font-size:16px;margin-bottom:6px}
+.lock p{font-size:13px;color:var(--ink-soft);margin:0 0 14px}
+.lock input{width:100%;box-sizing:border-box;font:inherit;font-size:22px;letter-spacing:.4em;text-align:center;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--surface2);color:var(--ink);margin-bottom:10px}
+.lock input:focus{outline:2px solid var(--yellow);outline-offset:1px}
+.lock .err{color:#E0482E;min-height:18px;margin:8px 0 0}
+</style>"""
+LOCK_JS = """<script>
+(function(){
+  var data=JSON.parse(document.getElementById('locked').textContent),key='sanan-pw-'+document.body.dataset.subject;
+  var form=document.getElementById('lock'),pw=document.getElementById('pw'),err=form.querySelector('.err'),btn=form.querySelector('button');
+  function b64(s){return Uint8Array.from(atob(s),function(c){return c.charCodeAt(0)})}
+  function open(code){
+    var enc=new TextEncoder();
+    return crypto.subtle.importKey('raw',enc.encode(code),'PBKDF2',false,['deriveKey']).then(function(k){
+      return crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(data.s),iterations:data.i,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['decrypt']);
+    }).then(function(k){return crypto.subtle.decrypt({name:'AES-GCM',iv:b64(data.iv)},k,b64(data.c))}).then(function(buf){
+      var box=document.createElement('div');box.innerHTML=new TextDecoder().decode(buf);
+      while(box.firstChild)form.parentNode.insertBefore(box.firstChild,form);
+      form.remove();
+      try{sessionStorage.setItem(key,code)}catch(e){}
+      var sc=document.createElement('script');sc.textContent=document.getElementById('bankjs').textContent;document.body.appendChild(sc);
+    });
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!/^\\d{6}$/.test(pw.value)){err.textContent='숫자 6자리를 입력하세요.';return}
+    btn.disabled=true;err.textContent='확인 중…';
+    open(pw.value).catch(function(){err.textContent='암호가 맞지 않습니다.';pw.value='';pw.focus()}).then(function(){btn.disabled=false});
+  });
+  var saved=null;try{saved=sessionStorage.getItem(key)}catch(e){}
+  if(saved)open(saved).catch(function(){try{sessionStorage.removeItem(key)}catch(e){}});
+  else pw.focus();
+})();
+</script>"""
+
+
+def page_password():
+    """잠금 페이지 암호: study-plan/.page-password 파일 또는 CISE_PAGE_PW 환경변수 (저장소에 두지 않음)."""
+    f = SRC / ".page-password"
+    pw = f.read_text(encoding="utf-8").strip() if f.exists() else os.environ.get("CISE_PAGE_PW", "").strip()
+    return pw if re.fullmatch(r"\d{6}", pw) else None
+
+
+def lock_html(secret_html, pw):
+    """secret_html을 pw로 암호화해 잠금 화면 + 암호문으로 바꿈 (PBKDF2-SHA256 → AES-GCM)."""
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+    from cryptography.hazmat.primitives import hashes
+    salt, iv = secrets.token_bytes(16), secrets.token_bytes(12)
+    key = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=salt, iterations=LOCK_ITER).derive(pw.encode())
+    ct = AESGCM(key).encrypt(iv, secret_html.encode("utf-8"), None)
+    b = lambda x: base64.b64encode(x).decode()
+    data = json.dumps({"s": b(salt), "iv": b(iv), "i": LOCK_ITER, "c": b(ct)})
+    return f"""{LOCK_CSS}
+<form class="card lock" id="lock" autocomplete="off"><b>🔒 암호를 입력하세요</b><p>숫자 6자리</p>
+<input id="pw" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" aria-label="암호 숫자 6자리">
+<button class="btn" type="submit">열기</button><p class="err"></p></form>
+<script type="application/json" id="locked">{data}</script>"""
+
+
+def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True, locked=False):
     """과목 문제은행. 실기처럼 과목이 아닌 문제집은 slug 등 키워드로 넘김."""
     if n in SUBJECTS:
         name, accent = SUBJECTS[n]
@@ -412,11 +475,19 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
   <div class="eyebrow">{eyebrow} · {total}문항</div>
   <h1>{h1}</h1>
   {intro_list(intro + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.']) if notes else ""}
-  <nav class="toc">{''.join(toc)}</nav>
-</header>
-<div class="tools">{ch_sel}<button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div>"""
+  {"" if locked else f'<nav class="toc">{"".join(toc)}</nav>'}
+</header>"""
+    content = (f'<nav class="toc">{"".join(toc)}</nav>' if locked else "\n") + f"""<div class="tools">{ch_sel}<button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div>""" + "\n".join(body)
+    script = BANK_JS
+    if locked:
+        pw = page_password()
+        if not pw:
+            print(f"{slug}: 암호(study-plan/.page-password 또는 CISE_PAGE_PW)가 없어 건너뜀", file=sys.stderr)
+            return total
+        content = lock_html(content, pw)
+        script = BANK_JS.replace("<script>", '<script type="text/plain" id="bankjs">', 1) + LOCK_JS
     doc = HEAD.format(title=title, css=CSS, accent=accent).replace(
-        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="{slug.replace("-bank", "")}">') + header + "\n".join(body) + FOOT.format(extra=extra, script=BANK_JS)
+        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="{slug.replace("-bank", "")}">') + header + content + FOOT.format(extra=extra, script=script)
     (OUT / f"{slug}.html").write_text(doc, encoding="utf-8")
     return total
 
@@ -447,12 +518,12 @@ roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
 PRACTICAL = SRC / "실기_필답형_258제.md"
 practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실기 · 필답형",
     eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심 258제",
-    title="실기 필답형 핵심 258제", accent="var(--c7)", notes=False,
+    title="실기 필답형 핵심 258제", accent="var(--c7)", notes=False, locked=True,
     extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
 CORE = SRC / "필기_핵심요약_226제.md"
 core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약",
     eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기 핵심요약<br>226제",
-    title="필기 핵심요약 226제", accent="var(--c8)", notes=False,
+    title="필기 핵심요약 226제", accent="var(--c8)", notes=False, locked=True,
     extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
 print(counts, bank_counts, practical_count, core_count)
 
@@ -533,10 +604,6 @@ INDEX_JS = """<script>
 
 def index_page():
     tiles, pages = [], [{"name": "12주 로드맵", "href": "roadmap.html"}]
-    if core_count:
-        pages.append({"name": "필기 핵심요약", "href": "core226.html"})
-    if practical_count:
-        pages.append({"name": "실기 필답형", "href": "practical.html"})
     for n, (name, color) in SUBJECTS.items():
         pages.append({"name": f"{n}과목 기출포인트", "href": f"s{n}-points.html"})
         if n in bank_counts:
