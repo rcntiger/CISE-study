@@ -31,13 +31,13 @@ CSS = """
   --yellow:#FFC21A;--yellow-soft:#FFF3C9;--mark:#FFE58A;
   --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
-  --cf:#6D3FD1;--cf-soft:#F1EBFF;
+  --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
-    --cf:#B79CFF;--cf-soft:#2A2340;
+    --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
   }
 }
 *{box-sizing:border-box}
@@ -84,6 +84,8 @@ ul.chk>li.star::before{display:none}
 ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E0A200;font-size:13px}
 ul.chk>li.cf{background:var(--cf-soft);margin:4px -10px;padding:8px 10px 8px 12px;border-radius:10px;border:0;border-left:3px solid var(--cf)}
 ul.chk>li.cf::before{display:none}
+.exp{margin:4px 0 12px;padding:9px 12px;background:var(--exp-soft);border-radius:10px;font-size:13.6px;line-height:1.65}
+.exp-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--exp)}
 ul.chk>li.cf .cf-tag{display:inline-block;margin-right:6px;font-size:12px;font-weight:700;color:var(--cf)}
 ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
 ul.sub2 li{margin-bottom:3px}
@@ -160,6 +162,7 @@ def indent(l):
 
 BULLET = re.compile(r"^(-|\d+\.)\s+")
 CF_LABEL = "헷갈리는 선지:"  # 시험 보기에서 정답처럼 나오는 틀린 선지 줄
+EXP_LABEL = "💡 해설:"  # 정리본에 덧붙인 해설 문단
 
 
 def render_item(lines):
@@ -238,6 +241,10 @@ def render_blocks(lines):
                 and not (BULLET.match(lines[i]) and indent(lines[i]) == 0) and lines[i].strip() != "---":
             buf.append(inline(lines[i]))
             i += 1
+        if buf and buf[0].startswith(EXP_LABEL):
+            buf[0] = buf[0][len(EXP_LABEL):].strip()
+            out.append('<div class="exp"><span class="exp-tag">💡 해설</span>' + "<br>".join(buf) + "</div>")
+            continue
         out.append("<p>" + "<br>".join(buf) + "</p>")
     return "\n".join(out)
 
