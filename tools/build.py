@@ -518,15 +518,15 @@ BANKS = {n: SRC / f"{n}과목_문제은행_1-100.md" for n in SUBJECTS if (SRC /
 counts = {n: points_page(n, SRC / f"{n}과목_기출포인트.md") for n in SUBJECTS}
 bank_counts = {n: bank_page(n, p) for n, p in BANKS.items()}
 roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
-PRACTICAL = SRC / "실기_필답형_258제.md"
+PRACTICAL = SRC / "실기_필답형_핵심.md"
 practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실기 · 필답형",
-    eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심 258제",
-    title="실기 필답형 핵심 258제", accent="var(--c7)", notes=False, locked=True, per_section=True,
+    eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심",
+    title="실기 필답형 핵심", accent="var(--c7)", notes=False, locked=True, per_section=True,
     extra="번호는 주제마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
-CORE = SRC / "필기_핵심요약_226제.md"
+CORE = SRC / "필기_핵심요약.md"
 core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약",
-    eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기 핵심요약<br>226제",
-    title="필기 핵심요약 226제", accent="var(--c8)", notes=False, locked=True, per_section=True,
+    eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기<br>핵심요약",
+    title="필기 핵심요약", accent="var(--c8)", notes=False, locked=True, per_section=True,
     extra="번호는 과목마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
 print(counts, bank_counts, practical_count, core_count)
 
@@ -621,11 +621,11 @@ def index_page():
   </div>""")
     core = f"""<section class="section">
   <div class="section-head"><div class="duality">필기 요약</div></div>
-  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심요약 226제</b><span>2018~2025 기출 2,880문항 분석 · 6과목 · {core_count}문항</span></div><div class="go">›</div></a>
+  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심요약</b><span>2018~2025 기출 2,880문항 분석 · 6과목 · {core_count}문항</span></div><div class="go">›</div></a>
 </section>""" if core_count else ""
     practical = f"""<section class="section">
   <div class="section-head"><div class="duality">실기</div></div>
-  <a class="plan" href="practical.html"><div class="ic" style="background:var(--c7);color:#fff">✍</div><div><b>필답형 핵심 258제</b><span>2016~2026 기출 · 14개 주제 · {practical_count}문항</span></div><div class="go">›</div></a>
+  <a class="plan" href="practical.html"><div class="ic" style="background:var(--c7);color:#fff">✍</div><div><b>필답형 핵심</b><span>2016~2026 기출 · 14개 주제 · {practical_count}문항</span></div><div class="go">›</div></a>
 </section>""" if practical_count else ""
     body = f"""<header>
   <div class="eyebrow" style="margin-top:14px">CISE · 산업안전기사 필기</div>
