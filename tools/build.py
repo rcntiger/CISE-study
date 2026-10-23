@@ -29,7 +29,7 @@ CSS = """
   --bg:#F3F5F8;--surface:#FFFFFF;--surface2:#F7F8FA;--ink:#121A24;--ink-soft:#5A6573;--line:#E3E7EC;
   --hero:#1C2733;--hero-ink:#F4F6F8;--hero-soft:#AEB8C4;
   --yellow:#FFC21A;--yellow-soft:#FFF3C9;--mark:#FFE58A;
-  --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;
+  --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
 }
 @media (prefers-color-scheme:dark){
@@ -449,7 +449,12 @@ practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실�
     eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심 258제",
     title="실기 필답형 핵심 258제", accent="var(--c7)",
     extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
-print(counts, bank_counts, practical_count)
+CORE = SRC / "필기_핵심요약_226제.md"
+core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약",
+    eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기 핵심요약<br>226제",
+    title="필기 핵심요약 226제", accent="var(--c8)",
+    extra="자막 정리본이라 🔧·⚠️ 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
+print(counts, bank_counts, practical_count, core_count)
 
 
 INDEX_CSS = CSS + """
@@ -528,6 +533,8 @@ INDEX_JS = """<script>
 
 def index_page():
     tiles, pages = [], [{"name": "12주 로드맵", "href": "roadmap.html"}]
+    if core_count:
+        pages.append({"name": "필기 핵심요약", "href": "core226.html"})
     if practical_count:
         pages.append({"name": "실기 필답형", "href": "practical.html"})
     for n, (name, color) in SUBJECTS.items():
@@ -542,6 +549,10 @@ def index_page():
     <p>{BLURB[n]}</p>
     <div class="subj-btns"><a class="pt" href="s{n}-points.html">기출포인트<small>{counts[n]}주제</small></a>{bank}</div>
   </div>""")
+    core = f"""<section class="section">
+  <div class="section-head"><div class="duality">필기 요약</div></div>
+  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심요약 226제</b><span>2018~2025 기출 2,880문항 분석 · 6과목 · {core_count}문항</span></div><div class="go">›</div></a>
+</section>""" if core_count else ""
     practical = f"""<section class="section">
   <div class="section-head"><div class="duality">실기</div></div>
   <a class="plan" href="practical.html"><div class="ic" style="background:var(--c7);color:#fff">✍</div><div><b>필답형 핵심 258제</b><span>2016~2026 기출 · 14개 주제 · {practical_count}문항</span></div><div class="go">›</div></a>
@@ -564,6 +575,7 @@ def index_page():
 <section class="section" style="margin-top:14px">
   <a class="plan" href="roadmap.html"><div class="ic">🗓</div><div><b>12주 로드맵</b><span>시험 구조 · 과목별 난이도 · 주차별 계획</span></div><div class="go">›</div></a>
 </section>
+{core}
 {practical}
 
 <section class="section">

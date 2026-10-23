@@ -13,7 +13,7 @@
   --bg:#F3F5F8;--surface:#FFFFFF;--surface2:#F7F8FA;--ink:#121A24;--ink-soft:#5A6573;--line:#E3E7EC;
   --hero:#1C2733;--hero-ink:#F4F6F8;--hero-soft:#AEB8C4;
   --yellow:#FFC21A;--yellow-soft:#FFF3C9;--mark:#FFE58A;
-  --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;
+  --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
 }
 @media (prefers-color-scheme:dark){
@@ -153,6 +153,10 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
   <a class="plan" href="roadmap.html"><div class="ic">🗓</div><div><b>12주 로드맵</b><span>시험 구조 · 과목별 난이도 · 주차별 계획</span></div><div class="go">›</div></a>
 </section>
 <section class="section">
+  <div class="section-head"><div class="duality">필기 요약</div></div>
+  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심요약 226제</b><span>2018~2025 기출 2,880문항 분석 · 6과목 · 226문항</span></div><div class="go">›</div></a>
+</section>
+<section class="section">
   <div class="section-head"><div class="duality">실기</div></div>
   <a class="plan" href="practical.html"><div class="ic" style="background:var(--c7);color:#fff">✍</div><div><b>필답형 핵심 258제</b><span>2016~2026 기출 · 14개 주제 · 258문항</span></div><div class="go">›</div></a>
 </section>
@@ -193,7 +197,7 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 </div>
 <script>
 (function(){
-  var pages=[{"name": "12주 로드맵", "href": "roadmap.html"}, {"name": "실기 필답형", "href": "practical.html"}, {"name": "1과목 기출포인트", "href": "s1-points.html"}, {"name": "1과목 문제은행", "href": "s1-bank.html"}, {"name": "2과목 기출포인트", "href": "s2-points.html"}, {"name": "2과목 문제은행", "href": "s2-bank.html"}, {"name": "3과목 기출포인트", "href": "s3-points.html"}, {"name": "3과목 문제은행", "href": "s3-bank.html"}, {"name": "4과목 기출포인트", "href": "s4-points.html"}, {"name": "4과목 문제은행", "href": "s4-bank.html"}, {"name": "5과목 기출포인트", "href": "s5-points.html"}, {"name": "5과목 문제은행", "href": "s5-bank.html"}, {"name": "6과목 기출포인트", "href": "s6-points.html"}, {"name": "6과목 문제은행", "href": "s6-bank.html"}],input=document.getElementById('siteSearch'),status=document.getElementById('searchStatus'),
+  var pages=[{"name": "12주 로드맵", "href": "roadmap.html"}, {"name": "필기 핵심요약", "href": "core226.html"}, {"name": "실기 필답형", "href": "practical.html"}, {"name": "1과목 기출포인트", "href": "s1-points.html"}, {"name": "1과목 문제은행", "href": "s1-bank.html"}, {"name": "2과목 기출포인트", "href": "s2-points.html"}, {"name": "2과목 문제은행", "href": "s2-bank.html"}, {"name": "3과목 기출포인트", "href": "s3-points.html"}, {"name": "3과목 문제은행", "href": "s3-bank.html"}, {"name": "4과목 기출포인트", "href": "s4-points.html"}, {"name": "4과목 문제은행", "href": "s4-bank.html"}, {"name": "5과목 기출포인트", "href": "s5-points.html"}, {"name": "5과목 문제은행", "href": "s5-bank.html"}, {"name": "6과목 기출포인트", "href": "s6-points.html"}, {"name": "6과목 문제은행", "href": "s6-bank.html"}],input=document.getElementById('siteSearch'),status=document.getElementById('searchStatus'),
       box=document.getElementById('searchResults'),all=document.getElementById('allSections'),index=null,loading=null;
   function load(){
     if(loading)return loading;
