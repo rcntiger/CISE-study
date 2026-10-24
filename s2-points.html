@@ -16,12 +16,14 @@
   --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
   --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
+  --ok:#16865F;--ok-soft:#E3F5EC;--ng:#D63B25;--ng-soft:#FDE9E5;
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
     --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
+    --ok:#5EC2A0;--ok-soft:#16302A;--ng:#FF7A63;--ng-soft:#3A1E1A;
   }
 }
 *{box-sizing:border-box}
@@ -77,6 +79,14 @@ ul.sub2 li{margin-bottom:3px}
 .subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
 .subnote.std{background:transparent;border:1px dashed var(--line,#ccc);padding:7px 11px;font-size:12px}
 .subnote.std::before{content:""}
+/* 기출포인트: 본문 글자 1px 크게 */
+body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:15px}
+body[data-page=points] .card h4{font-size:16.5px}
+body[data-page=points] .card code{font-size:14px}
+body[data-page=points] ul.sub2{font-size:14.5px}
+body[data-page=points] .exp{font-size:15.6px}
+body[data-page=points] .subnote{font-size:13.5px}
+body[data-page=points] .subnote.std{font-size:13px}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
 footer a{color:var(--accent,var(--c1));font-weight:600}
 /* 문제은행 */
@@ -85,7 +95,7 @@ footer a{color:var(--accent,var(--c1));font-weight:600}
 .btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .tools .count{font-size:12px;color:var(--ink-soft);margin-left:auto}
 .q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.q-num{font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
+.q-num{flex:0 0 auto;white-space:nowrap;font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
 .q-ch{font-size:11.5px;color:var(--ink-soft);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:1px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 select.btn{max-width:100%;appearance:auto}
 .q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
@@ -101,14 +111,36 @@ details.ans[open] summary{background:var(--surface2);color:var(--ink-soft)}
 details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:inline}
 .ans-body{margin-top:10px;padding:12px 12px 4px;background:var(--surface2);border-radius:12px}
 .ans-body p,.ans-body li{font-size:13.8px}
+.opts.pick li{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.opts.pick li:hover{border-color:var(--accent,var(--c1))}
+.q.done .opts li{cursor:default}
+.opts li.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ink);font-weight:600}
+.opts li.wrong{background:var(--ng-soft);border-color:var(--ng)}
+.opts li.right::after{content:" ✓";color:var(--ok);font-weight:700}
+.opts li.wrong::after{content:" ✗";color:var(--ng);font-weight:700}
+.q-res{flex:0 0 auto;font-size:12px;font-weight:700;border-radius:8px;padding:2px 8px;white-space:nowrap}
+.q-res:empty{display:none}
+.q.ok{border-color:var(--ok)}.q.ok .q-res{color:var(--ok);background:var(--ok-soft)}
+.q.ng{border-color:var(--ng)}.q.ng .q-res{color:var(--ng);background:var(--ng-soft)}
+.q.marked.ok,.q.marked.ng{box-shadow:inset 0 0 0 1px #F2C94C,var(--shadow)}
+.q-self{display:flex;gap:8px;justify-content:center;margin:2px 0 10px}
+.q-self .btn{padding:6px 16px}
+.q-self .ok-b{color:var(--ok);border-color:var(--ok)}.q-self .ng-b{color:var(--ng);border-color:var(--ng)}
+.q-redo{display:none;margin:0 0 4px auto;font:inherit;font-size:12px;color:var(--ink-soft);background:none;border:0;padding:2px 4px;cursor:pointer;text-decoration:underline}
+.q.done .q-redo{display:block}
+.score{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:12.5px;color:var(--ink-soft)}
+.score>span:first-child{display:flex;flex-wrap:wrap;gap:4px 12px}
+.score b{color:var(--ink)}.score .o b{color:var(--ok)}.score .x b{color:var(--ng)}
+.score .count{margin-left:auto}
+footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 .hidden{display:none !important}
 /* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
-@media (min-width:1000px){body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1000px){body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:16px}body[data-page=points] .card h4{font-size:17.5px}body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
 @media (min-width:1600px){body{zoom:1.38}}
-@media print{header{background:none;color:#000}.tools,.q-star{display:none}}
+@media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 </style>
 </head>
-<body style="--accent:var(--c2)">
+<body style="--accent:var(--c2)" data-page="points">
 <div class="wrap">
 <header>
   <a class="back" href="index.html">← 목록으로</a>
