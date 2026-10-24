@@ -32,12 +32,14 @@ CSS = """
   --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
   --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
+  --ok:#16865F;--ok-soft:#E3F5EC;--ng:#D63B25;--ng-soft:#FDE9E5;
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
     --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
+    --ok:#5EC2A0;--ok-soft:#16302A;--ng:#FF7A63;--ng-soft:#3A1E1A;
   }
 }
 *{box-sizing:border-box}
@@ -93,6 +95,14 @@ ul.sub2 li{margin-bottom:3px}
 .subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
 .subnote.std{background:transparent;border:1px dashed var(--line,#ccc);padding:7px 11px;font-size:12px}
 .subnote.std::before{content:""}
+/* 기출포인트: 본문 글자 1px 크게 */
+body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:15px}
+body[data-page=points] .card h4{font-size:16.5px}
+body[data-page=points] .card code{font-size:14px}
+body[data-page=points] ul.sub2{font-size:14.5px}
+body[data-page=points] .exp{font-size:15.6px}
+body[data-page=points] .subnote{font-size:13.5px}
+body[data-page=points] .subnote.std{font-size:13px}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
 footer a{color:var(--accent,var(--c1));font-weight:600}
 /* 문제은행 */
@@ -101,7 +111,7 @@ footer a{color:var(--accent,var(--c1));font-weight:600}
 .btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .tools .count{font-size:12px;color:var(--ink-soft);margin-left:auto}
 .q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.q-num{font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
+.q-num{flex:0 0 auto;white-space:nowrap;font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
 .q-ch{font-size:11.5px;color:var(--ink-soft);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:1px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 select.btn{max-width:100%;appearance:auto}
 .q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
@@ -117,11 +127,33 @@ details.ans[open] summary{background:var(--surface2);color:var(--ink-soft)}
 details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:inline}
 .ans-body{margin-top:10px;padding:12px 12px 4px;background:var(--surface2);border-radius:12px}
 .ans-body p,.ans-body li{font-size:13.8px}
+.opts.pick li{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.opts.pick li:hover{border-color:var(--accent,var(--c1))}
+.q.done .opts li{cursor:default}
+.opts li.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ink);font-weight:600}
+.opts li.wrong{background:var(--ng-soft);border-color:var(--ng)}
+.opts li.right::after{content:" ✓";color:var(--ok);font-weight:700}
+.opts li.wrong::after{content:" ✗";color:var(--ng);font-weight:700}
+.q-res{flex:0 0 auto;font-size:12px;font-weight:700;border-radius:8px;padding:2px 8px;white-space:nowrap}
+.q-res:empty{display:none}
+.q.ok{border-color:var(--ok)}.q.ok .q-res{color:var(--ok);background:var(--ok-soft)}
+.q.ng{border-color:var(--ng)}.q.ng .q-res{color:var(--ng);background:var(--ng-soft)}
+.q.marked.ok,.q.marked.ng{box-shadow:inset 0 0 0 1px #F2C94C,var(--shadow)}
+.q-self{display:flex;gap:8px;justify-content:center;margin:2px 0 10px}
+.q-self .btn{padding:6px 16px}
+.q-self .ok-b{color:var(--ok);border-color:var(--ok)}.q-self .ng-b{color:var(--ng);border-color:var(--ng)}
+.q-redo{display:none;margin:0 0 4px auto;font:inherit;font-size:12px;color:var(--ink-soft);background:none;border:0;padding:2px 4px;cursor:pointer;text-decoration:underline}
+.q.done .q-redo{display:block}
+.score{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:12.5px;color:var(--ink-soft)}
+.score>span:first-child{display:flex;flex-wrap:wrap;gap:4px 12px}
+.score b{color:var(--ink)}.score .o b{color:var(--ok)}.score .x b{color:var(--ng)}
+.score .count{margin-left:auto}
+footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 .hidden{display:none !important}
 /* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
-@media (min-width:1000px){body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1000px){body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:16px}body[data-page=points] .card h4{font-size:17.5px}body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
 @media (min-width:1600px){body{zoom:1.38}}
-@media print{header{background:none;color:#000}.tools,.q-star{display:none}}
+@media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 """
 
 HEAD = """<!DOCTYPE html>
@@ -316,7 +348,8 @@ def points_page(n, src):
   <nav class="toc">{''.join(toc)}</nav>
 </header>"""
     bank = f'<a href="s{n}-bank.html">{n}과목 문제은행</a>에서 바로 문제로 확인해 보세요. ' if n in BANKS else ""
-    doc = HEAD.format(title=f"{n}과목 기출포인트 · {name}", css=CSS, accent=accent) + header + "\n".join(body) + FOOT.format(extra=bank, script="")
+    doc = HEAD.format(title=f"{n}과목 기출포인트 · {name}", css=CSS, accent=accent).replace(
+        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-page="points">') + header + "\n".join(body) + FOOT.format(extra=bank, script="")
     (OUT / f"s{n}-points.html").write_text(doc, encoding="utf-8")
     return topics
 
@@ -329,7 +362,7 @@ BANK_JS = """<script>
   function save(){try{localStorage.setItem(key,JSON.stringify(marked))}catch(e){}}
   var qs=[].slice.call(document.querySelectorAll('.q'));
   var cnt=document.getElementById('starCount');
-  function upd(){cnt.textContent='★ 다시 볼 문제 '+Object.keys(marked).length+'개'}
+  function upd(){cnt.textContent='★ '+(document.getElementById('score')?'':'다시 볼 문제 ')+Object.keys(marked).length+'개'}
   var ids={};qs.forEach(function(q){ids[q.dataset.q]=1});
   Object.keys(marked).forEach(function(id){if(!ids[id])delete marked[id]});
   qs.forEach(function(q){
@@ -347,15 +380,62 @@ BANK_JS = """<script>
     openAll.textContent=on?'정답 모두 접기':'정답 모두 펼치기';
     document.querySelectorAll('details.ans').forEach(function(d){d.open=on});
   });
+  // 채점: 보기를 누르면 data-a(정답 번호)와 비교, 보기·정답 키가 없으면 정답 안의 맞음/틀림 버튼
+  var gkey='sanan-grade-'+document.body.dataset.subject,graded={},score=document.getElementById('score'),onlyWrong=document.getElementById('onlyWrong');
+  try{graded=JSON.parse(localStorage.getItem(gkey)||'{}')}catch(e){}
+  Object.keys(graded).forEach(function(id){if(!ids[id])delete graded[id]});
+  function gsave(){try{localStorage.setItem(gkey,JSON.stringify(graded))}catch(e){}}
+  var resetArm=0,gReset=document.getElementById('gReset');
+  function gupd(){
+    if(!score)return;
+    var o=0,x=0;Object.keys(graded).forEach(function(id){graded[id].r==='o'?o++:x++});
+    score.innerHTML='<span class="o">✅ 맞음 <b>'+o+'</b></span><span class="x">❌ 틀림 <b>'+x+'</b></span><span>미풀이 <b>'+(qs.length-o-x)+'</b></span>'+
+      (o+x?'<span>정답률 <b>'+Math.round(o*100/(o+x))+'%</b></span>':'');
+    gReset.classList.toggle('hidden',!(o+x));
+    gReset.textContent=resetArm?'한 번 더 누르면 모두 지워져요':'채점 기록 지우기';
+  }
+  if(gReset)gReset.addEventListener('click',function(){
+    if(!resetArm){resetArm=1;gupd();setTimeout(function(){resetArm=0;gupd()},4000);return}
+    resetArm=0;graded={};gsave();qs.forEach(show);gupd();filter();
+  });
+  function show(q){
+    var g=graded[q.dataset.q],res=q.querySelector('.q-res');
+    q.classList.toggle('done',!!g);q.classList.toggle('ok',!!g&&g.r==='o');q.classList.toggle('ng',!!g&&g.r==='x');
+    if(res)res.textContent=g?(g.r==='o'?'✅ 맞음':'❌ 틀림'):'';
+    var a=q.dataset.a;
+    q.querySelectorAll('.opts li').forEach(function(li){
+      li.classList.toggle('right',!!g&&!!a&&li.dataset.o===a);
+      li.classList.toggle('wrong',!!g&&!!g.c&&li.dataset.o===String(g.c)&&g.c!=a);
+    });
+  }
+  function set(q,r,c){
+    var id=q.dataset.q;graded[id]={r:r};if(c)graded[id].c=c;gsave();show(q);gupd();
+    q.querySelector('details.ans').open=true;
+  }
+  if(score)qs.forEach(function(q){
+    var a=q.dataset.a;
+    show(q);
+    if(a)q.querySelectorAll('.opts li').forEach(function(li){
+      li.setAttribute('role','button');li.tabIndex=0;
+      function pick(){if(graded[q.dataset.q])return;set(q,li.dataset.o===a?'o':'x',+li.dataset.o)}
+      li.addEventListener('click',pick);
+      li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});
+    });
+    q.querySelectorAll('.q-self .btn').forEach(function(b){b.addEventListener('click',function(){set(q,b.dataset.r)})});
+    var redo=q.querySelector('.q-redo');
+    if(redo)redo.addEventListener('click',function(){delete graded[q.dataset.q];gsave();show(q);gupd();q.querySelector('details.ans').open=false;filter()});
+  });
+  gupd();
   var chSel=document.getElementById('chSel');
   function filter(){
-    var star=onlyStar.classList.contains('on'),ch=chSel?chSel.value:'';
-    qs.forEach(function(q){q.classList.toggle('hidden',(star&&!q.classList.contains('marked'))||(ch&&q.dataset.ch!==ch))});
+    var star=onlyStar.classList.contains('on'),wrong=onlyWrong&&onlyWrong.classList.contains('on'),ch=chSel?chSel.value:'';
+    qs.forEach(function(q){q.classList.toggle('hidden',(star&&!q.classList.contains('marked'))||(wrong&&!q.classList.contains('ng'))||(ch&&q.dataset.ch!==ch))});
     document.querySelectorAll('.section').forEach(function(s){
       s.classList.toggle('hidden',!s.querySelector('.q:not(.hidden)'));
     });
   }
   onlyStar.addEventListener('click',function(){onlyStar.classList.toggle('on');filter()});
+  if(onlyWrong)onlyWrong.addEventListener('click',function(){onlyWrong.classList.toggle('on');filter()});
   if(chSel){
     try{chSel.value=sessionStorage.getItem(key+'-ch')||''}catch(e){}
     chSel.addEventListener('change',function(){try{sessionStorage.setItem(key+'-ch',chSel.value)}catch(e){}filter()});
@@ -427,9 +507,10 @@ def lock_html(secret_html, pw):
 <script type="application/json" id="locked">{data}</script>"""
 
 
-def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True, locked=False, per_section=False):
+def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True, locked=False, per_section=False, grade=False):
     """과목 문제은행. 실기처럼 과목이 아닌 문제집은 slug 등 키워드로 넘김.
-    per_section=True면 번호가 묶음마다 1번부터라 ★ 저장 키를 "묶음-번호"로 씀."""
+    per_section=True면 번호가 묶음마다 1번부터라 ★ 저장 키를 "묶음-번호"로 씀.
+    grade=True면 보기를 눌러 채점(정답 줄 "✅ **②"에서 정답을 읽음, 없으면 맞음/틀림 자가 채점)."""
     if n in SUBJECTS:
         name, accent = SUBJECTS[n]
     _, intro, sections = split_doc(src)
@@ -471,14 +552,21 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
             opts = [l for l in q_lines if l.strip()[:1] in "①②③④⑤"]
             stem = [l for l in q_lines if l not in opts]
             stem_html = "<br>".join("· " + inline(l[2:]) if l.startswith("- ") else inline(l) for l in stem)
-            opts_html = "".join(f"<li>{inline(o)}</li>" for o in opts)
+            a = re.search(r"✅\s*\**\s*([①②③④⑤])", ans_part) if grade else None
+            marks = [o.strip()[:1] for o in opts]
+            a_idx = marks.index(a.group(1)) + 1 if a and a.group(1) in marks else 0
+            opts_html = "".join(f'<li data-o="{i}">{inline(o)}</li>' if a_idx else f"<li>{inline(o)}</li>" for i, o in enumerate(opts, 1))
+            g_attr = f' data-a="{a_idx}"' if a_idx else ""
+            res = '<span class="q-res"></span>' if grade else ""
+            redo = '<button class="q-redo" type="button">다시 풀기</button>' if grade else ""
+            self_g = '<div class="q-self"><button class="btn ok-b" type="button" data-r="o">⭕ 맞았어요</button><button class="btn ng-b" type="button" data-r="x">❌ 틀렸어요</button></div>' if grade and not a_idx else ""
             cid = q_ch.get(int(qn), "")
             chip = f'<span class="q-ch">CH{cid} {html.escape(dict((c[0], c[1]) for c in chapters)[cid])}</span>' if cid else ""
-            parts.append(f"""<div class="card q" data-q="{qid}" data-ch="{cid}" data-title="{qn}번">
-<div class="q-head"><span class="q-num">{qn}번</span>{chip}<button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+            parts.append(f"""<div class="card q" data-q="{qid}" data-ch="{cid}" data-title="{qn}번"{g_attr}>
+<div class="q-head"><span class="q-num">{qn}번</span>{chip}{res}<button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">{stem_html}</p>
-<ul class="opts">{opts_html}</ul>
-<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body">{render_blocks(ans_part.splitlines())}</div></details>
+<ul class="opts{" pick" if a_idx else ""}">{opts_html}</ul>{redo}
+<details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body">{self_g}{render_blocks(ans_part.splitlines())}</div></details>
 </div>""")
         body.append(f'<section class="section" id="{sid}"><div class="section-head"><div class="duality"><span class="n">{html.escape(num)}</span>{html.escape(t)}</div><div class="section-line"></div></div>\n' + "\n".join(parts) + "</section>")
     opts = "".join(f'<option value="{c}">CH{c} {html.escape(t)} ({k})</option>' for c, t, k in chapters if k)
@@ -497,10 +585,12 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
   <span class="tab">{tab}</span>
   <div class="eyebrow">{eyebrow} · {total}문항</div>
   <h1>{h1}</h1>
-  {intro_list(intro + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.']) if notes else ""}
+  {intro_list(intro + (['- **보기를 누르면 바로 채점**됩니다. 맞으면 ✅, 틀리면 ❌가 문제에 붙고 이 기기에 저장되며, "❌ 틀린 문제만"으로 다시 풀 수 있습니다.'] if grade else []) + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.']) if notes else ""}
   {"" if locked else f'<nav class="toc">{"".join(toc)}</nav>'}
 </header>"""
-    content = (f'<nav class="toc">{"".join(toc)}</nav>' if locked else "\n") + f"""<div class="tools">{ch_sel}<button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div>""" + "\n".join(body)
+    content = (f'<nav class="toc">{"".join(toc)}</nav>' if locked else "\n") + f"""<div class="tools">{ch_sel}<button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button>{'<button class="btn" id="onlyWrong">❌ 틀린 문제만</button><div class="score"><span id="score"></span><span class="count" id="starCount"></span></div>' if grade else '<span class="count" id="starCount"></span>'}</div>""" + "\n".join(body)
+    if grade:
+        extra += '<button class="btn hidden" type="button" id="gReset">채점 기록 지우기</button>'
     script = BANK_JS
     if locked:
         pw = page_password()
@@ -536,7 +626,7 @@ def roadmap_page(src):
 
 BANKS = {n: SRC / f"{n}과목_문제은행_1-100.md" for n in SUBJECTS if (SRC / f"{n}과목_문제은행_1-100.md").exists()}
 counts = {n: points_page(n, SRC / f"{n}과목_기출포인트.md") for n in SUBJECTS}
-bank_counts = {n: bank_page(n, p) for n, p in BANKS.items()}
+bank_counts = {n: bank_page(n, p, grade=True) for n, p in BANKS.items()}
 roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
 PRACTICAL = SRC / "실기_필답형_핵심.md"
 practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실기 · 필답형",

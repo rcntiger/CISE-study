@@ -16,12 +16,14 @@
   --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
   --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
+  --ok:#16865F;--ok-soft:#E3F5EC;--ng:#D63B25;--ng-soft:#FDE9E5;
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
     --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
+    --ok:#5EC2A0;--ok-soft:#16302A;--ng:#FF7A63;--ng-soft:#3A1E1A;
   }
 }
 *{box-sizing:border-box}
@@ -77,6 +79,14 @@ ul.sub2 li{margin-bottom:3px}
 .subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
 .subnote.std{background:transparent;border:1px dashed var(--line,#ccc);padding:7px 11px;font-size:12px}
 .subnote.std::before{content:""}
+/* 기출포인트: 본문 글자 1px 크게 */
+body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:15px}
+body[data-page=points] .card h4{font-size:16.5px}
+body[data-page=points] .card code{font-size:14px}
+body[data-page=points] ul.sub2{font-size:14.5px}
+body[data-page=points] .exp{font-size:15.6px}
+body[data-page=points] .subnote{font-size:13.5px}
+body[data-page=points] .subnote.std{font-size:13px}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
 footer a{color:var(--accent,var(--c1));font-weight:600}
 /* 문제은행 */
@@ -85,7 +95,7 @@ footer a{color:var(--accent,var(--c1));font-weight:600}
 .btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .tools .count{font-size:12px;color:var(--ink-soft);margin-left:auto}
 .q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.q-num{font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
+.q-num{flex:0 0 auto;white-space:nowrap;font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
 .q-ch{font-size:11.5px;color:var(--ink-soft);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:1px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 select.btn{max-width:100%;appearance:auto}
 .q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
@@ -101,11 +111,33 @@ details.ans[open] summary{background:var(--surface2);color:var(--ink-soft)}
 details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:inline}
 .ans-body{margin-top:10px;padding:12px 12px 4px;background:var(--surface2);border-radius:12px}
 .ans-body p,.ans-body li{font-size:13.8px}
+.opts.pick li{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.opts.pick li:hover{border-color:var(--accent,var(--c1))}
+.q.done .opts li{cursor:default}
+.opts li.right{background:var(--ok-soft);border-color:var(--ok);color:var(--ink);font-weight:600}
+.opts li.wrong{background:var(--ng-soft);border-color:var(--ng)}
+.opts li.right::after{content:" ✓";color:var(--ok);font-weight:700}
+.opts li.wrong::after{content:" ✗";color:var(--ng);font-weight:700}
+.q-res{flex:0 0 auto;font-size:12px;font-weight:700;border-radius:8px;padding:2px 8px;white-space:nowrap}
+.q-res:empty{display:none}
+.q.ok{border-color:var(--ok)}.q.ok .q-res{color:var(--ok);background:var(--ok-soft)}
+.q.ng{border-color:var(--ng)}.q.ng .q-res{color:var(--ng);background:var(--ng-soft)}
+.q.marked.ok,.q.marked.ng{box-shadow:inset 0 0 0 1px #F2C94C,var(--shadow)}
+.q-self{display:flex;gap:8px;justify-content:center;margin:2px 0 10px}
+.q-self .btn{padding:6px 16px}
+.q-self .ok-b{color:var(--ok);border-color:var(--ok)}.q-self .ng-b{color:var(--ng);border-color:var(--ng)}
+.q-redo{display:none;margin:0 0 4px auto;font:inherit;font-size:12px;color:var(--ink-soft);background:none;border:0;padding:2px 4px;cursor:pointer;text-decoration:underline}
+.q.done .q-redo{display:block}
+.score{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:12.5px;color:var(--ink-soft)}
+.score>span:first-child{display:flex;flex-wrap:wrap;gap:4px 12px}
+.score b{color:var(--ink)}.score .o b{color:var(--ok)}.score .x b{color:var(--ng)}
+.score .count{margin-left:auto}
+footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 .hidden{display:none !important}
 /* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
-@media (min-width:1000px){body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1000px){body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:16px}body[data-page=points] .card h4{font-size:17.5px}body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
 @media (min-width:1600px){body{zoom:1.38}}
-@media print{header{background:none;color:#000}.tools,.q-star{display:none}}
+@media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 </style>
 </head>
 <body style="--accent:var(--c6)" data-subject="s6">
@@ -115,759 +147,759 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
   <span class="tab">6과목 · 문제은행</span>
   <div class="eyebrow">산업안전기사 필기 · 6과목 · 100문항</div>
   <h1>건설공사 안전관리<br>문제은행</h1>
-  <ul class="sub"><li>정답과 해설은 <b>"정답 보기"를 눌러야</b> 펼쳐집니다.</li><li>실제 기출 원문이 아니라 출제 경향을 반영한 유형 문제입니다.</li><li>법령 수치는 시험 전에 최신 기준으로 확인하세요.</li><li>아래 <b>교재 챕터</b> 선택으로 에듀윌 교재 챕터별 문제만 골라 볼 수 있습니다. 문제 번호는 그대로입니다.</li><li>헷갈린 문제는 오른쪽 위 <b>★</b>을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.</li></ul>
+  <ul class="sub"><li>정답과 해설은 <b>"정답 보기"를 눌러야</b> 펼쳐집니다.</li><li>실제 기출 원문이 아니라 출제 경향을 반영한 유형 문제입니다.</li><li>법령 수치는 시험 전에 최신 기준으로 확인하세요.</li><li>아래 <b>교재 챕터</b> 선택으로 에듀윌 교재 챕터별 문제만 골라 볼 수 있습니다. 문제 번호는 그대로입니다.</li><li><b>보기를 누르면 바로 채점</b>됩니다. 맞으면 ✅, 틀리면 ❌가 문제에 붙고 이 기기에 저장되며, "❌ 틀린 문제만"으로 다시 풀 수 있습니다.</li><li>헷갈린 문제는 오른쪽 위 <b>★</b>을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.</li></ul>
   <nav class="toc"><a href="#g1"><span class="n">A</span>산업안전보건관리비 (1~10)</a><a href="#g2"><span class="n">B</span>유해위험방지계획서 (11~18)</a><a href="#g3"><span class="n">C</span>지반조사·굴착면 기울기 (19~28)</a><a href="#g4"><span class="n">D</span>흙막이·토석붕괴·옹벽 (29~40)</a><a href="#g5"><span class="n">E</span>추락방지·방호망 (41~54)</a><a href="#g6"><span class="n">F</span>비계 (55~64)</a><a href="#g7"><span class="n">G</span>통로·계단·사다리 (65~72)</a><a href="#g8"><span class="n">H</span>거푸집·콘크리트·철골 (73~84)</a><a href="#g9"><span class="n">I</span>양중기·건설기계 (85~93)</a><a href="#g10"><span class="n">J</span>터널·발파·해체 (94~100)</a></nav>
 </header>
-<div class="tools"><select class="btn" id="chSel" aria-label="교재 챕터별 보기"><option value="">교재 챕터: 전체</option><option value="01">CH01 건설공사 특성분석 (8)</option><option value="02">CH02 건설공사 위험성 (22)</option><option value="03">CH03 건설업 산업안전보건관리비 관리 (10)</option><option value="04">CH04 건설현장 안전시설 관리 (22)</option><option value="05">CH05 비계·거푸집 가시설 위험방지 (17)</option><option value="06">CH06 공사 및 작업 종류별 안전 (21)</option></select><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">A</span>산업안전보건관리비 (1~10)</div><div class="section-line"></div></div>
-<div class="card q" data-q="1" data-ch="03" data-title="1번">
-<div class="q-head"><span class="q-num">1번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="tools"><select class="btn" id="chSel" aria-label="교재 챕터별 보기"><option value="">교재 챕터: 전체</option><option value="01">CH01 건설공사 특성분석 (8)</option><option value="02">CH02 건설공사 위험성 (22)</option><option value="03">CH03 건설업 산업안전보건관리비 관리 (10)</option><option value="04">CH04 건설현장 안전시설 관리 (22)</option><option value="05">CH05 비계·거푸집 가시설 위험방지 (17)</option><option value="06">CH06 공사 및 작업 종류별 안전 (21)</option></select><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><button class="btn" id="onlyWrong">❌ 틀린 문제만</button><div class="score"><span id="score"></span><span class="count" id="starCount"></span></div></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">A</span>산업안전보건관리비 (1~10)</div><div class="section-line"></div></div>
+<div class="card q" data-q="1" data-ch="03" data-title="1번" data-a="2">
+<div class="q-head"><span class="q-num">1번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건관리비를 계상해야 하는 건설공사의 총 공사금액 기준은?</p>
-<ul class="opts"><li>① 1천만 원 이상</li><li>② 2천만 원 이상</li><li>③ 4천만 원 이상</li><li>④ 1억 원 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 1천만 원 이상</li><li data-o="2">② 2천만 원 이상</li><li data-o="3">③ 4천만 원 이상</li><li data-o="4">④ 1억 원 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 2천만 원 이상</b></p>
 <p>📌 총 공사금액 <b>2천만 원 이상</b> 건설공사가 계상 대상</p>
 <ul class="chk"><li>1천만 원·4천만 원은 다른 기준과 헷갈리게 하는 오답</li></ul></div></details>
 </div>
-<div class="card q" data-q="2" data-ch="03" data-title="2번">
-<div class="q-head"><span class="q-num">2번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="2" data-ch="03" data-title="2번" data-a="4">
+<div class="q-head"><span class="q-num">2번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건관리비 계상 시 대상액이 구분되어 있지 않은 경우, 총 공사금액의 몇 %를 대상액으로 하는가?</p>
-<ul class="opts"><li>① 50%</li><li>② 60%</li><li>③ 65%</li><li>④ 70%</li></ul>
+<ul class="opts pick"><li data-o="1">① 50%</li><li data-o="2">② 60%</li><li data-o="3">③ 65%</li><li data-o="4">④ 70%</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 70%</b></p>
 <p>📌 대상액 구분 불가 → 총 공사금액 × <b>70%</b> = 대상액</p>
 <ul class="chk"><li>대상액이 구분되면 재료비 + 직접노무비</li></ul></div></details>
 </div>
-<div class="card q" data-q="3" data-ch="03" data-title="3번">
-<div class="q-head"><span class="q-num">3번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="3" data-ch="03" data-title="3번" data-a="1">
+<div class="q-head"><span class="q-num">3번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">재료비 40억 원, 직접노무비 20억 원, 간접노무비 5억 원, 일반관리비 5억 원인 공사에서 계상 요율을 2%로 가정할 때 산업안전보건관리비는?</p>
-<ul class="opts"><li>① 1억 2천만 원</li><li>② 1억 3천만 원</li><li>③ 1억 4천만 원</li><li>④ 1억 5천만 원</li></ul>
+<ul class="opts pick"><li data-o="1">① 1억 2천만 원</li><li data-o="2">② 1억 3천만 원</li><li data-o="3">③ 1억 4천만 원</li><li data-o="4">④ 1억 5천만 원</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 1억 2천만 원</b></p>
 <p>📌 대상액 = 재료비 + 직접노무비 = 40억 + 20억 = 60억 → 60억 × 0.02 = 1.2억</p>
 <ul class="chk"><li>간접노무비·일반관리비는 대상액에 넣지 않는다 (넣으면 1.3억, 1.4억 오답)</li><li>요율은 문제에서 가정한 값</li></ul></div></details>
 </div>
-<div class="card q" data-q="4" data-ch="03" data-title="4번">
-<div class="q-head"><span class="q-num">4번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="4" data-ch="03" data-title="4번" data-a="2">
+<div class="q-head"><span class="q-num">4번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">총 공사금액 100억 원으로 대상액이 구분되지 않은 공사에서 계상 요율을 2%로 가정할 때 산업안전보건관리비는?</p>
-<ul class="opts"><li>① 1억 원</li><li>② 1억 4천만 원</li><li>③ 2억 원</li><li>④ 2억 8천만 원</li></ul>
+<ul class="opts pick"><li data-o="1">① 1억 원</li><li data-o="2">② 1억 4천만 원</li><li data-o="3">③ 2억 원</li><li data-o="4">④ 2억 8천만 원</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 1억 4천만 원</b></p>
 <p>📌 대상액 = 100억 × 70% = 70억 → 70억 × 0.02 = 1.4억</p>
 <ul class="chk"><li>100억에 바로 요율을 곱하면 2억 오답</li></ul></div></details>
 </div>
-<div class="card q" data-q="5" data-ch="03" data-title="5번">
-<div class="q-head"><span class="q-num">5번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="5" data-ch="03" data-title="5번" data-a="3">
+<div class="q-head"><span class="q-num">5번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">발주자가 재료를 직접 제공하는 공사에서 재료비를 제외하고 계상한 산업안전보건관리비가 1억 원이다. 재료비를 포함해 계상한 금액은 최대 얼마를 넘을 수 없는가?</p>
-<ul class="opts"><li>① 1억 원</li><li>② 1억 1천만 원</li><li>③ 1억 2천만 원</li><li>④ 1억 5천만 원</li></ul>
+<ul class="opts pick"><li data-o="1">① 1억 원</li><li data-o="2">② 1억 1천만 원</li><li data-o="3">③ 1억 2천만 원</li><li data-o="4">④ 1억 5천만 원</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 1억 2천만 원</b></p>
 <p>📌 재료비 포함 계상액 ≤ 제외 계상액 × <b>1.2배</b> → 1억 × 1.2 = 1.2억</p></div></details>
 </div>
-<div class="card q" data-q="6" data-ch="03" data-title="6번">
-<div class="q-head"><span class="q-num">6번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="6" data-ch="03" data-title="6번" data-a="3">
+<div class="q-head"><span class="q-num">6번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건관리비로 사용할 수 있는 항목이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 안전관리자 임금</li><li>② 보호구 구입비</li><li>③ 교통통제 신호수 인건비</li><li>④ 안전보건교육비</li></ul>
+<ul class="opts pick"><li data-o="1">① 안전관리자 임금</li><li data-o="2">② 보호구 구입비</li><li data-o="3">③ 교통통제 신호수 인건비</li><li data-o="4">④ 안전보건교육비</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 교통통제 신호수 인건비</b></p>
 <p>📌 작업 수행에 원래 필요한 인력(교통통제 신호수, 일반 경비원)은 사용 불가</p>
 <ul class="chk"><li>안전관리자 임금, 보호구, 교육비는 대표적인 사용 항목</li></ul></div></details>
 </div>
-<div class="card q" data-q="7" data-ch="03" data-title="7번">
-<div class="q-head"><span class="q-num">7번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="7" data-ch="03" data-title="7번" data-a="4">
+<div class="q-head"><span class="q-num">7번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건관리비로 사용할 수 있는 것은?</p>
-<ul class="opts"><li>① 공사 목적물에 해당하는 시설 설치비</li><li>② 일반 경비원 인건비</li><li>③ 다른 법령에서 의무로 정한 사항의 비용</li><li>④ 건설재해예방전문지도기관 기술지도비</li></ul>
+<ul class="opts pick"><li data-o="1">① 공사 목적물에 해당하는 시설 설치비</li><li data-o="2">② 일반 경비원 인건비</li><li data-o="3">③ 다른 법령에서 의무로 정한 사항의 비용</li><li data-o="4">④ 건설재해예방전문지도기관 기술지도비</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 건설재해예방전문지도기관 기술지도비</b></p>
 <p>📌 사용 불가 3가지: 공사 목적물, 다른 법령상 의무, 작업에 원래 필요한 것</p></div></details>
 </div>
-<div class="card q" data-q="8" data-ch="03" data-title="8번">
-<div class="q-head"><span class="q-num">8번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="8" data-ch="03" data-title="8번" data-a="1">
+<div class="q-head"><span class="q-num">8번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건관리비 계상의 기준이 되는 대상액의 구성으로 옳은 것은?</p>
-<ul class="opts"><li>① 재료비 + 직접노무비</li><li>② 재료비 + 간접노무비</li><li>③ 직접노무비 + 경비</li><li>④ 총 공사금액 전액</li></ul>
+<ul class="opts pick"><li data-o="1">① 재료비 + 직접노무비</li><li data-o="2">② 재료비 + 간접노무비</li><li data-o="3">③ 직접노무비 + 경비</li><li data-o="4">④ 총 공사금액 전액</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 재료비 + 직접노무비</b></p>
 <p>📌 계상액 = (재료비 + 직접노무비) × 요율 (5억~50억 구간은 + 기초액)</p></div></details>
 </div>
-<div class="card q" data-q="9" data-ch="03" data-title="9번">
-<div class="q-head"><span class="q-num">9번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="9" data-ch="03" data-title="9번" data-a="3">
+<div class="q-head"><span class="q-num">9번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">현행 산업안전보건관리비 계상 기준의 공사 종류 구분에 해당하지 <b>않는</b> 것은?</p>
-<ul class="opts"><li>① 건축공사</li><li>② 토목공사</li><li>③ 일반건설공사(갑)</li><li>④ 특수건설공사</li></ul>
+<ul class="opts pick"><li data-o="1">① 건축공사</li><li data-o="2">② 토목공사</li><li data-o="3">③ 일반건설공사(갑)</li><li data-o="4">④ 특수건설공사</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 일반건설공사(갑)</b></p>
 <p>📌 현행 구분: 건축, 토목, 중건설, 특수건설</p>
 <ul class="chk"><li>일반건설 갑·을 분류는 개정 전 기준 (구기출에 나옴)</li></ul></div></details>
 </div>
-<div class="card q" data-q="10" data-ch="03" data-title="10번">
-<div class="q-head"><span class="q-num">10번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="10" data-ch="03" data-title="10번" data-a="4">
+<div class="q-head"><span class="q-num">10번</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건관리비 사용 항목에 해당하지 <b>않는</b> 것은?</p>
-<ul class="opts"><li>① 근로자 건강장해예방비</li><li>② 본사 전담조직 근로자 임금</li><li>③ 안전보건진단비</li><li>④ 공사 목적물인 건물에 영구적으로 설치하는 난간 설치비</li></ul>
+<ul class="opts pick"><li data-o="1">① 근로자 건강장해예방비</li><li data-o="2">② 본사 전담조직 근로자 임금</li><li data-o="3">③ 안전보건진단비</li><li data-o="4">④ 공사 목적물인 건물에 영구적으로 설치하는 난간 설치비</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 공사 목적물인 건물에 영구적으로 설치하는 난간 설치비</b></p>
 <p>📌 공사 목적물에 해당하는 시설은 사용 불가</p>
 <ul class="chk"><li>위험성평가 등에 따른 소요비용도 사용 가능 항목</li></ul></div></details>
 </div></section>
 <section class="section" id="g2"><div class="section-head"><div class="duality"><span class="n">B</span>유해위험방지계획서 (11~18)</div><div class="section-line"></div></div>
-<div class="card q" data-q="11" data-ch="01" data-title="11번">
-<div class="q-head"><span class="q-num">11번</span><span class="q-ch">CH01 건설공사 특성분석</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="11" data-ch="01" data-title="11번" data-a="3">
+<div class="q-head"><span class="q-num">11번</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설업 유해위험방지계획서 제출 대상 공사가 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 지상높이 31m 이상인 건축물 건설</li><li>② 연면적 3만㎡ 이상인 건축물 건설</li><li>③ 최대 지간길이 30m인 다리 건설</li><li>④ 깊이 10m 이상인 굴착공사</li></ul>
+<ul class="opts pick"><li data-o="1">① 지상높이 31m 이상인 건축물 건설</li><li data-o="2">② 연면적 3만㎡ 이상인 건축물 건설</li><li data-o="3">③ 최대 지간길이 30m인 다리 건설</li><li data-o="4">④ 깊이 10m 이상인 굴착공사</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 최대 지간길이 30m인 다리 건설</b></p>
 <p>📌 다리는 최대 지간길이 <b>50m 이상</b>이 대상</p>
 <ul class="chk"><li>터널 건설은 길이와 관계없이 대상</li></ul></div></details>
 </div>
-<div class="card q" data-q="12" data-ch="01" data-title="12번">
-<div class="q-head"><span class="q-num">12번</span><span class="q-ch">CH01 건설공사 특성분석</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="12" data-ch="01" data-title="12번" data-a="1">
+<div class="q-head"><span class="q-num">12번</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">유해위험방지계획서를 제출해야 하는 굴착공사의 깊이 기준은?</p>
-<ul class="opts"><li>① 10m 이상</li><li>② 15m 이상</li><li>③ 20m 이상</li><li>④ 31m 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 10m 이상</li><li data-o="2">② 15m 이상</li><li data-o="3">③ 20m 이상</li><li data-o="4">④ 31m 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 10m 이상</b></p>
 <p>📌 깊이 <b>10m 이상</b> 굴착공사</p>
 <ul class="chk"><li>31m는 건축물 지상높이 기준</li></ul></div></details>
 </div>
-<div class="card q" data-q="13" data-ch="01" data-title="13번">
-<div class="q-head"><span class="q-num">13번</span><span class="q-ch">CH01 건설공사 특성분석</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="13" data-ch="01" data-title="13번" data-a="1">
+<div class="q-head"><span class="q-num">13번</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">유해위험방지계획서 제출 대상인 다리 건설공사의 최대 지간길이 기준은?</p>
-<ul class="opts"><li>① 50m 이상</li><li>② 70m 이상</li><li>③ 100m 이상</li><li>④ 150m 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 50m 이상</li><li data-o="2">② 70m 이상</li><li data-o="3">③ 100m 이상</li><li data-o="4">④ 150m 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 50m 이상</b></p>
 <p>📌 최대 지간길이 <b>50m 이상</b> 다리</p></div></details>
 </div>
-<div class="card q" data-q="14" data-ch="01" data-title="14번">
-<div class="q-head"><span class="q-num">14번</span><span class="q-ch">CH01 건설공사 특성분석</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="14" data-ch="01" data-title="14번" data-a="3">
+<div class="q-head"><span class="q-num">14번</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">연면적 5천㎡ 이상이면 유해위험방지계획서 제출 대상이 되는 시설이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 판매시설</li><li>② 의료시설 중 종합병원</li><li>③ 문화 및 집회시설 중 전시장</li><li>④ 지하도상가</li></ul>
+<ul class="opts pick"><li data-o="1">① 판매시설</li><li data-o="2">② 의료시설 중 종합병원</li><li data-o="3">③ 문화 및 집회시설 중 전시장</li><li data-o="4">④ 지하도상가</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 문화 및 집회시설 중 전시장</b></p>
 <p>📌 문화·집회시설은 대상이지만 <b>전시장, 동·식물원은 제외</b></p>
 <ul class="chk"><li>판매, 운수, 종교, 종합병원, 관광숙박, 지하도상가, 냉동·냉장 창고가 대상</li></ul></div></details>
 </div>
-<div class="card q" data-q="15" data-ch="01" data-title="15번">
-<div class="q-head"><span class="q-num">15번</span><span class="q-ch">CH01 건설공사 특성분석</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="15" data-ch="01" data-title="15번" data-a="1">
+<div class="q-head"><span class="q-num">15번</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설업 유해위험방지계획서의 제출 시기와 제출처로 옳은 것은?</p>
-<ul class="opts"><li>① 공사 착공 전날까지, 한국산업안전보건공단에 2부</li><li>② 착공 후 15일 이내, 고용노동부에 1부</li><li>③ 착공 30일 전까지, 한국산업안전보건공단에 1부</li><li>④ 준공 전까지, 지방자치단체에 2부</li></ul>
+<ul class="opts pick"><li data-o="1">① 공사 착공 전날까지, 한국산업안전보건공단에 2부</li><li data-o="2">② 착공 후 15일 이내, 고용노동부에 1부</li><li data-o="3">③ 착공 30일 전까지, 한국산업안전보건공단에 1부</li><li data-o="4">④ 준공 전까지, 지방자치단체에 2부</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 공사 착공 전날까지, 한국산업안전보건공단에 2부</b></p>
 <p>📌 착공 <b>전날</b>까지 → 공단 → <b>2부</b></p></div></details>
 </div>
-<div class="card q" data-q="16" data-ch="01" data-title="16번">
-<div class="q-head"><span class="q-num">16번</span><span class="q-ch">CH01 건설공사 특성분석</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="16" data-ch="01" data-title="16번" data-a="4">
+<div class="q-head"><span class="q-num">16번</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설공사 중 유해위험방지계획서 내용의 이행 여부 확인은 얼마 이내마다 받는가?</p>
-<ul class="opts"><li>① 1개월</li><li>② 3개월</li><li>③ 4개월</li><li>④ 6개월</li></ul>
+<ul class="opts pick"><li data-o="1">① 1개월</li><li data-o="2">② 3개월</li><li data-o="3">③ 4개월</li><li data-o="4">④ 6개월</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 6개월</b></p>
 <p>📌 공사 중 <b>6개월 이내마다</b> 확인</p></div></details>
 </div>
-<div class="card q" data-q="17" data-ch="01" data-title="17번">
-<div class="q-head"><span class="q-num">17번</span><span class="q-ch">CH01 건설공사 특성분석</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="17" data-ch="01" data-title="17번" data-a="2">
+<div class="q-head"><span class="q-num">17번</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">유해위험방지계획서 제출 대상인 용수전용댐·지방상수도 전용댐의 저수용량 기준은?</p>
-<ul class="opts"><li>① 1천만 톤 이상</li><li>② 2천만 톤 이상</li><li>③ 3천만 톤 이상</li><li>④ 5천만 톤 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 1천만 톤 이상</li><li data-o="2">② 2천만 톤 이상</li><li data-o="3">③ 3천만 톤 이상</li><li data-o="4">④ 5천만 톤 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 2천만 톤 이상</b></p>
 <p>📌 다목적댐·발전용댐, 저수용량 <b>2천만 톤 이상</b> 용수전용댐·지방상수도 전용댐</p></div></details>
 </div>
-<div class="card q" data-q="18" data-ch="01" data-title="18번">
-<div class="q-head"><span class="q-num">18번</span><span class="q-ch">CH01 건설공사 특성분석</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="18" data-ch="01" data-title="18번" data-a="4">
+<div class="q-head"><span class="q-num">18번</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설업 유해위험방지계획서 첨부서류에 해당하지 <b>않는</b> 것은?</p>
-<ul class="opts"><li>① 공사 개요</li><li>② 안전보건관리계획</li><li>③ 작업 공사 종류별 유해위험방지계획</li><li>④ 근로자 건강진단 결과표</li></ul>
+<ul class="opts pick"><li data-o="1">① 공사 개요</li><li data-o="2">② 안전보건관리계획</li><li data-o="3">③ 작업 공사 종류별 유해위험방지계획</li><li data-o="4">④ 근로자 건강진단 결과표</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 근로자 건강진단 결과표</b></p>
 <p>📌 건설업 첨부서류: 공사 개요, 안전보건관리계획, 작업 공사 종류별 유해위험방지계획</p></div></details>
 </div></section>
 <section class="section" id="g3"><div class="section-head"><div class="duality"><span class="n">C</span>지반조사·굴착면 기울기 (19~28)</div><div class="section-line"></div></div>
-<div class="card q" data-q="19" data-ch="02" data-title="19번">
-<div class="q-head"><span class="q-num">19번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="19" data-ch="02" data-title="19번" data-a="4">
+<div class="q-head"><span class="q-num">19번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">표준관입시험(SPT)에서 사용하는 해머의 무게와 낙하 높이로 옳은 것은?</p>
-<ul class="opts"><li>① 50kg, 76cm</li><li>② 63.5kg, 30cm</li><li>③ 76kg, 63.5cm</li><li>④ 63.5kg, 76cm</li></ul>
+<ul class="opts pick"><li data-o="1">① 50kg, 76cm</li><li data-o="2">② 63.5kg, 30cm</li><li data-o="3">③ 76kg, 63.5cm</li><li data-o="4">④ 63.5kg, 76cm</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 63.5kg, 76cm</b></p>
 <p>📌 63.5kg 해머를 <b>76cm</b>에서 낙하, <b>30cm</b> 관입 타격횟수 = N값</p>
 <ul class="chk"><li>30cm는 관입량이지 낙하 높이가 아니다</li></ul></div></details>
 </div>
-<div class="card q" data-q="20" data-ch="02" data-title="20번">
-<div class="q-head"><span class="q-num">20번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="20" data-ch="02" data-title="20번" data-a="3">
+<div class="q-head"><span class="q-num">20번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">표준관입시험의 N값은 샘플러를 몇 cm 관입시키는 데 필요한 타격횟수인가?</p>
-<ul class="opts"><li>① 10cm</li><li>② 20cm</li><li>③ 30cm</li><li>④ 50cm</li></ul>
+<ul class="opts pick"><li data-o="1">① 10cm</li><li data-o="2">② 20cm</li><li data-o="3">③ 30cm</li><li data-o="4">④ 50cm</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 30cm</b></p>
 <p>📌 N값 = <b>30cm</b> 관입 타격횟수, 주로 <b>사질토</b> 지반에 사용</p></div></details>
 </div>
-<div class="card q" data-q="21" data-ch="02" data-title="21번">
-<div class="q-head"><span class="q-num">21번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="21" data-ch="02" data-title="21번" data-a="1">
+<div class="q-head"><span class="q-num">21번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">연약한 점토 지반의 전단강도를 현장에서 측정하는 데 가장 적합한 시험은?</p>
-<ul class="opts"><li>① 베인시험</li><li>② 표준관입시험</li><li>③ 평판재하시험</li><li>④ 보링</li></ul>
+<ul class="opts pick"><li data-o="1">① 베인시험</li><li data-o="2">② 표준관입시험</li><li data-o="3">③ 평판재하시험</li><li data-o="4">④ 보링</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 베인시험</b></p>
 <p>📌 베인 = 연약 <b>점토</b> 전단강도, SPT = <b>사질토</b>, 평판재하 = 지지력</p></div></details>
 </div>
-<div class="card q" data-q="22" data-ch="02" data-title="22번">
-<div class="q-head"><span class="q-num">22번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="22" data-ch="02" data-title="22번" data-a="2">
+<div class="q-head"><span class="q-num">22번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">굴착작업 전 사전조사 사항에 해당하지 <b>않는</b> 것은?</p>
-<ul class="opts"><li>① 매설물 등의 유무 또는 상태</li><li>② 콘크리트 배합강도</li><li>③ 지반의 지하수위 상태</li><li>④ 균열·함수·용수 및 동결의 유무 또는 상태</li></ul>
+<ul class="opts pick"><li data-o="1">① 매설물 등의 유무 또는 상태</li><li data-o="2">② 콘크리트 배합강도</li><li data-o="3">③ 지반의 지하수위 상태</li><li data-o="4">④ 균열·함수·용수 및 동결의 유무 또는 상태</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 콘크리트 배합강도</b></p>
 <p>📌 사전조사: 형상·지질·지층, 균열·함수·용수·동결, 매설물, 지하수위</p></div></details>
 </div>
-<div class="card q" data-q="23" data-ch="02" data-title="23번">
-<div class="q-head"><span class="q-num">23번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="23" data-ch="02" data-title="23번" data-a="4">
+<div class="q-head"><span class="q-num">23번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">굴착면의 기울기 기준에서 모래 지반의 기울기(수직 : 수평)는?</p>
-<ul class="opts"><li>① 1 : 0.5</li><li>② 1 : 1.0</li><li>③ 1 : 1.2</li><li>④ 1 : 1.8</li></ul>
+<ul class="opts pick"><li data-o="1">① 1 : 0.5</li><li data-o="2">② 1 : 1.0</li><li data-o="3">③ 1 : 1.2</li><li data-o="4">④ 1 : 1.8</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 1 : 1.8</b></p>
 <p>📌 모래 1:1.8 / 그 밖의 흙 1:1.2 / 연암·풍화암 1:1.0 / 경암 1:0.5</p>
 <ul class="chk"><li>약한 지반일수록 수평 값이 크다(완만하게)</li></ul></div></details>
 </div>
-<div class="card q" data-q="24" data-ch="02" data-title="24번">
-<div class="q-head"><span class="q-num">24번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="24" data-ch="02" data-title="24번" data-a="1">
+<div class="q-head"><span class="q-num">24번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">굴착면의 기울기 기준에서 경암의 기울기(수직 : 수평)는?</p>
-<ul class="opts"><li>① 1 : 0.5</li><li>② 1 : 1.0</li><li>③ 1 : 1.2</li><li>④ 1 : 1.8</li></ul>
+<ul class="opts pick"><li data-o="1">① 1 : 0.5</li><li data-o="2">② 1 : 1.0</li><li data-o="3">③ 1 : 1.2</li><li data-o="4">④ 1 : 1.8</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 1 : 0.5</b></p>
 <p>📌 경암은 가장 단단해 가장 가파른 1:0.5</p></div></details>
 </div>
-<div class="card q" data-q="25" data-ch="02" data-title="25번">
-<div class="q-head"><span class="q-num">25번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="25" data-ch="02" data-title="25번" data-a="2">
+<div class="q-head"><span class="q-num">25번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">굴착면의 기울기 기준에서 연암 및 풍화암의 기울기(수직 : 수평)는?</p>
-<ul class="opts"><li>① 1 : 0.5</li><li>② 1 : 1.0</li><li>③ 1 : 1.2</li><li>④ 1 : 1.8</li></ul>
+<ul class="opts pick"><li data-o="1">① 1 : 0.5</li><li data-o="2">② 1 : 1.0</li><li data-o="3">③ 1 : 1.2</li><li data-o="4">④ 1 : 1.8</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 1 : 1.0</b></p>
 <p>📌 연암·풍화암 1:1.0 (구기준과 같음)</p></div></details>
 </div>
-<div class="card q" data-q="26" data-ch="02" data-title="26번">
-<div class="q-head"><span class="q-num">26번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="26" data-ch="02" data-title="26번" data-a="3">
+<div class="q-head"><span class="q-num">26번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">모래 지반을 깊이 3m로 굴착할 때 기준 기울기를 적용하면 굴착면 상단까지의 최소 수평거리는?</p>
-<ul class="opts"><li>① 3.0m</li><li>② 3.6m</li><li>③ 5.4m</li><li>④ 6.0m</li></ul>
+<ul class="opts pick"><li data-o="1">① 3.0m</li><li data-o="2">② 3.6m</li><li data-o="3">③ 5.4m</li><li data-o="4">④ 6.0m</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 5.4m</b></p>
 <p>📌 모래 1:1.8 → 수평거리 = 3m × 1.8 = 5.4m</p>
 <ul class="chk"><li>3.6m는 그 밖의 흙(1:1.2)을 적용한 오답</li></ul></div></details>
 </div>
-<div class="card q" data-q="27" data-ch="02" data-title="27번">
-<div class="q-head"><span class="q-num">27번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="27" data-ch="02" data-title="27번" data-a="1">
+<div class="q-head"><span class="q-num">27번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">경암 지반을 높이 6m로 굴착할 때 기준 기울기를 적용하면 굴착면의 수평거리는?</p>
-<ul class="opts"><li>① 3.0m</li><li>② 6.0m</li><li>③ 7.2m</li><li>④ 10.8m</li></ul>
+<ul class="opts pick"><li data-o="1">① 3.0m</li><li data-o="2">② 6.0m</li><li data-o="3">③ 7.2m</li><li data-o="4">④ 10.8m</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 3.0m</b></p>
 <p>📌 경암 1:0.5 → 6m × 0.5 = 3.0m</p>
 <ul class="chk"><li>6.0m(1:1.0), 7.2m(1:1.2), 10.8m(1:1.8)은 다른 지반 기준</li></ul></div></details>
 </div>
-<div class="card q" data-q="28" data-ch="02" data-title="28번">
-<div class="q-head"><span class="q-num">28번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="28" data-ch="02" data-title="28번" data-a="2">
+<div class="q-head"><span class="q-num">28번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">모래·암반이 아닌 '그 밖의 흙' 지반을 깊이 4m로 굴착할 때 기준 기울기를 적용한 수평거리는?</p>
-<ul class="opts"><li>① 7.2m</li><li>② 4.8m</li><li>③ 4.0m</li><li>④ 2.0m</li></ul>
+<ul class="opts pick"><li data-o="1">① 7.2m</li><li data-o="2">② 4.8m</li><li data-o="3">③ 4.0m</li><li data-o="4">④ 2.0m</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 4.8m</b></p>
 <p>📌 그 밖의 흙 1:1.2 → 4m × 1.2 = 4.8m</p></div></details>
 </div></section>
 <section class="section" id="g4"><div class="section-head"><div class="duality"><span class="n">D</span>흙막이·토석붕괴·옹벽 (29~40)</div><div class="section-line"></div></div>
-<div class="card q" data-q="29" data-ch="02" data-title="29번">
-<div class="q-head"><span class="q-num">29번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="29" data-ch="02" data-title="29번" data-a="1">
+<div class="q-head"><span class="q-num">29번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이 배면의 흙 무게가 굴착 바닥의 지지력보다 커져 굴착 바닥이 부풀어 오르는 히빙 현상이 주로 일어나는 지반은?</p>
-<ul class="opts"><li>① 연약 점토 지반</li><li>② 사질토 지반</li><li>③ 암반</li><li>④ 자갈 지반</li></ul>
+<ul class="opts pick"><li data-o="1">① 연약 점토 지반</li><li data-o="2">② 사질토 지반</li><li data-o="3">③ 암반</li><li data-o="4">④ 자갈 지반</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 연약 점토 지반</b></p>
 <p>📌 히빙 = <b>점토</b>, 보일링 = <b>사질토</b></p></div></details>
 </div>
-<div class="card q" data-q="30" data-ch="02" data-title="30번">
-<div class="q-head"><span class="q-num">30번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="30" data-ch="02" data-title="30번" data-a="3">
+<div class="q-head"><span class="q-num">30번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">보일링(Boiling) 현상의 방지 대책으로 옳은 것은?</p>
-<ul class="opts"><li>① 흙막이 근입 깊이를 줄인다</li><li>② 흙막이 배면의 상재하중을 늘린다</li><li>③ 웰포인트·딥웰로 지하수위를 낮춘다</li><li>④ 투수성이 큰 흙막이벽을 사용한다</li></ul>
+<ul class="opts pick"><li data-o="1">① 흙막이 근입 깊이를 줄인다</li><li data-o="2">② 흙막이 배면의 상재하중을 늘린다</li><li data-o="3">③ 웰포인트·딥웰로 지하수위를 낮춘다</li><li data-o="4">④ 투수성이 큰 흙막이벽을 사용한다</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 웰포인트·딥웰로 지하수위를 낮춘다</b></p>
 <p>📌 보일링 대책: 지하수위 저하, 근입 깊이 증가, 차수성 흙막이</p></div></details>
 </div>
-<div class="card q" data-q="31" data-ch="02" data-title="31번">
-<div class="q-head"><span class="q-num">31번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="31" data-ch="02" data-title="31번" data-a="4">
+<div class="q-head"><span class="q-num">31번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">히빙(Heaving) 현상의 방지 대책이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 흙막이 근입 깊이를 깊게 한다</li><li>② 지반을 개량한다</li><li>③ 흙막이 배면의 상재하중을 제거한다</li><li>④ 굴착 면적 전체를 한 번에 굴착한다</li></ul>
+<ul class="opts pick"><li data-o="1">① 흙막이 근입 깊이를 깊게 한다</li><li data-o="2">② 지반을 개량한다</li><li data-o="3">③ 흙막이 배면의 상재하중을 제거한다</li><li data-o="4">④ 굴착 면적 전체를 한 번에 굴착한다</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 굴착 면적 전체를 한 번에 굴착한다</b></p>
 <p>📌 히빙 대책: 근입 깊이 증가, 지반 개량, 상재하중 제거, <b>부분 굴착</b></p></div></details>
 </div>
-<div class="card q" data-q="32" data-ch="02" data-title="32번">
-<div class="q-head"><span class="q-num">32번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="32" data-ch="02" data-title="32번" data-a="2">
+<div class="q-head"><span class="q-num">32번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사질토 지반에서 흙막이 안팎의 수위차 때문에 물과 모래가 끓어오르듯 솟아오르는 현상은?</p>
-<ul class="opts"><li>① 히빙</li><li>② 보일링</li><li>③ 파이핑</li><li>④ 동상</li></ul>
+<ul class="opts pick"><li data-o="1">① 히빙</li><li data-o="2">② 보일링</li><li data-o="3">③ 파이핑</li><li data-o="4">④ 동상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 보일링</b></p>
 <p>📌 보일링이 진행돼 물길(파이프)이 생기면 <b>파이핑</b></p></div></details>
 </div>
-<div class="card q" data-q="33" data-ch="02" data-title="33번">
-<div class="q-head"><span class="q-num">33번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="33" data-ch="02" data-title="33번" data-a="1">
+<div class="q-head"><span class="q-num">33번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이 공사에서 버팀보·어스앵커의 축력을 측정하는 계측기는?</p>
-<ul class="opts"><li>① 하중계</li><li>② 지중경사계</li><li>③ 변형률계</li><li>④ 간극수압계</li></ul>
+<ul class="opts pick"><li data-o="1">① 하중계</li><li data-o="2">② 지중경사계</li><li data-o="3">③ 변형률계</li><li data-o="4">④ 간극수압계</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 하중계</b></p>
 <p>📌 하중계 = 축력, 변형률계 = 부재 응력</p>
 <ul class="chk"><li>변형률계와 헷갈리기 쉬운 문제</li></ul></div></details>
 </div>
-<div class="card q" data-q="34" data-ch="02" data-title="34번">
-<div class="q-head"><span class="q-num">34번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="34" data-ch="02" data-title="34번" data-a="3">
+<div class="q-head"><span class="q-num">34번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이 배면 지반의 깊이별 수평변위를 측정하는 계측기는?</p>
-<ul class="opts"><li>① 건물경사계(틸트미터)</li><li>② 지표침하계</li><li>③ 지중경사계(인클리노미터)</li><li>④ 지하수위계</li></ul>
+<ul class="opts pick"><li data-o="1">① 건물경사계(틸트미터)</li><li data-o="2">② 지표침하계</li><li data-o="3">③ 지중경사계(인클리노미터)</li><li data-o="4">④ 지하수위계</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 지중경사계(인클리노미터)</b></p>
 <p>📌 지중 = 인클리노미터, 인접 건물 = 틸트미터</p></div></details>
 </div>
-<div class="card q" data-q="35" data-ch="02" data-title="35번">
-<div class="q-head"><span class="q-num">35번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="35" data-ch="02" data-title="35번" data-a="4">
+<div class="q-head"><span class="q-num">35번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">굴착 공사 중 인접 건물의 기울기를 측정하는 계측기는?</p>
-<ul class="opts"><li>① 지중경사계</li><li>② 하중계</li><li>③ 변형률계</li><li>④ 건물경사계</li></ul>
+<ul class="opts pick"><li data-o="1">① 지중경사계</li><li data-o="2">② 하중계</li><li data-o="3">③ 변형률계</li><li data-o="4">④ 건물경사계</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 건물경사계</b></p>
 <p>📌 건물경사계(틸트미터) = 인접 건물 기울기</p></div></details>
 </div>
-<div class="card q" data-q="36" data-ch="02" data-title="36번">
-<div class="q-head"><span class="q-num">36번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="36" data-ch="02" data-title="36번" data-a="4">
+<div class="q-head"><span class="q-num">36번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이 지보공의 정기 점검 사항이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 부재의 손상·변형·부식·변위 및 탈락 유무</li><li>② 버팀대의 긴압 정도</li><li>③ 침하의 정도</li><li>④ 타설 콘크리트의 슬럼프 값</li></ul>
+<ul class="opts pick"><li data-o="1">① 부재의 손상·변형·부식·변위 및 탈락 유무</li><li data-o="2">② 버팀대의 긴압 정도</li><li data-o="3">③ 침하의 정도</li><li data-o="4">④ 타설 콘크리트의 슬럼프 값</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 타설 콘크리트의 슬럼프 값</b></p>
 <p>📌 점검: 부재 손상·변형·부식·변위·탈락, 버팀대 <b>긴압</b>, 접속부·교차부, 침하</p></div></details>
 </div>
-<div class="card q" data-q="37" data-ch="02" data-title="37번">
-<div class="q-head"><span class="q-num">37번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="37" data-ch="02" data-title="37번" data-a="3">
+<div class="q-head"><span class="q-num">37번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">토석붕괴의 외적 원인이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 사면·법면의 경사 및 기울기 증가</li><li>② 절토 및 성토 높이 증가</li><li>③ 토석의 강도 저하</li><li>④ 지표수·지하수 침투로 인한 흙 무게 증가</li></ul>
+<ul class="opts pick"><li data-o="1">① 사면·법면의 경사 및 기울기 증가</li><li data-o="2">② 절토 및 성토 높이 증가</li><li data-o="3">③ 토석의 강도 저하</li><li data-o="4">④ 지표수·지하수 침투로 인한 흙 무게 증가</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 토석의 강도 저하</b></p>
 <p>📌 내적 원인: 절토 사면 토질·암질, 성토 사면 토질 구성·분포, <b>토석 강도 저하</b></p></div></details>
 </div>
-<div class="card q" data-q="38" data-ch="02" data-title="38번">
-<div class="q-head"><span class="q-num">38번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="38" data-ch="02" data-title="38번" data-a="2">
+<div class="q-head"><span class="q-num">38번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">토석붕괴의 내적 원인에 해당하는 것은?</p>
-<ul class="opts"><li>① 공사에 의한 진동 및 반복하중</li><li>② 성토 사면의 토질 구성 및 분포</li><li>③ 지진</li><li>④ 차량에 의한 하중</li></ul>
+<ul class="opts pick"><li data-o="1">① 공사에 의한 진동 및 반복하중</li><li data-o="2">② 성토 사면의 토질 구성 및 분포</li><li data-o="3">③ 지진</li><li data-o="4">④ 차량에 의한 하중</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 성토 사면의 토질 구성 및 분포</b></p>
 <p>📌 진동·지진·차량 하중은 모두 <b>외적</b> 원인</p></div></details>
 </div>
-<div class="card q" data-q="39" data-ch="02" data-title="39번">
-<div class="q-head"><span class="q-num">39번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="39" data-ch="02" data-title="39번" data-a="4">
+<div class="q-head"><span class="q-num">39번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">옹벽의 안정 조건으로 검토하는 항목이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 전도</li><li>② 활동</li><li>③ 지지력(침하)</li><li>④ 좌굴</li></ul>
+<ul class="opts pick"><li data-o="1">① 전도</li><li data-o="2">② 활동</li><li data-o="3">③ 지지력(침하)</li><li data-o="4">④ 좌굴</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 좌굴</b></p>
 <p>📌 옹벽 안정 3조건: <b>전도, 활동, 지지력</b></p>
 <ul class="chk"><li>좌굴은 기둥 같은 압축재에서 검토</li></ul></div></details>
 </div>
-<div class="card q" data-q="40" data-ch="02" data-title="40번">
-<div class="q-head"><span class="q-num">40번</span><span class="q-ch">CH02 건설공사 위험성</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="40" data-ch="02" data-title="40번" data-a="1">
+<div class="q-head"><span class="q-num">40번</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">옹벽의 활동에 대한 안전율 기준은?</p>
-<ul class="opts"><li>① 1.5 이상</li><li>② 2.0 이상</li><li>③ 2.5 이상</li><li>④ 3.0 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 1.5 이상</li><li data-o="2">② 2.0 이상</li><li data-o="3">③ 2.5 이상</li><li data-o="4">④ 3.0 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 1.5 이상</b></p>
 <p>📌 전도 2.0 / 활동 1.5 / 지지력 3.0</p></div></details>
 </div></section>
 <section class="section" id="g5"><div class="section-head"><div class="duality"><span class="n">E</span>추락방지·방호망 (41~54)</div><div class="section-line"></div></div>
-<div class="card q" data-q="41" data-ch="04" data-title="41번">
-<div class="q-head"><span class="q-num">41번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="41" data-ch="04" data-title="41번" data-a="3">
+<div class="q-head"><span class="q-num">41번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">추락 위험이 있어 작업발판 설치 등 추락 방지 조치를 해야 하는 작업 장소의 높이 기준은?</p>
-<ul class="opts"><li>① 1m 이상</li><li>② 1.5m 이상</li><li>③ 2m 이상</li><li>④ 3m 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 1m 이상</li><li data-o="2">② 1.5m 이상</li><li data-o="3">③ 2m 이상</li><li data-o="4">④ 3m 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 2m 이상</b></p>
 <p>📌 높이 2m 이상 → 작업발판 → 곤란하면 추락방호망 → 안전대</p></div></details>
 </div>
-<div class="card q" data-q="42" data-ch="04" data-title="42번">
-<div class="q-head"><span class="q-num">42번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="42" data-ch="04" data-title="42번" data-a="2">
+<div class="q-head"><span class="q-num">42번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전난간의 상부난간대는 바닥면 등으로부터 몇 cm 이상 지점에 설치하는가?</p>
-<ul class="opts"><li>① 75cm</li><li>② 90cm</li><li>③ 100cm</li><li>④ 120cm</li></ul>
+<ul class="opts pick"><li data-o="1">① 75cm</li><li data-o="2">② 90cm</li><li data-o="3">③ 100cm</li><li data-o="4">④ 120cm</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 90cm</b></p>
 <p>📌 상부난간대 <b>90cm 이상</b>, 발끝막이판 <b>10cm 이상</b></p></div></details>
 </div>
-<div class="card q" data-q="43" data-ch="04" data-title="43번">
-<div class="q-head"><span class="q-num">43번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="43" data-ch="04" data-title="43번" data-a="3">
+<div class="q-head"><span class="q-num">43번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전난간의 상부난간대를 120cm 이상 지점에 설치하는 경우 중간난간대의 설치 기준은?</p>
-<ul class="opts"><li>① 1단 설치, 상하 간격 45cm 이하</li><li>② 2단 이상 균등 설치, 상하 간격 50cm 이하</li><li>③ 2단 이상 균등 설치, 상하 간격 60cm 이하</li><li>④ 3단 이상 균등 설치, 상하 간격 75cm 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 1단 설치, 상하 간격 45cm 이하</li><li data-o="2">② 2단 이상 균등 설치, 상하 간격 50cm 이하</li><li data-o="3">③ 2단 이상 균등 설치, 상하 간격 60cm 이하</li><li data-o="4">④ 3단 이상 균등 설치, 상하 간격 75cm 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 2단 이상 균등 설치, 상하 간격 60cm 이하</b></p>
 <p>📌 120cm 이하 → 중간에 1단 / 120cm 이상 → 2단 이상, 간격 <b>60cm 이하</b></p>
 <ul class="chk"><li>난간기둥 간격 25cm 이하면 중간난간대 생략 가능</li></ul></div></details>
 </div>
-<div class="card q" data-q="44" data-ch="04" data-title="44번">
-<div class="q-head"><span class="q-num">44번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="44" data-ch="04" data-title="44번" data-a="2">
+<div class="q-head"><span class="q-num">44번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전난간 발끝막이판의 높이 기준은?</p>
-<ul class="opts"><li>① 바닥면에서 5cm 이상</li><li>② 바닥면에서 10cm 이상</li><li>③ 바닥면에서 15cm 이상</li><li>④ 바닥면에서 20cm 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 바닥면에서 5cm 이상</li><li data-o="2">② 바닥면에서 10cm 이상</li><li data-o="3">③ 바닥면에서 15cm 이상</li><li data-o="4">④ 바닥면에서 20cm 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 바닥면에서 10cm 이상</b></p>
 <p>📌 발끝막이판 <b>10cm 이상</b></p></div></details>
 </div>
-<div class="card q" data-q="45" data-ch="04" data-title="45번">
-<div class="q-head"><span class="q-num">45번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="45" data-ch="04" data-title="45번" data-a="4">
+<div class="q-head"><span class="q-num">45번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전난간은 구조적으로 가장 취약한 지점에서 가장 취약한 방향으로 작용하는 몇 kg 이상의 하중에 견뎌야 하는가?</p>
-<ul class="opts"><li>① 50kg</li><li>② 70kg</li><li>③ 80kg</li><li>④ 100kg</li></ul>
+<ul class="opts pick"><li data-o="1">① 50kg</li><li data-o="2">② 70kg</li><li data-o="3">③ 80kg</li><li data-o="4">④ 100kg</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 100kg</b></p>
 <p>📌 안전난간 하중 <b>100kg 이상</b>, 난간대 지름 <b>2.7cm 이상</b> 금속 파이프</p></div></details>
 </div>
-<div class="card q" data-q="46" data-ch="04" data-title="46번">
-<div class="q-head"><span class="q-num">46번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="46" data-ch="04" data-title="46번" data-a="4">
+<div class="q-head"><span class="q-num">46번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전난간의 구성 요소가 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 상부난간대</li><li>② 중간난간대</li><li>③ 발끝막이판</li><li>④ 띠장</li></ul>
+<ul class="opts pick"><li data-o="1">① 상부난간대</li><li data-o="2">② 중간난간대</li><li data-o="3">③ 발끝막이판</li><li data-o="4">④ 띠장</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 띠장</b></p>
 <p>📌 안전난간 = 상부난간대 + 중간난간대 + 발끝막이판 + 난간기둥</p>
 <ul class="chk"><li>띠장은 비계 부재</li></ul></div></details>
 </div>
-<div class="card q" data-q="47" data-ch="04" data-title="47번">
-<div class="q-head"><span class="q-num">47번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="47" data-ch="04" data-title="47번" data-a="2">
+<div class="q-head"><span class="q-num">47번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">비계 높이 2m 이상인 작업장소의 작업발판 기준으로 옳은 것은?</p>
-<ul class="opts"><li>① 폭 30cm 이상, 발판재료 사이 틈 5cm 이하</li><li>② 폭 40cm 이상, 발판재료 사이 틈 3cm 이하</li><li>③ 폭 40cm 이상, 발판재료 사이 틈 5cm 이하</li><li>④ 폭 50cm 이상, 발판재료 사이 틈 3cm 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 폭 30cm 이상, 발판재료 사이 틈 5cm 이하</li><li data-o="2">② 폭 40cm 이상, 발판재료 사이 틈 3cm 이하</li><li data-o="3">③ 폭 40cm 이상, 발판재료 사이 틈 5cm 이하</li><li data-o="4">④ 폭 50cm 이상, 발판재료 사이 틈 3cm 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 폭 40cm 이상, 발판재료 사이 틈 3cm 이하</b></p>
 <p>📌 폭 <b>40</b> / 틈 <b>3</b> / 2개 이상 지지물에 고정</p>
 <ul class="chk"><li>선박·보트 건조 등은 폭 30cm 이상 가능</li></ul></div></details>
 </div>
-<div class="card q" data-q="48" data-ch="04" data-title="48번">
-<div class="q-head"><span class="q-num">48번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="48" data-ch="04" data-title="48번" data-a="3">
+<div class="q-head"><span class="q-num">48번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">추락방호망은 작업면으로부터 망의 설치 지점까지 수직거리가 몇 m 이하가 되도록 설치하는가?</p>
-<ul class="opts"><li>① 3m</li><li>② 5m</li><li>③ 10m</li><li>④ 15m</li></ul>
+<ul class="opts pick"><li data-o="1">① 3m</li><li data-o="2">② 5m</li><li data-o="3">③ 10m</li><li data-o="4">④ 15m</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 10m</b></p>
 <p>📌 추락방호망: 수직거리 <b>10m 이하</b>, 내민 길이 <b>3m 이상</b>, 처짐 짧은 변의 <b>12% 이상</b></p></div></details>
 </div>
-<div class="card q" data-q="49" data-ch="04" data-title="49번">
-<div class="q-head"><span class="q-num">49번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="49" data-ch="04" data-title="49번" data-a="2">
+<div class="q-head"><span class="q-num">49번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">짧은 변 길이가 4m인 추락방호망을 설치할 때 망의 처짐은 최소 얼마 이상이어야 하는가?</p>
-<ul class="opts"><li>① 0.40m</li><li>② 0.48m</li><li>③ 0.60m</li><li>④ 0.80m</li></ul>
+<ul class="opts pick"><li data-o="1">① 0.40m</li><li data-o="2">② 0.48m</li><li data-o="3">③ 0.60m</li><li data-o="4">④ 0.80m</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 0.48m</b></p>
 <p>📌 처짐 ≥ 짧은 변 × 12% → 4m × 0.12 = 0.48m</p></div></details>
 </div>
-<div class="card q" data-q="50" data-ch="04" data-title="50번">
-<div class="q-head"><span class="q-num">50번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="50" data-ch="04" data-title="50번" data-a="1">
+<div class="q-head"><span class="q-num">50번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">추락방호망을 건축물 바깥쪽으로 설치할 때 벽면으로부터 내민 길이 기준은?</p>
-<ul class="opts"><li>① 3m 이상</li><li>② 2m 이상</li><li>③ 1.5m 이상</li><li>④ 1m 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 3m 이상</li><li data-o="2">② 2m 이상</li><li data-o="3">③ 1.5m 이상</li><li data-o="4">④ 1m 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 3m 이상</b></p>
 <p>📌 추락방호망 내민 길이 <b>3m</b>, 낙하물방지망 내민 길이 <b>2m</b></p>
 <ul class="chk"><li>둘을 바꿔 내는 함정이 잦다</li></ul></div></details>
 </div>
-<div class="card q" data-q="51" data-ch="04" data-title="51번">
-<div class="q-head"><span class="q-num">51번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="51" data-ch="04" data-title="51번" data-a="4">
+<div class="q-head"><span class="q-num">51번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">그물코 크기 10cm인 매듭 없는 방망사의 신품 인장강도 기준은?</p>
-<ul class="opts"><li>① 110kg 이상</li><li>② 150kg 이상</li><li>③ 200kg 이상</li><li>④ 240kg 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 110kg 이상</li><li data-o="2">② 150kg 이상</li><li data-o="3">③ 200kg 이상</li><li data-o="4">④ 240kg 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 240kg 이상</b></p>
 <p>📌 10cm 매듭없음 240/150, 10cm 매듭 200/135, 5cm 매듭 110/60 (신품/폐기)</p></div></details>
 </div>
-<div class="card q" data-q="52" data-ch="04" data-title="52번">
-<div class="q-head"><span class="q-num">52번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="52" data-ch="04" data-title="52번" data-a="2">
+<div class="q-head"><span class="q-num">52번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">그물코 크기 10cm인 매듭 방망사의 폐기 시 인장강도 기준은?</p>
-<ul class="opts"><li>① 60kg</li><li>② 135kg</li><li>③ 150kg</li><li>④ 200kg</li></ul>
+<ul class="opts pick"><li data-o="1">① 60kg</li><li data-o="2">② 135kg</li><li data-o="3">③ 150kg</li><li data-o="4">④ 200kg</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 135kg</b></p>
 <p>📌 10cm 매듭: 신품 200kg / 폐기 135kg</p>
 <ul class="chk"><li>150kg은 매듭없음 폐기 기준</li></ul></div></details>
 </div>
-<div class="card q" data-q="53" data-ch="04" data-title="53번">
-<div class="q-head"><span class="q-num">53번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="53" data-ch="04" data-title="53번" data-a="1">
+<div class="q-head"><span class="q-num">53번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">낙하물방지망의 설치 기준으로 옳은 것은?</p>
-<ul class="opts"><li>① 높이 10m 이내마다 설치, 내민 길이 벽면에서 2m 이상</li><li>② 높이 5m 이내마다 설치, 내민 길이 벽면에서 1m 이상</li><li>③ 높이 10m 이내마다 설치, 내민 길이 벽면에서 3m 이상</li><li>④ 높이 15m 이내마다 설치, 내민 길이 벽면에서 2m 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 높이 10m 이내마다 설치, 내민 길이 벽면에서 2m 이상</li><li data-o="2">② 높이 5m 이내마다 설치, 내민 길이 벽면에서 1m 이상</li><li data-o="3">③ 높이 10m 이내마다 설치, 내민 길이 벽면에서 3m 이상</li><li data-o="4">④ 높이 15m 이내마다 설치, 내민 길이 벽면에서 2m 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 높이 10m 이내마다 설치, 내민 길이 벽면에서 2m 이상</b></p>
 <p>📌 낙하물방지망: <b>10m 이내</b>마다, 내민 길이 <b>2m 이상</b>, 각도 <b>20~30도</b></p></div></details>
 </div>
-<div class="card q" data-q="54" data-ch="04" data-title="54번">
-<div class="q-head"><span class="q-num">54번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="54" data-ch="04" data-title="54번" data-a="2">
+<div class="q-head"><span class="q-num">54번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">낙하물방지망을 설치할 때 수평면과의 각도 기준은?</p>
-<ul class="opts"><li>① 10도 이상 20도 이하</li><li>② 20도 이상 30도 이하</li><li>③ 30도 이상 45도 이하</li><li>④ 45도 이상 60도 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 10도 이상 20도 이하</li><li data-o="2">② 20도 이상 30도 이하</li><li data-o="3">③ 30도 이상 45도 이하</li><li data-o="4">④ 45도 이상 60도 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 20도 이상 30도 이하</b></p>
 <p>📌 낙하물방지망 각도 <b>20~30도</b></p></div></details>
 </div></section>
 <section class="section" id="g6"><div class="section-head"><div class="duality"><span class="n">F</span>비계 (55~64)</div><div class="section-line"></div></div>
-<div class="card q" data-q="55" data-ch="05" data-title="55번">
-<div class="q-head"><span class="q-num">55번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="55" data-ch="05" data-title="55번" data-a="3">
+<div class="q-head"><span class="q-num">55번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강관비계의 비계기둥 간격 중 띠장 방향 기준은?</p>
-<ul class="opts"><li>① 1.5m 이하</li><li>② 1.8m 이하</li><li>③ 1.85m 이하</li><li>④ 2.0m 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 1.5m 이하</li><li data-o="2">② 1.8m 이하</li><li data-o="3">③ 1.85m 이하</li><li data-o="4">④ 2.0m 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 1.85m 이하</b></p>
 <p>📌 띠장 방향 <b>1.85m</b>, 장선 방향 <b>1.5m</b>, 띠장 간격 <b>2.0m</b></p>
 <ul class="chk"><li>1.8m는 강관틀비계 주틀 간격 기준</li></ul></div></details>
 </div>
-<div class="card q" data-q="56" data-ch="05" data-title="56번">
-<div class="q-head"><span class="q-num">56번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="56" data-ch="05" data-title="56번" data-a="2">
+<div class="q-head"><span class="q-num">56번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강관비계의 비계기둥 간격 중 장선 방향 기준은?</p>
-<ul class="opts"><li>① 1.2m 이하</li><li>② 1.5m 이하</li><li>③ 1.85m 이하</li><li>④ 2.0m 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 1.2m 이하</li><li data-o="2">② 1.5m 이하</li><li data-o="3">③ 1.85m 이하</li><li data-o="4">④ 2.0m 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 1.5m 이하</b></p>
 <p>📌 장선 방향 <b>1.5m 이하</b></p></div></details>
 </div>
-<div class="card q" data-q="57" data-ch="05" data-title="57번">
-<div class="q-head"><span class="q-num">57번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="57" data-ch="05" data-title="57번" data-a="1">
+<div class="q-head"><span class="q-num">57번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">높이 45m인 강관비계에서 비계기둥을 2개의 강관으로 묶어 세워야 하는 구간은?</p>
-<ul class="opts"><li>① 지면에서 14m 높이까지</li><li>② 지면에서 31m 높이까지</li><li>③ 맨 위에서 14m 아래까지</li><li>④ 비계 전체 높이</li></ul>
+<ul class="opts pick"><li data-o="1">① 지면에서 14m 높이까지</li><li data-o="2">② 지면에서 31m 높이까지</li><li data-o="3">③ 맨 위에서 14m 아래까지</li><li data-o="4">④ 비계 전체 높이</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 지면에서 14m 높이까지</b></p>
 <p>📌 맨 위에서 <b>31m 아래</b> 부분을 2개 강관으로 → 45m − 31m = 14m, 즉 지면~14m 구간</p>
 <ul class="chk"><li>아래쪽일수록 하중이 커서 보강한다</li></ul></div></details>
 </div>
-<div class="card q" data-q="58" data-ch="05" data-title="58번">
-<div class="q-head"><span class="q-num">58번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="58" data-ch="05" data-title="58번" data-a="3">
+<div class="q-head"><span class="q-num">58번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강관비계에서 비계기둥 사이의 적재하중 기준은?</p>
-<ul class="opts"><li>① 250kg 이하</li><li>② 300kg 이하</li><li>③ 400kg 이하</li><li>④ 500kg 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 250kg 이하</li><li data-o="2">② 300kg 이하</li><li data-o="3">③ 400kg 이하</li><li data-o="4">④ 500kg 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 400kg 이하</b></p>
 <p>📌 강관비계 기둥 사이 <b>400kg</b>, 이동식 비계 작업발판 <b>250kg</b></p></div></details>
 </div>
-<div class="card q" data-q="59" data-ch="05" data-title="59번">
-<div class="q-head"><span class="q-num">59번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="59" data-ch="05" data-title="59번" data-a="4">
+<div class="q-head"><span class="q-num">59번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">단관비계의 벽이음(조립 간격) 기준은?</p>
-<ul class="opts"><li>① 수직 6m, 수평 8m 이하</li><li>② 수직 5m, 수평 6m 이하</li><li>③ 수직 8m, 수평 8m 이하</li><li>④ 수직 5m, 수평 5m 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 수직 6m, 수평 8m 이하</li><li data-o="2">② 수직 5m, 수평 6m 이하</li><li data-o="3">③ 수직 8m, 수평 8m 이하</li><li data-o="4">④ 수직 5m, 수평 5m 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 수직 5m, 수평 5m 이하</b></p>
 <p>📌 단관비계 5·5, 틀비계 6·8</p></div></details>
 </div>
-<div class="card q" data-q="60" data-ch="05" data-title="60번">
-<div class="q-head"><span class="q-num">60번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="60" data-ch="05" data-title="60번" data-a="2">
+<div class="q-head"><span class="q-num">60번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">틀비계(높이 5m 미만 제외)의 벽이음 간격 기준은?</p>
-<ul class="opts"><li>① 수직 5m, 수평 5m 이하</li><li>② 수직 6m, 수평 8m 이하</li><li>③ 수직 8m, 수평 6m 이하</li><li>④ 수직 6m, 수평 6m 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 수직 5m, 수평 5m 이하</li><li data-o="2">② 수직 6m, 수평 8m 이하</li><li data-o="3">③ 수직 8m, 수평 6m 이하</li><li data-o="4">④ 수직 6m, 수평 6m 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 수직 6m, 수평 8m 이하</b></p>
 <p>📌 틀비계 수직 <b>6m</b>, 수평 <b>8m</b></p>
 <ul class="chk"><li>수직·수평을 바꾼 ③이 함정</li></ul></div></details>
 </div>
-<div class="card q" data-q="61" data-ch="05" data-title="61번">
-<div class="q-head"><span class="q-num">61번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="61" data-ch="05" data-title="61번" data-a="1">
+<div class="q-head"><span class="q-num">61번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">달비계에 사용하는 달기 와이어로프의 안전계수 기준은?</p>
-<ul class="opts"><li>① 10 이상</li><li>② 5 이상</li><li>③ 3 이상</li><li>④ 2.5 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 10 이상</li><li data-o="2">② 5 이상</li><li data-o="3">③ 3 이상</li><li data-o="4">④ 2.5 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 10 이상</b></p>
 <p>📌 달기 와이어로프·강선 <b>10</b>, 달기 체인·훅 <b>5</b>, 강대·지점 강재 <b>2.5</b> (목재 5)</p></div></details>
 </div>
-<div class="card q" data-q="62" data-ch="05" data-title="62번">
-<div class="q-head"><span class="q-num">62번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="62" data-ch="05" data-title="62번" data-a="1">
+<div class="q-head"><span class="q-num">62번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">달비계에 사용하는 와이어로프의 사용 금지 기준에 해당하지 <b>않는</b> 것은?</p>
-<ul class="opts"><li>① 지름 감소가 공칭지름의 5%인 것</li><li>② 이음매가 있는 것</li><li>③ 한 꼬임에서 소선 수의 10% 이상이 절단된 것</li><li>④ 심하게 꼬이거나 변형·부식된 것</li></ul>
+<ul class="opts pick"><li data-o="1">① 지름 감소가 공칭지름의 5%인 것</li><li data-o="2">② 이음매가 있는 것</li><li data-o="3">③ 한 꼬임에서 소선 수의 10% 이상이 절단된 것</li><li data-o="4">④ 심하게 꼬이거나 변형·부식된 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 지름 감소가 공칭지름의 5%인 것</b></p>
 <p>📌 사용 금지: 이음매, 소선 <b>10% 이상</b> 절단, 지름 감소 <b>7% 초과</b>, 꼬임·변형·부식</p>
 <ul class="chk"><li>5% 감소는 7% 이하라 금지 기준에 해당하지 않음</li></ul></div></details>
 </div>
-<div class="card q" data-q="63" data-ch="05" data-title="63번">
-<div class="q-head"><span class="q-num">63번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="63" data-ch="05" data-title="63번" data-a="1">
+<div class="q-head"><span class="q-num">63번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">이동식 비계 작업발판의 최대 적재하중 기준은?</p>
-<ul class="opts"><li>① 250kg 이하</li><li>② 300kg 이하</li><li>③ 400kg 이하</li><li>④ 500kg 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 250kg 이하</li><li data-o="2">② 300kg 이하</li><li data-o="3">③ 400kg 이하</li><li data-o="4">④ 500kg 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 250kg 이하</b></p>
 <p>📌 이동식 비계: 바퀴 브레이크·쐐기 고정, 아웃트리거, 최대 적재하중 <b>250kg</b></p>
 <ul class="chk"><li>비계 위에서 사다리 사용 금지</li></ul></div></details>
 </div>
-<div class="card q" data-q="64" data-ch="05" data-title="64번">
-<div class="q-head"><span class="q-num">64번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="64" data-ch="05" data-title="64번" data-a="3">
+<div class="q-head"><span class="q-num">64번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">말비계의 지주부재와 수평면의 기울기 기준은?</p>
-<ul class="opts"><li>① 60도 이하</li><li>② 70도 이하</li><li>③ 75도 이하</li><li>④ 80도 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 60도 이하</li><li data-o="2">② 70도 이하</li><li data-o="3">③ 75도 이하</li><li data-o="4">④ 80도 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 75도 이하</b></p>
 <p>📌 말비계 <b>75도 이하</b>, 높이 2m 초과 시 작업발판 폭 <b>40cm 이상</b></p></div></details>
 </div></section>
 <section class="section" id="g7"><div class="section-head"><div class="duality"><span class="n">G</span>통로·계단·사다리 (65~72)</div><div class="section-line"></div></div>
-<div class="card q" data-q="65" data-ch="04" data-title="65번">
-<div class="q-head"><span class="q-num">65번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="65" data-ch="04" data-title="65번" data-a="3">
+<div class="q-head"><span class="q-num">65번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설통로의 경사 기준은? (계단을 설치하거나 높이 2m 미만으로 튼튼한 손잡이를 설치한 경우 제외)</p>
-<ul class="opts"><li>① 15도 이하</li><li>② 20도 이하</li><li>③ 30도 이하</li><li>④ 45도 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 15도 이하</li><li data-o="2">② 20도 이하</li><li data-o="3">③ 30도 이하</li><li data-o="4">④ 45도 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 30도 이하</b></p>
 <p>📌 가설통로 <b>30도 이하</b>, <b>15도 초과</b>면 미끄럼막이</p></div></details>
 </div>
-<div class="card q" data-q="66" data-ch="04" data-title="66번">
-<div class="q-head"><span class="q-num">66번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="66" data-ch="04" data-title="66번" data-a="2">
+<div class="q-head"><span class="q-num">66번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설통로에 미끄러지지 않는 구조(미끄럼막이)를 해야 하는 경사 기준은?</p>
-<ul class="opts"><li>① 10도 초과</li><li>② 15도 초과</li><li>③ 20도 초과</li><li>④ 30도 초과</li></ul>
+<ul class="opts pick"><li data-o="1">① 10도 초과</li><li data-o="2">② 15도 초과</li><li data-o="3">③ 20도 초과</li><li data-o="4">④ 30도 초과</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 15도 초과</b></p>
 <p>📌 15도 초과 → 미끄럼막이, 30도 초과 → 가설통로로 쓸 수 없음(계단)</p></div></details>
 </div>
-<div class="card q" data-q="67" data-ch="04" data-title="67번">
-<div class="q-head"><span class="q-num">67번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="67" data-ch="04" data-title="67번" data-a="1">
+<div class="q-head"><span class="q-num">67번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설공사에 사용하는 높이 8m 이상인 비계다리에는 몇 m 이내마다 계단참을 설치하는가?</p>
-<ul class="opts"><li>① 7m</li><li>② 8m</li><li>③ 10m</li><li>④ 15m</li></ul>
+<ul class="opts pick"><li data-o="1">① 7m</li><li data-o="2">② 8m</li><li data-o="3">③ 10m</li><li data-o="4">④ 15m</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 7m</b></p>
 <p>📌 비계다리 8m 이상 → <b>7m 이내</b>마다 / 수직갱 15m 이상 → <b>10m 이내</b>마다</p></div></details>
 </div>
-<div class="card q" data-q="68" data-ch="04" data-title="68번">
-<div class="q-head"><span class="q-num">68번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="68" data-ch="04" data-title="68번" data-a="4">
+<div class="q-head"><span class="q-num">68번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">수직갱에 가설된 통로의 길이가 15m 이상인 경우 몇 m 이내마다 계단참을 설치하는가?</p>
-<ul class="opts"><li>① 5m</li><li>② 7m</li><li>③ 8m</li><li>④ 10m</li></ul>
+<ul class="opts pick"><li data-o="1">① 5m</li><li data-o="2">② 7m</li><li data-o="3">③ 8m</li><li data-o="4">④ 10m</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 10m</b></p>
 <p>📌 수직갱 길이 <b>15m 이상</b> → <b>10m 이내</b>마다 계단참</p></div></details>
 </div>
-<div class="card q" data-q="69" data-ch="04" data-title="69번">
-<div class="q-head"><span class="q-num">69번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="69" data-ch="04" data-title="69번" data-a="3">
+<div class="q-head"><span class="q-num">69번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사다리식 통로의 설치 기준으로 옳은 것은?</p>
-<ul class="opts"><li>① 발판과 벽 사이는 10cm 이상 간격 유지</li><li>② 사다리 상단은 걸쳐놓은 지점에서 40cm 이상 올라오게</li><li>③ 폭은 30cm 이상</li><li>④ 고정식이 아닌 사다리식 통로의 기울기는 85도 이하</li></ul>
+<ul class="opts pick"><li data-o="1">① 발판과 벽 사이는 10cm 이상 간격 유지</li><li data-o="2">② 사다리 상단은 걸쳐놓은 지점에서 40cm 이상 올라오게</li><li data-o="3">③ 폭은 30cm 이상</li><li data-o="4">④ 고정식이 아닌 사다리식 통로의 기울기는 85도 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 폭은 30cm 이상</b></p>
 <p>📌 폭 <b>30cm</b>, 벽과 <b>15cm</b>, 상단 <b>60cm</b>, 기울기 <b>75도 이하</b> (고정식 90도 이하)</p></div></details>
 </div>
-<div class="card q" data-q="70" data-ch="04" data-title="70번">
-<div class="q-head"><span class="q-num">70번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="70" data-ch="04" data-title="70번" data-a="2">
+<div class="q-head"><span class="q-num">70번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">길이가 12m인 사다리식 통로에는 몇 m 이내마다 계단참을 설치해야 하는가?</p>
-<ul class="opts"><li>① 3m</li><li>② 5m</li><li>③ 7m</li><li>④ 10m</li></ul>
+<ul class="opts pick"><li data-o="1">① 3m</li><li data-o="2">② 5m</li><li data-o="3">③ 7m</li><li data-o="4">④ 10m</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 5m</b></p>
 <p>📌 사다리식 통로 길이 <b>10m 이상</b> → <b>5m 이내</b>마다 계단참. 12m ≥ 10m 이므로 적용</p>
 <ul class="chk"><li>고정식 높이 7m 이상이면 바닥에서 2.5m 지점부터 등받이울</li></ul></div></details>
 </div>
-<div class="card q" data-q="71" data-ch="04" data-title="71번">
-<div class="q-head"><span class="q-num">71번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="71" data-ch="04" data-title="71번" data-a="2">
+<div class="q-head"><span class="q-num">71번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사업장 계단의 강도와 안전율 기준으로 옳은 것은?</p>
-<ul class="opts"><li>① 300kg/㎡ 이상, 안전율 3 이상</li><li>② 500kg/㎡ 이상, 안전율 4 이상</li><li>③ 500kg/㎡ 이상, 안전율 5 이상</li><li>④ 1,000kg/㎡ 이상, 안전율 4 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 300kg/㎡ 이상, 안전율 3 이상</li><li data-o="2">② 500kg/㎡ 이상, 안전율 4 이상</li><li data-o="3">③ 500kg/㎡ 이상, 안전율 5 이상</li><li data-o="4">④ 1,000kg/㎡ 이상, 안전율 4 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 500kg/㎡ 이상, 안전율 4 이상</b></p>
 <p>📌 계단 <b>500kg/㎡</b>, 안전율 <b>4</b>, 폭 <b>1m 이상</b></p></div></details>
 </div>
-<div class="card q" data-q="72" data-ch="04" data-title="72번">
-<div class="q-head"><span class="q-num">72번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="72" data-ch="04" data-title="72번" data-a="4">
+<div class="q-head"><span class="q-num">72번</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">높이가 3m를 초과하는 계단에 3m 이내마다 설치하는 계단참의 너비 기준은?</p>
-<ul class="opts"><li>① 0.8m 이상</li><li>② 0.9m 이상</li><li>③ 1.0m 이상</li><li>④ 1.2m 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 0.8m 이상</li><li data-o="2">② 0.9m 이상</li><li data-o="3">③ 1.0m 이상</li><li data-o="4">④ 1.2m 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 1.2m 이상</b></p>
 <p>📌 계단참 너비 <b>1.2m 이상</b>, 위로 <b>2m 이내</b> 장애물 금지, 높이 1m 이상이면 개방측 안전난간</p>
 <ul class="chk"><li>1.0m는 계단 폭 기준</li></ul></div></details>
 </div></section>
 <section class="section" id="g8"><div class="section-head"><div class="duality"><span class="n">H</span>거푸집·콘크리트·철골 (73~84)</div><div class="section-line"></div></div>
-<div class="card q" data-q="73" data-ch="05" data-title="73번">
-<div class="q-head"><span class="q-num">73번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="73" data-ch="05" data-title="73번" data-a="2">
+<div class="q-head"><span class="q-num">73번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">동바리로 사용하는 파이프 서포트는 몇 개 이상 이어서 사용하지 않아야 하는가?</p>
-<ul class="opts"><li>① 2개</li><li>② 3개</li><li>③ 4개</li><li>④ 5개</li></ul>
+<ul class="opts pick"><li data-o="1">① 2개</li><li data-o="2">② 3개</li><li data-o="3">③ 4개</li><li data-o="4">④ 5개</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 3개</b></p>
 <p>📌 파이프 서포트 <b>3개 이상</b> 이어 사용 금지, 이을 때 <b>4개 이상 볼트</b></p></div></details>
 </div>
-<div class="card q" data-q="74" data-ch="05" data-title="74번">
-<div class="q-head"><span class="q-num">74번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="74" data-ch="05" data-title="74번" data-a="1">
+<div class="q-head"><span class="q-num">74번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">파이프 서포트 동바리의 높이가 3.5m를 초과하는 경우 수평연결재 설치 기준은?</p>
-<ul class="opts"><li>① 높이 2m 이내마다 2개 방향으로</li><li>② 높이 3m 이내마다 1개 방향으로</li><li>③ 높이 2m 이내마다 1개 방향으로</li><li>④ 높이 4m 이내마다 2개 방향으로</li></ul>
+<ul class="opts pick"><li data-o="1">① 높이 2m 이내마다 2개 방향으로</li><li data-o="2">② 높이 3m 이내마다 1개 방향으로</li><li data-o="3">③ 높이 2m 이내마다 1개 방향으로</li><li data-o="4">④ 높이 4m 이내마다 2개 방향으로</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 높이 2m 이내마다 2개 방향으로</b></p>
 <p>📌 3.5m 초과 → <b>2m 이내</b>마다 수평연결재 <b>2개 방향</b></p></div></details>
 </div>
-<div class="card q" data-q="75" data-ch="05" data-title="75번">
-<div class="q-head"><span class="q-num">75번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="75" data-ch="05" data-title="75번" data-a="3">
+<div class="q-head"><span class="q-num">75번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">파이프 서포트를 이어서 사용할 때 사용하는 볼트 또는 전용 철물 기준은?</p>
-<ul class="opts"><li>① 2개 이상의 볼트</li><li>② 3개 이상의 볼트</li><li>③ 4개 이상의 볼트</li><li>④ 6개 이상의 볼트</li></ul>
+<ul class="opts pick"><li data-o="1">① 2개 이상의 볼트</li><li data-o="2">② 3개 이상의 볼트</li><li data-o="3">③ 4개 이상의 볼트</li><li data-o="4">④ 6개 이상의 볼트</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 4개 이상의 볼트</b></p>
 <p>📌 이음: <b>4개 이상 볼트</b> 또는 전용 철물</p></div></details>
 </div>
-<div class="card q" data-q="76" data-ch="05" data-title="76번">
-<div class="q-head"><span class="q-num">76번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="76" data-ch="05" data-title="76번" data-a="3">
+<div class="q-head"><span class="q-num">76번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">콘크리트 측압이 커지는 조건이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 타설 속도가 빠를수록</li><li>② 슬럼프가 클수록</li><li>③ 외기 온도가 높을수록</li><li>④ 다짐(진동기 사용)이 많을수록</li></ul>
+<ul class="opts pick"><li data-o="1">① 타설 속도가 빠를수록</li><li data-o="2">② 슬럼프가 클수록</li><li data-o="3">③ 외기 온도가 높을수록</li><li data-o="4">④ 다짐(진동기 사용)이 많을수록</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 외기 온도가 높을수록</b></p>
 <p>📌 측압은 기온이 <b>낮을수록</b> 커진다(경화가 늦어서)</p></div></details>
 </div>
-<div class="card q" data-q="77" data-ch="05" data-title="77번">
-<div class="q-head"><span class="q-num">77번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="77" data-ch="05" data-title="77번" data-a="4">
+<div class="q-head"><span class="q-num">77번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">콘크리트 측압이 커지는 조건으로 옳은 것은?</p>
-<ul class="opts"><li>① 철근량이 많을수록</li><li>② 거푸집 단면이 작을수록</li><li>③ 외기 온도가 높을수록</li><li>④ 타설 높이가 높을수록</li></ul>
+<ul class="opts pick"><li data-o="1">① 철근량이 많을수록</li><li data-o="2">② 거푸집 단면이 작을수록</li><li data-o="3">③ 외기 온도가 높을수록</li><li data-o="4">④ 타설 높이가 높을수록</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 타설 높이가 높을수록</b></p>
 <p>📌 측압 ↑: 속도 빠름, 슬럼프 큼, 기온 낮음, 다짐 많음, 단면 큼, <b>철근량 적음</b>, 비중·타설 높이 큼</p></div></details>
 </div>
-<div class="card q" data-q="78" data-ch="05" data-title="78번">
-<div class="q-head"><span class="q-num">78번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="78" data-ch="05" data-title="78번" data-a="2">
+<div class="q-head"><span class="q-num">78번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">콘크리트 타설 작업 시 준수사항으로 옳지 <b>않은</b> 것은?</p>
-<ul class="opts"><li>① 당일 작업 시작 전 거푸집·동바리의 변형·침하 유무를 점검한다</li><li>② 한쪽부터 집중적으로 타설하여 작업 시간을 줄인다</li><li>③ 작업 중 감시자를 배치하여 이상 시 근로자를 대피시킨다</li><li>④ 설계도서의 양생기간이 지난 뒤 거푸집·동바리를 해체한다</li></ul>
+<ul class="opts pick"><li data-o="1">① 당일 작업 시작 전 거푸집·동바리의 변형·침하 유무를 점검한다</li><li data-o="2">② 한쪽부터 집중적으로 타설하여 작업 시간을 줄인다</li><li data-o="3">③ 작업 중 감시자를 배치하여 이상 시 근로자를 대피시킨다</li><li data-o="4">④ 설계도서의 양생기간이 지난 뒤 거푸집·동바리를 해체한다</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 한쪽부터 집중적으로 타설하여 작업 시간을 줄인다</b></p>
 <p>📌 <b>편심</b>이 생기지 않게 골고루 분산 타설</p></div></details>
 </div>
-<div class="card q" data-q="79" data-ch="05" data-title="79번">
-<div class="q-head"><span class="q-num">79번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="79" data-ch="05" data-title="79번" data-a="4">
+<div class="q-head"><span class="q-num">79번</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">거푸집 해체 작업 시 안전조치로 옳지 <b>않은</b> 것은?</p>
-<ul class="opts"><li>① 관리감독자를 배치한다</li><li>② 비·눈·바람 등 악천후 시 작업을 중지한다</li><li>③ 재료·기구는 달줄·달포대를 사용해 내린다</li><li>④ 해체한 재료는 작업 속도를 위해 위에서 던져 내린다</li></ul>
+<ul class="opts pick"><li data-o="1">① 관리감독자를 배치한다</li><li data-o="2">② 비·눈·바람 등 악천후 시 작업을 중지한다</li><li data-o="3">③ 재료·기구는 달줄·달포대를 사용해 내린다</li><li data-o="4">④ 해체한 재료는 작업 속도를 위해 위에서 던져 내린다</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 해체한 재료는 작업 속도를 위해 위에서 던져 내린다</b></p>
 <p>📌 재료는 <b>달줄·달포대</b>로 내린다. 던지기 금지</p></div></details>
 </div>
-<div class="card q" data-q="80" data-ch="06" data-title="80번">
-<div class="q-head"><span class="q-num">80번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="80" data-ch="06" data-title="80번" data-a="1">
+<div class="q-head"><span class="q-num">80번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">철골 작업을 중지해야 하는 기상 조건으로 옳은 것은?</p>
-<ul class="opts"><li>① 풍속 10m/s 이상, 강우량 1mm/h 이상, 강설량 1cm/h 이상</li><li>② 풍속 15m/s 이상, 강우량 1mm/h 이상, 강설량 1cm/h 이상</li><li>③ 풍속 10m/s 이상, 강우량 5mm/h 이상, 강설량 5cm/h 이상</li><li>④ 풍속 20m/s 이상, 강우량 1mm/h 이상, 강설량 2cm/h 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 풍속 10m/s 이상, 강우량 1mm/h 이상, 강설량 1cm/h 이상</li><li data-o="2">② 풍속 15m/s 이상, 강우량 1mm/h 이상, 강설량 1cm/h 이상</li><li data-o="3">③ 풍속 10m/s 이상, 강우량 5mm/h 이상, 강설량 5cm/h 이상</li><li data-o="4">④ 풍속 20m/s 이상, 강우량 1mm/h 이상, 강설량 2cm/h 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 풍속 10m/s 이상, 강우량 1mm/h 이상, 강설량 1cm/h 이상</b></p>
 <p>📌 철골 작업 중지: <b>10m/s · 1mm · 1cm</b></p>
 <ul class="chk"><li>15m/s는 타워크레인 운전 중지 기준(순간풍속 초과)</li></ul></div></details>
 </div>
-<div class="card q" data-q="81" data-ch="06" data-title="81번">
-<div class="q-head"><span class="q-num">81번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="81" data-ch="06" data-title="81번" data-a="4">
+<div class="q-head"><span class="q-num">81번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">철골 구조물 중 외압(강풍 등)에 대한 자립도 검토 대상이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 높이 20m 이상인 구조물</li><li>② 구조물의 폭과 높이의 비가 1:4 이상인 구조물</li><li>③ 연면적당 철골량이 50kg/㎡ 이하인 구조물</li><li>④ 이음부가 공장 용접인 구조물</li></ul>
+<ul class="opts pick"><li data-o="1">① 높이 20m 이상인 구조물</li><li data-o="2">② 구조물의 폭과 높이의 비가 1:4 이상인 구조물</li><li data-o="3">③ 연면적당 철골량이 50kg/㎡ 이하인 구조물</li><li data-o="4">④ 이음부가 공장 용접인 구조물</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 이음부가 공장 용접인 구조물</b></p>
 <p>📌 검토 대상은 이음부가 <b>현장 용접</b>인 구조물</p>
 <ul class="chk"><li>타이플레이트형 기둥, 대형 간판·차양 설치 구조물도 대상</li></ul></div></details>
 </div>
-<div class="card q" data-q="82" data-ch="06" data-title="82번">
-<div class="q-head"><span class="q-num">82번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="82" data-ch="06" data-title="82번" data-a="3">
+<div class="q-head"><span class="q-num">82번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">연면적 2,000㎡인 건물의 철골량이 80톤이다. 연면적당 철골량과 자립도 검토 대상 여부로 옳은 것은?</p>
-<ul class="opts"><li>① 25kg/㎡, 대상 아님</li><li>② 400kg/㎡, 대상 아님</li><li>③ 40kg/㎡, 대상</li><li>④ 40kg/㎡, 대상 아님</li></ul>
+<ul class="opts pick"><li data-o="1">① 25kg/㎡, 대상 아님</li><li data-o="2">② 400kg/㎡, 대상 아님</li><li data-o="3">③ 40kg/㎡, 대상</li><li data-o="4">④ 40kg/㎡, 대상 아님</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 40kg/㎡, 대상</b></p>
 <p>📌 80톤 = 80,000kg → 80,000 ÷ 2,000 = 40kg/㎡ → <b>50kg/㎡ 이하</b>이므로 검토 대상</p>
 <ul class="chk"><li>철골량이 적을수록 가벼워 바람에 약하다</li></ul></div></details>
 </div>
-<div class="card q" data-q="83" data-ch="06" data-title="83번">
-<div class="q-head"><span class="q-num">83번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="83" data-ch="06" data-title="83번" data-a="1">
+<div class="q-head"><span class="q-num">83번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">폭이 4.5m인 철골 구조물이 '폭과 높이의 비 1:4 이상' 기준으로 자립도 검토 대상이 되는 최소 높이는?</p>
-<ul class="opts"><li>① 18m</li><li>② 13.5m</li><li>③ 9m</li><li>④ 22.5m</li></ul>
+<ul class="opts pick"><li data-o="1">① 18m</li><li data-o="2">② 13.5m</li><li data-o="3">③ 9m</li><li data-o="4">④ 22.5m</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 18m</b></p>
 <p>📌 높이 = 폭 × 4 = 4.5m × 4 = 18m</p>
 <ul class="chk"><li>높이 20m 이상이면 비율과 관계없이 대상</li></ul></div></details>
 </div>
-<div class="card q" data-q="84" data-ch="06" data-title="84번">
-<div class="q-head"><span class="q-num">84번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="84" data-ch="06" data-title="84번" data-a="4">
+<div class="q-head"><span class="q-num">84번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">철골 기둥에 설치하는 승강용 트랩의 답단 간격 기준은?</p>
-<ul class="opts"><li>① 15cm 이내</li><li>② 20cm 이내</li><li>③ 25cm 이내</li><li>④ 30cm 이내</li></ul>
+<ul class="opts pick"><li data-o="1">① 15cm 이내</li><li data-o="2">② 20cm 이내</li><li data-o="3">③ 25cm 이내</li><li data-o="4">④ 30cm 이내</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 30cm 이내</b></p>
 <p>📌 철골 승강용 트랩 답단 간격 <b>30cm 이내</b></p></div></details>
 </div></section>
 <section class="section" id="g9"><div class="section-head"><div class="duality"><span class="n">I</span>양중기·건설기계 (85~93)</div><div class="section-line"></div></div>
-<div class="card q" data-q="85" data-ch="06" data-title="85번">
-<div class="q-head"><span class="q-num">85번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="85" data-ch="06" data-title="85번" data-a="4">
+<div class="q-head"><span class="q-num">85번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건법상 양중기에 해당하지 <b>않는</b> 것은?</p>
-<ul class="opts"><li>① 이동식 크레인</li><li>② 곤돌라</li><li>③ 승강기</li><li>④ 지게차</li></ul>
+<ul class="opts pick"><li data-o="1">① 이동식 크레인</li><li data-o="2">② 곤돌라</li><li data-o="3">③ 승강기</li><li data-o="4">④ 지게차</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 지게차</b></p>
 <p>📌 양중기 5종: 크레인(호이스트 포함), 이동식 크레인, 리프트, 곤돌라, 승강기</p>
 <ul class="chk"><li>이삿짐운반용 리프트는 적재하중 0.1톤 이상만 해당</li></ul></div></details>
 </div>
-<div class="card q" data-q="86" data-ch="06" data-title="86번">
-<div class="q-head"><span class="q-num">86번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="86" data-ch="06" data-title="86번" data-a="2">
+<div class="q-head"><span class="q-num">86번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">타워크레인의 운전 작업을 중지해야 하는 순간풍속 기준은?</p>
-<ul class="opts"><li>① 10m/s 초과</li><li>② 15m/s 초과</li><li>③ 20m/s 초과</li><li>④ 30m/s 초과</li></ul>
+<ul class="opts pick"><li data-o="1">① 10m/s 초과</li><li data-o="2">② 15m/s 초과</li><li data-o="3">③ 20m/s 초과</li><li data-o="4">④ 30m/s 초과</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 15m/s 초과</b></p>
 <p>📌 순간풍속 10 초과 → 설치·수리·점검·해체 중지 / 15 초과 → <b>운전 중지</b></p>
 <ul class="chk"><li><b>20m/s</b>는 법령에 없는 기준 → 오답 함정</li></ul></div></details>
 </div>
-<div class="card q" data-q="87" data-ch="06" data-title="87번">
-<div class="q-head"><span class="q-num">87번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="87" data-ch="06" data-title="87번" data-a="1">
+<div class="q-head"><span class="q-num">87번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">타워크레인의 설치·수리·점검 또는 해체 작업을 중지해야 하는 순간풍속 기준은?</p>
-<ul class="opts"><li>① 10m/s 초과</li><li>② 15m/s 초과</li><li>③ 20m/s 초과</li><li>④ 35m/s 초과</li></ul>
+<ul class="opts pick"><li data-o="1">① 10m/s 초과</li><li data-o="2">② 15m/s 초과</li><li data-o="3">③ 20m/s 초과</li><li data-o="4">④ 35m/s 초과</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 10m/s 초과</b></p>
 <p>📌 설치·해체 등 작업 <b>10m/s 초과</b>, 운전 <b>15m/s 초과</b> (모두 '초과')</p></div></details>
 </div>
-<div class="card q" data-q="88" data-ch="06" data-title="88번">
-<div class="q-head"><span class="q-num">88번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="88" data-ch="06" data-title="88번" data-a="4">
+<div class="q-head"><span class="q-num">88번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설용 리프트·옥외 승강기에 대해 받침 수를 늘리는 등 붕괴 방지 조치를 해야 하는 순간풍속 기준은?</p>
-<ul class="opts"><li>① 15m/s 초과</li><li>② 20m/s 초과</li><li>③ 30m/s 초과</li><li>④ 35m/s 초과</li></ul>
+<ul class="opts pick"><li data-o="1">① 15m/s 초과</li><li data-o="2">② 20m/s 초과</li><li data-o="3">③ 30m/s 초과</li><li data-o="4">④ 35m/s 초과</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 35m/s 초과</b></p>
 <p>📌 30 초과 예상 → 옥외 주행 크레인 이탈방지장치 / <b>35 초과</b> 예상 → 리프트·옥외 승강기 붕괴 방지</p></div></details>
 </div>
-<div class="card q" data-q="89" data-ch="06" data-title="89번">
-<div class="q-head"><span class="q-num">89번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="89" data-ch="06" data-title="89번" data-a="1">
+<div class="q-head"><span class="q-num">89번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">양중기에서 근로자가 탑승하는 운반구를 지지하는 와이어로프의 안전계수 기준은?</p>
-<ul class="opts"><li>① 10 이상</li><li>② 5 이상</li><li>③ 4 이상</li><li>④ 3 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 10 이상</li><li data-o="2">② 5 이상</li><li data-o="3">③ 4 이상</li><li data-o="4">④ 3 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 10 이상</b></p>
 <p>📌 근로자 탑승 <b>10</b> / 화물 직접 지지 <b>5</b> / 훅·샤클·클램프·리프팅빔 <b>3</b> / 그 밖 <b>4</b></p></div></details>
 </div>
-<div class="card q" data-q="90" data-ch="06" data-title="90번">
-<div class="q-head"><span class="q-num">90번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="90" data-ch="06" data-title="90번" data-a="2">
+<div class="q-head"><span class="q-num">90번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">화물의 하중을 직접 지지하는 와이어로프의 절단하중이 10톤일 때 걸 수 있는 최대 사용하중은?</p>
-<ul class="opts"><li>① 1톤</li><li>② 2톤</li><li>③ 2.5톤</li><li>④ 5톤</li></ul>
+<ul class="opts pick"><li data-o="1">① 1톤</li><li data-o="2">② 2톤</li><li data-o="3">③ 2.5톤</li><li data-o="4">④ 5톤</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 2톤</b></p>
 <p>📌 안전계수 = 절단하중 ÷ 최대 사용하중. 화물 직접 지지는 5 이상 → 10 ÷ 5 = 2톤</p>
 <ul class="chk"><li>1톤은 근로자 탑승(10)을 적용한 오답</li></ul></div></details>
 </div>
-<div class="card q" data-q="91" data-ch="06" data-title="91번">
-<div class="q-head"><span class="q-num">91번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="91" data-ch="06" data-title="91번" data-a="3">
+<div class="q-head"><span class="q-num">91번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">차량계 건설기계의 전도·전락 방지 조치가 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 유도하는 사람을 배치한다</li><li>② 도로 폭을 유지한다</li><li>③ 작업 속도를 높여 작업 시간을 줄인다</li><li>④ 갓길의 붕괴를 방지한다</li></ul>
+<ul class="opts pick"><li data-o="1">① 유도하는 사람을 배치한다</li><li data-o="2">② 도로 폭을 유지한다</li><li data-o="3">③ 작업 속도를 높여 작업 시간을 줄인다</li><li data-o="4">④ 갓길의 붕괴를 방지한다</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 작업 속도를 높여 작업 시간을 줄인다</b></p>
 <p>📌 전도 방지: <b>유도자</b>, 부동침하 방지, 갓길 붕괴 방지, 도로 폭 유지</p>
 <ul class="chk"><li>작업계획서에는 기계 종류·성능, <b>운행경로</b>, 작업방법</li></ul></div></details>
 </div>
-<div class="card q" data-q="92" data-ch="06" data-title="92번">
-<div class="q-head"><span class="q-num">92번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="92" data-ch="06" data-title="92번" data-a="2">
+<div class="q-head"><span class="q-num">92번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">항타기·항발기의 권상용 와이어로프는 권상장치 드럼에 최소 몇 회 이상 감기고 남는 길이여야 하는가?</p>
-<ul class="opts"><li>① 1회</li><li>② 2회</li><li>③ 3회</li><li>④ 5회</li></ul>
+<ul class="opts pick"><li data-o="1">① 1회</li><li data-o="2">② 2회</li><li data-o="3">③ 3회</li><li data-o="4">④ 5회</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 2회</b></p>
 <p>📌 권상용 와이어로프: 안전계수 <b>5 이상</b>, 이음매 없음, 드럼에 <b>2회 이상</b> 감김</p></div></details>
 </div>
-<div class="card q" data-q="93" data-ch="06" data-title="93번">
-<div class="q-head"><span class="q-num">93번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="93" data-ch="06" data-title="93번" data-a="1">
+<div class="q-head"><span class="q-num">93번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">항타기의 권상장치 드럼 폭이 0.4m일 때 드럼축과 첫 번째 도르래 축 사이의 최소 거리는?</p>
-<ul class="opts"><li>① 6.0m</li><li>② 4.0m</li><li>③ 3.0m</li><li>④ 1.6m</li></ul>
+<ul class="opts pick"><li data-o="1">① 6.0m</li><li data-o="2">② 4.0m</li><li data-o="3">③ 3.0m</li><li data-o="4">④ 1.6m</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 6.0m</b></p>
 <p>📌 거리 ≥ 드럼 폭 × <b>15배</b> → 0.4m × 15 = 6.0m</p></div></details>
 </div></section>
 <section class="section" id="g10"><div class="section-head"><div class="duality"><span class="n">J</span>터널·발파·해체 (94~100)</div><div class="section-line"></div></div>
-<div class="card q" data-q="94" data-ch="06" data-title="94번">
-<div class="q-head"><span class="q-num">94번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="94" data-ch="06" data-title="94번" data-a="4">
+<div class="q-head"><span class="q-num">94번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">NATM 터널 공사의 계측 항목이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 내공변위</li><li>② 천단침하</li><li>③ 록볼트 축력</li><li>④ 슬럼프 시험</li></ul>
+<ul class="opts pick"><li data-o="1">① 내공변위</li><li data-o="2">② 천단침하</li><li data-o="3">③ 록볼트 축력</li><li data-o="4">④ 슬럼프 시험</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 슬럼프 시험</b></p>
 <p>📌 터널 계측: 내공변위, <b>천단침하</b>, 지중변위, 록볼트 축력, 숏크리트 응력</p></div></details>
 </div>
-<div class="card q" data-q="95" data-ch="06" data-title="95번">
-<div class="q-head"><span class="q-num">95번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="95" data-ch="06" data-title="95번" data-a="3">
+<div class="q-head"><span class="q-num">95번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">터널 작업에서 자동경보장치에 대해 당일 작업 시작 전 점검할 사항이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 계기의 이상 유무</li><li>② 검지부의 이상 유무</li><li>③ 발파용 화약의 장전량</li><li>④ 경보장치의 작동 상태</li></ul>
+<ul class="opts pick"><li data-o="1">① 계기의 이상 유무</li><li data-o="2">② 검지부의 이상 유무</li><li data-o="3">③ 발파용 화약의 장전량</li><li data-o="4">④ 경보장치의 작동 상태</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 발파용 화약의 장전량</b></p>
 <p>📌 자동경보장치 점검 3가지: <b>계기, 검지부, 경보장치 작동</b></p></div></details>
 </div>
-<div class="card q" data-q="96" data-ch="06" data-title="96번">
-<div class="q-head"><span class="q-num">96번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="96" data-ch="06" data-title="96번" data-a="1">
+<div class="q-head"><span class="q-num">96번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">전기뇌관을 사용한 발파에서 불발이 생긴 경우 장전 장소에 접근하지 않아야 하는 시간은?</p>
-<ul class="opts"><li>① 5분 이상</li><li>② 10분 이상</li><li>③ 15분 이상</li><li>④ 30분 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 5분 이상</li><li data-o="2">② 10분 이상</li><li data-o="3">③ 15분 이상</li><li data-o="4">④ 30분 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 5분 이상</b></p>
 <p>📌 전기뇌관 <b>5분 이상</b>, 그 밖의 발파 <b>15분 이상</b></p>
 <ul class="chk"><li>전기발파는 점화 전 <b>도통시험</b></li></ul></div></details>
 </div>
-<div class="card q" data-q="97" data-ch="06" data-title="97번">
-<div class="q-head"><span class="q-num">97번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="97" data-ch="06" data-title="97번" data-a="2">
+<div class="q-head"><span class="q-num">97번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">잠함·우물통 내부 작업 시 급격한 침하 방지를 위해 바닥에서 천장 또는 보까지 확보해야 하는 높이는?</p>
-<ul class="opts"><li>① 1.5m 이상</li><li>② 1.8m 이상</li><li>③ 2.0m 이상</li><li>④ 2.5m 이상</li></ul>
+<ul class="opts pick"><li data-o="1">① 1.5m 이상</li><li data-o="2">② 1.8m 이상</li><li data-o="3">③ 2.0m 이상</li><li data-o="4">④ 2.5m 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>② 1.8m 이상</b></p>
 <p>📌 바닥~천장·보 <b>1.8m 이상</b>, 침하관계도에 따라 굴착·재하량 결정</p>
 <ul class="chk"><li>굴착 깊이 <b>20m 초과</b> 시 통신설비, 산소농도 측정·송기설비도 필요</li></ul></div></details>
 </div>
-<div class="card q" data-q="98" data-ch="06" data-title="98번">
-<div class="q-head"><span class="q-num">98번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="98" data-ch="06" data-title="98번" data-a="3">
+<div class="q-head"><span class="q-num">98번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">해체 공법 중 무소음·무진동으로 콘크리트를 파쇄할 수 있는 것은?</p>
-<ul class="opts"><li>① 압쇄기</li><li>② 대형 브레이커</li><li>③ 팽창제</li><li>④ 화약류</li></ul>
+<ul class="opts pick"><li data-o="1">① 압쇄기</li><li data-o="2">② 대형 브레이커</li><li data-o="3">③ 팽창제</li><li data-o="4">④ 화약류</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 팽창제</b></p>
 <p>📌 팽창제 = <b>무소음·무진동</b>, 압쇄기 = 소음·진동 <b>적음</b></p></div></details>
 </div>
-<div class="card q" data-q="99" data-ch="06" data-title="99번">
-<div class="q-head"><span class="q-num">99번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="99" data-ch="06" data-title="99번" data-a="4">
+<div class="q-head"><span class="q-num">99번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건물 해체 작업계획서에 포함할 내용이 <b>아닌</b> 것은?</p>
-<ul class="opts"><li>① 해체의 방법 및 해체 순서 도면</li><li>② 가설설비·방호설비·환기설비 등의 방법</li><li>③ 해체물의 처분계획</li><li>④ 해체 후 신축 건물의 분양계획</li></ul>
+<ul class="opts pick"><li data-o="1">① 해체의 방법 및 해체 순서 도면</li><li data-o="2">② 가설설비·방호설비·환기설비 등의 방법</li><li data-o="3">③ 해체물의 처분계획</li><li data-o="4">④ 해체 후 신축 건물의 분양계획</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>④ 해체 후 신축 건물의 분양계획</b></p>
 <p>📌 해체 작업계획서: 방법·순서 도면, 가설·방호·환기설비, 연락방법, 처분계획, 기계·기구 작업계획</p></div></details>
 </div>
-<div class="card q" data-q="100" data-ch="06" data-title="100번">
-<div class="q-head"><span class="q-num">100번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<div class="card q" data-q="100" data-ch="06" data-title="100번" data-a="3">
+<div class="q-head"><span class="q-num">100번</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설구조물의 특징으로 옳지 <b>않은</b> 것은?</p>
-<ul class="opts"><li>① 연결재가 적은 구조가 되기 쉽다</li><li>② 부재의 결합이 간단하나 불완전하다</li><li>③ 조립 정밀도가 높다</li><li>④ 임시 구조라 부재가 과소 단면이기 쉽다</li></ul>
+<ul class="opts pick"><li data-o="1">① 연결재가 적은 구조가 되기 쉽다</li><li data-o="2">② 부재의 결합이 간단하나 불완전하다</li><li data-o="3">③ 조립 정밀도가 높다</li><li data-o="4">④ 임시 구조라 부재가 과소 단면이기 쉽다</li></ul><button class="q-redo" type="button">다시 풀기</button>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>③ 조립 정밀도가 높다</b></p>
 <p>📌 가설구조물은 조립 정밀도가 <b>낮다</b></p>
 <ul class="chk"><li>구조물이라는 개념이 확고하지 않아 안전 검토가 소홀해지기 쉽다</li></ul></div></details>
 </div></section>
-<footer>개념이 막히면 <a href="s6-points.html">6과목 기출포인트</a>를 먼저 보세요. </footer>
+<footer>개념이 막히면 <a href="s6-points.html">6과목 기출포인트</a>를 먼저 보세요. <button class="btn hidden" type="button" id="gReset">채점 기록 지우기</button></footer>
 </div>
 <script>
 (function(){
@@ -877,7 +909,7 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
   function save(){try{localStorage.setItem(key,JSON.stringify(marked))}catch(e){}}
   var qs=[].slice.call(document.querySelectorAll('.q'));
   var cnt=document.getElementById('starCount');
-  function upd(){cnt.textContent='★ 다시 볼 문제 '+Object.keys(marked).length+'개'}
+  function upd(){cnt.textContent='★ '+(document.getElementById('score')?'':'다시 볼 문제 ')+Object.keys(marked).length+'개'}
   var ids={};qs.forEach(function(q){ids[q.dataset.q]=1});
   Object.keys(marked).forEach(function(id){if(!ids[id])delete marked[id]});
   qs.forEach(function(q){
@@ -895,15 +927,62 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
     openAll.textContent=on?'정답 모두 접기':'정답 모두 펼치기';
     document.querySelectorAll('details.ans').forEach(function(d){d.open=on});
   });
+  // 채점: 보기를 누르면 data-a(정답 번호)와 비교, 보기·정답 키가 없으면 정답 안의 맞음/틀림 버튼
+  var gkey='sanan-grade-'+document.body.dataset.subject,graded={},score=document.getElementById('score'),onlyWrong=document.getElementById('onlyWrong');
+  try{graded=JSON.parse(localStorage.getItem(gkey)||'{}')}catch(e){}
+  Object.keys(graded).forEach(function(id){if(!ids[id])delete graded[id]});
+  function gsave(){try{localStorage.setItem(gkey,JSON.stringify(graded))}catch(e){}}
+  var resetArm=0,gReset=document.getElementById('gReset');
+  function gupd(){
+    if(!score)return;
+    var o=0,x=0;Object.keys(graded).forEach(function(id){graded[id].r==='o'?o++:x++});
+    score.innerHTML='<span class="o">✅ 맞음 <b>'+o+'</b></span><span class="x">❌ 틀림 <b>'+x+'</b></span><span>미풀이 <b>'+(qs.length-o-x)+'</b></span>'+
+      (o+x?'<span>정답률 <b>'+Math.round(o*100/(o+x))+'%</b></span>':'');
+    gReset.classList.toggle('hidden',!(o+x));
+    gReset.textContent=resetArm?'한 번 더 누르면 모두 지워져요':'채점 기록 지우기';
+  }
+  if(gReset)gReset.addEventListener('click',function(){
+    if(!resetArm){resetArm=1;gupd();setTimeout(function(){resetArm=0;gupd()},4000);return}
+    resetArm=0;graded={};gsave();qs.forEach(show);gupd();filter();
+  });
+  function show(q){
+    var g=graded[q.dataset.q],res=q.querySelector('.q-res');
+    q.classList.toggle('done',!!g);q.classList.toggle('ok',!!g&&g.r==='o');q.classList.toggle('ng',!!g&&g.r==='x');
+    if(res)res.textContent=g?(g.r==='o'?'✅ 맞음':'❌ 틀림'):'';
+    var a=q.dataset.a;
+    q.querySelectorAll('.opts li').forEach(function(li){
+      li.classList.toggle('right',!!g&&!!a&&li.dataset.o===a);
+      li.classList.toggle('wrong',!!g&&!!g.c&&li.dataset.o===String(g.c)&&g.c!=a);
+    });
+  }
+  function set(q,r,c){
+    var id=q.dataset.q;graded[id]={r:r};if(c)graded[id].c=c;gsave();show(q);gupd();
+    q.querySelector('details.ans').open=true;
+  }
+  if(score)qs.forEach(function(q){
+    var a=q.dataset.a;
+    show(q);
+    if(a)q.querySelectorAll('.opts li').forEach(function(li){
+      li.setAttribute('role','button');li.tabIndex=0;
+      function pick(){if(graded[q.dataset.q])return;set(q,li.dataset.o===a?'o':'x',+li.dataset.o)}
+      li.addEventListener('click',pick);
+      li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});
+    });
+    q.querySelectorAll('.q-self .btn').forEach(function(b){b.addEventListener('click',function(){set(q,b.dataset.r)})});
+    var redo=q.querySelector('.q-redo');
+    if(redo)redo.addEventListener('click',function(){delete graded[q.dataset.q];gsave();show(q);gupd();q.querySelector('details.ans').open=false;filter()});
+  });
+  gupd();
   var chSel=document.getElementById('chSel');
   function filter(){
-    var star=onlyStar.classList.contains('on'),ch=chSel?chSel.value:'';
-    qs.forEach(function(q){q.classList.toggle('hidden',(star&&!q.classList.contains('marked'))||(ch&&q.dataset.ch!==ch))});
+    var star=onlyStar.classList.contains('on'),wrong=onlyWrong&&onlyWrong.classList.contains('on'),ch=chSel?chSel.value:'';
+    qs.forEach(function(q){q.classList.toggle('hidden',(star&&!q.classList.contains('marked'))||(wrong&&!q.classList.contains('ng'))||(ch&&q.dataset.ch!==ch))});
     document.querySelectorAll('.section').forEach(function(s){
       s.classList.toggle('hidden',!s.querySelector('.q:not(.hidden)'));
     });
   }
   onlyStar.addEventListener('click',function(){onlyStar.classList.toggle('on');filter()});
+  if(onlyWrong)onlyWrong.addEventListener('click',function(){onlyWrong.classList.toggle('on');filter()});
   if(chSel){
     try{chSel.value=sessionStorage.getItem(key+'-ch')||''}catch(e){}
     chSel.addEventListener('change',function(){try{sessionStorage.setItem(key+'-ch',chSel.value)}catch(e){}filter()});
