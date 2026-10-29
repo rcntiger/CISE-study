@@ -16,14 +16,14 @@
   --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
   --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
-  --ok:#16865F;--ok-soft:#E3F5EC;--ng:#D63B25;--ng-soft:#FDE9E5;
+  --ok:#16865F;--ok-soft:#E3F5EC;--memo:#C25E00;--memo-soft:#FFF1E2;--ng:#D63B25;--ng-soft:#FDE9E5;
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
     --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
-    --ok:#5EC2A0;--ok-soft:#16302A;--ng:#FF7A63;--ng-soft:#3A1E1A;
+    --ok:#5EC2A0;--ok-soft:#16302A;--memo:#FFB066;--memo-soft:#33251A;--ng:#FF7A63;--ng-soft:#3A1E1A;
   }
 }
 *{box-sizing:border-box}
@@ -71,6 +71,9 @@ ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E
 ul.chk>li.cf{background:var(--cf-soft);margin:4px -10px;padding:8px 10px 8px 12px;border-radius:10px;border:0;border-left:3px solid var(--cf)}
 ul.chk>li.cf::before{display:none}
 .exp{margin:4px 0 12px;padding:9px 12px;background:var(--exp-soft);border-radius:10px;font-size:14.6px;line-height:1.65}
+.memo{margin:4px 0 12px;padding:9px 12px;background:var(--memo-soft);border-left:3px solid var(--memo);border-radius:10px;font-size:14px;line-height:1.65}
+.memo-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--memo)}
+.card .memo b{background:none;color:var(--memo);padding:0}
 .exp-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--exp)}
 ul.chk>li.cf .cf-tag{display:inline-block;margin-right:6px;font-size:12px;font-weight:700;color:var(--cf)}
 ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
@@ -85,6 +88,7 @@ body[data-page=points] .card h4{font-size:16.5px}
 body[data-page=points] .card code{font-size:14px}
 body[data-page=points] ul.sub2{font-size:14.5px}
 body[data-page=points] .exp{font-size:15.6px}
+body[data-page=points] .memo{font-size:15px}
 body[data-page=points] .subnote{font-size:13.5px}
 body[data-page=points] .subnote.std{font-size:13px}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
@@ -147,7 +151,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
   <span class="tab">4과목 · 기출포인트</span>
   <div class="eyebrow">산업안전기사 필기 · 4과목</div>
   <h1>전기설비 안전관리</h1>
-  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호</li></ul>
+  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호, 🧠 연상 암기법</li></ul>
   <nav class="toc"><a class="ch" href="#c01">CH01 전기안전관리</a><a href="#t2"><span class="n">1</span>정전작업 ★</a><a href="#t3"><span class="n">2</span>충전전로 작업 ★</a><a href="#t4"><span class="n">3</span>개폐기·차단기·보호계전기 ➕</a><a class="ch" href="#c02">CH02 감전재해 및 방지대책</a><a href="#t6"><span class="n">4</span>전압의 구분 ★</a><a href="#t7"><span class="n">5</span>감전의 인체 영향 ★</a><a href="#t8"><span class="n">6</span>심실세동 에너지 계산 ★</a><a href="#t9"><span class="n">7</span>인체저항과 허용접촉전압 ★</a><a href="#t10"><span class="n">8</span>보폭전압·안전전압과 감전 응급조치 ➕</a><a href="#t11"><span class="n">9</span>감전 방지대책 ★</a><a href="#t12"><span class="n">10</span>누전차단기 ★</a><a class="ch" href="#c03">CH03 정전기 장·재해관리</a><a href="#t14"><span class="n">11</span>정전기 ★</a><a href="#t15"><span class="n">12</span>정전기 방지대책 ★</a><a class="ch" href="#c04">CH04 전기방폭관리</a><a href="#t17"><span class="n">13</span>방폭 ★</a><a href="#t18"><span class="n">14</span>온도등급과 가스그룹 ★</a><a class="ch" href="#c05">CH05 전기설비 위험요인관리</a><a href="#t20"><span class="n">15</span>접지 (KEC) ★</a><a href="#t21"><span class="n">16</span>전기화재 ★</a><a href="#t22"><span class="n">17</span>피뢰설비와 절연 ★</a><a href="#t23"><span class="n">18</span>전기설비 점검과 정전유도</a><a class="ch" href="#std">출제기준 대조표</a></nav>
 </header><div class="chapter" id="c01"><span class="k">CHAPTER 01</span><span class="t">전기안전관리</span></div>
 <section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">1</span>정전작업</div><div class="section-line"></div></div>
@@ -158,6 +162,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <ul class="chk"><li>1. 작업기구·단락접지기구 <b>제거</b></li><li>2. 작업자가 감전 위험이 없는지 확인</li><li>3. 잠금장치·꼬리표를<br>설치한 사람이 직접 제거</li><li>4. 전원 투입</li></ul>
 <p><b>단로기와 차단기 조작 순서</b></p>
 <ul class="chk"><li><b>차단 시:</b> 차단기 먼저 OFF → 단로기 OFF</li><li><b>투입 시:</b> 단로기 먼저 ON → 차단기 ON</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>단로기는 '대문', 차단기는 '수도꼭지'</b> — 끌 때는 꼭지부터 잠그고 대문을 닫고(차단기 → 단로기), 켤 때는 대문부터 열고 꼭지를 튼다(단로기 → 차단기)</div>
 <p>(단로기는 무부하 상태에서만 조작)</p></div></div></section>
 <section class="section" id="t3"><div class="section-head"><div class="duality"><span class="n">2</span>충전전로 작업</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="충전전로 작업"><div class="subnote std">📋 출제기준 2-3 절연용 안전장구 · 2-1 감전재해 예방 및 조치</div>
@@ -187,11 +192,13 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="cards"><div class="card" data-title="전압의 구분"><div class="subnote std">📋 출제기준 2-2 감전재해의 요인</div>
 <div class="subnote">KEC(한국전기설비규정, 2021~) 기준입니다.<br>시험 전 확인하세요.</div>
 <ul class="chk"><li><b>저압</b><br>교류 <b>1kV 이하</b><br>직류 <b>1.5kV 이하</b></li><li><b>고압</b><br>교류 1kV 초과 ~ 7kV 이하<br>직류 1.5kV 초과 ~ 7kV 이하</li><li><b>특고압</b><br><b>7kV 초과</b></li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>교류 1 · 직류 1.5 · 7</b> — 저압은 교류 1kV·직류 1.5kV 이하, 7kV를 넘으면 특고압. '600V'는 옛 기준(함정)</div>
 <p>(옛 기준 "저압 교류 600V 이하"는<br>보기 함정으로 나옵니다.)</p></div></div></section>
 <section class="section" id="t7"><div class="section-head"><div class="duality"><span class="n">5</span>감전의 인체 영향</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="감전의 인체 영향"><div class="subnote std">📋 출제기준 2-2 감전재해의 요인</div>
 <p><b>통전전류별 반응</b> (상용주파수 60Hz, 성인 남자)</p>
 <ul class="chk"><li><b>최소감지전류:</b> 약 <b>1mA</b><br>전기가 통하는 것을 느낌</li><li><b>고통한계전류(가수전류):</b> 7~8mA<br>참을 수 있고 스스로 떼어 낼 수 있음</li><li><b>마비한계전류(불수전류):</b> 10~15mA<br>근육이 굳어 스스로 떼지 못함</li><li class="star"><b>심실세동전류</b><br><b>I = 165 / √T (mA)</b><br>T: 통전시간(초), 1/120~5초 범위</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>1 → 7~8 → 10~15 → 165/√T</b> — 느끼고(감지) → 참고(가수) → 못 떼고(불수) → 심장이 떨림(심실세동). '가수'는 떼어 낼 수 있음(可), '불수'는 없음(不)</div>
 <p>⭐ <b>감전 위험을 결정하는 요소</b></p>
 <ul class="chk"><li><b>1차 요소:</b> 통전전류의 크기,<br>통전경로, 통전시간, 전원의 종류</li><li><b>2차 요소:</b> 인체 조건(저항),<br>전압 크기, 계절·주위 환경</li><li>같은 조건이면 <b>교류가 직류보다 위험</b></li></ul>
 <p><b>통전경로별 위험도 (심장전류계수)</b></p>
@@ -210,7 +217,8 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <p><b>인체저항</b></p>
 <ul class="chk"><li>피부저항: 약 2,500Ω</li><li>내부조직저항: 약 300~500Ω</li><li>발과 신발 사이: 약 1,500Ω</li><li>신발과 대지 사이: 약 700Ω</li><li>땀에 젖으면: 1/12~1/20로 감소</li><li>물에 젖으면: <b>1/25</b>로 감소</li><li>전압이 높아지면 저항은 낮아짐</li></ul>
 <p>⭐ <b>허용접촉전압 (종별)</b></p>
-<ul class="chk"><li><b>제1종: 2.5V 이하</b><br>인체 대부분이 수중에 있는 상태</li><li><b>제2종: 25V 이하</b><br>인체가 현저히 젖은 상태,<br>금속성 기계·구조물에<br>신체 일부가 상시 닿는 상태</li><li><b>제3종: 50V 이하</b><br>통상의 인체 상태에서<br>접촉전압이 가해지면 위험한 상태</li><li><b>제4종: 제한 없음</b><br>접촉전압이 가해질 우려가 없거나<br>위험성이 낮은 상태</li></ul></div></div></section>
+<ul class="chk"><li><b>제1종: 2.5V 이하</b><br>인체 대부분이 수중에 있는 상태</li><li><b>제2종: 25V 이하</b><br>인체가 현저히 젖은 상태,<br>금속성 기계·구조물에<br>신체 일부가 상시 닿는 상태</li><li><b>제3종: 50V 이하</b><br>통상의 인체 상태에서<br>접촉전압이 가해지면 위험한 상태</li><li><b>제4종: 제한 없음</b><br>접촉전압이 가해질 우려가 없거나<br>위험성이 낮은 상태</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>2.5 → 25 → 50 → 제한 없음</b> — 물속(1종) 2.5, 흠뻑 젖음(2종)은 그 10배 25, 보통 상태(3종)는 그 두 배 50</div></div></div></section>
 <section class="section" id="t10"><div class="section-head"><div class="duality"><span class="n">8</span>보폭전압·안전전압과 감전 응급조치 ➕</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="보폭전압·안전전압과 감전 응급조치 ➕"><div class="subnote std">📋 출제기준 2-1 감전재해 예방 및 조치 · 2-2 감전재해의 요인<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
 <p>⭐ <b>접촉전압과 보폭전압</b></p>
@@ -277,8 +285,10 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <p><b>분진 위험장소</b><br>20종(지속), 21종(정상 중 가능), 22종(이상 시)</p>
 <p>⭐ <b>방폭구조 기호</b></p>
 <ul class="chk"><li><b>d: 내압</b> 방폭구조<br>내부 폭발에 견디고 외부로<br>화염이 번지지 않게 함</li><li><b>p: 압력</b> 방폭구조<br>내부에 보호가스를 넣어 압력 유지</li><li><b>e: 안전증</b> 방폭구조<br>정상 중 불꽃·고온이 없게 안전도 증가</li><li><b>o: 유입</b> 방폭구조<br>불꽃 부분을 기름 속에 넣음</li><li><b>q: 충전</b> 방폭구조<br>모래 등 충전물로 채움</li><li><b>ia, ib: 본질안전</b> 방폭구조<br>전기에너지를 착화에너지 이하로 제한</li><li><b>n: 비점화</b> 방폭구조 (2종 장소용)</li><li><b>m: 몰드</b> 방폭구조 (수지로 밀봉)</li><li><b>s: 특수</b> 방폭구조</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>d 내압</b>(압력에 견디는 철통) · <b>p 압력</b>(pressure) · <b>e 안전증</b>(안전도 증가) · <b>o 유입</b>(oil) · <b>q 충전</b>(quartz, 모래) · <b>i 본질안전</b>(intrinsic) · <b>n 비점화</b>(non-sparking) · <b>m 몰드</b>(mould)</div>
 <p>⭐ <b>장소별 사용 가능 방폭구조</b></p>
 <ul class="chk"><li><b>0종:</b> 본질안전 <b>ia</b> (원칙)</li><li><b>1종:</b> 내압(d), 압력(p), 충전(q), 유입(o),<br>안전증(e), 본질안전(ia·ib), 몰드(m)</li><li><b>2종:</b> 1종용 모두 + 비점화(n)</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>0종 = ia만, 1종 = n 빼고 거의 다, 2종 = 전부</b> — 위험한 장소일수록 고를 수 있는 구조가 줄어듦</div>
 <p><b>방폭 표시 읽기</b><br>예) <b>Ex d IIB T4</b><br>방폭 / 내압 / 가스그룹 IIB / 온도등급 T4</p></div></div></section>
 <section class="section" id="t18"><div class="section-head"><div class="duality"><span class="n">14</span>온도등급과 가스그룹</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="온도등급과 가스그룹"><div class="subnote std">📋 출제기준 4-2 전기방폭 사고예방 및 대응 · 4-1 전기방폭설비</div>
@@ -286,7 +296,9 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <ul class="chk"><li>T1: <b>450℃</b> 이하</li><li>T2: 300℃ 이하</li><li>T3: 200℃ 이하</li><li>T4: <b>135℃</b> 이하</li><li>T5: 100℃ 이하</li><li>T6: <b>85℃</b> 이하</li></ul>
 <p>(T6가 가장 엄격 → 발화온도 낮은<br>가스에도 쓸 수 있음)</p>
 <p>⭐ <b>가스그룹 (최대안전틈새 기준)</b></p>
-<ul class="chk"><li><b>IIA:</b> 0.9mm 이상<br>예: 프로판, 부탄</li><li><b>IIB:</b> 0.5mm 초과 ~ 0.9mm 미만<br>예: 에틸렌</li><li><b>IIC:</b> <b>0.5mm 이하</b> ← 가장 위험<br>예: <b>수소, 아세틸렌, 이황화탄소</b></li><li>그룹 I은 광산용 (메탄)</li></ul>
+<ul class="chk"><li><b>IIA:</b> 0.9mm 이상<br>예: 프로판, 부탄</li><li><b>IIB:</b> 0.5mm 초과 ~ 0.9mm 미만<br>예: 에틸렌</li><li><b>IIC:</b> <b>0.5mm 이하</b> ← 가장 위험<br>예: <b>수소, 아세틸렌, 이황화탄소</b></li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>A &lt; B &lt; C 순으로 위험</b>, 틈새 경계는 <b>0.9 · 0.5mm</b>. IIC는 '<b>수·아·이</b>'(수소·아세틸렌·이황화탄소)</div>
+<ul class="chk"><li>그룹 I은 광산용 (메탄)</li></ul>
 <p><b>최대안전틈새 = 화염일주한계</b><br>내부에서 폭발이 일어나도<br>틈새로 화염이 외부에 번지지 않는<br>최대 틈새 간격</p>
 <ul class="chk"><li>측정: 내용적 <b>8L</b>,<br>틈새 깊이 <b>25mm</b> 표준용기</li></ul>
 <p><b>방폭 전기설비 선정 시 고려</b></p>
@@ -301,6 +313,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <ul class="chk"><li>단독접지, 공통접지, <b>통합접지</b></li></ul>
 <p>⭐ <b>계통접지 방식</b></p>
 <ul class="chk"><li><b>TN 계통</b><br>전원 한 점을 접지하고<br>기기 외함은 보호도체(PE)로<br>전원 접지점에 연결<ul class="sub2"><li><b>TN-S:</b> 중성선(N)과 PE를 분리</li><li><b>TN-C:</b> N과 PE를 하나로 (PEN)</li><li><b>TN-C-S:</b> 일부는 PEN, 일부는 분리</li></ul></li><li><b>TT 계통</b><br>전원 한 점 접지, 기기 외함은<br><b>별도의 독립된 접지극</b>에 접지</li><li><b>IT 계통</b><br>전원을 비접지(또는 고임피던스 접지),<br>기기 외함은 접지</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>T = Terra(땅) · N = Neutral(중성선) · I = Isolated(절연)</b> — 첫 글자는 전원 쪽, 둘째 글자는 기기 쪽. TT는 '땅·땅', TN은 '땅·중성선', IT는 '절연·땅'</div>
 <p>(첫 글자: 전원 측, T=대지 직접접지, I=절연<br>둘째 글자: 기기 측, T=개별 접지, N=중성점 연결)</p>
 <p><b>접지도체·접지극</b></p>
 <ul class="chk"><li>접지도체 최소 굵기<br>구리 <b>6mm²</b> 이상, 철 50mm² 이상<br>(피뢰시스템 접속 시 구리 16mm²)</li><li>접지극 매설 깊이<br>지표면 아래 <b>0.75m 이상</b></li></ul>
@@ -323,6 +336,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="card" data-title="피뢰설비와 절연 · 피뢰기"><h4>피뢰기</h4><ul class="chk"><li><b>구성:</b> 직렬갭 + 특성요소</li><li class="star"><b>피뢰기가 갖출 성능</b><br>충격방전개시전압이 <b>낮을 것</b><br>제한전압이 <b>낮을 것</b><br>상용주파 방전개시전압이 <b>높을 것</b><br>속류 차단 능력이 클 것<br>반복 동작이 가능할 것</li><li><b>설치 장소</b><br>발전소·변전소의 가공전선 인입구·인출구<br>가공전선로에 접속한 배전용 변압기의<br>고압·특고압 측<br>고압·특고압 가공전선로에서 공급받는<br>수용장소 인입구<br>가공전선로와 지중전선로 접속점</li></ul></div>
 <div class="card" data-title="피뢰설비와 절연 · 피뢰시스템 (KS C IEC 62305)"><h4>피뢰시스템 (KS C IEC 62305)</h4><ul class="chk"><li>대상: 지상 높이 <b>20m 이상</b> 건축물 등</li><li>보호레벨 I~IV<br>회전구체 반경: I 20m, II 30m,<br>III 45m, IV 60m</li><li><b>SPD(서지보호장치):</b> 낙뢰·개폐 서지로부터<br>전기설비 보호</li></ul></div>
 <div class="card" data-title="피뢰설비와 절연 · 절연물 허용 최고온도 ⭐"><h4>절연물 허용 최고온도 ⭐</h4><ul class="chk"><li><b>Y종:</b> 90℃</li><li><b>A종:</b> 105℃</li><li><b>E종:</b> 120℃</li><li><b>B종:</b> 130℃</li><li><b>F종:</b> 155℃</li><li><b>H종:</b> 180℃</li><li><b>C종:</b> 180℃ 초과</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>Y 90 · A 105 · E 120 · B 130 · F 155 · H 180 · C 180 초과</b> — '와이(Y) 아에(A E) 비(B) 에프(F) 에이치(H) 씨(C)' 순서에 90 → 105 → 120 → 130 → 155 → 180</div>
 <p>("Y A E B F H C" 순서로 외우기)</p></div>
 <div class="card" data-title="피뢰설비와 절연 · 저압 절연저항 (KEC, 시험 전 확인)"><h4>저압 절연저항 (KEC, 시험 전 확인)</h4><ul class="chk"><li>SELV·PELV: 시험전압 DC 250V,<br><b>0.5MΩ</b> 이상</li><li>FELV, 500V 이하: DC 500V,<br><b>1.0MΩ</b> 이상</li><li>500V 초과: DC 1,000V,<br><b>1.0MΩ</b> 이상</li><li>누설전류 허용: 최대공급전류의 <b>1/2,000</b></li></ul></div></div></section>
 <section class="section" id="t23"><div class="section-head"><div class="duality"><span class="n">18</span>전기설비 점검과 정전유도</div><div class="section-line"></div></div>

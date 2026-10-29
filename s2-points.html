@@ -16,14 +16,14 @@
   --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
   --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
-  --ok:#16865F;--ok-soft:#E3F5EC;--ng:#D63B25;--ng-soft:#FDE9E5;
+  --ok:#16865F;--ok-soft:#E3F5EC;--memo:#C25E00;--memo-soft:#FFF1E2;--ng:#D63B25;--ng-soft:#FDE9E5;
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
     --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
-    --ok:#5EC2A0;--ok-soft:#16302A;--ng:#FF7A63;--ng-soft:#3A1E1A;
+    --ok:#5EC2A0;--ok-soft:#16302A;--memo:#FFB066;--memo-soft:#33251A;--ng:#FF7A63;--ng-soft:#3A1E1A;
   }
 }
 *{box-sizing:border-box}
@@ -71,6 +71,9 @@ ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E
 ul.chk>li.cf{background:var(--cf-soft);margin:4px -10px;padding:8px 10px 8px 12px;border-radius:10px;border:0;border-left:3px solid var(--cf)}
 ul.chk>li.cf::before{display:none}
 .exp{margin:4px 0 12px;padding:9px 12px;background:var(--exp-soft);border-radius:10px;font-size:14.6px;line-height:1.65}
+.memo{margin:4px 0 12px;padding:9px 12px;background:var(--memo-soft);border-left:3px solid var(--memo);border-radius:10px;font-size:14px;line-height:1.65}
+.memo-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--memo)}
+.card .memo b{background:none;color:var(--memo);padding:0}
 .exp-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--exp)}
 ul.chk>li.cf .cf-tag{display:inline-block;margin-right:6px;font-size:12px;font-weight:700;color:var(--cf)}
 ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
@@ -85,6 +88,7 @@ body[data-page=points] .card h4{font-size:16.5px}
 body[data-page=points] .card code{font-size:14px}
 body[data-page=points] ul.sub2{font-size:14.5px}
 body[data-page=points] .exp{font-size:15.6px}
+body[data-page=points] .memo{font-size:15px}
 body[data-page=points] .subnote{font-size:13.5px}
 body[data-page=points] .subnote.std{font-size:13px}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
@@ -147,7 +151,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
   <span class="tab">2과목 · 기출포인트</span>
   <div class="eyebrow">산업안전기사 필기 · 2과목</div>
   <h1>인간공학 및 위험성 평가·관리</h1>
-  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호</li></ul>
+  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호, 🧠 연상 암기법</li></ul>
   <nav class="toc"><a class="ch" href="#c01">CH01 안전과 인간공학</a><a href="#t2"><span class="n">1</span>인간공학 개요</a><a href="#t3"><span class="n">2</span>인간-기계 체계 ★</a><a href="#t4"><span class="n">3</span>촉진물 설계와 감성공학 ➕</a><a href="#t5"><span class="n">4</span>정보이론 ★</a><a href="#t6"><span class="n">5</span>표시장치 ★</a><a href="#t7"><span class="n">6</span>청각과 소음 ★</a><a href="#t8"><span class="n">7</span>조종장치와 양립성 ★</a><a href="#t9"><span class="n">8</span>휴먼에러 ★</a><a href="#t10"><span class="n">9</span>신뢰도 계산 ★</a><a class="ch" href="#c02">CH02 위험성 파악·결정</a><a href="#t12"><span class="n">10</span>시스템 안전 기법 ★</a><a href="#t13"><span class="n">11</span>HAZOP 가이드워드 ★</a><a href="#t14"><span class="n">12</span>FTA (결함수 분석) ★</a><a href="#t15"><span class="n">13</span>위험성 평가·관리 ★</a><a class="ch" href="#c03">CH03 위험성 감소대책 수립·실행</a><a href="#t17"><span class="n">14</span>위험성 감소대책과 허용 위험수준 ➕</a><a class="ch" href="#c04">CH04 근골격계질환 예방관리</a><a href="#t19"><span class="n">15</span>근골격계 질환 ★</a><a href="#t20"><span class="n">16</span>작업관리와 개선 절차 ➕</a><a class="ch" href="#c05">CH05 유해요인 관리</a><a href="#t22"><span class="n">17</span>물리·화학·생물학적 유해요인 ➕</a><a class="ch" href="#c06">CH06 작업환경 관리</a><a href="#t24"><span class="n">18</span>인체측정과 작업공간 ★</a><a href="#t25"><span class="n">19</span>작업생리와 작업환경 ★</a><a href="#t26"><span class="n">20</span>작업측정과 표준시간 ➕</a><a href="#t27"><span class="n">21</span>진동·VDT·이상환경 ➕</a><a href="#t28"><span class="n">22</span>동작경제 원칙 ★</a><a class="ch" href="#std">출제기준 대조표</a></nav>
 </header><div class="chapter" id="c01"><span class="k">CHAPTER 01</span><span class="t">안전과 인간공학</span></div>
 <section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">1</span>인간공학 개요</div><div class="section-line"></div></div>
@@ -203,6 +207,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="cards"><div class="card" data-title="휴먼에러"><div class="subnote std">📋 출제기준 1-4 인간요소와 휴먼에러</div>
 <p>⭐ <b>스웨인(Swain)의 분류 (행위적 관점)</b></p>
 <ul class="chk"><li><b>생략 오류(omission)</b><br>필요한 작업을 빠뜨림</li><li><b>실행 오류(commission)</b><br>작업을 잘못 수행</li><li><b>순서 오류(sequential)</b><br>순서를 틀림</li><li><b>시간 오류(time)</b><br>너무 빠르거나 늦음</li><li><b>불필요한 행동(extraneous)</b><br>하지 않아도 될 일을 함</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span>'<b>빠뜨리고 · 잘못하고 · 순서 바꾸고 · 늦고 · 괜히 더 하고</b>' = 생략 · 실행 · 순서 · 시간 · 불필요</div>
 <p>⭐ <b>리즌·라스무센 분류 (원인적 관점)</b></p>
 <ul class="chk"><li><b>착오(mistake)</b><br>상황 해석·목표 설정이 잘못됨<br>(계획 자체 오류)</li><li><b>실수(slip)</b><br>의도는 맞는데 실행을 잘못함</li><li><b>건망(lapse)</b><br>기억 실패로 잊어버림</li><li><b>위반(violation)</b><br>알면서 규칙을 어김</li></ul>
 <p><b>라스무센의 행동 수준</b></p>
@@ -214,20 +219,25 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="cards"><div class="card" data-title="신뢰도 계산"><div class="subnote std">📋 출제기준 2-2 시스템 위험성 추정 및 결정</div>
 <p>계산 문제 단골입니다.</p>
 <ul class="chk"><li class="star"><b>직렬</b><br>R = R₁ × R₂ × … × Rₙ</li><li class="star"><b>병렬</b><br>R = 1 − (1−R₁)(1−R₂)…(1−Rₙ)</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>직렬은 곱하기(약해짐), 병렬은 1에서 '모두 고장'을 뺌(강해짐)</b> — 0.9 두 개면 직렬 0.81, 병렬 0.99</div>
 <p>예) 0.9 직렬 2개 → <b>0.81</b><br>예) 0.9 병렬 2개 → 1 − 0.01 = <b>0.99</b></p>
 <ul class="chk"><li><b>n중 k 구조</b><br>n개 중 k개 이상 작동하면 정상</li><li><b>고장률 λ</b><br>고장 건수 ÷ 총 가동시간</li><li class="star"><b>MTBF = 1/λ</b><br>(수리 가능, 평균 고장 간격)</li><li><b>MTTF:</b> 수리 불가, 고장까지 평균시간</li><li><b>MTTR:</b> 평균 수리시간</li><li><b>가용도</b><br>MTBF ÷ (MTBF + MTTR)</li><li><b>지수분포 신뢰도</b><br>R(t) = e^(−λt)</li><li><b>병렬 n개 MTTF</b><br>MTTF × (1 + 1/2 + … + 1/n)</li><li><b>직렬 n개 MTTF</b><br>MTTF ÷ n</li></ul>
 <p>⭐ <b>욕조곡선</b></p>
-<ul class="chk"><li><b>초기고장:</b> 고장률 감소<br>디버깅, 번인(burn-in)으로 줄임</li><li><b>우발고장:</b> 고장률 일정<br>예측 불가, 안전계수 고려</li><li><b>마모고장:</b> 고장률 증가<br>예방보전(PM)으로 대응</li></ul></div></div></section>
+<ul class="chk"><li><b>초기고장:</b> 고장률 감소<br>디버깅, 번인(burn-in)으로 줄임</li><li><b>우발고장:</b> 고장률 일정<br>예측 불가, 안전계수 고려</li><li><b>마모고장:</b> 고장률 증가<br>예방보전(PM)으로 대응</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>감·일·증</b> — 초기엔 줄고(감소), 중간엔 그대로(일정), 늙으면 늘어남(증가). 욕조 모양 그대로 ↘ ― ↗</div></div></div></section>
 <div class="chapter" id="c02"><span class="k">CHAPTER 02</span><span class="t">위험성 파악·결정</span></div>
 <section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">10</span>시스템 안전 기법</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="시스템 안전 기법"><div class="subnote std">📋 출제기준 2-2 시스템 위험성 추정 및 결정</div>
 <p>⭐ <b>시스템 수명주기 단계</b><br>구상 → 정의 → 개발 → 생산 → 운용 → 폐기</p>
-<ul class="chk"><li class="star"><b>PHA (예비위험분석)</b><br><b>구상 단계</b>, 최초로 실시<br>정성적<br>위험 범주: 파국적 → 중대<br>→ 한계적 → 무시가능</li><li><b>FHA (결함위험분석)</b><br>서브시스템 분석,<br>여러 업체가 나눠 개발할 때</li><li class="star"><b>FMEA (고장형태와 영향분석)</b><br>부품·요소의 고장 형태별 영향 검토<br>정성적, <b>귀납적</b><br>단점: 인적 원인·<br>2개 이상 동시 고장 분석 곤란</li><li><b>CA (위험도 분석)</b><br>고장의 위험도(치명도)를 정량 평가<br>FMECA = FMEA + CA</li><li class="star"><b>ETA (사건수 분석)</b><br>초기 사건에서 성공·실패로 갈라지며<br>결과를 추적, <b>귀납적, 정량적</b></li><li class="star"><b>FTA (결함수 분석)</b><br>정상(톱)사상에서 원인을 찾아 내려감<br><b>연역적, 정량적</b></li><li><b>HAZOP (위험과 운전분석)</b><br>화학공정 이탈을 가이드워드로 검토</li><li><b>MORT</b><br>관리·설계·생산·보전 전반의<br>안전 확보, FTA와 같은 논리 사용</li><li><b>THERP</b><br>인간 실수율 예측 (정량적)</li><li><b>OSHA(운용위험분석)</b><br>운용·보전 단계 위험 분석</li></ul>
+<ul class="chk"><li class="star"><b>PHA (예비위험분석)</b><br><b>구상 단계</b>, 최초로 실시<br>정성적<br>위험 범주: 파국적 → 중대<br>→ 한계적 → 무시가능</li><li><b>FHA (결함위험분석)</b><br>서브시스템 분석,<br>여러 업체가 나눠 개발할 때</li><li class="star"><b>FMEA (고장형태와 영향분석)</b><br>부품·요소의 고장 형태별 영향 검토<br>정성적, <b>귀납적</b><br>단점: 인적 원인·<br>2개 이상 동시 고장 분석 곤란</li><li><b>CA (위험도 분석)</b><br>고장의 위험도(치명도)를 정량 평가<br>FMECA = FMEA + CA</li><li class="star"><b>ETA (사건수 분석)</b><br>초기 사건에서 성공·실패로 갈라지며<br>결과를 추적, <b>귀납적, 정량적</b></li><li class="star"><b>FTA (결함수 분석)</b><br>정상(톱)사상에서 원인을 찾아 내려감<br><b>연역적, 정량적</b></li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>E</b>TA = <b>E</b>vent: 처음 사건에서 결과로 내려감(<b>귀납</b>), <b>F</b>TA = <b>F</b>ault: 꼭대기 사고에서 원인을 찾아 내려감(<b>연역</b>). 둘 다 정량적. <b>P</b>HA는 <b>P</b>reliminary = 맨 처음(구상 단계)</div>
+<ul class="chk"><li><b>HAZOP (위험과 운전분석)</b><br>화학공정 이탈을 가이드워드로 검토</li><li><b>MORT</b><br>관리·설계·생산·보전 전반의<br>안전 확보, FTA와 같은 논리 사용</li><li><b>THERP</b><br>인간 실수율 예측 (정량적)</li><li><b>OSHA(운용위험분석)</b><br>운용·보전 단계 위험 분석</li></ul>
 <p><b>위험 범주 (MIL-STD-882)</b></p>
 <ul class="chk"><li>Ⅰ 파국적</li><li>Ⅱ 위기적(중대)</li><li>Ⅲ 한계적</li><li>Ⅳ 무시가능</li></ul></div></div></section>
 <section class="section" id="t13"><div class="section-head"><div class="duality"><span class="n">11</span>HAZOP 가이드워드</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="HAZOP 가이드워드"><div class="subnote std">📋 출제기준 2-2 시스템 위험성 추정 및 결정</div>
 <ul class="chk"><li><b>No / Not:</b> 설계 의도의 완전한 부정</li><li><b>More / Less:</b> 양의 증가·감소</li><li><b>As well as:</b> 성질상 증가<br>(다른 것이 추가됨)</li><li><b>Part of:</b> 성질상 감소<br>(일부만 달성)</li><li><b>Reverse:</b> 반대 방향</li><li><b>Other than:</b> 완전한 대체</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span>'<b>없음 → 많음/적음 → 더함/일부 → 반대 → 딴것</b>' 순서로. As well as는 성질 <b>증가</b>, Part of는 성질 <b>감소</b></div>
 <p><b>HAZOP 전제조건</b></p>
 <ul class="chk"><li>두 개 이상 기기 고장이나<br>사고는 동시에 일어나지 않음</li><li>조작자는 위험 상황에서<br>필요한 조치를 취함</li><li>안전장치는 필요할 때 작동</li></ul></div></div></section>
 <section class="section" id="t14"><div class="section-head"><div class="duality"><span class="n">12</span>FTA (결함수 분석)</div><div class="section-line"></div></div>
@@ -246,11 +256,13 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="subnote">법령·고시 수치는 시험 전 최신 기준으로 확인하세요.</div>
 <p><b>위험성 = 빈도(가능성) × 강도(중대성)</b></p>
 <ul class="chk"><li>1과목 기출포인트 21번 주제의 위험성평가 절차와 연결</li><li><b>위험성 결정:</b> 허용 가능 여부 판단</li><li><b>감소대책 우선순위</b><br>1. 위험 제거·대체 (본질적 대책)<br>2. 공학적 대책 (방호장치·환기)<br>3. 관리적 대책 (교육·작업절차)<br>4. 개인보호구</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>제·공·관·보</b> — 없애고(제거·대체) → 막고(공학적) → 관리하고(관리적) → 마지막에 입는다(보호구)</div>
 <p>⭐ <b>정성적 위험성평가 기법</b></p>
 <ul class="chk"><li>체크리스트</li><li>사고예상질문(What-if)</li><li>HAZOP</li><li>FMEA</li><li>작업안전분석(JSA)</li><li>4M 위험성평가<br>Man, Machine, Media, Management</li></ul>
 <p><b>정량적 기법</b><br>FTA, ETA, CA, 원인결과분석(CCA),<br>작업자 실수 분석(HEA, THERP)</p>
 <p><b>4M 분류</b></p>
 <ul class="chk"><li><b>Man(인간):</b> 심리·생리적 요인</li><li><b>Machine(기계):</b> 설비 결함,<br>방호장치 불량</li><li><b>Media(작업매체):</b> 작업 방법·<br>정보·환경</li><li><b>Management(관리):</b> 관리조직,<br>규정, 교육</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span>M 4개 = <b>사람 · 기계 · 매체 · 관리</b>. Media(작업매체)는 '사람과 기계를 잇는 작업방법·정보·환경'</div>
 <p><b>공정안전보고서(PSM) 연계</b><br>화학설비 위험성평가 기법은<br>5과목에서 더 자주 나옵니다.</p>
 <p><b>안전성 평가 6단계</b></p>
 <ul class="chk"><li>1. 관계 자료 정비·검토</li><li>2. 정성적 평가</li><li>3. 정량적 평가</li><li>4. 안전대책</li><li>5. 재해 정보로 재평가</li><li>6. FTA로 재평가</li></ul></div></div></section>
@@ -286,6 +298,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <ul class="chk"><li>1. 연구대상 선정</li><li>2. 현재 작업방법 분석·기록</li><li>3. 분석 자료 검토</li><li>4. 개선안 수립</li><li>5. 개선안 도입</li></ul>
 <p>⭐ <b>작업개선 원리 ECRS</b></p>
 <ul class="chk"><li><b>E (Eliminate):</b> 불필요한 작업 제거</li><li><b>C (Combine):</b> 작업 결합</li><li><b>R (Rearrange):</b> 순서 재배열</li><li><b>S (Simplify):</b> 단순화</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>없애고 · 합치고 · 바꾸고 · 단순하게</b> — 이 순서로 검토 (제거 → 결합 → 재배열 → 단순화)</div>
 <p><b>SEARCH 원칙</b><br>Simplify(단순화), Eliminate(제거),<br>Alter sequence(순서 변경),<br>Requirements(요구조건),<br>Combine(결합), How often(빈도)</p>
 <p>⭐ <b>공정도 기호 (ASME)</b></p>
 <ul class="chk"><li>○ <b>작업(가공)</b></li><li>⇨ <b>운반</b></li><li>□ <b>검사</b></li><li>D <b>지연(정체)</b></li><li>▽ <b>저장</b></li></ul></div></div></section>
@@ -302,6 +315,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="cards"><div class="card" data-title="인체측정과 작업공간"><div class="subnote std">📋 출제기준 6-1 인체계측 및 체계제어 · 6-3 작업공간 및 작업자세</div>
 <p>⭐ <b>인체측정치 설계 원칙</b></p>
 <ul class="chk"><li><b>조절식 설계 (1순위)</b><br>5~95% 범위 조절<br>예: 의자 높이, 자동차 좌석</li><li><b>극단치 설계</b><br>최대치(95%): 출입문 높이,<br>비상구, 통로 폭<br>최소치(5%): 조종장치 거리,<br>선반 높이, 버튼 누르는 힘</li><li><b>평균치 설계 (최후)</b><br>예: 은행 창구, 공공장소 의자</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>조·극·평</b> — 조절식이 안 되면 극단치, 그것도 안 되면 평균치. 문 높이는 큰 사람(95%), 손 닿는 거리는 작은 사람(5%) 기준</div>
 <p><b>측정 방법</b></p>
 <ul class="chk"><li><b>구조적(정적):</b> 정지 자세</li><li><b>기능적(동적):</b> 움직이는 자세</li></ul>
 <p><b>작업대 높이</b></p>
@@ -315,7 +329,9 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <ul class="chk"><li>0~2: 경작업</li><li>2~4: 중(中)작업</li><li>4~7: 중(重)작업</li><li>7 이상: 초중작업</li></ul>
 <ul class="chk"><li><b>산소부채</b><br>작업 후에도 산소 소비가<br>높게 유지되는 현상</li><li>1L 산소 소비 ≈ <b>5kcal</b></li><li>휴식시간 계산은 머렐 공식<br>(1과목 기출포인트 14번 주제 참고)</li></ul>
 <p>⭐ <b>조도와 반사율</b></p>
-<ul class="chk"><li><b>조도(lux)</b><br>광도 ÷ (거리)²</li><li><b>반사율(%)</b><br>휘도 ÷ 조도 × 100</li><li class="star"><b>권장 반사율</b><br>천장 <b>80~90%</b><br>벽 <b>40~60%</b><br>가구 <b>25~45%</b><br>바닥 <b>20~40%</b><br>(위로 갈수록 높게)</li><li><b>대비</b><br>(배경 − 표적) ÷ 배경 × 100</li></ul>
+<ul class="chk"><li><b>조도(lux)</b><br>광도 ÷ (거리)²</li><li><b>반사율(%)</b><br>휘도 ÷ 조도 × 100</li><li class="star"><b>권장 반사율</b><br>천장 <b>80~90%</b><br>벽 <b>40~60%</b><br>가구 <b>25~45%</b><br>바닥 <b>20~40%</b><br>(위로 갈수록 높게)</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>천 80~90 · 벽 40~60 · 가구 25~45 · 바닥 20~40</b> — 하늘은 밝고 땅은 어둡다. 위에서 아래로 내려올수록 낮아짐</div>
+<ul class="chk"><li><b>대비</b><br>(배경 − 표적) ÷ 배경 × 100</li></ul>
 <p>⭐ <b>작업장 조도 기준</b> (시험 전 확인)</p>
 <ul class="chk"><li>초정밀 작업: <b>750lux 이상</b></li><li>정밀 작업: <b>300lux 이상</b></li><li>보통 작업: <b>150lux 이상</b></li><li>그 밖의 작업: <b>75lux 이상</b></li></ul>
 <p>⭐ <b>온열 지수</b></p>

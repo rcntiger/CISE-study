@@ -16,14 +16,14 @@
   --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
   --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
-  --ok:#16865F;--ok-soft:#E3F5EC;--ng:#D63B25;--ng-soft:#FDE9E5;
+  --ok:#16865F;--ok-soft:#E3F5EC;--memo:#C25E00;--memo-soft:#FFF1E2;--ng:#D63B25;--ng-soft:#FDE9E5;
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
     --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
-    --ok:#5EC2A0;--ok-soft:#16302A;--ng:#FF7A63;--ng-soft:#3A1E1A;
+    --ok:#5EC2A0;--ok-soft:#16302A;--memo:#FFB066;--memo-soft:#33251A;--ng:#FF7A63;--ng-soft:#3A1E1A;
   }
 }
 *{box-sizing:border-box}
@@ -71,6 +71,9 @@ ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E
 ul.chk>li.cf{background:var(--cf-soft);margin:4px -10px;padding:8px 10px 8px 12px;border-radius:10px;border:0;border-left:3px solid var(--cf)}
 ul.chk>li.cf::before{display:none}
 .exp{margin:4px 0 12px;padding:9px 12px;background:var(--exp-soft);border-radius:10px;font-size:14.6px;line-height:1.65}
+.memo{margin:4px 0 12px;padding:9px 12px;background:var(--memo-soft);border-left:3px solid var(--memo);border-radius:10px;font-size:14px;line-height:1.65}
+.memo-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--memo)}
+.card .memo b{background:none;color:var(--memo);padding:0}
 .exp-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--exp)}
 ul.chk>li.cf .cf-tag{display:inline-block;margin-right:6px;font-size:12px;font-weight:700;color:var(--cf)}
 ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
@@ -85,6 +88,7 @@ body[data-page=points] .card h4{font-size:16.5px}
 body[data-page=points] .card code{font-size:14px}
 body[data-page=points] ul.sub2{font-size:14.5px}
 body[data-page=points] .exp{font-size:15.6px}
+body[data-page=points] .memo{font-size:15px}
 body[data-page=points] .subnote{font-size:13.5px}
 body[data-page=points] .subnote.std{font-size:13px}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
@@ -147,14 +151,19 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
   <span class="tab">1과목 · 기출포인트</span>
   <div class="eyebrow">산업안전기사 필기 · 1과목</div>
   <h1>산업재해 예방 및 안전보건교육</h1>
-  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호</li></ul>
+  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호, 🧠 연상 암기법</li></ul>
   <nav class="toc"><a class="ch" href="#c01">CH01 산업재해예방 계획 수립</a><a href="#t2"><span class="n">1</span>재해 이론</a><a href="#t3"><span class="n">2</span>재해 통계 ★</a><a href="#t4"><span class="n">3</span>재해 조사·분석</a><a href="#t5"><span class="n">4</span>안전관리조직과 무재해운동</a><a href="#t6"><span class="n">5</span>안전보건관리체제 ★</a><a href="#t7"><span class="n">6</span>안전보건경영시스템과 KOSHA GUIDE ➕</a><a class="ch" href="#c02">CH02 안전보호구 관리</a><a href="#t9"><span class="n">7</span>보호구 ★</a><a href="#t10"><span class="n">8</span>안전보건표지 ★</a><a class="ch" href="#c03">CH03 산업안전심리</a><a href="#t12"><span class="n">9</span>산업심리</a><a href="#t13"><span class="n">10</span>인간의 특성과 적응기제 ★</a><a href="#t14"><span class="n">11</span>심리검사와 직업적성 ➕</a><a class="ch" href="#c04">CH04 인간의 행동과학</a><a href="#t16"><span class="n">12</span>리더십과 집단 ★</a><a href="#t17"><span class="n">13</span>인간관계·집단행동과 재해 빈발성 ➕</a><a href="#t18"><span class="n">14</span>피로와 안전점검</a><a class="ch" href="#c05">CH05 안전보건교육의 내용 및 방법</a><a href="#t20"><span class="n">15</span>안전보건교육 ★</a><a href="#t21"><span class="n">16</span>교육 방법과 평가 ★</a><a href="#t22"><span class="n">17</span>교육실시 방법과 TWI ➕</a><a href="#t23"><span class="n">18</span>교육계획과 교육내용 ➕</a><a class="ch" href="#c06">CH06 산업안전관계법규</a><a href="#t25"><span class="n">19</span>산업재해 보고와 중대재해 ★</a><a href="#t26"><span class="n">20</span>안전인증·자율안전확인·안전검사 ★</a><a href="#t27"><span class="n">21</span>법령 추가 ★</a><a class="ch" href="#std">출제기준 대조표</a></nav>
 </header><div class="chapter" id="c01"><span class="k">CHAPTER 01</span><span class="t">산업재해예방 계획 수립</span></div>
 <section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">1</span>재해 이론</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="재해 이론"><div class="subnote std">📋 출제기준 1-1 안전관리</div></div>
 <div class="card" data-title="재해 이론 · 하인리히"><h4>하인리히</h4><ul class="chk"><li><b>도미노 5단계</b><br>사회적 환경·유전<br>→ 개인적 결함<br>→ <b>불안전한 행동·상태</b><br>→ 사고<br>→ 재해</li><li><b>핵심:</b> 3단계(직접원인) 제거</li><li class="star"><b>재해구성비율</b><br>중상 1 : 경상 29 : 무상해 300<br>(총 330)</li></ul></div>
-<div class="card" data-title="재해 이론 · 버드"><h4>버드</h4><ul class="chk"><li><b>도미노 5단계</b><br>통제(관리) 부족<br>→ 기본원인<br>→ 직접원인<br>→ 사고<br>→ 상해</li><li><b>핵심:</b> 1단계(관리) 강조</li><li class="star"><b>재해구성비율</b><br>중상 1 : 경상 10 :<br>물적손실 30 : 아차사고 600</li></ul></div>
-<div class="card" data-title="재해 이론 · 그 밖에"><h4>그 밖에</h4><ul class="chk"><li><b>하인리히 재해 원인 비율</b><br>불안전한 행동 <b>88%</b><br>불안전한 상태 <b>10%</b><br>불가항력 <b>2%</b></li><li class="star"><b>하인리히 사고예방대책 5단계</b><br>1. 안전조직<br>2. 사실의 발견<br>3. 분석·평가<br>4. 시정방법 선정<br>5. 시정책 적용 (<b>3E</b>: 기술·교육·관리)</li><li class="star"><b>재해예방 4원칙</b><br>손실우연, 원인계기(원인연계),<br>예방가능, 대책선정</li><li><b>재해 발생 형태</b><br>단순자극형(집중형), 연쇄형, 복합형</li></ul></div></div></section>
+<div class="card" data-title="재해 이론 · 버드"><h4>버드</h4><ul class="chk"><li><b>도미노 5단계</b><br>통제(관리) 부족<br>→ 기본원인<br>→ 직접원인<br>→ 사고<br>→ 상해</li><li><b>핵심:</b> 1단계(관리) 강조</li><li class="star"><b>재해구성비율</b><br>중상 1 : 경상 10 :<br>물적손실 30 : 아차사고 600</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span>하인리히는 3칸 <b>1 : 29 : 300</b>, 버드는 4칸 <b>1 : 10 : 30 : 600</b>. 버드는 '일·십·삼십·육백'으로 소리 내어 외우기. 하인리히는 <b>사람</b>(3단계 불안전 행동·상태), 버드는 <b>관리</b>(1단계 통제 부족)를 강조</div></div>
+<div class="card" data-title="재해 이론 · 그 밖에"><h4>그 밖에</h4><ul class="chk"><li><b>하인리히 재해 원인 비율</b><br>불안전한 행동 <b>88%</b><br>불안전한 상태 <b>10%</b><br>불가항력 <b>2%</b></li><li class="star"><b>하인리히 사고예방대책 5단계</b><br>1. 안전조직<br>2. 사실의 발견<br>3. 분석·평가<br>4. 시정방법 선정<br>5. 시정책 적용 (<b>3E</b>: 기술·교육·관리)</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>조·사·분·시·적</b> — '조사해서 분석하고, 시정을 적용한다' (조직 → 사실 발견 → 분석·평가 → 시정방법 선정 → 시정책 적용)</div>
+<ul class="chk"><li class="star"><b>재해예방 4원칙</b><br>손실우연, 원인계기(원인연계),<br>예방가능, 대책선정</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>손·원·예·대</b> — '손해는 우연, 원인은 꼭 있다, 예방할 수 있다, 대책을 고른다' (손실우연·원인계기·예방가능·대책선정)</div>
+<ul class="chk"><li><b>재해 발생 형태</b><br>단순자극형(집중형), 연쇄형, 복합형</li></ul></div></div></section>
 <section class="section" id="t3"><div class="section-head"><div class="duality"><span class="n">2</span>재해 통계</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="재해 통계"><div class="subnote std">📋 출제기준 (3과목) 2-2 산재분류 및 통계 분석<br>🔸 1과목 출제기준에는 없고 3과목 '기계분야 산업재해 조사 및 관리'에 있는 내용입니다. 1과목에서도 자주 나와 그대로 둡니다.</div>
 <p>계산 문제 단골입니다.</p>
@@ -172,7 +181,11 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <section class="section" id="t5"><div class="section-head"><div class="duality"><span class="n">4</span>안전관리조직과 무재해운동</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="안전관리조직과 무재해운동"><div class="subnote std">📋 출제기준 1-2 안전보건관리 체제 및 운용 · 1-1 안전관리</div></div>
 <div class="card" data-title="안전관리조직과 무재해운동 · 안전관리조직"><h4>안전관리조직</h4><ul class="chk"><li><b>라인형(직계식)</b><br>규모: 100명 미만<br>지시 전달이 빠름<br>안전 전문지식 부족</li><li><b>스태프형(참모식)</b><br>규모: 100~1,000명<br>안전 전문가가 계획·조언<br>생산라인과 마찰 가능</li><li><b>라인-스태프형</b><br>규모: 1,000명 이상<br>두 방식의 장점 결합</li></ul></div>
-<div class="card" data-title="안전관리조직과 무재해운동 · 무재해운동"><h4>무재해운동</h4><ul class="chk"><li class="star"><b>3원칙</b><br><b>무</b>의 원칙<br><b>선취(안전제일)</b>의 원칙<br><b>참가</b>의 원칙</li><li><b>3요소(3기둥)</b><br>최고경영자의 경영자세<br>관리감독자의 안전활동(라인화)<br>직장 소집단 자주활동</li><li class="star"><b>위험예지훈련 4라운드</b><br>1. 현상파악<br>2. 본질추구<br>3. 대책수립<br>4. 목표설정</li><li><b>TBM(Tool Box Meeting)</b><br>작업 전 현장에서 짧게 하는<br>위험예지 미팅</li></ul></div></div></section>
+<div class="card" data-title="안전관리조직과 무재해운동 · 무재해운동"><h4>무재해운동</h4><ul class="chk"><li class="star"><b>3원칙</b><br><b>무</b>의 원칙<br><b>선취(안전제일)</b>의 원칙<br><b>참가</b>의 원칙</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>무·선·참</b> — '무선 참가' (무의 원칙·선취의 원칙·참가의 원칙)</div>
+<ul class="chk"><li><b>3요소(3기둥)</b><br>최고경영자의 경영자세<br>관리감독자의 안전활동(라인화)<br>직장 소집단 자주활동</li><li class="star"><b>위험예지훈련 4라운드</b><br>1. 현상파악<br>2. 본질추구<br>3. 대책수립<br>4. 목표설정</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>현·본·대·목</b> — '현장 본 대로 목표 세우기' (현상파악 → 본질추구 → 대책수립 → 목표설정). <b>3라운드가 대책수립</b></div>
+<ul class="chk"><li><b>TBM(Tool Box Meeting)</b><br>작업 전 현장에서 짧게 하는<br>위험예지 미팅</li></ul></div></div></section>
 <section class="section" id="t6"><div class="section-head"><div class="duality"><span class="n">5</span>안전보건관리체제</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="안전보건관리체제"><div class="subnote std">📋 출제기준 1-2 안전보건관리 체제 및 운용 · 6-1 산업안전보건법령</div>
 <div class="subnote">2026년 기준으로 알고 있는 내용입니다.<br>시험 전 최신 법령으로 확인하세요.</div>
@@ -206,11 +219,15 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="chapter" id="c03"><span class="k">CHAPTER 03</span><span class="t">산업안전심리</span></div>
 <section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">9</span>산업심리</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="산업심리"><div class="subnote std">📋 출제기준 3-1 산업심리와 심리검사 · 4-2 재해 빈발성 및 행동과학 · 4-4 생체리듬과 피로</div>
-<ul class="chk"><li class="star"><b>매슬로우 5단계</b> ("생안사존자")<br>생리 → 안전 → 사회적<br>→ 존경 → 자아실현</li><li><b>알더퍼 ERG</b><br>존재(E) – 관계(R) – 성장(G)</li><li><b>허즈버그</b><br>위생요인: 임금·작업조건 (불만 제거)<br>동기요인: 성취·인정 (만족 증가)</li><li><b>맥그리거</b><br>X이론: 게으름, 통제 필요<br>Y이론: 자율, 책임감</li><li class="star"><b>레윈: B = f(P·E)</b><br>P는 개체(사람)<br>E는 환경(인간관계 포함)</li><li><b>주의의 특성</b><br>선택성, 변동성, 방향성</li><li><b>생체리듬</b><br>육체 23일 · 감성 28일 · 지성 33일</li></ul></div></div></section>
+<ul class="chk"><li class="star"><b>매슬로우 5단계</b> ("생안사존자")<br>생리 → 안전 → 사회적<br>→ 존경 → 자아실현</li><li><b>알더퍼 ERG</b><br>존재(E) – 관계(R) – 성장(G)</li><li><b>허즈버그</b><br>위생요인: 임금·작업조건 (불만 제거)<br>동기요인: 성취·인정 (만족 증가)</li><li><b>맥그리거</b><br>X이론: 게으름, 통제 필요<br>Y이론: 자율, 책임감</li><li class="star"><b>레윈: B = f(P·E)</b><br>P는 개체(사람)<br>E는 환경(인간관계 포함)</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span>영어 첫 글자 그대로: <b>B</b>ehavior(행동) = f(<b>P</b>erson 사람 · <b>E</b>nvironment 환경)</div>
+<ul class="chk"><li><b>주의의 특성</b><br>선택성, 변동성, 방향성</li><li><b>생체리듬</b><br>육체 23일 · 감성 28일 · 지성 33일</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>육 23 · 감 28 · 지 33</b> — 육체 → 감성 → 지성 순서로 <b>5일씩</b> 늘어남</div></div></div></section>
 <section class="section" id="t13"><div class="section-head"><div class="duality"><span class="n">10</span>인간의 특성과 적응기제</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="인간의 특성과 적응기제"><div class="subnote std">📋 출제기준 3-3 인간의 특성과 안전과의 관계 · 3-1 산업심리와 심리검사 · 4-2 재해 빈발성 및 행동과학</div>
 <p>⭐ <b>의식수준 5단계 (하시모토)</b></p>
 <ul class="chk"><li><b>Phase 0:</b> 무의식·실신<br>신뢰도 0</li><li><b>Phase I:</b> 의식 둔화 (피로·단조로움)<br>신뢰도 0.9 이하</li><li><b>Phase II:</b> 정상·이완 (휴식, 정상작업)<br>신뢰도 0.99~0.99999</li><li><b>Phase III:</b> 정상·명쾌 (적극 활동)<br>신뢰도 0.999999 이상 ← <b>가장 좋음</b></li><li><b>Phase IV:</b> 과긴장 (긴급·일점집중)<br>신뢰도 0.9 이하</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>0 실신 · I 둔화 · II 이완 · III 명쾌 · IV 과긴장</b> — 숫자가 클수록 정신이 바짝 듦. 가장 좋은 건 <b>III(명쾌)</b>, 너무 긴장한 IV는 다시 나빠짐</div>
 <p><b>부주의 현상</b><br>의식의 단절, 의식의 우회,<br>의식수준 저하, 의식의 혼란, 의식의 과잉</p>
 <p><b>부주의 원인</b></p>
 <ul class="chk"><li><b>외적:</b> 작업·환경조건 불량,<br>작업순서 부적당</li><li><b>내적:</b> 소질적 문제, 의식의 우회,<br>경험·미경험</li></ul>
@@ -265,12 +282,19 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <ul class="chk"><li><b>생리학적:</b> 근전도(EMG), 뇌전도(EEG),<br>심전도, 플리커(점멸융합주파수)</li><li><b>심리학적:</b> 연속반응시간, 정신작업,<br>집중력·동작 분석</li><li><b>생화학적:</b> 혈액·소변 검사</li></ul>
 <p><b>안전점검 종류</b></p>
 <ul class="chk"><li><b>일상(수시)점검:</b> 작업 전·중·후 매일</li><li><b>정기점검:</b> 일정 기간마다</li><li><b>특별점검:</b> 신설·변경·고장·수리 후,<br>천재지변 후</li><li><b>임시점검:</b> 이상 발견 시 임시로</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>일·정·특·임</b> — 매일(일상) · 정해진 날(정기) · 특별한 일 뒤(특별) · 이상할 때(임시)</div>
 <p><b>체크리스트 작성 시 유의점</b></p>
 <ul class="chk"><li>사업장에 맞는 독자적 내용으로</li><li>위험성 높은 것, 긴급한 것부터</li><li>정기적으로 검토·개정</li><li>누구나 알기 쉬운 표현으로</li></ul></div></div></section>
 <div class="chapter" id="c05"><span class="k">CHAPTER 05</span><span class="t">안전보건교육의 내용 및 방법</span></div>
 <section class="section" id="t20"><div class="section-head"><div class="duality"><span class="n">15</span>안전보건교육</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="안전보건교육"><div class="subnote std">📋 출제기준 5-1 교육의 필요성과 목적 · 5-2 교육방법 · 5-5 교육내용</div>
-<ul class="chk"><li><b>교육 3단계</b><br>지식 → 기능 → 태도</li><li><b>교육 진행 4단계</b><br>도입 → 제시 → 적용 → 확인</li><li><b>하버드학파 5단계 교수법</b><br>준비 → 교시 → 연합<br>→ 총괄 → 응용</li><li><b>OJT</b><br>현장 1:1, 개별 지도, 즉시 적용</li><li><b>Off-JT</b><br>집합교육, 다수 인원 체계적 교육</li><li><b>학습이론</b><br>파블로프: 조건반사<br>손다이크: 시행착오<br>스키너: 조작적 조건화<br>쾰러: 통찰</li></ul>
+<ul class="chk"><li><b>교육 3단계</b><br>지식 → 기능 → 태도</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>지·기·태</b> — 알고(지식) → 할 줄 알고(기능) → 몸에 밴다(태도)</div>
+<ul class="chk"><li><b>교육 진행 4단계</b><br>도입 → 제시 → 적용 → 확인</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>도·제·적·확</b> — '도제(徒弟)는 적확하게 배운다' (도입 → 제시 → 적용 → 확인)</div>
+<ul class="chk"><li><b>하버드학파 5단계 교수법</b><br>준비 → 교시 → 연합<br>→ 총괄 → 응용</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>준·교·연·총·응</b> — 준비하고, 가르치고(교시), 이어 붙이고(연합), 정리하고(총괄), 써먹는다(응용)</div>
+<ul class="chk"><li><b>OJT</b><br>현장 1:1, 개별 지도, 즉시 적용</li><li><b>Off-JT</b><br>집합교육, 다수 인원 체계적 교육</li><li><b>학습이론</b><br>파블로프: 조건반사<br>손다이크: 시행착오<br>스키너: 조작적 조건화<br>쾰러: 통찰</li></ul>
 <p><b>근로자 교육시간</b> (개정 확인 필요)</p>
 <ul class="chk"><li><b>정기교육</b><br>사무직: 매반기 6시간 이상<br>그 외: 매반기 12시간 이상</li><li><b>채용 시</b><br>8시간 이상<br>(일용·1주 이하 기간제 1시간 이상)</li><li><b>작업내용 변경 시</b><br>2시간 이상<br>(일용·1주 이하 기간제 1시간 이상)</li><li><b>특별교육</b><br>16시간 이상<br>(일용·1주 이하 기간제 2시간 이상)</li></ul></div></div></section>
 <section class="section" id="t21"><div class="section-head"><div class="duality"><span class="n">16</span>교육 방법과 평가</div><div class="section-line"></div></div>
@@ -280,7 +304,9 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <p><b>교육 지도 8원칙</b></p>
 <ul class="chk"><li>피교육자 중심 (상대 입장에서)</li><li>동기부여</li><li>쉬운 것에서 어려운 것으로</li><li>반복</li><li>한 번에 하나씩</li><li>인상의 강화</li><li>오감 활용</li><li>기능적 이해</li></ul>
 <p><b>교육 평가</b></p>
-<ul class="chk"><li><b>커크패트릭 4단계</b><br>반응 → 학습 → 행동 → 결과</li><li><b>평가 기준 4요소</b><br>타당성, 신뢰성, 객관성, 실용성</li></ul></div></div></section>
+<ul class="chk"><li><b>커크패트릭 4단계</b><br>반응 → 학습 → 행동 → 결과</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>반·학·행·결</b> — '반에서 학습해 행동하면 결과가 나온다' (반응 → 학습 → 행동 → 결과)</div>
+<ul class="chk"><li><b>평가 기준 4요소</b><br>타당성, 신뢰성, 객관성, 실용성</li></ul></div></div></section>
 <section class="section" id="t22"><div class="section-head"><div class="duality"><span class="n">17</span>교육실시 방법과 TWI ➕</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="교육실시 방법과 TWI ➕"><div class="subnote std">📋 출제기준 5-2 교육방법 · 5-3 교육실시 방법<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
 <p>⭐ <b>교육실시 방법별 특징</b></p>
@@ -289,6 +315,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <ul class="chk"><li>강의식: 도입 5분 · 제시 40분 ·<br>적용 10분 · 확인 5분</li><li>토의식: 도입 5분 · 제시 10분 ·<br>적용 40분 · 확인 5분</li></ul>
 <p>⭐ <b>TWI (감독자 훈련)</b></p>
 <ul class="chk"><li><b>JIT:</b> 작업지도 기법</li><li><b>JMT:</b> 작업방법 기법</li><li><b>JRT:</b> 인간관계 기법</li><li><b>JST:</b> 작업안전 기법</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span>가운데 글자 = 영어 첫 글자: <b>I</b>nstruction 지도 · <b>M</b>ethod 방법 · <b>R</b>elations 관계 · <b>S</b>afety 안전</div>
 <p><b>그 밖의 관리자 교육</b></p>
 <ul class="chk"><li><b>MTP:</b> 중간 관리자 대상<br>(관리 기법, 회의 진행 등)</li><li><b>ATT:</b> 대상 계층이 한정되지 않음,<br>직급 상하 없이 토의식 진행</li><li><b>CCS:</b> 정책 수립, 조직, 통제·운영<br>(주로 최고 경영층)</li></ul>
 <p><b>학습목적의 3요소</b><br>목표, 주제, 학습 정도</p>
@@ -326,7 +353,8 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="card" data-title="안전인증·자율안전확인·안전검사 · 자율안전확인 대상 보호구"><h4>자율안전확인 대상 보호구</h4><p>안전인증 대상이 <b>아닌</b><br>안전모, 보안경, 보안면</p>
 <p>("안전인증 대상 보호구가 아닌 것은?"<br>형태로 출제)</p></div>
 <div class="card" data-title="안전인증·자율안전확인·안전검사 · 안전검사 대상"><h4>안전검사 대상</h4><ul class="chk"><li>프레스</li><li>전단기</li><li>크레인 (정격하중 2톤 미만 제외)</li><li>리프트</li><li>압력용기</li><li>곤돌라</li><li>국소배기장치 (이동식 제외)</li><li>원심기 (산업용)</li><li>롤러기 (밀폐형 제외)</li><li>사출성형기</li><li>고소작업대</li><li>컨베이어</li><li>산업용 로봇</li><li>혼합기</li><li>파쇄기·분쇄기</li></ul></div>
-<div class="card" data-title="안전인증·자율안전확인·안전검사 · 안전검사 주기 ⭐"><h4>안전검사 주기 ⭐</h4><ul class="chk"><li><b>크레인, 리프트, 곤돌라</b><br>최초: 설치 후 3년 이내<br>이후: 2년마다<br>(건설현장은 <b>6개월마다</b>)</li><li>**이동식 크레인,<br>이삿짐운반용 리프트, 고소작업대**<br>최초: 신규 등록 후 3년 이내<br>이후: 2년마다</li><li><b>그 밖의 대상</b><br>최초: 설치 후 3년 이내<br>이후: 2년마다<br>(공정안전보고서 확인 압력용기는<br><b>4년마다</b>)</li></ul></div></div></section>
+<div class="card" data-title="안전인증·자율안전확인·안전검사 · 안전검사 주기 ⭐"><h4>안전검사 주기 ⭐</h4><ul class="chk"><li><b>크레인, 리프트, 곤돌라</b><br>최초: 설치 후 3년 이내<br>이후: 2년마다<br>(건설현장은 <b>6개월마다</b>)</li><li>**이동식 크레인,<br>이삿짐운반용 리프트, 고소작업대**<br>최초: 신규 등록 후 3년 이내<br>이후: 2년마다</li><li><b>그 밖의 대상</b><br>최초: 설치 후 3년 이내<br>이후: 2년마다<br>(공정안전보고서 확인 압력용기는<br><b>4년마다</b>)</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span>기본은 <b>'3년 뒤 첫 검사, 그 뒤 2년마다'</b>. 예외 둘만 따로: 건설현장 크레인·리프트·곤돌라 <b>6개월마다</b>, 공정안전보고서 확인 압력용기 <b>4년마다</b></div></div></div></section>
 <section class="section" id="t27"><div class="section-head"><div class="duality"><span class="n">21</span>법령 추가</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="법령 추가"><div class="subnote std">📋 출제기준 6-1 산업안전보건법령 · 1-2 안전보건관리 체제 및 운용</div>
 <div class="subnote">법령 수치는 시험 전 최신 기준으로 확인하세요.</div>

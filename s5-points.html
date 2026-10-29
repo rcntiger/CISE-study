@@ -16,14 +16,14 @@
   --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
   --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
-  --ok:#16865F;--ok-soft:#E3F5EC;--ng:#D63B25;--ng-soft:#FDE9E5;
+  --ok:#16865F;--ok-soft:#E3F5EC;--memo:#C25E00;--memo-soft:#FFF1E2;--ng:#D63B25;--ng-soft:#FDE9E5;
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
     --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
-    --ok:#5EC2A0;--ok-soft:#16302A;--ng:#FF7A63;--ng-soft:#3A1E1A;
+    --ok:#5EC2A0;--ok-soft:#16302A;--memo:#FFB066;--memo-soft:#33251A;--ng:#FF7A63;--ng-soft:#3A1E1A;
   }
 }
 *{box-sizing:border-box}
@@ -71,6 +71,9 @@ ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E
 ul.chk>li.cf{background:var(--cf-soft);margin:4px -10px;padding:8px 10px 8px 12px;border-radius:10px;border:0;border-left:3px solid var(--cf)}
 ul.chk>li.cf::before{display:none}
 .exp{margin:4px 0 12px;padding:9px 12px;background:var(--exp-soft);border-radius:10px;font-size:14.6px;line-height:1.65}
+.memo{margin:4px 0 12px;padding:9px 12px;background:var(--memo-soft);border-left:3px solid var(--memo);border-radius:10px;font-size:14px;line-height:1.65}
+.memo-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--memo)}
+.card .memo b{background:none;color:var(--memo);padding:0}
 .exp-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--exp)}
 ul.chk>li.cf .cf-tag{display:inline-block;margin-right:6px;font-size:12px;font-weight:700;color:var(--cf)}
 ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
@@ -85,6 +88,7 @@ body[data-page=points] .card h4{font-size:16.5px}
 body[data-page=points] .card code{font-size:14px}
 body[data-page=points] ul.sub2{font-size:14.5px}
 body[data-page=points] .exp{font-size:15.6px}
+body[data-page=points] .memo{font-size:15px}
 body[data-page=points] .subnote{font-size:13.5px}
 body[data-page=points] .subnote.std{font-size:13px}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
@@ -147,14 +151,17 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
   <span class="tab">5과목 · 기출포인트</span>
   <div class="eyebrow">산업안전기사 필기 · 5과목</div>
   <h1>화학설비 안전관리</h1>
-  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호</li></ul>
+  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호, 🧠 연상 암기법</li></ul>
   <nav class="toc"><a class="ch" href="#c01">CH01 화재·폭발 검토</a><a href="#t2"><span class="n">1</span>연소의 기초 ★</a><a href="#t3"><span class="n">2</span>인화점·발화점 ★</a><a href="#t4"><span class="n">3</span>폭발범위와 위험도 ★</a><a href="#t5"><span class="n">4</span>혼합가스와 계산식 ★</a><a href="#t6"><span class="n">5</span>폭발의 종류 ★</a><a href="#t7"><span class="n">6</span>폭발 방호 ★</a><a href="#t8"><span class="n">7</span>화재 분류와 소화 ★</a><a class="ch" href="#c02">CH02 화학물질 안전관리 실행</a><a href="#t10"><span class="n">8</span>산안법상 위험물질 분류 ★</a><a href="#t11"><span class="n">9</span>자연발화·금수성·혼합위험 ★</a><a href="#t12"><span class="n">10</span>MSDS와 노출기준 ★</a><a class="ch" href="#c03">CH03 화공안전 비상조치 계획·대응</a><a href="#t14"><span class="n">11</span>가스누출과 저장 ★</a><a href="#t15"><span class="n">12</span>비상조치계획과 비상대응 ➕</a><a class="ch" href="#c04">CH04 화공 안전운전·점검</a><a href="#t17"><span class="n">13</span>화학설비와 계측장치 ★</a><a href="#t18"><span class="n">14</span>안전밸브·파열판 ★</a><a href="#t19"><span class="n">15</span>화학장치·회전기기·배관 ➕</a><a href="#t20"><span class="n">16</span>안전거리 ★</a><a href="#t21"><span class="n">17</span>공정안전보고서(PSM) ★</a><a href="#t22"><span class="n">18</span>공정안전자료와 안전운전계획 ➕</a><a href="#t23"><span class="n">19</span>건조설비 ★</a><a class="ch" href="#std">출제기준 대조표</a></nav>
 </header><div class="chapter" id="c01"><span class="k">CHAPTER 01</span><span class="t">화재·폭발 검토</span></div>
 <section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">1</span>연소의 기초</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="연소의 기초"><div class="subnote std">📋 출제기준 1-1 화재·폭발 이론 및 발생 이해</div>
-<ul class="chk"><li class="star"><b>연소 3요소</b><br>가연물, 산소공급원, 점화원</li><li><b>연소 4요소</b><br>3요소 + <b>연쇄반응</b><br>(연쇄반응을 끊는 것이 억제소화)</li><li><b>가연물이 되기 쉬운 조건</b><br>산소와 친화력 큼, 발열량 큼<br>표면적 넓음, 열전도율 <b>작음</b><br>활성화에너지 <b>작음</b></li><li><b>가연물이 될 수 없는 것</b><br>이미 산화된 것: CO₂, H₂O<br>불활성기체: He, Ne, Ar<br>흡열반응 물질: 질소(N₂)</li></ul>
+<ul class="chk"><li class="star"><b>연소 3요소</b><br>가연물, 산소공급원, 점화원</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>가·산·점</b> — 탈 것(가연물) + 산소 + 불씨(점화원). 여기에 <b>연쇄반응</b>을 더하면 4요소</div>
+<ul class="chk"><li><b>연소 4요소</b><br>3요소 + <b>연쇄반응</b><br>(연쇄반응을 끊는 것이 억제소화)</li><li><b>가연물이 되기 쉬운 조건</b><br>산소와 친화력 큼, 발열량 큼<br>표면적 넓음, 열전도율 <b>작음</b><br>활성화에너지 <b>작음</b></li><li><b>가연물이 될 수 없는 것</b><br>이미 산화된 것: CO₂, H₂O<br>불활성기체: He, Ne, Ar<br>흡열반응 물질: 질소(N₂)</li></ul>
 <p>⭐ <b>연소 형태</b></p>
-<ul class="chk"><li><b>증발연소:</b> 알코올, 휘발유, 황, 나프탈렌</li><li><b>분해연소:</b> 목재, 종이, 석탄, 플라스틱</li><li><b>표면연소:</b> 숯, 코크스, 금속분</li><li><b>자기연소:</b> 니트로셀룰로오스, TNT<br>(분자 안에 산소를 가짐)</li><li><b>확산연소:</b> 수소, 아세틸렌 등 가스</li></ul></div></div></section>
+<ul class="chk"><li><b>증발연소:</b> 알코올, 휘발유, 황, 나프탈렌</li><li><b>분해연소:</b> 목재, 종이, 석탄, 플라스틱</li><li><b>표면연소:</b> 숯, 코크스, 금속분</li><li><b>자기연소:</b> 니트로셀룰로오스, TNT<br>(분자 안에 산소를 가짐)</li><li><b>확산연소:</b> 수소, 아세틸렌 등 가스</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>증발</b> = 액체·녹는 고체(알코올·휘발유·황·나프탈렌), <b>분해</b> = 나무·종이·석탄, <b>표면</b> = 숯처럼 불꽃 없이, <b>자기</b> = 몸 안에 산소(니트로·TNT), <b>확산</b> = 가스</div></div></div></section>
 <section class="section" id="t3"><div class="section-head"><div class="duality"><span class="n">2</span>인화점·발화점</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="인화점·발화점"><div class="subnote std">📋 출제기준 1-1 화재·폭발 이론 및 발생 이해</div>
 <ul class="chk"><li><b>인화점</b><br>점화원이 있을 때 불이 붙는<br><b>최저 온도</b> (액체 위험성 기준)</li><li><b>발화점(착화점)</b><br>점화원 없이 스스로 불이 붙는<br>최저 온도</li><li><b>연소점</b><br>인화 후 연소가 계속되는 온도<br>(보통 인화점보다 5~10℃ 높음)</li></ul>
@@ -166,7 +173,9 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="cards"><div class="card" data-title="폭발범위와 위험도"><div class="subnote std">📋 출제기준 1-1 화재·폭발 이론 및 발생 이해 · 1-3 폭발방지대책 수립</div>
 <p><b>폭발범위(연소범위)</b><br>공기 중 가연성 가스 농도(vol%)의<br>하한(LEL) ~ 상한(UEL)</p>
 <p>⭐ <b>주요 가스 폭발범위</b> (vol%)</p>
-<ul class="chk"><li><b>아세틸렌: 2.5 ~ 81</b> (가장 넓음)</li><li><b>수소: 4 ~ 75</b></li><li>일산화탄소: 12.5 ~ 74</li><li>디에틸에테르: 1.9 ~ 48</li><li>이황화탄소: 1.2 ~ 44</li><li>에틸렌: 2.7 ~ 36</li><li>암모니아: 15 ~ 28</li><li><b>메탄: 5 ~ 15</b></li><li><b>프로판: 2.1 ~ 9.5</b></li><li>부탄: 1.8 ~ 8.4</li><li>가솔린: 1.4 ~ 7.6</li></ul>
+<ul class="chk"><li><b>아세틸렌: 2.5 ~ 81</b> (가장 넓음)</li><li><b>수소: 4 ~ 75</b></li><li>일산화탄소: 12.5 ~ 74</li><li>디에틸에테르: 1.9 ~ 48</li><li>이황화탄소: 1.2 ~ 44</li><li>에틸렌: 2.7 ~ 36</li><li>암모니아: 15 ~ 28</li><li><b>메탄: 5 ~ 15</b></li><li><b>프로판: 2.1 ~ 9.5</b></li><li>부탄: 1.8 ~ 8.4</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>아세틸렌 2.5~81 · 수소 4~75 · 메탄 5~15 · 프로판 2.1~9.5</b> — 메탄은 '5에서 15', 프로판은 '약 2에서 10', 아세틸렌이 가장 넓음</div>
+<ul class="chk"><li>가솔린: 1.4 ~ 7.6</li></ul>
 <p><b>폭발범위 변화</b></p>
 <ul class="chk"><li>온도·압력이 높아지면 <b>넓어짐</b><br>(주로 상한이 올라감)</li><li>산소 중에서는 공기 중보다 넓어짐</li><li>예외: 일산화탄소는 압력이 오르면<br>범위가 좁아짐</li><li>불활성가스를 넣으면 좁아짐</li></ul>
 <p>⭐ <b>위험도 H</b><br>H = (UEL − LEL) ÷ LEL</p>
@@ -207,10 +216,13 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="cards"><div class="card" data-title="화재 분류와 소화"><div class="subnote std">📋 출제기준 1-2 소화 원리 이해 · 1-1 화재·폭발 이론 및 발생 이해</div>
 <p>⭐ <b>화재 분류</b></p>
 <ul class="chk"><li><b>A급 (일반화재):</b> 목재·종이·섬유<br>표시색 <b>백색</b></li><li><b>B급 (유류화재):</b> 기름·인화성 액체<br>표시색 <b>황색</b></li><li><b>C급 (전기화재):</b> 통전 중 전기설비<br>표시색 <b>청색</b></li><li><b>D급 (금속화재):</b> 마그네슘·칼륨 등<br>표시색 없음</li><li><b>K급 (주방화재):</b> 식용유</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>A 백 · B 황 · C 청 · D 무색</b> — 종이는 하얗고(A 백색), 기름은 누렇고(B 황색), 전기 불꽃은 파랗다(C 청색). K는 <b>K</b>itchen</div>
 <p>⭐ <b>소화 방법</b></p>
 <ul class="chk"><li><b>냉각소화:</b> 온도를 낮춤 (물)</li><li><b>질식소화:</b> 산소를 차단<br>(산소 약 15% 이하로) CO₂, 포</li><li><b>제거소화:</b> 가연물 제거<br>(가스 밸브 잠금)</li><li><b>억제소화(부촉매):</b> 연쇄반응 차단<br>할론, 분말</li><li><b>희석소화:</b> 가연물 농도를 낮춤</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>냉·질·제·억</b> — 물로 식히고(냉각), 덮어 숨 막고(질식), 연료를 치우고(제거), 연쇄반응을 끊는다(억제). 연소 4요소를 하나씩 없애는 것</div>
 <p>⭐ <b>분말 소화약제</b></p>
 <ul class="chk"><li><b>1종:</b> 탄산수소나트륨 (NaHCO₃)<br>BC급, 백색<br>식용유 화재에 효과 (비누화)</li><li><b>2종:</b> 탄산수소칼륨 (KHCO₃)<br>BC급, 담회색</li><li><b>3종:</b> 제1인산암모늄 (NH₄H₂PO₄)<br><b>ABC급</b>, 담홍색</li><li><b>4종:</b> 탄산수소칼륨 + 요소<br>BC급, 회색</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>나 · 칼 · 인 · 칼요</b> — 1종 나트륨(백) · 2종 칼륨(담회) · 3종 인산암모늄(담홍) · 4종 칼륨+요소(회). <b>ABC급은 3종 하나뿐</b></div>
 <p><b>할론 번호 읽기 (C-F-Cl-Br 순)</b></p>
 <ul class="chk"><li>할론 1301: CF₃Br (소화력 가장 큼)</li><li>할론 1211: CF₂ClBr</li><li>할론 2402: C₂F₄Br₂</li></ul>
 <p><b>금속화재(D급)</b><br>물·CO₂ 사용 금지<br>마른 모래, 팽창질석·팽창진주암</p>
@@ -234,6 +246,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <p><b>자연발화 방지</b><br>통풍·환기, 저장실 온도 낮게,<br>습도 낮게, 열 축적 방지</p>
 <p>⭐ <b>자연발화 원인별 예</b></p>
 <ul class="chk"><li><b>산화열:</b> 건성유(아마인유), 석탄</li><li><b>분해열:</b> 셀룰로이드, 니트로셀룰로오스</li><li><b>흡착열:</b> 활성탄, 목탄</li><li><b>중합열:</b> 시안화수소, 산화에틸렌</li><li><b>미생물:</b> 퇴비, 먼지</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>산화 = 기름(건성유)·석탄 · 분해 = 셀룰로이드 · 흡착 = 숯(활성탄·목탄) · 중합 = 시안화수소·산화에틸렌 · 미생물 = 퇴비</b> — '숯은 흡착'부터 짝 맞추기</div>
 <p>⭐ <b>금수성 물질과 물 반응 가스</b></p>
 <ul class="chk"><li>칼륨·나트륨·리튬 → <b>수소</b></li><li>탄화칼슘(카바이드) → <b>아세틸렌</b></li><li>인화칼슘 → <b>포스핀</b>(인화수소)</li><li>알킬알루미늄 → 에탄 등</li><li>황린은 물속에 저장 (공기 중 자연발화)</li><li>칼륨·나트륨은 <b>석유(등유) 속</b>에 저장</li></ul>
 <p>⭐ <b>위험물 혼재 (소방법 류별)</b></p>
