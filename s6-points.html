@@ -16,14 +16,14 @@
   --c1:#1F9D6B;--c2:#2F6FDE;--c3:#5B6B7E;--c4:#E0482E;--c5:#8A4FD8;--c6:#E07B12;--c7:#0E8A9A;--c8:#C2416B;
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
   --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
-  --ok:#16865F;--ok-soft:#E3F5EC;--ng:#D63B25;--ng-soft:#FDE9E5;
+  --ok:#16865F;--ok-soft:#E3F5EC;--memo:#C25E00;--memo-soft:#FFF1E2;--ng:#D63B25;--ng-soft:#FDE9E5;
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0F151C;--surface:#18212B;--surface2:#1E2833;--ink:#E8EDF2;--ink-soft:#9AA6B4;--line:#2A3541;
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
     --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
-    --ok:#5EC2A0;--ok-soft:#16302A;--ng:#FF7A63;--ng-soft:#3A1E1A;
+    --ok:#5EC2A0;--ok-soft:#16302A;--memo:#FFB066;--memo-soft:#33251A;--ng:#FF7A63;--ng-soft:#3A1E1A;
   }
 }
 *{box-sizing:border-box}
@@ -71,6 +71,9 @@ ul.chk>li.star::after{content:"★";position:absolute;left:10px;top:9px;color:#E
 ul.chk>li.cf{background:var(--cf-soft);margin:4px -10px;padding:8px 10px 8px 12px;border-radius:10px;border:0;border-left:3px solid var(--cf)}
 ul.chk>li.cf::before{display:none}
 .exp{margin:4px 0 12px;padding:9px 12px;background:var(--exp-soft);border-radius:10px;font-size:14.6px;line-height:1.65}
+.memo{margin:4px 0 12px;padding:9px 12px;background:var(--memo-soft);border-left:3px solid var(--memo);border-radius:10px;font-size:14px;line-height:1.65}
+.memo-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--memo)}
+.card .memo b{background:none;color:var(--memo);padding:0}
 .exp-tag{display:block;margin-bottom:2px;font-size:12px;font-weight:700;color:var(--exp)}
 ul.chk>li.cf .cf-tag{display:inline-block;margin-right:6px;font-size:12px;font-weight:700;color:var(--cf)}
 ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
@@ -85,6 +88,7 @@ body[data-page=points] .card h4{font-size:16.5px}
 body[data-page=points] .card code{font-size:14px}
 body[data-page=points] ul.sub2{font-size:14.5px}
 body[data-page=points] .exp{font-size:15.6px}
+body[data-page=points] .memo{font-size:15px}
 body[data-page=points] .subnote{font-size:13.5px}
 body[data-page=points] .subnote.std{font-size:13px}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
@@ -147,7 +151,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
   <span class="tab">6과목 · 기출포인트</span>
   <div class="eyebrow">산업안전기사 필기 · 6과목</div>
   <h1>건설공사 안전관리</h1>
-  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호</li></ul>
+  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호, 🧠 연상 암기법</li></ul>
   <nav class="toc"><a class="ch" href="#c01">CH01 건설공사 특성분석</a><a href="#t2"><span class="n">1</span>유해위험방지계획서 (건설업) ★</a><a href="#t3"><span class="n">2</span>건설공사 특수성과 안전관리 고려사항 ➕</a><a class="ch" href="#c02">CH02 건설공사 위험성</a><a href="#t5"><span class="n">3</span>지반조사와 사전조사</a><a href="#t6"><span class="n">4</span>굴착면 기울기 ★</a><a href="#t7"><span class="n">5</span>흙막이와 히빙·보일링 ★</a><a href="#t8"><span class="n">6</span>토석붕괴·사면·옹벽 ★</a><a class="ch" href="#c03">CH03 건설업 산업안전보건관리비 관리</a><a href="#t10"><span class="n">7</span>산업안전보건관리비 ★</a><a class="ch" href="#c04">CH04 건설현장 안전시설 관리</a><a href="#t12"><span class="n">8</span>추락방지 ★</a><a href="#t13"><span class="n">9</span>추락방호망·낙하물방지망 ★</a><a href="#t14"><span class="n">10</span>통로·계단·사다리 ★</a><a class="ch" href="#c05">CH05 비계·거푸집 가시설 위험방지</a><a href="#t16"><span class="n">11</span>비계 ★</a><a href="#t17"><span class="n">12</span>거푸집·동바리·콘크리트 ★</a><a class="ch" href="#c06">CH06 공사 및 작업 종류별 안전</a><a href="#t19"><span class="n">13</span>철골공사 ★</a><a href="#t20"><span class="n">14</span>양중기·와이어로프·강풍 ★</a><a href="#t21"><span class="n">15</span>PC공사 ➕</a><a href="#t22"><span class="n">16</span>차량계 건설기계·항타기 ★</a><a href="#t23"><span class="n">17</span>터널·잠함·발파 ★</a><a href="#t24"><span class="n">18</span>해체공사·가설구조물</a><a href="#t25"><span class="n">19</span>운반·하역작업 ➕</a><a class="ch" href="#std">출제기준 대조표</a></nav>
 </header><div class="chapter" id="c01"><span class="k">CHAPTER 01</span><span class="t">건설공사 특성분석</span></div>
 <section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">1</span>유해위험방지계획서 (건설업)</div><div class="section-line"></div></div>
@@ -176,6 +180,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="cards"><div class="card" data-title="굴착면 기울기"><div class="subnote std">📋 출제기준 2-2 건설공사 위험성 추정·결정 · 5-1 건설 가시설물 설치 및 관리</div>
 <div class="subnote">2023년 개정 기준입니다. 확인하세요.</div>
 <ul class="chk"><li><b>모래:</b> 1 : <b>1.8</b></li><li><b>연암·풍화암:</b> 1 : <b>1.0</b></li><li><b>경암:</b> 1 : <b>0.5</b></li><li><b>그 밖의 흙:</b> 1 : <b>1.2</b></li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>모래 1.8 &gt; 그 밖의 흙 1.2 &gt; 연암 1.0 &gt; 경암 0.5</b> — 무를수록 눕힌다(수평 길이↑). 모래가 가장 완만, 단단한 바위가 가장 가파름</div>
 <p>(비율은 수직 : 수평)</p>
 <p><b>예전 기준</b> (구기출에 나옴)<br>보통흙 습지 1:1~1:1.5<br>보통흙 건지 1:0.5~1:1<br>풍화암·연암 1:1.0, 경암 1:0.5</p>
 <p><b>굴착 시 안전조치</b></p>
@@ -216,8 +221,10 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <p><b>높이 2m 이상</b> 추락 위험 장소<br>→ 작업발판 → 추락방호망 → 안전대</p>
 <p>⭐ <b>안전난간</b></p>
 <ul class="chk"><li>구성: 상부난간대, 중간난간대,<br>발끝막이판, 난간기둥</li><li>상부난간대: 바닥에서 <b>90cm 이상</b></li><li>상부를 <b>120cm 이하</b>에 두면<br>중간난간대는 그 중간에 1단</li><li><b>120cm 이상</b>이면 중간난간대<br><b>2단 이상</b> 균등, 상하 간격 <b>60cm 이하</b></li><li>발끝막이판: 바닥에서 <b>10cm 이상</b></li><li>난간기둥 간격 25cm 이하면<br>중간난간대 생략 가능</li><li>견딜 하중: 가장 취약한 지점에서<br><b>100kg 이상</b></li><li>난간대: 지름 <b>2.7cm 이상</b> 금속제 파이프</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>상부 90 · 발끝 10 · 하중 100kg · 지름 2.7</b> — '구십(90) 위, 십(10) 아래, 백(100)kg 버팀'. 120cm 넘으면 중간난간대 2단(간격 60 이하)</div>
 <p>⭐ <b>작업발판</b> (비계 높이 2m 이상)</p>
 <ul class="chk"><li>폭 <b>40cm 이상</b></li><li>발판재료 사이 틈 <b>3cm 이하</b></li><li>2개 이상 지지물에 고정</li><li>선박·보트 건조 등은 폭 30cm 이상 가능</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>폭 40 · 틈 3</b> — '사십(40) 넓이에 삼(3) 센티 틈'</div>
 <p><b>개구부 방호</b><br>안전난간, 울타리, 수직형 추락방망,<br><b>덮개</b>(뒤집히지 않게, 표시)</p>
 <p><b>슬레이트 지붕</b><br>폭 <b>30cm 이상</b> 발판 또는 방망</p></div></div></section>
 <section class="section" id="t13"><div class="section-head"><div class="duality"><span class="n">9</span>추락방호망·낙하물방지망</div><div class="section-line"></div></div>
@@ -244,12 +251,15 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <div class="cards"><div class="card" data-title="비계"><div class="subnote std">📋 출제기준 5-1 건설 가시설물 설치 및 관리</div>
 <p>⭐ <b>강관비계</b></p>
 <ul class="chk"><li>비계기둥 간격<br>띠장 방향 <b>1.85m 이하</b><br>장선 방향 <b>1.5m 이하</b></li><li>띠장 간격: <b>2.0m 이하</b></li><li>비계기둥 맨 위에서 <b>31m</b> 아래<br>부분은 강관 <b>2개</b>로 묶어 세움</li><li>기둥 사이 적재하중: <b>400kg 이하</b></li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>띠장 방향 1.85 · 장선 방향 1.5</b> — 띠장은 길게, 장선은 짧게. 띠장 간격 2.0, 31m 아래는 2개로, 하중 400kg</div>
 <p>⭐ <b>벽이음 간격</b></p>
 <ul class="chk"><li>단관비계: 수직 <b>5m</b>, 수평 <b>5m</b></li><li>틀비계: 수직 <b>6m</b>, 수평 <b>8m</b></li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>단관 5·5, 틀 6·8</b> — 단관은 '오오', 틀비계는 '육팔'</div>
 <p><b>강관틀비계</b></p>
 <ul class="chk"><li>높이 <b>20m 초과</b> 또는 중량물 작업<br>→ 주틀 간 간격 <b>1.8m 이하</b></li><li>주틀 사이 교차가새</li><li>띠장 방향 길이 4m 이하, 높이 5m 이상<br>→ <b>10m 이내</b>마다 버팀기둥</li></ul>
 <p>⭐ <b>달비계 안전계수</b></p>
 <ul class="chk"><li>달기 와이어로프·강선: <b>10 이상</b></li><li>달기 체인·훅: <b>5 이상</b></li><li>달기 강대, 상·하부 지점<br>강재 <b>2.5 이상</b>, 목재 <b>5 이상</b></li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>와이어 10 · 체인·훅 5 · 강재 2.5 · 목재 5</b> — 사람을 매다는 와이어로프가 10으로 가장 큼</div>
 <p><b>달비계 와이어로프 사용 금지</b><br>이음매 있음, 소선 <b>10% 이상</b> 절단,<br>지름 감소 <b>7% 초과</b>, 꼬임·변형·부식</p>
 <p><b>이동식 비계</b></p>
 <ul class="chk"><li>바퀴: 브레이크·쐐기로 고정,<br>아웃트리거 설치</li><li>작업발판 최대 적재하중 <b>250kg 이하</b></li><li>승강용 사다리, 안전난간 설치</li><li>비계 위에서 사다리 사용 금지</li></ul>
@@ -281,6 +291,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <ul class="chk"><li>근로자 탑승 운반구: <b>10 이상</b></li><li>화물 하중 직접 지지: <b>5 이상</b></li><li>훅·샤클·클램프·리프팅빔: <b>3 이상</b></li><li>그 밖의 경우: <b>4 이상</b></li></ul>
 <p>⭐ <b>강풍 시 기준 (순간풍속)</b></p>
 <ul class="chk"><li><b>10m/s 초과</b><br>타워크레인 설치·수리·점검·해체 중지</li><li><b>15m/s 초과</b><br>타워크레인 운전 중지</li><li><b>30m/s 초과</b> 예상<br>옥외 주행 크레인 이탈방지장치 작동</li><li><b>30m/s 초과</b> 바람 뒤 또는<br><b>중진 이상 지진</b> 뒤<br>작업 전 크레인 각 부위 점검</li><li><b>35m/s 초과</b> 예상<br>건설용 리프트·옥외 승강기<br>받침 수 늘려 붕괴 방지</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>10 설치·해체 중지 → 15 운전 중지 → 30 이탈방지·점검 → 35 리프트 받침 보강</b> — '설치는 10, 운전은 15'. <b>20은 없는 숫자</b></div>
 <p>⚠️ 기준은 모두 <b>'초과'</b><br>⚠️ <b>20m/s</b>는 법령에 없는 기준<br>→ 보기에 나오면 오답</p>
 <p><b>방호장치</b><br>과부하방지장치, 권과방지장치,<br>비상정지장치, 제동장치, 훅 해지장치</p></div></div></section>
 <section class="section" id="t21"><div class="section-head"><div class="duality"><span class="n">15</span>PC공사 ➕</div><div class="section-line"></div></div>
