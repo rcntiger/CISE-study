@@ -26,4 +26,4 @@
 python3 tools/build.py <study-plan 폴더> .
 ```
 
-필기 핵심요약과 실기 필답형 핵심 페이지는 숫자 6자리 암호로 내용을 암호화(PBKDF2 → AES-GCM)해 만듭니다. 암호는 저장소에 두지 않고 `<study-plan 폴더>/.page-password` 파일이나 `CISE_PAGE_PW` 환경변수로 넘깁니다. 암호가 없으면 두 페이지는 건너뜁니다. 생성에 `cryptography` 패키지가 필요합니다.
+모든 페이지는 암호 없이 열립니다. `bank_page(..., locked=True)`로 만들면 숫자 6자리 암호로 내용을 암호화(PBKDF2 → AES-GCM)한 잠금 페이지가 되며, 이때 암호는 저장소에 두지 않고 `<study-plan 폴더>/.page-password` 파일이나 `CISE_PAGE_PW` 환경변수로 넘깁니다(`cryptography` 패키지 필요).
