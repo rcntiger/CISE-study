@@ -4,12 +4,12 @@
 
 | 과목 | 기출포인트 | 문제은행 |
 |---|---|---|
-| 1. 산업재해 예방 및 안전보건교육 | [s1-points.html](s1-points.html) | [s1-bank.html](s1-bank.html) (100문항) |
-| 2. 인간공학 및 위험성 평가·관리 | [s2-points.html](s2-points.html) | [s2-bank.html](s2-bank.html) (100문항) |
-| 3. 기계·기구 및 설비 안전관리 | [s3-points.html](s3-points.html) | [s3-bank.html](s3-bank.html) (100문항) |
-| 4. 전기설비 안전관리 | [s4-points.html](s4-points.html) | [s4-bank.html](s4-bank.html) (100문항) |
-| 5. 화학설비 안전관리 | [s5-points.html](s5-points.html) | [s5-bank.html](s5-bank.html) (100문항) |
-| 6. 건설공사 안전관리 | [s6-points.html](s6-points.html) | [s6-bank.html](s6-bank.html) (100문항) |
+| 1. 산업재해 예방 및 안전보건교육 | [s1-points.html](s1-points.html) | [s1-bank.html](s1-bank.html) (111문항) |
+| 2. 인간공학 및 위험성 평가·관리 | [s2-points.html](s2-points.html) | [s2-bank.html](s2-bank.html) (110문항) |
+| 3. 기계·기구 및 설비 안전관리 | [s3-points.html](s3-points.html) | [s3-bank.html](s3-bank.html) (110문항) |
+| 4. 전기설비 안전관리 | [s4-points.html](s4-points.html) | [s4-bank.html](s4-bank.html) (110문항) |
+| 5. 화학설비 안전관리 | [s5-points.html](s5-points.html) | [s5-bank.html](s5-bank.html) (111문항) |
+| 6. 건설공사 안전관리 | [s6-points.html](s6-points.html) | [s6-bank.html](s6-bank.html) (112문항) |
 
 - [12주 로드맵](roadmap.html)
 - [필기 핵심요약](core226.html): 2018~2025 필기 기출 2,880문항에서 반복 출제된 핵심 226개를 6과목으로 묶었습니다. 번호는 과목마다 1번부터입니다. 🔧는 용어·수치를 바로잡은 문항, ⚠️는 법령·교재 확인이 필요한 문항입니다.
