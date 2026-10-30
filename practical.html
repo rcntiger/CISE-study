@@ -142,6 +142,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 @media (min-width:1000px){body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:16px}body[data-page=points] .card h4{font-size:17.5px}body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
 @media (max-width:999px){body[data-subject=core226] .q-body{font-size:15px}body[data-subject=core226] .ans-body p{font-size:14.8px}body[data-subject=core226] ul.chk>li{font-size:15px}body[data-subject=core226] .exp{font-size:15.6px}}
 @media (min-width:1000px){:is(body[data-subject=core226],body[data-subject=practical]) .q-body,:is(body[data-subject=core226],body[data-subject=practical]) .ans-body p,:is(body[data-subject=core226],body[data-subject=practical]) ul.chk>li,:is(body[data-subject=core226],body[data-subject=practical]) .opts li{font-size:13px}:is(body[data-subject=core226],body[data-subject=practical]) .exp{font-size:12.6px}}
+.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.q.flash{outline:3px solid var(--yellow);outline-offset:2px}
 @media (min-width:1600px){body{zoom:1.38}}
 @media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 </style>
@@ -156,7 +157,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
   
   <nav class="toc"><a href="#g1"><span class="n">A</span>재해 통계 계산 (19문항)</a><a href="#g2"><span class="n">B</span>재해 이론·조사·위험성 평가 (18문항)</a><a href="#g3"><span class="n">C</span>안전보건관리체제·법령 (19문항)</a><a href="#g4"><span class="n">D</span>안전보건교육 (10문항)</a><a href="#g5"><span class="n">E</span>유해위험방지계획서·공정안전보고서·건설 관리비 (18문항)</a><a href="#g6"><span class="n">F</span>안전인증·자율안전확인·안전검사 (14문항)</a><a href="#g7"><span class="n">G</span>안전보건표지·색채 (10문항)</a><a href="#g8"><span class="n">H</span>보호구 (17문항)</a><a href="#g9"><span class="n">I</span>기계 안전 (32문항)</a><a href="#g10"><span class="n">J</span>양중기·와이어로프·달기구 (15문항)</a><a href="#g11"><span class="n">K</span>전기 안전 (20문항)</a><a href="#g12"><span class="n">L</span>화학설비·위험물·화재 (30문항)</a><a href="#g13"><span class="n">M</span>건설 안전 (28문항)</a><a href="#g14"><span class="n">N</span>보건·작업환경 (8문항)</a></nav>
 </header>
-<div class="tools"><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">A</span>재해 통계 계산 (19문항)</div><div class="section-line"></div></div>
+<div class="tools"><select class="btn" id="secSel" aria-label="볼 묶음 고르기"><option value="">전체 보기</option><option value="g1">A. 재해 통계 계산 (19문항)</option><option value="g2">B. 재해 이론·조사·위험성 평가 (18문항)</option><option value="g3">C. 안전보건관리체제·법령 (19문항)</option><option value="g4">D. 안전보건교육 (10문항)</option><option value="g5">E. 유해위험방지계획서·공정안전보고서·건설 관리비 (18문항)</option><option value="g6">F. 안전인증·자율안전확인·안전검사 (14문항)</option><option value="g7">G. 안전보건표지·색채 (10문항)</option><option value="g8">H. 보호구 (17문항)</option><option value="g9">I. 기계 안전 (32문항)</option><option value="g10">J. 양중기·와이어로프·달기구 (15문항)</option><option value="g11">K. 전기 안전 (20문항)</option><option value="g12">L. 화학설비·위험물·화재 (30문항)</option><option value="g13">M. 건설 안전 (28문항)</option><option value="g14">N. 보건·작업환경 (8문항)</option></select><input class="btn" id="qJump" type="number" inputmode="numeric" min="1" placeholder="번호" aria-label="번호로 이동"><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">A</span>재해 통계 계산 (19문항)</div><div class="section-line"></div></div>
 <div class="card q" data-q="A-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">도수율을 구하시오.<br>· 재해건수 12건, 재해자수 18명, 요양일수 7,500일<br>· 근로자 4,000명, 1인당 연근로시간 2,400시간</p>
@@ -2235,7 +2236,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 가능하면 길이는 짧게 하고 굴곡부의 수는 적게 할 것 ② 접속부의 안쪽은 돌출된 부분이 없도록 할 것 ③ 청소구를 설치하는 등 청소하기 쉬운 구조로 할 것</b></p>
 <p>📌 그 밖에: 덕트 내부에 오염물질이 쌓이지 않도록 이송속도를 유지할 것, 연결 부위 등은 외부 공기가 들어오지 않도록 할 것</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>덕트가 길고 많이 꺾이면 공기 흐름 저항이 커져 흡인력이 떨어진다. 안쪽에 돌출부가 없어야 오염물질이 쌓이지 않고, 청소구가 있어야 막히지 않게 관리할 수 있다.</div></div></details>
-</div></section>
+</div></section><button class="to-top" id="toTop" type="button" aria-label="맨 위로">▲</button>
 <footer>번호는 주제마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. </footer>
 </div>
 <script>
@@ -2325,6 +2326,66 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
     chSel.addEventListener('change',function(){try{sessionStorage.setItem(key+'-ch',chSel.value)}catch(e){}filter()});
     filter();
   }
+})();
+</script><script>
+(function(){
+  var pk='sanan-pos-'+document.body.dataset.subject,st={};
+  try{st=JSON.parse(localStorage.getItem(pk)||'{}')}catch(e){}
+  if(!st.y)st.y={};
+  function save(){try{localStorage.setItem(pk,JSON.stringify(st))}catch(e){}}
+  var secs=[].slice.call(document.querySelectorAll('section.section[id]')),ids=secs.map(function(s){return s.id});
+  var sel=document.getElementById('secSel'),jump=document.getElementById('qJump'),toTop=document.getElementById('toTop'),
+      tools=document.querySelector('.tools'),onlyStar=document.getElementById('onlyStar'),onlyWrong=document.getElementById('onlyWrong');
+  function cur(){return sel.value}
+  function apply(){
+    var c=cur(),all=!c||onlyStar.classList.contains('on')||(onlyWrong&&onlyWrong.classList.contains('on'));
+    secs.forEach(function(s){s.classList.toggle('off',!all&&s.id!==c)});
+    document.querySelectorAll('nav.toc a').forEach(function(a){a.classList.toggle('cur',!!c&&a.getAttribute('href')==='#'+c)});
+  }
+  function listTop(){return document.querySelector('header').getBoundingClientRect().bottom+window.pageYOffset}
+  function to(y,smooth){window.scrollTo({top:y,behavior:smooth?'smooth':'instant'})}
+  function go(id,y){
+    sel.value=id;st.sec=id;save();apply();
+    if(y!=null)to(y);
+  }
+  secs.forEach(function(s,i){
+    var nav=document.createElement('div');nav.className='sec-nav';
+    function btn(j,cls,label){
+      var b=document.createElement('button');b.type='button';b.className='btn '+cls;
+      b.textContent=label;b.addEventListener('click',function(){go(ids[j],listTop())});nav.appendChild(b);
+    }
+    var name=function(j){return sel.querySelector('option[value="'+ids[j]+'"]').textContent};
+    if(i>0)btn(i-1,'prev','‹ '+name(i-1));
+    if(i<secs.length-1)btn(i+1,'next',name(i+1)+' ›');
+    s.appendChild(nav);
+  });
+  sel.addEventListener('change',function(){go(sel.value,listTop())});
+  document.querySelectorAll('nav.toc a').forEach(function(a){
+    a.addEventListener('click',function(e){var id=a.getAttribute('href').slice(1);if(ids.indexOf(id)<0)return;e.preventDefault();go(id,listTop())});
+  });
+  onlyStar.addEventListener('click',apply);
+  if(onlyWrong)onlyWrong.addEventListener('click',apply);
+  function doJump(){
+    var n=parseInt(jump.value,10);if(!n)return;
+    var q=[].slice.call(document.querySelectorAll('.section:not(.off):not(.hidden) .q:not(.hidden)')).filter(function(q){return q.dataset.title===n+'번'})[0];
+    if(!q){jump.value='';jump.placeholder='없음';setTimeout(function(){jump.placeholder='번호'},1500);return}
+    to(q.getBoundingClientRect().top+window.pageYOffset-tools.offsetHeight-8,1);
+    q.classList.add('flash');setTimeout(function(){q.classList.remove('flash')},1400);
+    jump.blur();
+  }
+  jump.addEventListener('change',doJump);
+  jump.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();doJump()}});
+  toTop.addEventListener('click',function(){to(0,1)});
+  var t=0;
+  window.addEventListener('scroll',function(){
+    toTop.classList.toggle('show',window.pageYOffset>600);
+    clearTimeout(t);t=setTimeout(function(){st.y[cur()]=Math.round(window.pageYOffset);save()},250);
+  },{passive:true});
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
+  var h=location.hash.slice(1);
+  if(ids.indexOf(h)>=0){go(h,null);secs[ids.indexOf(h)].scrollIntoView()}
+  else{var s0=st.sec!=null&&(st.sec===''||ids.indexOf(st.sec)>=0)?st.sec:ids[0];sel.value=s0;apply();if(st.y[s0])to(st.y[s0])}
+  window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(ids.indexOf(h)>=0){go(h,null);secs[ids.indexOf(h)].scrollIntoView()}});
 })();
 </script>
 </body>

@@ -142,6 +142,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 @media (min-width:1000px){body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:16px}body[data-page=points] .card h4{font-size:17.5px}body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
 @media (max-width:999px){body[data-subject=core226] .q-body{font-size:15px}body[data-subject=core226] .ans-body p{font-size:14.8px}body[data-subject=core226] ul.chk>li{font-size:15px}body[data-subject=core226] .exp{font-size:15.6px}}
 @media (min-width:1000px){:is(body[data-subject=core226],body[data-subject=practical]) .q-body,:is(body[data-subject=core226],body[data-subject=practical]) .ans-body p,:is(body[data-subject=core226],body[data-subject=practical]) ul.chk>li,:is(body[data-subject=core226],body[data-subject=practical]) .opts li{font-size:13px}:is(body[data-subject=core226],body[data-subject=practical]) .exp{font-size:12.6px}}
+.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.q.flash{outline:3px solid var(--yellow);outline-offset:2px}
 @media (min-width:1600px){body{zoom:1.38}}
 @media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 </style>
@@ -156,7 +157,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
   
   <nav class="toc"><a href="#g1"><span class="n">1</span>산업재해 예방 및 안전보건교육 (49문항)</a><a href="#g2"><span class="n">2</span>인간공학 및 위험성 평가·관리 (39문항)</a><a href="#g3"><span class="n">3</span>기계·기구 및 설비 안전관리 (37문항)</a><a href="#g4"><span class="n">4</span>전기설비 안전관리 (33문항)</a><a href="#g5"><span class="n">5</span>화학설비 안전관리 (35문항)</a><a href="#g6"><span class="n">6</span>건설공사 안전관리 (33문항)</a></nav>
 </header>
-<div class="tools"><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">1</span>산업재해 예방 및 안전보건교육 (49문항)</div><div class="section-line"></div></div>
+<div class="tools"><select class="btn" id="secSel" aria-label="볼 묶음 고르기"><option value="">전체 보기</option><option value="g1">1. 산업재해 예방 및 안전보건교육 (49문항)</option><option value="g2">2. 인간공학 및 위험성 평가·관리 (39문항)</option><option value="g3">3. 기계·기구 및 설비 안전관리 (37문항)</option><option value="g4">4. 전기설비 안전관리 (33문항)</option><option value="g5">5. 화학설비 안전관리 (35문항)</option><option value="g6">6. 건설공사 안전관리 (33문항)</option></select><input class="btn" id="qJump" type="number" inputmode="numeric" min="1" placeholder="번호" aria-label="번호로 이동"><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">1</span>산업재해 예방 및 안전보건교육 (49문항)</div><div class="section-line"></div></div>
 <div class="card q" data-q="1-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">재해예방의 4원칙을 쓰시오.</p>
@@ -2194,7 +2195,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 <p>📌 "2줄걸이에 60° 이내, 선박 300톤에 55cm"</p>
 <ul class="chk"><li>각도가 벌어질수록 로프에 걸리는 힘이 커짐(3과목 2번)</li><li>근로자가 매달린 채로 이동하지 않고, 훅에서 손을 뗀 뒤 신호</li><li>선박 승강설비: 300톤급 이상 선박에 폭 55cm 이상 현문사다리, 사다리 밑에 안전망, 한쪽 끝은 선박에 고정</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>줄 하나로 매달면 짐이 돌거나 기울어 떨어지기 쉬워 2줄 이상으로 건다. 줄 사이 각도가 커질수록 로프 장력이 커지므로 60° 이내로 한다.</div></div></details>
-</div></section>
+</div></section><button class="to-top" id="toTop" type="button" aria-label="맨 위로">▲</button>
 <footer>번호는 과목마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. </footer>
 </div>
 <script>
@@ -2284,6 +2285,66 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
     chSel.addEventListener('change',function(){try{sessionStorage.setItem(key+'-ch',chSel.value)}catch(e){}filter()});
     filter();
   }
+})();
+</script><script>
+(function(){
+  var pk='sanan-pos-'+document.body.dataset.subject,st={};
+  try{st=JSON.parse(localStorage.getItem(pk)||'{}')}catch(e){}
+  if(!st.y)st.y={};
+  function save(){try{localStorage.setItem(pk,JSON.stringify(st))}catch(e){}}
+  var secs=[].slice.call(document.querySelectorAll('section.section[id]')),ids=secs.map(function(s){return s.id});
+  var sel=document.getElementById('secSel'),jump=document.getElementById('qJump'),toTop=document.getElementById('toTop'),
+      tools=document.querySelector('.tools'),onlyStar=document.getElementById('onlyStar'),onlyWrong=document.getElementById('onlyWrong');
+  function cur(){return sel.value}
+  function apply(){
+    var c=cur(),all=!c||onlyStar.classList.contains('on')||(onlyWrong&&onlyWrong.classList.contains('on'));
+    secs.forEach(function(s){s.classList.toggle('off',!all&&s.id!==c)});
+    document.querySelectorAll('nav.toc a').forEach(function(a){a.classList.toggle('cur',!!c&&a.getAttribute('href')==='#'+c)});
+  }
+  function listTop(){return document.querySelector('header').getBoundingClientRect().bottom+window.pageYOffset}
+  function to(y,smooth){window.scrollTo({top:y,behavior:smooth?'smooth':'instant'})}
+  function go(id,y){
+    sel.value=id;st.sec=id;save();apply();
+    if(y!=null)to(y);
+  }
+  secs.forEach(function(s,i){
+    var nav=document.createElement('div');nav.className='sec-nav';
+    function btn(j,cls,label){
+      var b=document.createElement('button');b.type='button';b.className='btn '+cls;
+      b.textContent=label;b.addEventListener('click',function(){go(ids[j],listTop())});nav.appendChild(b);
+    }
+    var name=function(j){return sel.querySelector('option[value="'+ids[j]+'"]').textContent};
+    if(i>0)btn(i-1,'prev','‹ '+name(i-1));
+    if(i<secs.length-1)btn(i+1,'next',name(i+1)+' ›');
+    s.appendChild(nav);
+  });
+  sel.addEventListener('change',function(){go(sel.value,listTop())});
+  document.querySelectorAll('nav.toc a').forEach(function(a){
+    a.addEventListener('click',function(e){var id=a.getAttribute('href').slice(1);if(ids.indexOf(id)<0)return;e.preventDefault();go(id,listTop())});
+  });
+  onlyStar.addEventListener('click',apply);
+  if(onlyWrong)onlyWrong.addEventListener('click',apply);
+  function doJump(){
+    var n=parseInt(jump.value,10);if(!n)return;
+    var q=[].slice.call(document.querySelectorAll('.section:not(.off):not(.hidden) .q:not(.hidden)')).filter(function(q){return q.dataset.title===n+'번'})[0];
+    if(!q){jump.value='';jump.placeholder='없음';setTimeout(function(){jump.placeholder='번호'},1500);return}
+    to(q.getBoundingClientRect().top+window.pageYOffset-tools.offsetHeight-8,1);
+    q.classList.add('flash');setTimeout(function(){q.classList.remove('flash')},1400);
+    jump.blur();
+  }
+  jump.addEventListener('change',doJump);
+  jump.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();doJump()}});
+  toTop.addEventListener('click',function(){to(0,1)});
+  var t=0;
+  window.addEventListener('scroll',function(){
+    toTop.classList.toggle('show',window.pageYOffset>600);
+    clearTimeout(t);t=setTimeout(function(){st.y[cur()]=Math.round(window.pageYOffset);save()},250);
+  },{passive:true});
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
+  var h=location.hash.slice(1);
+  if(ids.indexOf(h)>=0){go(h,null);secs[ids.indexOf(h)].scrollIntoView()}
+  else{var s0=st.sec!=null&&(st.sec===''||ids.indexOf(st.sec)>=0)?st.sec:ids[0];sel.value=s0;apply();if(st.y[s0])to(st.y[s0])}
+  window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(ids.indexOf(h)>=0){go(h,null);secs[ids.indexOf(h)].scrollIntoView()}});
 })();
 </script>
 </body>
