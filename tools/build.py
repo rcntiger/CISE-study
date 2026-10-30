@@ -641,12 +641,12 @@ roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
 PRACTICAL = SRC / "실기_필답형_핵심.md"
 practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실기 · 필답형",
     eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심",
-    title="실기 필답형 핵심", accent="var(--c7)", notes=False, locked=True, per_section=True,
+    title="실기 필답형 핵심", accent="var(--c7)", notes=False, per_section=True,
     extra="번호는 주제마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
 CORE = SRC / "필기_핵심요약.md"
 core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약",
     eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기<br>핵심요약",
-    title="필기 핵심요약", accent="var(--c8)", notes=False, locked=True, per_section=True,
+    title="필기 핵심요약", accent="var(--c8)", notes=False, per_section=True,
     extra="번호는 과목마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
 print(counts, bank_counts, practical_count, core_count)
 
