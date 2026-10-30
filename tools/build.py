@@ -159,6 +159,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 @media (max-width:999px){body[data-subject=core226] .q-body{font-size:15px}body[data-subject=core226] .ans-body p{font-size:14.8px}body[data-subject=core226] ul.chk>li{font-size:15px}body[data-subject=core226] .exp{font-size:15.6px}}
 @media (min-width:1000px){:is(body[data-subject=core226],body[data-subject=practical]) .q-body,:is(body[data-subject=core226],body[data-subject=practical]) .ans-body p,:is(body[data-subject=core226],body[data-subject=practical]) ul.chk>li,:is(body[data-subject=core226],body[data-subject=practical]) .opts li{font-size:13px}:is(body[data-subject=core226],body[data-subject=practical]) .exp{font-size:12.6px}}
 .section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.q.flash{outline:3px solid var(--yellow);outline-offset:2px}
+:is(body[data-subject=core226],body[data-subject=practical]) h1{font-size:clamp(20px,6vw,28px);white-space:nowrap}:is(body[data-subject=core226],body[data-subject=practical]) .eyebrow{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em}
 @media (min-width:1600px){body{zoom:1.38}}
 @media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 """
@@ -710,12 +711,12 @@ bank_counts = {n: bank_page(n, p, grade=True) for n, p in BANKS.items()}
 roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
 PRACTICAL = SRC / "실기_필답형_핵심.md"
 practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실기 · 필답형",
-    eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심",
+    eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형 핵심",
     title="실기 필답형 핵심", accent="var(--c7)", notes=False, per_section=True, paged=True,
     extra="번호는 주제마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
 CORE = SRC / "필기_핵심요약.md"
 core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약",
-    eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기<br>핵심요약",
+    eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기 핵심요약",
     title="필기 핵심요약", accent="var(--c8)", notes=False, per_section=True, paged=True,
     extra="번호는 과목마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
 print(counts, bank_counts, practical_count, core_count)
