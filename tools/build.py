@@ -158,6 +158,7 @@ footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
 @media (min-width:1000px){body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:16px}body[data-page=points] .card h4{font-size:17.5px}body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
 @media (max-width:999px){body[data-subject=core226] .q-body{font-size:15px}body[data-subject=core226] .ans-body p{font-size:14.8px}body[data-subject=core226] ul.chk>li{font-size:15px}body[data-subject=core226] .exp{font-size:15.6px}}
 @media (min-width:1000px){:is(body[data-subject=core226],body[data-subject=practical]) .q-body,:is(body[data-subject=core226],body[data-subject=practical]) .ans-body p,:is(body[data-subject=core226],body[data-subject=practical]) ul.chk>li,:is(body[data-subject=core226],body[data-subject=practical]) .opts li{font-size:13px}:is(body[data-subject=core226],body[data-subject=practical]) .exp{font-size:12.6px}}
+.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.q.flash{outline:3px solid var(--yellow);outline-offset:2px}
 @media (min-width:1600px){body{zoom:1.38}}
 @media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 """
@@ -456,6 +457,69 @@ BANK_JS = """<script>
 </script>"""
 
 
+# 묶음(과목·주제)이 많은 문제집: 한 묶음씩 보기, 번호로 이동, 맨 위로, 마지막 위치 기억
+PAGED_JS = """<script>
+(function(){
+  var pk='sanan-pos-'+document.body.dataset.subject,st={};
+  try{st=JSON.parse(localStorage.getItem(pk)||'{}')}catch(e){}
+  if(!st.y)st.y={};
+  function save(){try{localStorage.setItem(pk,JSON.stringify(st))}catch(e){}}
+  var secs=[].slice.call(document.querySelectorAll('section.section[id]')),ids=secs.map(function(s){return s.id});
+  var sel=document.getElementById('secSel'),jump=document.getElementById('qJump'),toTop=document.getElementById('toTop'),
+      tools=document.querySelector('.tools'),onlyStar=document.getElementById('onlyStar'),onlyWrong=document.getElementById('onlyWrong');
+  function cur(){return sel.value}
+  function apply(){
+    var c=cur(),all=!c||onlyStar.classList.contains('on')||(onlyWrong&&onlyWrong.classList.contains('on'));
+    secs.forEach(function(s){s.classList.toggle('off',!all&&s.id!==c)});
+    document.querySelectorAll('nav.toc a').forEach(function(a){a.classList.toggle('cur',!!c&&a.getAttribute('href')==='#'+c)});
+  }
+  function listTop(){return document.querySelector('header').getBoundingClientRect().bottom+window.pageYOffset}
+  function to(y,smooth){window.scrollTo({top:y,behavior:smooth?'smooth':'instant'})}
+  function go(id,y){
+    sel.value=id;st.sec=id;save();apply();
+    if(y!=null)to(y);
+  }
+  secs.forEach(function(s,i){
+    var nav=document.createElement('div');nav.className='sec-nav';
+    function btn(j,cls,label){
+      var b=document.createElement('button');b.type='button';b.className='btn '+cls;
+      b.textContent=label;b.addEventListener('click',function(){go(ids[j],listTop())});nav.appendChild(b);
+    }
+    var name=function(j){return sel.querySelector('option[value="'+ids[j]+'"]').textContent};
+    if(i>0)btn(i-1,'prev','‹ '+name(i-1));
+    if(i<secs.length-1)btn(i+1,'next',name(i+1)+' ›');
+    s.appendChild(nav);
+  });
+  sel.addEventListener('change',function(){go(sel.value,listTop())});
+  document.querySelectorAll('nav.toc a').forEach(function(a){
+    a.addEventListener('click',function(e){var id=a.getAttribute('href').slice(1);if(ids.indexOf(id)<0)return;e.preventDefault();go(id,listTop())});
+  });
+  onlyStar.addEventListener('click',apply);
+  if(onlyWrong)onlyWrong.addEventListener('click',apply);
+  function doJump(){
+    var n=parseInt(jump.value,10);if(!n)return;
+    var q=[].slice.call(document.querySelectorAll('.section:not(.off):not(.hidden) .q:not(.hidden)')).filter(function(q){return q.dataset.title===n+'번'})[0];
+    if(!q){jump.value='';jump.placeholder='없음';setTimeout(function(){jump.placeholder='번호'},1500);return}
+    to(q.getBoundingClientRect().top+window.pageYOffset-tools.offsetHeight-8,1);
+    q.classList.add('flash');setTimeout(function(){q.classList.remove('flash')},1400);
+    jump.blur();
+  }
+  jump.addEventListener('change',doJump);
+  jump.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();doJump()}});
+  toTop.addEventListener('click',function(){to(0,1)});
+  var t=0;
+  window.addEventListener('scroll',function(){
+    toTop.classList.toggle('show',window.pageYOffset>600);
+    clearTimeout(t);t=setTimeout(function(){st.y[cur()]=Math.round(window.pageYOffset);save()},250);
+  },{passive:true});
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
+  var h=location.hash.slice(1);
+  if(ids.indexOf(h)>=0){go(h,null);secs[ids.indexOf(h)].scrollIntoView()}
+  else{var s0=st.sec!=null&&(st.sec===''||ids.indexOf(st.sec)>=0)?st.sec:ids[0];sel.value=s0;apply();if(st.y[s0])to(st.y[s0])}
+  window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(ids.indexOf(h)>=0){go(h,null);secs[ids.indexOf(h)].scrollIntoView()}});
+})();
+</script>"""
+
 LOCK_ITER = 600000
 LOCK_CSS = """<style>
 .lock{max-width:340px;margin:28px auto;text-align:center;padding:22px 18px 18px}
@@ -518,7 +582,7 @@ def lock_html(secret_html, pw):
 <script type="application/json" id="locked">{data}</script>"""
 
 
-def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True, locked=False, per_section=False, grade=False):
+def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True, locked=False, per_section=False, grade=False, paged=False):
     """과목 문제은행. 실기처럼 과목이 아닌 문제집은 slug 등 키워드로 넘김.
     per_section=True면 번호가 묶음마다 1번부터라 ★ 저장 키를 "묶음-번호"로 씀.
     grade=True면 보기를 눌러 채점(정답 줄 "✅ **②"에서 정답을 읽음, 없으면 맞음/틀림 자가 채점)."""
@@ -539,7 +603,7 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
     if "**목차**" in intro:
         intro = intro[:intro.index("**목차**")]
     intro = [l for l in intro if l.startswith("- ")]
-    toc, body, total = [], [], 0
+    toc, body, total, sec_opts = [], [], 0, []
     for si, (st, cards) in enumerate(sections, 1):
         if "틀린 문제" in st:
             continue
@@ -548,6 +612,7 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
         sid = f"g{si}"
         num, t = sec_title(st)
         toc.append(f'<a href="#{sid}"><span class="n">{html.escape(num)}</span>{html.escape(t)}</a>')
+        sec_opts.append(f'<option value="{sid}">{html.escape(num)}. {html.escape(t)}</option>')
         parts = []
         for ct, cl in cards:
             if not ct:
@@ -599,10 +664,14 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
   {intro_list(intro + (['- **보기를 누르면 바로 채점**됩니다. 맞으면 ✅, 틀리면 ❌가 문제에 붙고 이 기기에 저장되며, "❌ 틀린 문제만"으로 다시 풀 수 있습니다.'] if grade else []) + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.']) if notes else ""}
   {"" if locked else f'<nav class="toc">{"".join(toc)}</nav>'}
 </header>"""
-    content = (f'<nav class="toc">{"".join(toc)}</nav>' if locked else "\n") + f"""<div class="tools">{ch_sel}<button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button>{'<button class="btn" id="onlyWrong">❌ 틀린 문제만</button><div class="score"><span id="score"></span><span class="count" id="starCount"></span></div>' if grade else '<span class="count" id="starCount"></span>'}</div>""" + "\n".join(body)
+    sec_sel = ('<select class="btn" id="secSel" aria-label="볼 묶음 고르기"><option value="">전체 보기</option>' + "".join(sec_opts) + '</select><input class="btn" id="qJump" type="number" inputmode="numeric" min="1" placeholder="번호" aria-label="번호로 이동">') if paged else ""
+    content = (f'<nav class="toc">{"".join(toc)}</nav>' if locked else "\n") + f"""<div class="tools">{sec_sel}{ch_sel}<button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button>{'<button class="btn" id="onlyWrong">❌ 틀린 문제만</button><div class="score"><span id="score"></span><span class="count" id="starCount"></span></div>' if grade else '<span class="count" id="starCount"></span>'}</div>""" + "\n".join(body)
     if grade:
         extra += '<button class="btn hidden" type="button" id="gReset">채점 기록 지우기</button>'
     script = BANK_JS
+    if paged:
+        content += '<button class="to-top" id="toTop" type="button" aria-label="맨 위로">▲</button>'
+        script += PAGED_JS
     if locked:
         pw = page_password()
         if not pw:
@@ -642,12 +711,12 @@ roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
 PRACTICAL = SRC / "실기_필답형_핵심.md"
 practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실기 · 필답형",
     eyebrow="산업안전기사 실기 · 필답형 2016~2026", h1="실기 필답형<br>핵심",
-    title="실기 필답형 핵심", accent="var(--c7)", notes=False, per_section=True,
+    title="실기 필답형 핵심", accent="var(--c7)", notes=False, per_section=True, paged=True,
     extra="번호는 주제마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
 CORE = SRC / "필기_핵심요약.md"
 core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약",
     eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기<br>핵심요약",
-    title="필기 핵심요약", accent="var(--c8)", notes=False, per_section=True,
+    title="필기 핵심요약", accent="var(--c8)", notes=False, per_section=True, paged=True,
     extra="번호는 과목마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
 print(counts, bank_counts, practical_count, core_count)
 
