@@ -33,6 +33,7 @@ CSS = """
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
   --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
   --ok:#16865F;--ok-soft:#E3F5EC;--memo:#C25E00;--memo-soft:#FFF1E2;--ng:#D63B25;--ng-soft:#FDE9E5;
+  --add:#0B7F8C;--add-soft:#E4F5F7;
 }
 @media (prefers-color-scheme:dark){
   :root{
@@ -40,6 +41,7 @@ CSS = """
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
     --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
     --ok:#5EC2A0;--ok-soft:#16302A;--memo:#FFB066;--memo-soft:#33251A;--ng:#FF7A63;--ng-soft:#3A1E1A;
+    --add:#5CCAD6;--add-soft:#13302F;
   }
 }
 *{box-sizing:border-box}
@@ -94,6 +96,10 @@ ul.chk>li.cf::before{display:none}
 ul.chk>li.cf .cf-tag{display:inline-block;margin-right:6px;font-size:12px;font-weight:700;color:var(--cf)}
 ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
 ul.sub2 li{margin-bottom:3px}
+/* 기출포인트 보강 카드: 제목이 🆕로 시작하는 ### 카드 (기존 내용과 구분) */
+.card.add{border:1.5px dashed var(--add);background:linear-gradient(var(--add-soft),var(--surface) 48px)}
+.card.add h4{color:var(--add)}
+.card.add h4::before{background:var(--add)}
 .subnote{margin:0 0 12px;padding:9px 12px;background:var(--surface2);border-radius:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 .subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
 .subnote.std{background:transparent;border:1px dashed var(--line,#ccc);padding:7px 11px;font-size:12px}
@@ -359,7 +365,8 @@ def points_page(n, src):
         parts = []
         for ct, cl in cards:
             h = f"<h4>{inline(ct)}</h4>" if ct else ""
-            parts.append(f'<div class="card" data-title="{html.escape(t_clean)}{" · " + html.escape(ct) if ct else ""}">{h}{render_blocks(cl)}</div>')
+            cls = "card add" if ct and ct.startswith("🆕") else "card"
+            parts.append(f'<div class="{cls}" data-title="{html.escape(t_clean)}{" · " + html.escape(ct) if ct else ""}">{h}{render_blocks(cl)}</div>')
         body.append(f'<section class="section" id="{sid}"><div class="section-head"><div class="duality"><span class="n">{num}</span>{html.escape(t_clean)}</div><div class="section-line"></div></div>\n' + '<div class="cards">' + "\n".join(parts) + "</div></section>")
     header = f"""<header>
   <a class="back" href="index.html">← 목록으로</a>

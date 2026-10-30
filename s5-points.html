@@ -17,6 +17,7 @@
   --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06);
   --cf:#6D3FD1;--cf-soft:#F1EBFF;--exp:#16865F;--exp-soft:#E7F6EF;
   --ok:#16865F;--ok-soft:#E3F5EC;--memo:#C25E00;--memo-soft:#FFF1E2;--ng:#D63B25;--ng-soft:#FDE9E5;
+  --add:#0B7F8C;--add-soft:#E4F5F7;
 }
 @media (prefers-color-scheme:dark){
   :root{
@@ -24,6 +25,7 @@
     --hero:#141C25;--yellow-soft:#3A3115;--mark:#5C4A12;--shadow:none;
     --cf:#B79CFF;--cf-soft:#2A2340;--exp:#5EC2A0;--exp-soft:#16302A;
     --ok:#5EC2A0;--ok-soft:#16302A;--memo:#FFB066;--memo-soft:#33251A;--ng:#FF7A63;--ng-soft:#3A1E1A;
+    --add:#5CCAD6;--add-soft:#13302F;
   }
 }
 *{box-sizing:border-box}
@@ -78,6 +80,10 @@ ul.chk>li.cf::before{display:none}
 ul.chk>li.cf .cf-tag{display:inline-block;margin-right:6px;font-size:12px;font-weight:700;color:var(--cf)}
 ul.sub2{margin:6px 0 0;padding-left:14px;font-size:13.5px;color:var(--ink-soft)}
 ul.sub2 li{margin-bottom:3px}
+/* 기출포인트 보강 카드: 제목이 🆕로 시작하는 ### 카드 (기존 내용과 구분) */
+.card.add{border:1.5px dashed var(--add);background:linear-gradient(var(--add-soft),var(--surface) 48px)}
+.card.add h4{color:var(--add)}
+.card.add h4::before{background:var(--add)}
 .subnote{margin:0 0 12px;padding:9px 12px;background:var(--surface2);border-radius:10px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
 .subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
 .subnote.std{background:transparent;border:1px dashed var(--line,#ccc);padding:7px 11px;font-size:12px}
@@ -164,7 +170,7 @@ details.howto .sub{margin-top:6px}
   <span class="tab">5과목 · 기출포인트</span>
   <div class="eyebrow">산업안전기사 필기 · 5과목</div>
   <h1>화학설비 안전관리</h1>
-  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호, 🧠 연상 암기법</li></ul>
+  <ul class="sub"><li>⭐ 자주 나오는 항목, ➕ 보강한 주제, 🔸 기출 빈출, 📋 출제기준 세부항목 번호, 🧠 연상 암기법, 🆕 덧붙인 보강 카드, ⚠️ 교재·법령 확인 필요</li></ul>
   <nav class="toc"><a class="ch" href="#c01">CH01 화재·폭발 검토</a><a href="#t2"><span class="n">1</span>연소의 기초 ★</a><a href="#t3"><span class="n">2</span>인화점·발화점 ★</a><a href="#t4"><span class="n">3</span>폭발범위와 위험도 ★</a><a href="#t5"><span class="n">4</span>혼합가스와 계산식 ★</a><a href="#t6"><span class="n">5</span>폭발의 종류 ★</a><a href="#t7"><span class="n">6</span>폭발 방호 ★</a><a href="#t8"><span class="n">7</span>화재 분류와 소화 ★</a><a class="ch" href="#c02">CH02 화학물질 안전관리 실행</a><a href="#t10"><span class="n">8</span>산안법상 위험물질 분류 ★</a><a href="#t11"><span class="n">9</span>자연발화·금수성·혼합위험 ★</a><a href="#t12"><span class="n">10</span>MSDS와 노출기준 ★</a><a class="ch" href="#c03">CH03 화공안전 비상조치 계획·대응</a><a href="#t14"><span class="n">11</span>가스누출과 저장 ★</a><a href="#t15"><span class="n">12</span>비상조치계획과 비상대응 ➕</a><a class="ch" href="#c04">CH04 화공 안전운전·점검</a><a href="#t17"><span class="n">13</span>화학설비와 계측장치 ★</a><a href="#t18"><span class="n">14</span>안전밸브·파열판 ★</a><a href="#t19"><span class="n">15</span>화학장치·회전기기·배관 ➕</a><a href="#t20"><span class="n">16</span>안전거리 ★</a><a href="#t21"><span class="n">17</span>공정안전보고서(PSM) ★</a><a href="#t22"><span class="n">18</span>공정안전자료와 안전운전계획 ➕</a><a href="#t23"><span class="n">19</span>건조설비 ★</a><a class="ch" href="#std">출제기준 대조표</a></nav>
 </header><div class="chapter" id="c01"><span class="k">CHAPTER 01</span><span class="t">화재·폭발 검토</span></div>
 <section class="section" id="t2"><div class="section-head"><div class="duality"><span class="n">1</span>연소의 기초</div><div class="section-line"></div></div>
@@ -174,14 +180,16 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li><b>연소 4요소</b><br>3요소 + <b>연쇄반응</b><br>(연쇄반응을 끊는 것이 억제소화)</li><li><b>가연물이 되기 쉬운 조건</b><br>산소와 친화력 큼, 발열량 큼<br>표면적 넓음, 열전도율 <b>작음</b><br>활성화에너지 <b>작음</b></li><li><b>가연물이 될 수 없는 것</b><br>이미 산화된 것: CO₂, H₂O<br>불활성기체: He, Ne, Ar<br>흡열반응 물질: 질소(N₂)</li></ul>
 <p>⭐ <b>연소 형태</b></p>
 <ul class="chk"><li><b>증발연소:</b> 알코올, 휘발유, 황, 나프탈렌</li><li><b>분해연소:</b> 목재, 종이, 석탄, 플라스틱</li><li><b>표면연소:</b> 숯, 코크스, 금속분</li><li><b>자기연소:</b> 니트로셀룰로오스, TNT<br>(분자 안에 산소를 가짐)</li><li><b>확산연소:</b> 수소, 아세틸렌 등 가스</li></ul>
-<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>증발</b> = 액체·녹는 고체(알코올·휘발유·황·나프탈렌), <b>분해</b> = 나무·종이·석탄, <b>표면</b> = 숯처럼 불꽃 없이, <b>자기</b> = 몸 안에 산소(니트로·TNT), <b>확산</b> = 가스</div></div></div></section>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>증발</b> = 액체·녹는 고체(알코올·휘발유·황·나프탈렌), <b>분해</b> = 나무·종이·석탄, <b>표면</b> = 숯처럼 불꽃 없이, <b>자기</b> = 몸 안에 산소(니트로·TNT), <b>확산</b> = 가스</div></div>
+<div class="card add" data-title="연소의 기초 · 🆕 보강 · 점화원과 산소공급원"><h4>🆕 보강 · 점화원과 산소공급원</h4><ul class="chk"><li class="star"><b>점화원 예</b><br>화기, 전기불꽃, 정전기,<br>마찰·충격 불꽃, 고열물,<br>단열압축, 산화열(자연발화)</li><li class="star"><b>점화원이 될 수 없는 것</b><br>기화열(증발잠열), 융해열<br>(열을 빼앗는 쪽)</li><li><b>산소공급원</b><br>공기, 산화제(1류·6류 위험물),<br>자기반응성 물질(5류)</li><li><b>불꽃 연소 vs 무염 연소</b><br>표면연소(숯·코크스)는<br>불꽃 없이 빨갛게 탐</li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span><b>황·나프탈렌</b>은<br>고체지만 <b>증발연소</b>입니다.</li></ul></div></div></section>
 <section class="section" id="t3"><div class="section-head"><div class="duality"><span class="n">2</span>인화점·발화점</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="인화점·발화점"><div class="subnote std">📋 출제기준 1-1 화재·폭발 이론 및 발생 이해</div>
 <ul class="chk"><li><b>인화점</b><br>점화원이 있을 때 불이 붙는<br><b>최저 온도</b> (액체 위험성 기준)</li><li><b>발화점(착화점)</b><br>점화원 없이 스스로 불이 붙는<br>최저 온도</li><li><b>연소점</b><br>인화 후 연소가 계속되는 온도<br>(보통 인화점보다 5~10℃ 높음)</li></ul>
 <p><b>발화점이 낮아지는 조건</b><br>압력 높음, 산소농도 높음,<br>발열량 큼, 화학적 활성도 큼,<br>분자구조 복잡</p>
 <p><b>주요 물질 인화점</b> (대략값)</p>
 <ul class="chk"><li>디에틸에테르: <b>−45℃</b></li><li>가솔린: <b>−43℃</b></li><li>이황화탄소: <b>−30℃</b></li><li>아세톤: −18℃</li><li>벤젠: −11℃</li><li>메탄올 11℃ · 에탄올 13℃</li><li>등유: 40~70℃</li></ul>
-<p><b>발화점이 특히 낮은 것</b><br>이황화탄소 약 <b>100℃</b>,<br>디에틸에테르 약 <b>180℃</b></p></div></div></section>
+<p><b>발화점이 특히 낮은 것</b><br>이황화탄소 약 <b>100℃</b>,<br>디에틸에테르 약 <b>180℃</b></p></div>
+<div class="card add" data-title="인화점·발화점 · 🆕 보강 · 측정 방법과 증기압"><h4>🆕 보강 · 측정 방법과 증기압</h4><ul class="chk"><li><b>인화점 측정 장치</b><br>밀폐식: 태그, 펜스키-마텐스<br>개방식: 클리블랜드</li><li><b>증기압과 인화점</b><br>증기압이 높을수록(잘 증발할수록)<br>인화점은 <b>낮음</b></li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span>인화점이 낮다고<br>발화점도 낮은 것은 <b>아닙니다.</b><br>(가솔린: 인화점은 매우 낮지만<br>발화점은 이황화탄소보다 훨씬 높음)</li></ul></div></div></section>
 <section class="section" id="t4"><div class="section-head"><div class="duality"><span class="n">3</span>폭발범위와 위험도</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="폭발범위와 위험도"><div class="subnote std">📋 출제기준 1-1 화재·폭발 이론 및 발생 이해 · 1-3 폭발방지대책 수립</div>
 <p><b>폭발범위(연소범위)</b><br>공기 중 가연성 가스 농도(vol%)의<br>하한(LEL) ~ 상한(UEL)</p>
@@ -192,7 +200,8 @@ details.howto .sub{margin-top:6px}
 <p><b>폭발범위 변화</b></p>
 <ul class="chk"><li>온도·압력이 높아지면 <b>넓어짐</b><br>(주로 상한이 올라감)</li><li>산소 중에서는 공기 중보다 넓어짐</li><li>예외: 일산화탄소는 압력이 오르면<br>범위가 좁아짐</li><li>불활성가스를 넣으면 좁아짐</li></ul>
 <p>⭐ <b>위험도 H</b><br>H = (UEL − LEL) ÷ LEL</p>
-<p>예) 수소 (75 − 4) ÷ 4 = <b>17.75</b><br>예) 아세틸렌 (81 − 2.5) ÷ 2.5 = <b>31.4</b><br>예) 메탄 (15 − 5) ÷ 5 = <b>2</b></p></div></div></section>
+<p>예) 수소 (75 − 4) ÷ 4 = <b>17.75</b><br>예) 아세틸렌 (81 − 2.5) ÷ 2.5 = <b>31.4</b><br>예) 메탄 (15 − 5) ÷ 5 = <b>2</b></p></div>
+<div class="card add" data-title="폭발범위와 위험도 · 🆕 보강 · 위험도 비교와 압력 영향"><h4>🆕 보강 · 위험도 비교와 압력 영향</h4><ul class="chk"><li class="star"><b>위험도 더 계산하기</b><br>프로판: (9.5 − 2.1) ÷ 2.1 ≈ <b>3.5</b><br>에테르: (48 − 1.9) ÷ 1.9 ≈ <b>24.3</b><br>이황화탄소: (44 − 1.2) ÷ 1.2 ≈ <b>35.7</b></li><li class="star">위험도는 <b>이황화탄소</b>가<br>아세틸렌(31.4)보다 큼<br>(폭발범위는 아세틸렌이 가장 넓음)</li><li><b>위험한 조건</b><br>하한이 <b>낮을수록</b><br>범위가 <b>넓을수록</b><br>위험도가 <b>클수록</b> 위험</li><li><b>압력이 낮아지면</b><br>범위가 좁아지고,<br>진공에 가까우면 폭발하지 않음</li></ul></div></div></section>
 <section class="section" id="t5"><div class="section-head"><div class="duality"><span class="n">4</span>혼합가스와 계산식</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="혼합가스와 계산식"><div class="subnote std">📋 출제기준 1-3 폭발방지대책 수립 · 1-1 화재·폭발 이론 및 발생 이해</div>
 <p>계산 문제 단골입니다.</p>
@@ -205,7 +214,8 @@ details.howto .sub{margin-top:6px}
 <p>예) 프로판 C₃H₈<br>O₂ = 3 + 8/4 = <b>5</b><br>Cst = 100 ÷ (1 + 4.773 × 5) ≈ <b>4.02%</b><br>LEL ≈ 0.55 × 4.02 ≈ <b>2.2%</b></p>
 <p>⭐ <b>최소산소농도 MOC</b><br>MOC = LEL × 산소 몰수</p>
 <p>예) 프로판: 2.1 × 5 = <b>10.5%</b><br>→ 산소농도를 이보다 낮추면<br>연소하지 않음 (불활성화 기준)</p>
-<p><b>최소발화에너지(MIE)</b><br>수소·아세틸렌·이황화탄소가<br>약 <b>0.02mJ</b> 수준으로 매우 작음<br>압력·온도 높을수록, 산소 많을수록 작아짐</p></div></div></section>
+<p><b>최소발화에너지(MIE)</b><br>수소·아세틸렌·이황화탄소가<br>약 <b>0.02mJ</b> 수준으로 매우 작음<br>압력·온도 높을수록, 산소 많을수록 작아짐</p></div>
+<div class="card add" data-title="혼합가스와 계산식 · 🆕 보강 · 계산 예 더 보기"><h4>🆕 보강 · 계산 예 더 보기</h4><ul class="chk"><li class="star"><b>메탄 Cst</b><br>CH₄ → O₂ = 1 + 4/4 = <b>2</b><br>Cst = 100 ÷ (1 + 4.773 × 2)<br>≈ <b>9.5%</b><br>LEL ≈ 0.55 × 9.5 ≈ <b>5.2%</b></li><li class="star"><b>산소가 든 물질의 산소 몰수</b><br>CₙHₘOₗ → n + m/4 − l/2<br>예) 에탄올 C₂H₆O<br>→ 2 + 6/4 − 1/2 = <b>3</b></li><li><b>MOC 예</b><br>메탄 5 × 2 = <b>10%</b></li><li><b>불연성 가스가 섞이면</b><br>가연성 성분만 합이 100이 되게<br>바꾼 뒤 르샤틀리에 계산</li></ul></div></div></section>
 <section class="section" id="t6"><div class="section-head"><div class="duality"><span class="n">5</span>폭발의 종류</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="폭발의 종류"><div class="subnote std">📋 출제기준 1-1 화재·폭발 이론 및 발생 이해</div>
 <p><b>물리적 폭발 vs 화학적 폭발</b></p>
@@ -217,14 +227,16 @@ details.howto .sub{margin-top:6px}
 <p>⭐ <b>UVCE (개방계 증기운폭발)</b></p>
 <ul class="chk"><li>대기 중 다량 누출된 가연성 증기가<br>구름처럼 퍼진 뒤 점화되어 폭발</li><li>대책: 누출 방지, <b>가스누출감지기</b>,<br>긴급차단장치, 점화원 관리</li></ul>
 <p><b>분해폭발 가스</b><br>아세틸렌, 산화에틸렌, 에틸렌,<br>히드라진 (산소 없이도 폭발)</p>
-<p><b>폭굉(Detonation)</b><br>화염 전파속도가 <b>음속보다 빠름</b><br>(약 1,000~3,500m/s)<br>폭굉유도거리는 관경이 가늘수록,<br>압력이 높을수록 짧아짐</p></div></div></section>
+<p><b>폭굉(Detonation)</b><br>화염 전파속도가 <b>음속보다 빠름</b><br>(약 1,000~3,500m/s)<br>폭굉유도거리는 관경이 가늘수록,<br>압력이 높을수록 짧아짐</p></div>
+<div class="card add" data-title="폭발의 종류 · 🆕 보강 · 기상·응상 폭발과 폭연"><h4>🆕 보강 · 기상·응상 폭발과 폭연</h4><ul class="chk"><li class="star"><b>기상폭발</b><br>가스폭발, 분무폭발,<br>분진폭발, 분해폭발</li><li class="star"><b>응상폭발</b><br>수증기폭발, 증기폭발,<br>전선폭발, 고상 전이 폭발</li><li><b>폭연 vs 폭굉</b><br>폭연: 화염 전파가 <b>음속보다 느림</b><br>폭굉: 음속보다 빠르고 <b>충격파</b> 동반</li><li><b>분진폭발 과정</b><br>퇴적 분진 → 비산·분산<br>→ 점화 → 1차 폭발<br>→ 쌓인 분진이 날려 2차 폭발</li><li><b>분진폭발 영향 인자</b><br>입자 크기, 분포, 수분,<br>산소농도, 휘발분 함량</li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span><b>BLEVE</b>는<br>물리적 폭발에서 시작해<br>화구(Fire Ball)를 만듭니다.</li></ul></div></div></section>
 <section class="section" id="t7"><div class="section-head"><div class="duality"><span class="n">6</span>폭발 방호</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="폭발 방호"><div class="subnote std">📋 출제기준 1-3 폭발방지대책 수립</div>
 <p>⭐ <b>폭발 방호 대책</b></p>
 <ul class="chk"><li><b>봉쇄(Containment)</b><br>폭발압력을 견디는 구조로 만듦</li><li><b>차단(Isolation)</b><br>폭발이 다른 설비로 번지지 않게<br>밸브 등으로 막음</li><li><b>불꽃방지(Flame arrester)</b><br>가는 금속망으로 화염을 냉각해<br>역화를 막음</li><li><b>폭발억제(Suppression)</b><br>초기 압력 상승을 감지해<br>소화제를 자동 분사</li><li><b>폭발방산(Venting)</b><br>파열판·폭압방산구로<br>압력을 밖으로 빼냄</li></ul>
 <p>⭐ <b>화염방지기</b><br>인화성 액체·가스를 저장·취급하는<br>설비에서 외부로 증기를 방출하는<br><b>통기관 상단</b>에 설치</p>
 <p><b>불활성화(퍼지) 방법</b></p>
-<ul class="chk"><li><b>진공 퍼지:</b> 진공 후 불활성가스 주입</li><li><b>압력 퍼지:</b> 가압 주입 후 방출</li><li><b>스위프 퍼지:</b> 한쪽에서 주입,<br>다른 쪽으로 배출 (연속)</li><li><b>사이폰 퍼지:</b> 액체를 채운 뒤<br>빼면서 불활성가스 주입<br>(큰 용기에 경제적)</li><li>불활성가스: 질소, CO₂, 수증기</li></ul></div></div></section>
+<ul class="chk"><li><b>진공 퍼지:</b> 진공 후 불활성가스 주입</li><li><b>압력 퍼지:</b> 가압 주입 후 방출</li><li><b>스위프 퍼지:</b> 한쪽에서 주입,<br>다른 쪽으로 배출 (연속)</li><li><b>사이폰 퍼지:</b> 액체를 채운 뒤<br>빼면서 불활성가스 주입<br>(큰 용기에 경제적)</li><li>불활성가스: 질소, CO₂, 수증기</li></ul></div>
+<div class="card add" data-title="폭발 방호 · 🆕 보강 · 방지와 방호 구분"><h4>🆕 보강 · 방지와 방호 구분</h4><ul class="chk"><li class="star"><b>폭발 방지(예방)</b><br>가연물·산소·점화원을 관리<br>불활성화, 환기, 점화원 제거,<br>누출 방지</li><li class="star"><b>폭발 방호(피해 줄이기)</b><br>봉쇄, 차단, 억제, 방산<br>방폭벽, 안전거리</li><li><b>화염방지기 원리</b><br>가는 틈(금속망, 소결금속)에서<br>화염이 식어 꺼짐(소염)</li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span>화염방지기는<br>통기관 <b>상단</b>에 둡니다.</li></ul></div></div></section>
 <section class="section" id="t8"><div class="section-head"><div class="duality"><span class="n">7</span>화재 분류와 소화</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="화재 분류와 소화"><div class="subnote std">📋 출제기준 1-2 소화 원리 이해 · 1-1 화재·폭발 이론 및 발생 이해</div>
 <p>⭐ <b>화재 분류</b></p>
@@ -239,7 +251,8 @@ details.howto .sub{margin-top:6px}
 <p><b>할론 번호 읽기 (C-F-Cl-Br 순)</b></p>
 <ul class="chk"><li>할론 1301: CF₃Br (소화력 가장 큼)</li><li>할론 1211: CF₂ClBr</li><li>할론 2402: C₂F₄Br₂</li></ul>
 <p><b>금속화재(D급)</b><br>물·CO₂ 사용 금지<br>마른 모래, 팽창질석·팽창진주암</p>
-<p><b>CO₂ 소화기</b><br>질식·냉각 효과, 전기화재에 적합<br>밀폐공간 사용 시 질식 위험</p></div></div></section>
+<p><b>CO₂ 소화기</b><br>질식·냉각 효과, 전기화재에 적합<br>밀폐공간 사용 시 질식 위험</p></div>
+<div class="card add" data-title="화재 분류와 소화 · 🆕 보강 · 포 약제와 CO₂ 농도 계산"><h4>🆕 보강 · 포 약제와 CO₂ 농도 계산</h4><ul class="chk"><li class="star"><b>CO₂ 소화 농도 계산</b><br>CO₂(%) = (21 − O₂) ÷ 21 × 100<br>예) 산소를 15%로 낮추려면<br>(21 − 15) ÷ 21 × 100 ≈ <b>28.6%</b></li><li><b>포 소화약제</b><br>단백포, 수성막포(AFFF),<br>합성계면활성제포,<br><b>내알코올포</b>(알코올 등 수용성 액체용)</li><li><b>물 소화의 장단점</b><br>장점: 기화열·비열이 커 냉각 효과 큼<br>단점: 전기·금속화재에 못 씀,<br>기름화재는 오히려 번질 수 있음</li><li><b>강화액</b><br>탄산칼륨을 넣어<br>겨울에 얼지 않게 한 약제</li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span>할론 1301의 숫자는<br><b>C·F·Cl·Br</b> 개수 순서입니다.</li></ul></div></div></section>
 <div class="chapter" id="c02"><span class="k">CHAPTER 02</span><span class="t">화학물질 안전관리 실행</span></div>
 <section class="section" id="t10"><div class="section-head"><div class="duality"><span class="n">8</span>산안법상 위험물질 분류</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="산안법상 위험물질 분류"><div class="subnote std">📋 출제기준 2-1 화학물질(위험물, 유해화학물질) 확인</div>
@@ -252,7 +265,10 @@ details.howto .sub{margin-top:6px}
 <p>⭐ <b>부식성 물질</b></p>
 <ul class="chk"><li><b>산</b><br>농도 <b>20%</b> 이상: 염산, 황산, 질산<br>농도 <b>60%</b> 이상: 인산, 아세트산, 불산</li><li><b>염기</b><br>농도 <b>40%</b> 이상:<br>수산화나트륨, 수산화칼륨</li></ul>
 <p>⭐ <b>급성 독성 물질</b></p>
-<ul class="chk"><li>LD50(경구, 쥐): <b>300mg/kg</b> 이하</li><li>LD50(경피, 토끼·쥐): <b>1,000mg/kg</b> 이하</li><li>LC50(가스, 4시간 흡입): <b>2,500ppm</b> 이하</li><li>LC50(증기): <b>10mg/L</b> 이하</li><li>LC50(분진·미스트): <b>1mg/L</b> 이하</li></ul></div></div></section>
+<ul class="chk"><li>LD50(경구, 쥐): <b>300mg/kg</b> 이하</li><li>LD50(경피, 토끼·쥐): <b>1,000mg/kg</b> 이하</li><li>LC50(가스, 4시간 흡입): <b>2,500ppm</b> 이하</li><li>LC50(증기): <b>10mg/L</b> 이하</li><li>LC50(분진·미스트): <b>1mg/L</b> 이하</li></ul></div>
+<div class="card add" data-title="산안법상 위험물질 분류 · 🆕 보강 · GHS 그림문자"><h4>🆕 보강 · GHS 그림문자</h4><p>⭐ <b>GHS 그림문자 (9가지)</b></p>
+<ul class="chk"><li>폭발성(폭탄)</li><li>인화성(불꽃)</li><li>산화성(원 위의 불꽃)</li><li>고압가스(가스 실린더)</li><li>부식성</li><li>급성 독성(해골)</li><li>경고(느낌표)</li><li>건강 유해성(사람 상반신)</li><li>수생환경 유해성(물고기·나무)</li></ul>
+<ul class="chk"><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span><b>이황화탄소</b>는<br>인화성 액체(23℃ 미만, 끓는점<br>35℃ 초과) 분류입니다.</li></ul></div></div></section>
 <section class="section" id="t11"><div class="section-head"><div class="duality"><span class="n">9</span>자연발화·금수성·혼합위험</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="자연발화·금수성·혼합위험"><div class="subnote std">📋 출제기준 2-2 화학물질 유해 위험성 확인 · 2-1 화학물질(위험물, 유해화학물질) 확인</div>
 <p>⭐ <b>자연발화 조건</b><br>표면적 넓음, 발열량 큼,<br>열전도율 <b>작음</b>(열 축적),<br>주위 온도 높음, 적당한 수분</p>
@@ -263,7 +279,9 @@ details.howto .sub{margin-top:6px}
 <p>⭐ <b>금수성 물질과 물 반응 가스</b></p>
 <ul class="chk"><li>칼륨·나트륨·리튬 → <b>수소</b></li><li>탄화칼슘(카바이드) → <b>아세틸렌</b></li><li>인화칼슘 → <b>포스핀</b>(인화수소)</li><li>알킬알루미늄 → 에탄 등</li><li>황린은 물속에 저장 (공기 중 자연발화)</li><li>칼륨·나트륨은 <b>석유(등유) 속</b>에 저장</li></ul>
 <p>⭐ <b>위험물 혼재 (소방법 류별)</b></p>
-<ul class="chk"><li>1류 산화성고체, 2류 가연성고체,<br>3류 자연발화성·금수성,<br>4류 인화성액체, 5류 자기반응성,<br>6류 산화성액체</li><li>혼재 가능: <b>"423, 524, 61"</b><br>4류는 2·3류와<br>5류는 2·4류와<br>6류는 1류와</li></ul></div></div></section>
+<ul class="chk"><li>1류 산화성고체, 2류 가연성고체,<br>3류 자연발화성·금수성,<br>4류 인화성액체, 5류 자기반응성,<br>6류 산화성액체</li><li>혼재 가능: <b>"423, 524, 61"</b><br>4류는 2·3류와<br>5류는 2·4류와<br>6류는 1류와</li></ul></div>
+<div class="card add" data-title="자연발화·금수성·혼합위험 · 🆕 보강 · 혼재와 물 반응 더 알아두기"><h4>🆕 보강 · 혼재와 물 반응 더 알아두기</h4><ul class="chk"><li><b>혼재 기준 예외</b><br>지정수량의 <b>1/10 이하</b>는<br>혼재 기준을 적용하지 않음</li><li><b>혼합 위험 예</b><br>산화제 + 가연물<br>질산 + 유기물<br>과산화수소 + 금속분</li><li><b>생석회(CaO) + 물</b><br>큰 열이 나서 주변 가연물에<br>불이 붙을 수 있음</li><li><b>자연발화 방지 추가</b><br>불활성가스로 산소 차단<br>쌓아 둘 때 열이 쌓이지 않게</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span>혼재는 <b>'4·2·3, 5·2·4, 6·1'</b> — 숫자가 작은 류 쪽만 기억해도 됨 (4류↔2·3류, 5류↔2·4류, 6류↔1류)</div></div></div></section>
 <section class="section" id="t12"><div class="section-head"><div class="duality"><span class="n">10</span>MSDS와 노출기준</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="MSDS와 노출기준"><div class="subnote std">📋 출제기준 2-2 화학물질 유해 위험성 확인 · 2-1 화학물질(위험물, 유해화학물질) 확인</div>
 <p>⭐ <b>MSDS 작성 항목 (16개)</b></p>
@@ -273,7 +291,8 @@ details.howto .sub{margin-top:6px}
 <p>⭐ <b>혼합물 노출지수</b><br>R = C₁/T₁ + C₂/T₂ + …<br>(C: 측정농도, T: 노출기준)<br><b>R &gt; 1</b> 이면 노출기준 초과</p>
 <p>예) 톨루엔 50ppm(기준 50),<br>크실렌 50ppm(기준 100)<br>R = 1 + 0.5 = <b>1.5</b> → 초과</p>
 <p><b>주요 가스 노출기준 (TWA, 대략값)</b></p>
-<ul class="chk"><li>포스겐 0.1ppm (독성 매우 큼)</li><li>염소 0.5ppm</li><li>황화수소 10ppm</li><li>암모니아 25ppm</li><li>일산화탄소 30ppm</li></ul></div></div></section>
+<ul class="chk"><li>포스겐 0.1ppm (독성 매우 큼)</li><li>염소 0.5ppm</li><li>황화수소 10ppm</li><li>암모니아 25ppm</li><li>일산화탄소 30ppm</li></ul></div>
+<div class="card add" data-title="MSDS와 노출기준 · 🆕 보강 · 경고표지와 TWA 계산"><h4>🆕 보강 · 경고표지와 TWA 계산</h4><ul class="chk"><li class="star"><b>경고표지 기재 항목</b><br>명칭, 그림문자,<br>신호어(위험·경고),<br>유해·위험 문구,<br>예방조치 문구, 공급자 정보</li><li class="star"><b>TWA 계산 예</b><br>(C₁T₁ + C₂T₂ + …) ÷ 8<br>100ppm 2시간, 50ppm 4시간,<br>0ppm 2시간<br>→ (200 + 200) ÷ 8 = <b>50ppm</b></li><li><b>ppm ↔ mg/m³ 환산 (25℃, 1기압)</b><br>mg/m³ = ppm × 분자량 ÷ <b>24.45</b></li><li><b>MSDS 교육</b><br>처음 취급할 때, 새 물질을<br>들여올 때 실시</li></ul></div></div></section>
 <div class="chapter" id="c03"><span class="k">CHAPTER 03</span><span class="t">화공안전 비상조치 계획·대응</span></div>
 <section class="section" id="t14"><div class="section-head"><div class="duality"><span class="n">11</span>가스누출과 저장</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="가스누출과 저장"><div class="subnote std">📋 출제기준 2-2 화학물질 유해 위험성 확인 · 3-1 비상조치계획 및 평가</div>
@@ -284,7 +303,8 @@ details.howto .sub{margin-top:6px}
 <p><b>가스 용기 색 (공업용)</b></p>
 <ul class="chk"><li>산소: 녹색</li><li>수소: 주황색</li><li>아세틸렌: 황색</li><li>액화탄산가스: 청색</li><li>액화암모니아: 백색</li><li>액화염소: 갈색</li><li>LPG·그 밖의 가스: 회색</li></ul>
 <p><b>아세틸렌 취급</b></p>
-<ul class="chk"><li>구리·은·수은과 접촉 금지<br>(폭발성 아세틸리드 생성)</li><li>용기는 <b>세워서</b> 보관</li><li>아세톤·DMF에 녹여 다공물질에 충전</li><li>게이지압력 <b>127kPa</b> 초과 압력으로<br>사용 금지 (시험 전 확인)</li></ul></div></div></section>
+<ul class="chk"><li>구리·은·수은과 접촉 금지<br>(폭발성 아세틸리드 생성)</li><li>용기는 <b>세워서</b> 보관</li><li>아세톤·DMF에 녹여 다공물질에 충전</li><li>게이지압력 <b>127kPa</b> 초과 압력으로<br>사용 금지 (시험 전 확인)</li></ul></div>
+<div class="card add" data-title="가스누출과 저장 · 🆕 보강 · 가스 비중과 감지기 위치"><h4>🆕 보강 · 가스 비중과 감지기 위치</h4><ul class="chk"><li class="star"><b>가스 비중</b><br>분자량 ÷ 29 (공기)<br>프로판 44 ÷ 29 ≈ <b>1.52</b> → 바닥에 깔림<br>메탄 16 ÷ 29 ≈ <b>0.55</b> → 위로 뜸</li><li>⚠️ 확인 필요: 감지기 높이는<br>무거운 가스는 바닥에서 <b>30cm</b> 이내,<br>가벼운 가스는 천장에서 <b>30cm</b> 이내로<br>알려짐</li><li><b>용기 보관</b><br>40℃ 이하, 직사광선 피함,<br>넘어짐 방지, 충전·빈 용기 구분</li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span>가연성 가스 경보는<br>폭발<b>하한의 25%</b> 이하입니다.</li></ul></div></div></section>
 <section class="section" id="t15"><div class="section-head"><div class="duality"><span class="n">12</span>비상조치계획과 비상대응 ➕</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="비상조치계획과 비상대응 ➕"><div class="subnote std">📋 출제기준 3-1 비상조치계획 및 평가<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
 <div class="subnote">공정안전보고서(PSM) 관련 법령 기준입니다.<br>시험 전 확인하세요.</div>
@@ -293,7 +313,10 @@ details.howto .sub{margin-top:6px}
 <p><b>비상대응 교육훈련</b></p>
 <ul class="chk"><li>비상조치계획에 따라 정기적으로 실시</li><li>도상훈련(토의식)과 실제 훈련</li><li>훈련 결과를 평가해 계획 보완</li></ul>
 <p><b>자체 비상대응 매뉴얼 내용</b></p>
-<ul class="chk"><li>비상사태 구분(등급)과 경보 방법</li><li>대피 경로와 집결지</li><li>비상통제 조직과 역할</li><li>비상 설비(소화·차단·방재) 위치</li><li>응급의료·외부기관 지원 요청</li></ul></div></div></section>
+<ul class="chk"><li>비상사태 구분(등급)과 경보 방법</li><li>대피 경로와 집결지</li><li>비상통제 조직과 역할</li><li>비상 설비(소화·차단·방재) 위치</li><li>응급의료·외부기관 지원 요청</li></ul></div>
+<div class="card add" data-title="비상조치계획과 비상대응 ➕ · 🆕 보강 · 비상 대응 흐름"><h4>🆕 보강 · 비상 대응 흐름</h4><p><b>사고 시 대응 순서 (일반)</b></p>
+<ul class="chk"><li>1. 경보 발령</li><li>2. 초기 대응 (긴급차단, 초기 소화)</li><li>3. 대피·인원 확인</li><li>4. 외부 기관 신고·지원 요청</li><li>5. 복구·사고 조사</li></ul>
+<ul class="chk"><li><b>비상통제 조직</b><br>비상대책 본부, 현장 지휘,<br>소방·방재, 의료, 연락 담당</li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span>비상조치계획에는<br><b>주민 홍보계획</b>도 들어갑니다.</li></ul></div></div></section>
 <div class="chapter" id="c04"><span class="k">CHAPTER 04</span><span class="t">화공 안전운전·점검</span></div>
 <section class="section" id="t17"><div class="section-head"><div class="duality"><span class="n">13</span>화학설비와 계측장치</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="화학설비와 계측장치"><div class="subnote std">📋 출제기준 2-3 화학물질 취급설비 개념 확인 · 4-1 공정안전 기술</div>
@@ -304,7 +327,8 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>계측장치: <b>온도계·유량계·압력계</b></li><li>자동경보장치</li><li>긴급차단장치</li><li>예비동력원</li></ul>
 <p><b>화학설비 부속설비 예</b><br>배관·밸브·관, 펌프·압축기,<br>온도·압력·유량 제어장치,<br>안전밸브·파열판·화염방지기,<br>가스누출감지·경보장치</p>
 <p><b>반응기 분류</b></p>
-<ul class="chk"><li>조작 방식: 회분식, 반회분식, 연속식</li><li>구조: 관형, 탑형, 교반조형, 유동층형</li><li>반응폭주 대책: 냉각, 원료 공급 차단,<br>반응억제제 투입, 긴급 방출</li></ul></div></div></section>
+<ul class="chk"><li>조작 방식: 회분식, 반회분식, 연속식</li><li>구조: 관형, 탑형, 교반조형, 유동층형</li><li>반응폭주 대책: 냉각, 원료 공급 차단,<br>반응억제제 투입, 긴급 방출</li></ul></div>
+<div class="card add" data-title="화학설비와 계측장치 · 🆕 보강 · 반응폭주와 내부 작업"><h4>🆕 보강 · 반응폭주와 내부 작업</h4><ul class="chk"><li class="star"><b>반응폭주</b><br>발열반응 온도 상승 → 반응 빨라짐<br>→ 더 많은 열 → 제어 불능</li><li class="star"><b>설비 내부 작업 전 적정공기</b><br>산소 <b>18% 이상 23.5% 미만</b><br>CO₂ <b>1.5% 미만</b><br>황화수소 <b>10ppm 미만</b><br>일산화탄소 <b>30ppm 미만</b></li><li><b>화학설비 재료 고를 때</b><br>부식성, 사용 온도·압력,<br>취급 물질과의 반응성</li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span>특수화학설비 기준은<br><b>350℃ 이상</b> 또는 <b>980kPa 이상</b>입니다.</li></ul></div></div></section>
 <section class="section" id="t18"><div class="section-head"><div class="duality"><span class="n">14</span>안전밸브·파열판</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="안전밸브·파열판"><div class="subnote std">📋 출제기준 4-1 공정안전 기술</div>
 <div class="subnote">시험 전 최신 법령으로 확인하세요.</div>
@@ -316,7 +340,8 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>화학공정 유체와 직접 접촉:<br><b>매년 1회</b> 이상</li><li>안전밸브 전단에 파열판 설치:<br><b>2년마다 1회</b> 이상</li><li>PSM 이행상태 평가 우수 사업장:<br><b>4년마다 1회</b> 이상</li></ul>
 <p>⭐ <b>파열판 설치 대상</b></p>
 <ul class="chk"><li>반응폭주 등 <b>급격한 압력 상승</b> 우려</li><li>급성 독성물질 누출로<br>주위 환경 오염 우려</li><li>이상물질이 쌓여 안전밸브가<br>작동하지 못할 우려</li></ul>
-<p><b>파열판 특징</b><br>한 번 터지면 교체 (재사용 불가)<br>누설이 없고 반응 속도가 빠름</p></div></div></section>
+<p><b>파열판 특징</b><br>한 번 터지면 교체 (재사용 불가)<br>누설이 없고 반응 속도가 빠름</p></div>
+<div class="card add" data-title="안전밸브·파열판 · 🆕 보강 · 밸브 종류와 차단밸브 금지"><h4>🆕 보강 · 밸브 종류와 차단밸브 금지</h4><ul class="chk"><li class="star"><b>유체별 구분</b><br>안전밸브: 주로 <b>기체·증기</b><br>릴리프밸브: <b>액체</b><br>안전릴리프밸브: 둘 다</li><li><b>안전밸브 형식</b><br>스프링식, 중추식,<br>지렛대식, 파일럿식</li><li class="star"><b>차단밸브 설치 금지</b><br>안전밸브 앞뒤에는 원칙적으로<br>차단밸브를 두지 않음<br>(예비 안전밸브가 있는 경우 등은 예외)</li><li><b>방출물 처리</b><br>플레어스택(태움), 스크러버(흡수)</li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span>외부 화재 대비용은<br><b>1.1배</b>, 2개 설치 시 나머지는<br><b>1.05배</b>입니다.</li></ul></div></div></section>
 <section class="section" id="t19"><div class="section-head"><div class="duality"><span class="n">15</span>화학장치·회전기기·배관 ➕</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="화학장치·회전기기·배관 ➕"><div class="subnote std">📋 출제기준 2-3 화학물질 취급설비 개념 확인 · 4-1 공정안전 기술<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
 <p><b>증류탑(정류탑)</b></p>
@@ -332,12 +357,15 @@ details.howto .sub{margin-top:6px}
 <p><b>수격작용(워터해머)</b><br>밸브를 급히 닫을 때 압력파 충격<br>→ 밸브를 천천히 조작, 서지탱크</p>
 <p>⭐ <b>배관 피팅류 용도</b></p>
 <ul class="chk"><li><b>관 연결:</b> 플랜지, 유니온,<br>커플링, 니플, 소켓</li><li><b>방향 바꿈:</b> 엘보, 티, 크로스, Y</li><li><b>관 지름 바꿈:</b> 리듀서, 부싱</li><li><b>유로 차단:</b> 플러그, 캡, 밸브</li></ul>
-<p><b>제어장치</b><br>온도·압력·유량·액위 자동제어,<br>긴급차단장치, 인터록</p></div></div></section>
+<p><b>제어장치</b><br>온도·압력·유량·액위 자동제어,<br>긴급차단장치, 인터록</p></div>
+<div class="card add" data-title="화학장치·회전기기·배관 ➕ · 🆕 보강 · 밸브와 증류 방식"><h4>🆕 보강 · 밸브와 증류 방식</h4><ul class="chk"><li class="star"><b>밸브 용도</b><br>게이트밸브: 완전 개폐용<br>(유량 조절에는 부적합)<br>글로브밸브: 유량 조절<br>체크밸브: <b>역류 방지</b><br>볼·버터플라이밸브: 빠른 개폐</li><li><b>증류 방식</b><br>감압증류: 압력을 낮춰 끓는점을<br>낮춤 → 분해되기 쉬운 물질<br>수증기증류, 공비증류, 추출증류</li><li><b>펌프 종류</b><br>원심펌프, 왕복펌프, 회전펌프</li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span>캐비테이션 방지는<br>흡입관을 <b>짧고 굵게</b>, 위치는 <b>낮게</b>입니다.</li></ul></div></div></section>
 <section class="section" id="t20"><div class="section-head"><div class="duality"><span class="n">16</span>안전거리</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="안전거리"><div class="subnote std">📋 출제기준 4-1 공정안전 기술</div>
 <div class="subnote">산업안전보건기준에 관한 규칙 별표8 기준입니다.<br>시험 전 확인하세요.</div>
 <ul class="chk"><li><b>단위공정설비 ↔ 다른 단위공정설비</b><br>설비 바깥면부터 <b>10m 이상</b></li><li>**플레어스택 ↔ 단위공정설비,<br>위험물질 저장탱크·하역설비**<br>반경 <b>20m 이상</b></li><li>**위험물질 저장탱크 ↔ 단위공정설비,<br>보일러, 가열로**<br>탱크 바깥면부터 <b>20m 이상</b></li><li>**사무실·연구실·식당 등 ↔<br>공정설비·저장탱크·보일러 등**<br>사무실 바깥면부터 <b>20m 이상</b></li></ul>
-<p>(방호벽 등을 설치하면 예외 인정)</p></div></div></section>
+<p>(방호벽 등을 설치하면 예외 인정)</p></div>
+<div class="card add" data-title="안전거리 · 🆕 보강 · 플레어스택과 방유제"><h4>🆕 보강 · 플레어스택과 방유제</h4><ul class="chk"><li><b>플레어스택</b><br>방출된 가연성 가스를<br>태워서 내보내는 굴뚝</li><li><b>방유제 (위험물안전관리법)</b><br>탱크 누출 시 퍼지지 않게 둘러막음<br>용량: 탱크 최대 용량의 <b>110%</b> 이상<br>높이: <b>0.5m 이상 3m 이하</b></li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span>단위공정설비 사이만<br><b>10m</b>, 나머지 세 가지는 <b>20m</b>입니다.</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>공정끼리만 10, 나머지는 20</b> — 플레어스택·저장탱크·사무실은 모두 20m</div></div></div></section>
 <section class="section" id="t21"><div class="section-head"><div class="duality"><span class="n">17</span>공정안전보고서(PSM)</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="공정안전보고서(PSM)"><div class="subnote std">📋 출제기준 4-3 공정안전보고서 작성심사·확인</div>
 <div class="subnote">시험 전 최신 법령으로 확인하세요.</div>
@@ -349,7 +377,8 @@ details.howto .sub{margin-top:6px}
 <p>⭐ <b>제출</b></p>
 <ul class="chk"><li>설비 설치·이전·주요구조 변경<br>공사 <b>착공일 30일 전</b>까지</li><li>한국산업안전보건공단에 <b>2부</b></li></ul>
 <p><b>공정위험성 평가 기법</b></p>
-<ul class="chk"><li><b>HAZOP:</b> 가이드워드(No, More,<br>Less, Reverse 등)로 이탈 검토</li><li><b>FTA:</b> 정상사상에서 원인을<br>거꾸로 분석 (연역적)</li><li><b>ETA:</b> 초기사상에서 결과를<br>따라감 (귀납적)</li><li><b>FMEA:</b> 부품 고장형태별 영향 분석</li><li>체크리스트, What-if, 상대위험순위</li></ul></div></div></section>
+<ul class="chk"><li><b>HAZOP:</b> 가이드워드(No, More,<br>Less, Reverse 등)로 이탈 검토</li><li><b>FTA:</b> 정상사상에서 원인을<br>거꾸로 분석 (연역적)</li><li><b>ETA:</b> 초기사상에서 결과를<br>따라감 (귀납적)</li><li><b>FMEA:</b> 부품 고장형태별 영향 분석</li><li>체크리스트, What-if, 상대위험순위</li></ul></div>
+<div class="card add" data-title="공정안전보고서(PSM) · 🆕 보강 · 심사·등급과 상대위험순위"><h4>🆕 보강 · 심사·등급과 상대위험순위</h4><ul class="chk"><li><b>심사</b><br>공단이 제출받은 날부터<br><b>30일 이내</b> 심사 결과 통지</li><li><b>확인</b><br>설치 완료 후 시운전 단계 등에서<br>보고서대로 되었는지 확인</li><li class="star"><b>이행상태 평가 등급</b><br>P(우수), S(양호),<br>M+(보통), M−(불량)</li><li><b>상대위험순위 기법</b><br>다우 화재·폭발지수(Dow F&amp;EI),<br>몬드지수</li><li>⚠️ 확인 필요: 유해·위험물질 규정량<br>(예: 인화성 가스 제조·취급<br>5,000kg)은 시행령 별표로 확인하세요.</li></ul></div></div></section>
 <section class="section" id="t22"><div class="section-head"><div class="duality"><span class="n">18</span>공정안전자료와 안전운전계획 ➕</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="공정안전자료와 안전운전계획 ➕"><div class="subnote std">📋 출제기준 4-2 안전 점검 계획 수립 · 4-3 공정안전보고서 작성심사·확인<br>➕ 출제기준과 대조해 새로 보강한 주제입니다.</div>
 <div class="subnote">산업안전보건법 시행규칙 기준입니다.<br>시험 전 확인하세요.</div>
@@ -357,7 +386,8 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>취급·저장하는 유해·위험물질의<br>종류와 수량</li><li>유해·위험물질의 <b>물질안전보건자료</b></li><li>유해·위험설비의 목록과 사양</li><li>운전방법을 알 수 있는 <b>공정도면</b></li><li>건물·설비의 배치도</li><li><b>폭발위험장소 구분도</b>와 전기단선도</li><li>위험설비의 안전설계·제작·설치<br>관련 지침서</li></ul>
 <p>⭐ <b>안전운전계획 세부 내용</b></p>
 <ul class="chk"><li>안전운전지침서</li><li>설비 점검·검사·보수 계획,<br>유지계획과 지침서</li><li><b>안전작업허가</b></li><li>도급업체 안전관리계획</li><li>근로자 등 교육계획</li><li>가동 전 점검지침</li><li><b>변경요소 관리계획</b></li><li>자체감사와 공정사고 조사계획</li><li>그 밖에 안전운전에 필요한 사항</li></ul>
-<p><b>공정위험성 평가서</b>는 17번 주제의<br>평가 기법 참고</p></div></div></section>
+<p><b>공정위험성 평가서</b>는 17번 주제의<br>평가 기법 참고</p></div>
+<div class="card add" data-title="공정안전자료와 안전운전계획 ➕ · 🆕 보강 · 변경관리와 작업허가"><h4>🆕 보강 · 변경관리와 작업허가</h4><ul class="chk"><li class="star"><b>변경요소 관리(MOC)</b><br>설비·공정·원료를 바꿀 때<br>위험성 검토 → 승인<br>→ 교육 → 도면·자료 갱신</li><li class="star"><b>안전작업허가 대상 예</b><br>화기작업, 밀폐공간 출입,<br>정전작업, 굴착, 방사선 사용,<br>일반 위험작업</li><li><b>가동 전 점검(PSSR)</b><br>새 설비·변경 설비를 가동하기 전<br>안전 조건이 갖춰졌는지 확인</li></ul></div></div></section>
 <section class="section" id="t23"><div class="section-head"><div class="duality"><span class="n">19</span>건조설비</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="건조설비"><div class="subnote std">📋 출제기준 2-3 화학물질 취급설비 개념 확인</div>
 <div class="subnote">시험 전 최신 법령으로 확인하세요.</div>
@@ -367,7 +397,9 @@ details.howto .sub{margin-top:6px}
 <p><b>건조설비 구조</b></p>
 <ul class="chk"><li>외면은 <b>불연성</b> 재료</li><li>내면·내부 선반·틀은 불연성</li><li>폭발구(폭발 방산구) 설치</li><li>배기 설비, 온도 측정장치</li><li>내부 온도가 국부적으로<br>상승하지 않는 구조</li></ul>
 <p><b>건조설비 사용 시 준수사항</b></p>
-<ul class="chk"><li>위험물 건조 시 미리 내부 환기</li><li>가연성 가스·분진 배출</li><li>건조물이 쉽게 이탈하지 않게</li><li>고온 건조물은 냉각 후 격납</li></ul></div></div></section>
+<ul class="chk"><li>위험물 건조 시 미리 내부 환기</li><li>가연성 가스·분진 배출</li><li>건조물이 쉽게 이탈하지 않게</li><li>고온 건조물은 냉각 후 격납</li></ul></div>
+<div class="card add" data-title="건조설비 · 🆕 보강 · 건조설비 종류와 판단 예"><h4>🆕 보강 · 건조설비 종류와 판단 예</h4><ul class="chk"><li><b>건조설비 종류</b><br>상자형, 터널형, 회전 건조기,<br>분무 건조기, 기류 건조기</li><li class="star"><b>판단 예</b><br>위험물이 아닌 물질, 전기 8kW<br>→ 10kW 미만이라<br>독립 단층건물 대상 <b>아님</b></li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span>위험물 건조설비는<br>내용적 <b>1㎥ 이상</b>이 기준입니다.</li></ul>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>1·10·1·10</b> — 위험물 1㎥, 고체·액체 연료 10kg/h, 기체 연료 1㎥/h, 전기 10kW</div></div></div></section>
 <section class="section" id="std"><div class="section-head"><div class="duality">출제기준 대조표</div><div class="section-line"></div></div>
 <div class="cards"><div class="card" data-title="출제기준 대조표"><ul class="chk"><li>✅ 기존 주제로 다룸</li><li>✅➕ 기존 주제에 보강 주제를 더함</li><li>➕ 기존에 없어 보강 주제로 새로 다룸</li><li>화살표 뒤 숫자는 주제 번호입니다.</li></ul>
 <ul class="chk"><li><b>1. 화재·폭발 검토</b><ul class="sub2"><li>✅ 1-1 화재·폭발 이론 및 발생 이해 → 1, 2, 3, 4, 5, 7</li><li>✅ 1-2 소화 원리 이해 → 7</li><li>✅ 1-3 폭발방지대책 수립 → 3, 4, 6</li></ul></li><li><b>2. 화학물질 안전관리 실행</b><ul class="sub2"><li>✅ 2-1 화학물질(위험물, 유해화학물질) 확인 → 8, 9, 10</li><li>✅ 2-2 화학물질 유해 위험성 확인 → 9, 10, 11</li><li>✅➕ 2-3 화학물질 취급설비 개념 확인 → 13, 15, 19</li></ul></li><li><b>3. 화공안전 비상조치 계획·대응</b><ul class="sub2"><li>✅➕ 3-1 비상조치계획 및 평가 → 11, 12</li></ul></li><li><b>4. 화공 안전운전·점검</b><ul class="sub2"><li>✅➕ 4-1 공정안전 기술 → 13, 14, 15, 16</li><li>➕ 4-2 안전 점검 계획 수립 → 18</li><li>✅➕ 4-3 공정안전보고서 작성심사·확인 → 17, 18</li></ul></li></ul></div></div></section>
