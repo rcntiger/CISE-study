@@ -98,15 +98,20 @@ ul.sub2 li{margin-bottom:3px}
 .subnote::before{content:"ⓘ ";color:var(--accent,var(--c1));font-weight:700}
 .subnote.std{background:transparent;border:1px dashed var(--line,#ccc);padding:7px 11px;font-size:12px}
 .subnote.std::before{content:""}
-/* 기출포인트: 본문 글자 1px 크게 */
-body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:15px}
-body[data-page=points] .card h4{font-size:16.5px}
-body[data-page=points] .card code{font-size:14px}
-body[data-page=points] ul.sub2{font-size:14.5px}
-body[data-page=points] .exp{font-size:15.6px}
-body[data-page=points] .memo{font-size:15px}
-body[data-page=points] .subnote{font-size:13.5px}
-body[data-page=points] .subnote.std{font-size:13px}
+/* 기출포인트·과목 문제은행: 휴대폰에서 줄이 꺾이지 않게 글자·여백을 줄임 (본문 최소 13px) */
+:is(body[data-page=points],body[data-subject^=s]) .card{padding:14px 12px 8px;letter-spacing:-.015em}
+body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:14px}
+body[data-page=points] ul.chk>li:not(.star):not(.cf){padding-left:16px}
+body[data-page=points] .card h4{font-size:15.5px}
+body[data-page=points] ul.sub2{font-size:13px}
+body[data-page=points] .exp{font-size:14px}
+body[data-page=points] .memo{font-size:13.5px;padding:8px 10px}
+body[data-page=points] .subnote{font-size:12.5px;padding:8px 10px}
+body[data-page=points] .subnote.std{font-size:12px}
+body[data-subject^=s] .q-body{font-size:14px}
+body[data-subject^=s] .opts li{font-size:13px;padding:7px 10px}
+body[data-subject^=s] .ans-body{padding:10px 10px 2px}
+body[data-subject^=s] .ans-body p,body[data-subject^=s] .ans-body li{font-size:13px}
 footer{margin-top:40px;padding:16px;background:var(--surface);border-radius:14px;border:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.75}
 footer a{color:var(--accent,var(--c1));font-weight:600}
 /* 문제은행 */
@@ -153,9 +158,14 @@ details.ans .c,details.ans[open] .o{display:none}details.ans[open] .c{display:in
 .score b{color:var(--ink)}.score .o b{color:var(--ok)}.score .x b{color:var(--ng)}
 .score .count{margin-left:auto}
 footer #gReset{display:block;margin-top:10px;font-size:12px;padding:4px 12px}
+.brief{margin:0;font-size:12px;color:var(--hero-soft)}
+details.howto{margin-top:4px}
+details.howto summary{display:inline-block;cursor:pointer;font-size:12px;color:var(--hero-soft);text-decoration:underline;list-style:none}
+details.howto summary::-webkit-details-marker{display:none}
+details.howto .sub{margin-top:6px}
 .hidden{display:none !important}
 /* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
-@media (min-width:1000px){body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:16px}body[data-page=points] .card h4{font-size:17.5px}body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1000px){body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:15px}body[data-page=points] .card h4{font-size:16.5px}body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
 @media (max-width:999px){body[data-subject=core226] .q-body{font-size:15px}body[data-subject=core226] .ans-body p{font-size:14.8px}body[data-subject=core226] ul.chk>li{font-size:15px}body[data-subject=core226] .exp{font-size:15.6px}}
 @media (min-width:1000px){:is(body[data-subject=core226],body[data-subject=practical]) .q-body,:is(body[data-subject=core226],body[data-subject=practical]) .ans-body p,:is(body[data-subject=core226],body[data-subject=practical]) ul.chk>li,:is(body[data-subject=core226],body[data-subject=practical]) .opts li{font-size:13px}:is(body[data-subject=core226],body[data-subject=practical]) .exp{font-size:12.6px}}
 .section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.q.flash{outline:3px solid var(--yellow);outline-offset:2px}
@@ -656,12 +666,15 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
     title = title or f"{n}과목 문제은행 · {name}"
     if extra is None:
         extra = f'개념이 막히면 <a href="s{n}-points.html">{n}과목 기출포인트</a>를 먼저 보세요. '
+    howto_list = intro_list(intro + (['- **보기를 누르면 바로 채점**됩니다. 맞으면 ✅, 틀리면 ❌가 문제에 붙고 이 기기에 저장되며, "❌ 틀린 문제만"으로 다시 풀 수 있습니다.'] if grade else []) + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.'])
+    # 과목 문제은행은 한 줄 요약만 보이고 자세한 안내는 접어 둠
+    howto = f'<p class="brief">{"보기 누르면 채점 · " if grade else ""}★ 다시 볼 문제 · 법령 수치는 시험 전 확인</p><details class="howto"><summary>ⓘ 사용법</summary>{howto_list}</details>' if grade else howto_list
     header = f"""<header>
   <a class="back" href="index.html">← 목록으로</a>
   <span class="tab">{tab}</span>
   <div class="eyebrow">{eyebrow} · {total}문항</div>
   <h1>{h1}</h1>
-  {intro_list(intro + (['- **보기를 누르면 바로 채점**됩니다. 맞으면 ✅, 틀리면 ❌가 문제에 붙고 이 기기에 저장되며, "❌ 틀린 문제만"으로 다시 풀 수 있습니다.'] if grade else []) + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.']) if notes else ""}
+  {howto if notes else ""}
   {"" if locked else f'<nav class="toc">{"".join(toc)}</nav>'}
 </header>"""
     sec_sel = ('<select class="btn" id="secSel" aria-label="볼 묶음 고르기"><option value="">전체 보기</option>' + "".join(sec_opts) + '</select><input class="btn" id="qJump" type="number" inputmode="numeric" min="1" placeholder="번호" aria-label="번호로 이동">') if paged else ""
