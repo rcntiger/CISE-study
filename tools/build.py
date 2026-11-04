@@ -7,22 +7,23 @@ SRC = Path(sys.argv[1])
 OUT = Path(sys.argv[2])
 OUT.mkdir(parents=True, exist_ok=True)
 
+# 2027년 개편 5과목 체계 (옛 4과목 전기설비 + 5과목 화학설비 → 4과목, 옛 6과목 건설 → 5과목)
 SUBJECTS = {
     1: ("산업재해 예방 및 안전보건교육", "var(--c1)"),
     2: ("인간공학 및 위험성 평가·관리", "var(--c2)"),
     3: ("기계·기구 및 설비 안전관리", "var(--c3)"),
-    4: ("전기설비 안전관리", "var(--c4)"),
-    5: ("화학설비 안전관리", "var(--c5)"),
-    6: ("건설공사 안전관리", "var(--c6)"),
+    4: ("전기 및 화학설비 안전관리", "var(--c4)"),
+    5: ("건설공사 안전관리", "var(--c6)"),
 }
 BLURB = {
-    1: "재해 이론·통계 계산, 안전보건관리체제, 보호구·표지, 산업심리, 안전보건교육",
-    2: "인간-기계 체계, 신뢰도·FTA 계산, HAZOP, 인체측정, 근골격계, 위험성 평가",
-    3: "위험점·방호장치, 프레스·롤러·연삭기 수치, 양중기·지게차, 보일러, 비파괴검사",
-    4: "감전·심실세동 계산, 누전차단기, KEC 접지, 정전기, 방폭·온도등급 — 과락 위험 1순위",
-    5: "인화점·폭발범위·위험도 계산, 위험물질 분류, 안전밸브·파열판, 소화, PSM·MSDS",
-    6: "산업안전보건관리비, 굴착 기울기, 흙막이, 추락방지·비계, 거푸집·철골, 해체공사",
+    1: "안전관리조직, 안전보건관리체제, 보호구·표지, 산업심리·리더십, 안전보건교육·TWI",
+    2: "FTA·신뢰도 계산, 휴먼에러, 소음·조명·온열 작업환경, 표시장치, 인체측정, 위험성 평가",
+    3: "프레스·연삭기·공작기계 방호, 양중기·지게차, 보일러·가스용접, 재해통계·안전점검",
+    4: "전기(감전·누전차단기·정전기·방폭·피뢰) + 화학(폭발범위·위험물·소화·화학설비) — 2027 통합 과목",
+    5: "유해위험방지계획서, 비계·거푸집, 흙막이, 차량계 건설기계, 산업안전보건관리비, 추락방지",
 }
+# 원본 md: study-plan/2027_5과목/ (tools/gen27로 만든 5과목 기출포인트·문제은행)
+SRC27 = SRC / "2027_5과목"
 
 CSS = """
 :root{
@@ -130,6 +131,19 @@ footer a{color:var(--accent,var(--c1));font-weight:600}
 .q-num{flex:0 0 auto;white-space:nowrap;font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
 .q-ch{font-size:11.5px;color:var(--ink-soft);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:1px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 select.btn{max-width:100%;appearance:auto}
+.q-meta{flex:0 0 auto;font-size:11.5px;font-weight:700;color:var(--memo);background:var(--memo-soft);border-radius:8px;padding:1px 7px;white-space:nowrap}
+.q-meta+.q-meta{color:var(--ink-soft);background:var(--surface2);font-weight:600}
+.q-meta.warn{color:var(--ng);background:var(--ng-soft)}
+@media (max-width:420px){.q-head .q-ch{display:none}}
+.tbl{overflow-x:auto;margin:0 0 10px}
+.tbl table{border-collapse:collapse;font-size:12.5px;min-width:100%}
+.tbl th,.tbl td{border:1px solid var(--line);padding:4px 7px;text-align:center;white-space:nowrap}
+.tbl th{background:var(--surface2)}
+/* 기출포인트: 🔁 기출 반복 출제 카드, 🔑 필수 암기 카드 */
+.card.rep{border-left:4px solid var(--memo)}
+.card.rep h4{color:var(--memo)}
+.card.rep h4::before{background:var(--memo)}
+.card.key{border-left:4px solid var(--yellow)}
 .q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
 .q.marked .q-star{color:#E0A200}
 .q.marked{border-color:#F2C94C}
@@ -245,6 +259,14 @@ def render_item(lines):
     return out
 
 
+def table_html(rows):
+    if not rows:
+        return ""
+    head = "".join(f"<th>{inline(c)}</th>" for c in rows[0])
+    body = "".join("<tr>" + "".join(f"<td>{inline(c)}</td>" for c in r) + "</tr>" for r in rows[1:])
+    return f'<div class="tbl"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
+
+
 def render_blocks(lines):
     """마크다운 조각 → HTML (목록·문단·인용만 쓰는 단순한 형식)."""
     out, i = [], 0
@@ -253,6 +275,15 @@ def render_blocks(lines):
         l = lines[i]
         if not l.strip() or l.strip() == "---":
             i += 1
+            continue
+        if l.lstrip().startswith("|"):
+            rows = []
+            while i < len(lines) and lines[i].lstrip().startswith("|"):
+                cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
+                if not all(re.fullmatch(r":?-{2,}:?", c) for c in cells):
+                    rows.append(cells)
+                i += 1
+            out.append(table_html(rows))
             continue
         if l.startswith(">"):
             buf = []
@@ -354,6 +385,10 @@ def points_page(n, src):
             toc.append(f'<a class="ch" href="#c{ch.group(1)}">CH{ch.group(1)} {html.escape(ch.group(2))}</a>')
             body.append(f'<div class="chapter" id="c{ch.group(1)}"><span class="k">CHAPTER {ch.group(1)}</span><span class="t">{html.escape(ch.group(2))}</span></div>')
             continue
+        if st.startswith("📊"):
+            toc.insert(0, f'<a class="ch" href="#freq">📊 출제 분석</a>')
+            body.append(f'<section class="section" id="freq"><div class="section-head"><div class="duality">{html.escape(st)}</div><div class="section-line"></div></div>\n<div class="cards">' + "\n".join(f'<div class="card{" key" if ct and ct.startswith("🔑") else ""}" data-title="{html.escape(ct or st)}">' + (f"<h4>{inline(ct)}</h4>" if ct else "") + f'{render_blocks(cl)}</div>' for ct, cl in cards) + "</div></section>")
+            continue
         if st.startswith("출제기준"):
             toc.append(f'<a class="ch" href="#std">{html.escape(st)}</a>')
             body.append(f'<section class="section" id="std"><div class="section-head"><div class="duality">{html.escape(st)}</div><div class="section-line"></div></div>\n<div class="cards">' + "\n".join(f'<div class="card" data-title="{html.escape(st)}">{render_blocks(cl)}</div>' for _, cl in cards) + "</div></section>")
@@ -367,7 +402,7 @@ def points_page(n, src):
         parts = []
         for ct, cl in cards:
             h = f"<h4>{inline(ct)}</h4>" if ct else ""
-            cls = "card add" if ct and ct.startswith("🆕") else "card"
+            cls = "card add" if ct and ct.startswith("🆕") else "card rep" if ct and ct.startswith("🔁") else "card"
             parts.append(f'<div class="{cls}" data-title="{html.escape(t_clean)}{" · " + html.escape(ct) if ct else ""}">{h}{render_blocks(cl)}</div>')
         body.append(f'<section class="section" id="{sid}"><div class="section-head"><div class="duality"><span class="n">{num}</span>{html.escape(t_clean)}</div><div class="section-line"></div></div>\n' + '<div class="cards">' + "\n".join(parts) + "</div></section>")
     header = f"""<header>
@@ -387,7 +422,7 @@ def points_page(n, src):
 
 BANK_JS = """<script>
 (function(){
-  var key='sanan-star-'+document.body.dataset.subject;
+  var key='sanan-star-'+(document.body.dataset.store||document.body.dataset.subject);
   var marked={};
   try{marked=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
   function save(){try{localStorage.setItem(key,JSON.stringify(marked))}catch(e){}}
@@ -412,7 +447,7 @@ BANK_JS = """<script>
     document.querySelectorAll('details.ans').forEach(function(d){d.open=on});
   });
   // 채점: 보기를 누르면 data-a(정답 번호)와 비교, 보기·정답 키가 없으면 정답 안의 맞음/틀림 버튼
-  var gkey='sanan-grade-'+document.body.dataset.subject,graded={},score=document.getElementById('score'),onlyWrong=document.getElementById('onlyWrong');
+  var gkey='sanan-grade-'+(document.body.dataset.store||document.body.dataset.subject),graded={},score=document.getElementById('score'),onlyWrong=document.getElementById('onlyWrong');
   try{graded=JSON.parse(localStorage.getItem(gkey)||'{}')}catch(e){}
   Object.keys(graded).forEach(function(id){if(!ids[id])delete graded[id]});
   function gsave(){try{localStorage.setItem(gkey,JSON.stringify(graded))}catch(e){}}
@@ -646,6 +681,12 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
             q_lines = [l for l in q_part.splitlines() if l.strip() and l.strip() != "---"]
             opts = [l for l in q_lines if l.strip()[:1] in "①②③④⑤"]
             stem = [l for l in q_lines if l not in opts]
+            meta = ""
+            if stem and stem[0].startswith("🔁"):
+                meta = "".join(f'<span class="q-meta{" warn" if "⚠️" in p else ""}">{html.escape(p.strip())}</span>' for p in stem[0].split(" · "))
+                stem = stem[1:]
+            tbl = [l for l in stem if l.lstrip().startswith("|")]
+            stem = [l for l in stem if l not in tbl]
             stem_html = "<br>".join("· " + inline(l[2:]) if l.startswith("- ") else inline(l) for l in stem)
             a = re.search(r"✅\s*\**\s*([①②③④⑤])", ans_part) if grade else None
             marks = [o.strip()[:1] for o in opts]
@@ -658,8 +699,8 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
             cid = q_ch.get(int(qn), "")
             chip = f'<span class="q-ch">CH{cid} {html.escape(dict((c[0], c[1]) for c in chapters)[cid])}</span>' if cid else ""
             parts.append(f"""<div class="card q" data-q="{qid}" data-ch="{cid}" data-title="{qn}번"{g_attr}>
-<div class="q-head"><span class="q-num">{qn}번</span>{chip}{res}<button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
-<p class="q-body">{stem_html}</p>
+<div class="q-head"><span class="q-num">{qn}번</span>{meta}{chip}{res}<button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
+<p class="q-body">{stem_html}</p>{table_html([[c.strip() for c in l.strip().strip("|").split("|")] for l in tbl if not re.fullmatch(r"[\s|:-]+", l)]) if tbl else ""}
 <ul class="opts{" pick" if a_idx else ""}">{opts_html}</ul>{redo}
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body">{self_g}{render_blocks(ans_part.splitlines())}</div></details>
 </div>""")
@@ -702,7 +743,7 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
         content = lock_html(content, pw)
         script = BANK_JS.replace("<script>", '<script type="text/plain" id="bankjs">', 1) + LOCK_JS
     doc = HEAD.format(title=title, css=CSS, accent=accent).replace(
-        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="{slug.replace("-bank", "")}">') + header + content + FOOT.format(extra=extra, script=script)
+        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="{slug.replace("-bank", "")}"' + (f' data-store="{slug.replace("-bank", "")}-2027"' if n in SUBJECTS else "") + '>') + header + content + FOOT.format(extra=extra, script=script)
     (OUT / f"{slug}.html").write_text(doc, encoding="utf-8")
     return total
 
@@ -726,8 +767,8 @@ def roadmap_page(src):
     (OUT / "roadmap.html").write_text(doc, encoding="utf-8")
 
 
-BANKS = {n: SRC / f"{n}과목_문제은행_1-100.md" for n in SUBJECTS if (SRC / f"{n}과목_문제은행_1-100.md").exists()}
-counts = {n: points_page(n, SRC / f"{n}과목_기출포인트.md") for n in SUBJECTS}
+BANKS = {n: SRC27 / f"{n}과목_문제은행.md" for n in SUBJECTS if (SRC27 / f"{n}과목_문제은행.md").exists()}
+counts = {n: points_page(n, SRC27 / f"{n}과목_기출포인트.md") for n in SUBJECTS}
 bank_counts = {n: bank_page(n, p, grade=True) for n, p in BANKS.items()}
 roadmap_page(SRC / "산업안전기사_12주_로드맵.md")
 PRACTICAL = SRC / "실기_필답형_핵심.md"
@@ -741,6 +782,15 @@ core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약
     title="필기 핵심요약", accent="var(--c8)", notes=False, per_section=True, paged=True,
     extra="번호는 과목마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
 print(counts, bank_counts, practical_count, core_count)
+
+# 옛 6과목(건설) 주소는 새 5과목으로 보냄
+for kind in ("points", "bank"):
+    (OUT / f"s6-{kind}.html").write_text(f"""<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5과목으로 옮겼습니다</title><meta http-equiv="refresh" content="0; url=s5-{kind}.html">
+<style>body{{font-family:sans-serif;padding:24px;background:#F3F5F8;color:#121A24}}@media (prefers-color-scheme:dark){{body{{background:#0F151C;color:#E8EDF2}}}}a{{color:#E07B12}}</style></head>
+<body><p>2027년 개편으로 건설공사 안전관리는 5과목이 됐습니다. <a href="s5-{kind}.html">5과목으로 가기</a></p></body></html>
+""", encoding="utf-8")
 
 
 INDEX_CSS = CSS + """
@@ -833,17 +883,17 @@ def index_page():
   </div>""")
     core = f"""<section class="section">
   <div class="section-head"><div class="duality">필기 요약</div></div>
-  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심요약</b><span>2018~2025 기출 2,880문항 분석 · 6과목 · {core_count}문항</span></div><div class="go">›</div></a>
+  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심요약</b><span>2018~2025 기출 2,880문항 분석 · 옛 6과목 분류 · {core_count}문항</span></div><div class="go">›</div></a>
 </section>""" if core_count else ""
     practical = f"""<section class="section">
   <div class="section-head"><div class="duality">실기</div></div>
   <a class="plan" href="practical.html"><div class="ic" style="background:var(--c7);color:#fff">✍</div><div><b>필답형 핵심</b><span>2016~2026 기출 · 14개 주제 · {practical_count}문항</span></div><div class="go">›</div></a>
 </section>""" if practical_count else ""
     body = f"""<header>
-  <div class="eyebrow" style="margin-top:14px">CISE · 산업안전기사 필기</div>
+  <div class="eyebrow" style="margin-top:14px">CISE · 산업안전기사 필기 · 2027 개편 5과목</div>
   <h1>과목별 기출포인트와<br>문제은행</h1>
-  <p class="sub" style="padding:0">기출포인트로 핵심을 잡고, 문제은행으로 바로 확인하세요.</p>
-  <div class="hero-meta"><span>6과목 × <b>20문항</b></span><span>과목별 <b>40점↑</b></span><span>평균 <b>60점↑</b> 합격</span></div>
+  <p class="sub" style="padding:0">2015~2026 기출 33회차 분석으로 핵심을 잡고, 자주 나온 문제로 바로 확인하세요.</p>
+  <div class="hero-meta"><span><b>5과목</b> (전기·화학 통합)</span><span>과목별 <b>40점↑</b></span><span>평균 <b>60점↑</b> 합격</span></div>
   <div style="height:22px"></div>
 </header>
 

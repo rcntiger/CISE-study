@@ -114,6 +114,19 @@ footer a{color:var(--accent,var(--c1));font-weight:600}
 .q-num{flex:0 0 auto;white-space:nowrap;font-weight:700;font-size:12.5px;color:var(--accent,var(--c1));background:color-mix(in srgb,var(--accent,var(--c1)) 12%,transparent);border-radius:8px;padding:2px 10px}
 .q-ch{font-size:11.5px;color:var(--ink-soft);background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:1px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 select.btn{max-width:100%;appearance:auto}
+.q-meta{flex:0 0 auto;font-size:11.5px;font-weight:700;color:var(--memo);background:var(--memo-soft);border-radius:8px;padding:1px 7px;white-space:nowrap}
+.q-meta+.q-meta{color:var(--ink-soft);background:var(--surface2);font-weight:600}
+.q-meta.warn{color:var(--ng);background:var(--ng-soft)}
+@media (max-width:420px){.q-head .q-ch{display:none}}
+.tbl{overflow-x:auto;margin:0 0 10px}
+.tbl table{border-collapse:collapse;font-size:12.5px;min-width:100%}
+.tbl th,.tbl td{border:1px solid var(--line);padding:4px 7px;text-align:center;white-space:nowrap}
+.tbl th{background:var(--surface2)}
+/* 기출포인트: 🔁 기출 반복 출제 카드, 🔑 필수 암기 카드 */
+.card.rep{border-left:4px solid var(--memo)}
+.card.rep h4{color:var(--memo)}
+.card.rep h4::before{background:var(--memo)}
+.card.key{border-left:4px solid var(--yellow)}
 .q-star{margin-left:auto;background:none;border:0;font-size:22px;cursor:pointer;color:var(--line);padding:0 2px;line-height:1}
 .q.marked .q-star{color:#E0A200}
 .q.marked{border-color:#F2C94C}
@@ -2218,7 +2231,7 @@ details.howto .sub{margin-top:6px}
 </div>
 <script>
 (function(){
-  var key='sanan-star-'+document.body.dataset.subject;
+  var key='sanan-star-'+(document.body.dataset.store||document.body.dataset.subject);
   var marked={};
   try{marked=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
   function save(){try{localStorage.setItem(key,JSON.stringify(marked))}catch(e){}}
@@ -2243,7 +2256,7 @@ details.howto .sub{margin-top:6px}
     document.querySelectorAll('details.ans').forEach(function(d){d.open=on});
   });
   // 채점: 보기를 누르면 data-a(정답 번호)와 비교, 보기·정답 키가 없으면 정답 안의 맞음/틀림 버튼
-  var gkey='sanan-grade-'+document.body.dataset.subject,graded={},score=document.getElementById('score'),onlyWrong=document.getElementById('onlyWrong');
+  var gkey='sanan-grade-'+(document.body.dataset.store||document.body.dataset.subject),graded={},score=document.getElementById('score'),onlyWrong=document.getElementById('onlyWrong');
   try{graded=JSON.parse(localStorage.getItem(gkey)||'{}')}catch(e){}
   Object.keys(graded).forEach(function(id){if(!ids[id])delete graded[id]});
   function gsave(){try{localStorage.setItem(gkey,JSON.stringify(graded))}catch(e){}}
