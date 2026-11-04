@@ -266,7 +266,7 @@ details.howto .sub{margin-top:6px}
 <div class="cards"><div class="card" data-title="휴먼에러"><div class="subnote std">📋 출제기준 1-4 인간요소와 휴먼에러<br>📊 2015~2026 기출 <b>63문항</b> · 33회차 중 31회차 출제 · 과목 안 3위</div>
 <p>⭐ <b>스웨인(Swain)의 분류 (행위적 관점)</b></p>
 <ul class="chk"><li><b>생략 오류(omission)</b><br>필요한 작업을 빠뜨림</li><li><b>실행 오류(commission)</b><br>작업을 잘못 수행</li><li><b>순서 오류(sequential)</b><br>순서를 틀림</li><li><b>시간 오류(time)</b><br>너무 빠르거나 늦음</li><li><b>불필요한 행동(extraneous)</b><br>하지 않아도 될 일을 함</li></ul>
-<div class="memo"><span class="memo-tag">🧠 연상 암기</span>라면을 끓이다 망친 이야기. 스프를 <b>빠뜨리고</b>(생략 에러), 물을 <b>잘못 맞추고</b>(실행 에러), 물이 끓기도 전에 면부터 넣어 <b>순서가 바뀌고</b>(순서 에러), 불을 <b>늦게 꺼서</b> 면이 퍼지고(시간 에러), 넣지도 않아도 될 <b>식초를 괜히 넣었다</b>(불필요한 행동 에러)</div>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>"빼먹고(생략), 틀리고(실행), 순서 바꾸고, 늦고(시간), 쓸데없는 짓(불필요)"</b> = 생략 · 실행 · 순서 · 시간 · 불필요 에러</div>
 <p>⭐ <b>리즌·라스무센 분류 (원인적 관점)</b></p>
 <ul class="chk"><li><b>착오(mistake)</b><br>상황 해석·목표 설정이 잘못됨<br>(계획 자체 오류)</li><li><b>실수(slip)</b><br>의도는 맞는데 실행을 잘못함</li><li><b>건망(lapse)</b><br>기억 실패로 잊어버림</li><li><b>위반(violation)</b><br>알면서 규칙을 어김</li></ul>
 <p><b>라스무센의 행동 수준</b></p>
@@ -287,7 +287,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li><b>n중 k 구조</b><br>n개 중 k개 이상 작동하면 정상</li><li><b>고장률 λ</b><br>고장 건수 ÷ 총 가동시간</li><li class="star"><b>MTBF = 1/λ</b><br>(수리 가능, 평균 고장 간격)</li><li><b>MTTF:</b> 수리 불가, 고장까지 평균시간</li><li><b>MTTR:</b> 평균 수리시간</li><li><b>가용도</b><br>MTBF ÷ (MTBF + MTTR)</li><li><b>지수분포 신뢰도</b><br>R(t) = e^(−λt)</li><li><b>병렬 n개 MTTF</b><br>MTTF × (1 + 1/2 + … + 1/n)</li><li><b>직렬 n개 MTTF</b><br>MTTF ÷ n</li></ul>
 <p>⭐ <b>욕조곡선</b></p>
 <ul class="chk"><li><b>초기고장:</b> 고장률 감소<br>디버깅, 번인(burn-in)으로 줄임</li><li><b>우발고장:</b> 고장률 일정<br>예측 불가, 안전계수 고려</li><li><b>마모고장:</b> 고장률 증가<br>예방보전(PM)으로 대응</li></ul>
-<div class="memo"><span class="memo-tag">🧠 연상 암기</span>새 차의 일생. 출고 직후엔 <b>초기 불량이 몇 번 나다 점점 줄고</b>(초기고장, 감소형), 몇 년은 <b>어쩌다 우연히만</b> 고장 나고(우발고장, 일정형), 10년이 넘으면 <b>늙어서 고장이 늘어난다</b>(마모고장, 증가형). 욕조 모양 그대로 ↘ ― ↗</div></div>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>"초감 · 우일 · 마증" → 초반엔 줄고, 중간엔 일정하고, 마지막엔 는다</b> (초기고장 감소 · 우발고장 일정 · 마모고장 증가). 욕조 모양 ↘ ― ↗</div></div>
 <div class="card add" data-title="신뢰도 계산 · 🆕 보강 · 자주 나오는 계산 예"><h4>🆕 보강 · 자주 나오는 계산 예</h4><ul class="chk"><li class="star"><b>2 out of 3 구조</b><br>R = 3R² − 2R³<br>R = 0.9 → 3×0.81 − 2×0.729<br>= <b>0.972</b></li><li><b>지수분포 예</b><br>λ = 0.001/시간, t = 100시간<br>R = e^(−0.1) ≈ <b>0.905</b></li><li><b>직병렬 혼합 예</b><br>0.9, 0.9 병렬(0.99) 뒤에<br>0.8 직렬 → 0.99 × 0.8 = <b>0.792</b></li><li><b>신뢰도를 높이는 방법</b><br>중복설계(리던던시),<br>고신뢰 부품, 디레이팅(여유 설계),<br>예방보전</li><li><b>보전 용어</b><br><b>보전예방(MP)</b>: 설계·제작 단계부터<br>보전이 필요 없게 함<br><b>개량보전(CM)</b>: 기존 설비의 약점을 고침<br>(예방보전·사후보전과 구분)</li><li class="cf"><span class="cf-tag">🔀 헷갈리는 선지</span><b>MTBF</b>는 수리 가능,<br><b>MTTF</b>는 수리 불가 제품에 씁니다.</li></ul></div>
 <div class="card rep" data-title="신뢰도 계산 · 🔁 기출 반복 출제 (2015~2026)"><h4>🔁 기출 반복 출제 (2015~2026)</h4><ul class="chk"><li><b>5회</b> 욕조곡선에서의 고장 형태에서 일정한 형태의 고장률이 나타나는 구간 → 우발고장 구간 · 문제은행 42번</li><li><b>4회</b> 어느 부품 1,000개를 100,000시간 동안 가동하였을 때 5개의 불량품이 발생하였을 경우 평균동작시간(MT… → 2×10⁷ 시간 · 문제은행 43번</li><li><b>4회</b> n개의 요소를 가진 병렬 시스템에 있어 요소의 수명(MTTF)이 지수분포를 따를 경우 이 시스템의 수명 → MTTF×(1+1/2+⋯+1/n) · 문제은행 44번</li><li><b>3회</b> 시스템의 수명곡선(욕조곡선)에 있어서 디버깅(De-bugging)에 관한 설명 → 초기고장의 결함을 찾아 고장률을 안정시키는 과정이다. · 문제은행 45번</li><li><b>3회</b> [그림]과 같이 신뢰도 95[%]인 펌프 A가 각각 신뢰도 90[%]인 밸브 B와 밸브 C의 병렬밸브계와 직렬계… → 0.0595 ⚠️ · 문제은행 46번</li><li><b>2회</b> 병렬로 이루어진 두 요소의 신뢰도가 각각 0.7일 경우, 시스템 전체의 신뢰도 → 0.91 · 문제은행 47번</li><li><b>2회</b> 한 대의 기계를 100시간 동안 연속 사용한 경우 6회의 고장이 발생하였고, 이때의 총고장수리시간이 15시간이었… → 14.17 · 문제은행 48번</li><li><b>2회</b> 프레스기의 안전장치 수명은 지수분포를 따르며 평균수명은 1,000시간이다. 새로 구입한 안전장치가 향후 500시… → a:0.606, b:0.606 · 문제은행 49번</li></ul></div></div></section>
 <div class="chapter" id="c02"><span class="k">CHAPTER 02</span><span class="t">위험성 파악·결정</span></div>
@@ -295,7 +295,7 @@ details.howto .sub{margin-top:6px}
 <div class="cards"><div class="card" data-title="시스템 안전 기법"><div class="subnote std">📋 출제기준 2-2 시스템 위험성 추정 및 결정<br>📊 2015~2026 기출 <b>39문항</b> · 33회차 중 28회차 출제 · 과목 안 6위</div>
 <p>⭐ <b>시스템 수명주기 단계</b><br>구상 → 정의 → 개발 → 생산 → 운용 → 폐기</p>
 <ul class="chk"><li class="star"><b>PHA (예비위험분석)</b><br><b>구상 단계</b>, 최초로 실시<br>정성적<br>위험 범주: 파국적 → 중대<br>→ 한계적 → 무시가능</li><li><b>FHA (결함위험분석)</b><br>서브시스템 분석,<br>여러 업체가 나눠 개발할 때</li><li class="star"><b>FMEA (고장형태와 영향분석)</b><br>부품·요소의 고장 형태별 영향 검토<br>정성적, <b>귀납적</b><br>단점: 인적 원인·<br>2개 이상 동시 고장 분석 곤란</li><li><b>CA (위험도 분석)</b><br>고장의 위험도(치명도)를 정량 평가<br>FMECA = FMEA + CA</li><li class="star"><b>ETA (사건수 분석)</b><br>초기 사건에서 성공·실패로 갈라지며<br>결과를 추적, <b>귀납적, 정량적</b></li><li class="star"><b>FTA (결함수 분석)</b><br>정상(톱)사상에서 원인을 찾아 내려감<br><b>연역적, 정량적</b></li></ul>
-<div class="memo"><span class="memo-tag">🧠 연상 암기</span>집에 불이 났다. <b>FTA</b>(Fault)는 탐정: 다 타 버린 집(정상사상)에서 '누가 불씨를 냈나' 거꾸로 원인을 캔다(<b>연역</b>). <b>ETA</b>(Event)는 시나리오 작가: 첫 불씨에서 '스프링클러 작동? 대피 성공?' 갈림길마다 결과를 펼친다(<b>귀납</b>). 둘 다 정량적. <b>PHA</b>(Preliminary)는 집을 짓기 전 <b>설계도 단계</b>의 첫 점검</div>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>"FTA만 위에서 아래로(연역), FMEA·ETA는 아래에서 위로(귀납)"</b> — <b>F</b>TA = <b>F</b>ault(꼭대기 사고에서 원인으로), <b>E</b>TA = <b>E</b>vent(처음 사건에서 결과로). 둘 다 정량적. <b>P</b>HA는 <b>P</b>reliminary = 맨 처음(구상 단계)</div>
 <ul class="chk"><li><b>HAZOP (위험과 운전분석)</b><br>화학공정 이탈을 가이드워드로 검토</li><li><b>MORT</b><br>관리·설계·생산·보전 전반의<br>안전 확보, FTA와 같은 논리 사용</li><li><b>THERP</b><br>인간 실수율 예측 (정량적)</li><li><b>OSHA(운용위험분석)</b><br>운용·보전 단계 위험 분석</li></ul>
 <p><b>위험 범주 (MIL-STD-882)</b></p>
 <ul class="chk"><li>Ⅰ 파국적</li><li>Ⅱ 위기적(중대)</li><li>Ⅲ 한계적</li><li>Ⅳ 무시가능</li></ul></div>
@@ -327,7 +327,7 @@ details.howto .sub{margin-top:6px}
 <div class="subnote">법령·고시 수치는 시험 전 최신 기준으로 확인하세요.</div>
 <p><b>위험성 = 빈도(가능성) × 강도(중대성)</b></p>
 <ul class="chk"><li>1과목 기출포인트 21번 주제의 위험성평가 절차와 연결</li><li><b>위험성 결정:</b> 허용 가능 여부 판단</li><li><b>감소대책 우선순위</b><br>1. 위험 제거·대체 (본질적 대책)<br>2. 공학적 대책 (방호장치·환기)<br>3. 관리적 대책 (교육·작업절차)<br>4. 개인보호구</li></ul>
-<div class="memo"><span class="memo-tag">🧠 연상 암기</span>기계 소음에 귀가 아프다면? 먼저 <b>조용한 기계로 바꾸고</b>(제거·대체), 안 되면 <b>방음벽을 세우고</b>(공학적 대책), 그래도 안 되면 <b>교대 근무로 노출 시간을 줄이고</b>(관리적 대책), 마지막에야 <b>귀마개를 낀다</b>(보호구)</div>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>"제·공·관·보" → 제공(提供)한 관보(官報) 순서대로</b> (제거·대체 → 공학적 → 관리적 → 보호구)</div>
 <p>⭐ <b>정성적 위험성평가 기법</b></p>
 <ul class="chk"><li>체크리스트</li><li>사고예상질문(What-if)</li><li>HAZOP</li><li>FMEA</li><li>작업안전분석(JSA)</li><li>4M 위험성평가<br>Man, Machine, Media, Management</li></ul>
 <p><b>정량적 기법</b><br>FTA, ETA, CA, 원인결과분석(CCA),<br>작업자 실수 분석(HEA, THERP)</p>
@@ -376,7 +376,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>1. 연구대상 선정</li><li>2. 현재 작업방법 분석·기록</li><li>3. 분석 자료 검토</li><li>4. 개선안 수립</li><li>5. 개선안 도입</li></ul>
 <p>⭐ <b>작업개선 원리 ECRS</b></p>
 <ul class="chk"><li><b>E (Eliminate):</b> 불필요한 작업 제거</li><li><b>C (Combine):</b> 작업 결합</li><li><b>R (Rearrange):</b> 순서 재배열</li><li><b>S (Simplify):</b> 단순화</li></ul>
-<div class="memo"><span class="memo-tag">🧠 연상 암기</span>바쁜 아침을 줄이는 이야기. 안 해도 되는 <b>다림질을 없애고</b>(제거), 양치와 샤워를 <b>한 번에 합치고</b>(결합), 옷을 전날 꺼내 두게 <b>순서를 바꾸고</b>(재배열), 아침밥은 시리얼로 <b>단순하게</b>(단순화). 이 순서로 검토</div>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>"없애고, 합치고, 바꾸고, 단순하게"</b> — 순서대로 검토, <b>제거가 1순위</b> (제거 → 결합 → 재배열 → 단순화)</div>
 <p><b>SEARCH 원칙</b><br>Simplify(단순화), Eliminate(제거),<br>Alter sequence(순서 변경),<br>Requirements(요구조건),<br>Combine(결합), How often(빈도)</p>
 <p>⭐ <b>공정도 기호 (ASME)</b></p>
 <ul class="chk"><li>○ <b>작업(가공)</b></li><li>⇨ <b>운반</b></li><li>□ <b>검사</b></li><li>D <b>지연(정체)</b></li><li>▽ <b>저장</b></li></ul></div>
@@ -397,7 +397,7 @@ details.howto .sub{margin-top:6px}
 <div class="cards"><div class="card" data-title="인체측정과 작업공간"><div class="subnote std">📋 출제기준 6-1 인체계측 및 체계제어 · 6-3 작업공간 및 작업자세<br>📊 2015~2026 기출 <b>32문항</b> · 33회차 중 23회차 출제 · 과목 안 9위</div>
 <p>⭐ <b>인체측정치 설계 원칙</b></p>
 <ul class="chk"><li><b>조절식 설계 (1순위)</b><br>5~95% 범위 조절<br>예: 의자 높이, 자동차 좌석</li><li><b>극단치 설계</b><br>최대치(95%): 출입문 높이,<br>비상구, 통로 폭<br>최소치(5%): 조종장치 거리,<br>선반 높이, 버튼 누르는 힘</li><li><b>평균치 설계 (최후)</b><br>예: 은행 창구, 공공장소 의자</li></ul>
-<div class="memo"><span class="memo-tag">🧠 연상 암기</span>자동차 운전석은 <b>앞뒤로 조절</b>되게 만든다(조절식, 1순위). 조절이 안 되는 출입문은 <b>키 큰 사람</b>(95%)에, 선반·조종장치는 <b>팔 짧은 사람</b>(5%)에 맞춘다(극단치). 둘 다 애매한 은행 창구는 <b>평균</b>에 맞춘다(평균치, 최후)</div>
+<div class="memo"><span class="memo-tag">🧠 연상 암기</span><b>"조극평" → 조절식이 먼저, 안 되면 극단치, 마지막에 평균치</b>. 문 높이는 큰 사람(95%), 손 닿는 거리는 작은 사람(5%) 기준</div>
 <p><b>측정 방법</b></p>
 <ul class="chk"><li><b>구조적(정적):</b> 정지 자세</li><li><b>기능적(동적):</b> 움직이는 자세</li></ul>
 <p><b>작업대 높이</b></p>
