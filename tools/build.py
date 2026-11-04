@@ -361,7 +361,7 @@ def render_blocks(lines):
             continue
         if buf and buf[0].startswith(MEMO_LABEL):
             buf[0] = buf[0][len(MEMO_LABEL):].strip()
-            out.append('<div class="memo"><span class="memo-tag">🧠 연상 암기</span>' + "<br>".join(buf) + "</div>")
+            out.append('<div class="memo"><span class="memo-tag">💡 이렇게 외워보자</span>' + "<br>".join(buf) + "</div>")
             continue
         out.append("<p>" + "<br>".join(buf) + "</p>")
     return "\n".join(out)
