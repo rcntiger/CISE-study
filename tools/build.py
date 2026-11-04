@@ -48,6 +48,7 @@ CSS = """
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{zoom:var(--fz,1)}
 body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans KR','Noto Sans KR',sans-serif;font-size:15px;line-height:1.7;font-variant-numeric:tabular-nums}
 .wrap{max-width:720px;margin:0 auto;padding:0 16px 72px}
 header{margin:0 -16px;padding:18px 20px 22px;background:var(--hero);color:var(--hero-ink);border-radius:0 0 22px 22px;position:relative;overflow:hidden}
@@ -186,12 +187,17 @@ details.howto summary::-webkit-details-marker{display:none}
 details.howto .sub{margin-top:6px}
 .hidden{display:none !important}
 /* PC: 넓은 화면에서는 본문을 넓히고 전체를 키움 */
-@media (min-width:1000px){body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:13px}body[data-page=points] .exp{font-size:12px}body[data-page=points] .memo,body[data-page=points] ul.sub2,body[data-page=points] .card code{font-size:11.5px}body[data-page=points] .card h4{font-size:16.5px}body{zoom:1.2;font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
+@media (min-width:1000px){body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:14px}body[data-page=points] .exp{font-size:13px}body[data-page=points] .memo,body[data-page=points] ul.sub2,body[data-page=points] .card code{font-size:12.5px}body[data-page=points] .card h4{font-size:16.5px}body{zoom:calc(1.2*var(--fz,1));font-size:16px}.wrap{max-width:1160px;padding:0 24px 80px}body[data-subject] .wrap{max-width:920px}.cards{columns:2;column-gap:14px}.cards .card{break-inside:avoid;display:inline-block;width:100%}.card p,ul.chk>li,.opts li{font-size:15px}.card h4{font-size:16.5px}.q-body{font-size:16px}.opts{grid-template-columns:1fr 1fr}header{margin:0 -24px;padding:22px 32px 26px}.toc{margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;flex-wrap:wrap;overflow:visible}.tools{margin:0 -24px;padding:10px 24px}}
 @media (max-width:999px){body[data-subject=core226] .q-body{font-size:15px}body[data-subject=core226] .ans-body p{font-size:14.8px}body[data-subject=core226] ul.chk>li{font-size:15px}body[data-subject=core226] .exp{font-size:15.6px}}
 @media (min-width:1000px){:is(body[data-subject=core226],body[data-subject=practical]) .q-body,:is(body[data-subject=core226],body[data-subject=practical]) .ans-body p,:is(body[data-subject=core226],body[data-subject=practical]) ul.chk>li,:is(body[data-subject=core226],body[data-subject=practical]) .opts li{font-size:13px}:is(body[data-subject=core226],body[data-subject=practical]) .exp{font-size:12.6px}}
 .section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.q.flash{outline:3px solid var(--yellow);outline-offset:2px}
 :is(body[data-subject=core226],body[data-subject=practical]) h1{font-size:clamp(20px,6vw,28px);white-space:nowrap}:is(body[data-subject=core226],body[data-subject=practical]) .eyebrow{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em}
-@media (min-width:1600px){body{zoom:1.38}}
+@media (min-width:1600px){body{zoom:calc(1.38*var(--fz,1))}}
+/* 글자 크기 조절: PC(1000px 이상)·모바일 따로 저장(localStorage sanan-fz-pc / sanan-fz-m) */
+.fsz{display:inline-flex;align-items:center;gap:2px;margin:6px 0 14px 6px;vertical-align:top;background:rgba(255,255,255,.1);border-radius:999px;padding:1px 4px;font-size:12px;color:var(--hero-ink)}
+.fsz button{font:inherit;font-weight:700;background:none;border:0;color:inherit;cursor:pointer;padding:3px 8px;line-height:1.2}
+.fsz b{min-width:38px;text-align:center;font-weight:600;cursor:pointer}
+@media print{.fsz{display:none}}
 @media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 """
 
@@ -206,6 +212,7 @@ HEAD = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>{css}</style>
+<script>try{{var z=localStorage.getItem(matchMedia("(min-width:1000px)").matches?"sanan-fz-pc":"sanan-fz-m");if(z)document.documentElement.style.setProperty("--fz",z)}}catch(e){{}}</script>
 </head>
 <body style="--accent:{accent}">
 <div class="wrap">
@@ -215,6 +222,23 @@ FOOT = """
 <footer>{extra}</footer>
 </div>
 {script}
+<script>
+(function(){{
+  var mq=matchMedia("(min-width:1000px)"),root=document.documentElement;
+  function key(){{return mq.matches?"sanan-fz-pc":"sanan-fz-m"}}
+  function get(){{var v=1;try{{v=parseFloat(localStorage.getItem(key()))||1}}catch(e){{}}return v}}
+  var box=document.createElement("span");box.className="fsz";
+  box.innerHTML='<button type="button" data-d="-1" aria-label="글자 작게">가−</button><b title="기본 크기로"></b><button type="button" data-d="1" aria-label="글자 크게">가+</button>';
+  var lab=box.querySelector("b");
+  function apply(v){{root.style.setProperty("--fz",v);lab.textContent=(mq.matches?"PC ":"폰 ")+Math.round(v*100)+"%"}}
+  function set(v){{v=Math.min(1.5,Math.max(0.8,Math.round(v*20)/20));try{{v===1?localStorage.removeItem(key()):localStorage.setItem(key(),v)}}catch(e){{}}apply(v)}}
+  box.addEventListener("click",function(e){{var b=e.target.closest("button");if(b)set(get()+0.05*b.dataset.d);else if(e.target===lab)set(1)}});
+  (mq.addEventListener?mq.addEventListener("change",function(){{apply(get())}}):mq.addListener(function(){{apply(get())}}));
+  var h=document.querySelector("header"),bk=h&&h.querySelector(".back");
+  if(bk)bk.after(box);else if(h)h.prepend(box);
+  apply(get());
+}})();
+</script>
 </body>
 </html>
 """
