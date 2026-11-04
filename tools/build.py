@@ -425,6 +425,8 @@ def points_page(n, src):
         t_clean = t.replace("⭐", "").strip()
         toc.append(f'<a href="#{sid}"><span class="n">{num}</span>{html.escape(t_clean)}{" ★" if star else ""}</a>')
         parts = []
+        # 🔁 반복 출제 카드를 주제 맨 위에 먼저 보여 줌
+        cards = sorted(cards, key=lambda c: 0 if c[0] and c[0].startswith("🔁") else 1)
         for ct, cl in cards:
             h = f"<h4>{inline(ct)}</h4>" if ct else ""
             cls = "card add" if ct and ct.startswith("🆕") else "card rep" if ct and ct.startswith("🔁") else "card"
