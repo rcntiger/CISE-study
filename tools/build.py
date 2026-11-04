@@ -257,7 +257,7 @@ def indent(l):
 
 
 BULLET = re.compile(r"^(-|\d+\.)\s+")
-CF_LABEL = "헷갈리는 선지:"  # 시험 보기에서 정답처럼 나오는 틀린 선지 줄
+CF_LABELS = ("바꿔치기 주의:", "헷갈리는 선지:")  # 시험 보기에서 정답처럼 나오는 틀린 선지 줄 (옛 이름도 인식)
 EXP_LABEL = "💡 해설:"  # 정리본에 덧붙인 해설 문단
 MEMO_LABEL = "🧠 암기법:"  # 기출포인트에 덧붙인 연상 암기법 문단
 
@@ -339,13 +339,13 @@ def render_blocks(lines):
             lis = []
             for it in items:
                 star = "⭐" in it[0]
-                cf = it[0].startswith(CF_LABEL)
+                cf = next((l for l in CF_LABELS if it[0].startswith(l)), None)
                 first = it[0].replace("⭐", "").strip()
                 if cf:
-                    first = first[len(CF_LABEL):].strip()
+                    first = first[len(cf):].strip()
                 body = render_item([first] + it[1:])
                 if cf:
-                    body = '<span class="cf-tag">🔀 헷갈리는 선지</span>' + body
+                    body = '<span class="cf-tag">🔀 바꿔치기 주의</span>' + body
                 cls = " class=\"cf\"" if cf else " class=\"star\"" if star else ""
                 lis.append(f'<li{cls}>{body}</li>')
             out.append('<ul class="chk">' + "".join(lis) + "</ul>")
