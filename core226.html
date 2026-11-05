@@ -2239,6 +2239,14 @@ details.howto .sub{margin-top:6px}
 </div>
 <script>
 (function(){
+  (function(){var B=document.body.dataset;if(!B.remap||!B.oldstore)return;
+    ['sanan-star-','sanan-grade-'].forEach(function(p){try{
+      if(localStorage.getItem(p+B.store)!==null)return;
+      var o=JSON.parse(localStorage.getItem(p+B.oldstore)||'null');if(!o)return;
+      var m=JSON.parse(B.remap),r={};Object.keys(o).forEach(function(k){if(m[k])r[m[k]]=o[k]});
+      localStorage.setItem(p+B.store,JSON.stringify(r));
+    }catch(e){}});
+  })();
   var key='sanan-star-'+(document.body.dataset.store||document.body.dataset.subject);
   var marked={};
   try{marked=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}

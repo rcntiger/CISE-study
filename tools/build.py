@@ -449,6 +449,14 @@ def points_page(n, src):
 
 BANK_JS = """<script>
 (function(){
+  (function(){var B=document.body.dataset;if(!B.remap||!B.oldstore)return;
+    ['sanan-star-','sanan-grade-'].forEach(function(p){try{
+      if(localStorage.getItem(p+B.store)!==null)return;
+      var o=JSON.parse(localStorage.getItem(p+B.oldstore)||'null');if(!o)return;
+      var m=JSON.parse(B.remap),r={};Object.keys(o).forEach(function(k){if(m[k])r[m[k]]=o[k]});
+      localStorage.setItem(p+B.store,JSON.stringify(r));
+    }catch(e){}});
+  })();
   var key='sanan-star-'+(document.body.dataset.store||document.body.dataset.subject);
   var marked={};
   try{marked=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
@@ -663,6 +671,21 @@ def lock_html(secret_html, pw):
 <script type="application/json" id="locked">{data}</script>"""
 
 
+# 2026-11-05 문제은행에 2회 출제 문항을 더하면서 번호가 바뀜 → 저장 키를 -2027b로 바꾸고,
+# 옛 키(-2027)의 ★·채점 기록을 remap_2027b.json(옛 번호 → 새 번호)으로 한 번 옮김
+REMAP_FILE = SRC27 / "tools" / "remap_2027b.json"
+REMAP = json.loads(REMAP_FILE.read_text(encoding="utf-8")) if REMAP_FILE.exists() else {}
+
+
+def store_attrs(n, slug):
+    base = slug.replace("-bank", "")
+    rm = REMAP.get(str(n))
+    if not rm:
+        return f' data-store="{base}-2027"'
+    return (f' data-store="{base}-2027b" data-oldstore="{base}-2027"'
+            f' data-remap="{html.escape(json.dumps(rm, separators=(",", ":")))}"')
+
+
 def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True, locked=False, per_section=False, grade=False, paged=False):
     """과목 문제은행. 실기처럼 과목이 아닌 문제집은 slug 등 키워드로 넘김.
     per_section=True면 번호가 묶음마다 1번부터라 ★ 저장 키를 "묶음-번호"로 씀.
@@ -770,7 +793,7 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
         content = lock_html(content, pw)
         script = BANK_JS.replace("<script>", '<script type="text/plain" id="bankjs">', 1) + LOCK_JS
     doc = HEAD.format(title=title, css=CSS, accent=accent).replace(
-        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="{slug.replace("-bank", "")}"' + (f' data-store="{slug.replace("-bank", "")}-2027"' if n in SUBJECTS else "") + '>') + header + content + FOOT.format(extra=extra, script=script)
+        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="{slug.replace("-bank", "")}"' + (store_attrs(n, slug) if n in SUBJECTS else "") + '>') + header + content + FOOT.format(extra=extra, script=script)
     (OUT / f"{slug}.html").write_text(doc, encoding="utf-8")
     return total
 
