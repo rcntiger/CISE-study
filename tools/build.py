@@ -686,7 +686,7 @@ def store_attrs(n, slug):
             f' data-remap="{html.escape(json.dumps(rm, separators=(",", ":")))}"')
 
 
-def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True, locked=False, per_section=False, grade=False, paged=False):
+def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None, extra=None, accent=None, notes=True, locked=False, per_section=False, grade=False, paged=False, store=""):
     """과목 문제은행. 실기처럼 과목이 아닌 문제집은 slug 등 키워드로 넘김.
     per_section=True면 번호가 묶음마다 1번부터라 ★ 저장 키를 "묶음-번호"로 씀.
     grade=True면 보기를 눌러 채점(정답 줄 "✅ **②"에서 정답을 읽음, 없으면 맞음/틀림 자가 채점)."""
@@ -732,8 +732,8 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
             opts = [l for l in q_lines if l.strip()[:1] in "①②③④⑤"]
             stem = [l for l in q_lines if l not in opts]
             meta = ""
-            if stem and stem[0].startswith("🔁"):
-                meta = "".join(f'<span class="q-meta{" warn" if "⚠️" in p else ""}">{html.escape(p.strip())}</span>' for p in stem[0].split(" · "))
+            if stem and stem[0].startswith(("🔁", "🏷️")):
+                meta = "".join(f'<span class="q-meta{" warn" if "⚠️" in p else ""}">{html.escape(p.strip())}</span>' for p in stem[0].removeprefix("🏷️").split(" · "))
                 stem = stem[1:]
             tbl = [l for l in stem if l.lstrip().startswith("|")]
             stem = [l for l in stem if l not in tbl]
@@ -793,7 +793,7 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
         content = lock_html(content, pw)
         script = BANK_JS.replace("<script>", '<script type="text/plain" id="bankjs">', 1) + LOCK_JS
     doc = HEAD.format(title=title, css=CSS, accent=accent).replace(
-        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="{slug.replace("-bank", "")}"' + (store_attrs(n, slug) if n in SUBJECTS else "") + '>') + header + content + FOOT.format(extra=extra, script=script)
+        f'<body style="--accent:{accent}">', f'<body style="--accent:{accent}" data-subject="{slug.replace("-bank", "")}"' + (store_attrs(n, slug) if n in SUBJECTS else store) + '>') + header + content + FOOT.format(extra=extra, script=script)
     (OUT / f"{slug}.html").write_text(doc, encoding="utf-8")
     return total
 
@@ -827,10 +827,15 @@ practical_count = bank_page("practical", PRACTICAL, slug="practical", tab="실�
     title="실기 필답형 핵심", accent="var(--c7)", notes=False, per_section=True, paged=True,
     extra="번호는 주제마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 개념은 과목별 기출포인트에서 찾아볼 수 있습니다. ") if PRACTICAL.exists() else 0
 CORE = SRC / "필기_핵심요약.md"
+# 2026-11-09 핵심요약을 2027 5과목으로 재배치(옛 4·5과목 → 4과목 1~68번, 옛 6과목 → 5과목)
+# → ★ 저장 키를 core226-2027로 바꾸고 옛 키(core226)의 ★를 remap_core2027.json으로 한 번 옮김
+CORE_REMAP = SRC27 / "tools" / "remap_core2027.json"
+core_store = (' data-store="core226-2027" data-oldstore="core226" data-remap="'
+              + html.escape(json.dumps(json.loads(CORE_REMAP.read_text(encoding="utf-8")), separators=(",", ":"))) + '"') if CORE_REMAP.exists() else ""
 core_count = bank_page("core", CORE, slug="core226", tab="필기 · 핵심요약",
-    eyebrow="산업안전기사 필기 · 2018~2025 기출 분석", h1="필기 핵심요약",
-    title="필기 핵심요약", accent="var(--c8)", notes=False, per_section=True, paged=True,
-    extra="번호는 과목마다 1번부터입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
+    eyebrow="산업안전기사 필기 · 2027 개편 5과목", h1="필기 핵심요약",
+    title="필기 핵심요약", accent="var(--c8)", notes=False, per_section=True, paged=True, store=core_store,
+    extra="2027 개편 5과목 기준입니다. 번호는 과목마다 1번부터이고, 4과목은 1~33번 전기, 34~68번 화학입니다. 🔧(용어·수치 바로잡음)·⚠️(법령·교재 확인 필요) 표시 문항은 교재로 한 번 더 확인하세요. 더 자세한 개념은 과목별 기출포인트에 있습니다. ") if CORE.exists() else 0
 print(counts, bank_counts, practical_count, core_count)
 
 # 옛 6과목(건설) 주소는 새 5과목으로 보냄
@@ -933,7 +938,7 @@ def index_page():
   </div>""")
     core = f"""<section class="section">
   <div class="section-head"><div class="duality">필기 요약</div></div>
-  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심요약</b><span>2018~2025 기출 2,880문항 분석 · 옛 6과목 분류 · {core_count}문항</span></div><div class="go">›</div></a>
+  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심요약</b><span>2018~2025 기출 2,880문항 분석 · 2027 개편 5과목 · {core_count}문항</span></div><div class="go">›</div></a>
 </section>""" if core_count else ""
     practical = f"""<section class="section">
   <div class="section-head"><div class="duality">실기</div></div>
