@@ -947,7 +947,6 @@ def index_page():
     body = f"""<header>
   <div class="eyebrow" style="margin-top:14px">CISE · 산업안전기사 필기 · 2027 개편 5과목</div>
   <h1>과목별 기출포인트와<br>문제은행</h1>
-  <p class="sub" style="padding:0">2015~2026 기출 33회차 분석으로 핵심을 잡고, 자주 나온 문제로 바로 확인하세요.</p>
   <div class="hero-meta"><span><b>5과목</b> (전기·화학 통합)</span><span>과목별 <b>40점↑</b></span><span>평균 <b>60점↑</b> 합격</span></div>
   <div style="height:22px"></div>
 </header>
