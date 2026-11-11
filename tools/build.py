@@ -938,11 +938,11 @@ def index_page():
   </div>""")
     core = f"""<section class="section">
   <div class="section-head"><div class="duality">필기 요약</div></div>
-  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심요약</b><span>2018~2025 기출 2,880문항 분석 · 2027 개편 5과목 · {core_count}문항</span></div><div class="go">›</div></a>
+  <a class="plan" href="core226.html"><div class="ic" style="background:var(--c8);color:#fff">★</div><div><b>필기 핵심 정리({core_count}문항)</b></div><div class="go">›</div></a>
 </section>""" if core_count else ""
     practical = f"""<section class="section">
   <div class="section-head"><div class="duality">실기</div></div>
-  <a class="plan" href="practical.html"><div class="ic" style="background:var(--c7);color:#fff">✍</div><div><b>필답형 핵심</b><span>2016~2026 기출 · 14개 주제 · {practical_count}문항</span></div><div class="go">›</div></a>
+  <a class="plan" href="practical.html"><div class="ic" style="background:var(--c7);color:#fff">✍</div><div><b>실기 필답형 핵심({practical_count}문항)</b><span>2016~2026 기출 · 14개 주제 · {practical_count}문항</span></div><div class="go">›</div></a>
 </section>""" if practical_count else ""
     body = f"""<header>
   <div class="eyebrow" style="margin-top:14px">CISE · 산업안전기사 필기 · 2027 개편 5과목</div>
