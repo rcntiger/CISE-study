@@ -174,13 +174,21 @@ details.howto .sub{margin-top:6px}
 /* 모바일(999px 이하) 본문 글자: 기존보다 2px 크게 (2026-11-04) */
 @media (max-width:999px){.card p,ul.chk>li{font-size:16px}.card code{font-size:15px}.exp{font-size:16.6px}.memo{font-size:16px}ul.sub2{font-size:15.5px}.subnote{font-size:14.5px}.subnote.std{font-size:14px}.q-body{font-size:17px}.opts li{font-size:16px}.ans-body p,.ans-body li{font-size:15.8px}.tbl table{font-size:14.5px}body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:15px}body[data-page=points] ul.sub2{font-size:14.5px}body[data-page=points] .card code{font-size:14.5px}body[data-page=points] .exp{font-size:15px}body[data-page=points] .memo{font-size:14.5px}body[data-page=points] .subnote{font-size:14.5px}body[data-page=points] .subnote.std{font-size:14px}body[data-subject^=s] .q-body{font-size:16px}body[data-subject^=s] .opts li{font-size:15px}body[data-subject^=s] .ans-body p,body[data-subject^=s] .ans-body li{font-size:15px}body[data-subject=core226] .q-body{font-size:17px}body[data-subject=core226] .ans-body p{font-size:16.8px}body[data-subject=core226] ul.chk>li{font-size:17px}body[data-subject=core226] .exp{font-size:17.6px}}
 @media (min-width:1000px){:is(body[data-subject=core226],body[data-subject=practical]) .q-body,:is(body[data-subject=core226],body[data-subject=practical]) .ans-body p,:is(body[data-subject=core226],body[data-subject=practical]) ul.chk>li,:is(body[data-subject=core226],body[data-subject=practical]) .opts li{font-size:13px}:is(body[data-subject=core226],body[data-subject=practical]) .exp{font-size:12.6px}}
-.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.q.flash{outline:3px solid var(--yellow);outline-offset:2px}
+.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.flash{outline:3px solid var(--yellow);outline-offset:2px}
 :is(body[data-subject=core226],body[data-subject=practical]) h1{font-size:clamp(20px,6vw,28px);white-space:nowrap}:is(body[data-subject=core226],body[data-subject=practical]) .eyebrow{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em}
 @media (min-width:1600px){body{zoom:calc(1.38*var(--fz,1))}}
 /* 글자 크기 조절: PC(1000px 이상)·모바일 따로 저장(localStorage sanan-fz-pc / sanan-fz-m) */
 .fsz{display:inline-flex;align-items:center;gap:2px;margin:6px 0 14px 6px;vertical-align:top;background:rgba(255,255,255,.1);border-radius:999px;padding:1px 4px;font-size:12px;color:var(--hero-ink)}
 .fsz button{font:inherit;font-weight:700;background:none;border:0;color:inherit;cursor:pointer;padding:3px 8px;line-height:1.2}
 .fsz b{min-width:38px;text-align:center;font-weight:600;cursor:pointer}
+/* 검색 결과로 들어온 카드: 위치·강조 (2026-11-22) */
+.card[id]{scroll-margin-top:80px}
+mark.hl{background:var(--mark);color:inherit;border-radius:3px;padding:0 1px}
+/* 오답노트 */
+#wrongSel{flex:0 1 auto;min-width:0;max-width:150px;text-overflow:ellipsis}
+#wrongSel.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.q.rep .q-res{outline:1.5px solid var(--ng)}
+.q.retry{border-style:dashed}
 @media print{.fsz{display:none}}
 @media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 </style>
@@ -195,35 +203,35 @@ details.howto .sub{margin-top:6px}
   <h1>산업안전기사 12주 로드맵</h1>
   <nav class="toc"><a href="#r1"><span class="n">1</span>시험 구조</a><a href="#r2"><span class="n">2</span>필기 5과목 (2027 개편)</a><a href="#r3"><span class="n">3</span>출제 경향</a><a href="#r4"><span class="n">4</span>시험 일정</a><a href="#r5"><span class="n">5</span>12주 로드맵</a><a href="#r6"><span class="n">6</span>운영 원칙</a></nav>
 </header><section class="section" id="r1"><div class="section-head"><div class="duality"><span class="n">1</span>시험 구조</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="시험 구조"><h4>필기</h4><ul class="chk"><li><b>방식:</b> CBT 객관식 4지선다</li><li><b>과목:</b> 2027년부터 <b>5과목</b> (4과목 전기 + 5과목 화학 → 4과목 "전기 및 화학설비 안전관리"로 통합)</li><li><b>문항·시간:</b> 2026년까지는 6과목 × 20문항 = 120문항, 3시간.<br>2027년 문항 수·시간은 Q-Net 공고로 확인 ⚠️</li><li><b>배점:</b> 과목당 100점 환산</li><li><b>합격:</b> 과목별 40점 이상<br><b>그리고</b> 전 과목 평균 60점 이상</li></ul></div>
-<div class="card" data-title="시험 구조"><h4>실기</h4><ul class="chk"><li><b>방식:</b> 필답형 + 작업형(동영상)</li><li><b>필답형:</b> 약 1시간 30분, 약 14문항<br>배점 약 55점</li><li><b>작업형:</b> 약 1시간<br>동영상 시청 후 서술, 배점 약 45점</li><li><b>합격:</b> 합산 100점 중 60점 이상</li></ul></div>
-<div class="card" data-title="시험 구조"><h4>알아 둘 것</h4><ul class="chk"><li>필기 합격 후 <b>2년간 필기 면제</b>로<br>실기에 응시할 수 있습니다.</li><li>시행처: 한국산업인력공단(Q-Net)</li><li>응시자격은 Q-Net<br>"자격요건 자가진단"에서 확인</li></ul></div></div></section>
+<div class="cards"><div class="card" id="r1-1" data-title="시험 구조"><h4>필기</h4><ul class="chk"><li><b>방식:</b> CBT 객관식 4지선다</li><li><b>과목:</b> 2027년부터 <b>5과목</b> (4과목 전기 + 5과목 화학 → 4과목 "전기 및 화학설비 안전관리"로 통합)</li><li><b>문항·시간:</b> 2026년까지는 6과목 × 20문항 = 120문항, 3시간.<br>2027년 문항 수·시간은 Q-Net 공고로 확인 ⚠️</li><li><b>배점:</b> 과목당 100점 환산</li><li><b>합격:</b> 과목별 40점 이상<br><b>그리고</b> 전 과목 평균 60점 이상</li></ul></div>
+<div class="card" id="r1-2" data-title="시험 구조"><h4>실기</h4><ul class="chk"><li><b>방식:</b> 필답형 + 작업형(동영상)</li><li><b>필답형:</b> 약 1시간 30분, 약 14문항<br>배점 약 55점</li><li><b>작업형:</b> 약 1시간<br>동영상 시청 후 서술, 배점 약 45점</li><li><b>합격:</b> 합산 100점 중 60점 이상</li></ul></div>
+<div class="card" id="r1-3" data-title="시험 구조"><h4>알아 둘 것</h4><ul class="chk"><li>필기 합격 후 <b>2년간 필기 면제</b>로<br>실기에 응시할 수 있습니다.</li><li>시행처: 한국산업인력공단(Q-Net)</li><li>응시자격은 Q-Net<br>"자격요건 자가진단"에서 확인</li></ul></div></div></section>
 <section class="section" id="r2"><div class="section-head"><div class="duality"><span class="n">2</span>필기 5과목 (2027 개편)</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="필기 5과목 (2027 개편)"><p><b>1. 산업재해 예방 및 안전보건교육</b><br>🟢 쉬움 · 고득점 과목<br>재해 이론(하인리히·버드), 재해통계(도수율·강도율), 안전보건관리체제, 보호구, 안전보건교육</p>
+<div class="cards"><div class="card" id="r2-1" data-title="필기 5과목 (2027 개편)"><p><b>1. 산업재해 예방 및 안전보건교육</b><br>🟢 쉬움 · 고득점 과목<br>재해 이론(하인리히·버드), 재해통계(도수율·강도율), 안전보건관리체제, 보호구, 안전보건교육</p>
 <p><b>2. 인간공학 및 위험성 평가·관리</b><br>🟡 중간 · 계산 문제(신뢰도, FT) 반복<br>인간-기계 시스템, 신뢰도 계산, FTA/FMEA/HAZOP, 작업환경(소음·조도·온열)</p>
 <p><b>3. 기계·기구 및 설비 안전관리</b><br>🟡 중간 · 방호장치 수치 암기<br>방호장치(프레스·롤러·연삭기), 양중기, 보일러·압력용기, 비파괴검사</p>
 <p><b>4. 전기 및 화학설비 안전관리 (2027 통합)</b><br>🔴 <b>어려움 · 과락 위험 1순위 · 범위가 두 배</b><br>전기: 감전 재해, 누전차단기, 정전기, 방폭구조, 피뢰기<br>화학: 위험물 분류, 폭발한계(르샤틀리에), 화재·소화, 화학설비 안전장치</p>
 <p><b>5. 건설공사 안전관리</b><br>🟡 중간 · 법령 수치 암기<br>유해위험방지계획서, 비계·거푸집·흙막이, 차량계 건설기계, 안전관리비</p></div></div></section>
 <section class="section" id="r3"><div class="section-head"><div class="duality"><span class="n">3</span>출제 경향</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="출제 경향"><ul class="chk"><li>필기는 <b>기출 재출제 비중이 높습니다.</b><br>최근 5~7개년 기출 반복이면<br>대부분 합격선에 도달합니다.</li><li>법령 개정 사항이 매년 반영되므로<br>오래된 기출의 법령 수치는<br>최신 기준으로 확인해야 합니다.</li><li>실기 필답형: 법령(교육시간, 안전검사<br>주기 등)과 계산 문제 중심</li><li>실기 작업형: 사진·동영상을 보고<br>위험요인, 대책, 보호구를 서술</li></ul></div></div></section>
+<div class="cards"><div class="card" id="r3-1" data-title="출제 경향"><ul class="chk"><li>필기는 <b>기출 재출제 비중이 높습니다.</b><br>최근 5~7개년 기출 반복이면<br>대부분 합격선에 도달합니다.</li><li>법령 개정 사항이 매년 반영되므로<br>오래된 기출의 법령 수치는<br>최신 기준으로 확인해야 합니다.</li><li>실기 필답형: 법령(교육시간, 안전검사<br>주기 등)과 계산 문제 중심</li><li>실기 작업형: 사진·동영상을 보고<br>위험요인, 대책, 보호구를 서술</li></ul></div></div></section>
 <section class="section" id="r4"><div class="section-head"><div class="duality"><span class="n">4</span>시험 일정</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="시험 일정"><ul class="chk"><li>기사 정기시험은 보통 <b>연 3회</b><br>(대략 2~3월, 5월, 7~8월 필기)</li><li>2027년 정확한 일정은 아직 미확인.<br>보통 전년도 12월경 Q-Net에 공고됩니다.</li><li>이 계획의 목표:<br><b>2027년 1회차 필기 (2월경 추정)</b></li></ul></div></div></section>
+<div class="cards"><div class="card" id="r4-1" data-title="시험 일정"><ul class="chk"><li>기사 정기시험은 보통 <b>연 3회</b><br>(대략 2~3월, 5월, 7~8월 필기)</li><li>2027년 정확한 일정은 아직 미확인.<br>보통 전년도 12월경 Q-Net에 공고됩니다.</li><li>이 계획의 목표:<br><b>2027년 1회차 필기 (2월경 추정)</b></li></ul></div></div></section>
 <section class="section" id="r5"><div class="section-head"><div class="duality"><span class="n">5</span>12주 로드맵</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="12주 로드맵"><p>필기 9주 + 실기 대비 3주<br>권장: 평일 2시간, 주말 4시간 (주 약 18시간)</p></div>
-<div class="card" data-title="12주 로드맵"><h4>필기 개념 (1~7주)</h4><p><b>1주 · 1과목 산업재해 예방</b><br>개념 1회독 + 재해통계 공식 정리.<br>워밍업 겸 고득점 확보.</p>
+<div class="cards"><div class="card" id="r5-1" data-title="12주 로드맵"><p>필기 9주 + 실기 대비 3주<br>권장: 평일 2시간, 주말 4시간 (주 약 18시간)</p></div>
+<div class="card" id="r5-2" data-title="12주 로드맵"><h4>필기 개념 (1~7주)</h4><p><b>1주 · 1과목 산업재해 예방</b><br>개념 1회독 + 재해통계 공식 정리.<br>워밍업 겸 고득점 확보.</p>
 <p><b>2주 · 2과목 인간공학</b><br>신뢰도(직렬·병렬), FTA 컷셋,<br>작업환경 수치. 계산 문제 집중.</p>
 <p><b>3주 · 3과목 기계 안전</b><br>방호장치 종류와 설치 기준<br>수치 암기카드 작성.</p>
 <p><b>4주 · 🔴 4과목 전기 및 화학 (1) 전기</b><br>감전·전격 이론, 접지 종류,<br>누전차단기.</p>
 <p><b>5주 · 🔴 4과목 (2) 전기 마무리 + 화학 시작</b><br>정전기, 방폭구조 기호 / 위험물 분류.</p>
 <p><b>6주 · 🔴 4과목 (3) 화학</b><br>폭발한계·르샤틀리에 계산,<br>소화 이론, 안전장치.</p>
 <p><b>7주 · 5과목 건설</b><br>비계·거푸집·굴착 기준,<br>추락 방지 수치.</p></div>
-<div class="card" data-title="12주 로드맵"><h4>필기 기출 (8~9주)</h4><p><b>8주 · 기출 회독 1</b><br>최근 5개년 기출 과목별 풀이, 오답노트.<br>과락 과목 파악.</p>
+<div class="card" id="r5-3" data-title="12주 로드맵"><h4>필기 기출 (8~9주)</h4><p><b>8주 · 기출 회독 1</b><br>최근 5개년 기출 과목별 풀이, 오답노트.<br>과락 과목 파악.</p>
 <p><b>9주 · 기출 회독 2 + CBT 모의고사</b><br>실전 시간(3시간)으로 주 3회.<br>목표 평균 70점.</p></div>
-<div class="card" data-title="12주 로드맵"><h4>실기 (10~12주)</h4><p><b>10주 · 실기 필답형</b><br>빈출 법령(교육시간, 안전검사 주기,<br>안전보건표지) 암기, 서술형 답안 연습.</p>
+<div class="card" id="r5-4" data-title="12주 로드맵"><h4>실기 (10~12주)</h4><p><b>10주 · 실기 필답형</b><br>빈출 법령(교육시간, 안전검사 주기,<br>안전보건표지) 암기, 서술형 답안 연습.</p>
 <p><b>11주 · 실기 작업형</b><br>사진·영상 기출을 유형별<br>(위험요인·대책·보호구)로 정리.</p>
 <p><b>12주 · 실기 총정리</b><br>필답형 + 작업형 기출 반복,<br>손으로 직접 써 보기.</p></div></div></section>
 <section class="section" id="r6"><div class="section-head"><div class="duality"><span class="n">6</span>운영 원칙</div><div class="section-line"></div></div>
-<div class="cards"><div class="card" data-title="운영 원칙"><ul class="chk"><li><b>과락 방지가 우선입니다.</b><br>전기·화학이 합쳐진 4과목에 3주를 배정했습니다.</li><li>개념 학습 중에도 그 과목 기출을<br>바로 풀어 보는 방식이 효율적입니다.</li><li>법령 수치는 암기카드로<br>매일 10분씩 반복합니다.</li><li>필기 합격 후 실기까지 보통 1~2개월<br>여유가 있으니, 10~12주 차는 필기<br>발표 후 실제 일정에 맞춰 늘리세요.</li></ul></div></div></section>
+<div class="cards"><div class="card" id="r6-1" data-title="운영 원칙"><ul class="chk"><li><b>과락 방지가 우선입니다.</b><br>전기·화학이 합쳐진 4과목에 3주를 배정했습니다.</li><li>개념 학습 중에도 그 과목 기출을<br>바로 풀어 보는 방식이 효율적입니다.</li><li>법령 수치는 암기카드로<br>매일 10분씩 반복합니다.</li><li>필기 합격 후 실기까지 보통 1~2개월<br>여유가 있으니, 10~12주 차는 필기<br>발표 후 실제 일정에 맞춰 늘리세요.</li></ul></div></div></section>
 <footer></footer>
 </div>
 
@@ -242,6 +250,39 @@ details.howto .sub{margin-top:6px}
   var h=document.querySelector("header"),bk=h&&h.querySelector(".back");
   if(bk)bk.after(box);else if(h)h.prepend(box);
   apply(get());
+})();
+</script>
+<script>
+(function(){
+  function mark(el,q){
+    var ql=q.toLowerCase(),w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),ns=[],n,hitAns=false,hitTop=false;
+    while(n=w.nextNode())if(n.nodeValue.toLowerCase().indexOf(ql)>=0&&!n.parentNode.closest('mark,script,button'))ns.push(n);
+    ns.forEach(function(n){
+      var t=n.nodeValue,tl=t.toLowerCase(),f=document.createDocumentFragment(),i=0,j;
+      while((j=tl.indexOf(ql,i))>=0){f.appendChild(document.createTextNode(t.slice(i,j)));var m=document.createElement('mark');m.className='hl';m.textContent=t.slice(j,j+q.length);f.appendChild(m);i=j+q.length}
+      f.appendChild(document.createTextNode(t.slice(i)));
+      if(n.parentNode.closest('details.ans'))hitAns=true;else hitTop=true;
+      n.parentNode.replaceChild(f,n);
+    });
+    return hitAns&&!hitTop;
+  }
+  function go(){
+    var id;try{id=decodeURIComponent(location.hash.slice(1))}catch(e){return}
+    var el=id&&document.getElementById(id);
+    if(!el||!el.classList.contains('card'))return;
+    if(el.classList.contains('hidden')){
+      var cs=document.getElementById('chSel');if(cs&&cs.value){cs.value='';cs.dispatchEvent(new Event('change'))}
+      ['onlyStar'].forEach(function(b){b=document.getElementById(b);if(b&&b.classList.contains('on'))b.click()});
+      var ws=document.getElementById('wrongSel');if(ws&&ws.value){ws.value='';ws.dispatchEvent(new Event('change'))}
+    }
+    var q=null;try{q=new URLSearchParams(location.search).get('hl')}catch(e){}
+    if(q&&q.trim()&&!el.dataset.hl){el.dataset.hl=1;var d=el.querySelector('details.ans');if(mark(el,q.trim())&&d)d.open=true}
+    var tl=document.querySelector('.tools'),off=tl&&getComputedStyle(tl).position==='sticky'?tl.getBoundingClientRect().height+10:12;
+    window.scrollTo({top:Math.max(0,el.getBoundingClientRect().top+window.pageYOffset-off),behavior:'instant'});
+    el.classList.add('flash');setTimeout(function(){el.classList.remove('flash')},2600);
+  }
+  if(location.hash)setTimeout(go,60);
+  window.addEventListener('hashchange',go);
 })();
 </script>
 </body>

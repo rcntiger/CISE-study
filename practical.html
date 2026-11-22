@@ -174,13 +174,21 @@ details.howto .sub{margin-top:6px}
 /* 모바일(999px 이하) 본문 글자: 기존보다 2px 크게 (2026-11-04) */
 @media (max-width:999px){.card p,ul.chk>li{font-size:16px}.card code{font-size:15px}.exp{font-size:16.6px}.memo{font-size:16px}ul.sub2{font-size:15.5px}.subnote{font-size:14.5px}.subnote.std{font-size:14px}.q-body{font-size:17px}.opts li{font-size:16px}.ans-body p,.ans-body li{font-size:15.8px}.tbl table{font-size:14.5px}body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:15px}body[data-page=points] ul.sub2{font-size:14.5px}body[data-page=points] .card code{font-size:14.5px}body[data-page=points] .exp{font-size:15px}body[data-page=points] .memo{font-size:14.5px}body[data-page=points] .subnote{font-size:14.5px}body[data-page=points] .subnote.std{font-size:14px}body[data-subject^=s] .q-body{font-size:16px}body[data-subject^=s] .opts li{font-size:15px}body[data-subject^=s] .ans-body p,body[data-subject^=s] .ans-body li{font-size:15px}body[data-subject=core226] .q-body{font-size:17px}body[data-subject=core226] .ans-body p{font-size:16.8px}body[data-subject=core226] ul.chk>li{font-size:17px}body[data-subject=core226] .exp{font-size:17.6px}}
 @media (min-width:1000px){:is(body[data-subject=core226],body[data-subject=practical]) .q-body,:is(body[data-subject=core226],body[data-subject=practical]) .ans-body p,:is(body[data-subject=core226],body[data-subject=practical]) ul.chk>li,:is(body[data-subject=core226],body[data-subject=practical]) .opts li{font-size:13px}:is(body[data-subject=core226],body[data-subject=practical]) .exp{font-size:12.6px}}
-.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.q.flash{outline:3px solid var(--yellow);outline-offset:2px}
+.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.flash{outline:3px solid var(--yellow);outline-offset:2px}
 :is(body[data-subject=core226],body[data-subject=practical]) h1{font-size:clamp(20px,6vw,28px);white-space:nowrap}:is(body[data-subject=core226],body[data-subject=practical]) .eyebrow{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em}
 @media (min-width:1600px){body{zoom:calc(1.38*var(--fz,1))}}
 /* 글자 크기 조절: PC(1000px 이상)·모바일 따로 저장(localStorage sanan-fz-pc / sanan-fz-m) */
 .fsz{display:inline-flex;align-items:center;gap:2px;margin:6px 0 14px 6px;vertical-align:top;background:rgba(255,255,255,.1);border-radius:999px;padding:1px 4px;font-size:12px;color:var(--hero-ink)}
 .fsz button{font:inherit;font-weight:700;background:none;border:0;color:inherit;cursor:pointer;padding:3px 8px;line-height:1.2}
 .fsz b{min-width:38px;text-align:center;font-weight:600;cursor:pointer}
+/* 검색 결과로 들어온 카드: 위치·강조 (2026-11-22) */
+.card[id]{scroll-margin-top:80px}
+mark.hl{background:var(--mark);color:inherit;border-radius:3px;padding:0 1px}
+/* 오답노트 */
+#wrongSel{flex:0 1 auto;min-width:0;max-width:150px;text-overflow:ellipsis}
+#wrongSel.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.q.rep .q-res{outline:1.5px solid var(--ng)}
+.q.retry{border-style:dashed}
 @media print{.fsz{display:none}}
 @media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 </style>
@@ -197,7 +205,7 @@ details.howto .sub{margin-top:6px}
   <nav class="toc"><a href="#g1"><span class="n">A</span>재해 통계 계산 (19문항)</a><a href="#g2"><span class="n">B</span>재해 이론·조사·위험성 평가 (18문항)</a><a href="#g3"><span class="n">C</span>안전보건관리체제·법령 (19문항)</a><a href="#g4"><span class="n">D</span>안전보건교육 (10문항)</a><a href="#g5"><span class="n">E</span>유해위험방지계획서·공정안전보고서·건설 관리비 (18문항)</a><a href="#g6"><span class="n">F</span>안전인증·자율안전확인·안전검사 (14문항)</a><a href="#g7"><span class="n">G</span>안전보건표지·색채 (10문항)</a><a href="#g8"><span class="n">H</span>보호구 (17문항)</a><a href="#g9"><span class="n">I</span>기계 안전 (32문항)</a><a href="#g10"><span class="n">J</span>양중기·와이어로프·달기구 (15문항)</a><a href="#g11"><span class="n">K</span>전기 안전 (20문항)</a><a href="#g12"><span class="n">L</span>화학설비·위험물·화재 (30문항)</a><a href="#g13"><span class="n">M</span>건설 안전 (28문항)</a><a href="#g14"><span class="n">N</span>보건·작업환경 (8문항)</a></nav>
 </header>
 <div class="tools"><select class="btn" id="secSel" aria-label="볼 묶음 고르기"><option value="">전체 보기</option><option value="g1">A. 재해 통계 계산 (19문항)</option><option value="g2">B. 재해 이론·조사·위험성 평가 (18문항)</option><option value="g3">C. 안전보건관리체제·법령 (19문항)</option><option value="g4">D. 안전보건교육 (10문항)</option><option value="g5">E. 유해위험방지계획서·공정안전보고서·건설 관리비 (18문항)</option><option value="g6">F. 안전인증·자율안전확인·안전검사 (14문항)</option><option value="g7">G. 안전보건표지·색채 (10문항)</option><option value="g8">H. 보호구 (17문항)</option><option value="g9">I. 기계 안전 (32문항)</option><option value="g10">J. 양중기·와이어로프·달기구 (15문항)</option><option value="g11">K. 전기 안전 (20문항)</option><option value="g12">L. 화학설비·위험물·화재 (30문항)</option><option value="g13">M. 건설 안전 (28문항)</option><option value="g14">N. 보건·작업환경 (8문항)</option></select><input class="btn" id="qJump" type="number" inputmode="numeric" min="1" placeholder="번호" aria-label="번호로 이동"><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><span class="count" id="starCount"></span></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">A</span>재해 통계 계산 (19문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="A-1" data-ch="" data-title="1번">
+<div class="card q" id="qA-1" data-q="A-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">도수율을 구하시오.<br>· 재해건수 12건, 재해자수 18명, 요양일수 7,500일<br>· 근로자 4,000명, 1인당 연근로시간 2,400시간</p>
 <ul class="opts"></ul>
@@ -206,7 +214,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>12 ÷ (4,000 × 2,400 = 960만) × 10⁶ = 1.25</li><li>재해자수·요양일수는 쓰지 않음. 답에 단위를 붙이면 감점</li><li>🔧 근로자수와 연근로시간을 바꿔 줘도 곱이 같으므로 답은 동일</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>도수율은 재해가 얼마나 자주 나는지를 보는 지표라 재해 "건수"만 쓴다. 100만 시간 기준으로 나타내므로 연근로시간으로 나눈 뒤 10⁶을 곱한다.</div></div></details>
 </div>
-<div class="card q" data-q="A-2" data-ch="" data-title="2번">
+<div class="card q" id="qA-2" data-q="A-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강도율을 구하시오.<br>· 근로자 300명, 1인당 연근로시간 2,400시간<br>· 재해건수 10건, 총요양근로손실일수 7,500일</p>
 <ul class="opts"></ul>
@@ -215,7 +223,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>7,500 ÷ (300 × 2,400 = 72만) × 1,000 = 10.416… ≒ 10.42</li><li>도수율은 100만 시간당 "건수", 강도율은 1천 시간당 "손실일수"</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>강도율은 재해로 일을 며칠 잃었는지를 보는 지표라 근로손실일수를 쓴다. 1,000시간 기준이므로 연근로시간으로 나눈 뒤 1,000을 곱한다.</div></div></details>
 </div>
-<div class="card q" data-q="A-3" data-ch="" data-title="3번">
+<div class="card q" id="qA-3" data-q="A-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">도수율을 구하시오.<br>· 재해건수 60건, 근로자 1,500명<br>· 연근로일수 300일, 1일 8시간<br>· 총요양근로손실일수 7,800일</p>
 <ul class="opts"></ul>
@@ -224,7 +232,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>1,500 × 8 × 300 = 360만 시간 → 60 ÷ 360만 × 10⁶ = 16.67</li><li>손실일수 7,800일은 강도율용이라 쓰지 않음</li><li>🔧 근로자수는 풀이의 360만 시간과 맞는 1,500명으로 정함</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>연근로시간이 직접 없으면 근로자 수 × 하루 시간 × 연간 근로일수로 만든다. 도수율에는 건수만 필요하므로 손실일수는 이 문제에서 쓰지 않는다.</div></div></details>
 </div>
-<div class="card q" data-q="A-4" data-ch="" data-title="4번">
+<div class="card q" id="qA-4" data-q="A-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">도수율을 구하시오. (연간 재해 20건, 근로자 200명, 연근로일수 300일, 1일 8시간)</p>
 <ul class="opts"></ul>
@@ -232,7 +240,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 20 ÷ (200 × 8 × 300 = 48만) × 10⁶ = 41.666… ≒ 41.67</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>근로자 수, 하루 근로시간, 연간 근로일수를 곱해 연근로시간을 만든 뒤 도수율 공식에 넣는다. 계산 순서가 같은 문제는 이 틀을 그대로 쓰면 된다.</div></div></details>
 </div>
-<div class="card q" data-q="A-5" data-ch="" data-title="5번">
+<div class="card q" id="qA-5" data-q="A-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강도율을 구하시오.<br>· 근로자 1,440명, 주 40시간, 연 50주 근무<br>· 조기출근·잔업 합계 10만 시간, 출근율 94%<br>· 재해 40건, 근로손실일수 1,200일, 사망 1건</p>
 <ul class="opts"></ul>
@@ -241,7 +249,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>손실일수 = 1,200 + 7,500 = 8,700일</li><li>연근로시간 = 1,440 × 40 × 50 × 0.94 + 100,000 = 2,807,200시간</li><li>8,700 ÷ 2,807,200 × 1,000 = 3.099 ≒ 3.10</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>사망은 근로손실일수 7,500일로 바꿔 손실일수에 더한다. 출근율은 정해진 근무시간에만 적용되고, 잔업·조기출근 시간은 실제로 일한 시간이라 그대로 더한다.</div></div></details>
 </div>
-<div class="card q" data-q="A-6" data-ch="" data-title="6번">
+<div class="card q" id="qA-6" data-q="A-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사망만인율을 구하시오. (사망자 5명, 임금근로자 2,500명, 산재보험 적용근로자 2만 명)</p>
 <ul class="opts"></ul>
@@ -250,7 +258,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>5 ÷ 20,000 × 10,000 = 2.5</li><li class="cf"><span class="cf-tag">🔀 바꿔치기 주의</span>분모는 임금근로자수가 아니라 산재보험 적용근로자수</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>사망만인율은 근로자 1만 명당 사망자 수다. 통계 기준은 산재보험이 적용되는 근로자이므로 분모에 그 수를 쓴다.</div></div></details>
 </div>
-<div class="card q" data-q="A-7" data-ch="" data-title="7번">
+<div class="card q" id="qA-7" data-q="A-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body"></p>
 <ul class="opts"><li>① 사망만인율 계산식을 쓰고 ② 사망자수에 포함되지 않는 경우 2가지를 쓰시오.</li></ul>
@@ -259,7 +267,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>사업장 밖 교통사고는 운수업·음식숙박업이면 포함. 사업장 "안" 교통사고는 제외하지 않음</li><li>통상의 출퇴근 재해도 제외 대상</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>사망만인율은 업무상 재해로 죽은 사람을 세는 지표라, 업무와의 관련이 약한 사망(사업장 밖 교통사고, 체육행사, 폭력)이나 사고와 사망 사이가 너무 먼 경우(1년 경과 후)는 뺀다.</div></div></details>
 </div>
-<div class="card q" data-q="A-8" data-ch="" data-title="8번">
+<div class="card q" id="qA-8" data-q="A-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사망만인율을 구하시오. (사망 2명, 재해자 10명, 재해건수 11건, 근로시간 2,400시간, 근로자 2,000명)</p>
 <ul class="opts"></ul>
@@ -268,7 +276,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>연천인율은 재해자수/근로자, 사망만인율은 사망자수/근로자. 지표마다 쓰는 숫자가 다르다</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>사망만인율은 사망자 수와 근로자 수만 필요하다. 문제에 재해자 수, 건수, 근로시간이 같이 나와도 함정 정보이므로 골라 써야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="A-9" data-ch="" data-title="9번">
+<div class="card q" id="qA-9" data-q="A-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">요양근로손실일수를 구하시오. (사망 2명, 1급·2급·3급·9급 각 1명, 10급 4명. 9급 1,000일, 10급 600일)</p>
 <ul class="opts"></ul>
@@ -277,7 +285,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>7,500 × 5명 = 37,500 / 9급 1,000 / 10급 600 × 4 = 2,400 → 합계 40,900일</li><li>신체장해등급별 손실일수: 4급 5,500, 5급 4,000, 6급 3,000, 7급 2,200, 8급 1,500, 9급 1,000, 10급 600, 11급 400, 12급 200, 13급 100, 14급 50</li><li>🔧 수치: 40,900일</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>사망과 1~3급 장해는 모두 7,500일로 같게 보고, 4~14급은 표의 일수를 쓴다. 사람 수만큼 곱해 모두 더하면 총 근로손실일수다.</div></div></details>
 </div>
-<div class="card q" data-q="A-10" data-ch="" data-title="10번">
+<div class="card q" id="qA-10" data-q="A-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강도율을 구하시오.<br>· 근로자 300명, 1일 8시간, 연 300일 근무<br>· 휴업일수 300일, 사망 2명, 4급 1명, 10급 1명<br>· 손실일수: 사망 7,500일, 4급 5,500일, 10급 600일</p>
 <ul class="opts"></ul>
@@ -286,7 +294,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>휴업 환산 = 300 × 300/365 = 246.58일</li><li>손실일수 합 = 15,000 + 5,500 + 600 + 246.58 = 21,346.58일</li><li>21,346.58 ÷ (300 × 8 × 300 = 72만) × 1,000 = 29.648 ≒ 29.65</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>휴업일수는 달력 날짜이므로 실제 근로일 비율(연근로일수/365)을 곱해 근로손실일수로 바꾼다. 사망·장해 일수는 표 값을 그대로 더한다.</div></div></details>
 </div>
-<div class="card q" data-q="A-11" data-ch="" data-title="11번">
+<div class="card q" id="qA-11" data-q="A-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">연천인율을 구하시오. (연평균 근로자 1,500명, 연간 재해자 60명, 사망 2명, 근로손실일수 1,200일)</p>
 <ul class="opts"></ul>
@@ -295,7 +303,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>60 ÷ 1,500 × 1,000 = 40</li><li>참고: 연천인율 = 도수율 × 2.4</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>연천인율은 근로자 1,000명당 1년 동안 재해를 입은 사람 수다. 그래서 재해자 수를 근로자 수로 나누고 1,000을 곱한다.</div></div></details>
 </div>
-<div class="card q" data-q="A-12" data-ch="" data-title="12번">
+<div class="card q" id="qA-12" data-q="A-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강도율의 의미를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -303,7 +311,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 "1,000시간당"을 빠뜨리면 감점. 도수율은 "100만 시간당 재해건수"</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>강도율은 재해의 심각성을 보는 지표라 근로손실일수를 기준으로 한다. "1,000시간당"과 "근로손실일수"를 함께 써야 완전한 답이다.</div></div></details>
 </div>
-<div class="card q" data-q="A-13" data-ch="" data-title="13번">
+<div class="card q" id="qA-13" data-q="A-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">도수율, 강도율, 종합재해지수를 구하시오.<br>· 근로자 400명, 1일 8시간, 연 280일<br>· 재해 80건, 근로손실일수 800일, 재해자 100명</p>
 <ul class="opts"></ul>
@@ -312,7 +320,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>연근로시간 = 400 × 8 × 280 = 896,000시간</li><li>도수율 = 80 ÷ 896,000 × 10⁶ = 89.29</li><li>강도율 = 800 ÷ 896,000 × 1,000 = 0.89</li><li>√(89.29 × 0.89) = 8.91. 재해자수는 쓰지 않음</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>도수율(빈도)과 강도율(심각성)을 먼저 구한 뒤 둘을 곱해 제곱근을 씌우면 종합재해지수다. 빈도와 심각성을 함께 반영하기 위한 지표다.</div></div></details>
 </div>
-<div class="card q" data-q="A-14" data-ch="" data-title="14번">
+<div class="card q" id="qA-14" data-q="A-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">종합재해지수를 구하시오. (근로자 500명, 1인당 연 2,400시간, 재해 210건, 근로손실일수 900일)</p>
 <ul class="opts"></ul>
@@ -321,7 +329,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>도수율 = 210 ÷ 120만 × 10⁶ = 175</li><li>강도율 = 900 ÷ 120만 × 1,000 = 0.75</li><li>√(175 × 0.75) = 11.456 ≒ 11.46</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>연근로시간 = 근로자 수 × 1인당 연근로시간으로 구하고, 도수율과 강도율을 각각 계산한 뒤 곱해서 제곱근을 씌운다.</div></div></details>
 </div>
-<div class="card q" data-q="A-15" data-ch="" data-title="15번">
+<div class="card q" id="qA-15" data-q="A-15" data-ch="" data-title="15번">
 <div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">종합재해지수를 구하시오. (근로자 400명, 1일 8시간, 연 280일, 재해 80건, 근로손실일수 800일, 재해자 100명)</p>
 <ul class="opts"></ul>
@@ -329,7 +337,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 13번과 같은 문제. 도수율 89.29, 강도율 0.89 → √(89.29 × 0.89) = 8.91</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>13번과 조건이 같으므로 같은 과정으로 계산한다. 시험에 반복 출제되는 조건이라 숫자를 기억해 두면 검산에 쓸 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="A-16" data-ch="" data-title="16번">
+<div class="card q" id="qA-16" data-q="A-16" data-ch="" data-title="16번">
 <div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강도율을 구하시오. (근로자 400명, 재해자 20명, 총근로손실일수 100일, 1일 8시간, 연 250일)</p>
 <ul class="opts"></ul>
@@ -338,7 +346,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>재해자수는 쓰지 않음</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>강도율은 근로손실일수만 쓰고 재해자 수는 쓰지 않는다. 연근로시간을 만든 뒤 1,000시간 기준으로 바꾼다.</div></div></details>
 </div>
-<div class="card q" data-q="A-17" data-ch="" data-title="17번">
+<div class="card q" id="qA-17" data-q="A-17" data-ch="" data-title="17번">
 <div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">도수율을 구하시오. (재해 3건, 근로자 500명, 1인당 연근로시간 3,000시간)</p>
 <ul class="opts"></ul>
@@ -347,7 +355,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>근로자수가 따로 주어지면 1인당 시간에 곱해야 한다는 신호</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>1인당 연근로시간이 주어지면 근로자 수를 곱해 전체 연근로시간을 만든다. 그다음 도수율 공식에 넣는다.</div></div></details>
 </div>
-<div class="card q" data-q="A-18" data-ch="" data-title="18번">
+<div class="card q" id="qA-18" data-q="A-18" data-ch="" data-title="18번">
 <div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강도율을 구하시오. (도수율 12, 연간 재해 12건, 휴업일수 146일, 1일 10시간, 연 250일 근무)</p>
 <ul class="opts"></ul>
@@ -356,7 +364,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>12 = 12 ÷ 연근로시간 × 10⁶ → 연근로시간 100만 시간</li><li>근로손실일수 = 146 × 250/365 = 100일</li><li>강도율 = 100 ÷ 100만 × 1,000 = 0.1</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>도수율과 재해건수를 알면 공식을 거꾸로 풀어 연근로시간을 구할 수 있다. 휴업일수는 근로일 비율을 곱해 손실일수로 바꾼 뒤 강도율을 구한다.</div></div></details>
 </div>
-<div class="card q" data-q="A-19" data-ch="" data-title="19번">
+<div class="card q" id="qA-19" data-q="A-19" data-ch="" data-title="19번">
 <div class="q-head"><span class="q-num">19번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">도수율 18.73인 사업장에서 근로자 1명이 평생 몇 건의 재해를 당하겠는가? (1일 8시간, 월 25일, 12개월 근무, 평생 근로연수 35년, 연간 잔업 240시간)</p>
 <ul class="opts"></ul>
@@ -366,7 +374,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>도수율은 100만 시간당 재해건수이므로, 한 사람이 평생 일하는 시간을 곱하고 100만으로 나누면 그 사람이 평생 겪을 재해 건수가 된다. 잔업 시간도 일한 시간이므로 더한다.</div></div></details>
 </div></section>
 <section class="section" id="g2"><div class="section-head"><div class="duality"><span class="n">B</span>재해 이론·조사·위험성 평가 (18문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="B-1" data-ch="" data-title="1번">
+<div class="card q" id="qB-1" data-q="B-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">하인리히와 아담스의 사고 발생 이론(연쇄성 이론) 순서를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -374,7 +382,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 하인리히는 사람에서, 아담스는 관리에서 출발. 작전적 에러가 전술적 에러보다 먼저</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>두 이론 모두 사고를 도미노처럼 이어진 단계로 본다. 하인리히는 사람의 유전·환경에서 출발하고, 아담스는 관리구조의 결함에서 출발해 작전적 에러(관리자) → 전술적 에러(작업자) 순으로 이어진다.</div></div></details>
 </div>
-<div class="card q" data-q="B-2" data-ch="" data-title="2번">
+<div class="card q" id="qB-2" data-q="B-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">하인리히의 재해 구성 비율과 의미를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -383,7 +391,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>비율만 쓰지 말고 각 숫자의 의미를 함께 쓸 것</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>같은 종류의 사고 330건 가운데 1건은 중상, 29건은 경상, 300건은 다치지 않고 끝난다는 뜻이다. 결과가 갈리는 것은 우연이므로 다치지 않은 사고 단계에서 원인을 없애야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="B-3" data-ch="" data-title="3번">
+<div class="card q" id="qB-3" data-q="B-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">하인리히의 재해예방 4원칙을 쓰고 설명하시오.</p>
 <ul class="opts"></ul>
@@ -392,7 +400,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>예방가능: 천재지변을 제외한 모든 인재는 예방할 수 있다</li><li>손실우연: 사고 결과(손실)의 크기는 우연에 의해 정해진다</li><li>원인연계: 사고에는 반드시 원인이 있고 원인은 대부분 복합적으로 연계된다</li><li>대책선정: 원인을 알면 반드시 대책을 세워 실시해야 한다 (3E: 기술·교육·관리)</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>재해는 원인이 있어 막을 수 있고(예방가능), 원인은 서로 얽혀 있으며(원인연계), 원인을 알면 대책을 세워야 한다(대책선정). 다만 손실의 크기만은 우연이다(손실우연).</div></div></details>
 </div>
-<div class="card q" data-q="B-4" data-ch="" data-title="4번">
+<div class="card q" id="qB-4" data-q="B-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">위험예지훈련 4단계(4라운드)를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -400,7 +408,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 무엇이 위험한가 → 핵심 위험은 → 어떻게 할까 → 우리는 이렇게 하자</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>위험예지훈련은 팀이 그림이나 현장을 보며 위험을 찾아내는 훈련이다. 무엇이 위험한지 말하고, 핵심을 고르고, 대책을 정한 뒤, 팀 행동목표로 마무리한다.</div></div></details>
 </div>
-<div class="card q" data-q="B-5" data-ch="" data-title="5번">
+<div class="card q" id="qB-5" data-q="B-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업재해 발생 시 조치 순서의 빈칸을 쓰시오.<br>산업재해 발생 → ( ① ) → ( ② ) → 원인강구 → ( ③ ) → 대책 실시계획 → 실시 → ( ④ )</p>
 <ul class="opts"></ul>
@@ -408,7 +416,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 긴급처리는 피재기계 정지, 피재자 구출·응급조치, 2차 재해 방지</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>재해가 나면 먼저 사람을 구하고 2차 재해를 막는 긴급처리가 우선이다. 그다음 조사 → 원인 → 대책 → 실행 → 평가 순으로 재발을 막는다.</div></div></details>
 </div>
-<div class="card q" data-q="B-6" data-ch="" data-title="6번">
+<div class="card q" id="qB-6" data-q="B-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">재해조사 시 유의사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -416,7 +424,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에 인정되는 답: 객관적 입장에서 2인 이상이 조사, 책임 추궁보다 재발방지 우선, 사람·기계설비 양면의 재해요인 도출</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>재해조사의 목적은 책임을 묻는 것이 아니라 같은 재해가 다시 나지 않게 하는 것이다. 그래서 다친 사람 구조를 먼저 하고, 빨리, 사실 위주로, 객관적으로 조사한다.</div></div></details>
 </div>
-<div class="card q" data-q="B-7" data-ch="" data-title="7번">
+<div class="card q" id="qB-7" data-q="B-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">통로를 걷던 근로자가 바닥의 기름에 미끄러져 넘어지면서 선반에 머리를 부딪혀 다쳤다. 재해를 분석하시오.</p>
 <ul class="opts"></ul>
@@ -424,7 +432,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 기인물 = 재해를 일으킨 근원, 가해물 = 직접 사람에게 닿아 다치게 한 것</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>기인물은 재해가 시작된 원인이 된 물체, 가해물은 사람 몸에 직접 부딪혀 다치게 한 물체다. 미끄러진 원인은 기름, 머리를 친 것은 선반이다.</div></div></details>
 </div>
-<div class="card q" data-q="B-8" data-ch="" data-title="8번">
+<div class="card q" id="qB-8" data-q="B-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 재해발생 형태를 쓰시오.</p>
 <ul class="opts"><li>① 폭발과 화재가 복합적으로 발생한 경우</li><li>② 재해 당시 바닥과 신체가 떨어진 상태에서 더 낮은 위치로 떨어진 경우</li><li>③ 재해 당시 바닥과 신체가 접해 있는 상태에서 더 낮은 위치로 떨어진 경우</li><li>④ 전도로 인해 기계의 동력전달부위 등에 협착되어 신체 부위가 절단된 경우</li></ul>
@@ -432,7 +440,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 바닥에서 떨어져 있었으면 떨어짐, 붙어 있었으면 넘어짐. 절단이라는 결과가 나와도 형태는 끼임</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>재해 형태는 사람이 어떤 방식으로 다쳤는지로 나눈다. 높은 곳에서 몸이 공중에 뜬 채 떨어지면 떨어짐, 서 있다가 넘어지면 넘어짐, 기계에 끼이면 결과가 절단이어도 끼임이다.</div></div></details>
 </div>
-<div class="card q" data-q="B-9" data-ch="" data-title="9번">
+<div class="card q" id="qB-9" data-q="B-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업재해조사표에 작성하는 상해의 종류 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -440,7 +448,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 상해 종류 = 다친 결과의 형태. 사고유형(넘어짐 등)과 구분</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>상해의 종류는 몸에 남은 결과(골절, 화상, 절단 등)를 적는 항목이다. 넘어짐·떨어짐 같은 사고 유형과 혼동하지 않도록 구분한다.</div></div></details>
 </div>
-<div class="card q" data-q="B-10" data-ch="" data-title="10번">
+<div class="card q" id="qB-10" data-q="B-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">근로불능 상해의 종류를 설명하시오. ① 영구 전노동불능 ② 영구 일부노동불능 ③ 일시 전노동불능</p>
 <ul class="opts"></ul>
@@ -448,7 +456,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 영구냐 일시냐, 전부냐 일부냐로 갈린다. 일시 일부노동불능도 있음</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>근로불능 상해는 다친 뒤 일을 할 수 없게 된 정도로 나눈다. 평생 전혀 못 하면 영구 전노동불능, 일부를 평생 못 하면 영구 일부노동불능, 일정 기간만 못 하면 일시 전노동불능이다.</div></div></details>
 </div>
-<div class="card q" data-q="B-11" data-ch="" data-title="11번">
+<div class="card q" id="qB-11" data-q="B-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">휴업재해자수(재해자수 통계)에서 제외되는 경우를 모두 고르시오.<br>A. 질병에 의한 재해 B. 통상의 출퇴근으로 발생한 재해 C. 사업장 내 교통사고 D. 폭력행위로 발생한 재해</p>
 <ul class="opts"></ul>
@@ -457,7 +465,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>⚠️ 확인 필요: 산업재해통계 업무처리규정에서 "질병"이 일반 재해자수에서 빠지는지는 문제 원문(업무상 사고 통계인지)에 따라 달라질 수 있음</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>재해자 통계는 업무상 사고를 세는 것이 기본이라 업무와 관련이 약한 출퇴근·폭력 재해는 뺀다. 사업장 안 교통사고는 업무 공간에서 일어난 사고라 포함된다.</div></div></details>
 </div>
-<div class="card q" data-q="B-12" data-ch="" data-title="12번">
+<div class="card q" id="qB-12" data-q="B-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음에 해당하는 HAZOP 가이드워드를 영문으로 쓰시오.</p>
 <ul class="opts"><li>① 설계 의도에 완전히 반하여 변수의 양이 없는 상태</li><li>② 설계 의도대로 완전히 이루어지지 않는 질적 감소</li><li>③ 설계 의도가 완전히 바뀐 상태</li><li>④ 변수가 양적으로 감소한 상태</li></ul>
@@ -465,7 +473,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 Less는 양의 감소, Part of는 질(조성)의 감소. 그 밖에 More(양 증가), As well as(질 증가), Reverse(역방향)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>HAZOP 가이드워드는 설계 의도에서 어떻게 벗어났는지 표현하는 단어다. 양이 없으면 No, 양이 줄면 Less, 성분 일부가 빠지면 Part of, 완전히 다른 것이 되면 Other than이다.</div></div></details>
 </div>
-<div class="card q" data-q="B-13" data-ch="" data-title="13번">
+<div class="card q" id="qB-13" data-q="B-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사업장 위험성평가 지침으로 옳은 것을 모두 고르시오.<br>A. 사업주는 스스로 위험성평가를 실시해야 한다<br>B. 도급 사업주는 수급 사업주의 위험성평가 결과를 검토하여 개선해야 한다<br>C. 부상·질병 가능성이 확인되면 해당 유해·위험요인을 평가 대상에 포함해야 한다<br>D. 사업주는 위험성 결정 후 유해·위험요인을 파악해야 한다</p>
 <ul class="opts"></ul>
@@ -473,7 +481,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 순서는 유해·위험요인 파악 → 위험성 결정 → 감소대책 수립·실행. D는 순서가 거꾸로</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>위험성평가는 사업주가 직접 해야 하고, 도급인은 수급인의 결과까지 살펴야 한다. 순서는 위험요인을 먼저 찾고 그 다음 크기를 정하는 것이므로 D는 틀렸다.</div></div></details>
 </div>
-<div class="card q" data-q="B-14" data-ch="" data-title="14번">
+<div class="card q" id="qB-14" data-q="B-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">저장탱크, 유틸리티, 고체 건조·분쇄설비 등 간단한 단위공정에 적용할 수 있는 위험성평가 기법 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -482,7 +490,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>⚠️ 확인 필요: 공정안전보고서 고시에는 간단한 단위공정에 체크리스트, 사고예상질문분석(What-if) 등도 함께 열거되어 있어 이들도 정답으로 인정될 수 있음</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>간단한 단위공정은 HAZOP처럼 많은 인원과 시간이 드는 기법 대신 작업자 실수를 따지거나 물질·공정 점수로 위험 순위를 매기는 간단한 기법을 쓴다.</div></div></details>
 </div>
-<div class="card q" data-q="B-15" data-ch="" data-title="15번">
+<div class="card q" id="qB-15" data-q="B-15" data-ch="" data-title="15번">
 <div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">시스템 위험성 분류(MIL-STD-882)의 위험강도 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -490,7 +498,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 숫자가 커질수록 가볍다</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>MIL-STD-882는 사고가 났을 때 결과가 얼마나 심각한지로 범주를 나눈다. 시스템 전체 손실은 파국적, 큰 손상은 위기적, 작은 손상은 한계적, 영향이 거의 없으면 무시가능이다.</div></div></details>
 </div>
-<div class="card q" data-q="B-16" data-ch="" data-title="16번">
+<div class="card q" id="qB-16" data-q="B-16" data-ch="" data-title="16번">
 <div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전성 평가 6단계를 순서대로 쓰시오. (보기: 정성적 평가, 재평가, FTA 재평가, 대책검토, 자료정비, 정량적 평가)</p>
 <ul class="opts"></ul>
@@ -498,7 +506,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 정성이 정량보다 먼저, 재평가가 두 번</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전성 평가는 자료를 갖춘 뒤 정성 → 정량 순으로 평가하고, 대책을 세운 다음 다른 재해 사례와 FTA로 다시 점검한다. 재평가가 두 번 들어간다는 점이 특징이다.</div></div></details>
 </div>
-<div class="card q" data-q="B-17" data-ch="" data-title="17번">
+<div class="card q" id="qB-17" data-q="B-17" data-ch="" data-title="17번">
 <div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">기계설비의 방호 원리 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -506,7 +514,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 없애고 → 막고 → 덮고 → 적응한다 순</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>기계 위험을 다루는 방법은 위험 자체를 없애는 것이 가장 좋고, 안 되면 위험을 줄이거나 막고, 덮어씌우고, 마지막으로 사람이 위험에 적응하도록 한다.</div></div></details>
 </div>
-<div class="card q" data-q="B-18" data-ch="" data-title="18번">
+<div class="card q" id="qB-18" data-q="B-18" data-ch="" data-title="18번">
 <div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 위험점의 명칭을 쓰시오.</p>
 <ul class="opts"><li>① 왕복운동 부분과 고정부분 사이 ② 회전하는 동작부분과 고정부분 사이 ③ 회전부분의 접선 방향으로 물려 들어가는 곳</li></ul>
@@ -515,7 +523,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>위험점 이름은 무엇과 무엇 사이에 끼이는지로 정해진다. 왕복운동과 고정부는 협착점, 회전체와 고정부는 끼임점, 회전체가 접선 방향으로 물고 들어가면 접선물림점이다.</div></div></details>
 </div></section>
 <section class="section" id="g3"><div class="section-head"><div class="duality"><span class="n">C</span>안전보건관리체제·법령 (19문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="C-1" data-ch="" data-title="1번">
+<div class="card q" id="qC-1" data-q="C-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건법상 중대재해의 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 부상자 또는 직업성 질병자가 동시에 ( )명 이상 발생한 재해</li><li>② 사망자가 ( )명 이상 발생한 재해</li><li>③ 3개월 이상 요양이 필요한 부상자가 동시에 ( )명 이상 발생한 재해</li></ul>
@@ -523,7 +531,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 사망 1명, 3개월 요양 2명, 부상·질병 10명. 문제마다 순서를 섞으니 외운 순서대로 쓰지 말 것</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>중대재해는 사망처럼 결과가 매우 무겁거나, 장기요양 부상자 또는 많은 부상자가 한꺼번에 생긴 재해다. 이런 재해는 보고·조사·작업중지 같은 별도 조치를 받는다.</div></div></details>
 </div>
-<div class="card q" data-q="C-2" data-ch="" data-title="2번">
+<div class="card q" id="qC-2" data-q="C-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">중대재해 발생 시 지방고용노동관서에 전화·팩스 등으로 보고할 사항을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -531,7 +539,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 "지체 없이" 보고. 발생개요·피해상황·조치·전망 4단어로 기억</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>중대재해가 나면 행정기관이 빨리 현장 상황을 알아야 추가 피해를 막고 조사에 나설 수 있다. 그래서 무슨 일이 있었고, 어떻게 조치했으며, 앞으로 어떻게 될지를 지체 없이 알린다.</div></div></details>
 </div>
-<div class="card q" data-q="C-3" data-ch="" data-title="3번">
+<div class="card q" id="qC-3" data-q="C-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사업장의 안전·보건 중요사항을 심의·의결하기 위해 근로자위원과 사용자위원을 같은 수로 구성하는 기구는?</p>
 <ul class="opts"></ul>
@@ -539,7 +547,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 심의·의결, 노사 동수 → 산업안전보건위원회 (분기마다). 노사협의체는 건설업 전용 (2개월마다)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>산업안전보건위원회는 안전보건에 관한 중요한 일을 노사가 함께 정하는 기구다. 한쪽 의견만 반영되지 않도록 근로자위원과 사용자위원을 같은 수로 둔다.</div></div></details>
 </div>
-<div class="card q" data-q="C-4" data-ch="" data-title="4번">
+<div class="card q" id="qC-4" data-q="C-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body"></p>
 <ul class="opts"><li>① 노사 동수로 구성되는 회의체 이름 ② 정기회의 주기 ③ 근로자위원·사용자위원 자격을 쓰시오.</li></ul>
@@ -547,7 +555,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 근로자위원 3종, 사용자위원 5종</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>산업안전보건위원회는 노사가 같은 수로 모여 분기마다 정기회의를 연다. 근로자 쪽은 근로자대표를 중심으로, 사용자 쪽은 대표자와 안전·보건 실무 책임자들로 구성한다.</div></div></details>
 </div>
-<div class="card q" data-q="C-5" data-ch="" data-title="5번">
+<div class="card q" id="qC-5" data-q="C-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건위원회 근로자위원의 자격 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -555,7 +563,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 셋 다 "근로자대표"가 중심</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>근로자위원은 근로자의 목소리를 대변해야 하므로 근로자대표 본인과 근로자대표가 지명한 사람으로 채운다.</div></div></details>
 </div>
-<div class="card q" data-q="C-6" data-ch="" data-title="6번">
+<div class="card q" id="qC-6" data-q="C-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건위원회 회의록 작성 사항 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -563,7 +571,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 언제·어디서 / 누가 / 무엇을 정했나</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>회의록은 무엇이 언제 어떻게 결정됐는지 남겨 이후 이행을 확인하기 위한 기록이다. 그래서 일시·장소, 참석자, 심의·의결 내용을 적는다.</div></div></details>
 </div>
-<div class="card q" data-q="C-7" data-ch="" data-title="7번">
+<div class="card q" id="qC-7" data-q="C-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">노사협의체 설치 대상과 정기회의 개최 주기를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -571,7 +579,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 건설업 전용. 산업안전보건위원회(분기)와 구분</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>건설현장은 도급인과 여러 수급인의 근로자가 함께 일하므로, 노사협의체를 두어 현장 전체의 안전 문제를 함께 다룬다. 공사 진행이 빨라 2개월마다 정기회의를 연다.</div></div></details>
 </div>
-<div class="card q" data-q="C-8" data-ch="" data-title="8번">
+<div class="card q" id="qC-8" data-q="C-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전보건관리책임자 선임 기준을 쓰시오. ① 1차 금속 제조업 ② 사업지원 서비스업 ③ 건설업</p>
 <ul class="opts"></ul>
@@ -579,7 +587,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 위험한 제조업일수록 적은 인원에서 의무 발생</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전보건관리책임자는 사업장의 안전보건을 총괄하는 사람이다. 위험이 큰 업종일수록 적은 인원에서도 선임 의무가 생긴다.</div></div></details>
 </div>
-<div class="card q" data-q="C-9" data-ch="" data-title="9번">
+<div class="card q" id="qC-9" data-q="C-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전관리자 최소 인원을 쓰시오.</p>
 <ul class="opts"><li>① 식료품 제조업 600명 ② 1차 금속 제조업 200명 ③ 플라스틱 제조업 300명</li><li>④ 총공사금액 1,000억 원 건설업 (전체 공사기간 15~85% 구간)</li></ul>
@@ -588,7 +596,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 공사금액은 800억 기준·2명이라는 풀이에 맞춰 1,000억 원으로 정함</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전관리자 수는 업종의 위험도와 사업장 규모로 정한다. 건설업은 공사금액으로 정하며, 공사 초반과 막바지는 작업량이 적어 1명으로 줄일 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="C-10" data-ch="" data-title="10번">
+<div class="card q" id="qC-10" data-q="C-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전관리자를 정수 이상으로 증원하거나 교체 임명할 수 있는 사유 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -596,7 +604,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 2배, 2건, 3개월, 3명</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>재해가 평균보다 많이 나거나 중대재해가 반복되거나 관리자가 오래 자리를 비우면 현재 관리자로는 부족하다고 보아 증원·교체를 명할 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="C-11" data-ch="" data-title="11번">
+<div class="card q" id="qC-11" data-q="C-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전보건관리담당자의 업무 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -605,7 +613,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>그 밖에: 산업재해 발생 원인 조사·기록 및 재발방지 대책 수립, 산업안전·보건 설비 및 보호구 적격품 선정</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전보건관리담당자는 작은 사업장에서 안전관리자와 보건관리자 역할을 함께 맡는 사람이다. 직접 시행하는 것이 아니라 사업주를 "보좌하고 지도·조언"하는 것이 업무 성격이다.</div></div></details>
 </div>
-<div class="card q" data-q="C-12" data-ch="" data-title="12번">
+<div class="card q" id="qC-12" data-q="C-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전보건총괄책임자의 직무 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -613,7 +621,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 산업안전보건관리비의 관계수급인 간 사용에 관한 협의·조정 및 집행 감독</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전보건총괄책임자는 도급인 사업장에서 수급인 근로자까지 포함해 안전보건을 총괄한다. 그래서 위험할 때 작업을 멈추고, 도급 시 예방조치를 하며, 인증 기계 사용 여부까지 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="C-13" data-ch="" data-title="13번">
+<div class="card q" id="qC-13" data-q="C-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전보건관리규정에 포함되어야 할 사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -621,7 +629,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 조직 → 교육 → 현장관리 → 사고조사</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전보건관리규정은 사업장의 안전보건 운영 규칙이라 조직, 교육, 작업장 관리, 사고 조사라는 네 축을 반드시 담는다.</div></div></details>
 </div>
-<div class="card q" data-q="C-14" data-ch="" data-title="14번">
+<div class="card q" id="qC-14" data-q="C-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body"></p>
 <ul class="opts"><li>① 안전보건관리규정에 포함할 사항 4가지 ② 자동차 제조업의 작성 대상 상시근로자 수를 쓰시오.</li></ul>
@@ -629,7 +637,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 일반 업종 100명 이상, 소프트웨어 개발·공급업 등 사무 중심 업종은 300명 이상</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>규정 작성 대상은 업종 위험도와 근로자 수로 정한다. 일반 업종은 100명 이상이면 작성해야 하고, 위험이 낮은 사무 중심 업종은 300명 이상부터 대상이다.</div></div></details>
 </div>
-<div class="card q" data-q="C-15" data-ch="" data-title="15번">
+<div class="card q" id="qC-15" data-q="C-15" data-ch="" data-title="15번">
 <div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">소프트웨어 개발 및 공급업에서 ① 안전보건관리규정 작성 대상 상시근로자 수 ② 포함 사항 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -637,7 +645,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 14번과 짝: 자동차 제조업 100명, 소프트웨어업 300명</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>소프트웨어 개발업 같은 사무 중심 업종은 위험이 상대적으로 낮아 300명 이상부터 작성 의무가 생긴다. 포함 사항은 업종과 관계없이 같다.</div></div></details>
 </div>
-<div class="card q" data-q="C-16" data-ch="" data-title="16번">
+<div class="card q" id="qC-16" data-q="C-16" data-ch="" data-title="16번">
 <div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">매년 안전·보건 계획을 수립해 이사회에 보고·승인받아야 하는 회사의 조건을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -645,7 +653,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 계획 내용: 안전보건 경영방침, 안전보건 관리조직·인원·역할, 안전보건 예산 및 시설현황, 전년도 활동실적 및 다음 연도 활동계획</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>큰 회사는 대표이사가 안전보건을 경영의 일부로 직접 챙기도록 매년 계획을 세워 이사회 승인을 받게 했다. 상시근로자 500명 이상 회사와 시공능력 상위 1,000위 건설회사가 대상이다.</div></div></details>
 </div>
-<div class="card q" data-q="C-17" data-ch="" data-title="17번">
+<div class="card q" id="qC-17" data-q="C-17" data-ch="" data-title="17번">
 <div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">고용노동부장관이 안전보건진단을 받아 안전보건개선계획을 수립·시행하도록 명할 수 있는 사업장 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -653,7 +661,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 작업환경 불량, 화재·폭발·누출로 사업장 주변까지 피해가 확산된 사업장</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>재해율이 평균보다 크게 높거나, 의무를 지키지 않아 중대재해가 났거나, 직업병이 계속 생기면 스스로 개선하기 어렵다고 보아 진단을 받고 개선계획을 세우게 한다.</div></div></details>
 </div>
-<div class="card q" data-q="C-18" data-ch="" data-title="18번">
+<div class="card q" id="qC-18" data-q="C-18" data-ch="" data-title="18번">
 <div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">중대재해 발생 사업장에 대한 조치의 빈칸을 쓰시오.<br>고용노동부장관은 안전보건진단을 받아 ( ① )을 수립하여 시행할 것을 명할 수 있다. 사업주는 명령을 받은 날부터 ( ② )일 이내에 계획서를 제출해야 한다.</p>
 <ul class="opts"></ul>
@@ -661,7 +669,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 개선계획서 제출은 60일 이내</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전보건개선계획은 문제 사업장이 구체적으로 무엇을 고칠지 적은 계획서다. 명령을 받은 날부터 60일 이내에 제출해야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="C-19" data-ch="" data-title="19번">
+<div class="card q" id="qC-19" data-q="C-19" data-ch="" data-title="19번">
 <div class="q-head"><span class="q-num">19번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">작업중지 해제에 관한 빈칸을 쓰시오.<br>· 해제 신청 시 중대재해가 발생한 해당 작업 ( ① )의 의견을 들어야 한다<br>· 지방고용노동관서의 장은 ( ② )로 하여금 안전·보건조치를 확인하게 한다<br>· 해제 요청일 다음 날부터 ( ③ )일 이내에 ( ④ )를 개최하여 심의한다</p>
 <ul class="opts"></ul>
@@ -670,7 +678,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>작업중지를 풀기 전에 실제로 위험이 없어졌는지 확인하는 절차다. 그 작업을 하는 근로자 의견을 듣고, 근로감독관이 현장을 확인한 뒤, 심의위원회가 4일 이내에 해제 여부를 정한다.</div></div></details>
 </div></section>
 <section class="section" id="g4"><div class="section-head"><div class="duality"><span class="n">D</span>안전보건교육 (10문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="D-1" data-ch="" data-title="1번">
+<div class="card q" id="qD-1" data-q="D-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사업주가 근로자에게 실시해야 하는 안전보건교육의 종류 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -678,7 +686,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 건설 일용근로자는 건설업 기초안전보건교육(4시간)도 받음</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>교육 종류는 언제 받느냐로 나뉜다. 주기적으로는 정기교육, 처음 들어올 때는 채용 시 교육, 일이 바뀌면 작업내용 변경 시 교육, 특히 위험한 작업을 할 때는 특별교육이다.</div></div></details>
 </div>
-<div class="card q" data-q="D-2" data-ch="" data-title="2번">
+<div class="card q" id="qD-2" data-q="D-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">근로자 정기교육 내용 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -687,7 +695,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>⚠️ 확인 필요: "산업재해 예방", "건강장해 예방"으로 쓴 자료도 있으나 현행 시행규칙 별표5는 "사고 예방", "직업병 예방"으로 표기. 교재 표현으로 확인</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>정기교육은 모든 근로자가 주기적으로 받는 기본 교육이라 사고 예방, 직업병 예방, 법령과 산재보험 제도, 직무스트레스처럼 공통 주제를 다룬다.</div></div></details>
 </div>
-<div class="card q" data-q="D-3" data-ch="" data-title="3번">
+<div class="card q" id="qD-3" data-q="D-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">채용 시 교육 및 작업내용 변경 시 교육 내용 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -696,7 +704,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>⚠️ 확인 필요: "채용 시 교육엔 법령 항목이 없다"고 정리한 자료도 있으나 현행 별표5는 채용 시 교육에도 법령·산재보험 항목이 있음</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>채용 시와 작업 변경 시에는 새 작업에 바로 투입되므로 기계 위험성, 작업 순서, 작업 전 점검, 긴급조치처럼 실제 작업에 필요한 내용이 들어간다.</div></div></details>
 </div>
-<div class="card q" data-q="D-4" data-ch="" data-title="4번">
+<div class="card q" id="qD-4" data-q="D-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설업 기초안전보건교육 내용 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -704,7 +712,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 안전보건관리체제 현황 및 산업안전보건 관련 근로자 권리·의무. 교육시간 4시간</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>건설 일용근로자는 현장을 자주 옮기므로 어느 현장에서든 통하는 기본 지식을 미리 배운다. 건설공사의 종류와 절차, 재해 유형별 위험과 조치가 핵심이다.</div></div></details>
 </div>
-<div class="card q" data-q="D-5" data-ch="" data-title="5번">
+<div class="card q" id="qD-5" data-q="D-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">특수형태근로종사자의 최초 노무제공 시 교육 내용 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -712,7 +720,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 교통안전 및 운전안전, 보호구 착용, 작업 개시 전 점검, 사고 발생 시 긴급조치 등</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>특수형태근로종사자(택배기사, 대리운전기사 등)도 일하다 다칠 위험이 있어 처음 노무를 제공할 때 교육을 받는다. 내용은 근로자 교육과 비슷하고 업무 특성에 따라 교통안전 등이 추가된다.</div></div></details>
 </div>
-<div class="card q" data-q="D-6" data-ch="" data-title="6번">
+<div class="card q" id="qD-6" data-q="D-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">교육 대상별 교육시간을 쓰시오.</p>
 <ul class="opts"><li>① 안전보건관리책임자 신규 ② 안전보건관리책임자 보수 ③ 안전관리자 신규 ④ 건설재해예방전문지도기관 종사자 보수</li></ul>
@@ -720,7 +728,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 책임자는 신규·보수 모두 6시간, 실무자(안전관리자 등)는 신규 34·보수 24</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>책임자는 관리 역할이라 짧은 시간(6시간)을, 안전관리자처럼 실무를 하는 사람은 전문 지식이 필요해 긴 시간(신규 34시간, 보수 24시간)을 받는다.</div></div></details>
 </div>
-<div class="card q" data-q="D-7" data-ch="" data-title="7번">
+<div class="card q" id="qD-7" data-q="D-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">물질안전보건자료(MSDS) 내용을 근로자에게 교육해야 하는 경우 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -728,7 +736,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 사람·물질·정보 중 하나가 바뀌면 교육</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>MSDS 교육은 근로자가 다루는 화학물질의 위험을 알게 하려는 것이다. 그래서 사람이 새로 배치되거나, 새 물질이 들어오거나, 위험 정보가 바뀔 때 교육한다.</div></div></details>
 </div>
-<div class="card q" data-q="D-8" data-ch="" data-title="8번">
+<div class="card q" id="qD-8" data-q="D-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설용 리프트·곤돌라 작업 시 실시하는 특별교육 내용 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -736,7 +744,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 9번과 같은 교육. 점검, 권상·권하 작업방법도 정답</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>리프트·곤돌라는 사람이나 짐을 들어 올리는 장비라 방호장치, 신호와 공동작업, 장비 작동 원리를 알아야 추락·낙하 사고를 막을 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="D-9" data-ch="" data-title="9번">
+<div class="card q" id="qD-9" data-q="D-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">리프트·곤돌라 사용 작업의 특별교육 내용 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -744,7 +752,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 방호장치의 기능 및 사용</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>리프트·곤돌라 작업 특별교육은 장비 원리, 줄과 체인 점검, 신호 방법, 짐 올리고 내리는 방법이 핵심이다. 실제 사고가 이 부분에서 많이 나기 때문이다.</div></div></details>
 </div>
-<div class="card q" data-q="D-10" data-ch="" data-title="10번">
+<div class="card q" id="qD-10" data-q="D-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">타워크레인 설치·해체 작업 특별교육 내용 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -753,7 +761,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>타워크레인은 설치·해체 중에 무너지거나 사람이 떨어지는 사고가 많다. 그래서 붕괴·추락 방지, 작업 순서, 부재 특성, 신호 방법을 특별교육으로 다룬다.</div></div></details>
 </div></section>
 <section class="section" id="g5"><div class="section-head"><div class="duality"><span class="n">E</span>유해위험방지계획서·공정안전보고서·건설 관리비 (18문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="E-1" data-ch="" data-title="1번">
+<div class="card q" id="qE-1" data-q="E-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">유해위험방지계획서 제출 대상 건설공사의 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 지상높이 ( )m 이상 건축물·인공구조물</li><li>② 연면적 ( )㎡ 이상 문화·집회, 판매, 운수, 종교, 종합병원, 관광숙박, 지하도상가, 냉동·냉장 창고시설</li><li>③ 깊이 ( )m 이상 굴착공사</li><li>④ 최대 지간길이 ( )m 이상 교량 건설 등 공사</li></ul>
@@ -761,7 +769,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 지간길이는 기둥과 기둥 사이 거리이지 다리 전체 길이가 아님</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>높은 건축물, 사람이 많이 모이는 큰 시설, 깊은 굴착, 긴 교량은 사고가 나면 피해가 크다. 그래서 공사 전에 위험과 대책을 담은 계획서를 제출하게 한다.</div></div></details>
 </div>
-<div class="card q" data-q="E-2" data-ch="" data-title="2번">
+<div class="card q" id="qE-2" data-q="E-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">유해위험방지계획서 대상 건설공사: 지상높이 ( )m 이상, 연면적 ( )㎡ 이상 건축물</p>
 <ul class="opts"></ul>
@@ -769,7 +777,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 일반 건축물은 연면적 3만㎡, 사람이 모이는 시설은 5천㎡</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>일반 건축물은 연면적 3만㎡ 이상, 문화·집회·판매처럼 사람이 많이 모이는 시설은 5천㎡ 이상이면 대상이다. 사람이 모이는 시설은 사고 피해가 커서 기준이 낮다.</div></div></details>
 </div>
-<div class="card q" data-q="E-3" data-ch="" data-title="3번">
+<div class="card q" id="qE-3" data-q="E-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">유해위험방지계획서 제출 대상 건설공사 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -777,7 +785,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 터널 건설 등, 다목적댐·발전용댐·저수용량 2천만톤 이상 용수댐·지방상수도 전용댐, 연면적 5천㎡ 이상 냉동·냉장창고 설비·단열공사</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>계획서 대상은 공사의 규모(높이·연면적·깊이·지간)와 종류(터널·댐)로 정한다. 숫자 기준과 "규모 무관" 대상을 나눠 기억한다.</div></div></details>
 </div>
-<div class="card q" data-q="E-4" data-ch="" data-title="4번">
+<div class="card q" id="qE-4" data-q="E-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">지상높이 31m 이상 건축물 공사의 유해위험방지계획서에 첨부하는 작업공사 종류 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -785,7 +793,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 세우기 전 → 세우기 → 꾸미기 → 헐기</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>31m 이상 건축물 공사는 공종별로 위험이 달라 각각 계획을 첨부한다. 가설 → 구조물 → 마감 → 해체처럼 공사 흐름대로 떠올리면 빠뜨리지 않는다.</div></div></details>
 </div>
-<div class="card q" data-q="E-5" data-ch="" data-title="5번">
+<div class="card q" id="qE-5" data-q="E-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설공사 유해위험방지계획서의 ① 제출 기한 ② 첨부서류 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -793,7 +801,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 건설은 착공 전날, 제조업(설비 설치·이전)은 작업 시작 15일 전</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>건설공사 계획서는 공사를 시작하기 전에 심사를 받아야 하므로 착공 전날까지 낸다. 첨부서류는 공사 전체의 안전보건관리계획과 공종별 방지계획이다.</div></div></details>
 </div>
-<div class="card q" data-q="E-6" data-ch="" data-title="6번">
+<div class="card q" id="qE-6" data-q="E-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">유해위험방지계획서 제출 대상 사업(제조업) 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -801,7 +809,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 전기 계약용량 300kW 이상인 13개 업종. 그 밖에 금속가공제품, 비금속광물제품, 기타 기계·장비, 자동차·트레일러, 식료품, 고무·플라스틱, 목재, 화학물질·화학제품, 기타 제품 제조업</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>유해위험방지계획서 대상 제조업은 전기 계약용량이 300kW 이상인 13개 업종이다. 설비가 크고 위험한 업종을 법령에 정해 두었다.</div></div></details>
 </div>
-<div class="card q" data-q="E-7" data-ch="" data-title="7번">
+<div class="card q" id="qE-7" data-q="E-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">설치·이전·주요 구조부분 변경 시 유해위험방지계획서를 제출하는 기계·기구·설비 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -809,7 +817,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 허가대상·관리대상 유해물질 및 분진작업 관련 밀폐·환기·배기를 위한 설비</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>용해로, 화학설비, 건조설비, 가스집합 용접장치처럼 화재·폭발·중독 위험이 큰 설비는 설치하거나 옮기거나 구조를 바꿀 때 미리 계획서를 낸다.</div></div></details>
 </div>
-<div class="card q" data-q="E-8" data-ch="" data-title="8번">
+<div class="card q" id="qE-8" data-q="E-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">제조업 설비 전부를 설치·이전·변경할 때 유해위험방지계획서에 첨부할 서류 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -817,7 +825,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 원재료 및 제품의 취급·제조 등 작업방법의 개요</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>설비를 새로 들이거나 옮길 때는 건물 구조와 설비 배치가 위험성 판단의 핵심이다. 그래서 평면도, 설비 개요, 배치도면을 첨부한다.</div></div></details>
 </div>
-<div class="card q" data-q="E-9" data-ch="" data-title="9번">
+<div class="card q" id="qE-9" data-q="E-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설공사 발주자의 산업재해 예방 조치 빈칸을 쓰시오.<br>총공사금액 ( ① )원 이상 건설공사 발주자는 계획 단계에서 ( ② ), 설계 단계에서 ( ③ ), 시공 단계에서 ( ④ )을 작성하게 하고 확인해야 한다.</p>
 <ul class="opts"></ul>
@@ -825,7 +833,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 기본(발주자) → 설계(설계자) → 공사(수급인)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>큰 건설공사는 발주 단계부터 안전을 반영해야 사고를 줄일 수 있다. 계획 단계에서 발주자가, 설계 단계에서 설계자가, 시공 단계에서 수급인이 각각 안전보건대장을 작성한다.</div></div></details>
 </div>
-<div class="card q" data-q="E-10" data-ch="" data-title="10번">
+<div class="card q" id="qE-10" data-q="E-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설업 산업안전보건관리비 계상: 발주자가 재료를 제공하거나 완제품을 납품하는 경우, 재료비·완제품가액을 포함하여 산출한 관리비와, 이를 제외하고 산출한 관리비의 ( )배 값을 비교하여 작은 값 이상으로 계상한다.</p>
 <ul class="opts"></ul>
@@ -833,7 +841,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 포함 계산값 vs 제외 계산값 × 1.2 → 작은 값 이상</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>발주자가 재료를 직접 주면 공사비 계산에서 그 재료비가 빠져 관리비가 너무 적어질 수 있다. 그래서 포함해 계산한 값과 제외 계산값 × 1.2를 비교해 작은 값 이상으로 잡는다.</div></div></details>
 </div>
-<div class="card q" data-q="E-11" data-ch="" data-title="11번">
+<div class="card q" id="qE-11" data-q="E-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건관리비를 계산하시오. (건축공사, 요율 2.28%, 기초액 4,325,000원, 직접재료비 25억, 관급(발주자 제공) 재료비 3억, 직접노무비 10억)</p>
 <ul class="opts"></ul>
@@ -842,7 +850,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 3억은 발주자 제공 재료비. 제외 쪽 계산에는 1.1이 아니라 1.2를 곱함</li><li>⚠️ 확인 필요: 관리비 요율·기초액은 고시 개정으로 바뀔 수 있음. 시험 문제는 제시된 요율을 그대로 사용</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>먼저 발주자 재료비를 포함한 대상액으로 관리비를 계산하고, 다음으로 그 재료비를 뺀 대상액으로 계산해 1.2배 한다. 두 값 중 작은 값이 최소 계상액이다.</div></div></details>
 </div>
-<div class="card q" data-q="E-12" data-ch="" data-title="12번">
+<div class="card q" id="qE-12" data-q="E-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">공정안전보고서에 포함될 사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -850,7 +858,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 자료 → 평가 → 운전 → 비상</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>공정안전보고서는 위험물질을 다루는 공정에서 큰 사고를 막기 위한 문서다. 공정 정보를 모으고, 위험성을 평가하고, 안전하게 운전하는 계획과 사고 시 비상조치 계획을 함께 담는다.</div></div></details>
 </div>
-<div class="card q" data-q="E-13" data-ch="" data-title="13번">
+<div class="card q" id="qE-13" data-q="E-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body"></p>
 <ul class="opts"><li>① 중대산업사고의 정의 ② 이를 예방하기 위해 작성·제출하여 심사받는 보고서 이름을 쓰시오.</li></ul>
@@ -858,14 +866,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 중대재해는 "사람이 다친 결과", 중대산업사고는 "누출·화재·폭발이라는 사고 성격"으로 정의</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>중대산업사고는 사람이 몇 명 다쳤느냐가 아니라 누출·화재·폭발처럼 사고의 성격과 피해 범위로 정의한다. 이런 사고를 미리 막기 위해 공정안전보고서를 내고 심사를 받는다.</div></div></details>
 </div>
-<div class="card q" data-q="E-14" data-ch="" data-title="14번">
+<div class="card q" id="qE-14" data-q="E-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">빈칸을 쓰시오. 사업주는 대통령령으로 정하는 유해·위험설비가 있으면 ( ① )를 작성하여 제출·심사받아야 하며, 작성 시 ( ② )의 심의를 거쳐야 한다. ( ② )가 없으면 근로자대표의 의견을 들어야 한다.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 공정안전보고서 ② 산업안전보건위원회</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>공정안전보고서는 현장 근로자에게 직접 영향을 주므로 노사가 함께 심의하는 산업안전보건위원회를 거친다. 위원회가 없으면 근로자대표 의견을 듣는다.</div></div></details>
 </div>
-<div class="card q" data-q="E-15" data-ch="" data-title="15번">
+<div class="card q" id="qE-15" data-q="E-15" data-ch="" data-title="15번">
 <div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">공정안전보고서 제출 대상 규정량을 쓰시오.</p>
 <ul class="opts"><li>① 인화성 가스 제조·취급 ② 인화성 가스 저장 ③ 암모니아 제조·취급·저장 ④ 염산(중량 20% 이상) ⑤ 황산(중량 20% 이상)</li></ul>
@@ -873,7 +881,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 인화성 가스는 제조·취급 5천, 저장 20만. 암모니아 1만, 염산·황산 2만</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>규정량은 물질의 위험성에 따라 다르게 정한다. 같은 인화성 가스라도 공정에서 제조·취급하는 경우가 저장하는 경우보다 사고 가능성이 커서 기준량이 훨씬 작다.</div></div></details>
 </div>
-<div class="card q" data-q="E-16" data-ch="" data-title="16번">
+<div class="card q" id="qE-16" data-q="E-16" data-ch="" data-title="16번">
 <div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">공정안전보고서 제출 대상에서 제외되는 유해·위험설비 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -881,7 +889,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 사업장 내 직접 사용 난방용 연료 저장·취급설비, 도매·소매시설, 차량 등 운송설비, LPG 충전·저장시설, 가스공급시설</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>원자력·군사시설처럼 다른 법으로 따로 관리하거나 성격이 다른 설비는 공정안전보고서 대상에서 뺀다. 난방용 연료 설비나 유통시설처럼 위험 규모가 작은 것도 제외된다.</div></div></details>
 </div>
-<div class="card q" data-q="E-17" data-ch="" data-title="17번">
+<div class="card q" id="qE-17" data-q="E-17" data-ch="" data-title="17번">
 <div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">공정안전보고서 이행상태 평가의 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 고용노동부장관은 공정안전보고서 확인 후 ( A )년이 지난 날부터 ( B )년 이내에 이행상태 평가를 해야 한다</li><li>② 사업주가 요청하면 ( C ) 기간 내에 이행평가를 할 수 있다</li></ul>
@@ -889,7 +897,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 이후 정기 평가는 4년마다</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>보고서를 확인한 뒤 실제로 계획대로 운영하는지 보려고 이행상태를 평가한다. 처음 평가는 확인 후 1년이 지나고 2년 안에 하고, 이후에는 4년마다 정기적으로 한다.</div></div></details>
 </div>
-<div class="card q" data-q="E-18" data-ch="" data-title="18번">
+<div class="card q" id="qE-18" data-q="E-18" data-ch="" data-title="18번">
 <div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">공정안전보고서 이행상태 등급별 점검 주기를 쓰시오.<br>A. P등급: 등급 부여 후 ( )년마다 1회 점검<br>B. 2년마다 1회 점검을 받는 등급<br>C. M+등급: ( )년마다 1회 점검<br>D. ( )등급: 1년마다 1회 점검 및 기술지도</p>
 <ul class="opts"></ul>
@@ -899,7 +907,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>이행상태 평가 결과가 좋을수록 점검 간격을 길게, 나쁠수록 짧게 잡아 관리 강도를 차등화한다. 가장 낮은 M− 등급은 매년 점검과 함께 기술지도를 받는다.</div></div></details>
 </div></section>
 <section class="section" id="g6"><div class="section-head"><div class="duality"><span class="n">F</span>안전인증·자율안전확인·안전검사 (14문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="F-1" data-ch="" data-title="1번">
+<div class="card q" id="qF-1" data-q="F-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">의무 안전인증 대상 기계·기구 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -908,7 +916,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li class="cf"><span class="cf-tag">🔀 바꿔치기 주의</span>자동차정비용 리프트는 자율안전확인 대상</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전인증은 위험이 큰 기계를 제조·수입 단계에서 미리 심사하는 제도다. 사람이 다치면 크게 다치는 크레인·리프트·곤돌라 같은 기계가 대상이다.</div></div></details>
 </div>
-<div class="card q" data-q="F-2" data-ch="" data-title="2번">
+<div class="card q" id="qF-2" data-q="F-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전인증 대상 설비를 고르시오. (ㄱ 프레스 ㄴ 크레인 ㄷ 연삭기 ㄹ 압력용기 ㅁ 산업용 로봇 ㅂ 컨테이너)</p>
 <ul class="opts"></ul>
@@ -916,7 +924,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 연삭기·산업용 로봇은 자율안전확인 대상, 컨테이너는 대상 아님</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>프레스·크레인·압력용기는 사고가 나면 피해가 커 안전인증 대상이다. 연삭기·산업용 로봇은 상대적으로 위험이 덜해 자율안전확인 대상이고, 컨테이너는 둘 다 아니다.</div></div></details>
 </div>
-<div class="card q" data-q="F-3" data-ch="" data-title="3번">
+<div class="card q" id="qF-3" data-q="F-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">자율안전확인 대상 기계를 모두 고르시오. (프레스, 압력용기, 산업용 로봇, 인쇄기, 선반, 롤러기)</p>
 <ul class="opts"></ul>
@@ -924,7 +932,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 프레스·압력용기·롤러기는 안전인증 대상. 선반은 자율안전확인 "공작기계"에 포함</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>자율안전확인은 제조자가 기준에 맞는지 스스로 확인해 신고하는 제도다. 산업용 로봇, 인쇄기, 선반 같은 공작기계가 여기에 속한다.</div></div></details>
 </div>
-<div class="card q" data-q="F-4" data-ch="" data-title="4번">
+<div class="card q" id="qF-4" data-q="F-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">자율안전확인 대상 기계·기구 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -932,7 +940,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 10종: 연삭기·연마기(휴대형 제외), 산업용 로봇, 혼합기, 파쇄기·분쇄기, 식품가공용 기계, 컨베이어, 자동차정비용 리프트, 공작기계(선반·드릴기·평삭·형삭기·밀링), 고정형 목재가공용 기계, 인쇄기</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>자율안전확인 대상은 위험은 있지만 안전인증만큼 엄격한 심사까지는 필요하지 않은 기계들이다. 10종 목록을 묶음으로 외워 두면 고르기 문제에서 빠르다.</div></div></details>
 </div>
-<div class="card q" data-q="F-5" data-ch="" data-title="5번">
+<div class="card q" id="qF-5" data-q="F-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 중 의무 안전인증 대상을 고르시오.<br>안전대, 연삭기 덮개, 파쇄기, 산업용 로봇 방호장치(충돌·협착 위험 방지용), 압력용기, 양중기용 과부하방지장치, 교류아크용접기용 자동전격방지기, 이동식 사다리, 동력식 수동대패용 칼날 접촉 방지장치, 용접용 보안면</p>
 <ul class="opts"></ul>
@@ -940,7 +948,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 연삭기 덮개·자동전격방지기·대패 칼날접촉방지장치는 자율안전확인, 파쇄기는 자율안전확인 "기계", 이동식 사다리는 대상 아님</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>위험이 큰 보호구·방호장치·기계는 안전인증, 그보다 덜한 것은 자율안전확인이다. 같은 "방호장치"라도 산업용 로봇 방호장치는 안전인증, 연삭기 덮개는 자율안전확인처럼 품목별로 다르다.</div></div></details>
 </div>
-<div class="card q" data-q="F-6" data-ch="" data-title="6번">
+<div class="card q" id="qF-6" data-q="F-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전인증 대상 보호구 8가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -949,14 +957,14 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>⚠️ "추락 및 감전 위험방지용 안전모"도 안전인증 대상 보호구가 맞음. 답안에 써도 됨</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전인증 보호구는 사고 때 몸을 지키는 최후 수단이라 성능이 검증되어야 한다. 머리부터 발끝까지 순서대로 떠올리면 8가지를 쉽게 채울 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="F-7" data-ch="" data-title="7번">
+<div class="card q" id="qF-7" data-q="F-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전인증 제품에 표시해야 할 사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>제조번호 및 제조연월, 안전인증 번호, 제조자명, 형식 또는 모델명</b> (규격 또는 등급)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>표시사항은 나중에 문제가 생겼을 때 어떤 제품인지 추적하고 인증 여부를 확인하기 위한 정보다. 제조번호·연월, 인증번호, 제조자, 모델명이 핵심이다.</div></div></details>
 </div>
-<div class="card q" data-q="F-8" data-ch="" data-title="8번">
+<div class="card q" id="qF-8" data-q="F-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전인증 심사의 종류 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -964,14 +972,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 심사기간: 예비 7일, 서면 15일, 기술능력·생산체계 30일, 제품 개별 15일·형식별 30일</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전인증 심사는 제품이 인증 대상인지 보는 예비심사, 설계 서류를 보는 서면심사, 생산 능력을 보는 기술능력·생산체계 심사, 실제 제품을 시험하는 제품심사로 이루어진다.</div></div></details>
 </div>
-<div class="card q" data-q="F-9" data-ch="" data-title="9번">
+<div class="card q" id="qF-9" data-q="F-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전인증의 전부 또는 일부가 면제되는 경우 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 연구·개발 목적으로 제조·수입하거나 수출 목적으로 제조하는 경우 ② 고용노동부장관이 정한 외국 안전인증기관의 인증을 받은 경우 ③ 다른 법령에 따라 안전성 검사·인증을 받은 경우</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>이미 다른 방식으로 안전성이 확인됐거나, 국내에서 쓰지 않는 제품이면 같은 심사를 반복할 필요가 없다. 그래서 연구·수출용, 인정된 외국 인증, 다른 법령 인증은 면제한다.</div></div></details>
 </div>
-<div class="card q" data-q="F-10" data-ch="" data-title="10번">
+<div class="card q" id="qF-10" data-q="F-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">유해·위험 방호조치를 하지 않으면 양도·대여·설치·사용·진열해서는 안 되는 기계·기구 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -979,7 +987,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 예초기·금속절단기 → 날접촉 예방장치, 원심기 → 회전체 접촉 예방장치, 공기압축기 → 압력방출장치, 지게차 → 헤드가드·백레스트 등, 포장기계 → 구동부 방호 연동장치</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>이 기계들은 날이나 회전체, 압력처럼 위험 요소가 뚜렷한데 방호장치 없이 거래되는 경우가 많았다. 그래서 방호조치 없이는 팔거나 빌려주거나 진열하지 못하게 했다.</div></div></details>
 </div>
-<div class="card q" data-q="F-11" data-ch="" data-title="11번">
+<div class="card q" id="qF-11" data-q="F-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업용 로봇은 자동 제어·프로그램이 가능한 ( ) 축 이상 매니퓰레이터를 갖추어야 하며, 최초 안전검사 후 ( )년마다 안전검사를 받는다.</p>
 <ul class="opts"></ul>
@@ -987,7 +995,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 3축 이상이어야 공간의 임의 위치에 도달. 안전검사는 설치 후 3년 이내 최초, 이후 2년마다</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>로봇이 공간 안 아무 위치에나 손을 뻗으려면 최소 3개 축이 필요하다. 그래서 3축 이상 매니퓰레이터를 산업용 로봇으로 정의하고, 정기적으로 안전검사를 받게 한다.</div></div></details>
 </div>
-<div class="card q" data-q="F-12" data-ch="" data-title="12번">
+<div class="card q" id="qF-12" data-q="F-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body"></p>
 <ul class="opts"><li>① 산업용 로봇은 설치 후 ( )년 이내 최초 안전검사, 이후 ( )년마다 ② 건설현장 곤돌라는 최초 설치일부터 ( )개월마다 안전검사</li></ul>
@@ -995,14 +1003,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 크레인·리프트·곤돌라: 3년 이내 최초, 이후 2년마다 (건설현장은 6개월마다). 프레스·전단기·압력용기·롤러기·로봇 등: 3년 이내, 이후 2년마다 (공정안전보고서 확인 압력용기는 4년마다)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전검사는 처음엔 설치 후 3년 이내에, 이후엔 2년마다 받는 것이 기본이다. 건설현장은 설치·해체가 잦고 환경이 거칠어 크레인·리프트·곤돌라를 6개월마다 검사한다.</div></div></details>
 </div>
-<div class="card q" data-q="F-13" data-ch="" data-title="13번">
+<div class="card q" id="qF-13" data-q="F-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">천장크레인 안전검사 주기: 설치 후 ( A )년 이내 최초, 이후 ( B )년마다, 건설현장은 ( C )개월마다</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>A 3 B 2 C 6</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>천장크레인도 크레인이므로 일반 크레인과 같은 검사 주기를 따른다. 설치 후 3년 이내 최초, 이후 2년마다, 건설현장이면 6개월마다다.</div></div></details>
 </div>
-<div class="card q" data-q="F-14" data-ch="" data-title="14번">
+<div class="card q" id="qF-14" data-q="F-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">자율검사프로그램의 인정을 취소하거나 개선을 명할 수 있는 경우 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1012,7 +1020,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>자율검사프로그램은 사업주가 스스로 검사하도록 인정해 주는 제도라, 인정받은 대로 검사하지 않거나 자격 없는 사람이 검사하면 인정을 취소하거나 개선을 명한다.</div></div></details>
 </div></section>
 <section class="section" id="g7"><div class="section-head"><div class="duality"><span class="n">G</span>안전보건표지·색채 (10문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="G-1" data-ch="" data-title="1번">
+<div class="card q" id="qG-1" data-q="G-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 중 지시표지 2가지를 고르시오. (출입금지, 금연, 인화성물질 경고, 산화성물질 경고, 안전복 착용, 보안경 착용, 들것, 고압전기 경고)</p>
 <ul class="opts"></ul>
@@ -1020,7 +1028,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 금지 = 흰 바탕 빨간 원+사선, 경고 = 노란 삼각형(화학물질은 빨간 마름모), 지시 = 파란 원, 안내 = 녹색 사각형</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>지시표지는 반드시 해야 할 행동(보호구 착용 등)을 알려 주는 파란 원 표지다. 하지 말라는 것은 금지, 조심하라는 것은 경고, 위치를 알려 주는 것은 안내다.</div></div></details>
 </div>
-<div class="card q" data-q="G-2" data-ch="" data-title="2번">
+<div class="card q" id="qG-2" data-q="G-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">그림의 안전보건표지 명칭을 쓰시오. (그림 4개)</p>
 <ul class="opts"></ul>
@@ -1028,7 +1036,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그림 문제. 파편이 튀면 폭발성, 액체가 손·금속을 녹이면 부식성</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>그림 표지는 테두리 모양과 색으로 종류를 먼저 고르고, 가운데 그림으로 이름을 정한다. 빨간 원+사선이면 금지, 빨간 마름모면 화학물질 경고, 녹색 사각형이면 안내다.</div></div></details>
 </div>
-<div class="card q" data-q="G-3" data-ch="" data-title="3번">
+<div class="card q" id="qG-3" data-q="G-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">그림의 안전보건표지 명칭을 쓰시오. (그림 4개)</p>
 <ul class="opts"></ul>
@@ -1036,7 +1044,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 빨간 원 안에 불꽃이면 화기금지, 담배면 금연</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>금지표지는 빨간 원 안 그림이 무엇을 금지하는지 알려 준다. 불꽃이면 화기금지, 담배면 금연이다. 경고표지는 위험의 종류를 그림으로 보여 준다.</div></div></details>
 </div>
-<div class="card q" data-q="G-4" data-ch="" data-title="4번">
+<div class="card q" id="qG-4" data-q="G-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 장소에 설치하는 경고표지 명칭을 쓰시오.</p>
 <ul class="opts"><li>① 휘발유 등 화기 취급을 극히 주의해야 하는 물질 ② 가열·압축하거나 강산·알칼리를 첨가하면 강한 산화성을 띠는 물질 ③ 돌·블록 등 떨어질 우려가 있는 물체 ④ 미끄러운 장소 등 넘어지기 쉬운 장소 ⑤ 폭발성 물질이 있는 장소</li></ul>
@@ -1044,7 +1052,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 인화성·산화성·폭발성은 빨간 마름모, 낙하물·몸균형 상실은 노란 삼각형</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>화학물질의 성질(인화성·산화성·폭발성)을 경고하는 표지는 빨간 마름모, 떨어지거나 넘어지는 물리적 위험을 경고하는 표지는 노란 삼각형이다.</div></div></details>
 </div>
-<div class="card q" data-q="G-5" data-ch="" data-title="5번">
+<div class="card q" id="qG-5" data-q="G-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">위험장소 경고표지를 그리고 색을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1052,7 +1060,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 화학물질 경고만 예외로 흰 바탕(무색)에 빨간 마름모 테두리</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>일반 경고표지는 눈에 잘 띄는 노란 바탕에 검은 삼각형 테두리와 기호를 쓴다. 노랑과 검정의 대비가 가장 눈에 잘 띄기 때문이다.</div></div></details>
 </div>
-<div class="card q" data-q="G-6" data-ch="" data-title="6번">
+<div class="card q" id="qG-6" data-q="G-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">출입금지 표지를 그리고 색을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1060,7 +1068,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 색 셋을 모두 써야 함</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>금지표지는 흰 바탕에 빨간 원과 사선을 그어 "하지 마라"를 나타내고, 금지 대상(사람·화살표)을 검은색으로 그린다.</div></div></details>
 </div>
-<div class="card q" data-q="G-7" data-ch="" data-title="7번">
+<div class="card q" id="qG-7" data-q="G-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">응급구호표지를 그리고 색을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1068,7 +1076,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 안내표지는 녹색 바탕에 흰색</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>응급구호표지는 안내표지라 녹색 바탕을 쓰고, 그 위에 흰 십자가로 응급처치 장소임을 알린다.</div></div></details>
 </div>
-<div class="card q" data-q="G-8" data-ch="" data-title="8번">
+<div class="card q" id="qG-8" data-q="G-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">관계자외 출입금지 표지의 종류 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1076,7 +1084,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 허가·석면·금지 세 단어</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>관계자외 출입금지 표지는 허가대상물질, 석면, 금지대상물질처럼 노출되면 건강에 심각한 해를 주는 물질을 다루는 곳에 붙인다.</div></div></details>
 </div>
-<div class="card q" data-q="G-9" data-ch="" data-title="9번">
+<div class="card q" id="qG-9" data-q="G-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">관계자외 출입금지 표지 중 허가대상물질 작업장 표지 하단에 쓰는 내용 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1084,7 +1092,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 표지 구성: 허가대상물질 작업장 / 관계자외 출입금지 / (물질명) 제조·사용·보관 중 / 보호구·보호복 착용 / 흡연 및 음식물 섭취 금지</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>허가대상물질 작업장은 들어가는 사람이 반드시 보호구를 써야 하고, 물질을 입으로 들이지 않도록 흡연과 음식물 섭취를 금지한다. 그래서 표지 하단에 이 두 가지를 적는다.</div></div></details>
 </div>
-<div class="card q" data-q="G-10" data-ch="" data-title="10번">
+<div class="card q" id="qG-10" data-q="G-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전보건표지의 색도기준과 용도의 빈칸을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1095,7 +1103,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>안전보건표지 색은 먼셀 기호로 정확한 색을 정해 둔다. 빨강은 금지·화학물질 경고, 노랑은 일반 경고, 파랑은 지시, 녹색은 안내이고, 흰색·검은색은 대비를 주는 보조색이다.</div></div></details>
 </div></section>
 <section class="section" id="g8"><div class="section-head"><div class="duality"><span class="n">H</span>보호구 (17문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="H-1" data-ch="" data-title="1번">
+<div class="card q" id="qH-1" data-q="H-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 작업에 지급할 보호구를 쓰시오.</p>
 <ul class="opts"><li>① 물체가 떨어지거나 날아올 위험 또는 추락 위험 작업 ② 높이 또는 깊이 2m 이상 추락 위험 작업 ③ 물체가 흩날릴 위험 작업 ④ 고열에 의한 화상 위험 작업</li></ul>
@@ -1103,7 +1111,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 용접 불꽃·물체 흩날림 → 보안면, 감전 → 절연용 보호구, 물체 낙하·충격·감전 → 안전화</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>보호구는 작업의 위험 종류에 맞춰 고른다. 머리에 맞을 위험은 안전모, 떨어질 위험은 안전대, 눈에 튈 위험은 보안경, 뜨거운 열은 방열복이다.</div></div></details>
 </div>
-<div class="card q" data-q="H-2" data-ch="" data-title="2번">
+<div class="card q" id="qH-2" data-q="H-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전모의 시험성능기준 항목을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1112,7 +1120,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 충격흡수성을 빠뜨리기 쉬움</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전모는 물체가 뚫고 들어오지 않고(내관통성), 충격을 흡수하며(충격흡수성), 전기를 막고(내전압성), 물과 불에 견디며(내수성·난연성), 턱끈이 쉽게 풀리지 않아야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="H-3" data-ch="" data-title="3번">
+<div class="card q" id="qH-3" data-q="H-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전모 내관통성 시험성능기준: AE형 및 ABE형은 관통거리 ( ① ) 이하, AB형은 ( ② ) 이하</p>
 <ul class="opts"></ul>
@@ -1121,7 +1129,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 안전모 형식 이름은 기준 표기(AB형·AE형·ABE형)로 씀</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>내관통성은 날카로운 추를 떨어뜨렸을 때 얼마나 깊이 들어오는지를 잰다. 감전 방지용(E)은 모체가 뚫리면 전기가 통할 수 있어 더 엄격한 9.5mm 기준을 적용한다.</div></div></details>
 </div>
-<div class="card q" data-q="H-4" data-ch="" data-title="4번">
+<div class="card q" id="qH-4" data-q="H-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">방독마스크 사용 기준: 고농도는 가스·증기 농도 100분의 ( ① ) 이하, 중농도는 100분의 ( ② ) 이하. 산소농도 ( ③ )% 이상인 장소에서 사용</p>
 <ul class="opts"></ul>
@@ -1129,7 +1137,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 저농도는 100분의 0.1 이하. 고농도·중농도는 전면형. 산소 18% 미만이면 송기마스크</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>방독마스크 정화통은 걸러 낼 수 있는 가스 양에 한계가 있어 농도에 따라 등급을 나눈다. 산소를 만들지 못하므로 산소가 18% 이상인 곳에서만 쓴다.</div></div></details>
 </div>
-<div class="card q" data-q="H-5" data-ch="" data-title="5번">
+<div class="card q" id="qH-5" data-q="H-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">방독마스크 정화통 외부 측면 색을 보고 시험가스를 고르시오. A 갈색 B 노란색 C 녹색 (보기: 유기화합물, 아황산, 암모니아, 할로겐, 황화수소, 시안화수소)</p>
 <ul class="opts"></ul>
@@ -1137,7 +1145,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 할로겐·황화수소·시안화수소는 모두 회색</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>정화통 색은 대상 가스를 바로 알아보게 하는 표시다. 갈색은 유기화합물, 노란색은 아황산, 녹색은 암모니아이고, 할로겐·황화수소·시안화수소는 회색으로 묶는다.</div></div></details>
 </div>
-<div class="card q" data-q="H-6" data-ch="" data-title="6번">
+<div class="card q" id="qH-6" data-q="H-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">방독마스크 종류별 정화통 색을 쓰시오. (유기화합물용, 할로겐용, 황화수소용, 시안화수소용, 아황산용, 암모니아용)</p>
 <ul class="opts"></ul>
@@ -1146,7 +1154,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>복합용은 해당 가스 모두 표시(2층 분리), 겸용은 백색과 해당 가스 모두 표시</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>정화통 종류마다 거르는 가스가 다르므로 색을 다르게 했다. 잘못 쓰면 보호되지 않으니 색과 가스를 짝으로 외운다.</div></div></details>
 </div>
-<div class="card q" data-q="H-7" data-ch="" data-title="7번">
+<div class="card q" id="qH-7" data-q="H-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">그림의 방진마스크 종류를 순서대로 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1155,7 +1163,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>그림 순서에 따라 답 순서가 바뀜 (그림 문제)</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>방진마스크는 여과재가 얼굴에 바로 붙었는지(직결식), 관으로 이어졌는지(격리식), 입·코만 덮는지(반면형), 얼굴 전체를 덮는지(전면형)로 구분한다.</div></div></details>
 </div>
-<div class="card q" data-q="H-8" data-ch="" data-title="8번">
+<div class="card q" id="qH-8" data-q="H-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">분리식 방진마스크 등급별 여과재 분진 포집효율 기준을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1163,14 +1171,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 안면부 여과식은 특급 99.0, 1급 94.0, 2급 80.0</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>포집효율은 여과재가 분진을 얼마나 걸러 내는지 나타낸다. 등급이 높을수록 더 많이 걸러 내므로 독성이 강한 분진에는 특급을 쓴다.</div></div></details>
 </div>
-<div class="card q" data-q="H-9" data-ch="" data-title="9번">
+<div class="card q" id="qH-9" data-q="H-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">특급 방진마스크 사용 장소 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>베릴륨 등과 같이 독성이 강한 물질을 함유한 분진 등 발생장소, 석면 취급장소</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>베릴륨이나 석면처럼 아주 적은 양으로도 심각한 병을 일으키는 분진은 가장 많이 걸러 내는 특급 방진마스크를 써야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="H-10" data-ch="" data-title="10번">
+<div class="card q" id="qH-10" data-q="H-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">1급 방진마스크 사용 장소 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1178,7 +1186,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 2급은 특급·1급 착용장소를 제외한 분진 등 발생장소</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>1급은 특급이 필요한 곳을 뺀 일반 분진 장소, 특히 금속흄처럼 열로 생기는 미세 분진과 연마처럼 기계적으로 생기는 분진에 쓴다.</div></div></details>
 </div>
-<div class="card q" data-q="H-11" data-ch="" data-title="11번">
+<div class="card q" id="qH-11" data-q="H-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">방진마스크 시험성능기준 항목 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1186,14 +1194,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 여과재 분진 포집효율, 안면부 누설률, 배기밸브 작동, 강도·신장률·영구변형률, 음성전달판, 투시부 내충격성, 여과재 질량·호흡저항, 안면부 내부 이산화탄소 농도</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>방진마스크는 분진을 잘 걸러야 할 뿐 아니라 숨쉬기 편하고(흡기·배기저항), 불에 타지 않으며(불연성), 시야를 가리지 않아야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="H-12" data-ch="" data-title="12번">
+<div class="card q" id="qH-12" data-q="H-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사용 구분에 따른 차광보안경의 종류 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>자외선용, 적외선용, 복합용, 용접용</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>차광보안경은 눈을 해치는 빛의 종류에 맞춰 고른다. 자외선, 적외선, 둘 다 있는 경우(복합용), 용접 불꽃(용접용)으로 나눈다.</div></div></details>
 </div>
-<div class="card q" data-q="H-13" data-ch="" data-title="13번">
+<div class="card q" id="qH-13" data-q="H-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">자율안전확인 대상 일반 보안경의 종류를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1201,7 +1209,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 셋 다 비산물로부터 눈을 보호. 렌즈 재질과 도수 여부만 다름</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>일반 보안경은 날아오는 작은 파편에서 눈을 지키는 용도라 렌즈 재질(유리·플라스틱)과 시력 교정 렌즈 여부로만 구분한다.</div></div></details>
 </div>
-<div class="card q" data-q="H-14" data-ch="" data-title="14번">
+<div class="card q" id="qH-14" data-q="H-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">방음용 귀마개·귀덮개 기호를 쓰시오. (귀마개 1종, 귀마개 2종, 귀덮개)</p>
 <ul class="opts"></ul>
@@ -1210,7 +1218,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 "1종 1회용, 2종 재사용"은 기준상 구분이 아님. 귀마개 1종은 저음~고음 차음, 2종은 고음 차음</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>기호는 영어 이름에서 왔다. 귀 안에 넣는 귀마개는 Ear Plug(EP), 귀 전체를 덮는 귀덮개는 Ear Muff(EM)이고, 귀마개는 차음 범위에 따라 1종·2종으로 나눈다.</div></div></details>
 </div>
-<div class="card q" data-q="H-15" data-ch="" data-title="15번">
+<div class="card q" id="qH-15" data-q="H-15" data-ch="" data-title="15번">
 <div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가죽제 안전화 성능기준 항목 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1218,7 +1226,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 은면결렬, 인열강도, 인장강도 및 신장률, 박리저항, 내답발성</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전화는 발등에 떨어지는 물체(내충격성)와 누르는 무게(내압박성)를 견뎌야 하고, 작업 환경의 약품·기름에도 상하지 않아야(내부식성·내유성) 한다.</div></div></details>
 </div>
-<div class="card q" data-q="H-16" data-ch="" data-title="16번">
+<div class="card q" id="qH-16" data-q="H-16" data-ch="" data-title="16번">
 <div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">그림의 보호구 명칭과 갖추어야 할 구조 조건 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1226,7 +1234,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 안전블록 와이어로프는 지름 4mm 이상</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전블록은 줄이 몸을 따라 자유롭게 감겼다 풀리다가, 떨어질 때 갑자기 빨리 풀리면 자동으로 잠겨 추락을 멈춘다. 오래 밖에서 쓰므로 부식방지 처리도 필요하다.</div></div></details>
 </div>
-<div class="card q" data-q="H-17" data-ch="" data-title="17번">
+<div class="card q" id="qH-17" data-q="H-17" data-ch="" data-title="17번">
 <div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">U자 걸이용 안전대의 구조기준 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1235,7 +1243,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>U자 걸이는 죔줄을 기둥 등에 U자로 돌려 몸을 기대고 일하는 방식이다. 몸통 양쪽에서 균형 있게 지지되고 길이를 조절해도 줄에서 빠지지 않아야 한다.</div></div></details>
 </div></section>
 <section class="section" id="g9"><div class="section-head"><div class="duality"><span class="n">I</span>기계 안전 (32문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="I-1" data-ch="" data-title="1번">
+<div class="card q" id="qI-1" data-q="I-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">프레스 광전자식 방호장치의 최소 안전거리(mm)를 구하시오. (광선 차단~급정지기구 작동 개시 70ms, 작동 개시~슬라이드 정지 140ms)</p>
 <ul class="opts"></ul>
@@ -1244,7 +1252,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>1.6 × (70 + 140) = 336. 1.6은 손의 접근속도 1.6m/s</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>광선이 가려진 뒤 급정지기구가 작동하기까지의 시간과, 작동한 뒤 슬라이드가 멈추기까지의 시간을 더해야 전체 정지시간이 된다. 손은 1.6mm/ms(=1.6m/s)로 움직인다고 보고 곱한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-2" data-ch="" data-title="2번">
+<div class="card q" id="qI-2" data-q="I-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">프레스 광전자식 방호장치의 최소 안전거리를 구하시오. (광선 차단~급정지 작동 60ms, 급정지 작동~슬라이드 정지 100ms)</p>
 <ul class="opts"></ul>
@@ -1252,7 +1260,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 1.6 × (60 + 100) = 256</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>두 시간을 먼저 더해 전체 정지시간을 구하고 1.6을 곱한다. ms 단위로 계산하면 결과가 바로 mm로 나온다.</div></div></details>
 </div>
-<div class="card q" data-q="I-3" data-ch="" data-title="3번">
+<div class="card q" id="qI-3" data-q="I-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">프레스 급정지시간이 200ms일 때 광전자식 방호장치의 최소 안전거리를 구하시오.</p>
 <ul class="opts"></ul>
@@ -1260,7 +1268,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 1.6 × 200 = 320. 시간이 둘로 나뉘면 더하고, 하나로 주면 바로 곱한다</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>급정지시간이 하나로 주어지면 이미 전체 정지시간이므로 바로 1.6을 곱한다. 시간이 짧을수록 방호장치를 위험점 가까이 둘 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="I-4" data-ch="" data-title="4번">
+<div class="card q" id="qI-4" data-q="I-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">클러치 맞물림 개소 5개, 200SPM 동력프레스 양수기동식 방호장치의 안전거리를 구하시오.</p>
 <ul class="opts"></ul>
@@ -1269,7 +1277,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>Tm = (1/5 + 1/2) × 60,000/200 = 0.7 × 300 = 210ms → 1.6 × 210 = 336mm</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>양수기동식은 손을 뗀 뒤 슬라이드가 하사점에 닿을 때까지 걸리는 최대시간(Tm)이 기준이다. 클러치가 다음에 맞물릴 때까지 기다리는 시간과 슬라이드가 반 바퀴 내려오는 시간을 더해 구한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-5" data-ch="" data-title="5번">
+<div class="card q" id="qI-5" data-q="I-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">프레스 방호장치 분류의 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 광전자식 중 급정지 기능이 없는 프레스의 클러치를 개조하여 광선 차단 시 급정지하도록 한 것</li><li>② 가드식: 가드 개폐와 기계 작동을 연동시킨 것</li></ul>
@@ -1277,21 +1285,21 @@ details.howto .sub{margin-top:6px}
 <p>📌 A-1 광전자식(투광부·수광부·컨트롤 부분), A-2 광전자식(클러치 개조), B-1 양수조작식(유·공압 밸브), B-2 양수조작식(전기버튼), C 가드식, D 손쳐내기식, E 수인식</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>프레스 방호장치는 방식마다 알파벳 기호가 있다. 광전자식은 A, 양수조작식은 B, 가드식은 C, 손쳐내기식은 D, 수인식은 E이며, 숫자로 세부 형식을 나눈다.</div></div></details>
 </div>
-<div class="card q" data-q="I-6" data-ch="" data-title="6번">
+<div class="card q" id="qI-6" data-q="I-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">프레스 광전자식 방호장치에 대해 쓰시오.<br>A. 투광부·수광부·컨트롤 부분으로 구성되어 신체 일부가 광선을 차단하면 급정지시키는 방호장치의 분류<br>B. 사용전원 전압의 ±( )% 변동에 정상 작동</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>A A-1 B 20</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>A-1은 기본 광전자식(투광부·수광부·컨트롤)이다. 전원이 흔들려도 오작동하면 안 되므로 전압이 ±20% 변해도 정상 작동해야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-7" data-ch="" data-title="7번">
+<div class="card q" id="qI-7" data-q="I-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">광전자식 방호장치 설명의 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 신체 일부가 광선을 차단하면 급정지시키는 방호장치로 ( A ) 분류</li><li>② 정상동작 표시램프는 ( B )색, 위험 표시램프는 ( C )색</li><li>③ 사용전원 전압 ±( D )% 변동에 정상 작동</li></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>A A-1 B 녹 C 붉은 D 20</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>램프 색은 일반적인 신호 의미를 따른다. 정상은 녹색, 위험은 붉은색이라 작업자가 한눈에 상태를 알 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="I-8" data-ch="" data-title="8번">
+<div class="card q" id="qI-8" data-q="I-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">광전자식 방호장치 광축 수에 따른 형식 구분: A형 ( ) 광축 이하, B형 ( ) 이상 ( ) 미만, C형 ( ) 이상</p>
 <ul class="opts"></ul>
@@ -1299,7 +1307,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 12와 56 두 숫자</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>광축 수가 많을수록 보호하는 높이가 넓어진다. 12개 이하는 A형, 13~55개는 B형, 56개 이상은 C형으로 나눈다.</div></div></details>
 </div>
-<div class="card q" data-q="I-9" data-ch="" data-title="9번">
+<div class="card q" id="qI-9" data-q="I-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">손쳐내기식 방호장치를 사용하는 기계의 ① 명칭 ② 기호를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1307,7 +1315,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 손쳐내기식은 막대로 손을 밀어냄(D), 수인식은 손목에 끈을 매어 당김(E)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>손쳐내기식은 슬라이드와 연결된 막대가 내려오면서 위험구역의 손을 옆으로 밀어내는 프레스 방호장치이며 기호는 D다.</div></div></details>
 </div>
-<div class="card q" data-q="I-10" data-ch="" data-title="10번">
+<div class="card q" id="qI-10" data-q="I-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">프레스 작업 시작 전 점검사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1315,7 +1323,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 크랭크축·플라이휠·슬라이드·연결봉 및 연결나사의 풀림 여부, 1행정 1정지기구·급정지장치·비상정지장치 기능, 전단기 칼날 및 테이블 상태</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>프레스 사고는 슬라이드가 갑자기 내려오는 데서 생기므로 방호장치, 금형 고정, 클러치·브레이크, 위험방지 기구처럼 슬라이드 동작과 관련된 부분을 작업 전에 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-11" data-ch="" data-title="11번">
+<div class="card q" id="qI-11" data-q="I-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">롤러기 급정지장치의 앞면 롤러 표면속도에 따른 급정지거리를 쓰시오.</p>
 <ul class="opts"><li>① ( )m/min 미만: 앞면 롤러 원주의 ( ) 이내</li><li>② ( )m/min 이상: 앞면 롤러 원주의 ( ) 이내</li></ul>
@@ -1324,7 +1332,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 수치: 1/3, 1/2.5</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>롤러가 빠를수록 멈추는 데 더 많이 돌기 때문에 빠른 롤러에는 더 짧은 거리 기준(1/2.5)을 요구하지 않으면 안전을 지킬 수 없다. 경계 속도는 30m/min이다.</div></div></details>
 </div>
-<div class="card q" data-q="I-12" data-ch="" data-title="12번">
+<div class="card q" id="qI-12" data-q="I-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">롤러기 급정지장치 조작부의 설치 위치를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1332,7 +1340,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 위에서 아래로 1.8 → 0.8~1.1 → 0.6</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>급정지장치는 위급할 때 몸이 자연스럽게 닿는 곳에 있어야 한다. 손은 위(1.8m 이내), 배는 가운데(0.8~1.1m), 무릎은 아래(0.6m 이내)다.</div></div></details>
 </div>
-<div class="card q" data-q="I-13" data-ch="" data-title="13번">
+<div class="card q" id="qI-13" data-q="I-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">회전수 500rpm, 숫돌 지름 250mm인 연삭기의 원주속도(m/s)를 구하시오.</p>
 <ul class="opts"></ul>
@@ -1341,7 +1349,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>π × 0.25 × 500 / 60 = 6.545 ≒ 6.54</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>원주속도는 숫돌 둘레(πD)가 1초에 몇 번 도는지를 곱한 값이다. rpm은 분당 회전수이므로 60으로 나누고, 지름은 m로 바꿔야 m/s가 나온다.</div></div></details>
 </div>
-<div class="card q" data-q="I-14" data-ch="" data-title="14번">
+<div class="card q" id="qI-14" data-q="I-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">연삭숫돌의 파괴 원인 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1349,21 +1357,21 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 플랜지 지름이 현저히 작거나 불균일할 때, 숫돌 반경방향 온도 변화가 심할 때, 회전 중심이 잡히지 않았을 때</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>숫돌은 단단하지만 깨지기 쉬운 재료다. 큰 충격, 균열, 측면 사용, 과속은 모두 숫돌에 견딜 수 없는 응력을 걸어 파괴로 이어진다.</div></div></details>
 </div>
-<div class="card q" data-q="I-15" data-ch="" data-title="15번">
+<div class="card q" id="qI-15" data-q="I-15" data-ch="" data-title="15번">
 <div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">연삭숫돌은 작업 시작 전 ( A )분 이상, 숫돌 교체 후 ( B )분 이상 시험운전한다.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>A 1 B 3</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>시험운전은 숫돌에 금이 있거나 설치가 잘못됐는지 미리 확인하는 과정이다. 숫돌을 새로 끼웠을 때는 이상 가능성이 커서 더 길게(3분 이상) 돌린다.</div></div></details>
 </div>
-<div class="card q" data-q="I-16" data-ch="" data-title="16번">
+<div class="card q" id="qI-16" data-q="I-16" data-ch="" data-title="16번">
 <div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">연삭기 덮개의 작동시험 확인사항 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 연삭( A )과 덮개의 접촉 여부 ② 탁상용 연삭기는 덮개, ( B ) 및 ( C ) 부착 상태의 적합성</li></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>A 숫돌 B 워크레스트 C 조정편</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>덮개 시험은 숫돌이 덮개에 닿지 않는지, 탁상용 연삭기의 받침대(워크레스트)와 조정편이 제대로 붙어 있는지 확인한다. 이 부분이 맞지 않으면 일감이 끼거나 파편이 튄다.</div></div></details>
 </div>
-<div class="card q" data-q="I-17" data-ch="" data-title="17번">
+<div class="card q" id="qI-17" data-q="I-17" data-ch="" data-title="17번">
 <div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">목재가공용 둥근톱 분할날의 요건 빈칸을 쓰시오.<br>분할날 두께는 둥근톱 두께의 ( ① )배 이상, 톱날 원주면과의 거리는 ( ② )mm 이내, 표준 테이블면 상의 톱 뒷날의 ( ③ ) 이상을 덮을 것, 분할날 조임볼트는 ( ④ )개 이상, 볼트에는 ( ⑤ ) 조치</p>
 <ul class="opts"></ul>
@@ -1372,14 +1380,14 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 수치: 2/3</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>분할날은 톱이 지나간 틈을 벌려 나무가 톱날을 물어 튕겨 내는 반발을 막는다. 그래서 톱날보다 두껍고 톱날 가까이 있으며, 볼트가 풀리지 않게 고정해야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-18" data-ch="" data-title="18번">
+<div class="card q" id="qI-18" data-q="I-18" data-ch="" data-title="18번">
 <div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">동력식 수동대패기의 방호장치 명칭과 종류 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>날접촉 예방장치(칼날 접촉 방지장치) / 고정식, 가동식</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>대패의 날은 노출되어 있어 손이 닿기 쉽다. 날접촉 예방장치는 날 위를 덮어 손을 막는데, 덮개가 고정된 고정식과 가공재에 따라 움직이는 가동식이 있다.</div></div></details>
 </div>
-<div class="card q" data-q="I-19" data-ch="" data-title="19번">
+<div class="card q" id="qI-19" data-q="I-19" data-ch="" data-title="19번">
 <div class="q-head"><span class="q-num">19번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 기계의 방호장치를 쓰시오. (원심기, 공기압축기, 금속절단기, 산업용 로봇, 연삭기, 예초기, 포장기계, 교류아크용접기, 롤러기)</p>
 <ul class="opts"></ul>
@@ -1387,14 +1395,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 날·회전·압력·접근·감전 5가지 위험 유형으로 묶기</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>방호장치는 각 기계의 주된 위험에 맞춘다. 날에는 날접촉 예방장치, 회전체에는 접촉 예방장치, 압력에는 압력방출장치, 감전에는 자동전격방지기를 단다.</div></div></details>
 </div>
-<div class="card q" data-q="I-20" data-ch="" data-title="20번">
+<div class="card q" id="qI-20" data-q="I-20" data-ch="" data-title="20번">
 <div class="q-head"><span class="q-num">20번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">원동기·회전축 등의 위험 방지를 위한 기계적 안전조치 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>덮개, 울, 슬리브</b> (건널다리)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>원동기·회전축·기어처럼 돌거나 움직이는 부분은 옷이나 손이 말려 들어가지 않게 덮개, 울, 슬리브로 감싼다.</div></div></details>
 </div>
-<div class="card q" data-q="I-21" data-ch="" data-title="21번">
+<div class="card q" id="qI-21" data-q="I-21" data-ch="" data-title="21번">
 <div class="q-head"><span class="q-num">21번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">비파괴검사 대상 고속회전체: 회전축 중량이 ( )톤을 초과하고 원주속도가 ( )m/s 이상인 것</p>
 <ul class="opts"></ul>
@@ -1402,7 +1410,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 중량은 "초과", 속도는 "이상"</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>무겁고 빠르게 도는 회전체는 깨지면 파편이 엄청난 힘으로 튄다. 그래서 1톤을 넘고 원주속도 120m/s 이상이면 비파괴검사로 미리 결함을 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-22" data-ch="" data-title="22번">
+<div class="card q" id="qI-22" data-q="I-22" data-ch="" data-title="22번">
 <div class="q-head"><span class="q-num">22번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">공기압축기 작업 시작 전 점검사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1410,14 +1418,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 윤활유 상태, 회전부의 덮개 또는 울, 그 밖의 연결 부위 이상 유무</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>공기압축기는 압력이 쌓이는 기계라 압력용기 상태, 압력방출장치, 언로드밸브(압력이 오르면 부하를 줄이는 장치)를 확인하고 고인 물을 빼 준다.</div></div></details>
 </div>
-<div class="card q" data-q="I-23" data-ch="" data-title="23번">
+<div class="card q" id="qI-23" data-q="I-23" data-ch="" data-title="23번">
 <div class="q-head"><span class="q-num">23번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">보일러 폭발사고 예방을 위해 유지·관리해야 할 부속(방호장치) 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>압력방출장치, 압력제한스위치, 고저수위 조절장치, 화염검출기</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>보일러 폭발은 압력 과다, 저수위, 불완전 점화에서 생긴다. 네 방호장치가 각각 압력을 빼고, 연소를 끊고, 수위를 지키고, 불꽃 상태를 감시한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-24" data-ch="" data-title="24번">
+<div class="card q" id="qI-24" data-q="I-24" data-ch="" data-title="24번">
 <div class="q-head"><span class="q-num">24번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 작업 시작 전 점검사항이 해당하는 기계를 고르시오. (크레인, 곤돌라, 컨베이어, 프레스, 산업용 로봇)<br>A. 권과방지장치·브레이크·클러치 및 운전장치 기능, 주행로 상측 및 트롤리 횡행 레일 상태, 와이어로프가 통하는 곳의 상태<br>B. 원동기 및 풀리 기능, 이탈 등의 방지장치 기능, 비상정지장치 기능, 원동기·회전축·기어·풀리 등의 덮개 또는 울 이상 유무</p>
 <ul class="opts"></ul>
@@ -1425,7 +1433,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 권과·트롤리 → 크레인, 이탈방지·풀리 → 컨베이어</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>작업 전 점검사항은 그 기계에만 있는 부품으로 구별한다. 권과방지장치·트롤리 레일은 크레인, 이탈방지장치·풀리는 컨베이어에만 있다.</div></div></details>
 </div>
-<div class="card q" data-q="I-25" data-ch="" data-title="25번">
+<div class="card q" id="qI-25" data-q="I-25" data-ch="" data-title="25번">
 <div class="q-head"><span class="q-num">25번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">로봇 작동범위 내 교시 작업 시 오조작 방지를 위해 정하는 지침 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1433,14 +1441,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 이상 발견으로 정지한 후 재가동할 때의 조치, 그 밖에 로봇의 예기치 못한 작동·오조작 방지 조치</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>교시 작업은 사람이 로봇 작동범위 안에 들어가 동작을 가르치는 작업이라 오조작 한 번이 바로 사고가 된다. 그래서 조작 방법, 속도, 신호, 이상 시 조치를 미리 정한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-26" data-ch="" data-title="26번">
+<div class="card q" id="qI-26" data-q="I-26" data-ch="" data-title="26번">
 <div class="q-head"><span class="q-num">26번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">로봇 작동범위 내 작업 시작 전 점검사항 3가지를 쓰시오. (동력원 차단 제외)</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>외부 전선의 피복 또는 외장 손상 유무, 매니퓰레이터 작동의 이상 유무, 제동장치 및 비상정지장치의 기능</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>작동범위 안에서 일하기 전에는 로봇이 갑자기 움직이거나 멈추지 않는 일이 없도록 전선 피복, 매니퓰레이터 작동, 제동·비상정지 기능을 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-27" data-ch="" data-title="27번">
+<div class="card q" id="qI-27" data-q="I-27" data-ch="" data-title="27번">
 <div class="q-head"><span class="q-num">27번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">지게차 중량 1톤일 때 안정을 유지하는 허용 화물중량(톤)을 구하시오. (앞바퀴~화물 중심 a = 1.2m, 앞바퀴~지게차 중심 b = 1.5m)</p>
 <ul class="opts"></ul>
@@ -1449,7 +1457,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>1 × 1.5 / 1.2 = 1.25</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>지게차는 앞바퀴를 받침점으로 한 지렛대처럼 생각한다. 화물이 앞바퀴를 중심으로 앞으로 넘기려는 힘(W × a)이 지게차 자체 무게가 버티는 힘(G × b)보다 작아야 넘어지지 않는다.</div></div></details>
 </div>
-<div class="card q" data-q="I-28" data-ch="" data-title="28번">
+<div class="card q" id="qI-28" data-q="I-28" data-ch="" data-title="28번">
 <div class="q-head"><span class="q-num">28번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">화물 낙하 위험이 있는 작업장의 지게차 헤드가드 요건 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1457,14 +1465,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 운전석 높이 기준 (서서 조작 1.88m 이상, 앉아서 조작 0.903m 이상)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>헤드가드는 떨어지는 화물에서 운전자를 지키는 지붕이라 큰 하중에 견디고, 틈이 작아 물건이 빠져 떨어지지 않아야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-29" data-ch="" data-title="29번">
+<div class="card q" id="qI-29" data-q="I-29" data-ch="" data-title="29번">
 <div class="q-head"><span class="q-num">29번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">지게차 작업 시작 전 점검사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>제동장치 및 조종장치 기능의 이상 유무, 하역장치 및 유압장치 기능의 이상 유무, 바퀴의 이상 유무, 전조등·후미등·방향지시기 및 경보장치 기능의 이상 유무</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>지게차 사고는 제동·조종 이상, 하역장치 고장, 바퀴 이상, 경보·조명 불량에서 많이 생기므로 작업 전에 이 네 부분을 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-30" data-ch="" data-title="30번">
+<div class="card q" id="qI-30" data-q="I-30" data-ch="" data-title="30번">
 <div class="q-head"><span class="q-num">30번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">차량계 하역운반기계(지게차 등) 운전자가 운전위치를 이탈할 때 준수사항 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1472,14 +1480,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 내리고 → 세우고 → 뽑는다</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>운전자가 자리를 비우는 동안 지게차가 저절로 움직이거나 다른 사람이 함부로 움직이면 사고가 난다. 그래서 포크를 내리고, 시동을 끄고 브레이크를 걸고, 키를 뽑는다.</div></div></details>
 </div>
-<div class="card q" data-q="I-31" data-ch="" data-title="31번">
+<div class="card q" id="qI-31" data-q="I-31" data-ch="" data-title="31번">
 <div class="q-head"><span class="q-num">31번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">차량계 하역운반기계를 이송하기 위해 싣거나 내리는 작업의 준수사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 평탄하고 견고한 장소에서 할 것 ② 발판 사용 시 충분한 길이·폭·강도를 가진 것을 적당한 경사로 견고하게 설치할 것 ③ 가설대 등 사용 시 충분한 폭·강도와 적당한 경사를 확보할 것 ④ 지정운전자의 성명·연락처 등을 보기 쉬운 곳에 표시하고 지정운전자 외에는 운전하지 않도록 할 것</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>기계를 차량에 싣고 내릴 때는 발판이 미끄러지거나 부러져 기계가 넘어지는 사고가 많다. 평탄하고 단단한 곳에서, 충분히 튼튼한 발판으로, 정해진 운전자만 작업한다.</div></div></details>
 </div>
-<div class="card q" data-q="I-32" data-ch="" data-title="32번">
+<div class="card q" id="qI-32" data-q="I-32" data-ch="" data-title="32번">
 <div class="q-head"><span class="q-num">32번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">차량계 하역운반기계 작업계획서 내용 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1488,21 +1496,21 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>작업계획서는 하역운반기계로 생길 수 있는 사고(추락·낙하·전도·협착·붕괴)에 대한 대책과 운행경로·작업방법을 미리 정해 두는 문서다.</div></div></details>
 </div></section>
 <section class="section" id="g10"><div class="section-head"><div class="duality"><span class="n">J</span>양중기·와이어로프·달기구 (15문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="J-1" data-ch="" data-title="1번">
+<div class="card q" id="qJ-1" data-q="J-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">양중기의 종류 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>크레인(호이스트 포함), 이동식 크레인, 리프트(이삿짐운반용은 적재하중 0.1톤 이상), 곤돌라, 승강기</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>양중기는 동력으로 짐이나 사람을 들어 올리는 기계 다섯 종류를 말한다. 들어 올리는 방식과 용도에 따라 크레인, 이동식 크레인, 리프트, 곤돌라, 승강기로 나뉜다.</div></div></details>
 </div>
-<div class="card q" data-q="J-2" data-ch="" data-title="2번">
+<div class="card q" id="qJ-2" data-q="J-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 양중기의 종류를 쓰시오.</p>
 <ul class="opts"><li>① 동력을 사용하여 중량물을 매달아 상하 및 좌우(수평 또는 선회)로 운반하는 기계·기계장치</li><li>② 훅이나 달기구를 사용하여 화물의 권상 및 횡행 또는 권상 동작만을 하여 양중하는 것</li></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 크레인 ② 호이스트</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>크레인은 짐을 매달아 위아래와 옆으로 옮기는 기계 전체를 말하고, 호이스트는 그중 훅으로 감아올리고 레일을 따라 옮기는 비교적 단순한 장치다.</div></div></details>
 </div>
-<div class="card q" data-q="J-3" data-ch="" data-title="3번">
+<div class="card q" id="qJ-3" data-q="J-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">순간풍속이 초당 ( )m를 초과하는 바람이 불어올 우려가 있는 경우 옥외에 설치된 승강기에 받침 수를 늘리는 등 붕괴 방지 조치를 해야 한다.</p>
 <ul class="opts"></ul>
@@ -1511,7 +1519,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>10m/s: 타워크레인 설치·수리·점검·해체 작업 중지</li><li>15m/s: 타워크레인 운전작업 중지</li><li>30m/s: 옥외 주행크레인 이탈방지 조치, 양중기 작업 전 점검</li><li>35m/s: 옥외 승강기·건설용 리프트 붕괴방지 조치</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>승강기나 리프트가 옥외에 있으면 아주 센 바람에 구조물이 넘어질 수 있다. 순간풍속 35m/s를 넘을 우려가 있으면 받침을 늘리는 등 붕괴를 막는 조치를 한다.</div></div></details>
 </div>
-<div class="card q" data-q="J-4" data-ch="" data-title="4번">
+<div class="card q" id="qJ-4" data-q="J-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">타워크레인 작업중지: 운전작업은 순간풍속 ( )m/s 초과, 설치·수리·점검·해체 작업은 ( )m/s 초과 시 중지</p>
 <ul class="opts"></ul>
@@ -1519,21 +1527,21 @@ details.howto .sub{margin-top:6px}
 <p>📌 사람이 마스트에 매달리는 설치·해체가 더 약한 바람(10)에서 멈춘다</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>설치·해체 작업은 사람이 높은 마스트 위에서 직접 일하므로 운전 작업보다 약한 바람에서도 위험하다. 그래서 10m/s에서 먼저 멈추고, 운전은 15m/s에서 멈춘다.</div></div></details>
 </div>
-<div class="card q" data-q="J-5" data-ch="" data-title="5번">
+<div class="card q" id="qJ-5" data-q="J-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">크레인 작업 시작 전 점검사항 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>권과방지장치·브레이크·클러치 및 운전장치의 기능, 주행로의 상측 및 트롤리가 횡행하는 레일의 상태, 와이어로프가 통하고 있는 곳의 상태</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>크레인 사고는 과권, 제동 불량, 주행 레일 이상, 와이어로프 손상에서 많이 생긴다. 작업 전에 이 부분을 눈으로 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="J-6" data-ch="" data-title="6번">
+<div class="card q" id="qJ-6" data-q="J-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">이동식 크레인의 방호장치 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>과부하방지장치, 권과방지장치, 비상정지장치</b> (브레이크장치)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>이동식 크레인은 붐이 길어 무게가 조금만 넘어도 넘어지기 쉽다. 과부하방지장치로 무게를, 권과방지장치로 감기는 높이를 제한하고, 비상정지장치로 즉시 멈춘다.</div></div></details>
 </div>
-<div class="card q" data-q="J-7" data-ch="" data-title="7번">
+<div class="card q" id="qJ-7" data-q="J-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">달기체인의 사용금지 기준 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1541,7 +1549,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 길이 5%, 지름 10%. 둘 다 "초과"</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>달기체인이 늘어나거나 링이 가늘어졌다는 것은 금속이 피로하거나 닳아 강도가 떨어졌다는 뜻이다. 그래서 길이 5% 초과 연신, 지름 10% 초과 감소면 쓰지 않는다.</div></div></details>
 </div>
-<div class="card q" data-q="J-8" data-ch="" data-title="8번">
+<div class="card q" id="qJ-8" data-q="J-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">곤돌라형 달비계에 사용해서는 안 되는 와이어로프를 모두 고르시오.<br>A. 한 꼬임에서 소선 수의 10% 이상 절단 B. 이음매가 없는 것 C. 지름 감소가 공칭지름의 7% 초과 D. 꼬인 것</p>
 <ul class="opts"></ul>
@@ -1550,7 +1558,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>그 밖에: 심하게 변형되거나 부식된 것, 열과 전기충격에 의해 손상된 것</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>와이어로프는 소선이 끊어지거나 지름이 줄면 강도가 떨어진다. 이음매가 있는 로프는 그 부분이 약하므로 금지하고, 꼬이거나 심하게 변형된 것도 쓰지 않는다.</div></div></details>
 </div>
-<div class="card q" data-q="J-9" data-ch="" data-title="9번">
+<div class="card q" id="qJ-9" data-q="J-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">화물운반·고정용으로 사용할 수 없는 섬유로프 조건 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1558,7 +1566,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 와이어로프는 숫자(10%, 7%), 섬유로프는 눈으로 판단</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>섬유로프는 소선 수를 세기 어렵기 때문에 꼬임이 끊어졌는지, 눈에 띄게 손상·부식됐는지를 보고 판단한다.</div></div></details>
 </div>
-<div class="card q" data-q="J-10" data-ch="" data-title="10번">
+<div class="card q" id="qJ-10" data-q="J-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">양중기 달기구의 안전계수 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 훅·샤클·클램프·리프팅빔 ② 화물의 하중을 직접 지지하는 달기 와이어로프·달기체인 ③ 근로자가 탑승하는 운반구를 지지하는 달기 와이어로프·달기체인</li></ul>
@@ -1566,7 +1574,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖의 경우 4 이상. 사람 10, 화물 5, 부속 3</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>달기구 안전계수는 무엇을 들어 올리느냐에 따라 다르다. 사람이 타면 10, 화물을 직접 들면 5, 훅·샤클 같은 부속품은 3 이상이다.</div></div></details>
 </div>
-<div class="card q" data-q="J-11" data-ch="" data-title="11번">
+<div class="card q" id="qJ-11" data-q="J-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">달비계의 안전계수 빈칸을 쓰시오.<br>달기 와이어로프 및 달기 강선 ( ① ) 이상, 달기체인 및 달기훅 ( ② ) 이상, 달기 강대와 달비계 하부·상부 지점은 강재 ( ③ ) 이상, 목재 ( ④ ) 이상</p>
 <ul class="opts"></ul>
@@ -1574,7 +1582,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>⚠️ 확인 필요: 기출에 반복 출제된 값이지만 현행 안전보건규칙에 이 조항이 그대로 남아 있는지 교재로 확인 권장</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>달비계는 사람이 매달린 발판에서 일하므로 줄이 끊어지면 바로 추락한다. 그래서 와이어로프에 가장 큰 안전계수 10을, 체인·훅은 5를 요구한다.</div></div></details>
 </div>
-<div class="card q" data-q="J-12" data-ch="" data-title="12번">
+<div class="card q" id="qJ-12" data-q="J-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">화물의 하중을 직접 지지하는 달기 와이어로프의 절단하중이 2,000kg일 때 최대 허용하중(kg)을 구하시오.</p>
 <ul class="opts"></ul>
@@ -1583,7 +1591,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>2,000 ÷ 5 = 400</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>허용하중은 로프가 끊어지는 하중을 안전계수로 나눈 값이다. 화물을 직접 매다는 와이어로프는 안전계수가 5이므로 절단하중의 1/5까지만 걸 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="J-13" data-ch="" data-title="13번">
+<div class="card q" id="qJ-13" data-q="J-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">파단하중 42.8kN 와이어로프로 1,500kg 화물을 2줄걸이, 상부 각도 60°로 들어 올릴 때 ① 안전율 ② 만족 여부와 이유를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1592,7 +1600,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>T = 750 ÷ cos30° = 866.03kg × 9.8 = 8,487N ≒ 8.49kN</li><li>안전율 = 42.8 ÷ 8.49 = 5.04</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>두 줄로 매달면 각 줄이 무게의 절반을 나누어 들지만, 줄이 기울어진 만큼 cos(θ/2)로 나누어 장력이 커진다. 장력을 N으로 바꾼 뒤 파단하중을 장력으로 나누면 안전율이다.</div></div></details>
 </div>
-<div class="card q" data-q="J-14" data-ch="" data-title="14번">
+<div class="card q" id="qJ-14" data-q="J-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">파단하중 42.8kN 와이어로프로 1,200kg 화물을 2줄걸이, 상부 각도 108°로 들어 올릴 때 ① 안전율 ② 만족 여부와 이유를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1601,7 +1609,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>T = (1,200 × 9.8 / 2) ÷ cos54° = 5,880 ÷ 0.5878 ≒ 10,003N ≒ 10kN</li><li>안전율 = 42.8 ÷ 10 = 4.28</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>각도가 108°로 벌어지면 cos54°가 작아져 한 줄 장력이 크게 늘어난다. 그 결과 안전율이 기준(5) 아래로 떨어지므로 이 각도로는 들어 올리면 안 된다.</div></div></details>
 </div>
-<div class="card q" data-q="J-15" data-ch="" data-title="15번">
+<div class="card q" id="qJ-15" data-q="J-15" data-ch="" data-title="15번">
 <div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">980kg 화물을 2줄걸이, 상부 각도 90°로 들어 올릴 때 와이어로프 한 줄에 걸리는 하중(kg)을 구하시오.</p>
 <ul class="opts"></ul>
@@ -1610,7 +1618,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>한 줄이 무게의 절반(490kg)을 맡고, 줄이 수직에서 45° 기울어 있으므로 cos45°로 나눈다. 각도가 클수록 같은 짐이라도 한 줄에 걸리는 힘이 커진다.</div></div></details>
 </div></section>
 <section class="section" id="g11"><div class="section-head"><div class="duality"><span class="n">K</span>전기 안전 (20문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="K-1" data-ch="" data-title="1번">
+<div class="card q" id="qK-1" data-q="K-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">300V 충전부에 물에 젖은 손이 접촉하여 감전 사망하였다. (인체저항 1,000Ω) ① 심실세동전류(mA) ② 통전시간을 구하시오.</p>
 <ul class="opts"></ul>
@@ -1620,7 +1628,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 인체저항은 풀이(1/25 → 40Ω)에 맞는 1,000Ω</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>물에 젖으면 피부 저항이 크게 떨어져 인체저항을 1/25로 본다. 줄어든 저항으로 전류를 구한 뒤, 심실세동전류 공식(I = 165/√T)을 거꾸로 풀면 그 전류가 위험해지는 시간이 나온다.</div></div></details>
 </div>
-<div class="card q" data-q="K-2" data-ch="" data-title="2번">
+<div class="card q" id="qK-2" data-q="K-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">부하전류를 차단할 수 없는 고압·특고압의 ( )를 개로·폐로할 때는 오조작 방지를 위해 무부하임을 확인한 후 조작하도록 주의 표지판 등을 설치해야 한다. 다만 ( )의 전로가 무부하로 되지 않으면 개로·폐로할 수 없도록 연동장치를 설치한 경우는 제외한다.</p>
 <ul class="opts"></ul>
@@ -1628,7 +1636,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 차단기로 먼저 끊고 무부하 확인 후 단로기 조작</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>단로기는 아크를 끄는 장치가 없어서 전류가 흐르는 상태에서 열면 아크가 생겨 사고가 난다. 그래서 무부하인지 확인하고 조작하도록 표지판이나 연동장치를 둔다.</div></div></details>
 </div>
-<div class="card q" data-q="K-3" data-ch="" data-title="3번">
+<div class="card q" id="qK-3" data-q="K-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">감전 우려 충전부 작업 전 전로 차단 절차를 순서대로 쓰시오. (④~⑥은 방전, 검전, 접지)<br>A. 차단장치·단로기 등에 잠금장치 및 꼬리표 부착<br>B. 공급되는 모든 전원을 도면·배선도 등으로 확인<br>C. 전원 차단 후 단로기 등을 개방하고 확인</p>
 <ul class="opts"></ul>
@@ -1636,7 +1644,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 확인 → 차단 → 잠금·꼬리표 → 잔류전하 방전 → 검전기로 정전 확인 → 단락접지</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>정전작업은 어떤 전원이 들어오는지 먼저 확인하고, 끊은 뒤, 다른 사람이 다시 켜지 못하게 잠그고 꼬리표를 단다. 그다음 남은 전하를 빼고 검전한 뒤 접지한다.</div></div></details>
 </div>
-<div class="card q" data-q="K-4" data-ch="" data-title="4번">
+<div class="card q" id="qK-4" data-q="K-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">충전전로의 선간전압에 따른 접근한계거리(cm)를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1646,7 +1654,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 예시 전압: 380V→30, 1.5kV→45, 6.6kV→60, 22.9kV→90, 2~15kV 구간→60, 이후 110, 170. 실제 시험에선 주어진 전압을 위 표에 대입</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>접근한계거리는 전압이 높을수록 공기를 통해 방전이 튈 수 있는 거리가 길어져 함께 늘어난다. 주어진 선간전압이 어느 구간에 속하는지 찾아 표의 값을 쓴다.</div></div></details>
 </div>
-<div class="card q" data-q="K-5" data-ch="" data-title="5번">
+<div class="card q" id="qK-5" data-q="K-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">충전전로 접근한계거리: 선간전압 1.5kV는 ( )cm, 100kV는 ( )cm</p>
 <ul class="opts"></ul>
@@ -1654,7 +1662,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 100kV는 88 초과 121 이하 구간</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>1.5kV는 0.75kV 초과 2kV 이하 구간이라 45cm, 100kV는 88kV 초과 121kV 이하 구간이라 130cm다. 구간의 경계값(초과·이하)을 정확히 보는 것이 핵심이다.</div></div></details>
 </div>
-<div class="card q" data-q="K-6" data-ch="" data-title="6번">
+<div class="card q" id="qK-6" data-q="K-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">누전차단기 접속 시 준수사항 빈칸을 쓰시오.<br>전기기계·기구에 설치하는 누전차단기는 정격감도전류 ( ① )mA 이하, 작동시간 0.03초 이내. 다만 정격전부하전류 ( ② )A 이상 기계·기구는 오작동 방지를 위해 정격감도전류 200mA 이하, 작동시간 0.1초 이내로 할 수 있다.</p>
 <ul class="opts"></ul>
@@ -1662,7 +1670,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 기본 30mA·0.03초, 50A 이상은 200mA·0.1초</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>누전차단기의 기본 기준은 30mA·0.03초다. 다만 큰 부하(50A 이상)는 평소 누설전류가 커서 작은 기준이면 자주 오작동하므로 200mA·0.1초로 완화할 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="K-7" data-ch="" data-title="7번">
+<div class="card q" id="qK-7" data-q="K-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">감전 방지용 누전차단기를 설치해야 하는 전기기계·기구 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1670,42 +1678,42 @@ details.howto .sub{margin-top:6px}
 <p>📌 넷 중 습윤장소만 "저압용", 나머지는 "이동형 또는 휴대형"</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>누전차단기는 감전 위험이 높은 조건에 설치한다. 전압이 높고 들고 다니는 기기, 물기 있는 곳, 철판 위처럼 전기가 잘 통하는 곳, 임시배선을 쓰는 곳이다.</div></div></details>
 </div>
-<div class="card q" data-q="K-8" data-ch="" data-title="8번">
+<div class="card q" id="qK-8" data-q="K-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">접지가 필요한 코드·플러그를 사용하는 전기기계·기구 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 사용전압이 대지전압 150V를 넘는 것 ② 냉장고·세탁기·컴퓨터 및 주변기기 등 고정형 전기기계·기구 ③ 고정형·이동형 또는 휴대형 전동기계·기구 ④ 물 또는 도전성이 높은 곳에서 사용하는 전기기계·기구, 비접지형 콘센트 ⑤ 휴대형 손전등</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>접지는 기기 외함에 전기가 새도 사람 대신 땅으로 흐르게 한다. 전압이 높거나, 사람이 자주 만지거나, 물기 있는 곳에서 쓰는 기기는 접지가 필요하다.</div></div></details>
 </div>
-<div class="card q" data-q="K-9" data-ch="" data-title="9번">
+<div class="card q" id="qK-9" data-q="K-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">전기를 사용하지 않는 설비 중 접지해야 하는 금속체 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 전동식 양중기의 프레임과 궤도 ② 전선이 붙어 있는 비전동식 양중기의 프레임 ③ 고압 이상의 전기를 사용하는 전기기계·기구 주변의 금속제 칸막이·망 및 이와 유사한 장치</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>전기를 쓰지 않는 금속체라도 전선이나 고압 기기 가까이 있으면 누전·유도로 전기가 올 수 있다. 양중기 프레임·궤도와 고압 기기 주변 금속 칸막이가 대표적이다.</div></div></details>
 </div>
-<div class="card q" data-q="K-10" data-ch="" data-title="10번">
+<div class="card q" id="qK-10" data-q="K-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">직접 접촉에 의한 감전 방지 방법 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 충전부가 노출되지 않도록 폐쇄형 외함 구조로 할 것 ② 충전부에 충분한 절연효과가 있는 방호망 또는 절연덮개를 설치할 것 ③ 충전부는 내구성 있는 절연물로 완전히 덮어 감쌀 것 ④ 발전소·변전소·개폐소 등 구획된 장소로 관계 근로자 외 출입을 금지하고 위험표시 등 방호를 강화할 것 ⑤ 전주 위·철탑 위 등 격리되어 있는 장소로서 관계 근로자 외 접근 우려가 없는 장소에 설치할 것</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>직접접촉 감전은 사람이 충전부에 닿아서 생기므로, 충전부를 외함에 넣거나, 덮거나, 감싸거나, 사람이 들어가지 못하는 장소에 두는 것이 방법이다.</div></div></details>
 </div>
-<div class="card q" data-q="K-11" data-ch="" data-title="11번">
+<div class="card q" id="qK-11" data-q="K-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">전기기계·기구 설치 시 고려(주의)사항 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>전기기계·기구의 충분한 전기적 용량 및 기계적 강도, 습기·분진 등 사용장소의 주위 환경, 전기적·기계적 방호수단의 적정성</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>전기기계·기구는 감당할 수 있는 용량과 강도가 충분해야 하고, 습기·분진 같은 주변 환경에 맞아야 하며, 감전·화재를 막는 방호수단이 적절해야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="K-12" data-ch="" data-title="12번">
+<div class="card q" id="qK-12" data-q="K-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">교류아크용접기에 자동전격방지기를 설치해야 하는 장소 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 선박의 이중선체 내부, 밸러스트 탱크, 보일러 내부 등 도전체에 둘러싸인 장소 ② 추락 위험이 있는 높이 2m 이상 장소로 철골 등 도전성이 높은 물체에 근로자가 접촉할 우려가 있는 장소 ③ 근로자가 물·땀 등으로 도전성이 높은 습윤 상태에서 작업하는 장소 (중 2가지)</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>용접봉 홀더의 무부하전압이 위험해지는 것은 몸이 도체에 둘러싸이거나 닿아 있거나 땀·물에 젖어 전류가 잘 흐를 때다. 이런 곳에서는 자동전격방지기가 필수다.</div></div></details>
 </div>
-<div class="card q" data-q="K-13" data-ch="" data-title="13번">
+<div class="card q" id="qK-13" data-q="K-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">내전압용 절연장갑의 등급별 최대사용전압을 쓰시오.<br>00등급: 교류 500V, 직류 ( ③ ) / 0등급: 교류 ( ① ), 직류 1,500V / 4등급: 교류 ( ② ), 직류 ( ④ )</p>
 <ul class="opts"></ul>
@@ -1714,7 +1722,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>등급별 교류(V): 00 500, 0 1,000, 1 7,500, 2 17,000, 3 26,500, 4 36,000</li><li>색상: 00 갈색, 0 빨간색, 1 흰색, 2 노란색, 3 녹색, 4 등색</li><li>🔧 수치: 36,000V</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>절연장갑은 등급이 올라갈수록 견디는 전압이 높아진다. 직류는 같은 전압에서 교류보다 덜 위험해 교류 최대사용전압의 1.5배로 정한다.</div></div></details>
 </div>
-<div class="card q" data-q="K-14" data-ch="" data-title="14번">
+<div class="card q" id="qK-14" data-q="K-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">방폭기호 Ex d IIA T4에서 d와 T4의 의미를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1722,7 +1730,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 온도등급: T1 450, T2 300, T3 200, T4 135, T5 100, T6 85 (℃ 이하)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>방폭기호는 구조(d=내압), 가스 그룹(IIA), 온도등급(T4) 순으로 적는다. T4는 기기 표면이 135℃를 넘지 않는다는 뜻으로, 그보다 발화온도가 높은 가스에 쓸 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="K-15" data-ch="" data-title="15번">
+<div class="card q" id="qK-15" data-q="K-15" data-ch="" data-title="15번">
 <div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">방폭구조의 기호를 쓰시오. ① 안전증 ② 충전 ③ 유입 ④ 특수 ⑤ 내압</p>
 <ul class="opts"></ul>
@@ -1730,7 +1738,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 압력 p, 본질안전 ia/ib, 몰드 m, 비점화 n</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>기호는 구조가 위험을 막는 방식을 나타낸다. 불꽃·과열을 원천적으로 줄이면 e(안전증), 모래 같은 충전물로 채우면 q(충전), 기름에 담그면 o(유입), 그 밖의 특수 방식은 s(특수), 내부 폭발에 견디면 d(내압)다.</div></div></details>
 </div>
-<div class="card q" data-q="K-16" data-ch="" data-title="16번">
+<div class="card q" id="qK-16" data-q="K-16" data-ch="" data-title="16번">
 <div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">방폭 등급(IIA, IIB, IIC)별 최대안전틈새와 대표 가스를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1738,7 +1746,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 틈새가 작을수록 위험한 가스</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>최대안전틈새는 내부 폭발 화염이 틈을 통과해 밖으로 번지지 않는 최대 틈 크기다. 틈새가 작아야 막을 수 있는 가스일수록 화염이 잘 퍼지는 위험한 가스라 IIC로 분류한다.</div></div></details>
 </div>
-<div class="card q" data-q="K-17" data-ch="" data-title="17번">
+<div class="card q" id="qK-17" data-q="K-17" data-ch="" data-title="17번">
 <div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 조건의 방폭구조 표시를 쓰시오. ① 용기가 내부 폭발압력에 견디고 외부 가스에 착화되지 않는 구조 ② 그룹: 잠재적 폭발성 분위기의 전기기기(산업용) ③ 최대안전틈새 0.8mm ④ 최고표면온도 90℃</p>
 <ul class="opts"></ul>
@@ -1746,21 +1754,21 @@ details.howto .sub{margin-top:6px}
 <p>📌 내압 d → 그룹 II → 0.8mm는 IIB → 90℃는 T5(100℃ 이하)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>내압구조는 d, 산업용 기기는 그룹 II, 최대안전틈새 0.8mm는 0.5 초과 0.9 미만이라 IIB, 표면온도 90℃는 100℃ 이하라 T5다. 이를 차례로 이어 적는다.</div></div></details>
 </div>
-<div class="card q" data-q="K-18" data-ch="" data-title="18번">
+<div class="card q" id="qK-18" data-q="K-18" data-ch="" data-title="18번">
 <div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">인체에 대전된 정전기에 의한 화재·폭발 위험이 있을 때 사업주의 조치 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>정전기 대전방지용 안전화 착용, 제전복 착용, 정전기 제전용구 사용, 작업장 바닥 등에 도전성을 갖추도록 하는 것</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>사람 몸에 쌓인 정전기는 손잡이 등을 만질 때 불꽃으로 튈 수 있다. 신발·옷·바닥을 전기가 통하게 해 몸의 전하를 땅으로 흘려 보내는 것이 대책이다.</div></div></details>
 </div>
-<div class="card q" data-q="K-19" data-ch="" data-title="19번">
+<div class="card q" id="qK-19" data-q="K-19" data-ch="" data-title="19번">
 <div class="q-head"><span class="q-num">19번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">정전기 재해 예방대책 빈칸을 쓰시오. 해당 설비에 대하여 확실한 방법으로 ( ㄱ )을 하거나 ( ㄴ ) 재료를 사용하거나 가습 및 점화원이 될 우려가 없는 ( ㄷ )를 사용하는 등 정전기의 발생을 억제하거나 제거하기 위한 조치를 해야 한다.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>ㄱ 접지 ㄴ 도전성 ㄷ 제전장치</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>정전기는 생긴 전하가 빠져나가지 못해 쌓일 때 위험하다. 접지로 땅에 흘리고, 도전성 재료로 쌓이지 않게 하고, 가습·제전장치로 중화한다.</div></div></details>
 </div>
-<div class="card q" data-q="K-20" data-ch="" data-title="20번">
+<div class="card q" id="qK-20" data-q="K-20" data-ch="" data-title="20번">
 <div class="q-head"><span class="q-num">20번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">정전기 발생 방지대책 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1769,7 +1777,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>정전기 대책은 생기지 않게 하거나(유속 제한, 대전방지제), 생긴 것을 빨리 없애는(접지, 가습, 제전기, 도전성 재료) 두 방향이다.</div></div></details>
 </div></section>
 <section class="section" id="g12"><div class="section-head"><div class="duality"><span class="n">L</span>화학설비·위험물·화재 (30문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="L-1" data-ch="" data-title="1번">
+<div class="card q" id="qL-1" data-q="L-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">부탄(C₄H₁₀)에 대해 답하시오. (폭발하한계 1.6vol%) ① 완전연소 화학양론식 ② 완전연소에 필요한 최소산소농도(vol%)</p>
 <ul class="opts"></ul>
@@ -1778,7 +1786,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>부탄 1몰당 산소 6.5몰 (C₄H₁₀ + 6.5O₂ → 4CO₂ + 5H₂O)</li><li>1.6 × 6.5 = 10.4</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>부탄 1몰이 완전히 타려면 산소 6.5몰이 필요하다(정수로 맞추면 2몰 : 13몰). 최소산소농도는 하한계 농도의 연료를 다 태우는 데 필요한 산소 농도이므로 하한계 × 6.5로 구한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-2" data-ch="" data-title="2번">
+<div class="card q" id="qL-2" data-q="L-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">부탄(C₄H₁₀)의 완전연소 화학양론식과 최소산소농도를 구하시오. (폭발하한계 1.8vol%)</p>
 <ul class="opts"></ul>
@@ -1787,7 +1795,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 "1.8 × 13"으로 계산하면 틀림. 13은 부탄 2몰 기준이라 13/2 = 6.5를 곱해야 11.7이 나옴</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>화학양론식을 2몰 기준으로 쓰면 산소가 13몰이지만, MOC는 연료 1몰당 산소 몰수를 곱해야 한다. 13을 2로 나눈 6.5를 하한계에 곱한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-3" data-ch="" data-title="3번">
+<div class="card q" id="qL-3" data-q="L-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">아세틸렌 70%, 클로로벤젠 30% 혼합기체에 대해 ① 아세틸렌의 위험도 ② 혼합기체의 폭발하한계(vol%)를 구하시오. (아세틸렌 2.5~81, 클로로벤젠 1.3~7.1vol%)</p>
 <ul class="opts"></ul>
@@ -1796,7 +1804,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>H = (81 − 2.5) ÷ 2.5 = 31.4</li><li>100/L = 70/2.5 + 30/1.3 = 28 + 23.08 = 51.08 → L = 1.96</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>위험도는 폭발범위 폭을 하한계로 나눈 값이라 클수록 위험하다. 혼합가스 하한계는 르샤틀리에 식으로 각 성분 비율을 하한계로 나눠 더한 뒤 100을 그 합으로 나눈다.</div></div></details>
 </div>
-<div class="card q" data-q="L-4" data-ch="" data-title="4번">
+<div class="card q" id="qL-4" data-q="L-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 분류에 해당하는 위험물질을 하나씩 고르시오. (마그네슘 분말, 등유, 과염소산, 아세틸렌, 리튬) ① 인화성 가스 ② 인화성 액체 ③ 산화성 액체 및 산화성 고체</p>
 <ul class="opts"></ul>
@@ -1804,7 +1812,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 마그네슘 분말·리튬은 물반응성 물질 및 인화성 고체</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>위험물질 분류는 물질의 성질로 정한다. 아세틸렌은 타는 기체, 등유는 타는 액체, 과염소산은 다른 물질을 잘 태우게 하는 산화성 액체다.</div></div></details>
 </div>
-<div class="card q" data-q="L-5" data-ch="" data-title="5번">
+<div class="card q" id="qL-5" data-q="L-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건법상 위험물질의 종류 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1812,7 +1820,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 7종 중 나머지 2개: 폭발성 물질 및 유기과산화물, 물반응성 물질 및 인화성 고체</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>산업안전보건법은 위험물질을 성질에 따라 7종으로 나눈다. 폭발성, 물반응성·인화성 고체, 산화성, 인화성 액체, 인화성 가스, 부식성, 급성 독성이다.</div></div></details>
 </div>
-<div class="card q" data-q="L-6" data-ch="" data-title="6번">
+<div class="card q" id="qL-6" data-q="L-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">LD50을 설명하시오.</p>
 <ul class="opts"></ul>
@@ -1820,14 +1828,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 값이 작을수록 독성이 강하다</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>LD50은 독성을 비교하는 기준으로, 동물의 절반을 죽이는 양이다. 적은 양으로 절반이 죽을수록 독성이 강하므로 값이 작을수록 위험하다.</div></div></details>
 </div>
-<div class="card q" data-q="L-7" data-ch="" data-title="7번">
+<div class="card q" id="qL-7" data-q="L-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">급성 독성 물질 기준의 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① LD50(경구, 쥐) ( )mg/kg 이하 ② LD50(경피, 쥐 또는 토끼) ( )mg/kg 이하 ③ LC50(쥐, 4시간 흡입) 가스 ( )ppm 이하 ④ 증기 ( )mg/L 이하 ⑤ 분진·미스트 ( )mg/L 이하</li></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 300 ② 1,000 ③ 2,500 ④ 10 ⑤ 1</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>급성 독성 기준은 들어오는 경로(입, 피부, 호흡)마다 다르게 정한다. 입보다 피부로 들어올 때 흡수가 적어 경피 기준량이 더 크다.</div></div></details>
 </div>
-<div class="card q" data-q="L-8" data-ch="" data-title="8번">
+<div class="card q" id="qL-8" data-q="L-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">위험물 저장·취급 화학설비의 안전거리를 쓰시오.</p>
 <ul class="opts"><li>① 단위공정시설·설비 상호 간 ② 플레어스택으로부터 단위공정시설·저장탱크·하역설비 ③ 위험물 저장탱크로부터 단위공정시설·보일러·가열로 ④ 사무실·연구실·실험실·정비실·식당으로부터 단위공정시설·저장탱크·하역설비·보일러·가열로</li></ul>
@@ -1835,14 +1843,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 설비끼리 10m, 나머지는 20m</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전거리는 한 설비의 화재·폭발이 다른 곳으로 번지지 않게 하려는 것이다. 공정 설비끼리는 10m, 불꽃이 나는 플레어스택·위험물 저장탱크·사람이 모이는 사무실 등은 20m 이상 떨어뜨린다.</div></div></details>
 </div>
-<div class="card q" data-q="L-9" data-ch="" data-title="9번">
+<div class="card q" id="qL-9" data-q="L-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가스폭발·분진폭발 위험장소에서 내화구조로 해야 하는 부분 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 건축물의 기둥 및 보: 지상 1층(높이 6m 초과 시 6m)까지 ② 위험물 저장·취급용기의 지지대(높이 30cm 이하 제외): 지상으로부터 지지대 끝부분까지 ③ 배관·전선관 등의 지지대: 지상으로부터 1단(높이 6m 초과 시 6m)까지</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>화재가 나면 철골 기둥·보와 지지대가 열에 약해져 무너지면서 피해가 커진다. 그래서 일정 높이까지 내화구조로 감싸 붕괴를 늦춘다.</div></div></details>
 </div>
-<div class="card q" data-q="L-10" data-ch="" data-title="10번">
+<div class="card q" id="qL-10" data-q="L-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가스장치실 설치 시 구조 기준 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1850,7 +1858,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 "가벼운"은 지붕·천장에만 붙는다</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>가스장치실은 가스가 새도 고이지 않게 환기가 잘 되어야 하고, 폭발하면 지붕이 쉽게 날아가 압력이 빠지도록 지붕·천장은 가벼운 불연성 재료를 쓴다.</div></div></details>
 </div>
-<div class="card q" data-q="L-11" data-ch="" data-title="11번">
+<div class="card q" id="qL-11" data-q="L-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">아세틸렌 발생기실 출입구의 문은 ( ) 재료로 하고 두께 ( )mm 이상의 철판이나 그 이상의 강도를 가진 구조로 할 것</p>
 <ul class="opts"></ul>
@@ -1858,7 +1866,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 벽은 불연성 재료로 하고 철근콘크리트 또는 그 이상의 강도. 지붕·천장은 얇은 철판 등 가벼운 불연성 재료</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>발생기실은 폭발 위험이 큰 아세틸렌을 만드는 곳이라 출입문도 불에 타지 않는 재료와 일정 두께 이상의 철판으로 만들어 화재가 번지지 않게 한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-12" data-ch="" data-title="12번">
+<div class="card q" id="qL-12" data-q="L-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">아세틸렌 발생기실 설치 빈칸을 쓰시오. 발생기실은 건물의 ( A )에 위치하고 화기 사용 설비로부터 ( B )m를 초과하는 장소에 설치. 옥외에 설치하면 개구부를 다른 건축물로부터 ( C )m 이상 떨어지게 할 것</p>
 <ul class="opts"></ul>
@@ -1866,21 +1874,21 @@ details.howto .sub{margin-top:6px}
 <p>📌 3m는 "초과", 1.5m는 "이상"</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>아세틸렌은 공기보다 가벼워 위로 올라가므로 발생기실을 건물 최상층에 두면 새어도 다른 층으로 퍼지지 않는다. 화기와 거리를 두어 불이 붙을 위험도 줄인다.</div></div></details>
 </div>
-<div class="card q" data-q="L-13" data-ch="" data-title="13번">
+<div class="card q" id="qL-13" data-q="L-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">아세틸렌 용접장치 사용 시 준수사항 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 발생기의 ( A ), ( B ), ( C ), 매시 평균 가스발생량 및 1회 카바이드 공급량을 발생기실 내 보기 쉬운 장소에 게시 ③ 발생기에서 ( D ) 이내 또는 발생기실에서 ( E ) 이내 장소에서 흡연·화기 사용·불꽃 발생 행위 금지</li></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>A 종류 B 형식 C 제작업체명 D 5m E 3m</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>발생기의 종류·형식·제조사를 게시하면 누구나 장치 특성을 알고 바르게 다룰 수 있다. 발생기 주변은 가스가 샐 수 있어 일정 거리 안에서 불씨를 금지한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-14" data-ch="" data-title="14번">
+<div class="card q" id="qL-14" data-q="L-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전기 설치 빈칸을 쓰시오. 아세틸렌 용접장치의 ( ㄱ )마다 안전기를 설치해야 한다. 다만 ( ㄴ ) 및 ( ㄱ )에서 가장 가까운 ( ㄷ )마다 안전기를 부착하면 예외. 가스용기가 ( ㄹ )와 분리된 장치는 ( ㄹ )와 ( ㅁ ) 사이에 안전기를 설치한다.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>ㄱ 취관 ㄴ 주관 ㄷ 분기관 ㄹ 발생기 ㅁ 가스용기</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전기는 불꽃이 거꾸로 들어오는 역화를 막는다. 불꽃이 나오는 취관마다 다는 것이 원칙이고, 주관과 분기관에 달면 대신할 수 있으며, 발생기와 용기 사이에도 단다.</div></div></details>
 </div>
-<div class="card q" data-q="L-15" data-ch="" data-title="15번">
+<div class="card q" id="qL-15" data-q="L-15" data-ch="" data-title="15번">
 <div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">아세틸렌 용접장치 도관의 점검 항목 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1888,7 +1896,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>⚠️ 확인 필요: 표현은 교재 기준으로 한 번 확인</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>도관은 가스가 흐르는 길이라 새거나 밸브가 제대로 작동하지 않으면 화재로 이어진다. 그래서 밸브 작동, 누출 여부, 역화방지기 접속부를 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-16" data-ch="" data-title="16번">
+<div class="card q" id="qL-16" data-q="L-16" data-ch="" data-title="16번">
 <div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">급성 독성 물질이 지속적으로 외부에 유출될 수 있는 화학설비에는 파열판과 안전밸브를 ( ) 로 설치하고 그 사이에 ( ) 또는 자동경보장치를 설치해야 한다.</p>
 <ul class="opts"></ul>
@@ -1896,21 +1904,21 @@ details.howto .sub{margin-top:6px}
 <p>📌 파열판이 먼저 터지고 안전밸브가 열리는 구조. 사이의 압력지시계로 파열 여부 확인</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>급성독성물질은 조금만 새도 위험해서 안전밸브만 두면 평소 미세 누출이 생길 수 있다. 앞에 파열판을 직렬로 두어 평소에는 완전히 막고, 사이의 압력지시계로 파열 여부를 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-17" data-ch="" data-title="17번">
+<div class="card q" id="qL-17" data-q="L-17" data-ch="" data-title="17번">
 <div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">화학설비 안전기준 빈칸을 쓰시오.<br>파열판과 안전밸브를 ( ① )로 설치하고 그 사이에 ( ② ) 또는 ( ③ )를 설치. 안전밸브가 2개 이상이면 1개는 최고사용압력의 ( ④ )배, 외부화재 대비용은 ( ⑤ )배 이하에서 작동하도록 설치할 수 있다.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 직렬 ② 압력지시계 ③ 자동경보장치 ④ 1.05 ⑤ 1.1</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>파열판과 안전밸브를 직렬로 두면 평소엔 파열판이 완전히 막고, 압력이 오르면 파열판이 먼저 터진 뒤 안전밸브가 압력을 조절한다. 안전밸브를 여러 개 둘 때는 작동 압력을 조금씩 달리해 단계적으로 압력을 뺀다.</div></div></details>
 </div>
-<div class="card q" data-q="L-18" data-ch="" data-title="18번">
+<div class="card q" id="qL-18" data-q="L-18" data-ch="" data-title="18번">
 <div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">배관에 파열판을 설치해야 하는 경우 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 반응폭주 등 급격한 압력 상승 우려가 있는 경우 ② 급성 독성 물질의 누출로 주위 작업환경을 오염시킬 우려가 있는 경우 ③ 운전 중 안전밸브에 이상물질이 누적되어 안전밸브가 작동되지 않을 우려가 있는 경우</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전밸브는 압력이 천천히 오를 때는 잘 작동하지만, 압력이 순식간에 치솟거나 독성 물질이 새면 안 되거나 밸브가 막힐 우려가 있으면 제 역할을 못 한다. 이럴 때 파열판을 쓴다.</div></div></details>
 </div>
-<div class="card q" data-q="L-19" data-ch="" data-title="19번">
+<div class="card q" id="qL-19" data-q="L-19" data-ch="" data-title="19번">
 <div class="q-head"><span class="q-num">19번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">과압 폭발 방지를 위해 안전밸브 또는 파열판을 설치해야 하는 설비 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1918,28 +1926,28 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 압력용기(안지름 150mm 이하 제외), 2개 이상의 밸브로 차단되어 액체 열팽창으로 파열 우려가 있는 배관</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>정변위 압축기·펌프는 출구가 막혀도 계속 밀어내 압력이 끝없이 오를 수 있다. 그래서 최고사용압력을 넘을 수 있는 설비에는 안전밸브나 파열판으로 압력을 뺄 길을 만든다.</div></div></details>
 </div>
-<div class="card q" data-q="L-20" data-ch="" data-title="20번">
+<div class="card q" id="qL-20" data-q="L-20" data-ch="" data-title="20번">
 <div class="q-head"><span class="q-num">20번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전밸브 형식 표시 SF II 1 B의 각 의미를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>S: 증기 분출용 / F: 전량식 / II: 호칭지름 25mm 초과 50mm 이하 / 1: 호칭압력 1MPa 이하 / B: 평형형</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전밸브 형식 기호는 분출 유체, 양정 방식, 호칭지름, 호칭압력, 구조 순서로 적는다. 각 자리의 뜻을 알면 기호만 보고 어떤 밸브인지 알 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="L-21" data-ch="" data-title="21번">
+<div class="card q" id="qL-21" data-q="L-21" data-ch="" data-title="21번">
 <div class="q-head"><span class="q-num">21번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">화학설비·부속설비의 용도를 변경할 때 점검사항 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 설비 내부에 폭발이나 화재 우려가 있는 물질이 있는지 여부 ② 안전밸브·긴급차단장치 및 그 밖의 방호장치 기능의 이상 유무 ③ 냉각·가열·교반·압축·계측·제어장치 기능의 이상 유무</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>용도를 바꾸면 안에 남아 있던 물질이 새 용도와 만나 화재·폭발을 일으키거나, 방호장치·제어장치가 새 조건에 맞지 않을 수 있다. 그래서 잔류 물질과 각 장치 기능을 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-22" data-ch="" data-title="22번">
+<div class="card q" id="qL-22" data-q="L-22" data-ch="" data-title="22번">
 <div class="q-head"><span class="q-num">22번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">용융고열물을 취급하는 설비를 내부에 설치한 건축물의 수증기 폭발 방지 조치 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>바닥은 물이 고이지 않는 구조로 할 것, 지붕·벽·창 등은 빗물이 새어들지 않는 구조로 할 것</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>녹은 고열물이 물과 만나면 물이 순식간에 증기로 바뀌며 부피가 폭발적으로 늘어난다. 그래서 바닥에 물이 고이지 않고 빗물이 새어 들지 않게 건물을 만든다.</div></div></details>
 </div>
-<div class="card q" data-q="L-23" data-ch="" data-title="23번">
+<div class="card q" id="qL-23" data-q="L-23" data-ch="" data-title="23번">
 <div class="q-head"><span class="q-num">23번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">BLEVE(비등액체 팽창증기 폭발)에 영향을 주는 인자 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1947,7 +1955,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 저장된 물질의 종류와 형태, 저장용기의 재질</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>BLEVE의 위력은 탱크 안 물질이 얼마나 뜨겁고 압력이 높은지, 액체·기체 상태가 어떤지, 타거나 독성이 있는지에 따라 달라진다.</div></div></details>
 </div>
-<div class="card q" data-q="L-24" data-ch="" data-title="24번">
+<div class="card q" id="qL-24" data-q="L-24" data-ch="" data-title="24번">
 <div class="q-head"><span class="q-num">24번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">UVCE와 BLEVE를 설명하시오.</p>
 <ul class="opts"></ul>
@@ -1955,7 +1963,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 누출이 먼저면 UVCE, 외부 화재가 먼저면 BLEVE</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>UVCE는 새어 나온 가스가 넓게 퍼져 구름을 이룬 뒤 불이 붙어 터지는 것이고, BLEVE는 탱크가 밖의 불에 달궈져 안의 액체가 끓어 탱크째 터지는 것이다. 무엇이 먼저 일어났는지가 구분 기준이다.</div></div></details>
 </div>
-<div class="card q" data-q="L-25" data-ch="" data-title="25번">
+<div class="card q" id="qL-25" data-q="L-25" data-ch="" data-title="25번">
 <div class="q-head"><span class="q-num">25번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">화재의 종류와 표시색을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1963,7 +1971,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 전기·금속 화재는 물 소화 금지</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>화재는 타는 물질에 따라 나누고, 소화기에 같은 색으로 표시해 알맞은 소화기를 빨리 고르게 한다. 전기·금속 화재에 물을 쓰면 감전되거나 폭발적으로 번지므로 금지한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-26" data-ch="" data-title="26번">
+<div class="card q" id="qL-26" data-q="L-26" data-ch="" data-title="26번">
 <div class="q-head"><span class="q-num">26번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가연성 물질이 있는 장소에서 화재위험작업 시 사업주 준수사항 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1971,7 +1979,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 용접불티 비산방지덮개·용접방화포 등 불꽃·불티 비산방지조치, 인화성 액체 증기·인화성 가스가 남지 않도록 환기, 작업근로자 화재예방 및 피난 교육 등 비상조치</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>용접·절단 같은 화기작업은 불티가 멀리 날아가 주변 가연물에 불을 붙인다. 그래서 작업 절차를 정하고, 주변 위험물을 파악해 방호하며, 소화기를 미리 갖춘다.</div></div></details>
 </div>
-<div class="card q" data-q="L-27" data-ch="" data-title="27번">
+<div class="card q" id="qL-27" data-q="L-27" data-ch="" data-title="27번">
 <div class="q-head"><span class="q-num">27번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">통풍·환기가 충분하지 않고 가연물이 있는 건축물·설비 내부에서 화재위험작업을 할 때 화재예방 조치를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1979,14 +1987,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 26번과 같은 조항(제241조)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>환기가 잘 안 되는 실내에서는 인화성 증기가 쌓여 작은 불티로도 폭발할 수 있다. 그래서 위험물 현황을 파악하고, 증기가 남지 않게 환기하며, 비상 시 피난 교육을 한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-28" data-ch="" data-title="28번">
+<div class="card q" id="qL-28" data-q="L-28" data-ch="" data-title="28번">
 <div class="q-head"><span class="q-num">28번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">용접·용단 작업 시 화재감시자를 배치해야 하는 장소 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 작업반경 11m 이내에 건물구조 자체나 내부(개구부 등으로 개방된 부분 포함)에 가연성물질이 있는 장소 ② 작업반경 11m 이내 바닥 하부에 가연성물질이 11m 이상 떨어져 있지만 불꽃에 의해 쉽게 발화될 우려가 있는 장소 ③ 가연성물질이 금속으로 된 칸막이·벽·천장 또는 지붕의 반대쪽 면에 인접해 있어 열전도나 열복사에 의해 발화될 우려가 있는 장소</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>용접 불티는 11m 정도까지 날아갈 수 있어, 그 범위 안이나 벽 너머에 가연물이 있으면 화재감시자를 두어 불이 붙는지 지켜보게 한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-29" data-ch="" data-title="29번">
+<div class="card q" id="qL-29" data-q="L-29" data-ch="" data-title="29번">
 <div class="q-head"><span class="q-num">29번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">물질안전보건자료(MSDS) 작성·제출 제외 대상 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -1994,7 +2002,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 다른 법으로 관리되는 것. 그 밖에 의약품, 마약류, 화장품, 식품·식품첨가물, 사료, 화약류, 건강기능식품, 의료기기 등</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>MSDS는 산업안전보건법으로 관리하는 화학물질 정보 자료다. 방사성 물질, 폐기물, 농약, 비료처럼 다른 법에서 따로 관리하는 물질은 중복을 피하려고 제외한다.</div></div></details>
 </div>
-<div class="card q" data-q="L-30" data-ch="" data-title="30번">
+<div class="card q" id="qL-30" data-q="L-30" data-ch="" data-title="30번">
 <div class="q-head"><span class="q-num">30번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">MSDS 작성 항목 16가지 중 다음을 제외한 4가지를 쓰시오. (제외: 화학제품과 회사 정보, 구성성분 명칭 및 함유량, 취급 및 저장방법, 물리화학적 특성, 폐기 시 주의사항, 그 밖의 참고사항)</p>
 <ul class="opts"></ul>
@@ -2003,7 +2011,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>MSDS 16개 항목은 물질 정보 → 위험성 → 대처 방법 → 취급·노출 → 성질 → 독성·환경 → 폐기·운송·법규 순서로 구성된다. 남은 항목을 이 흐름에 맞춰 떠올리면 된다.</div></div></details>
 </div></section>
 <section class="section" id="g13"><div class="section-head"><div class="duality"><span class="n">M</span>건설 안전 (28문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="M-1" data-ch="" data-title="1번">
+<div class="card q" id="qM-1" data-q="M-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">비상구 설치 기준의 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 비상구의 너비 ( )m 이상, 높이 ( )m 이상 ② 출입구와 같은 방향에 있지 않고 출입구로부터 ( )m 이상 떨어져 있을 것 ③ 작업장 각 부분에서 하나의 비상구 또는 출입구까지 수평거리 ( )m 이하</li></ul>
@@ -2011,7 +2019,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 0.75·1.5·3은 "이상", 50만 "이하". 비상구 문은 피난 방향으로 열리고 실내에서 항상 열 수 있는 구조</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>비상구는 화재 등 비상시 빠르게 대피하는 출구라 사람이 지나갈 크기여야 하고, 출입구와 함께 막히지 않게 떨어뜨려 두며, 어디서든 가까이 있어야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="M-2" data-ch="" data-title="2번">
+<div class="card q" id="qM-2" data-q="M-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설통로 설치 시 준수사항을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2020,21 +2028,21 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>30° 이하 원칙의 예외: 계단을 설치하거나 높이 2m 미만으로 튼튼한 손잡이를 설치한 경우</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>통로가 가파르면 미끄러지거나 넘어지기 쉬워 30° 이하로 하고, 15°를 넘으면 미끄럼 방지 구조로 만든다. 계단이나 짧은 통로에 손잡이를 단 경우는 예외다.</div></div></details>
 </div>
-<div class="card q" data-q="M-3" data-ch="" data-title="3번">
+<div class="card q" id="qM-3" data-q="M-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설통로 구조의 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 경사가 ( )°를 초과하면 미끄러지지 않는 구조 ② 수직갱 통로 길이 15m 이상이면 ( )m 이내마다 계단참 ③ 높이 8m 이상 비계다리는 ( )m 이내마다 계단참</li></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 15 ② 10 ③ 7</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>긴 통로는 중간에 계단참을 두어 쉬어 가게 하고, 넘어져도 끝까지 굴러떨어지지 않게 한다. 수직갱은 15m 이상이면 10m마다, 비계다리는 8m 이상이면 7m마다 둔다.</div></div></details>
 </div>
-<div class="card q" data-q="M-4" data-ch="" data-title="4번">
+<div class="card q" id="qM-4" data-q="M-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설통로 설치기준 빈칸을 쓰시오. 경사 ( A )° 이하, ( B )° 초과 시 미끄럼 방지, 추락 위험 장소에 ( C ) 설치, 수직갱 15m 이상이면 ( D )m 이내마다 계단참, 높이 8m 이상 비계다리는 ( E )m 이내마다 계단참</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>A 30 B 15 C 안전난간 D 10 E 7</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>가설통로 기준은 경사(30°, 15°), 추락 방지(안전난간), 계단참 간격(10m, 7m)의 세 가지 묶음이다.</div></div></details>
 </div>
-<div class="card q" data-q="M-5" data-ch="" data-title="5번">
+<div class="card q" id="qM-5" data-q="M-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사다리식 통로 설치 시 준수사항 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2042,21 +2050,21 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 사다리 상단은 걸쳐놓은 지점에서 60cm 이상 올라가게, 길이 10m 이상이면 5m 이내마다 계단참, 기울기 75° 이하(고정식 90° 이하)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>사다리는 튼튼하고 상하지 않은 재료로, 발판 간격이 일정하고, 발을 디딜 공간(벽과 15cm)과 폭(30cm)이 있어야 하며, 넘어지거나 미끄러지지 않아야 한다.</div></div></details>
 </div>
-<div class="card q" data-q="M-6" data-ch="" data-title="6번">
+<div class="card q" id="qM-6" data-q="M-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">고정식 사다리식 통로 빈칸을 쓰시오. 높이 10m 이상이면 ( )m 이내마다 계단참, 기울기 ( )° 이하, 높이 7m 이상이면 바닥에서 ( )m 되는 지점부터 등받이울 설치</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>5, 90, 2.5</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>고정식 사다리는 거의 수직으로 오르므로 높이 10m 이상이면 5m마다 쉬는 곳을 두고, 7m 이상이면 등받이울로 뒤로 떨어지는 것을 막는다.</div></div></details>
 </div>
-<div class="card q" data-q="M-7" data-ch="" data-title="7번">
+<div class="card q" id="qM-7" data-q="M-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">계단 설치 기준의 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 계단 및 계단참은 매㎡당 ( A )kg 이상 하중에 견디는 강도, 안전율 ( B ) 이상 ② 계단 폭 ( C )m 이상 ③ 높이 ( D )m 초과 계단은 높이 3m 이내마다 진행방향 길이 1.2m 이상 계단참 ④ 높이 ( E )m 이상 계단의 개방된 측면에 안전난간</li></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>A 500 B 4 C 1 D 3 E 1</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>계단은 여러 사람이 짐을 들고 다녀도 무너지지 않게 500kg/m²와 안전율 4를 요구한다. 높은 계단은 중간에 계단참을 두고, 1m 이상이면 옆에 난간을 단다.</div></div></details>
 </div>
-<div class="card q" data-q="M-8" data-ch="" data-title="8번">
+<div class="card q" id="qM-8" data-q="M-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전난간 구조 빈칸을 쓰시오. 상부 난간대는 바닥면 등으로부터 ( )cm 이상, 난간대는 지름 ( )cm 이상 금속제 파이프, 가장 취약한 지점에서 ( )kg 이상의 하중에 견딜 것</p>
 <ul class="opts"></ul>
@@ -2064,14 +2072,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 발끝막이판은 바닥면 등으로부터 10cm 이상, 120cm 이상이면 중간 난간대를 2단 이상 균등 설치(난간 상하 간격 60cm 이하)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>안전난간은 사람이 기대거나 넘어질 때 몸을 막아야 하므로 허리 이상 높이(90cm 이상)와 100kg 하중에 견디는 강도가 필요하다. 발끝막이판은 물건이 굴러떨어지는 것을 막는다.</div></div></details>
 </div>
-<div class="card q" data-q="M-9" data-ch="" data-title="9번">
+<div class="card q" id="qM-9" data-q="M-9" data-ch="" data-title="9번">
 <div class="q-head"><span class="q-num">9번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">이동식비계 조립 시 준수사항 빈칸을 쓰시오.</p>
 <ul class="opts"><li>① 바퀴는 브레이크·쐐기 등으로 고정하고 견고한 시설물에 고정하거나 ( )를 설치 ② ( )를 견고하게 설치 ③ 비계 최상부 작업 시 ( ) 설치 ④ 작업발판은 항상 ( )를 유지하고 안전난간을 딛고 작업 금지 ⑤ 작업발판 최대적재하중 ( )kg 초과 금지</li></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 아웃트리거(전도방지용 지지대) ② 승강용 사다리 ③ 안전난간 ④ 수평 ⑤ 250</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>이동식비계는 바퀴 위에 서 있어 흔들리거나 넘어지기 쉽다. 그래서 바퀴를 고정하고, 아웃트리거로 받치고, 사다리로 오르내리며, 최상부엔 안전난간을 두고, 올릴 무게를 제한한다.</div></div></details>
 </div>
-<div class="card q" data-q="M-10" data-ch="" data-title="10번">
+<div class="card q" id="qM-10" data-q="M-10" data-ch="" data-title="10번">
 <div class="q-head"><span class="q-num">10번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">이동식비계 조립 시 준수사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2079,14 +2087,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 바퀴는 브레이크·쐐기로 고정하고 아웃트리거 설치</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>이동식비계 사고는 넘어지거나 발판에서 떨어지는 경우가 대부분이다. 사다리를 단단히 달고, 위에서는 안전난간을 쓰며, 무게를 250kg 이하로 하고, 발판 위에 다른 받침을 올리지 않는다.</div></div></details>
 </div>
-<div class="card q" data-q="M-11" data-ch="" data-title="11번">
+<div class="card q" id="qM-11" data-q="M-11" data-ch="" data-title="11번">
 <div class="q-head"><span class="q-num">11번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">말비계 조립 시 사업주 준수사항을 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 지주부재 하단에 미끄럼 방지장치를 하고, 근로자가 양측 끝부분에 올라서서 작업하지 않도록 할 것 ② 지주부재와 수평면의 기울기를 75° 이하로 하고, 지주부재 사이를 고정시키는 보조부재를 설치할 것 ③ 말비계 높이가 2m를 초과하면 작업발판 폭을 40cm 이상으로 할 것</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>말비계는 다리가 미끄러지거나 벌어져 넘어지는 사고가 많다. 다리 끝에 미끄럼 방지장치를 달고, 기울기를 75° 이하로 하고 보조부재로 묶으며, 높으면 발판 폭을 넓힌다.</div></div></details>
 </div>
-<div class="card q" data-q="M-12" data-ch="" data-title="12번">
+<div class="card q" id="qM-12" data-q="M-12" data-ch="" data-title="12번">
 <div class="q-head"><span class="q-num">12번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">악천후로 작업을 중지한 후 또는 비계를 조립·해체·변경한 후 작업 재개 전 점검·보수할 사항 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2094,35 +2102,35 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 로프의 부착 상태 및 매단 장치의 흔들림 상태</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>악천후나 조립·변경 뒤에는 비계 연결부가 풀리거나 기둥이 가라앉았을 수 있다. 그래서 다시 쓰기 전에 발판, 연결부, 철물, 손잡이, 기둥 상태를 점검한다.</div></div></details>
 </div>
-<div class="card q" data-q="M-13" data-ch="" data-title="13번">
+<div class="card q" id="qM-13" data-q="M-13" data-ch="" data-title="13번">
 <div class="q-head"><span class="q-num">13번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">작업발판 일체형 거푸집의 종류 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>갱폼, 슬립폼, 클라이밍폼, 터널라이닝폼</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>작업발판 일체형 거푸집은 거푸집과 작업발판이 하나로 되어 있어 높은 곳에서도 발판을 따로 설치하지 않고 이동하며 쓸 수 있다. 벽체용 갱폼, 연속 타설용 슬립폼, 스스로 올라가는 클라이밍폼, 터널용 라이닝폼이 있다.</div></div></details>
 </div>
-<div class="card q" data-q="M-14" data-ch="" data-title="14번">
+<div class="card q" id="qM-14" data-q="M-14" data-ch="" data-title="14번">
 <div class="q-head"><span class="q-num">14번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">콘크리트 타설작업 시 준수사항 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 당일 작업 시작 전 거푸집동바리 등의 변형·변위 및 지반 침하 유무를 점검하고 이상이 있으면 보수할 것 ② 작업 중 거푸집동바리 등의 변형·변위·침하 유무를 감시하는 감시자를 배치하고 이상 시 작업을 중지하고 근로자를 대피시킬 것 ③ 거푸집 붕괴 위험이 있으면 충분한 보강조치를 할 것 ④ 설계도서상 콘크리트 양생기간을 준수하여 거푸집동바리 등을 해체할 것 ⑤ 편심이 발생하지 않도록 골고루 분산하여 타설할 것</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>콘크리트를 부을 때는 거푸집과 동바리에 큰 하중이 걸려 무너질 수 있다. 그래서 작업 전에 점검하고, 작업 중 감시자를 두며, 한쪽으로 쏠리지 않게 골고루 붓고, 충분히 굳은 뒤 해체한다.</div></div></details>
 </div>
-<div class="card q" data-q="M-15" data-ch="" data-title="15번">
+<div class="card q" id="qM-15" data-q="M-15" data-ch="" data-title="15번">
 <div class="q-head"><span class="q-num">15번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">추락방호망 설치 빈칸을 쓰시오. 작업면에서 망 설치지점까지 수직거리는 ( )m 초과 금지, 망의 처짐은 짧은 변 길이의 ( )% 이상, 건축물 바깥쪽 설치 시 내민 길이는 벽면에서 ( )m 이상. 그물코 20mm 이하면 낙하물방지망으로 본다.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>10, 12, 3</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>방호망과 작업면 사이가 너무 멀면 떨어지는 속도가 커져 망이 견디지 못한다. 망이 적당히 처져야 충격을 흡수하고, 건물 밖으로 충분히 내밀어야 떨어지는 사람을 받을 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="M-16" data-ch="" data-title="16번">
+<div class="card q" id="qM-16" data-q="M-16" data-ch="" data-title="16번">
 <div class="q-head"><span class="q-num">16번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">낙하물방지망 설치 빈칸을 쓰시오. ① 높이 ( A )m 이내마다 설치, 내민 길이는 벽면에서 ( B )m 이상 ② 수평면과의 각도 ( C )° 이상 ( D )° 이하</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>A 10 B 2 C 20 D 30</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>낙하물방지망은 위에서 떨어지는 물체를 중간에서 받아 아래 사람을 보호한다. 일정 높이마다 설치하고, 충분히 내밀며, 약간 위로 기울여 물체가 굴러떨어지지 않게 한다.</div></div></details>
 </div>
-<div class="card q" data-q="M-17" data-ch="" data-title="17번">
+<div class="card q" id="qM-17" data-q="M-17" data-ch="" data-title="17번">
 <div class="q-head"><span class="q-num">17번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">철골작업을 중지해야 하는 기상조건 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2130,28 +2138,28 @@ details.howto .sub{margin-top:6px}
 <p>📌 철골은 "이상", 타워크레인 풍속은 "초과"</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>철골 작업은 높은 곳에서 하므로 바람, 비, 눈이 오면 미끄러지거나 부재가 흔들려 추락 위험이 크다. 그래서 이 세 기상 조건으로 작업 중지 기준을 정했다.</div></div></details>
 </div>
-<div class="card q" data-q="M-18" data-ch="" data-title="18번">
+<div class="card q" id="qM-18" data-q="M-18" data-ch="" data-title="18번">
 <div class="q-head"><span class="q-num">18번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">굴착면 높이 2m 이상 지반 굴착 작업계획서에 포함할 사항 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 굴착방법 및 순서, 토사 반출방법 ② 필요한 인원 및 장비 사용계획 ③ 매설물 등에 대한 이설·보호대책 ④ 사업장 내 연락방법 및 신호방법 ⑤ 흙막이 지보공 설치방법 및 계측계획 ⑥ 작업지휘자의 배치계획 (중 5가지)</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>굴착 작업계획서는 어떻게 파고, 누가 무엇으로 하며, 땅속 매설물은 어떻게 보호하고, 흙막이와 계측은 어떻게 하며, 누가 지휘하는지를 미리 정하는 문서다.</div></div></details>
 </div>
-<div class="card q" data-q="M-19" data-ch="" data-title="19번">
+<div class="card q" id="qM-19" data-q="M-19" data-ch="" data-title="19번">
 <div class="q-head"><span class="q-num">19번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이 지보공의 정기점검 사항을 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 부재의 손상·변형·부식·변위 및 탈락의 유무와 상태 ② 버팀대의 긴압 정도 ③ 부재의 접속부·부착부 및 교차부의 상태 ④ 침하의 정도</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>흙막이 지보공은 주변 흙의 압력을 받아 변형되거나 풀릴 수 있다. 그래서 부재 상태, 버팀대가 얼마나 팽팽한지, 연결부 상태, 침하 정도를 정기적으로 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="M-20" data-ch="" data-title="20번">
+<div class="card q" id="qM-20" data-q="M-20" data-ch="" data-title="20번">
 <div class="q-head"><span class="q-num">20번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">보일링 방지대책으로 맞는 것을 고르시오. 흙막이벽 배면 지하수위 (저하 / 상승), 근입깊이 (얕게 / 깊게), 굴착저면 (그라우팅 / 드레인)</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>저하, 깊게, 그라우팅</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>보일링은 흙막이 안팎의 물높이 차이가 모래를 밀어 올리는 현상이다. 바깥 지하수위를 낮추고, 흙막이를 깊이 박아 물길을 길게 하고, 바닥을 그라우팅으로 굳히면 막을 수 있다.</div></div></details>
 </div>
-<div class="card q" data-q="M-21" data-ch="" data-title="21번">
+<div class="card q" id="qM-21" data-q="M-21" data-ch="" data-title="21번">
 <div class="q-head"><span class="q-num">21번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">보일링 현상 방지대책 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2159,28 +2167,28 @@ details.howto .sub{margin-top:6px}
 <p>📌 보일링은 사질토, 히빙은 연약 점토</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>보일링은 수위 차로 생긴 물의 흐름이 원인이라, 수위 차를 줄이거나(지하수위 저하), 물이 돌아오는 길을 길게 하거나(근입깊이 증가), 바닥 흙을 굳히는(약액주입) 방법으로 막는다.</div></div></details>
 </div>
-<div class="card q" data-q="M-22" data-ch="" data-title="22번">
+<div class="card q" id="qM-22" data-q="M-22" data-ch="" data-title="22번">
 <div class="q-head"><span class="q-num">22번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">잠함·우물통 내부에서 굴착작업 시 급격한 침하에 의한 위험 방지 조치 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>침하관계도에 따라 굴착방법 및 재하량 등을 정할 것, 바닥으로부터 천장 또는 보까지의 높이는 1.8m 이상으로 할 것</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>잠함·우물통은 굴착하면서 자체 무게로 가라앉는 구조라 갑자기 크게 내려앉으면 안의 사람이 끼일 수 있다. 침하관계도에 따라 파고, 내부 높이를 1.8m 이상 확보한다.</div></div></details>
 </div>
-<div class="card q" data-q="M-23" data-ch="" data-title="23번">
+<div class="card q" id="qM-23" data-q="M-23" data-ch="" data-title="23번">
 <div class="q-head"><span class="q-num">23번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">잠함·우물통·수직갱 등의 내부에서 굴착작업 시 사업주 조치 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 산소 결핍 우려가 있으면 산소농도를 측정하는 사람을 지명하여 측정하게 할 것 ② 근로자가 안전하게 오르내리기 위한 설비를 설치할 것 ③ 굴착 깊이가 20m를 초과하면 작업장소와 외부와의 연락을 위한 통신설비 등을 설치할 것</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>좁고 깊은 내부에서는 산소가 부족하기 쉽고, 오르내리기 어려우며, 밖과 연락이 끊기기 쉽다. 그래서 산소농도를 재고, 승강설비와 통신설비를 갖춘다.</div></div></details>
 </div>
-<div class="card q" data-q="M-24" data-ch="" data-title="24번">
+<div class="card q" id="qM-24" data-q="M-24" data-ch="" data-title="24번">
 <div class="q-head"><span class="q-num">24번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">터널 강아치 지보공 조립 시 준수사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>① 조립간격은 조립도에 따를 것 ② 주재가 아치작용을 충분히 할 수 있도록 쐐기를 박는 등 필요한 조치를 할 것 ③ 연결볼트 및 띠장 등을 사용하여 주재 상호간을 튼튼하게 연결할 것 ④ 터널 등의 출입구 부분에는 받침대를 설치할 것 ⑤ 낙하물이 근로자에게 위험을 미칠 우려가 있으면 널판 등을 설치할 것 (중 4가지)</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>강아치 지보공은 아치 모양으로 주변 흙의 압력을 받아 낸다. 조립도대로 세우고, 쐐기로 아치가 제대로 힘을 받게 하며, 주재끼리 단단히 묶고, 출입구에는 받침대를 둔다.</div></div></details>
 </div>
-<div class="card q" data-q="M-25" data-ch="" data-title="25번">
+<div class="card q" id="qM-25" data-q="M-25" data-ch="" data-title="25번">
 <div class="q-head"><span class="q-num">25번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">공사용 가설도로 설치 시 준수사항을 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2189,7 +2197,7 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 ②는 "울타리 설치"가 아니라 규칙 문구대로 "높이 차이 → 바리케이드 또는 연석"</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>가설도로는 무거운 장비가 다니므로 튼튼해야 하고, 작업장과 높이 차이가 있으면 차량이 떨어지지 않게 바리케이드나 연석을 둔다. 물이 고이면 미끄러지므로 배수도 챙긴다.</div></div></details>
 </div>
-<div class="card q" data-q="M-26" data-ch="" data-title="26번">
+<div class="card q" id="qM-26" data-q="M-26" data-ch="" data-title="26번">
 <div class="q-head"><span class="q-num">26번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건축물 해체 작업계획서에 포함할 사항 4가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2197,14 +2205,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 가설설비·방호설비·환기설비 및 살수·방화설비 등의 방법, 해체작업용 화약류 등의 사용계획서</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>해체 작업은 순서를 잘못 정하면 구조물이 예상과 다르게 무너진다. 그래서 해체 방법과 순서, 사용할 기계, 해체물 처리, 현장 연락방법을 계획서에 담는다.</div></div></details>
 </div>
-<div class="card q" data-q="M-27" data-ch="" data-title="27번">
+<div class="card q" id="qM-27" data-q="M-27" data-ch="" data-title="27번">
 <div class="q-head"><span class="q-num">27번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">부두·안벽 등 하역작업 장소의 조치사항 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>작업장 및 통로의 위험한 부분에는 안전하게 작업할 수 있는 조명을 유지할 것, 부두 또는 안벽의 선을 따라 통로를 설치하는 경우 폭을 90cm 이상으로 할 것, 육상의 통로 및 작업장소로서 다리 또는 선거 갑문을 넘는 보도 등의 위험한 부분에는 안전난간 또는 울타리 등을 설치할 것</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>부두·안벽은 물에 빠지거나 걸려 넘어지는 사고가 많다. 그래서 위험한 곳은 밝게 비추고, 통로 폭을 충분히 확보하며, 다리나 갑문 위 위험 부분에는 난간을 단다.</div></div></details>
 </div>
-<div class="card q" data-q="M-28" data-ch="" data-title="28번">
+<div class="card q" id="qM-28" data-q="M-28" data-ch="" data-title="28번">
 <div class="q-head"><span class="q-num">28번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">벌목작업 시 위험방지 준수사항 2가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2213,7 +2221,7 @@ details.howto .sub{margin-top:6px}
 <div class="exp"><span class="exp-tag">💡 해설</span>나무가 쓰러지는 방향을 조절하려면 쓰러질 쪽에 홈(수구)을 정해진 각도와 깊이로 파야 한다. 예상과 다르게 쓰러질 때를 대비해 대피로를 미리 정해 둔다.</div></div></details>
 </div></section>
 <section class="section" id="g14"><div class="section-head"><div class="duality"><span class="n">N</span>보건·작업환경 (8문항)</div><div class="section-line"></div></div>
-<div class="card q" data-q="N-1" data-ch="" data-title="1번">
+<div class="card q" id="qN-1" data-q="N-1" data-ch="" data-title="1번">
 <div class="q-head"><span class="q-num">1번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">소음작업은 1일 8시간 기준 ( ① )dB 이상의 소음이 발생하는 작업. 강렬한 소음작업은 90dB 이상이 1일 ( ② )시간 이상, 100dB 이상이 1일 ( ③ )시간 이상 발생하는 작업</p>
 <ul class="opts"></ul>
@@ -2222,14 +2230,14 @@ details.howto .sub{margin-top:6px}
 <ul class="chk"><li>🔧 "10dB 오르면 1/4"보다 "5dB마다 절반"으로 외우는 편이 정확</li></ul>
 <div class="exp"><span class="exp-tag">💡 해설</span>소음은 클수록 귀 손상이 빨라져, 85dB 이상이면 소음작업으로 관리한다. 강렬한 소음작업은 5dB 커질 때마다 허용 시간이 절반으로 줄어드는 원리로 기준이 정해져 있다.</div></div></details>
 </div>
-<div class="card q" data-q="N-2" data-ch="" data-title="2번">
+<div class="card q" id="qN-2" data-q="N-2" data-ch="" data-title="2번">
 <div class="q-head"><span class="q-num">2번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">작업면 조도 기준을 쓰시오. (초정밀, 정밀, 보통, 그 밖의 작업)</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>초정밀 750lux 이상, 정밀 300lux 이상, 보통 150lux 이상, 그 밖의 작업 75lux 이상</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>작업이 정밀할수록 작은 부분까지 보아야 하므로 더 밝은 조도가 필요하다. 어두우면 잘못 보거나 눈이 피로해 사고와 실수가 늘어난다.</div></div></details>
 </div>
-<div class="card q" data-q="N-3" data-ch="" data-title="3번">
+<div class="card q" id="qN-3" data-q="N-3" data-ch="" data-title="3번">
 <div class="q-head"><span class="q-num">3번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">도급인이 제공하거나 이용에 협조해야 하는 위생시설 4가지를 쓰시오. (세면·목욕시설 제외)</p>
 <ul class="opts"></ul>
@@ -2237,7 +2245,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 쉬고 → 빨고 → 갈아입고 → 잔다</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>도급인은 같은 장소에서 일하는 수급인 근로자도 기본 위생시설을 쓸 수 있게 해야 한다. 쉬고, 빨래하고, 옷을 갈아입고, 잠자는 시설이 여기에 해당한다.</div></div></details>
 </div>
-<div class="card q" data-q="N-4" data-ch="" data-title="4번">
+<div class="card q" id="qN-4" data-q="N-4" data-ch="" data-title="4번">
 <div class="q-head"><span class="q-num">4번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">근로자가 반복하여 계속적으로 중량물을 취급하는 작업의 작업 시작 전 점검사항 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2245,14 +2253,14 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 그 밖에 하역운반기계 등의 적절한 사용방법</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>중량물을 반복해서 들면 허리를 다치기 쉽고, 물건이 날리거나 습기·열로 위험해지는 물질도 있다. 그래서 올바른 자세와 복장, 보호구, 위험한 중량물의 취급방법을 작업 전에 확인한다.</div></div></details>
 </div>
-<div class="card q" data-q="N-5" data-ch="" data-title="5번">
+<div class="card q" id="qN-5" data-q="N-5" data-ch="" data-title="5번">
 <div class="q-head"><span class="q-num">5번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">관리대상 유해물질 취급 작업장에 게시해야 할 사항 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
 <details class="ans"><summary><span class="o">정답 보기</span><span class="c">정답 닫기</span></summary><div class="ans-body"><p>✅ <b>관리대상 유해물질의 명칭, 인체에 미치는 영향, 취급상 주의사항, 착용해야 할 보호구, 응급조치와 긴급 방재 요령</b></p>
 <div class="exp"><span class="exp-tag">💡 해설</span>게시 사항은 작업자가 그 물질이 무엇이고, 몸에 어떤 해를 주며, 어떻게 다루고, 무엇을 써야 하며, 사고 때 어떻게 할지 바로 알게 하려는 것이다.</div></div></details>
 </div>
-<div class="card q" data-q="N-6" data-ch="" data-title="6번">
+<div class="card q" id="qN-6" data-q="N-6" data-ch="" data-title="6번">
 <div class="q-head"><span class="q-num">6번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">관리대상 유해물질 취급 작업장에 게시해야 할 사항 5가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2260,7 +2268,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 5번과 같은 문제 (두 번 출제)</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>5번과 같은 문제다. 물질 이름 → 건강 영향 → 취급 주의 → 보호구 → 응급조치 순서로 외우면 빠뜨리지 않는다.</div></div></details>
 </div>
-<div class="card q" data-q="N-7" data-ch="" data-title="7번">
+<div class="card q" id="qN-7" data-q="N-7" data-ch="" data-title="7번">
 <div class="q-head"><span class="q-num">7번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">국소배기장치 후드 설치 시 준수사항 3가지를 쓰시오.</p>
 <ul class="opts"></ul>
@@ -2268,7 +2276,7 @@ details.howto .sub{margin-top:6px}
 <p>📌 그 밖에: 외부식 또는 리시버식 후드는 해당 분진 등의 발산원에 가장 가까운 위치에 설치</p>
 <div class="exp"><span class="exp-tag">💡 해설</span>후드는 유해물질이 퍼지기 전에 바로 그 자리에서 빨아들여야 효과가 있다. 그래서 발생원마다 두고, 발생 형태에 맞게 만들며, 발생원을 감싸는 포위식이 가장 좋다.</div></div></details>
 </div>
-<div class="card q" data-q="N-8" data-ch="" data-title="8번">
+<div class="card q" id="qN-8" data-q="N-8" data-ch="" data-title="8번">
 <div class="q-head"><span class="q-num">8번</span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">국소배기장치 덕트 설치 시 준수사항 3가지를 쓰시오. (이동식 제외)</p>
 <ul class="opts"></ul>
@@ -2313,11 +2321,28 @@ details.howto .sub{margin-top:6px}
     document.querySelectorAll('details.ans').forEach(function(d){d.open=on});
   });
   // 채점: 보기를 누르면 data-a(정답 번호)와 비교, 보기·정답 키가 없으면 정답 안의 맞음/틀림 버튼
-  var gkey='sanan-grade-'+(document.body.dataset.store||document.body.dataset.subject),graded={},score=document.getElementById('score'),onlyWrong=document.getElementById('onlyWrong');
+  var store=document.body.dataset.store||document.body.dataset.subject;
+  var gkey='sanan-grade-'+store,graded={},score=document.getElementById('score'),wrongSel=document.getElementById('wrongSel');
   try{graded=JSON.parse(localStorage.getItem(gkey)||'{}')}catch(e){}
   Object.keys(graded).forEach(function(id){if(!ids[id])delete graded[id]});
   function gsave(){try{localStorage.setItem(gkey,JSON.stringify(graded))}catch(e){}}
-  var resetArm=0,gReset=document.getElementById('gReset');
+  // 오답 기록(sanan-hist-*): 문제별 {w:틀린 횟수,o:맞힌 횟수,s:틀린 뒤 연속으로 맞힌 횟수,d:다음 복습 시각(ms),m:졸업}
+  // 틀리면 바로 복습 대상, 다시 맞힐 때마다 복습 간격을 1→3→7→14→30일로 늘리고 그 뒤 맞히면 졸업
+  var hkey='sanan-hist-'+store,hist={},DAY=864e5,IV=[1,3,7,14,30];
+  try{hist=JSON.parse(localStorage.getItem(hkey)||'{}')}catch(e){}
+  Object.keys(hist).forEach(function(id){if(!ids[id])delete hist[id]});
+  function hsave(){try{localStorage.setItem(hkey,JSON.stringify(hist))}catch(e){}}
+  (function(){var ch=0;Object.keys(graded).forEach(function(id){if(graded[id].r==='x'&&!hist[id]){hist[id]={w:1,o:0,s:0,d:0};ch=1}});if(ch)hsave()})();
+  function record(id,r){
+    var h=hist[id],now=Date.now();
+    if(r==='x'){h=hist[id]=h||{w:0,o:0,s:0,d:0};h.w++;h.s=0;h.d=now;delete h.m}
+    else if(h){h.o++;h.s++;if(h.s>IV.length){h.m=1;h.d=0}else h.d=now+IV[h.s-1]*DAY}
+    hsave();
+  }
+  function due(id){var h=hist[id];return !!h&&h.w>0&&!h.m&&(h.d||0)<=Date.now()}
+  function rep(id){var h=hist[id];return !!h&&h.w>=2&&!h.m}
+  var retry={},resetArm=0,gReset=document.getElementById('gReset');
+  function g(id){return retry[id]===1?null:graded[id]}
   function gupd(){
     if(!score)return;
     var o=0,x=0;Object.keys(graded).forEach(function(id){graded[id].r==='o'?o++:x++});
@@ -2325,23 +2350,29 @@ details.howto .sub{margin-top:6px}
       (o+x?'<span>정답률 <b>'+Math.round(o*100/(o+x))+'%</b></span>':'');
     gReset.classList.toggle('hidden',!(o+x));
     gReset.textContent=resetArm?'한 번 더 누르면 모두 지워져요':'채점 기록 지우기';
+    if(wrongSel){
+      var nx=0,nr=0,nd=0;qs.forEach(function(q){var id=q.dataset.q;if(graded[id]&&graded[id].r==='x')nx++;if(rep(id))nr++;if(due(id)||retry[id])nd++});
+      var lab={'':'❌ 오답노트',x:'❌ 틀린 문제 '+nx,rep:'🔁 반복 오답 '+nr,due:'📅 다시 풀기 '+nd};
+      [].forEach.call(wrongSel.options,function(op){op.textContent=lab[op.value]});
+    }
   }
   if(gReset)gReset.addEventListener('click',function(){
     if(!resetArm){resetArm=1;gupd();setTimeout(function(){resetArm=0;gupd()},4000);return}
-    resetArm=0;graded={};gsave();qs.forEach(show);gupd();filter();
+    resetArm=0;graded={};hist={};retry={};gsave();hsave();qs.forEach(show);gupd();filter();
   });
   function show(q){
-    var g=graded[q.dataset.q],res=q.querySelector('.q-res');
-    q.classList.toggle('done',!!g);q.classList.toggle('ok',!!g&&g.r==='o');q.classList.toggle('ng',!!g&&g.r==='x');
-    if(res)res.textContent=g?(g.r==='o'?'✅ 맞음':'❌ 틀림'):'';
+    var id=q.dataset.q,gr=g(id),h=hist[id],res=q.querySelector('.q-res');
+    q.classList.toggle('done',!!gr);q.classList.toggle('ok',!!gr&&gr.r==='o');q.classList.toggle('ng',!!gr&&gr.r==='x');
+    q.classList.toggle('rep',!!gr&&gr.r==='x'&&rep(id));q.classList.toggle('retry',retry[id]===1);
+    if(res)res.textContent=gr?(gr.r==='o'?'✅ 맞음':(h&&h.w>=2?'❌ '+h.w+'회 틀림':'❌ 틀림')):'';
     var a=q.dataset.a;
     q.querySelectorAll('.opts li').forEach(function(li){
-      li.classList.toggle('right',!!g&&!!a&&li.dataset.o===a);
-      li.classList.toggle('wrong',!!g&&!!g.c&&li.dataset.o===String(g.c)&&g.c!=a);
+      li.classList.toggle('right',!!gr&&!!a&&li.dataset.o===a);
+      li.classList.toggle('wrong',!!gr&&!!gr.c&&li.dataset.o===String(gr.c)&&gr.c!=a);
     });
   }
   function set(q,r,c){
-    var id=q.dataset.q;graded[id]={r:r};if(c)graded[id].c=c;gsave();show(q);gupd();
+    var id=q.dataset.q;graded[id]={r:r};if(c)graded[id].c=c;if(retry[id])retry[id]=2;gsave();record(id,r);show(q);gupd();
     q.querySelector('details.ans').open=true;
   }
   if(score)qs.forEach(function(q){
@@ -2349,25 +2380,38 @@ details.howto .sub{margin-top:6px}
     show(q);
     if(a)q.querySelectorAll('.opts li').forEach(function(li){
       li.setAttribute('role','button');li.tabIndex=0;
-      function pick(){if(graded[q.dataset.q])return;set(q,li.dataset.o===a?'o':'x',+li.dataset.o)}
+      function pick(){if(g(q.dataset.q))return;set(q,li.dataset.o===a?'o':'x',+li.dataset.o)}
       li.addEventListener('click',pick);
       li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});
     });
-    q.querySelectorAll('.q-self .btn').forEach(function(b){b.addEventListener('click',function(){set(q,b.dataset.r)})});
+    q.querySelectorAll('.q-self .btn').forEach(function(b){b.addEventListener('click',function(){if(!g(q.dataset.q))set(q,b.dataset.r)})});
     var redo=q.querySelector('.q-redo');
     if(redo)redo.addEventListener('click',function(){delete graded[q.dataset.q];gsave();show(q);gupd();q.querySelector('details.ans').open=false;filter()});
   });
   gupd();
   var chSel=document.getElementById('chSel');
   function filter(){
-    var star=onlyStar.classList.contains('on'),wrong=onlyWrong&&onlyWrong.classList.contains('on'),ch=chSel?chSel.value:'';
-    qs.forEach(function(q){q.classList.toggle('hidden',(star&&!q.classList.contains('marked'))||(wrong&&!q.classList.contains('ng'))||(ch&&q.dataset.ch!==ch))});
+    var star=onlyStar.classList.contains('on'),w=wrongSel?wrongSel.value:'',ch=chSel?chSel.value:'';
+    qs.forEach(function(q){var id=q.dataset.q;q.classList.toggle('hidden',(star&&!q.classList.contains('marked'))||(w==='x'&&!(graded[id]&&graded[id].r==='x'))||(w==='rep'&&!rep(id))||(w==='due'&&!retry[id])||(ch&&q.dataset.ch!==ch))});
     document.querySelectorAll('.section').forEach(function(s){
       s.classList.toggle('hidden',!s.querySelector('.q:not(.hidden)'));
     });
   }
   onlyStar.addEventListener('click',function(){onlyStar.classList.toggle('on');filter()});
-  if(onlyWrong)onlyWrong.addEventListener('click',function(){onlyWrong.classList.toggle('on');filter()});
+  // 📅 오답 다시 풀기: 복습할 때가 된 오답을 골라 답을 가리고 새로 풀게 함(고른 목록은 끌 때까지 유지)
+  function startRetry(){
+    retry={};qs.forEach(function(q){var id=q.dataset.q;if(due(id))retry[id]=1});
+    qs.forEach(function(q){show(q);if(retry[q.dataset.q])q.querySelector('details.ans').open=false});
+  }
+  function stopRetry(){retry={};qs.forEach(show)}
+  if(wrongSel){
+    wrongSel.addEventListener('change',function(){
+      if(wrongSel.value==='due')startRetry();else if(Object.keys(retry).length)stopRetry();
+      wrongSel.classList.toggle('on',!!wrongSel.value);gupd();filter();
+      if(wrongSel.value)window.scrollTo({top:document.querySelector('.tools').getBoundingClientRect().top+window.pageYOffset-1});
+    });
+    if(/[?&]review=1/.test(location.search)){wrongSel.value='due';wrongSel.dispatchEvent(new Event('change'))}
+  }
   if(chSel){
     try{chSel.value=sessionStorage.getItem(key+'-ch')||''}catch(e){}
     chSel.addEventListener('change',function(){try{sessionStorage.setItem(key+'-ch',chSel.value)}catch(e){}filter()});
@@ -2430,9 +2474,11 @@ details.howto .sub{margin-top:6px}
   },{passive:true});
   if('scrollRestoration' in history)history.scrollRestoration='manual';
   var h=location.hash.slice(1);
-  if(ids.indexOf(h)>=0){go(h,null);secs[ids.indexOf(h)].scrollIntoView()}
+  function secOf(h){var el=null;try{el=document.getElementById(decodeURIComponent(h))}catch(e){}var s=el&&el.closest('section.section[id]');return s&&ids.indexOf(s.id)>=0&&s!==el?s.id:null}
+  if(secOf(h)){go(secOf(h),null)}
+  else if(ids.indexOf(h)>=0){go(h,null);secs[ids.indexOf(h)].scrollIntoView()}
   else{var s0=st.sec!=null&&(st.sec===''||ids.indexOf(st.sec)>=0)?st.sec:ids[0];sel.value=s0;apply();if(st.y[s0])to(st.y[s0])}
-  window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(ids.indexOf(h)>=0){go(h,null);secs[ids.indexOf(h)].scrollIntoView()}});
+  window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(secOf(h))go(secOf(h),null);else if(ids.indexOf(h)>=0){go(h,null);secs[ids.indexOf(h)].scrollIntoView()}});
 })();
 </script>
 <script>
@@ -2450,6 +2496,39 @@ details.howto .sub{margin-top:6px}
   var h=document.querySelector("header"),bk=h&&h.querySelector(".back");
   if(bk)bk.after(box);else if(h)h.prepend(box);
   apply(get());
+})();
+</script>
+<script>
+(function(){
+  function mark(el,q){
+    var ql=q.toLowerCase(),w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),ns=[],n,hitAns=false,hitTop=false;
+    while(n=w.nextNode())if(n.nodeValue.toLowerCase().indexOf(ql)>=0&&!n.parentNode.closest('mark,script,button'))ns.push(n);
+    ns.forEach(function(n){
+      var t=n.nodeValue,tl=t.toLowerCase(),f=document.createDocumentFragment(),i=0,j;
+      while((j=tl.indexOf(ql,i))>=0){f.appendChild(document.createTextNode(t.slice(i,j)));var m=document.createElement('mark');m.className='hl';m.textContent=t.slice(j,j+q.length);f.appendChild(m);i=j+q.length}
+      f.appendChild(document.createTextNode(t.slice(i)));
+      if(n.parentNode.closest('details.ans'))hitAns=true;else hitTop=true;
+      n.parentNode.replaceChild(f,n);
+    });
+    return hitAns&&!hitTop;
+  }
+  function go(){
+    var id;try{id=decodeURIComponent(location.hash.slice(1))}catch(e){return}
+    var el=id&&document.getElementById(id);
+    if(!el||!el.classList.contains('card'))return;
+    if(el.classList.contains('hidden')){
+      var cs=document.getElementById('chSel');if(cs&&cs.value){cs.value='';cs.dispatchEvent(new Event('change'))}
+      ['onlyStar'].forEach(function(b){b=document.getElementById(b);if(b&&b.classList.contains('on'))b.click()});
+      var ws=document.getElementById('wrongSel');if(ws&&ws.value){ws.value='';ws.dispatchEvent(new Event('change'))}
+    }
+    var q=null;try{q=new URLSearchParams(location.search).get('hl')}catch(e){}
+    if(q&&q.trim()&&!el.dataset.hl){el.dataset.hl=1;var d=el.querySelector('details.ans');if(mark(el,q.trim())&&d)d.open=true}
+    var tl=document.querySelector('.tools'),off=tl&&getComputedStyle(tl).position==='sticky'?tl.getBoundingClientRect().height+10:12;
+    window.scrollTo({top:Math.max(0,el.getBoundingClientRect().top+window.pageYOffset-off),behavior:'instant'});
+    el.classList.add('flash');setTimeout(function(){el.classList.remove('flash')},2600);
+  }
+  if(location.hash)setTimeout(go,60);
+  window.addEventListener('hashchange',go);
 })();
 </script>
 </body>

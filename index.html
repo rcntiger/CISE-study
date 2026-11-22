@@ -174,13 +174,21 @@ details.howto .sub{margin-top:6px}
 /* 모바일(999px 이하) 본문 글자: 기존보다 2px 크게 (2026-11-04) */
 @media (max-width:999px){.card p,ul.chk>li{font-size:16px}.card code{font-size:15px}.exp{font-size:16.6px}.memo{font-size:16px}ul.sub2{font-size:15.5px}.subnote{font-size:14.5px}.subnote.std{font-size:14px}.q-body{font-size:17px}.opts li{font-size:16px}.ans-body p,.ans-body li{font-size:15.8px}.tbl table{font-size:14.5px}body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:15px}body[data-page=points] ul.sub2{font-size:14.5px}body[data-page=points] .card code{font-size:14.5px}body[data-page=points] .exp{font-size:15px}body[data-page=points] .memo{font-size:14.5px}body[data-page=points] .subnote{font-size:14.5px}body[data-page=points] .subnote.std{font-size:14px}body[data-subject^=s] .q-body{font-size:16px}body[data-subject^=s] .opts li{font-size:15px}body[data-subject^=s] .ans-body p,body[data-subject^=s] .ans-body li{font-size:15px}body[data-subject=core226] .q-body{font-size:17px}body[data-subject=core226] .ans-body p{font-size:16.8px}body[data-subject=core226] ul.chk>li{font-size:17px}body[data-subject=core226] .exp{font-size:17.6px}}
 @media (min-width:1000px){:is(body[data-subject=core226],body[data-subject=practical]) .q-body,:is(body[data-subject=core226],body[data-subject=practical]) .ans-body p,:is(body[data-subject=core226],body[data-subject=practical]) ul.chk>li,:is(body[data-subject=core226],body[data-subject=practical]) .opts li{font-size:13px}:is(body[data-subject=core226],body[data-subject=practical]) .exp{font-size:12.6px}}
-.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.q.flash{outline:3px solid var(--yellow);outline-offset:2px}
+.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.flash{outline:3px solid var(--yellow);outline-offset:2px}
 :is(body[data-subject=core226],body[data-subject=practical]) h1{font-size:clamp(20px,6vw,28px);white-space:nowrap}:is(body[data-subject=core226],body[data-subject=practical]) .eyebrow{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em}
 @media (min-width:1600px){body{zoom:calc(1.38*var(--fz,1))}}
 /* 글자 크기 조절: PC(1000px 이상)·모바일 따로 저장(localStorage sanan-fz-pc / sanan-fz-m) */
 .fsz{display:inline-flex;align-items:center;gap:2px;margin:6px 0 14px 6px;vertical-align:top;background:rgba(255,255,255,.1);border-radius:999px;padding:1px 4px;font-size:12px;color:var(--hero-ink)}
 .fsz button{font:inherit;font-weight:700;background:none;border:0;color:inherit;cursor:pointer;padding:3px 8px;line-height:1.2}
 .fsz b{min-width:38px;text-align:center;font-weight:600;cursor:pointer}
+/* 검색 결과로 들어온 카드: 위치·강조 (2026-11-22) */
+.card[id]{scroll-margin-top:80px}
+mark.hl{background:var(--mark);color:inherit;border-radius:3px;padding:0 1px}
+/* 오답노트 */
+#wrongSel{flex:0 1 auto;min-width:0;max-width:150px;text-overflow:ellipsis}
+#wrongSel.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.q.rep .q-res{outline:1.5px solid var(--ng)}
+.q.retry{border-style:dashed}
 @media print{.fsz{display:none}}
 @media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 
@@ -214,6 +222,40 @@ details.howto .sub{margin-top:6px}
 .plan b{display:block;font-size:15px}
 .plan span{font-size:12.8px;color:var(--ink-soft)}
 .plan .go{margin-left:auto;color:var(--ink-soft);font-size:18px}
+
+.search-cats{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.search-cats button{font:inherit;font-size:12px;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 10px;cursor:pointer}
+.search-cats button b{color:var(--ink-soft);font-weight:600;margin-left:3px}
+.search-cats button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.search-cats button.on b{color:inherit}
+.search-err{color:var(--ng)}
+.search-err button{font:inherit;font-size:12px;margin-left:6px;padding:2px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.search-more{font-size:12px;color:var(--ink-soft);margin:4px 4px 0}
+/* 내 학습 현황 (2026-11-22) */
+.dash{padding:14px 14px 12px}
+.dash-sum{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+@media (min-width:560px){.dash-sum{grid-template-columns:repeat(4,1fr)}}
+.dash-sum div{background:var(--surface2);border-radius:12px;padding:9px 10px;min-width:0}
+.dash-sum span{display:block;font-size:11.5px;color:var(--ink-soft);white-space:nowrap}
+.dash-sum b{display:block;font-size:20px;line-height:1.3;background:none;padding:0;white-space:nowrap}
+.dash-sum small{font-size:11.5px;color:var(--ink-soft);font-weight:500;margin-left:3px}
+.dash-row{display:block;text-decoration:none;color:inherit;padding:9px 2px;border-top:1px solid var(--line)}
+.dash-row .top{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;min-width:0}
+.dash-row .no{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:var(--c);color:#fff;font-size:12px;display:inline-flex;align-items:center;justify-content:center}
+.dash-row .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dash-row .weak{flex:0 0 auto;font-size:11px;color:var(--ng);background:var(--ng-soft);border-radius:6px;padding:0 6px}
+.dash-row .rate{margin-left:auto;flex:0 0 auto;font-size:13.5px}
+.dash-row .rate.lo{color:var(--ng)}.dash-row .rate.mid{color:var(--memo)}.dash-row .rate.hi{color:var(--ok)}.dash-row .rate.none{color:var(--ink-soft);font-weight:500;font-size:12px}
+.dash-bar{height:6px;border-radius:3px;background:var(--surface2);margin:6px 0 4px;overflow:hidden}
+.dash-bar i{display:block;height:100%;background:var(--c);border-radius:3px}
+.dash-row .meta{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:11.5px;color:var(--ink-soft)}
+.dash-row .meta .rv{color:var(--ng);font-weight:700}
+.dash .dash-note{font-size:12.5px;color:var(--ink-soft);margin:8px 2px 0}
+.dash-bak{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.dash-bak .btn{font-size:12.5px;padding:6px 12px}
+.dash-bak .msg{flex:1 1 100%;font-size:12px;color:var(--ink-soft)}
+.dash-bak .msg button{font:inherit;font-size:12px;color:var(--ink);background:none;border:0;text-decoration:underline;cursor:pointer;padding:0 2px}
+.dash-bak .msg.err{color:var(--ng)}
 </style>
 <script>try{var z=localStorage.getItem(matchMedia("(min-width:1000px)").matches?"sanan-fz-pc":"sanan-fz-m");if(z)document.documentElement.style.setProperty("--fz",z)}catch(e){}</script>
 </head>
@@ -233,7 +275,16 @@ details.howto .sub{margin-top:6px}
 <div class="search-results hidden" id="searchResults"></div>
 
 <div id="allSections">
-<section class="section" style="margin-top:14px">
+<section class="section" id="dash" style="margin-top:14px">
+  <div class="section-head"><div class="duality">내 학습 현황</div></div>
+  <div class="card dash">
+    <div class="dash-sum" id="dashSum"></div>
+    <div id="dashRows"></div>
+    <p class="dash-note" id="dashNote"></p>
+    <div class="dash-bak"><button class="btn" type="button" id="bakOut">📤 기록 내보내기</button><label class="btn" for="bakIn">📥 기록 가져오기</label><input type="file" id="bakIn" accept=".json,application/json" hidden><span class="msg" id="bakMsg"></span></div>
+  </div>
+</section>
+<section class="section">
   <a class="plan" href="roadmap.html"><div class="ic">🗓</div><div><b>12주 로드맵</b><span>시험 구조 · 과목별 난이도 · 주차별 계획</span></div><div class="go">›</div></a>
 </section>
 <section class="section">
@@ -277,41 +328,155 @@ details.howto .sub{margin-top:6px}
 </div>
 <script>
 (function(){
-  var pages=[{"name": "12주 로드맵", "href": "roadmap.html"}, {"name": "1과목 기출포인트", "href": "s1-points.html"}, {"name": "1과목 문제은행", "href": "s1-bank.html"}, {"name": "2과목 기출포인트", "href": "s2-points.html"}, {"name": "2과목 문제은행", "href": "s2-bank.html"}, {"name": "3과목 기출포인트", "href": "s3-points.html"}, {"name": "3과목 문제은행", "href": "s3-bank.html"}, {"name": "4과목 기출포인트", "href": "s4-points.html"}, {"name": "4과목 문제은행", "href": "s4-bank.html"}, {"name": "5과목 기출포인트", "href": "s5-points.html"}, {"name": "5과목 문제은행", "href": "s5-bank.html"}],input=document.getElementById('siteSearch'),status=document.getElementById('searchStatus'),
-      box=document.getElementById('searchResults'),all=document.getElementById('allSections'),index=null,loading=null;
+  var pages=[{"name": "12주 로드맵", "href": "roadmap.html"}, {"name": "1과목 기출포인트", "href": "s1-points.html"}, {"name": "1과목 문제은행", "href": "s1-bank.html"}, {"name": "2과목 기출포인트", "href": "s2-points.html"}, {"name": "2과목 문제은행", "href": "s2-bank.html"}, {"name": "3과목 기출포인트", "href": "s3-points.html"}, {"name": "3과목 문제은행", "href": "s3-bank.html"}, {"name": "4과목 기출포인트", "href": "s4-points.html"}, {"name": "4과목 문제은행", "href": "s4-bank.html"}, {"name": "5과목 기출포인트", "href": "s5-points.html"}, {"name": "5과목 문제은행", "href": "s5-bank.html"}, {"name": "필기 핵심요약", "href": "core226.html"}, {"name": "실기 필답형", "href": "practical.html"}],input=document.getElementById('siteSearch'),status=document.getElementById('searchStatus'),
+      box=document.getElementById('searchResults'),all=document.getElementById('allSections'),index=null,loading=null,failed=[],cat='';
   function load(){
     if(loading)return loading;
     status.textContent='노트 불러오는 중…';
     loading=Promise.all(pages.map(function(p){
-      return fetch(p.href).then(function(r){return r.text()}).then(function(t){
-        var doc=new DOMParser().parseFromString(t,'text/html');
-        return [].slice.call(doc.querySelectorAll('.card')).map(function(c,i){
-          var sec=c.closest('.section');
-          if(!c.id)c.id='c'+i;
-          return {page:p.name,href:p.href+(sec&&sec.id?'#'+sec.id:''),title:c.dataset.title||'',text:txt(c)};
+      return fetch(p.href).then(function(r){if(!r.ok)throw new Error(r.status);return r.text()}).then(function(t){
+        var doc=new DOMParser().parseFromString(t,'text/html'),out=[];
+        [].forEach.call(doc.querySelectorAll('.card'),function(c){
+          var sec=c.closest('.section'),sd=sec&&sec.querySelector('.duality'),sn=sd?txt(sd):'',ti=c.dataset.title||'';
+          if(sn&&ti.indexOf(sn.replace(/^\S+\s/,''))<0&&/^\d+번$/.test(ti))ti=sn+' · '+ti;
+          out.push({page:p.name,href:p.href,id:c.id||(sec&&sec.id)||'',title:ti,text:txt(c)});
         });
-      }).catch(function(){return []});
-    })).then(function(a){index=[].concat.apply([],a);status.textContent='';return index});
+        if(!out.length)throw new Error('empty');
+        return out;
+      }).catch(function(){failed.push(p.name);return []});
+    })).then(function(a){
+      index=[].concat.apply([],a);
+      if(failed.length===pages.length){loading=null;index=null;failed=[];throw new Error('all')}
+      return index;
+    });
     return loading;
   }
-  function txt(el){var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),a=[],n;while(n=w.nextNode())a.push(n.nodeValue);return a.join(' ').replace(/\s+/g,' ').trim()}
-  function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+  function txt(el){var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),a=[],n;while(n=w.nextNode())if(!n.parentNode.closest('button,summary,.q-self'))a.push(n.nodeValue);return a.join(' ').replace(/\s+/g,' ').trim()}
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function retryBtn(msg){
+    status.innerHTML='<span class="search-err">'+msg+'<button type="button" id="searchRetry">다시 시도</button></span>';
+    document.getElementById('searchRetry').addEventListener('click',function(){loading=null;index=null;failed=[];run()});
+  }
   function run(){
     var q=input.value.trim();
     if(!q){box.classList.add('hidden');all.classList.remove('hidden');status.textContent='';return}
     load().then(function(idx){
       if(input.value.trim()!==q)return;
-      var ql=q.toLowerCase(),hits=idx.filter(function(e){return e.text.toLowerCase().indexOf(ql)>=0});
-      status.textContent=hits.length+'개 카드에서 찾음';
-      box.innerHTML=hits.slice(0,60).map(function(h){
+      var ql=q.toLowerCase(),hits=idx.filter(function(e){return e.text.toLowerCase().indexOf(ql)>=0}),by={},order=[];
+      hits.forEach(function(h){if(!by[h.page]){by[h.page]=0;order.push(h.page)}by[h.page]++});
+      if(cat&&!by[cat])cat='';
+      var shown=cat?hits.filter(function(h){return h.page===cat}):hits;
+      status.textContent=hits.length?hits.length+'개 카드에서 찾음'+(order.length>1?' · '+order.length+'곳':''):'';
+      if(failed.length)retryBtn((hits.length?hits.length+'개 찾음 · ':'')+'못 불러온 노트가 있어 결과가 빠졌을 수 있어요: '+failed.join(', '));
+      var re=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');
+      var cats=order.length>1?'<div class="search-cats">'+['<button type="button" data-c=""'+(cat?'':' class="on"')+'>전체<b>'+hits.length+'</b></button>'].concat(order.map(function(p){return '<button type="button" data-c="'+esc(p)+'"'+(cat===p?' class="on"':'')+'>'+esc(p)+'<b>'+by[p]+'</b></button>'})).join('')+'</div>':'';
+      box.innerHTML=cats+(shown.slice(0,80).map(function(h){
         var i=h.text.toLowerCase().indexOf(ql),s=Math.max(0,i-40),snip=(s>0?'…':'')+h.text.slice(s,i+q.length+70)+'…';
-        var re=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');
-        return '<a class="search-result" href="'+h.href+'"><h4>'+esc(h.page)+' · '+esc(h.title)+'</h4><p>'+esc(snip).replace(re,function(m){return '<mark>'+m+'</mark>'})+'</p></a>';
-      }).join('')||'<p class="search-status">검색 결과가 없습니다.</p>';
+        var url=h.href+'?hl='+encodeURIComponent(q)+(h.id?'#'+encodeURIComponent(h.id):'');
+        return '<a class="search-result" href="'+esc(url)+'"><h4>'+esc(h.page)+' · '+esc(h.title)+'</h4><p>'+esc(snip).replace(re,function(m){return '<mark>'+m+'</mark>'})+'</p></a>';
+      }).join('')||'<p class="search-status">검색 결과가 없습니다.</p>')+(shown.length>80?'<p class="search-more">처음 80개만 보여요. 위에서 노트를 고르거나 검색어를 더 길게 써 보세요.</p>':'');
       box.classList.remove('hidden');all.classList.add('hidden');
+    }).catch(function(){
+      if(input.value.trim()!==q)return;
+      box.classList.add('hidden');all.classList.remove('hidden');
+      retryBtn(location.protocol==='file:'?'파일로 연 페이지에서는 검색할 수 없어요. 사이트 주소로 열어 주세요.':'노트를 불러오지 못해 검색할 수 없어요. 인터넷 연결을 확인해 주세요.');
     });
   }
-  var t;input.addEventListener('input',function(){clearTimeout(t);t=setTimeout(run,200)});
+  box.addEventListener('click',function(e){var b=e.target.closest('.search-cats button');if(!b)return;cat=b.dataset.c;run()});
+  var t;input.addEventListener('input',function(){clearTimeout(t);cat='';t=setTimeout(run,200)});
+})();
+</script>
+<script>
+// 내 학습 현황 + 학습 기록 백업·복원 (기록은 이 기기 localStorage의 sanan-* 키)
+(function(){
+  var SUBJ=[{"n":1,"name":"산업재해 예방·안전보건교육","color":"var(--c1)","href":"s1-bank.html","total":125,"store":"s1-2027b","old":"s1-2027","remap":{"1":"1","2":"2","3":"3","4":"4","5":"5","6":"7","7":"8","8":"9","9":"16","10":"17","11":"18","12":"19","13":"20","14":"21","15":"22","16":"23","17":"24","18":"26","19":"27","20":"28","21":"29","22":"31","23":"32","24":"33","25":"34","26":"35","27":"36","28":"37","29":"38","30":"39","31":"40","32":"41","33":"42","34":"43","35":"44","36":"45","37":"46","38":"47","39":"49","40":"50","41":"51","42":"52","43":"53","44":"54","45":"55","46":"56","47":"57","48":"58","49":"61","50":"62","51":"63","52":"64","53":"65","54":"66","55":"67","56":"68","57":"69","58":"70","59":"71","60":"72","61":"76","62":"77","63":"78","64":"79","65":"80","66":"81","67":"82","68":"83","69":"84","70":"86","71":"87","72":"88","73":"89","74":"90","75":"91","76":"92","77":"95","78":"96","79":"97","80":"98","81":"99","82":"100","83":"101","84":"102","85":"103","86":"104","87":"107","88":"108","89":"109","90":"110","91":"111","92":"112","93":"113","94":"114","95":"119","96":"120","97":"121","98":"122","99":"123","100":"124"}},{"n":2,"name":"인간공학·위험성 평가","color":"var(--c2)","href":"s2-bank.html","total":126,"store":"s2-2027b","old":"s2-2027","remap":{"1":"1","2":"2","3":"3","4":"4","5":"8","6":"9","7":"10","8":"11","9":"12","10":"13","11":"14","12":"16","13":"17","14":"18","15":"19","16":"20","17":"21","18":"25","19":"26","20":"27","21":"28","22":"29","23":"30","24":"31","25":"32","26":"33","27":"36","28":"37","29":"38","30":"39","31":"40","32":"41","33":"42","34":"43","35":"44","36":"45","37":"46","38":"47","39":"48","40":"49","41":"50","42":"51","43":"52","44":"53","45":"54","46":"55","47":"56","48":"57","49":"58","50":"64","51":"65","52":"66","53":"67","54":"68","55":"69","56":"71","57":"72","58":"73","59":"74","60":"75","61":"76","62":"77","63":"78","64":"79","65":"80","66":"81","67":"82","68":"83","69":"84","70":"85","71":"86","72":"87","73":"91","74":"92","75":"93","76":"94","77":"95","78":"96","79":"97","80":"98","81":"99","82":"101","83":"102","84":"103","85":"104","86":"105","87":"106","88":"107","89":"108","90":"110","91":"111","92":"112","93":"113","94":"114","95":"115","96":"116","97":"117","98":"123","99":"124","100":"125"}},{"n":3,"name":"기계·기구·설비 안전","color":"var(--c3)","href":"s3-bank.html","total":168,"store":"s3-2027b","old":"s3-2027","remap":{"1":"1","2":"2","3":"3","4":"4","5":"7","6":"8","7":"9","8":"10","9":"11","10":"12","11":"13","12":"14","13":"20","14":"24","15":"25","16":"26","17":"28","18":"29","19":"30","20":"32","21":"33","22":"34","23":"35","24":"36","25":"37","26":"38","27":"39","28":"40","29":"41","30":"47","31":"50","32":"51","33":"52","34":"53","35":"54","36":"55","37":"61","38":"62","39":"63","40":"64","41":"65","42":"66","43":"67","44":"73","45":"74","46":"75","47":"76","48":"77","49":"93","50":"94","51":"95","52":"99","53":"100","54":"101","55":"103","56":"104","57":"105","58":"106","59":"107","60":"112","61":"113","62":"114","63":"115","64":"116","65":"117","66":"118","67":"119","68":"123","69":"125","70":"126","71":"127","72":"128","73":"129","74":"130","75":"131","76":"132","77":"133","78":"134","79":"135","80":"136","81":"140","82":"141","83":"142","84":"143","85":"144","86":"145","87":"146","88":"150","89":"151","90":"152","91":"153","92":"154","93":"155","94":"160","95":"161","96":"162","97":"163","98":"164","99":"165","100":"166"}},{"n":4,"name":"전기·화학설비 안전","color":"var(--c4)","href":"s4-bank.html","total":295,"store":"s4-2027b","old":"s4-2027","remap":{"1":"7","2":"8","3":"10","4":"11","5":"17","6":"18","7":"19","8":"20","9":"21","10":"24","11":"25","12":"30","13":"31","14":"34","15":"35","16":"40","17":"41","18":"42","19":"43","20":"44","21":"45","22":"46","23":"47","24":"48","25":"49","26":"52","27":"53","28":"54","29":"55","30":"56","31":"57","32":"58","33":"60","34":"61","35":"62","36":"70","37":"71","38":"72","39":"73","40":"74","41":"78","42":"79","43":"80","44":"81","45":"82","46":"83","47":"84","48":"85","49":"86","50":"98","51":"99","52":"100","53":"101","54":"105","55":"106","56":"112","57":"113","58":"114","59":"115","60":"120","61":"121","62":"122","63":"123","64":"124","65":"125","66":"126","67":"127","68":"128","69":"134","70":"135","71":"136","72":"137","73":"139","74":"140","75":"141","76":"148","77":"149","78":"150","79":"151","80":"157","81":"158","82":"159","83":"160","84":"161","85":"162","86":"167","87":"168","88":"169","89":"170","90":"171","91":"172","92":"173","93":"174","94":"181","95":"182","96":"183","97":"184","98":"185","99":"186","100":"187","101":"196","102":"197","103":"198","104":"199","105":"200","106":"206","107":"207","108":"208","109":"209","110":"210","111":"211","112":"212","113":"213","114":"214","115":"221","116":"222","117":"223","118":"224","119":"225","120":"226","121":"227","122":"239","123":"240","124":"241","125":"242","126":"243","127":"244","128":"245","129":"258","130":"260","131":"261","132":"262","133":"263","134":"264","135":"265","136":"266","137":"269","138":"270","139":"271","140":"272","141":"273","142":"274","143":"275","144":"276","145":"277","146":"278","147":"279","148":"287","149":"290","150":"293"}},{"n":5,"name":"건설공사 안전","color":"var(--c6)","href":"s5-bank.html","total":141,"store":"s5-2027b","old":"s5-2027","remap":{"1":"1","2":"2","3":"3","4":"7","5":"8","6":"10","7":"11","8":"12","9":"13","10":"14","11":"15","12":"16","13":"17","14":"18","15":"19","16":"20","17":"21","18":"24","19":"25","20":"26","21":"27","22":"28","23":"29","24":"30","25":"31","26":"32","27":"33","28":"34","29":"37","30":"38","31":"39","32":"40","33":"41","34":"44","35":"45","36":"46","37":"47","38":"48","39":"49","40":"50","41":"51","42":"52","43":"53","44":"54","45":"60","46":"61","47":"62","48":"63","49":"64","50":"65","51":"66","52":"67","53":"68","54":"69","55":"70","56":"71","57":"76","58":"77","59":"78","60":"79","61":"80","62":"81","63":"87","64":"88","65":"89","66":"90","67":"91","68":"92","69":"94","70":"95","71":"96","72":"97","73":"98","74":"99","75":"100","76":"101","77":"106","78":"107","79":"108","80":"109","81":"110","82":"111","83":"112","84":"113","85":"114","86":"118","87":"119","88":"120","89":"121","90":"122","91":"123","92":"124","93":"126","94":"133","95":"134","96":"135","97":"136","98":"137","99":"138","100":"139"}},{"n":"★","name":"필기 핵심요약","store":"core226-2027"},{"n":"✍","name":"실기 필답형","store":"practical"}],el=function(id){return document.getElementById(id)},DAY=864e5;
+  function get(k){try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}}
+  function migrate(s){
+    if(!s.old||!s.remap)return;
+    ['sanan-star-','sanan-grade-'].forEach(function(p){try{
+      if(localStorage.getItem(p+s.store)!==null)return;
+      var o=get(p+s.old);if(!o)return;var r={};Object.keys(o).forEach(function(k){if(s.remap[k])r[s.remap[k]]=o[k]});
+      localStorage.setItem(p+s.store,JSON.stringify(r));
+    }catch(e){}});
+  }
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function stat(s){
+    if(s.total)migrate(s);
+    var g=get('sanan-grade-'+s.store)||{},h=get('sanan-hist-'+s.store)||{},st=get('sanan-star-'+s.store)||{},now=Date.now();
+    var ok=function(id){return !s.total||(+id>=1&&+id<=s.total)};
+    var r={o:0,x:0,rep:0,due:0,star:Object.keys(st).filter(ok).length};
+    Object.keys(g).filter(ok).forEach(function(id){g[id]&&g[id].r==='o'?r.o++:r.x++;if(g[id]&&g[id].r==='x'&&!h[id])r.due++});
+    Object.keys(h).filter(ok).forEach(function(id){var e=h[id];if(!e||!e.w||e.m)return;if(e.w>=2)r.rep++;if((e.d||0)<=now)r.due++});
+    return r;
+  }
+  function rateCls(p){return p<40?'lo':p<60?'mid':'hi'}
+  function render(){
+    var T={tot:0,o:0,x:0,rep:0,due:0,star:0},rows=[],st=[];
+    SUBJ.forEach(function(s){var r=stat(s);st.push(r);T.star+=r.star;if(!s.total)return;T.tot+=s.total;T.o+=r.o;T.x+=r.x;T.rep+=r.rep;T.due+=r.due});
+    var weak=-1,wr=101;
+    SUBJ.forEach(function(s,i){var r=st[i],n=r.o+r.x;if(s.total&&n>=10){var p=r.o*100/n;if(p<wr){wr=p;weak=i}}});
+    if(SUBJ.filter(function(s,i){return s.total&&st[i].o+st[i].x>=10}).length<2)weak=-1;
+    SUBJ.forEach(function(s,i){
+      if(!s.total)return;var r=st[i],n=r.o+r.x,p=n?Math.round(r.o*100/n):0;
+      rows.push('<a class="dash-row" style="--c:'+s.color+'" href="'+s.href+(r.due?'?review=1':'')+'"><div class="top"><span class="no">'+s.n+'</span><span class="nm">'+esc(s.name)+'</span>'+(i===weak?'<span class="weak">취약</span>':'')+
+        '<span class="rate '+(n?rateCls(p):'none')+'">'+(n?'정답률 '+p+'%':'시작 전')+'</span></div>'+
+        '<div class="dash-bar"><i style="width:'+(n*100/s.total).toFixed(1)+'%"></i></div>'+
+        '<div class="meta"><span>풀이 '+n+'/'+s.total+'</span>'+(r.x?'<span>❌ '+r.x+'</span>':'')+(r.rep?'<span>🔁 반복 '+r.rep+'</span>':'')+(r.star?'<span>★ '+r.star+'</span>':'')+(r.due?'<span class="rv">📅 다시 풀 오답 '+r.due+' ›</span>':'')+'</div></a>');
+    });
+    var n=T.o+T.x,p=n?Math.round(T.o*100/n):0;
+    el('dashSum').innerHTML='<div><span>학습률 (풀이 문제)</span><b>'+(function(v){return v>0&&v<10?v.toFixed(1):Math.round(v)})(T.tot?n*100/T.tot:0)+'%<small>'+n+'/'+T.tot+'</small></b></div>'+
+      '<div><span>정답률</span><b'+(n?' style="color:var(--'+(p<40?'ng':p<60?'memo':'ok')+')"':'')+'>'+(n?p+'%':'–')+'</b></div>'+
+      '<div><span>오답 · 반복 오답</span><b>'+T.x+'<small>🔁 '+T.rep+'</small></b></div>'+
+      '<div><span>★ 다시 볼 문제</span><b>'+T.star+'</b></div>';
+    el('dashRows').innerHTML=rows.join('');
+    el('dashNote').textContent=n?(T.due?'📅 오늘 다시 풀 오답이 '+T.due+'개 있어요. 과목을 누르면 바로 시작해요.':'다시 풀 오답이 없어요. 과목을 누르면 문제은행으로 가요.')+(weak>=0?' 취약은 10문제 이상 푼 과목 중 정답률이 가장 낮은 과목이에요.':''):'문제은행에서 보기를 누르면 여기에 과목별 진도와 정답률이 쌓여요.';
+    bakInfo();
+  }
+  // 백업·복원
+  var msg=el('bakMsg');
+  function keys(){var a=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf('sanan-')===0&&k.indexOf('sanan-pw-')!==0)a.push(k)}return a.sort()}
+  function snap(){var d={};keys().forEach(function(k){d[k]=localStorage.getItem(k)});return d}
+  function ago(t){var d=Math.floor((Date.now()-t)/DAY);return d<1?'오늘':d+'일 전'}
+  function bakInfo(extra,err){
+    var last=0;try{last=+localStorage.getItem('cise-lastexport')||0}catch(e){}
+    msg.className='msg'+(err?' err':'');
+    msg.innerHTML=extra||(keys().length?(last?'마지막 내보내기: '+ago(last)+'. ':'아직 내보낸 적이 없어요. ')+'기록은 이 브라우저에만 있으니 가끔 파일로 내보내 두세요.':'기록은 이 브라우저에만 저장돼요. 다른 기기 기록은 파일로 가져올 수 있어요.');
+  }
+  el('bakOut').addEventListener('click',function(){
+    try{
+      var d=snap(),now=new Date(),blob=new Blob([JSON.stringify({app:'cise-study',v:1,at:now.toISOString(),data:d},null,1)],{type:'application/json'});
+      var a=document.createElement('a'),ymd=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0');
+      a.href=URL.createObjectURL(blob);a.download='cise-study-backup-'+ymd+'.json';document.body.appendChild(a);a.click();a.remove();
+      setTimeout(function(){URL.revokeObjectURL(a.href)},4000);
+      try{localStorage.setItem('cise-lastexport',Date.now())}catch(e){}
+      bakInfo('📤 기록 '+Object.keys(d).length+'개 항목을 파일로 내보냈어요. 다운로드 폴더를 확인하세요.');
+    }catch(e){bakInfo('내보내기에 실패했어요: '+esc(e.message),1)}
+  });
+  el('bakIn').addEventListener('change',function(){
+    var f=this.files&&this.files[0];this.value='';if(!f)return;
+    var rd=new FileReader();
+    rd.onload=function(){
+      var o;try{o=JSON.parse(rd.result)}catch(e){return bakInfo('JSON 파일이 아니에요. 이 사이트에서 내보낸 파일을 골라 주세요.',1)}
+      if(!o||o.app!=='cise-study'||!o.data||typeof o.data!=='object')return bakInfo('이 사이트의 학습 기록 파일이 아니에요.',1);
+      var ks=Object.keys(o.data).filter(function(k){return k.indexOf('sanan-')===0&&k.indexOf('sanan-pw-')!==0&&typeof o.data[k]==='string'});
+      if(!ks.length)return bakInfo('파일에 가져올 기록이 없어요.',1);
+      try{
+        localStorage.setItem('cise-undo',JSON.stringify(snap()));
+        ks.forEach(function(k){localStorage.setItem(k,o.data[k])});
+      }catch(e){return bakInfo('저장하지 못했어요(브라우저 저장 공간을 확인하세요).',1)}
+      render();
+      bakInfo('📥 '+(o.at?o.at.slice(0,10)+' ':'')+'백업에서 '+ks.length+'개 항목을 가져왔어요. <button type="button" id="bakUndo">가져오기 전으로 되돌리기</button>');
+      el('bakUndo').addEventListener('click',function(){
+        try{var u=JSON.parse(localStorage.getItem('cise-undo')||'null');if(!u)return;keys().forEach(function(k){localStorage.removeItem(k)});Object.keys(u).forEach(function(k){localStorage.setItem(k,u[k])});localStorage.removeItem('cise-undo')}catch(e){}
+        render();bakInfo('가져오기 전 기록으로 되돌렸어요.');
+      });
+    };
+    rd.onerror=function(){bakInfo('파일을 읽지 못했어요.',1)};
+    rd.readAsText(f);
+  });
+  try{render()}catch(e){el('dashNote').textContent='학습 기록을 읽지 못했어요(브라우저 저장소가 꺼져 있을 수 있어요).'}
+  window.addEventListener('pageshow',function(e){if(e.persisted)try{render()}catch(x){}});
+  window.addEventListener('storage',function(){try{render()}catch(x){}});
 })();
 </script>
 <script>
@@ -329,6 +494,39 @@ details.howto .sub{margin-top:6px}
   var h=document.querySelector("header"),bk=h&&h.querySelector(".back");
   if(bk)bk.after(box);else if(h)h.prepend(box);
   apply(get());
+})();
+</script>
+<script>
+(function(){
+  function mark(el,q){
+    var ql=q.toLowerCase(),w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),ns=[],n,hitAns=false,hitTop=false;
+    while(n=w.nextNode())if(n.nodeValue.toLowerCase().indexOf(ql)>=0&&!n.parentNode.closest('mark,script,button'))ns.push(n);
+    ns.forEach(function(n){
+      var t=n.nodeValue,tl=t.toLowerCase(),f=document.createDocumentFragment(),i=0,j;
+      while((j=tl.indexOf(ql,i))>=0){f.appendChild(document.createTextNode(t.slice(i,j)));var m=document.createElement('mark');m.className='hl';m.textContent=t.slice(j,j+q.length);f.appendChild(m);i=j+q.length}
+      f.appendChild(document.createTextNode(t.slice(i)));
+      if(n.parentNode.closest('details.ans'))hitAns=true;else hitTop=true;
+      n.parentNode.replaceChild(f,n);
+    });
+    return hitAns&&!hitTop;
+  }
+  function go(){
+    var id;try{id=decodeURIComponent(location.hash.slice(1))}catch(e){return}
+    var el=id&&document.getElementById(id);
+    if(!el||!el.classList.contains('card'))return;
+    if(el.classList.contains('hidden')){
+      var cs=document.getElementById('chSel');if(cs&&cs.value){cs.value='';cs.dispatchEvent(new Event('change'))}
+      ['onlyStar'].forEach(function(b){b=document.getElementById(b);if(b&&b.classList.contains('on'))b.click()});
+      var ws=document.getElementById('wrongSel');if(ws&&ws.value){ws.value='';ws.dispatchEvent(new Event('change'))}
+    }
+    var q=null;try{q=new URLSearchParams(location.search).get('hl')}catch(e){}
+    if(q&&q.trim()&&!el.dataset.hl){el.dataset.hl=1;var d=el.querySelector('details.ans');if(mark(el,q.trim())&&d)d.open=true}
+    var tl=document.querySelector('.tools'),off=tl&&getComputedStyle(tl).position==='sticky'?tl.getBoundingClientRect().height+10:12;
+    window.scrollTo({top:Math.max(0,el.getBoundingClientRect().top+window.pageYOffset-off),behavior:'instant'});
+    el.classList.add('flash');setTimeout(function(){el.classList.remove('flash')},2600);
+  }
+  if(location.hash)setTimeout(go,60);
+  window.addEventListener('hashchange',go);
 })();
 </script>
 </body>
