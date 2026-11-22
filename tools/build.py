@@ -209,6 +209,31 @@ mark.hl{background:var(--mark);color:inherit;border-radius:3px;padding:0 1px}
 .q.rep .q-res{outline:1.5px solid var(--ng)}
 .q.retry{border-style:dashed}
 @media print{.fsz{display:none}}
+/* 단원 목록: 과목 기출포인트·문제은행 머리말의 2열 카드형 목록, 모바일 1열·접힘 (2026-11-22) */
+.tl-box{margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12)}
+.tl-box>summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:8px;font-size:14px;font-weight:700;color:var(--hero-ink)}
+.tl-box>summary::-webkit-details-marker{display:none}
+.tl-box>summary .h{font-size:12px;font-weight:400;color:var(--hero-soft)}
+.tl-box>summary::after{content:"펼치기 ▾";margin-left:auto;font-size:12px;font-weight:600;color:var(--yellow);white-space:nowrap}
+.tl-box[open]>summary::after{content:"접기 ▴"}
+.toc.list{display:grid;grid-template-columns:1fr;gap:8px;margin:12px 0 0;padding:0;overflow:visible}
+.toc.list a.tl-i{display:grid;grid-template-columns:28px 1fr;column-gap:10px;align-items:center;white-space:normal;border-radius:10px;padding:7px 14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:var(--hero-ink);font-size:14px;line-height:1.35;transition:background .15s,border-color .15s}
+.toc.list a.tl-i:hover,.toc.list a.tl-i:focus-visible{background:rgba(255,255,255,.12);border-color:var(--yellow);outline:none}
+.toc.list a.tl-i .n{grid-row:1/3;margin:0;font-size:15px;font-weight:700;color:var(--yellow)}
+.toc.list a.tl-i .t{font-weight:600}
+.toc.list a.tl-i .r{font-size:11.5px;line-height:1.3;color:var(--hero-soft)}
+.toc.list a.tl-i.none{background:none;border-style:dashed}
+.toc.list a.tl-i.none .t,.toc.list a.tl-i.none .n{opacity:.6}
+.toc.list .tag{display:inline-block;margin-left:6px;padding:0 5px;border-radius:4px;font-size:10.5px;font-weight:700;line-height:1.6;vertical-align:1px;color:#111;background:var(--yellow)}
+.toc.list .tag.plus{color:var(--add);background:none;border:1px solid var(--add);line-height:1.45}
+.toc.list a.tl-g{grid-column:1/-1;display:block;margin:6px 0 -2px;padding:0;background:none;border:0;border-radius:0;font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--yellow);white-space:normal}
+.toc.list a.tl-g:first-child{margin-top:0}
+.toc.list .tl-x{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}
+.toc.list .tl-x a{font-size:12px;padding:4px 12px}
+.toc.list a.tl-i.cur{border-color:var(--yellow);background:var(--yellow-soft)}
+/* 단원 목록으로 이동할 때 단원 제목이 붙박이 도구줄에 가리지 않게 */
+body[data-subject] .section{scroll-margin-top:148px}
+@media (min-width:1000px){.toc.list{grid-template-columns:1fr 1fr;margin:12px 0 0;padding:0}body[data-subject] .section{scroll-margin-top:100px}}
 @media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 """
 
@@ -448,6 +473,45 @@ def sec_title(t):
     return "", t
 
 
+def topic_index(n):
+    """기출포인트 md의 교재 챕터·주제 순서. 문제은행 단원 번호는 기출포인트 주제 번호를 그대로 씀
+    (기출 문항이 없는 주제는 문제은행에 단원이 없어 번호가 건너뜀)."""
+    out = []
+    for si, (st, _) in enumerate(split_doc(SRC27 / f"{n}과목_기출포인트.md")[2], 1):
+        ch = re.match(r"^CHAPTER (\d+)\s*·\s*(.*)$", st)
+        if ch:
+            out.append(("ch", ch.group(1), ch.group(2), f"c{ch.group(1)}"))
+        elif not st.startswith(("📊", "출제기준")):
+            num, t = sec_title(st)
+            out.append(("t", num, t.replace("⭐", "").replace("➕", "").strip(), f"t{si}", "⭐" in t, "➕" in t))
+    return out
+
+
+def bank_ranges(n):
+    """문제은행 md 단원 번호 → 문항 범위 문자열 ("1~6")."""
+    p = SRC27 / f"{n}과목_문제은행.md"
+    if not p.exists():
+        return {}
+    return {m.group(1): m.group(2) for m in re.finditer(r"^## (\d+)\. .*?\(([\d~, ]+)\)\s*$", p.read_text(encoding="utf-8"), re.M)}
+
+
+def toc_list(items, extra=""):
+    """단원 목록(2열 카드형). items: ("ch", 링크, 이름) | ("t", 링크, 번호, 제목, 보조줄, 빈출, 보강, 없음)."""
+    out = [f'<div class="tl-x">{extra}</div>'] if extra else []
+    for it in items:
+        if it[0] == "ch":
+            out.append(f'<a class="tl-g" href="{it[1]}">{html.escape(it[2])}</a>')
+            continue
+        _, href, num, t, sub, star, plus, none = it
+        tags = ('<span class="tag">빈출</span>' if star else "") + ('<span class="tag plus">보강</span>' if plus else "")
+        n2 = num.zfill(2) if num.isdigit() else num
+        out.append(f'<a class="tl-i{" none" if none else ""}" href="{href}"><span class="n">{html.escape(n2)}</span><span class="t">{html.escape(t)}{tags}</span><span class="r">{html.escape(sub)}</span></a>')
+    count = sum(1 for it in items if it[0] == "t" and not it[7])
+    return (f'<details class="tl-box"><summary>단원 목록 <span class="h">{count}개 · 누르면 해당 위치로 이동</span></summary>'
+            f'<nav class="toc list">{"".join(out)}</nav></details>'
+            '<script>if(matchMedia("(min-width:1000px)").matches)document.currentScript.previousElementSibling.open=true</script>')
+
+
 def points_page(n, src):
     name, accent = SUBJECTS[n]
     _, intro, sections = split_doc(src)
@@ -480,13 +544,17 @@ def points_page(n, src):
             cls = "card add" if ct and ct.startswith("🆕") else "card rep" if ct and ct.startswith("🔁") else "card"
             parts.append(f'<div class="{cls}" id="p{si}-{k}" data-title="{html.escape(t_clean)}{" · " + html.escape(ct) if ct else ""}">{h}{render_blocks(cl)}</div>')
         body.append(f'<section class="section" id="{sid}"><div class="section-head"><div class="duality"><span class="n">{num}</span>{html.escape(t_clean)}</div><div class="section-line"></div></div>\n' + '<div class="cards">' + "\n".join(parts) + "</div></section>")
+    rg = bank_ranges(n)
+    items = [("ch", f"#{e[3]}", f"CH{e[1]} · {e[2]}") if e[0] == "ch" else
+             ("t", f"#{e[3]}", e[1], e[2], f"문제은행 {rg[e[1]]}번" if e[1] in rg else "문제은행 문항 없음", e[4], e[5], False)
+             for e in topic_index(n)]
+    extra = "".join(f'<a class="ch" href="#{i}">{html.escape(t)}</a>' for i, t in (("freq", "📊 출제 분석"), ("std", "출제기준 대조표")) if f'id="{i}"' in "".join(body))
     header = f"""<header>
   <a class="back" href="index.html">← 목록으로</a>
-  <span class="tab">{n}과목 · 기출포인트</span>
-  <div class="eyebrow">산업안전기사 필기 · {n}과목</div>
+  <div class="eyebrow">산업안전기사 필기 · {n}과목 기출포인트 · 주제 {topics}개</div>
   <h1>{name}</h1>
   {intro_list(intro)}
-  <nav class="toc">{''.join(toc)}</nav>
+  {toc_list(items, extra)}
 </header>"""
     bank = f'<a href="s{n}-bank.html">{n}과목 문제은행</a>에서 바로 문제로 확인해 보세요. ' if n in BANKS else ""
     doc = HEAD.format(title=f"{n}과목 기출포인트 · {name}", css=CSS, accent=accent).replace(
@@ -855,13 +923,35 @@ def bank_page(n, src, *, slug=None, tab=None, eyebrow=None, h1=None, title=None,
     howto_list = intro_list(intro + (['- **보기를 누르면 바로 채점**됩니다. 맞으면 ✅, 틀리면 ❌가 문제에 붙고 이 기기에 저장됩니다.', '- **❌ 오답노트**에서 틀린 문제, 두 번 이상 틀린 🔁 반복 오답만 모아 보거나, 📅 **다시 풀기**로 답을 가리고 새로 풀 수 있습니다. 다시 맞힐 때마다 복습 간격이 1·3·7·14·30일로 늘어납니다.', '- 학습 기록은 이 기기 브라우저에 저장됩니다. 첫 화면 **내 학습 현황**에서 백업 파일로 내보내고 가져올 수 있습니다.'] if grade else []) + ['- 헷갈린 문제는 오른쪽 위 **★**을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.'])
     # 과목 문제은행은 한 줄 요약만 보이고 자세한 안내는 접어 둠
     howto = f'<p class="brief">{"보기 누르면 채점 · " if grade else ""}★ 다시 볼 문제 · 법령 수치는 시험 전 확인</p><details class="howto"><summary>ⓘ 사용법</summary>{howto_list}</details>' if grade else howto_list
+    if n in SUBJECTS:
+        # 과목 문제은행: 기출포인트와 같은 챕터 묶음의 2열 단원 목록, 문항 없는 주제도 흐리게 보여 줌
+        have = {}
+        for si, (st, cards) in enumerate(sections, 1):
+            if "틀린 문제" in st or not any(ct for ct, _ in cards):
+                continue
+            num, t = sec_title(st)
+            m = re.match(r"^(.*?)\s*\(([\d~, ]+)\)$", t)
+            have[num] = (f"#g{si}", m.group(1) if m else t, f"{m.group(2)}번 문항" if m else "")
+        items, seen = [], set()
+        for e in topic_index(n):
+            if e[0] == "ch":
+                items.append(("ch", f"s{n}-points.html#{e[3]}", f"CH{e[1]} · {e[2]}"))
+            elif e[1] in have:
+                seen.add(e[1])
+                items.append(("t", *have[e[1]][:1], e[1], have[e[1]][1], have[e[1]][2], e[4], e[5], False))
+            else:
+                items.append(("t", f"s{n}-points.html#{e[3]}", e[1], e[2], "기출 문항 없음 · 기출포인트에서 보기", e[4], e[5], True))
+        items += [("t", v[0], k, v[1], v[2], False, False, False) for k, v in have.items() if k not in seen]
+        nav = toc_list(items)
+        top = f'<div class="eyebrow">산업안전기사 필기 · {n}과목 문제은행 · {total}문항</div>\n  <h1>{name}</h1>'
+    else:
+        nav = "" if locked else f'<nav class="toc">{"".join(toc)}</nav>'
+        top = f'<span class="tab">{tab}</span>\n  <div class="eyebrow">{eyebrow} · {total}문항</div>\n  <h1>{h1}</h1>'
     header = f"""<header>
   <a class="back" href="index.html">← 목록으로</a>
-  <span class="tab">{tab}</span>
-  <div class="eyebrow">{eyebrow} · {total}문항</div>
-  <h1>{h1}</h1>
+  {top}
   {howto if notes else ""}
-  {"" if locked else f'<nav class="toc">{"".join(toc)}</nav>'}
+  {nav}
 </header>"""
     sec_sel = ('<select class="btn" id="secSel" aria-label="볼 묶음 고르기"><option value="">전체 보기</option>' + "".join(sec_opts) + '</select><input class="btn" id="qJump" type="number" inputmode="numeric" min="1" placeholder="번호" aria-label="번호로 이동">') if paged else ""
     content = (f'<nav class="toc">{"".join(toc)}</nav>' if locked else "\n") + f"""<div class="tools">{sec_sel}{ch_sel}<button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button>{'<select class="btn" id="wrongSel" aria-label="오답노트"><option value="">❌ 오답노트</option><option value="x"></option><option value="rep"></option><option value="due"></option></select><div class="score"><span id="score"></span><span class="count" id="starCount"></span></div>' if grade else '<span class="count" id="starCount"></span>'}</div>""" + "\n".join(body)
