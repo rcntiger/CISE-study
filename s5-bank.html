@@ -174,13 +174,21 @@ details.howto .sub{margin-top:6px}
 /* 모바일(999px 이하) 본문 글자: 기존보다 2px 크게 (2026-11-04) */
 @media (max-width:999px){.card p,ul.chk>li{font-size:16px}.card code{font-size:15px}.exp{font-size:16.6px}.memo{font-size:16px}ul.sub2{font-size:15.5px}.subnote{font-size:14.5px}.subnote.std{font-size:14px}.q-body{font-size:17px}.opts li{font-size:16px}.ans-body p,.ans-body li{font-size:15.8px}.tbl table{font-size:14.5px}body[data-page=points] .card p,body[data-page=points] ul.chk>li{font-size:15px}body[data-page=points] ul.sub2{font-size:14.5px}body[data-page=points] .card code{font-size:14.5px}body[data-page=points] .exp{font-size:15px}body[data-page=points] .memo{font-size:14.5px}body[data-page=points] .subnote{font-size:14.5px}body[data-page=points] .subnote.std{font-size:14px}body[data-subject^=s] .q-body{font-size:16px}body[data-subject^=s] .opts li{font-size:15px}body[data-subject^=s] .ans-body p,body[data-subject^=s] .ans-body li{font-size:15px}body[data-subject=core226] .q-body{font-size:17px}body[data-subject=core226] .ans-body p{font-size:16.8px}body[data-subject=core226] ul.chk>li{font-size:17px}body[data-subject=core226] .exp{font-size:17.6px}}
 @media (min-width:1000px){:is(body[data-subject=core226],body[data-subject=practical]) .q-body,:is(body[data-subject=core226],body[data-subject=practical]) .ans-body p,:is(body[data-subject=core226],body[data-subject=practical]) ul.chk>li,:is(body[data-subject=core226],body[data-subject=practical]) .opts li{font-size:13px}:is(body[data-subject=core226],body[data-subject=practical]) .exp{font-size:12.6px}}
-.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.q.flash{outline:3px solid var(--yellow);outline-offset:2px}
+.section.off{display:none}#secSel{flex:1 1 calc(100% - 72px);min-width:0;font-weight:700;text-overflow:ellipsis}@media (min-width:1000px){#secSel{flex:0 1 auto;max-width:360px}}#qJump{width:64px;flex:0 0 auto;text-align:center}body[data-subject] .tools .count{font-size:11.5px}#qJump::-webkit-inner-spin-button{display:none}.sec-nav{display:flex;gap:8px;justify-content:space-between;margin:18px 0 6px}.sec-nav .btn{flex:1 1 0;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sec-nav .next{text-align:right}.to-top{position:fixed;right:16px;bottom:18px;z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}.to-top.show{opacity:1;pointer-events:auto}.toc a.cur{color:#111;background:var(--yellow);border-color:var(--yellow)}.toc a.cur .n{color:#111}.card.flash{outline:3px solid var(--yellow);outline-offset:2px}
 :is(body[data-subject=core226],body[data-subject=practical]) h1{font-size:clamp(20px,6vw,28px);white-space:nowrap}:is(body[data-subject=core226],body[data-subject=practical]) .eyebrow{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em}
 @media (min-width:1600px){body{zoom:calc(1.38*var(--fz,1))}}
 /* 글자 크기 조절: PC(1000px 이상)·모바일 따로 저장(localStorage sanan-fz-pc / sanan-fz-m) */
 .fsz{display:inline-flex;align-items:center;gap:2px;margin:6px 0 14px 6px;vertical-align:top;background:rgba(255,255,255,.1);border-radius:999px;padding:1px 4px;font-size:12px;color:var(--hero-ink)}
 .fsz button{font:inherit;font-weight:700;background:none;border:0;color:inherit;cursor:pointer;padding:3px 8px;line-height:1.2}
 .fsz b{min-width:38px;text-align:center;font-weight:600;cursor:pointer}
+/* 검색 결과로 들어온 카드: 위치·강조 (2026-11-22) */
+.card[id]{scroll-margin-top:80px}
+mark.hl{background:var(--mark);color:inherit;border-radius:3px;padding:0 1px}
+/* 오답노트 */
+#wrongSel{flex:0 1 auto;min-width:0;max-width:150px;text-overflow:ellipsis}
+#wrongSel.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.q.rep .q-res{outline:1.5px solid var(--ng)}
+.q.retry{border-style:dashed}
 @media print{.fsz{display:none}}
 @media print{header{background:none;color:#000}.tools,.q-star,.q-redo,.q-self{display:none}}
 </style>
@@ -193,11 +201,11 @@ details.howto .sub{margin-top:6px}
   <span class="tab">5과목 · 문제은행</span>
   <div class="eyebrow">산업안전기사 필기 · 5과목 · 141문항</div>
   <h1>건설공사 안전관리<br>문제은행</h1>
-  <p class="brief">보기 누르면 채점 · ★ 다시 볼 문제 · 법령 수치는 시험 전 확인</p><details class="howto"><summary>ⓘ 사용법</summary><ul class="sub"><li>정답과 해설은 <b>"정답 보기"를 눌러야</b> 펼쳐집니다.</li><li>2015~2026년 2회 기출 33회차에서 <b>2회 이상 나온 문제를 모두(141문항)</b> 모아, 기출포인트 주제 순서로 묶었습니다.</li><li>문항 위의 🔁 숫자는 그 문제가 나온 회차 수, 📋는 2024~2026 출제기준 세부항목입니다. 문제와 보기는 가장 최근 회차 원문입니다.</li><li>정답은 해설을 보고 판정한 것이며 공식 정답표가 아닙니다. ⚠️ 표시는 법령 개정 등으로 지금 기준과 다를 수 있는 문항입니다.</li><li>아래 <b>교재 챕터</b> 선택으로 에듀윌 교재 챕터별 문제만 골라 볼 수 있습니다. 문제 번호는 그대로입니다.</li><li><b>보기를 누르면 바로 채점</b>됩니다. 맞으면 ✅, 틀리면 ❌가 문제에 붙고 이 기기에 저장되며, "❌ 틀린 문제만"으로 다시 풀 수 있습니다.</li><li>헷갈린 문제는 오른쪽 위 <b>★</b>을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.</li></ul></details>
+  <p class="brief">보기 누르면 채점 · ★ 다시 볼 문제 · 법령 수치는 시험 전 확인</p><details class="howto"><summary>ⓘ 사용법</summary><ul class="sub"><li>정답과 해설은 <b>"정답 보기"를 눌러야</b> 펼쳐집니다.</li><li>2015~2026년 2회 기출 33회차에서 <b>2회 이상 나온 문제를 모두(141문항)</b> 모아, 기출포인트 주제 순서로 묶었습니다.</li><li>문항 위의 🔁 숫자는 그 문제가 나온 회차 수, 📋는 2024~2026 출제기준 세부항목입니다. 문제와 보기는 가장 최근 회차 원문입니다.</li><li>정답은 해설을 보고 판정한 것이며 공식 정답표가 아닙니다. ⚠️ 표시는 법령 개정 등으로 지금 기준과 다를 수 있는 문항입니다.</li><li>아래 <b>교재 챕터</b> 선택으로 에듀윌 교재 챕터별 문제만 골라 볼 수 있습니다. 문제 번호는 그대로입니다.</li><li><b>보기를 누르면 바로 채점</b>됩니다. 맞으면 ✅, 틀리면 ❌가 문제에 붙고 이 기기에 저장됩니다.</li><li><b>❌ 오답노트</b>에서 틀린 문제, 두 번 이상 틀린 🔁 반복 오답만 모아 보거나, 📅 <b>다시 풀기</b>로 답을 가리고 새로 풀 수 있습니다. 다시 맞힐 때마다 복습 간격이 1·3·7·14·30일로 늘어납니다.</li><li>학습 기록은 이 기기 브라우저에 저장됩니다. 첫 화면 <b>내 학습 현황</b>에서 백업 파일로 내보내고 가져올 수 있습니다.</li><li>헷갈린 문제는 오른쪽 위 <b>★</b>을 눌러 두면 이 기기에 저장되고, "★만 보기"로 모아 풀 수 있습니다.</li></ul></details>
   <nav class="toc"><a href="#g1"><span class="n">1</span>유해위험방지계획서 (1~6)</a><a href="#g2"><span class="n">2</span>건설공사 특수성과 안전관리 고려사항 (7)</a><a href="#g3"><span class="n">3</span>지반조사와 사전조사 (8~9)</a><a href="#g4"><span class="n">4</span>굴착면 기울기 (10~11)</a><a href="#g5"><span class="n">5</span>흙막이와 히빙·보일링 (12~23)</a><a href="#g6"><span class="n">6</span>토석붕괴·사면·옹벽 (24~29)</a><a href="#g7"><span class="n">7</span>산업안전보건관리비 (30~36)</a><a href="#g8"><span class="n">8</span>추락방지 (37~43)</a><a href="#g9"><span class="n">9</span>추락방호망·낙하물방지망 (44~49)</a><a href="#g10"><span class="n">10</span>통로·계단·사다리 (50~59)</a><a href="#g11"><span class="n">11</span>비계 (60~75)</a><a href="#g12"><span class="n">12</span>거푸집·동바리·콘크리트 (76~86)</a><a href="#g13"><span class="n">13</span>철골공사 (87~93)</a><a href="#g14"><span class="n">14</span>양중기·와이어로프·강풍 (94~105)</a><a href="#g15"><span class="n">16</span>차량계 건설기계·항타기 (106~117)</a><a href="#g16"><span class="n">17</span>터널·잠함·발파 (118~125)</a><a href="#g17"><span class="n">18</span>해체공사·가설구조물 (126~132)</a><a href="#g18"><span class="n">19</span>운반·하역작업 (133~141)</a></nav>
 </header>
-<div class="tools"><select class="btn" id="chSel" aria-label="교재 챕터별 보기"><option value="">교재 챕터: 전체</option><option value="01">CH01 건설공사 특성분석 (7)</option><option value="02">CH02 건설공사 위험성 (22)</option><option value="03">CH03 건설업 산업안전보건관리비 관리 (7)</option><option value="04">CH04 건설현장 안전시설 관리 (23)</option><option value="05">CH05 비계·거푸집 가시설 위험방지 (27)</option><option value="06">CH06 공사 및 작업 종류별 안전 (55)</option></select><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><button class="btn" id="onlyWrong">❌ 틀린 문제만</button><div class="score"><span id="score"></span><span class="count" id="starCount"></span></div></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">1</span>유해위험방지계획서 (1~6)</div><div class="section-line"></div></div>
-<div class="card q" data-q="1" data-ch="01" data-title="1번" data-a="3">
+<div class="tools"><select class="btn" id="chSel" aria-label="교재 챕터별 보기"><option value="">교재 챕터: 전체</option><option value="01">CH01 건설공사 특성분석 (7)</option><option value="02">CH02 건설공사 위험성 (22)</option><option value="03">CH03 건설업 산업안전보건관리비 관리 (7)</option><option value="04">CH04 건설현장 안전시설 관리 (23)</option><option value="05">CH05 비계·거푸집 가시설 위험방지 (27)</option><option value="06">CH06 공사 및 작업 종류별 안전 (55)</option></select><button class="btn" id="openAll">정답 모두 펼치기</button><button class="btn" id="onlyStar">★만 보기</button><select class="btn" id="wrongSel" aria-label="오답노트"><option value="">❌ 오답노트</option><option value="x"></option><option value="rep"></option><option value="due"></option></select><div class="score"><span id="score"></span><span class="count" id="starCount"></span></div></div><section class="section" id="g1"><div class="section-head"><div class="duality"><span class="n">1</span>유해위험방지계획서 (1~6)</div><div class="section-line"></div></div>
+<div class="card q" id="q1" data-q="1" data-ch="01" data-title="1번" data-a="3">
 <div class="q-head"><span class="q-num">1번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설공사 유해위험방지계획서를 제출해야 할 대상공사에 해당하지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 깊이 10[m]인 굴착공사</li><li data-o="2">② 다목적댐 건설공사</li><li data-o="3">③ 최대 지간길이가 40[m]인 교량건설 공사</li><li data-o="4">④ 연면적 5,000[m²]인 냉동·냉장창고시설의 설비 공사</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -207,7 +215,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 78%</p>
 <p>🗂 출제 회차: 19-3 · 23-2 · 24-1 · 24-3 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="2" data-ch="01" data-title="2번" data-a="2">
+<div class="card q" id="q2" data-q="2" data-ch="01" data-title="2번" data-a="2">
 <div class="q-head"><span class="q-num">2번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설공사의 유해위험방지계획서 제출 기준일로 옳은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 당해공사 착공 15일 전까지</li><li data-o="2">② 당해공사 착공 전날 까지</li><li data-o="3">③ 당해공사 착공 15일 후까지</li><li data-o="4">④ 당해공사 착공 1개월 전까지</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -216,7 +224,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 88%</p>
 <p>🗂 출제 회차: 22-2 · 24-2 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="3" data-ch="01" data-title="3번" data-a="2">
+<div class="card q" id="q3" data-q="3" data-ch="01" data-title="3번" data-a="2">
 <div class="q-head"><span class="q-num">3번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건법령상 유해·위험방지계획서의 심사결과에 따른 구분·판정에 해당하지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 적정</li><li data-o="2">② 일부적정</li><li data-o="3">③ 조건부적정</li><li data-o="4">④ 부적정</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -225,7 +233,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 91%</p>
 <p>🗂 출제 회차: 15-3 · 24-2 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="4" data-ch="01" data-title="4번" data-a="3">
+<div class="card q" id="q4" data-q="4" data-ch="01" data-title="4번" data-a="3">
 <div class="q-head"><span class="q-num">4번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">유해위험방지 계획서를 제출하려고 할 때 그 첨부서류와 가장 거리가 먼 것은?</p>
 <ul class="opts pick"><li data-o="1">① 공사개요서</li><li data-o="2">② 전체 공정표</li><li data-o="3">③ 산업안전보건관리비 작성요령</li><li data-o="4">④ 재해 발생 위험 시 연락 및 대피방법</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -234,7 +242,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 77%</p>
 <p>🗂 출제 회차: 17-1 · 20-4</p></div></details>
 </div>
-<div class="card q" data-q="5" data-ch="01" data-title="5번" data-a="4">
+<div class="card q" id="q5" data-q="5" data-ch="01" data-title="5번" data-a="4">
 <div class="q-head"><span class="q-num">5번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건법령에 따른 유해위험방지계획서 제출 대상 공사로 볼 수 없는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 깊이 10[m] 이상인 굴착공사</li><li data-o="2">② 터널 건설공사</li><li data-o="3">③ 지상 높이가 31[m] 이상인 건축물의 건설공사</li><li data-o="4">④ 다리의 전체길이가 40[m] 이상인 건설공사</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -244,7 +252,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 91%</p>
 <p>🗂 출제 회차: 18-2 · 21-3</p></div></details>
 </div>
-<div class="card q" data-q="6" data-ch="01" data-title="6번" data-a="3">
+<div class="card q" id="q6" data-q="6" data-ch="01" data-title="6번" data-a="3">
 <div class="q-head"><span class="q-num">6번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사업주가 유해위험방지 계획서 제출 후 건설공사 중 6개월 이내마다 안전보건공단의 확인을 받아야 할 내용이 아닌 것은?</p>
 <ul class="opts pick"><li data-o="1">① 유해위험방지 계획서의 내용과 실제공사 내용이 부합하는지 여부</li><li data-o="2">② 추가적인 유해·위험요인의 존재 여부</li><li data-o="3">③ 자율안전관리 업체 유해위험방지 계획서 제출·심사 면제</li><li data-o="4">④ 유해위험방지 계획서 변경 내용의 적정성</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -254,7 +262,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 20-1·2 · 24-2</p></div></details>
 </div></section>
 <section class="section" id="g2"><div class="section-head"><div class="duality"><span class="n">2</span>건설공사 특수성과 안전관리 고려사항 (7)</div><div class="section-line"></div></div>
-<div class="card q" data-q="7" data-ch="01" data-title="7번" data-a="1">
+<div class="card q" id="q7" data-q="7" data-ch="01" data-title="7번" data-a="1">
 <div class="q-head"><span class="q-num">7번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 1-1</span><span class="q-ch">CH01 건설공사 특성분석</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">지반조사 중 예비조사 단계에서 흙막이 구조물의 종류에 맞는 형식을 선정하기 위한 조사항목과 거리가 먼 것은?</p>
 <ul class="opts pick"><li data-o="1">① 흙막이 벽 축조여부판단 및 굴착에 따른 안정이 충분히 확보될 수 있는지 여부</li><li data-o="2">② 기상조건 변동에 따른 영향 검토</li><li data-o="3">③ 주변의 환경(하천, 지표지질, 도로, 교통 등)</li><li data-o="4">④ 인근 지반의 지반조사 자료나 시공자료의 수집</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -264,7 +272,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 15-2 · 24-3</p></div></details>
 </div></section>
 <section class="section" id="g3"><div class="section-head"><div class="duality"><span class="n">3</span>지반조사와 사전조사 (8~9)</div><div class="section-line"></div></div>
-<div class="card q" data-q="8" data-ch="02" data-title="8번" data-a="3">
+<div class="card q" id="q8" data-q="8" data-ch="02" data-title="8번" data-a="3">
 <div class="q-head"><span class="q-num">8번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 1-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">연약 점토지반 개량에 있어 적합하지 않은 공법은?</p>
 <ul class="opts pick"><li data-o="1">① 샌드드레인(Sand drain)공법</li><li data-o="2">② 페이퍼드레인(Paper drain)공법</li><li data-o="3">③ 바이브로 플로테이션(Vibro flotation)공법</li><li data-o="4">④ 생석회말뚝(Chemico pile)공법</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -274,7 +282,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 68%</p>
 <p>🗂 출제 회차: 15-1 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="9" data-ch="02" data-title="9번" data-a="3">
+<div class="card q" id="q9" data-q="9" data-ch="02" data-title="9번" data-a="3">
 <div class="q-head"><span class="q-num">9번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙의 투수계수에 영향을 주는 인자에 관한 설명으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 유체의 점성계수 : 점성계수가 클수록 투수계수는 작다.</li><li data-o="2">② 유체의 밀도 : 유체의 밀도가 클수록 투수계수는 크다.</li><li data-o="3">③ 공극비 : 공극비가 클수록 투수계수는 작다.</li><li data-o="4">④ 포화도 : 포화도가 클수록 투수계수도 크다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -285,7 +293,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 17-1 · 21-1</p></div></details>
 </div></section>
 <section class="section" id="g4"><div class="section-head"><div class="duality"><span class="n">4</span>굴착면 기울기 (10~11)</div><div class="section-line"></div></div>
-<div class="card q" data-q="10" data-ch="02" data-title="10번" data-a="3">
+<div class="card q" id="q10" data-q="10" data-ch="02" data-title="10번" data-a="3">
 <div class="q-head"><span class="q-num">10번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 2-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건법령에 따른 지반의 종류별 굴착면의 기울기 기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 모래 - 1 : 1.8</li><li data-o="2">② 연암 - 1 : 1.0</li><li data-o="3">③ 그 밖의 흙 - 1 : 1.5</li><li data-o="4">④ 풍화암 - 1 : 1.0</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -296,7 +304,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 86%</p>
 <p>🗂 출제 회차: 20-1·2 · 23-2 · 23-3 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="11" data-ch="02" data-title="11번" data-a="4">
+<div class="card q" id="q11" data-q="11" data-ch="02" data-title="11번" data-a="4">
 <div class="q-head"><span class="q-num">11번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">지반 등의 굴착작업 시 연암의 굴착면 기울기로 옳은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 1 : 0.8</li><li data-o="2">② 1 : 0.5</li><li data-o="3">③ 1 : 0.3</li><li data-o="4">④ 1 : 1.0</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -310,7 +318,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 22-1 · 24-3 · 25-2</p></div></details>
 </div></section>
 <section class="section" id="g5"><div class="section-head"><div class="duality"><span class="n">5</span>흙막이와 히빙·보일링 (12~23)</div><div class="section-line"></div></div>
-<div class="card q" data-q="12" data-ch="02" data-title="12번" data-a="4">
+<div class="card q" id="q12" data-q="12" data-ch="02" data-title="12번" data-a="4">
 <div class="q-head"><span class="q-num">12번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이 지보공을 설치하였을 때 정기적으로 점검하여야 할 사항과 거리가 먼 것은?</p>
 <ul class="opts pick"><li data-o="1">① 버팀대의 긴압(緊壓)의 정도</li><li data-o="2">② 부재의 접속부·부착부 및 교차부의 상태</li><li data-o="3">③ 부재의 손상·변형·부식·변위 및 탈락의 유무와 상태</li><li data-o="4">④ 경보장치의 작동상태</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -319,7 +327,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 93%</p>
 <p>🗂 출제 회차: 17-1 · 19-1 · 20-1·2 · 24-1 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="13" data-ch="02" data-title="13번" data-a="4">
+<div class="card q" id="q13" data-q="13" data-ch="02" data-title="13번" data-a="4">
 <div class="q-head"><span class="q-num">13번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이 가시설 공사 시 사용되는 각 계측기 설치목적으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 수위계-지반 내 지하수위의 변화 측정</li><li data-o="2">② 지중경사계-지중의 수평 변위량 측정</li><li data-o="3">③ 지표침하계-지표면 침하량 측정</li><li data-o="4">④ 하중계-상부 적재하중 변화 측정</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -328,7 +336,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 79% · 오답 ② 16%</p>
 <p>🗂 출제 회차: 16-2 · 19-2 · 23-2 · 24-2 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="14" data-ch="02" data-title="14번" data-a="2">
+<div class="card q" id="q14" data-q="14" data-ch="02" data-title="14번" data-a="2">
 <div class="q-head"><span class="q-num">14번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이 가시설 공사 중 발생할 수 있는 보일링(Boiling) 현상에 관한 설명으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 지하수위가 높은 지반을 굴착할 때 주로 발생한다.</li><li data-o="2">② 연약한 점토지반에서 굴착면의 융기로 발생한다.</li><li data-o="3">③ 흙막이벽의 근입장 깊이가 부족할 경우 발생한다.</li><li data-o="4">④ 이 현상이 발생하면 흙막이 벽의 지지력이 상실된다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -337,7 +345,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 74%</p>
 <p>🗂 출제 회차: 21-2 · 23-1 · 24-2 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="15" data-ch="02" data-title="15번" data-a="3">
+<div class="card q" id="q15" data-q="15" data-ch="02" data-title="15번" data-a="3">
 <div class="q-head"><span class="q-num">15번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">히빙(Heaving)현상 방지대책으로 틀린 것은?</p>
 <ul class="opts pick"><li data-o="1">① 흙막이 벽체 배면의 지반을 개량하여 흙의 전단강도를 높인다.</li><li data-o="2">② 흙막이 벽체의 근입깊이를 깊게 한다.</li><li data-o="3">③ 부풀어 솟아오르는 바닥면의 토사를 제거한다.</li><li data-o="4">④ 소단굴착을 실시하여 소단부 흙의 중량이 바닥을 누르게 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -347,7 +355,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 82%</p>
 <p>🗂 출제 회차: 15-1 · 25-3 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="16" data-ch="02" data-title="16번" data-a="4">
+<div class="card q" id="q16" data-q="16" data-ch="02" data-title="16번" data-a="4">
 <div class="q-head"><span class="q-num">16번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">토사붕괴에 따른 재해를 방지하기 위한 흙막이 지보공 설비가 아닌 것은?</p>
 <ul class="opts pick"><li data-o="1">① 말뚝</li><li data-o="2">② 띠장</li><li data-o="3">③ 흙막이판</li><li data-o="4">④ 턴버클</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -356,7 +364,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 91%</p>
 <p>🗂 출제 회차: 15-1 · 22-2 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="17" data-ch="02" data-title="17번" data-a="3">
+<div class="card q" id="q17" data-q="17" data-ch="02" data-title="17번" data-a="3">
 <div class="q-head"><span class="q-num">17번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이 공법을 흙막이 지지방식에 의한 분류와 구조방식에 의한 분류로 나눌 때 다음 중 지지방식에 의한 분류에 해당하는 것은?</p>
 <ul class="opts pick"><li data-o="1">① Top down method 공법</li><li data-o="2">② H-Pile 공법</li><li data-o="3">③ 수평 버팀대식 흙막이 공법</li><li data-o="4">④ 지하연속벽 공법</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -366,7 +374,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 83%</p>
 <p>🗂 출제 회차: 17-1 · 20-4 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="18" data-ch="02" data-title="18번" data-a="2">
+<div class="card q" id="q18" data-q="18" data-ch="02" data-title="18번" data-a="2">
 <div class="q-head"><span class="q-num">18번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">온도가 하강함에 따라 토중수가 얼어 부피가 약 9[%] 정도 증대하게 됨으로써 지표면이 부풀어오르는 현상은?</p>
 <ul class="opts pick"><li data-o="1">① 액상화현상</li><li data-o="2">② 동상현상</li><li data-o="3">③ 연화현상</li><li data-o="4">④ 리칭현상</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -376,7 +384,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 87%</p>
 <p>🗂 출제 회차: 15-3 · 19-3 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="19" data-ch="02" data-title="19번" data-a="3">
+<div class="card q" id="q19" data-q="19" data-ch="02" data-title="19번" data-a="3">
 <div class="q-head"><span class="q-num">19번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이 지보공을 설치하였을 때 정기점검 사항에 해당되지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 부재의 손상, 변형, 부식, 변위 및 탈락의 유무와 상태</li><li data-o="2">② 버팀대의 긴압의 정도</li><li data-o="3">③ 검지부의 이상유무</li><li data-o="4">④ 침하의 정도</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -385,7 +393,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 79%</p>
 <p>🗂 출제 회차: 15-3 · 26-2</p></div></details>
 </div>
-<div class="card q" data-q="20" data-ch="02" data-title="20번" data-a="3">
+<div class="card q" id="q20" data-q="20" data-ch="02" data-title="20번" data-a="3">
 <div class="q-head"><span class="q-num">20번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이공법 선정시 고려사항으로 틀린 것은?</p>
 <ul class="opts pick"><li data-o="1">① 안전하고 경제적인 공법 선택</li><li data-o="2">② 지반성상에 적합한 공법 선택</li><li data-o="3">③ 차수성이 낮은 공법 선택</li><li data-o="4">④ 흙막이 해체를 고려</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -394,7 +402,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 80% · 오답 ④ 16%</p>
 <p>🗂 출제 회차: 15-1 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="21" data-ch="02" data-title="21번" data-a="3">
+<div class="card q" id="q21" data-q="21" data-ch="02" data-title="21번" data-a="3">
 <div class="q-head"><span class="q-num">21번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">버팀보, 앵커 등의 축하중 변화상태를 측정하여 이들 부재의 지지효과 및 그 변화 추이를 파악하는데 사용되는 계측기기는?</p>
 <ul class="opts pick"><li data-o="1">① piezo meter</li><li data-o="2">② strain gauge</li><li data-o="3">③ load cell</li><li data-o="4">④ water level meter</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -406,7 +414,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 79%</p>
 <p>🗂 출제 회차: 21-3 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="22" data-ch="02" data-title="22번" data-a="4">
+<div class="card q" id="q22" data-q="22" data-ch="02" data-title="22번" data-a="4">
 <div class="q-head"><span class="q-num">22번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이공의 파괴 원인 중 하나인 보일링(boiling)현상에 관한 설명으로 틀린 것은?</p>
 <ul class="opts pick"><li data-o="1">① 연약 사질토지반에서 주로 발생한다.</li><li data-o="2">② 지하수위가 높은 지반을 굴착할 때 주로 발생한다.</li><li data-o="3">③ 시트파일(sheet pile) 등의 저면에 분사현상이 발생한다.</li><li data-o="4">④ 연약 점토지반에서 굴착면의 융기로 발생한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -415,7 +423,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 83%</p>
 <p>🗂 출제 회차: 15-1 · 23-2</p></div></details>
 </div>
-<div class="card q" data-q="23" data-ch="02" data-title="23번" data-a="3">
+<div class="card q" id="q23" data-q="23" data-ch="02" data-title="23번" data-a="3">
 <div class="q-head"><span class="q-num">23번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙막이벽의 근입깊이를 깊게하고, 전면의 굴착부분을 남겨두어 흙의 중량으로 대항하게 하거나, 굴착예정부분의 일부를 미리 굴착하여 기초콘크리트를 타설하는 등의 대책과 가장 관계 깊은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 지하수위가 높을 때</li><li data-o="2">② 굴착깊이가 깊을 때</li><li data-o="3">③ 히빙현상이 있을 때</li><li data-o="4">④ 파이핑현상이 있을 때</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -426,7 +434,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 16-1 · 22-1</p></div></details>
 </div></section>
 <section class="section" id="g6"><div class="section-head"><div class="duality"><span class="n">6</span>토석붕괴·사면·옹벽 (24~29)</div><div class="section-line"></div></div>
-<div class="card q" data-q="24" data-ch="02" data-title="24번" data-a="3">
+<div class="card q" id="q24" data-q="24" data-ch="02" data-title="24번" data-a="3">
 <div class="q-head"><span class="q-num">24번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">굴착공사에 있어서 비탈면붕괴를 방지하기 위하여 실시하는 대책으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 비탈면 하단을 성토한다.</li><li data-o="2">② 지하수위를 내리기 위해 수평배수공을 설치한다.</li><li data-o="3">③ 비탈면 상부에 토사를 적재한다.</li><li data-o="4">④ 지표수의 침투를 막기 위해 표면 배수공을 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -436,7 +444,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 92%</p>
 <p>🗂 출제 회차: 15-3 · 21-2 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="25" data-ch="02" data-title="25번" data-a="4">
+<div class="card q" id="q25" data-q="25" data-ch="02" data-title="25번" data-a="4">
 <div class="q-head"><span class="q-num">25번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">유한사면에서 원형 활동면에 의해 발생하는 일반적인 사면 파괴의 종류에 해당하지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 사면 저부파괴(Base failure)</li><li data-o="2">② 사면 선단 파괴(Toe failure)</li><li data-o="3">③ 사면 내 파괴 (Slope failure)</li><li data-o="4">④ 사면 인장 파괴(Tension failure)</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -445,7 +453,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 75%</p>
 <p>🗂 출제 회차: 21-3 · 24-2 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="26" data-ch="02" data-title="26번" data-a="2">
+<div class="card q" id="q26" data-q="26" data-ch="02" data-title="26번" data-a="2">
 <div class="q-head"><span class="q-num">26번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 중 토사붕괴의 내적 원인인 것은?</p>
 <ul class="opts pick"><li data-o="1">① 절토 및 성토 높이 증가</li><li data-o="2">② 토석의 강도저하</li><li data-o="3">③ 공사에 의한 진동 및 반복하중 증가</li><li data-o="4">④ 사면, 법면의 기울기 증가</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -454,7 +462,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 84%</p>
 <p>🗂 출제 회차: 15-2 · 24-2 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="27" data-ch="02" data-title="27번" data-a="4">
+<div class="card q" id="q27" data-q="27" data-ch="02" data-title="27번" data-a="4">
 <div class="q-head"><span class="q-num">27번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설재해대책의 사면보호공법 중 식물을 생육시켜 그 뿌리로 사면의 표층토를 고정하여 빗물에 의한 침식, 동상, 이완 등을 방지하고, 녹화에 의한 경관조성을 목적으로 시공하는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 뿜어 붙이기공</li><li data-o="2">② 블럭공</li><li data-o="3">③ 쉴드공</li><li data-o="4">④ 식생공</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -464,7 +472,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 95%</p>
 <p>🗂 출제 회차: 18-3 · 20-4 · 23-3</p></div></details>
 </div>
-<div class="card q" data-q="28" data-ch="02" data-title="28번" data-a="3">
+<div class="card q" id="q28" data-q="28" data-ch="02" data-title="28번" data-a="3">
 <div class="q-head"><span class="q-num">28번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사면 보호 공법 중 구조물에 의한 보호공법에 해당되지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 현장타설 콘크리트 격자공</li><li data-o="2">② 돌쌓기공</li><li data-o="3">③ 식생구멍공</li><li data-o="4">④ 블럭공</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -473,7 +481,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 88%</p>
 <p>🗂 출제 회차: 15-2 · 18-2 · 21-1</p></div></details>
 </div>
-<div class="card q" data-q="29" data-ch="02" data-title="29번" data-a="3">
+<div class="card q" id="q29" data-q="29" data-ch="02" data-title="29번" data-a="3">
 <div class="q-head"><span class="q-num">29번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH02 건설공사 위험성</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 중 건설재해대책의 사면보호공법에 해당하지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 뿜어붙이기공</li><li data-o="2">② 블록공</li><li data-o="3">③ 실드공</li><li data-o="4">④ 식생공</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -484,7 +492,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 16-1 · 26-1</p></div></details>
 </div></section>
 <section class="section" id="g7"><div class="section-head"><div class="duality"><span class="n">7</span>산업안전보건관리비 (30~36)</div><div class="section-line"></div></div>
-<div class="card q" data-q="30" data-ch="03" data-title="30번" data-a="3">
+<div class="card q" id="q30" data-q="30" data-ch="03" data-title="30번" data-a="3">
 <div class="q-head"><span class="q-num">30번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 3-1</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">공정율이 65[%]인 건설현장의 경우 공사 진척에 따른 산업안전보건관리비의 최소 사용기준으로 옳은 것은? (단, 공정율은 기성공정율을 기준으로 함)</p>
 <ul class="opts pick"><li data-o="1">① 70[%] 이상</li><li data-o="2">② 60[%] 이상</li><li data-o="3">③ 50[%] 이상</li><li data-o="4">④ 40[%] 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -493,7 +501,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 82%</p>
 <p>🗂 출제 회차: 17-2 · 20-1·2 · 23-2 · 25-1 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="31" data-ch="03" data-title="31번" data-a="1">
+<div class="card q" id="q31" data-q="31" data-ch="03" data-title="31번" data-a="1">
 <div class="q-head"><span class="q-num">31번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 3-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건관리비계상기준에 따른 건축공사, 대상액 「5억원 이상~50억원 미만」의 안전관리비 비율 및 기초액으로 옳은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 비율 : 2.28[%], 기초액 : 4,325,000원</li><li data-o="2">② 비율 : 2.35[%], 기초액 : 5,400,000원</li><li data-o="3">③ 비율 : 1.99[%], 기초액 : 5,499,000원</li><li data-o="4">④ 비율 : 1.57[%], 기초액 : 4,411,000원</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -503,7 +511,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 79%</p>
 <p>🗂 출제 회차: 17-3 · 20-3 · 23-3 · 24-1 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="32" data-ch="03" data-title="32번" data-a="4">
+<div class="card q" id="q32" data-q="32" data-ch="03" data-title="32번" data-a="4">
 <div class="q-head"><span class="q-num">32번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 3-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설업 산업안전보건관리비 계상 및 사용기준은 산업재해보상 보험법의 적용을 받는 공사 중 총 공사금액이 얼마 이상인 공사에 적용하는가?(단, 전기공사업법, 정보통신공사업법에 의한 공사는 제외)</p>
 <ul class="opts pick"><li data-o="1">① 4천만원</li><li data-o="2">② 1천만원</li><li data-o="3">③ 3천만원</li><li data-o="4">④ 2천만원</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -512,7 +520,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 84%</p>
 <p>🗂 출제 회차: 19-3 · 22-2 · 23-1 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="33" data-ch="03" data-title="33번" data-a="1">
+<div class="card q" id="q33" data-q="33" data-ch="03" data-title="33번" data-a="1">
 <div class="q-head"><span class="q-num">33번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">흙 속의 전단응력을 증대시키는 원인에 해당하지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 함수비의 감소에 따른 흙의 단위 체적 중량의 감소</li><li data-o="2">② 지진, 폭파에 의한 진동 발생</li><li data-o="3">③ 균열내에 작용하는 수압증가</li><li data-o="4">④ 자연 또는 인공에 의한 지하공동의 형성</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -522,7 +530,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 80%</p>
 <p>🗂 출제 회차: 21-3 · 24-1 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="34" data-ch="03" data-title="34번" data-a="4">
+<div class="card q" id="q34" data-q="34" data-ch="03" data-title="34번" data-a="4">
 <div class="q-head"><span class="q-num">34번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 3-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설업 산업안전보건관리비 중 계상비용에 해당되지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 건설재해예방 기술지도비</li><li data-o="2">② 근로자 건강관리비</li><li data-o="3">③ 개인보호구 및 안전장구 구입비</li><li data-o="4">④ 외부비계, 작업발판 등의 가설구조물 설치 소요비</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -532,7 +540,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 74%</p>
 <p>🗂 출제 회차: 15-1 · 18-3 · 23-1</p></div></details>
 </div>
-<div class="card q" data-q="35" data-ch="03" data-title="35번" data-a="3">
+<div class="card q" id="q35" data-q="35" data-ch="03" data-title="35번" data-a="3">
 <div class="q-head"><span class="q-num">35번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 3-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설업 산업안전보건관리비 계상 및 사용 기준에 따른 안전관리비의 개인보호구 및 안전장구 구입비 항목에서 안전관리비로 사용이 가능한 경우는?</p>
 <ul class="opts pick"><li data-o="1">① 감리원이나 외부에서 방문하는 인사에게 지급하는 보호구</li><li data-o="2">② 안전보건관리자가 선임되지 않은 현장에서 안전보건업무를 담당하는 현장관계자용 무전기, 카메라, 컴퓨터, 프린터 등 업무용 기기</li><li data-o="3">③ 중대재해 목적으로 발생한 정신질환을 치료하기 위해 소요되는 비용</li><li data-o="4">④ 근로자에게 일률적으로 지급하는 보냉·보온장구</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -545,7 +553,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 78%</p>
 <p>🗂 출제 회차: 18-2 · 22-1</p></div></details>
 </div>
-<div class="card q" data-q="36" data-ch="03" data-title="36번" data-a="3">
+<div class="card q" id="q36" data-q="36" data-ch="03" data-title="36번" data-a="3">
 <div class="q-head"><span class="q-num">36번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 3-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH03 건설업 산업안전보건관리비 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건축공사로서 대상액이 5억원 이상 50억원 미만인 경우에 산업안전보건관리비의 비율(가) 및 기초액(나)으로 옳은 것은?</p>
 <ul class="opts pick"><li data-o="1">① (가) 2.35% (나) 5,400,000원</li><li data-o="2">② (가) 1.57% (나) 4,411,000원</li><li data-o="3">③ (가) 2.28% (나) 4,325,000원</li><li data-o="4">④ (가) 1.99% (나) 5,499,000원</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -556,7 +564,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 19-1 · 24-2</p></div></details>
 </div></section>
 <section class="section" id="g8"><div class="section-head"><div class="duality"><span class="n">8</span>추락방지 (37~43)</div><div class="section-line"></div></div>
-<div class="card q" data-q="37" data-ch="04" data-title="37번" data-a="3">
+<div class="card q" id="q37" data-q="37" data-ch="04" data-title="37번" data-a="3">
 <div class="q-head"><span class="q-num">37번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전난간의 구조 및 설치요건에 대한 기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 발끝막이판은 바닥면 등으로부터 10[cm] 이상의 높이를 유지할 것</li><li data-o="2">② 안전난간은 구조적으로 가장 취약한 지점에서 가장 취약한 방향으로 작용하는 100[kg] 이상의 하중에 견딜 수 있는 튼튼한 구조일 것</li><li data-o="3">③ 난간대는 지름 1.5[cm] 이상의 금속제파이프나 그 이상의 강도를 가진 재료일 것</li><li data-o="4">④ 상부난간대는 바닥면·발판 또는 경사로의 표면으로부터 90[cm] 이상 지점에 설치할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -566,7 +574,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 71%</p>
 <p>🗂 출제 회차: 19-3 · 23-3 · 24-2 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="38" data-ch="04" data-title="38번" data-a="4">
+<div class="card q" id="q38" data-q="38" data-ch="04" data-title="38번" data-a="4">
 <div class="q-head"><span class="q-num">38번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">근로자의 추락 등의 위험을 방지하기 위한 안전난간의 설치기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 상부난간대와 중간난간대는 난간 길이 전체에 걸쳐 바닥면 등과 평행을 유지할 것</li><li data-o="2">② 안전난간은 구조적으로 가장 취약한 지점에서 가장 취약한 방향으로 작용하는 100[kg] 이상의 하중에 견딜 수 있는 튼튼한 구조일 것</li><li data-o="3">③ 난간대는 지름 2.7[cm] 이상의 금속제 파이프나 그 이상의 강도가 있는 재료일 것</li><li data-o="4">④ 발끝막이판은 바닥면 등으로부터 20[cm] 이하의 높이를 유지할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -576,7 +584,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 74%</p>
 <p>🗂 출제 회차: 16-1 · 21-3 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="39" data-ch="04" data-title="39번" data-a="4">
+<div class="card q" id="q39" data-q="39" data-ch="04" data-title="39번" data-a="4">
 <div class="q-head"><span class="q-num">39번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">추락의 위험이 있는 개구부에 대한 방호조치와 거리가 먼 것은?</p>
 <ul class="opts pick"><li data-o="1">① 충분한 강도를 가진 구조의 덮개를 뒤집히거나 떨어지지 않도록 설치한다.</li><li data-o="2">② 안전난간, 울타리, 수직형 추락방호망 등으로 방호조치를 한다.</li><li data-o="3">③ 어두운 장소에서도 식별이 가능한 개구부 주의표지를 부착한다.</li><li data-o="4">④ 폭 30[cm] 이상의 발판을 설치한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -586,7 +594,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 91%</p>
 <p>🗂 출제 회차: 18-2 · 23-1 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="40" data-ch="04" data-title="40번" data-a="2">
+<div class="card q" id="q40" data-q="40" data-ch="04" data-title="40번" data-a="2">
 <div class="q-head"><span class="q-num">40번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">비계에서 벽을 고정하고 기둥과 기둥을 수평재나 가새로 연결하는 가장 큰 이유는?</p>
 <ul class="opts pick"><li data-o="1">① 인장파괴를 방지하기 위해</li><li data-o="2">② 좌굴을 방지하기 위해</li><li data-o="3">③ 해체를 용이하게 하기 위해</li><li data-o="4">④ 작업자의 추락재해를 방지하기 위해</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -596,7 +604,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 72% · 오답 ④ 16%</p>
 <p>🗂 출제 회차: 15-1 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="41" data-ch="04" data-title="41번" data-a="1">
+<div class="card q" id="q41" data-q="41" data-ch="04" data-title="41번" data-a="1">
 <div class="q-head"><span class="q-num">41번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">추락·재해방지 설비 중 근로자의 추락재해를 방지할 수 있는 설비로 작업발판 설치가 곤란한 경우에 필요한 설비는?</p>
 <ul class="opts pick"><li data-o="1">① 추락방호망</li><li data-o="2">② 경사로</li><li data-o="3">③ 달비계</li><li data-o="4">④ 고정사다리</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -610,7 +618,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 96%</p>
 <p>🗂 출제 회차: 22-1 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="42" data-ch="04" data-title="42번" data-a="3">
+<div class="card q" id="q42" data-q="42" data-ch="04" data-title="42번" data-a="3">
 <div class="q-head"><span class="q-num">42번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">작업발판 및 통로의 끝이나 개구부로서 근로자가 추락할 위험이 있는 장소에서 난간등의 설치가 매우 곤란하거나 작업의 필요상 임시로 난간등을 해체하여야 하는 경우에 설치하여야 하는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 석면포</li><li data-o="2">② 구명구</li><li data-o="3">③ 추락방호망</li><li data-o="4">④ 수직방호망</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -619,7 +627,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 98%</p>
 <p>🗂 출제 회차: 17-1 · 20-4</p></div></details>
 </div>
-<div class="card q" data-q="43" data-ch="04" data-title="43번" data-a="2">
+<div class="card q" id="q43" data-q="43" data-ch="04" data-title="43번" data-a="2">
 <div class="q-head"><span class="q-num">43번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 설명에 해당하는 안전대와 관련된 용어로 옳은 것은?(단, 보호구 안전인증 고시 기준)<br>신체지지의 목적으로 전신에 착용하는 띠 모양의 것으로서 상체 등 신체 일부분만 지지하는 것은 제외한다.</p>
 <ul class="opts pick"><li data-o="1">① 버클</li><li data-o="2">② 안전그네</li><li data-o="3">③ 벨트</li><li data-o="4">④ 죔줄</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -632,7 +640,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 17-2 · 23-2</p></div></details>
 </div></section>
 <section class="section" id="g9"><div class="section-head"><div class="duality"><span class="n">9</span>추락방호망·낙하물방지망 (44~49)</div><div class="section-line"></div></div>
-<div class="card q" data-q="44" data-ch="04" data-title="44번" data-a="1">
+<div class="card q" id="q44" data-q="44" data-ch="04" data-title="44번" data-a="1">
 <div class="q-head"><span class="q-num">44번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">추락방지용 방망 중 그물코의 크기가 5[cm]인 매듭방망 신품의 인장강도는 최소 몇 [kg] 이상이어야 하는가?</p>
 <ul class="opts pick"><li data-o="1">① 110</li><li data-o="2">② 150</li><li data-o="3">③ 200</li><li data-o="4">④ 60</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -642,7 +650,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 80%</p>
 <p>🗂 출제 회차: 15-1 · 18-3 · 21-3 · 23-1 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="45" data-ch="04" data-title="45번" data-a="4">
+<div class="card q" id="q45" data-q="45" data-ch="04" data-title="45번" data-a="4">
 <div class="q-head"><span class="q-num">45번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">그물코의 크기가 10[cm]인 매듭없는 방망사 신품의 인장강도는 최소 얼마 이상이어야 하는가?</p>
 <ul class="opts pick"><li data-o="1">① 320[kg]</li><li data-o="2">② 500[kg]</li><li data-o="3">③ 400[kg]</li><li data-o="4">④ 240[kg]</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -652,7 +660,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 89%</p>
 <p>🗂 출제 회차: 17-1 · 23-2 · 24-1 · 24-2</p></div></details>
 </div>
-<div class="card q" data-q="46" data-ch="04" data-title="46번" data-a="3">
+<div class="card q" id="q46" data-q="46" data-ch="04" data-title="46번" data-a="3">
 <div class="q-head"><span class="q-num">46번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 중 방망에 표시해야 할 사항이 아닌 것은?</p>
 <ul class="opts pick"><li data-o="1">① 재봉치수</li><li data-o="2">② 제조자명</li><li data-o="3">③ 방망의 신축성</li><li data-o="4">④ 제조연월</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -661,7 +669,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 77% · 오답 ② 16%</p>
 <p>🗂 출제 회차: 15-1 · 19-1 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="47" data-ch="04" data-title="47번" data-a="4">
+<div class="card q" id="q47" data-q="47" data-ch="04" data-title="47번" data-a="4">
 <div class="q-head"><span class="q-num">47번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설현장에서 작업으로 인하여 물체가 떨어지거나 날아올 위험이 있는 경우에 대한 안전조치에 해당하지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 낙하물 방지망 설치</li><li data-o="2">② 방호선반 설치</li><li data-o="3">③ 수직보호망 설치</li><li data-o="4">④ 울타리 설치</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -670,7 +678,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 79%</p>
 <p>🗂 출제 회차: 17-3 · 21-2 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="48" data-ch="04" data-title="48번" data-a="2">
+<div class="card q" id="q48" data-q="48" data-ch="04" data-title="48번" data-a="2">
 <div class="q-head"><span class="q-num">48번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">지반의 굴착 작업에 있어서 비가 올 경우를 대비한 직접적인 대책으로 옳은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 매설물 등의 유무 또는 상태 확인</li><li data-o="2">② 측구 설치</li><li data-o="3">③ 낙하물 방지망 설치</li><li data-o="4">④ 추락 방호망 설치</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -679,7 +687,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 90%</p>
 <p>🗂 출제 회차: 21-2 · 24-1 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="49" data-ch="04" data-title="49번" data-a="1">
+<div class="card q" id="q49" data-q="49" data-ch="04" data-title="49번" data-a="1">
 <div class="q-head"><span class="q-num">49번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">작업중이던 미장공이 상부에서 떨어지는 공구에 의해 상해를 입었다면 어느 부분에 대한 결함이 있었겠는가?</p>
 <ul class="opts pick"><li data-o="1">① 낙하물 방지시설 설치</li><li data-o="2">② 작업방법</li><li data-o="3">③ 작업대 설치</li><li data-o="4">④ 비계설치</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -690,7 +698,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 18-1 · 26-1</p></div></details>
 </div></section>
 <section class="section" id="g10"><div class="section-head"><div class="duality"><span class="n">10</span>통로·계단·사다리 (50~59)</div><div class="section-line"></div></div>
-<div class="card q" data-q="50" data-ch="04" data-title="50번" data-a="2">
+<div class="card q" id="q50" data-q="50" data-ch="04" data-title="50번" data-a="2">
 <div class="q-head"><span class="q-num">50번</span><span class="q-meta">🔁 7회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설통로의 설치 기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 경사는 30[°] 이하로 할 것</li><li data-o="2">② 경사가 10[°]를 초과하는 경우에는 미끄러지지 아니하는 구조로 할 것</li><li data-o="3">③ 추락할 위험이 있는 장소에는 안전난간을 설치할 것</li><li data-o="4">④ 건설공사에 사용하는 높이 8[m] 이상인 비계다리에는 7[m] 이내마다 계단참을 설치할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -700,7 +708,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 82%</p>
 <p>🗂 출제 회차: 18-2 · 22-1 · 23-2 · 24-2 · 25-2 · 25-3 · 26-2</p></div></details>
 </div>
-<div class="card q" data-q="51" data-ch="04" data-title="51번" data-a="1">
+<div class="card q" id="q51" data-q="51" data-ch="04" data-title="51번" data-a="1">
 <div class="q-head"><span class="q-num">51번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설통로를 설치하는 경우 준수해야할 기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 경사가 25[°]를 초과하는 경우에는 미끄러지지 아니하는 구조로 할 것</li><li data-o="2">② 건설공사에 사용하는 높이 8[m] 이상인 비계다리에는 7[m] 이내마다 계단참을 설치할 것</li><li data-o="3">③ 경사는 30[°] 이하로 할 것</li><li data-o="4">④ 수직갱에 가설된 통로의 길이가 15[m] 이상인 때에는 10[m] 이내마다 계단참을 설치할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -709,7 +717,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 87%</p>
 <p>🗂 출제 회차: 15-2 · 19-3 · 21-1 · 22-2</p></div></details>
 </div>
-<div class="card q" data-q="52" data-ch="04" data-title="52번" data-a="3">
+<div class="card q" id="q52" data-q="52" data-ch="04" data-title="52번" data-a="3">
 <div class="q-head"><span class="q-num">52번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사다리식 통로 등의 구조에 대한 설치기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 발판의 간격은 일정하게 할 것</li><li data-o="2">② 사다리의 상단은 걸쳐놓은 지점으로부터 60[cm] 이상 올라가도록 할 것</li><li data-o="3">③ 사다리식 통로의 길이가 10[m] 이상인 때에는 7[m] 이내마다 계단참을 설치할 것</li><li data-o="4">④ 발판과 벽과의 사이는 15[cm] 이상의 간격을 유지 할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -718,7 +726,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 88%</p>
 <p>🗂 출제 회차: 22-2 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="53" data-ch="04" data-title="53번" data-a="3">
+<div class="card q" id="q53" data-q="53" data-ch="04" data-title="53번" data-a="3">
 <div class="q-head"><span class="q-num">53번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사다리식 통로 등을 설치하는 경우 통로 구조로서 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 발판의 간격은 일정하게 한다.</li><li data-o="2">② 발판과 벽과의 사이는 15[cm] 이상의 간격을 유지한다.</li><li data-o="3">③ 폭은 40[cm] 이상으로 한다.</li><li data-o="4">④ 사다리의 상단은 걸쳐놓은 지점으로부터 60[cm] 이상 올라가도록 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -728,7 +736,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 81%</p>
 <p>🗂 출제 회차: 22-1 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="54" data-ch="04" data-title="54번" data-a="1">
+<div class="card q" id="q54" data-q="54" data-ch="04" data-title="54번" data-a="1">
 <div class="q-head"><span class="q-num">54번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건법령에 따라 사다리식 통로를 설치하는 경우 준수해야 할 기준으로 틀린 것은?</p>
 <ul class="opts pick"><li data-o="1">① 사다리식 통로의 기울기는 60[ù] 이하로 할 것</li><li data-o="2">② 사다리의 상단은 걸쳐놓은 지점으로부터 60[cm] 이상 올라가도록 할 것</li><li data-o="3">③ 사다리식 통로의 길이가 10[m] 이상인 경우에는 5[m] 이내마다 계단참을 설치할 것</li><li data-o="4">④ 발판과 벽과의 사이는 15[cm] 이상의 간격을 유지할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -737,7 +745,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 83%</p>
 <p>🗂 출제 회차: 19-3 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="55" data-ch="04" data-title="55번" data-a="2">
+<div class="card q" id="q55" data-q="55" data-ch="04" data-title="55번" data-a="2">
 <div class="q-head"><span class="q-num">55번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설통로를 설치하는 경우 경사는 최대 몇 도 이하로 하여야 하는가?</p>
 <ul class="opts pick"><li data-o="1">① 25</li><li data-o="2">② 30</li><li data-o="3">③ 35</li><li data-o="4">④ 20</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -746,7 +754,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 91%</p>
 <p>🗂 출제 회차: 15-1 · 24-1</p></div></details>
 </div>
-<div class="card q" data-q="56" data-ch="04" data-title="56번" data-a="2">
+<div class="card q" id="q56" data-q="56" data-ch="04" data-title="56번" data-a="2">
 <div class="q-head"><span class="q-num">56번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설현장에 설치하는 사다리식 통로의 설치기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 사다리의 상단은 걸쳐놓은 지점으로부터 60[cm] 이상 올라가도록 할 것</li><li data-o="2">② 사다리식 통로의 길이가 10[m] 이상인 경우에는 3[m] 이내마다 계단참을 설치할 것</li><li data-o="3">③ 발판과 벽과의 사이는 15[cm] 이상의 간격을 유지할 것</li><li data-o="4">④ 발판의 간격은 일정하게 할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -756,7 +764,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 92%</p>
 <p>🗂 출제 회차: 17-2 · 20-4</p></div></details>
 </div>
-<div class="card q" data-q="57" data-ch="04" data-title="57번" data-a="3">
+<div class="card q" id="q57" data-q="57" data-ch="04" data-title="57번" data-a="3">
 <div class="q-head"><span class="q-num">57번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설작업장에서 근로자가 상시 작업하는 장소의 작업면 조도기준으로 옳지 않은 것은?(단, 갱내 작업장과 감광재료를 취급하는 작업장의 경우는 제외)</p>
 <ul class="opts pick"><li data-o="1">① 정밀 작업 : 300럭스[lux] 이상</li><li data-o="2">② 초정밀, 보통작업을 제외한 기타 작업 : 75 럭스[lux] 이상</li><li data-o="3">③ 초정밀 작업 : 600럭스[lux] 이상</li><li data-o="4">④ 보통 작업 : 150럭스[lux] 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -769,7 +777,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 85%</p>
 <p>🗂 출제 회차: 19-1 · 22-1</p></div></details>
 </div>
-<div class="card q" data-q="58" data-ch="04" data-title="58번" data-a="2">
+<div class="card q" id="q58" data-q="58" data-ch="04" data-title="58번" data-a="2">
 <div class="q-head"><span class="q-num">58번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">사다리식 통로 등을 설치하는 경우 고정식 사다리식 통로의 기울기는 최대 몇 도 이하로 하여야 하는가?</p>
 <ul class="opts pick"><li data-o="1">① 80도</li><li data-o="2">② 90도</li><li data-o="3">③ 75도</li><li data-o="4">④ 60도</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -778,7 +786,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 71%</p>
 <p>🗂 출제 회차: 19-1 · 21-3</p></div></details>
 </div>
-<div class="card q" data-q="59" data-ch="04" data-title="59번" data-a="4">
+<div class="card q" id="q59" data-q="59" data-ch="04" data-title="59번" data-a="4">
 <div class="q-head"><span class="q-num">59번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH04 건설현장 안전시설 관리</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">작업장 출입구 설치 시 준수해야 할 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 계단이 출입구와 바로 연결된 경우에는 작업자의 안전한 통행을 위하여 그 사이에 1.2[m] 이상 거리를 두거나 안내표지 또는 비상벨 등을 설치한다.</li><li data-o="2">② 출입구에 문을 설치하는 경우에는 근로자가 쉽게 열고 닫을 수 있도록 한다.</li><li data-o="3">③ 출입구의 위치·수 및 크기가 작업장의 용도와 특성에 맞도록 한다.</li><li data-o="4">④ 주된 목적이 하역운반기계용인 출입구에는 보행자용 출입구를 따로 설치하지 않는다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -789,7 +797,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 22-1 · 24-2</p></div></details>
 </div></section>
 <section class="section" id="g11"><div class="section-head"><div class="duality"><span class="n">11</span>비계 (60~75)</div><div class="section-line"></div></div>
-<div class="card q" data-q="60" data-ch="05" data-title="60번" data-a="4">
+<div class="card q" id="q60" data-q="60" data-ch="05" data-title="60번" data-a="4">
 <div class="q-head"><span class="q-num">60번</span><span class="q-meta">🔁 6회</span><span class="q-meta">📋 5-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">달비계의 최대 적재하중을 정함에 있어서 활용하는 안전계수의 기준으로 옳은 것은?(단, 곤돌라의 달비계를 제외한다.)</p>
 <ul class="opts pick"><li data-o="1">① 달기 강선 : 5 이상</li><li data-o="2">② 달기 와이어로프 : 5 이상</li><li data-o="3">③ 달기 체인 : 3 이상</li><li data-o="4">④ 달기 훅 : 5 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -800,7 +808,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 64% · 오답 ② 19%</p>
 <p>🗂 출제 회차: 15-1 · 18-1 · 21-3 · 24-1 · 25-1 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="61" data-ch="05" data-title="61번" data-a="4">
+<div class="card q" id="q61" data-q="61" data-ch="05" data-title="61번" data-a="4">
 <div class="q-head"><span class="q-num">61번</span><span class="q-meta">🔁 6회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강관을 사용하여 비계를 구성하는 경우 준수해야 할 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 비계기둥의 간격은 띠장 방향에서는 1.85[m] 이하, 장선(長線) 방향에서는 1.5[m] 이하로 할 것</li><li data-o="2">② 비계기둥 간의 적재하중은 400[kg]을 초과하지 않도록 할 것</li><li data-o="3">③ 띠장 간격은 2.0[m] 이하로 설치하되, 첫 번째 띠장은 지상으로부터 2[m] 이하의 위치에 설치할 것</li><li data-o="4">④ 비계기둥의 제일 윗부분으로부터 31[m]되는 지점 밑부분의 비계기둥은 3개의 강관으로 묶어세울 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -810,7 +818,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 77%</p>
 <p>🗂 출제 회차: 18-1 · 21-1 · 21-2 · 21-3 · 24-1 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="62" data-ch="05" data-title="62번" data-a="3">
+<div class="card q" id="q62" data-q="62" data-ch="05" data-title="62번" data-a="3">
 <div class="q-head"><span class="q-num">62번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">단관비계를 조립하는 경우 벽이음 및 버팀을 설치할 때의 수평방향 조립간격 기준으로 옳은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 3[m]</li><li data-o="2">② 8[m]</li><li data-o="3">③ 5[m]</li><li data-o="4">④ 6[m]</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -819,7 +827,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 83%</p>
 <p>🗂 출제 회차: 16-2 · 23-1 · 24-3 · 25-1 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="63" data-ch="05" data-title="63번" data-a="1">
+<div class="card q" id="q63" data-q="63" data-ch="05" data-title="63번" data-a="1">
 <div class="q-head"><span class="q-num">63번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강관틀비계를 조립하여 사용하는 경우 준수해야 할 기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 높이가 20[m]를 초과하거나 중량물의 적재를 수반하는 작업을 할 경우에는 주틀 간의 간격을 2.4[m] 이하로 할 것</li><li data-o="2">② 길이가 띠장 방향으로 4[m] 이하이고 높이가 10[m]를 초과하는 경우에는 10[m] 이내마다 띠장 방향으로 버팀기둥을 설치할 것</li><li data-o="3">③ 주틀 간에 교차 가새를 설치하고 최상층 및 5층 이내마다 수평재를 설치할 것</li><li data-o="4">④ 수직방향으로 6[m], 수평방향으로 8[m] 이내마다 벽이음을 할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -829,7 +837,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 64% · 오답 ② 19%</p>
 <p>🗂 출제 회차: 18-2 · 19-3 · 21-2 · 22-1 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="64" data-ch="05" data-title="64번" data-a="4">
+<div class="card q" id="q64" data-q="64" data-ch="05" data-title="64번" data-a="4">
 <div class="q-head"><span class="q-num">64번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">달비계를 사용하는 와이어로프의 사용금지 기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 지름의 감소가 공칭지름의 7[%]를 초과하는 것</li><li data-o="2">② 열과 전기충격에 의해 손상된 것</li><li data-o="3">③ 이음매가 있는 것</li><li data-o="4">④ 와이어로프의 한 꼬임에서 끊어진 소선의 수가 7[%] 이상인 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -839,7 +847,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 90%</p>
 <p>🗂 출제 회차: 15-1 · 22-2 · 23-1 · 23-3 · 24-1</p></div></details>
 </div>
-<div class="card q" data-q="65" data-ch="05" data-title="65번" data-a="3">
+<div class="card q" id="q65" data-q="65" data-ch="05" data-title="65번" data-a="3">
 <div class="q-head"><span class="q-num">65번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">말비계를 조립하여 사용하는 경우에 지주부재와 수평면의 기울기는 최대 몇 도 이하로 하여야 하는가?</p>
 <ul class="opts pick"><li data-o="1">① 60[°]</li><li data-o="2">② 30[°]</li><li data-o="3">③ 75[°]</li><li data-o="4">④ 45[°]</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -848,7 +856,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 78%</p>
 <p>🗂 출제 회차: 18-2 · 24-1 · 24-2 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="66" data-ch="05" data-title="66번" data-a="4">
+<div class="card q" id="q66" data-q="66" data-ch="05" data-title="66번" data-a="4">
 <div class="q-head"><span class="q-num">66번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">이동식비계를 조립하여 작업을 하는 경우의 준수 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 비계의 최상부에서 작업을 할 때에는 안전난간을 설치하여야 한다.</li><li data-o="2">② 승강용 사다리는 견고하게 설치하여야 한다.</li><li data-o="3">③ 작업발판은 항상 수평을 유지하고 작업발판 위에서 안전난간을 딛고 작업을 하거나 받침대 또는 사다리를 사용하여 작업하지 않도록 한다.</li><li data-o="4">④ 작업발판의 최대적재하중은 400[kg]을 초과하지 않도록 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -857,7 +865,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 93%</p>
 <p>🗂 출제 회차: 17-3 · 21-1 · 22-2 · 23-1</p></div></details>
 </div>
-<div class="card q" data-q="67" data-ch="05" data-title="67번" data-a="1">
+<div class="card q" id="q67" data-q="67" data-ch="05" data-title="67번" data-a="1">
 <div class="q-head"><span class="q-num">67번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">안전계수가 4이고 2,000[kg/cm²]의 인장강도를 갖는 강선의 최대허용응력은?</p>
 <ul class="opts pick"><li data-o="1">① 500[kg/cm²]</li><li data-o="2">② 1,000[kg/cm²]</li><li data-o="3">③ 2,000[kg/cm²]</li><li data-o="4">④ 1,500[kg/cm²]</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -866,7 +874,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 95%</p>
 <p>🗂 출제 회차: 15-2 · 25-3 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="68" data-ch="05" data-title="68번" data-a="3">
+<div class="card q" id="q68" data-q="68" data-ch="05" data-title="68번" data-a="3">
 <div class="q-head"><span class="q-num">68번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음은 시스템 비계 구성에 관한 내용이다. ( )안에 들어갈 말로 옳은 것은?<br>비계 밑단의 수직재와 받침철물은 밀착되도록 설치하고, 수직재와 받침철물의 연결부의 겹침길이는 받침철물 (    ) 이상이 되도록 할 것</p>
 <ul class="opts pick"><li data-o="1">① 전체길이의 2분의 1</li><li data-o="2">② 전체길이의 3분의 2</li><li data-o="3">③ 전체길이의 3분의 1</li><li data-o="4">④ 전체길이의 4분의 1</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -875,7 +883,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 82%</p>
 <p>🗂 출제 회차: 23-1 · 23-3 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="69" data-ch="05" data-title="69번" data-a="3">
+<div class="card q" id="q69" data-q="69" data-ch="05" data-title="69번" data-a="3">
 <div class="q-head"><span class="q-num">69번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 5-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강관비계를 조립할 때 준수하여야 할 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 비계기둥 간의 적재하중은 400[kg]을 초과하지 않도록 할 것</li><li data-o="2">② 비계기둥의 제일 윗부분으로부터 31[m] 되는 지점 밑부분의 비계기둥은 2개의 강관으로 묶어 세울 것</li><li data-o="3">③ 띠장간격은 2[m] 이하로 설치하되, 첫번째 띠장은 지상으로부터 3[m] 이하의 위치에 설치할 것</li><li data-o="4">④ 비계기둥의 간격은 띠장 방향에서 1.85[m] 이하로 할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -887,7 +895,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 75%</p>
 <p>🗂 출제 회차: 17-3 · 24-3 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="70" data-ch="05" data-title="70번" data-a="3">
+<div class="card q" id="q70" data-q="70" data-ch="05" data-title="70번" data-a="3">
 <div class="q-head"><span class="q-num">70번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">달비계의 와이어로프의 사용금지기준에 해당하지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 와이어로프의 한 꼬임에서 끊어진 소선의 수가 10[%] 이상인 것</li><li data-o="2">② 심하게 변형되거나 부식된 것</li><li data-o="3">③ 균열이 있는 것</li><li data-o="4">④ 지름의 감소가 공칭지름의 7[%]를 초과하는 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -896,7 +904,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 66% · 오답 ④ 17%</p>
 <p>🗂 출제 회차: 15-2 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="71" data-ch="05" data-title="71번" data-a="1">
+<div class="card q" id="q71" data-q="71" data-ch="05" data-title="71번" data-a="1">
 <div class="q-head"><span class="q-num">71번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설공사 표준안전 작업지침에 따른 통로발판을 설치하여 사용함에 있어 준수사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 발판을 겹쳐 이음하는 경우 장선 위에서 이음을 하고 겹침길이는 10[cm] 이상으로 하여야 한다.</li><li data-o="2">② 비계발판의 구조에 따라 최대 적재하중을 정하고 이를 초과하지 않도록 하여야 한다.</li><li data-o="3">③ 추락의 위험이 있는 곳에는 안전난간이나 철책을 설치하여야 한다.</li><li data-o="4">④ 작업발판의 최대폭은 1.6[m] 이내이어야 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -905,7 +913,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 69% · 오답 ④ 27%</p>
 <p>🗂 출제 회차: 22-2 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="72" data-ch="05" data-title="72번" data-a="4">
+<div class="card q" id="q72" data-q="72" data-ch="05" data-title="72번" data-a="4">
 <div class="q-head"><span class="q-num">72번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음은 달비계 또는 높이 5[m] 이상의 비계를 조립·해체하거나 변경하는 작업을 하는 경우에 대한 내용이다. ( )에 알맞은 숫자는?<br>비계재료의 연결·해체작업을 하는 경우에는 폭 ( )[cm] 이상의 발판을 설치하고 근로자로 하여금 안전대를 사용하도록 하는 등 추락을 방지하기 위한 조치를 할 것</p>
 <ul class="opts pick"><li data-o="1">① 25</li><li data-o="2">② 30</li><li data-o="3">③ 15</li><li data-o="4">④ 20</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -914,7 +922,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 53%</p>
 <p>🗂 출제 회차: 15-2 · 19-2</p></div></details>
 </div>
-<div class="card q" data-q="73" data-ch="05" data-title="73번" data-a="2">
+<div class="card q" id="q73" data-q="73" data-ch="05" data-title="73번" data-a="2">
 <div class="q-head"><span class="q-num">73번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">달비계(곤돌라의 달비계는 제외)의 최대적재하중을 정하는 경우에 사용하는 안전계수의 기준으로 옳은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 달기강대와 달비계의 하부 및 상부지점의 안전계수(목재의 경우) : 2.5 이상</li><li data-o="2">② 달기강선의 안전계수 : 10 이상</li><li data-o="3">③ 달기체인의 안전계수 : 10 이상</li><li data-o="4">④ 달기와이어로프의 안전계수 : 5 이상</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -925,7 +933,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 54%</p>
 <p>🗂 출제 회차: 16-1 · 19-1</p></div></details>
 </div>
-<div class="card q" data-q="74" data-ch="05" data-title="74번" data-a="1">
+<div class="card q" id="q74" data-q="74" data-ch="05" data-title="74번" data-a="1">
 <div class="q-head"><span class="q-num">74번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">이동식비계 조립 및 사용 시 준수사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 작업발판은 항상 수평을 유지하고 작업발판 위에서 사다리를 사용하여 작업할 것</li><li data-o="2">② 작업발판의 최대적재하중은 250[kg]을 초과하지 않도록 할 것</li><li data-o="3">③ 비계의 최상부에서 작업을 하는 경우에는 안전난간을 설치할 것</li><li data-o="4">④ 승강용사다리는 견고하게 설치할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -934,7 +942,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 80% · 오답 ② 16%</p>
 <p>🗂 출제 회차: 18-1 · 23-1</p></div></details>
 </div>
-<div class="card q" data-q="75" data-ch="05" data-title="75번" data-a="1">
+<div class="card q" id="q75" data-q="75" data-ch="05" data-title="75번" data-a="1">
 <div class="q-head"><span class="q-num">75번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">단관비계의 도괴 또는 전도를 방지하기 위하여 사용하는 벽이음의 간격기준으로 옳은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 수직방향 5[m] 이하, 수평방향 5[m] 이하</li><li data-o="2">② 수직방향 7[m] 이하, 수평방향 7[m] 이하</li><li data-o="3">③ 수직방향 8[m] 이하, 수평방향 8[m] 이하</li><li data-o="4">④ 수직방향 6[m] 이하, 수평방향 6[m] 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -944,7 +952,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 18-3 · 21-3</p></div></details>
 </div></section>
 <section class="section" id="g12"><div class="section-head"><div class="duality"><span class="n">12</span>거푸집·동바리·콘크리트 (76~86)</div><div class="section-line"></div></div>
-<div class="card q" data-q="76" data-ch="05" data-title="76번" data-a="1">
+<div class="card q" id="q76" data-q="76" data-ch="05" data-title="76번" data-a="1">
 <div class="q-head"><span class="q-num">76번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 6-2</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">콘크리트 타설 시 거푸집 측압에 관한 설명으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 콘크리트의 온도가 높을수록 측압이 커진다.</li><li data-o="2">② 거푸집의 투수성이 낮을수록 측압은 커진다.</li><li data-o="3">③ 타설속도가 빠를수록 측압이 커진다.</li><li data-o="4">④ 타설높이가 높을수록 측압이 커진다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -953,7 +961,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 74%</p>
 <p>🗂 출제 회차: 15-2 · 19-3 · 23-2 · 24-2 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="77" data-ch="05" data-title="77번" data-a="3">
+<div class="card q" id="q77" data-q="77" data-ch="05" data-title="77번" data-a="3">
 <div class="q-head"><span class="q-num">77번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 6-2</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">콘크리트 타설작업을 하는 경우에 준수해야 할 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 콘크리트를 타설하는 경우에는 편심이 발생하지 않도록 골고루 분산하여 타설할 것</li><li data-o="2">② 당일의 작업을 시작하기 전에 해당 작업에 관한 거푸집동바리 등의 변형·변위 및 지반의 침하 유무 등을 점검하고 이상이 있으면 보수할 것</li><li data-o="3">③ 작업 중에는 거푸집동바리 등의 변형·변위 및 침하 유무 등을 감시할 수 있는 감시자를 배치하여 이상이 있으면 작업을 빠른 시간 내 우선 완료하고 근로자를 대피시킬 것</li><li data-o="4">④ 콘크리트 타설작업 시 거푸집 붕괴의 위험이 발생할 우려가 있으면 충분한 보강조치를 할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -962,7 +970,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 96%</p>
 <p>🗂 출제 회차: 16-2 · 22-1 · 23-1 · 25-1 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="78" data-ch="05" data-title="78번" data-a="2">
+<div class="card q" id="q78" data-q="78" data-ch="05" data-title="78번" data-a="2">
 <div class="q-head"><span class="q-num">78번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 6-2</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">동바리의 침하를 방지하기 위한 직접적인 조치로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 말뚝박기</li><li data-o="2">② 수평연결재 사용</li><li data-o="3">③ 콘크리트의 타설</li><li data-o="4">④ 받침목의 사용</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -971,7 +979,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 80%</p>
 <p>🗂 출제 회차: 22-2 · 23-3 · 24-2 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="79" data-ch="05" data-title="79번" data-a="4">
+<div class="card q" id="q79" data-q="79" data-ch="05" data-title="79번" data-a="4">
 <div class="q-head"><span class="q-num">79번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-2</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설현장에 거푸집동바리 설치 시 준수사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 강재와 강재의 접속부는 볼트 또는 클램프 등 전용철물을 사용한다.</li><li data-o="2">② 동바리의 침하 방지를 위해 받침목의 사용, 콘크리트 타설, 말뚝박기 등을 실시한다.</li><li data-o="3">③ 강관틀 동바리는 강관틀과 강관틀 사이에 교차가새를 설치한다.</li><li data-o="4">④ 파이프 서포트 높이가 4.5[m]를 초과하는 경우에는 높이 2[m] 이내마다 2개 방향으로 수평연결재를 설치한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -980,7 +988,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 93%</p>
 <p>🗂 출제 회차: 22-2 · 24-1 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="80" data-ch="05" data-title="80번" data-a="3">
+<div class="card q" id="q80" data-q="80" data-ch="05" data-title="80번" data-a="3">
 <div class="q-head"><span class="q-num">80번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-2</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">거푸집동바리 구조에서 높이가 l=3.5[m] 인 파이프서포트의 좌굴하중은?<br>(단, 상부받이판과 하부받이판은 힌지로 가정하고, 단면2차모멘트 I=8.31[cm⁴], 탄성계수 E=2.1×10⁵[MPa])</p>
 <ul class="opts pick"><li data-o="1">① 16,060[N]</li><li data-o="2">② 15,060[N]</li><li data-o="3">③ 14,060[N]</li><li data-o="4">④ 17,060[N]</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -992,7 +1000,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 60% · 오답 ② 16%</p>
 <p>🗂 출제 회차: 21-3 · 23-2 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="81" data-ch="05" data-title="81번" data-a="3">
+<div class="card q" id="q81" data-q="81" data-ch="05" data-title="81번" data-a="3">
 <div class="q-head"><span class="q-num">81번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-2</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">거푸집 해체작업 시 유의사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 상하 동시 작업은 원칙적으로 금지하여 부득이한 경우에는 긴밀히 연락을 취하며 작업을 하여야 한다.</li><li data-o="2">② 해체된 거푸집이나 각목 등에 박혀있는 못 또는 날카로운 돌출물은 즉시 제거하여야 한다.</li><li data-o="3">③ 일반적으로 수평부재의 거푸집은 연직부재의 거푸집보다 빨리 떼어낸다.</li><li data-o="4">④ 거푸집 해체작업장 주위에는 관계자를 제외하고는 출입을 금지시켜야 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1001,7 +1009,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 85%</p>
 <p>🗂 출제 회차: 19-2 · 22-1 · 23-1</p></div></details>
 </div>
-<div class="card q" data-q="82" data-ch="05" data-title="82번" data-a="3">
+<div class="card q" id="q82" data-q="82" data-ch="05" data-title="82번" data-a="3">
 <div class="q-head"><span class="q-num">82번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-2</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">거푸집동바리 등을 조립하는 경우에 준수해야 할 기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 파이프서포트를 제외한 동바리로 사용하는 강관은 높이 2[m]마다 수평연결재를 2개 방향으로 만들고 수평연결재의 변위를 방지할 것</li><li data-o="2">② 강재와 강재의 접속부 및 교차부는 볼트 클램프 등 전용철물을 사용하여 단단히 연결한다.</li><li data-o="3">③ 동바리로 사용하는 파이프서포트는 4개 이상 이어서 사용하지 않도록 할 것</li><li data-o="4">④ 동바리의 상하 고정 및 미끄러짐 방지조치를 하고, 하중의 지지상태를 유지한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1010,7 +1018,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 90%</p>
 <p>🗂 출제 회차: 15-3 · 21-2</p></div></details>
 </div>
-<div class="card q" data-q="83" data-ch="05" data-title="83번" data-a="3">
+<div class="card q" id="q83" data-q="83" data-ch="05" data-title="83번" data-a="3">
 <div class="q-head"><span class="q-num">83번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-2</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">거푸집동바리등을 조립 또는 해체하는 작업을 하는 경우의 준수사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 비, 눈, 그 밖의 기상상태의 불안정으로 날씨가 몹시 나쁜 경우에는 그 작업을 중지할 것</li><li data-o="2">② 해당 작업을 하는 구역에는 관계 근로자가 아닌 사람의 출입을 금지할 것</li><li data-o="3">③ 재료, 기구 또는 공구 등을 올리거나 내리는 경우에는 근로자로 하여금 달줄·달포대 등의 사용을 금하도록 할 것</li><li data-o="4">④ 낙하·충격에 의한 돌발적 재해를 방지하기 위하여 버팀목을 설치하고 거푸집동바리 등을 인양장비에 매단 후에 작업을 하도록 하는 등 필요한 조치를 할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1019,7 +1027,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 91%</p>
 <p>🗂 출제 회차: 17-2 · 21-1</p></div></details>
 </div>
-<div class="card q" data-q="84" data-ch="05" data-title="84번" data-a="2">
+<div class="card q" id="q84" data-q="84" data-ch="05" data-title="84번" data-a="2">
 <div class="q-head"><span class="q-num">84번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-2</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">콘크리트 타설을 위한 거푸집동바리의 구조검토시 가장 선행되어야 할 작업은?</p>
 <ul class="opts pick"><li data-o="1">① 각 부재에 생기는 응력에 대하여 안전한 단면을 산정한다.</li><li data-o="2">② 가설물에 작용하는 하중 및 외력의 종류 크기를 산정한다.</li><li data-o="3">③ 사용할 거푸집동바리의 설치간격을 결정한다.</li><li data-o="4">④ 하중 및 외력에 의하여 각 부재에 생기는 응력을 구한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1028,7 +1036,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 71%</p>
 <p>🗂 출제 회차: 17-3 · 20-3</p></div></details>
 </div>
-<div class="card q" data-q="85" data-ch="05" data-title="85번" data-a="4">
+<div class="card q" id="q85" data-q="85" data-ch="05" data-title="85번" data-a="4">
 <div class="q-head"><span class="q-num">85번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-2</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">거푸집동바리 등을 조립하는 경우에 준수하여야 할 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 개구부 상부에 동바리를 설치하는 경우에는 상부하중을 견딜 수 있는 견고한 받침대를 설치할 것</li><li data-o="2">② 받침목의 사용, 콘크리트 타설, 말뚝박기 등 동바리의 침하를 방지하기 위한 조치를 할 것</li><li data-o="3">③ 거푸집이 곡면인 경우에는 버팀대의 부착 등 그 거푸집의 부상(浮上)을 방지하기 위한 조치를 할 것</li><li data-o="4">④ 동바리의 이음은 맞댄이음이나 장부이음을 피할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1039,7 +1047,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 88%</p>
 <p>🗂 출제 회차: 18-1 · 20-4</p></div></details>
 </div>
-<div class="card q" data-q="86" data-ch="05" data-title="86번" data-a="1">
+<div class="card q" id="q86" data-q="86" data-ch="05" data-title="86번" data-a="1">
 <div class="q-head"><span class="q-num">86번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-2</span><span class="q-ch">CH05 비계·거푸집 가시설 위험방지</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설현장에서 사용되는 작업발판 일체형 거푸집의 종류에 해당되지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 유로폼(euro form)</li><li data-o="2">② 갱폼(gang form)</li><li data-o="3">③ 클라이밍 폼(climbing form)</li><li data-o="4">④ 슬립폼(slip form)</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1050,7 +1058,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 21-3 · 23-2</p></div></details>
 </div></section>
 <section class="section" id="g13"><div class="section-head"><div class="duality"><span class="n">13</span>철골공사 (87~93)</div><div class="section-line"></div></div>
-<div class="card q" data-q="87" data-ch="06" data-title="87번" data-a="3">
+<div class="card q" id="q87" data-q="87" data-ch="06" data-title="87번" data-a="3">
 <div class="q-head"><span class="q-num">87번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">철골구조의 앵커볼트매립과 관련된 준수사항 중 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 앵커볼트는 매립 후에 수정하지 않도록 설치할 것</li><li data-o="2">② 베이스플레이트의 하단은 기준 높이 및 인접기둥의 높이에서 3[mm] 이상 벗어나지 않을 것</li><li data-o="3">③ 기둥중심은 기준선 및 인접기둥의 중심에서 3[mm] 이상 벗어나지 않을 것</li><li data-o="4">④ 앵커볼트는 기둥중심에서 2[mm] 이상 벗어나지 않을 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1060,7 +1068,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 65%</p>
 <p>🗂 출제 회차: 17-3 · 23-2 · 25-1 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="88" data-ch="06" data-title="88번" data-a="3">
+<div class="card q" id="q88" data-q="88" data-ch="06" data-title="88번" data-a="3">
 <div class="q-head"><span class="q-num">88번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 4-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">철골작업 시 철골부재에서 근로자가 수직방향으로 이동하는 경우에 설치하여야 하는 고정된 승강로의 최대 답단 간격은 얼마 이내인가?</p>
 <ul class="opts pick"><li data-o="1">① 25[cm]</li><li data-o="2">② 20[cm]</li><li data-o="3">③ 30[cm]</li><li data-o="4">④ 40[cm]</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1069,7 +1077,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 72%</p>
 <p>🗂 출제 회차: 16-2 · 22-1 · 23-2 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="89" data-ch="06" data-title="89번" data-a="3">
+<div class="card q" id="q89" data-q="89" data-ch="06" data-title="89번" data-a="3">
 <div class="q-head"><span class="q-num">89번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">철골작업을 중지하여야 하는 조건에 해당되지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 풍속이 초당 10[m] 이상인 경우</li><li data-o="2">② 강우량이 시간당 1[mm] 이상의 경우</li><li data-o="3">③ 지진이 진도 4 이상의 경우</li><li data-o="4">④ 강설량이 시간당 1[cm] 이상의 경우</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1078,7 +1086,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 81%</p>
 <p>🗂 출제 회차: 16-1 · 25-1 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="90" data-ch="06" data-title="90번" data-a="3">
+<div class="card q" id="q90" data-q="90" data-ch="06" data-title="90번" data-a="3">
 <div class="q-head"><span class="q-num">90번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">철골건립준비를 할 때 준수하여야 할 사항과 가장 거리가 먼 것은?</p>
 <ul class="opts pick"><li data-o="1">① 지상 작업장에서 건립준비 및 기계기구를 배치할 경우에는 낙하물의 위험이 없는 평탄한 장소를 선정하여 정비하고 경사지에는 작업대나 임시발판 등을 설치하는 등 안전조치를 한 후 작업하여야 한다.</li><li data-o="2">② 사용전에 기계기구에 대한 정비 및 보수를 철저히 실시하여야 한다.</li><li data-o="3">③ 건립작업에 다소 지장이 있다하더라도 수목은 제거하여서는 안 된다.</li><li data-o="4">④ 기계에 부착된 앵커 등 고정장치와 기초구조 등을 확인하여야 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1087,7 +1095,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 98%</p>
 <p>🗂 출제 회차: 15-1 · 19-1 · 24-2</p></div></details>
 </div>
-<div class="card q" data-q="91" data-ch="06" data-title="91번" data-a="4">
+<div class="card q" id="q91" data-q="91" data-ch="06" data-title="91번" data-a="4">
 <div class="q-head"><span class="q-num">91번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-meta warn">⚠️</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건립 중 강풍에 의한 풍압 등 외압에 대한 내력이 설계에 고려되었는지 확인하여야 하는 철골구조물에 해당하지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 기둥이 타이플레이트(tie plate)형인 구조물</li><li data-o="2">② 구조물의 폭과 높이의 비가 1:5인 건물</li><li data-o="3">③ 이음부가 현장용접인 건물</li><li data-o="4">④ 높이 15[m]인 건물</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1098,7 +1106,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 72%</p>
 <p>🗂 출제 회차: 15-2 · 18-1 · 23-3</p></div></details>
 </div>
-<div class="card q" data-q="92" data-ch="06" data-title="92번" data-a="3">
+<div class="card q" id="q92" data-q="92" data-ch="06" data-title="92번" data-a="3">
 <div class="q-head"><span class="q-num">92번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">철골 건립기계 선정 시 사전 검토사항과 가장 거리가 먼 것은?</p>
 <ul class="opts pick"><li data-o="1">① 건립기계의 소음영향</li><li data-o="2">② 작업반경</li><li data-o="3">③ 건립기계로 인한 일조권 침해</li><li data-o="4">④ 건물형태</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1111,7 +1119,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 89%</p>
 <p>🗂 출제 회차: 19-3 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="93" data-ch="06" data-title="93번" data-a="2">
+<div class="card q" id="q93" data-q="93" data-ch="06" data-title="93번" data-a="2">
 <div class="q-head"><span class="q-num">93번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">철골건립준비를 할 때 준수하여야 할 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 사용전에 기계기구에 대한 정비 및 보수를 철저히 실시하여야 한다.</li><li data-o="2">② 건립작업에 다소 지장이 있다하더라도 수목은 제거하거나 이설하여서는 안된다.</li><li data-o="3">③ 지상 작업장에서 건립준비 및 기계기구를 배치할 경우에는 낙하물의 위험이 없는 평탄한 장소를 선정하여 정비하여야 한다.</li><li data-o="4">④ 기계에 부착된 앵커 등 고정장치와 기초구조 등을 확인하여야 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1121,7 +1129,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 22-2 · 23-3</p></div></details>
 </div></section>
 <section class="section" id="g14"><div class="section-head"><div class="duality"><span class="n">14</span>양중기·와이어로프·강풍 (94~105)</div><div class="section-line"></div></div>
-<div class="card q" data-q="94" data-ch="06" data-title="94번" data-a="2">
+<div class="card q" id="q94" data-q="94" data-ch="06" data-title="94번" data-a="2">
 <div class="q-head"><span class="q-num">94번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">타워크레인을 자립고(自立高) 이상의 높이로 설치할 때 지지벽체가 없어 와이어로프로 지지하는 경우의 준수사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 와이어로프를 고정하기 위한 전용 지지프레임을 사용할 것</li><li data-o="2">② 와이어로프와 그 고정부위는 충분한 강도와 장력을 갖도록 설치하되, 와이어로프를 클립·샤클(shackle) 등의 기구를 사용하여 고정하지 않도록 유의할 것</li><li data-o="3">③ 와이어로프 설치각도는 수평면에서 60[°] 이내로 하되, 지지점은 4개소 이상으로 하고, 같은 각도로 설치할 것</li><li data-o="4">④ 와이어로프가 가공전선(架空電線)에 근접하지 않도록 할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1131,7 +1139,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 81% · 오답 ③ 16%</p>
 <p>🗂 출제 회차: 17-2 · 20-3 · 23-3 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="95" data-ch="06" data-title="95번" data-a="1">
+<div class="card q" id="q95" data-q="95" data-ch="06" data-title="95번" data-a="1">
 <div class="q-head"><span class="q-num">95번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">훅걸이용 와이어로프 등이 훅으로부터 벗겨지는 것을 방지하기 위한 장치는?</p>
 <ul class="opts pick"><li data-o="1">① 해지장치</li><li data-o="2">② 턴버클</li><li data-o="3">③ 과부하방지장치</li><li data-o="4">④ 권과방지장치</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1141,7 +1149,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 73% · 오답 ② 20%</p>
 <p>🗂 출제 회차: 15-2 · 18-3 · 24-2 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="96" data-ch="06" data-title="96번" data-a="2">
+<div class="card q" id="q96" data-q="96" data-ch="06" data-title="96번" data-a="2">
 <div class="q-head"><span class="q-num">96번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 중 양중기에 해당되지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 리프트</li><li data-o="2">② 어스드릴</li><li data-o="3">③ 곤돌라</li><li data-o="4">④ 크레인</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1150,7 +1158,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 95%</p>
 <p>🗂 출제 회차: 15-1 · 24-3 · 26-2</p></div></details>
 </div>
-<div class="card q" data-q="97" data-ch="06" data-title="97번" data-a="4">
+<div class="card q" id="q97" data-q="97" data-ch="06" data-title="97번" data-a="4">
 <div class="q-head"><span class="q-num">97번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">고소작업대를 설치 및 이동하는 경우에 준수하여야 할 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 작업대에 끼임·충돌 등 재해를 예방하기 위한 가드 또는 과상승방지장치를 설치할 것</li><li data-o="2">② 붐의 최대 지면경사각을 초과 운전하여 전도되지 않도록 할 것</li><li data-o="3">③ 고소작업대를 이동하는 경우 작업대를 가장 낮게 내릴 것</li><li data-o="4">④ 와이어로프 또는 체인의 안전율은 3 이상일 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1160,7 +1168,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 85%</p>
 <p>🗂 출제 회차: 22-2 · 23-2 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="98" data-ch="06" data-title="98번" data-a="2">
+<div class="card q" id="q98" data-q="98" data-ch="06" data-title="98번" data-a="2">
 <div class="q-head"><span class="q-num">98번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 와이어로프 중 양중기에 사용가능한 범위안에 있다고 볼 수 있는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 심하게 부식된 것</li><li data-o="2">② 와이어로프의 한 꼬임(스트랜드)에서 끊어진 소선의 수가 8[%]인 것</li><li data-o="3">③ 이음매가 있는 것</li><li data-o="4">④ 지름의 감소가 공칭지름의 8[%]인 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1171,7 +1179,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 80%</p>
 <p>🗂 출제 회차: 23-1 · 24-2 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="99" data-ch="06" data-title="99번" data-a="2">
+<div class="card q" id="q99" data-q="99" data-ch="06" data-title="99번" data-a="2">
 <div class="q-head"><span class="q-num">99번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음은 타워크레인을 와이어로프로 지지하는 경우의 준수해야 할 기준이다. 빈칸에 들어갈 알맞은 내용을 순서대로 옳게 나타낸 것은?<br>와이어로프 설치각도는 수평면에서 (    )도 이내로 하되, 지지점은 (    )개소 이상으로 하고, 같은 각도로 설치할 것</p>
 <ul class="opts pick"><li data-o="1">① 60, 5</li><li data-o="2">② 60, 4</li><li data-o="3">③ 45, 5</li><li data-o="4">④ 45, 4</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1180,7 +1188,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 88%</p>
 <p>🗂 출제 회차: 15-2 · 24-1 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="100" data-ch="06" data-title="100번" data-a="1">
+<div class="card q" id="q100" data-q="100" data-ch="06" data-title="100번" data-a="1">
 <div class="q-head"><span class="q-num">100번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">강풍시 타워크레인의 운전작업을 중지해야 하는 순간풍속기준은?</p>
 <ul class="opts pick"><li data-o="1">① 순간풍속이 초당 15[m] 초과</li><li data-o="2">② 순간풍속이 초당 30[m] 초과</li><li data-o="3">③ 순간풍속이 초당 10[m] 초과</li><li data-o="4">④ 순간풍속이 초당 20[m] 초과</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1190,7 +1198,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 70% · 오답 ③ 15%</p>
 <p>🗂 출제 회차: 15-1 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="101" data-ch="06" data-title="101번" data-a="3">
+<div class="card q" id="q101" data-q="101" data-ch="06" data-title="101번" data-a="3">
 <div class="q-head"><span class="q-num">101번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산업안전보건법령에 따른 양중기의 종류에 해당하지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 크레인</li><li data-o="2">② 곤돌라</li><li data-o="3">③ 클램쉘</li><li data-o="4">④ 리프트</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1199,7 +1207,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 92%</p>
 <p>🗂 출제 회차: 20-4 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="102" data-ch="06" data-title="102번" data-a="4">
+<div class="card q" id="q102" data-q="102" data-ch="06" data-title="102번" data-a="4">
 <div class="q-head"><span class="q-num">102번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">재해사고를 방지하기 위하여 크레인에 설치된 방호장치로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 권과방지장치</li><li data-o="2">② 제동장치</li><li data-o="3">③ 비상정지장치</li><li data-o="4">④ 공기정화장치</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1208,7 +1216,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 98%</p>
 <p>🗂 출제 회차: 16-2 · 22-1</p></div></details>
 </div>
-<div class="card q" data-q="103" data-ch="06" data-title="103번" data-a="4">
+<div class="card q" id="q103" data-q="103" data-ch="06" data-title="103번" data-a="4">
 <div class="q-head"><span class="q-num">103번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">크레인 등 건설장비의 가공전선로 접근시 안전대책으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 안전 이격거리를 유지하고 작업한다.</li><li data-o="2">② 장비 사용 현장의 장애물, 위험물 등을 점검후 작업계획을 수립한다.</li><li data-o="3">③ 장비의 조립, 준비 시부터 가공전선로에 대한 감전 방지 수단을 강구한다.</li><li data-o="4">④ 장비를 가공전선로 밑에 보관한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1218,7 +1226,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 97%</p>
 <p>🗂 출제 회차: 17-1 · 21-1</p></div></details>
 </div>
-<div class="card q" data-q="104" data-ch="06" data-title="104번" data-a="1">
+<div class="card q" id="q104" data-q="104" data-ch="06" data-title="104번" data-a="1">
 <div class="q-head"><span class="q-num">104번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">크레인의 운전실 또는 운전대를 통하는 통로의 끝과 건설물 등의 벽체의 간격은 최대 얼마 이하로 하여야 하는가?</p>
 <ul class="opts pick"><li data-o="1">① 0.3[m]</li><li data-o="2">② 0.5[m]</li><li data-o="3">③ 0.2[m]</li><li data-o="4">④ 0.4[m]</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1227,7 +1235,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 76%</p>
 <p>🗂 출제 회차: 17-1 · 20-1·2</p></div></details>
 </div>
-<div class="card q" data-q="105" data-ch="06" data-title="105번" data-a="2">
+<div class="card q" id="q105" data-q="105" data-ch="06" data-title="105번" data-a="2">
 <div class="q-head"><span class="q-num">105번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">이동식 크레인을 사용하여 작업을 할 때 작업시작 전 점검 사항이 아닌 것은?</p>
 <ul class="opts pick"><li data-o="1">① 권과방지장치 그 밖의 경보장치의 기능</li><li data-o="2">② 주행로의 상측 및 트롤리(trolley)가 횡행하는 레일의 상태</li><li data-o="3">③ 브레이크·클러치 및 조정장치의 기능</li><li data-o="4">④ 와이어로프가 통하고 있는 곳 및 작업장소의 지반상태</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1237,7 +1245,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 18-1 · 23-3</p></div></details>
 </div></section>
 <section class="section" id="g15"><div class="section-head"><div class="duality"><span class="n">16</span>차량계 건설기계·항타기 (106~117)</div><div class="section-line"></div></div>
-<div class="card q" data-q="106" data-ch="06" data-title="106번" data-a="4">
+<div class="card q" id="q106" data-q="106" data-ch="06" data-title="106번" data-a="4">
 <div class="q-head"><span class="q-num">106번</span><span class="q-meta">🔁 6회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">장비가 위치한 지면보다 낮은 장소를 굴착하는 데 적합한 장비는?</p>
 <ul class="opts pick"><li data-o="1">① 파워셔블</li><li data-o="2">② 트럭크레인</li><li data-o="3">③ 진폴</li><li data-o="4">④ 백호</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1247,7 +1255,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 87%</p>
 <p>🗂 출제 회차: 15-1 · 18-3 · 21-2 · 23-2 · 24-1 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="107" data-ch="06" data-title="107번" data-a="2">
+<div class="card q" id="q107" data-q="107" data-ch="06" data-title="107번" data-a="2">
 <div class="q-head"><span class="q-num">107번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">미리 작업장소의 지형 및 지반상태 등에 적합한 제한속도를 정하지 않아도 되는 차량계 건설기계의 속도 기준은?</p>
 <ul class="opts pick"><li data-o="1">① 최대 제한 속도가 30[km/h] 이하</li><li data-o="2">② 최대 제한 속도가 10[km/h] 이하</li><li data-o="3">③ 최대 제한 속도가 40[km/h] 이하</li><li data-o="4">④ 최대 제한 속도가 20[km/h] 이하</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1256,7 +1264,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 88%</p>
 <p>🗂 출제 회차: 18-1 · 21-1 · 23-1 · 23-3 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="108" data-ch="06" data-title="108번" data-a="2">
+<div class="card q" id="q108" data-q="108" data-ch="06" data-title="108번" data-a="2">
 <div class="q-head"><span class="q-num">108번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">차량계 건설기계를 사용하여 작업을 하는 경우 작업계획서 내용에 포함되지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 차량계 건설기계의 운행경로</li><li data-o="2">② 차량계 건설기계의 유지보수 방법</li><li data-o="3">③ 차량계 건설기계에 의한 작업방법</li><li data-o="4">④ 사용하는 차량계 건설기계의 종류 및 성능</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1266,7 +1274,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 86%</p>
 <p>🗂 출제 회차: 16-2 · 21-1 · 21-3 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="109" data-ch="06" data-title="109번" data-a="4">
+<div class="card q" id="q109" data-q="109" data-ch="06" data-title="109번" data-a="4">
 <div class="q-head"><span class="q-num">109번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">항타기 또는 항발기의 권상장치 드럼축과 권상장치로부터 첫 번째 도르래의 축 간의 거리는 권상장치 드럼폭의 몇 배 이상으로 하여야 하는가?</p>
 <ul class="opts pick"><li data-o="1">① 8배</li><li data-o="2">② 10배</li><li data-o="3">③ 5배</li><li data-o="4">④ 15배</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1275,7 +1283,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 59% · 오답 ③ 17%</p>
 <p>🗂 출제 회차: 18-3 · 23-2 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="110" data-ch="06" data-title="110번" data-a="3">
+<div class="card q" id="q110" data-q="110" data-ch="06" data-title="110번" data-a="3">
 <div class="q-head"><span class="q-num">110번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">불도저를 이용한 작업 중 안전조치사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 장비의 승차 및 하차 시 뛰어내리거나 오르지 말고 안전하게 잡고 오르내린다.</li><li data-o="2">② 모든 조종간은 엔진 시동전에 중립 위치에 놓는다.</li><li data-o="3">③ 작업종료와 동시에 삽날을 지면에서 띄우고 주차제동장치를 건다.</li><li data-o="4">④ 야간작업 시 자주 장비에서 내려와 장비 주위를 살피며 점검하여야 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1284,7 +1292,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 88%</p>
 <p>🗂 출제 회차: 20-4 · 23-3 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="111" data-ch="06" data-title="111번" data-a="2">
+<div class="card q" id="q111" data-q="111" data-ch="06" data-title="111번" data-a="2">
 <div class="q-head"><span class="q-num">111번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">차량계 건설기계 작업시 기계의 전도, 전락 등에 의한 근로자의 위험을 방지하기 위한 유의사항과 거리가 먼 것은?</p>
 <ul class="opts pick"><li data-o="1">① 도로의 폭 유지</li><li data-o="2">② 변속기능의 유지</li><li data-o="3">③ 지반의 부동침하방지</li><li data-o="4">④ 갓길의 붕괴방지</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1294,7 +1302,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 85%</p>
 <p>🗂 출제 회차: 15-1 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="112" data-ch="06" data-title="112번" data-a="2">
+<div class="card q" id="q112" data-q="112" data-ch="06" data-title="112번" data-a="2">
 <div class="q-head"><span class="q-num">112번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">토공기계 중 클램쉘(clam shell)의 용도에 대해 가장 잘 설명한 것은?</p>
 <ul class="opts pick"><li data-o="1">① 기계 위치보다 높은 곳의 굴착, 비탈면 절취에 적합하다.</li><li data-o="2">② 수면하의 자갈, 실트 혹은 모래를 굴착하고 준설선에 많이 사용된다.</li><li data-o="3">③ 상당히 넓고 얕은 범위의 점토질 지반 굴착에 적합하다.</li><li data-o="4">④ 단단한 지반에 작업하기 쉽고 작업속도가 빠르며 특히 암반굴착에 적합하다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1304,7 +1312,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 70%</p>
 <p>🗂 출제 회차: 15-2 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="113" data-ch="06" data-title="113번" data-a="1">
+<div class="card q" id="q113" data-q="113" data-ch="06" data-title="113번" data-a="1">
 <div class="q-head"><span class="q-num">113번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">항타기 또는 항발기의 권상용 와이어로프의 사용 금지기준에 해당되지 않는 것은?</p>
 <ul class="opts pick"><li data-o="1">① 이음매가 없는 것</li><li data-o="2">② 지름의 감소가 공칭지름의 7[%]를 초과하는 것</li><li data-o="3">③ 열과 전기충격에 의해 손상된 것</li><li data-o="4">④ 꼬인 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1313,7 +1321,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 81%</p>
 <p>🗂 출제 회차: 17-2 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="114" data-ch="06" data-title="114번" data-a="2">
+<div class="card q" id="q114" data-q="114" data-ch="06" data-title="114번" data-a="2">
 <div class="q-head"><span class="q-num">114번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설현장에서 동력을 사용하는 항타기 또는 항발기에 대하여 무너짐을 방지하기 위하여 준수하여야 할 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 궤도 또는 차로 이동하는 항타기 또는 항발기에 대해서는 불시에 이동하는 것을 방지하기 위하여 레일 클램프(rail clamp) 및 쐐기 등으로 고정시킬 것</li><li data-o="2">② 버팀줄만으로 상단 부분을 안정시키는 경우에는 버팀줄을 4개 이상으로 하고 같은 간격으로 배치할 것</li><li data-o="3">③ 연약한 지반에 설치하는 경우에는 각부나 가대의 침하를 방지하기 위하여 깔판·받침목 등을 사용할 것</li><li data-o="4">④ 버팀대만으로 상단부분을 안정시키는 경우에는 버팀대는 3개 이상으로 하고 그 하단 부분은 견고한 버팀·말뚝 또는 철골 등으로 고정시킬 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1324,7 +1332,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 74% · 오답 ④ 17%</p>
 <p>🗂 출제 회차: 23-1 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="115" data-ch="06" data-title="115번" data-a="4">
+<div class="card q" id="q115" data-q="115" data-ch="06" data-title="115번" data-a="4">
 <div class="q-head"><span class="q-num">115번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">굴착기계의 운행 시 안전대책으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 장비의 주차 시 경사지나 굴착작업장으로부터 충분히 이격시켜 주차한다.</li><li data-o="2">② 버킷에 사람의 탑승을 허용해서는 안 된다.</li><li data-o="3">③ 전선이나 구조물 등에 인접하여 붐을 선회해야할 작업에는 사전에 회전반경, 높이제한 등 방호조치를 강구한다.</li><li data-o="4">④ 운전반경 내에 사람이 있을 때 회전은 10[rpm] 정도의 느린 속도로 하여야 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1334,7 +1342,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 93%</p>
 <p>🗂 출제 회차: 16-1 · 19-3</p></div></details>
 </div>
-<div class="card q" data-q="116" data-ch="06" data-title="116번" data-a="2">
+<div class="card q" id="q116" data-q="116" data-ch="06" data-title="116번" data-a="2">
 <div class="q-head"><span class="q-num">116번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">굴착과 싣기를 동시에 할 수 있는 토공기계가 아닌 것은?</p>
 <ul class="opts pick"><li data-o="1">① Tractor shovel</li><li data-o="2">② Motor grader</li><li data-o="3">③ Back hoe</li><li data-o="4">④ Power shovel</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1343,7 +1351,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 90%</p>
 <p>🗂 출제 회차: 17-1 · 20-1·2</p></div></details>
 </div>
-<div class="card q" data-q="117" data-ch="06" data-title="117번" data-a="2">
+<div class="card q" id="q117" data-q="117" data-ch="06" data-title="117번" data-a="2">
 <div class="q-head"><span class="q-num">117번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">장비 자체보다 높은 장소의 땅을 굴착하는데 적합한 장비는?</p>
 <ul class="opts pick"><li data-o="1">① 클램쉘(clamshell)</li><li data-o="2">② 파워셔블(power shovel)</li><li data-o="3">③ 불도저(bulldozer)</li><li data-o="4">④ 드래그라인(Drag line)</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1354,7 +1362,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 20-3 · 24-2</p></div></details>
 </div></section>
 <section class="section" id="g16"><div class="section-head"><div class="duality"><span class="n">17</span>터널·잠함·발파 (118~125)</div><div class="section-line"></div></div>
-<div class="card q" data-q="118" data-ch="06" data-title="118번" data-a="1">
+<div class="card q" id="q118" data-q="118" data-ch="06" data-title="118번" data-a="1">
 <div class="q-head"><span class="q-num">118번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">터널공사에서 발파작업 시 안전대책으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 발파용 점화회선은 타동력선 및 조명회선과 한 곳으로 통합하여 관리</li><li data-o="2">② 모든 동력선은 발원점으로부터 최소한 15[m] 이상 후방으로 옮길 것</li><li data-o="3">③ 지질, 암의 절리 등에 따라 화약량에 대한 검토 및 시방기준과 대비하여 안전조치를 실시</li><li data-o="4">④ 발파전 도화선 연결상태, 저항치 조사 등의 목적으로 도통시험 실시 및 발파기의 작동상태에 대한 사전점검 실시</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1363,7 +1371,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 90%</p>
 <p>🗂 출제 회차: 15-2 · 18-1 · 22-2 · 25-3 · 26-2</p></div></details>
 </div>
-<div class="card q" data-q="119" data-ch="06" data-title="119번" data-a="4">
+<div class="card q" id="q119" data-q="119" data-ch="06" data-title="119번" data-a="4">
 <div class="q-head"><span class="q-num">119번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">터널작업에 있어서 자동경보장치가 설치된 경우에 이 자동경보장치에 대하여 당일의 작업시작 전 점검하여야 할 사항이 아닌 것은?</p>
 <ul class="opts pick"><li data-o="1">① 계기의 이상유무</li><li data-o="2">② 검지부의 이상유무</li><li data-o="3">③ 경보장치의 작동상태</li><li data-o="4">④ 환기 또는 조명시설의 이상유무</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1372,7 +1380,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 83%</p>
 <p>🗂 출제 회차: 15-3 · 16-1 · 20-3 · 26-2</p></div></details>
 </div>
-<div class="card q" data-q="120" data-ch="06" data-title="120번" data-a="2">
+<div class="card q" id="q120" data-q="120" data-ch="06" data-title="120번" data-a="2">
 <div class="q-head"><span class="q-num">120번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">잠함 또는 우물통의 내부에서 굴착작업을 할 때의 준수사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 산소 결핍의 우려가 있는 경우에는 산소의 농도를 측정하는 자를 지명하여 측정하도록 한다.</li><li data-o="2">② 굴착 깊이가 10[m]를 초과하는 경우에는 해당 작업장소와 외부와의 연락을 위한 통신설비등을 설치하여야 한다.</li><li data-o="3">③ 측정 결과 산소의 결핍이 인정될 경우에는 송기를 위한 설비를 설치하여 필요한 양의 공기를 공급하여야 한다.</li><li data-o="4">④ 근로자가 안전하게 승강하기 위한 설비를 설치한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1381,7 +1389,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 79%</p>
 <p>🗂 출제 회차: 18-3 · 23-2 · 24-1 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="121" data-ch="06" data-title="121번" data-a="3">
+<div class="card q" id="q121" data-q="121" data-ch="06" data-title="121번" data-a="3">
 <div class="q-head"><span class="q-num">121번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 4-2</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">터널공사의 전기발파작업에 관한 설명으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 전선은 점화하기 전에 화약류를 충진한 장소로부터 30[m] 이상 떨어진 안전한 장소에서 도통시험 및 저항시험을 하여야 한다.</li><li data-o="2">② 점화는 선임된 발파책임자가 행하고 발파기의 핸들을 점화할 때 이외는 시건장치를 하거나 모선을 분리하여야 하며 발파책임자의 엄중한 관리하에 두어야 한다.</li><li data-o="3">③ 발파 후 발파기와 발파모선의 연결을 유지한 채 그 단부를 절연시킨다.</li><li data-o="4">④ 점화는 충분한 허용량을 갖는 발파기를 사용하고 규정된 스위치를 반드시 사용하여야 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1390,7 +1398,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 83%</p>
 <p>🗂 출제 회차: 17-2 · 21-1 · 24-3</p></div></details>
 </div>
-<div class="card q" data-q="122" data-ch="06" data-title="122번" data-a="2">
+<div class="card q" id="q122" data-q="122" data-ch="06" data-title="122번" data-a="2">
 <div class="q-head"><span class="q-num">122번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">산소결핍이라 함은 공기 중 산소농도가 몇 퍼센트[%] 미만일 때를 의미하는가?</p>
 <ul class="opts pick"><li data-o="1">① 10[%]</li><li data-o="2">② 18[%]</li><li data-o="3">③ 20[%]</li><li data-o="4">④ 15[%]</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1399,7 +1407,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 93%</p>
 <p>🗂 출제 회차: 17-1 · 23-3 · 24-2</p></div></details>
 </div>
-<div class="card q" data-q="123" data-ch="06" data-title="123번" data-a="3">
+<div class="card q" id="q123" data-q="123" data-ch="06" data-title="123번" data-a="3">
 <div class="q-head"><span class="q-num">123번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">터널지보공을 조립하는 경우에는 미리 그 구조를 검토한 후 조립도를 작성하고, 그 조립도에 따라 조립하도록 하여야 하는데 이 조립도에 명시하여야 할 사항과 가장 거리가 먼 것은?</p>
 <ul class="opts pick"><li data-o="1">① 재료의 재질</li><li data-o="2">② 단면규격</li><li data-o="3">③ 재료의 구입처</li><li data-o="4">④ 이음방법</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1408,7 +1416,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 95%</p>
 <p>🗂 출제 회차: 17-3 · 21-2 · 23-1</p></div></details>
 </div>
-<div class="card q" data-q="124" data-ch="06" data-title="124번" data-a="4">
+<div class="card q" id="q124" data-q="124" data-ch="06" data-title="124번" data-a="4">
 <div class="q-head"><span class="q-num">124번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">터널굴착작업을 하는 때 미리 작성하여야 하는 작업계획서에 포함되어야 할 사항이 아닌 것은?</p>
 <ul class="opts pick"><li data-o="1">① 환기 또는 조명시설을 설치할 때에는 그 방법</li><li data-o="2">② 굴착의 방법</li><li data-o="3">③ 터널지보공 및 복공의 시공방법과 용수의 처리방법</li><li data-o="4">④ 암석의 분할방법</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1417,7 +1425,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 77% · 오답 ① 18%</p>
 <p>🗂 출제 회차: 19-2 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="125" data-ch="06" data-title="125번" data-a="4">
+<div class="card q" id="q125" data-q="125" data-ch="06" data-title="125번" data-a="4">
 <div class="q-head"><span class="q-num">125번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">터널 지보공을 조립하거나 변경하는 경우에 조치하여야 하는 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 주재(主材)를 구성하는 1세트의 부재는 동일 평면내에 배치할 것</li><li data-o="2">② 강(鋼)아치 지보공의 조립은 연결볼트 및 띠장 등을 사용하여 주재 상호간을 튼튼하게 연결할 것</li><li data-o="3">③ 기둥에는 침하를 방지하기 위하여 받침목을 사용하는 등의 조치를 할 것</li><li data-o="4">④ 목재의 터널 지보공은 그 터널 지보공의 각 부재에 작용하는 긴압 정도를 체크하여 그 정도가 최대한 차이나도록 할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1427,7 +1435,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 18-2 · 21-1</p></div></details>
 </div></section>
 <section class="section" id="g17"><div class="section-head"><div class="duality"><span class="n">18</span>해체공사·가설구조물 (126~132)</div><div class="section-line"></div></div>
-<div class="card q" data-q="126" data-ch="06" data-title="126번" data-a="3">
+<div class="card q" id="q126" data-q="126" data-ch="06" data-title="126번" data-a="3">
 <div class="q-head"><span class="q-num">126번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">구조물 해체작업으로 사용되는 공법이 아닌 것은?</p>
 <ul class="opts pick"><li data-o="1">① 잭공법</li><li data-o="2">② 압쇄공법</li><li data-o="3">③ 진공공법</li><li data-o="4">④ 절단공법</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1436,7 +1444,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 81%</p>
 <p>🗂 출제 회차: 16-2 · 25-2</p></div></details>
 </div>
-<div class="card q" data-q="127" data-ch="06" data-title="127번" data-a="2">
+<div class="card q" id="q127" data-q="127" data-ch="06" data-title="127번" data-a="2">
 <div class="q-head"><span class="q-num">127번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건축물의 해체공사에 대한 설명으로 틀린 것은?</p>
 <ul class="opts pick"><li data-o="1">① 절단톱의 회전날에는 접촉방지커버를 설치하여야 한다.</li><li data-o="2">② 핸드브레이커(hand breaker) 사용시 수직보다는 경사를 주어 파쇄하는 것이 좋다.</li><li data-o="3">③ 철제 해머(hammer)는 크레인 등에 설치하여 사용한다.</li><li data-o="4">④ 압쇄기와 대형 브레이커(breaker)는 파워셔블 등에 설치하여 사용한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1445,7 +1453,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 85%</p>
 <p>🗂 출제 회차: 15-1 · 24-1</p></div></details>
 </div>
-<div class="card q" data-q="128" data-ch="06" data-title="128번" data-a="4">
+<div class="card q" id="q128" data-q="128" data-ch="06" data-title="128번" data-a="4">
 <div class="q-head"><span class="q-num">128번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">해체공사에 있어서 발생되는 진동공해에 대한 설명으로 틀린 것은?</p>
 <ul class="opts pick"><li data-o="1">① 진동의 전파거리는 예외적인 것을 제외하면 진동원에서부터 100[m] 이내이다.</li><li data-o="2">② 진동수의 범위는 1~90[Hz]이다.</li><li data-o="3">③ 지표에 있어 진동의 크기는 일반적으로 지진의 진도계급이라고 하는 미진에서 강진의 범위에 있다.</li><li data-o="4">④ 일반적으로 연직진동이 수평진동보다 작다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1454,7 +1462,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 77%</p>
 <p>🗂 출제 회차: 15-1 · 23-1</p></div></details>
 </div>
-<div class="card q" data-q="129" data-ch="06" data-title="129번" data-a="3">
+<div class="card q" id="q129" data-q="129" data-ch="06" data-title="129번" data-a="3">
 <div class="q-head"><span class="q-num">129번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">구조물의 해체작업시 해체 작업계획서에 포함하여야 할 사항으로 틀린 것은?</p>
 <ul class="opts pick"><li data-o="1">① 해체물의 처분계획</li><li data-o="2">② 해체의 방법 및 해체순서 도면</li><li data-o="3">③ 주변 민원 처리계획</li><li data-o="4">④ 현장 안전 조치 계획</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1464,7 +1472,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 92%</p>
 <p>🗂 출제 회차: 15-3 · 24-1</p></div></details>
 </div>
-<div class="card q" data-q="130" data-ch="06" data-title="130번" data-a="2">
+<div class="card q" id="q130" data-q="130" data-ch="06" data-title="130번" data-a="2">
 <div class="q-head"><span class="q-num">130번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">[보기]에서 압쇄기를 사용하여 건물해체시 그 순서로 옳은 것은?<br>[보기]<br>A : 보, B : 기둥, C : 슬래브, D : 벽체</p>
 <ul class="opts pick"><li data-o="1">① A-B-C-D</li><li data-o="2">② C-A-D-B</li><li data-o="3">③ D-C-B-A</li><li data-o="4">④ A-C-B-D</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1473,7 +1481,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 79%</p>
 <p>🗂 출제 회차: 18-2 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="131" data-ch="06" data-title="131번" data-a="3">
+<div class="card q" id="q131" data-q="131" data-ch="06" data-title="131번" data-a="3">
 <div class="q-head"><span class="q-num">131번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">다음 중 해체작업용 기계·기구로 가장 거리가 먼 것은?</p>
 <ul class="opts pick"><li data-o="1">① 철제햄머</li><li data-o="2">② 핸드 브레이커</li><li data-o="3">③ 진동롤러</li><li data-o="4">④ 압쇄기</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1482,7 +1490,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 89%</p>
 <p>🗂 출제 회차: 20-3 · 24-1</p></div></details>
 </div>
-<div class="card q" data-q="132" data-ch="06" data-title="132번" data-a="4">
+<div class="card q" id="q132" data-q="132" data-ch="06" data-title="132번" data-a="4">
 <div class="q-head"><span class="q-num">132번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 5-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">가설구조물의 문제점으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 구조물이라는 통상의 개념이 확고하지 않으며 조립의 정밀도가 낮다.</li><li data-o="2">② 도괴(무너짐)재해의 가능성이 크다.</li><li data-o="3">③ 추락재해 가능성이 크다.</li><li data-o="4">④ 부재의 결합이 간단하나 연결부가 견고하다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1493,7 +1501,7 @@ details.howto .sub{margin-top:6px}
 <p>🗂 출제 회차: 22-1 · 23-3</p></div></details>
 </div></section>
 <section class="section" id="g18"><div class="section-head"><div class="duality"><span class="n">19</span>운반·하역작업 (133~141)</div><div class="section-line"></div></div>
-<div class="card q" data-q="133" data-ch="06" data-title="133번" data-a="4">
+<div class="card q" id="q133" data-q="133" data-ch="06" data-title="133번" data-a="4">
 <div class="q-head"><span class="q-num">133번</span><span class="q-meta">🔁 5회</span><span class="q-meta">📋 6-3</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">취급·운반의 원칙으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 연속운반을 할 것</li><li data-o="2">② 생산을 최고로 하는 운반을 생각할 것</li><li data-o="3">③ 운반작업을 집중하여 시킬 것</li><li data-o="4">④ 곡선운반을 할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1502,7 +1510,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 88%</p>
 <p>🗂 출제 회차: 17-3 · 18-2 · 22-1 · 23-3 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="134" data-ch="06" data-title="134번" data-a="3">
+<div class="card q" id="q134" data-q="134" data-ch="06" data-title="134번" data-a="3">
 <div class="q-head"><span class="q-num">134번</span><span class="q-meta">🔁 4회</span><span class="q-meta">📋 6-3</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">부두·안벽 등 하역작업을 하는 장소에서 부두 또는 안벽의 선을 따라 통로를 설치하는 경우에는 폭을 최소 얼마 이상으로 해야 하는가?</p>
 <ul class="opts pick"><li data-o="1">① 80[cm]</li><li data-o="2">② 100[cm]</li><li data-o="3">③ 90[cm]</li><li data-o="4">④ 70[cm]</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1511,7 +1519,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 85%</p>
 <p>🗂 출제 회차: 18-2 · 19-1 · 21-2 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="135" data-ch="06" data-title="135번" data-a="1">
+<div class="card q" id="q135" data-q="135" data-ch="06" data-title="135번" data-a="1">
 <div class="q-head"><span class="q-num">135번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-3</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">중량물을 운반할 때의 바른 자세로 옳은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 길이가 긴 물건은 앞쪽을 높게 하여 운반한다.</li><li data-o="2">② 물건은 최대한 몸에서 멀리 떼어서 들어올린다.</li><li data-o="3">③ 중량은 보통 체중의 60%가 적당하다.</li><li data-o="4">④ 허리를 구부리고 양손으로 들어올린다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1523,7 +1531,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 86%</p>
 <p>🗂 출제 회차: 19-1 · 24-1 · 26-1</p></div></details>
 </div>
-<div class="card q" data-q="136" data-ch="06" data-title="136번" data-a="2">
+<div class="card q" id="q136" data-q="136" data-ch="06" data-title="136번" data-a="2">
 <div class="q-head"><span class="q-num">136번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-3</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">선창의 내부에서 화물취급작업을 하는 근로자가 안전하게 통행할 수 있는 설비를 설치하여야 하는 기준은 갑판의 윗면에서 선창(船倉) 밑바닥까지의 깊이가 최소 얼마를 초과할 때인가?</p>
 <ul class="opts pick"><li data-o="1">① 2.0[m]</li><li data-o="2">② 1.5[m]</li><li data-o="3">③ 1.3[m]</li><li data-o="4">④ 1.8[m]</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1532,7 +1540,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 71%</p>
 <p>🗂 출제 회차: 19-3 · 23-3 · 25-1</p></div></details>
 </div>
-<div class="card q" data-q="137" data-ch="06" data-title="137번" data-a="4">
+<div class="card q" id="q137" data-q="137" data-ch="06" data-title="137번" data-a="4">
 <div class="q-head"><span class="q-num">137번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 6-3</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">차량계 하역운반기계 등에 화물을 적재하는 경우에 준수하여야 할 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 구내운반차 또는 화물자동차의 경우 화물의 붕괴 또는 낙하에 의한 위험을 방지하기 위하여 화물에 로프를 거는 등 필요한 조치를 할 것</li><li data-o="2">② 최대적재량을 초과하지 않도록 할 것</li><li data-o="3">③ 운전자의 시야를 가리지 않도록 화물을 적재할 것</li><li data-o="4">④ 하중이 한쪽으로 치우쳐도 효율적으로 적재되도록 할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1541,7 +1549,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 99%</p>
 <p>🗂 출제 회차: 17-2 · 19-2 · 23-3</p></div></details>
 </div>
-<div class="card q" data-q="138" data-ch="06" data-title="138번" data-a="3">
+<div class="card q" id="q138" data-q="138" data-ch="06" data-title="138번" data-a="3">
 <div class="q-head"><span class="q-num">138번</span><span class="q-meta">🔁 3회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">구축물에 안전진단 등 안전성 평가를 실시하여 근로자에게 미칠 위험성을 미리 제거하여야 하는 경우가 아닌 것은?</p>
 <ul class="opts pick"><li data-o="1">① 구축물 또는 이와 유사한 시설물의 인근에서 굴착·항타작업 등으로 침하·균열 등이 발생하여 붕괴의 위험이 예상될 경우</li><li data-o="2">② 구조물, 건축물, 그 밖의 시설물이 그 자체의 무게·적설·풍압 또는 그 밖에 부가되는 하중 등으로 붕괴 등의 위험이 있을 경우</li><li data-o="3">③ 구축물의 구조체가 안전측으로 과도하게 설계가 되었을 경우</li><li data-o="4">④ 화재 등으로 구축물 또는 이와 유사한 시설물의 내력(耐力)이 심하게 저하되었을 경우</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1550,7 +1558,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 97%</p>
 <p>🗂 출제 회차: 16-1 · 20-1·2 · 23-2</p></div></details>
 </div>
-<div class="card q" data-q="139" data-ch="06" data-title="139번" data-a="2">
+<div class="card q" id="q139" data-q="139" data-ch="06" data-title="139번" data-a="2">
 <div class="q-head"><span class="q-num">139번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 2-1</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">건설현장에서 높이 5[m] 이상인 콘크리트 교량의 설치작업을 하는 경우 재해예방을 위해 준수해야 하는 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 중량물 부재를 크레인 등으로 인양하는 경우에는 부재에 인양용 고리를 견고하게 설치하고, 인양용 로프는 부재에 두 군데 이상 결속하여 인양하여야 하며, 중량물이 안전하게 거치되기 전까지는 걸이로프를 해제시키지 아니할 것</li><li data-o="2">② 재료, 기구 또는 공구 등을 올리거나 내릴 경우에는 근로자로 하여금 크레인을 이용하도록 하고 달줄, 달포대 등의 사용을 금하도록 할 것</li><li data-o="3">③ 자재나 부재의 낙하·전도 또는 붕괴 등에 의하여 근로자에게 위험을 미칠 우려가 있을 경우에는 출입금지구역의 설정, 자재 또는 가설시설의 좌굴(挫屈)또는 변형 방지를 위한 보강재 부착 등의 조치를 할 것</li><li data-o="4">④ 작업을 하는 구역에는 관계 근로자가 아닌 사람의 출입을 금지할 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1559,7 +1567,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 92%</p>
 <p>🗂 출제 회차: 19-1 · 25-3</p></div></details>
 </div>
-<div class="card q" data-q="140" data-ch="06" data-title="140번" data-a="3">
+<div class="card q" id="q140" data-q="140" data-ch="06" data-title="140번" data-a="3">
 <div class="q-head"><span class="q-num">140번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-3</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">화물취급작업과 관련한 위험방지를 위해 조치하여야 할 사항으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 하역작업을 하는 장소에서 작업장 및 통로의 위험한 부분에는 안전하게 작업할 수 있는 조명을 유지할 것</li><li data-o="2">② 꼬임이 끊어진 섬유로프 등을 화물운반용 또는 고정용으로 사용하지 말 것</li><li data-o="3">③ 하역작업을 하는 장소에서 부두 또는 안벽의 선을 따라 통로를 설치하는 경우에는 폭을 50[cm] 이상으로 할 것</li><li data-o="4">④ 차량 등에서 화물을 내리는 작업을 하는 경우에 해당 작업에 종사하는 근로자에게 쌓여 있는 화물중간에서 화물을 빼내도록 하지 말 것</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1568,7 +1576,7 @@ details.howto .sub{margin-top:6px}
 <p>정답률 94%</p>
 <p>🗂 출제 회차: 17-2 · 20-4</p></div></details>
 </div>
-<div class="card q" data-q="141" data-ch="06" data-title="141번" data-a="2">
+<div class="card q" id="q141" data-q="141" data-ch="06" data-title="141번" data-a="2">
 <div class="q-head"><span class="q-num">141번</span><span class="q-meta">🔁 2회</span><span class="q-meta">📋 6-3</span><span class="q-ch">CH06 공사 및 작업 종류별 안전</span><span class="q-res"></span><button class="q-star" title="다시 볼 문제로 표시" aria-label="다시 볼 문제로 표시">★</button></div>
 <p class="q-body">항만하역작업에서의 선박승강설비 설치기준으로 옳지 않은 것은?</p>
 <ul class="opts pick"><li data-o="1">① 현문 사다리의 양측에는 82[cm] 이상의 높이로 울타리를 설치하여야 한다.</li><li data-o="2">② 200톤급 이상의 선박에서 하역작업을 하는 경우에 근로자들이 안전하게 오르내릴 수 있는 현문(舷門) 사다리를 설치하여야 하며, 이 사다리 밑에 안전망을 설치하여야 한다.</li><li data-o="3">③ 현문 사다리는 근로자의 통행에만 사용하여야 하며, 화물용 발판 또는 화물용 보판으로 사용하도록 해서는 아니 된다.</li><li data-o="4">④ 현문 사다리는 견고한 재료로 제작된 것으로 너비는 55[cm] 이상이어야 한다.</li></ul><button class="q-redo" type="button">다시 풀기</button>
@@ -1615,11 +1623,28 @@ details.howto .sub{margin-top:6px}
     document.querySelectorAll('details.ans').forEach(function(d){d.open=on});
   });
   // 채점: 보기를 누르면 data-a(정답 번호)와 비교, 보기·정답 키가 없으면 정답 안의 맞음/틀림 버튼
-  var gkey='sanan-grade-'+(document.body.dataset.store||document.body.dataset.subject),graded={},score=document.getElementById('score'),onlyWrong=document.getElementById('onlyWrong');
+  var store=document.body.dataset.store||document.body.dataset.subject;
+  var gkey='sanan-grade-'+store,graded={},score=document.getElementById('score'),wrongSel=document.getElementById('wrongSel');
   try{graded=JSON.parse(localStorage.getItem(gkey)||'{}')}catch(e){}
   Object.keys(graded).forEach(function(id){if(!ids[id])delete graded[id]});
   function gsave(){try{localStorage.setItem(gkey,JSON.stringify(graded))}catch(e){}}
-  var resetArm=0,gReset=document.getElementById('gReset');
+  // 오답 기록(sanan-hist-*): 문제별 {w:틀린 횟수,o:맞힌 횟수,s:틀린 뒤 연속으로 맞힌 횟수,d:다음 복습 시각(ms),m:졸업}
+  // 틀리면 바로 복습 대상, 다시 맞힐 때마다 복습 간격을 1→3→7→14→30일로 늘리고 그 뒤 맞히면 졸업
+  var hkey='sanan-hist-'+store,hist={},DAY=864e5,IV=[1,3,7,14,30];
+  try{hist=JSON.parse(localStorage.getItem(hkey)||'{}')}catch(e){}
+  Object.keys(hist).forEach(function(id){if(!ids[id])delete hist[id]});
+  function hsave(){try{localStorage.setItem(hkey,JSON.stringify(hist))}catch(e){}}
+  (function(){var ch=0;Object.keys(graded).forEach(function(id){if(graded[id].r==='x'&&!hist[id]){hist[id]={w:1,o:0,s:0,d:0};ch=1}});if(ch)hsave()})();
+  function record(id,r){
+    var h=hist[id],now=Date.now();
+    if(r==='x'){h=hist[id]=h||{w:0,o:0,s:0,d:0};h.w++;h.s=0;h.d=now;delete h.m}
+    else if(h){h.o++;h.s++;if(h.s>IV.length){h.m=1;h.d=0}else h.d=now+IV[h.s-1]*DAY}
+    hsave();
+  }
+  function due(id){var h=hist[id];return !!h&&h.w>0&&!h.m&&(h.d||0)<=Date.now()}
+  function rep(id){var h=hist[id];return !!h&&h.w>=2&&!h.m}
+  var retry={},resetArm=0,gReset=document.getElementById('gReset');
+  function g(id){return retry[id]===1?null:graded[id]}
   function gupd(){
     if(!score)return;
     var o=0,x=0;Object.keys(graded).forEach(function(id){graded[id].r==='o'?o++:x++});
@@ -1627,23 +1652,29 @@ details.howto .sub{margin-top:6px}
       (o+x?'<span>정답률 <b>'+Math.round(o*100/(o+x))+'%</b></span>':'');
     gReset.classList.toggle('hidden',!(o+x));
     gReset.textContent=resetArm?'한 번 더 누르면 모두 지워져요':'채점 기록 지우기';
+    if(wrongSel){
+      var nx=0,nr=0,nd=0;qs.forEach(function(q){var id=q.dataset.q;if(graded[id]&&graded[id].r==='x')nx++;if(rep(id))nr++;if(due(id)||retry[id])nd++});
+      var lab={'':'❌ 오답노트',x:'❌ 틀린 문제 '+nx,rep:'🔁 반복 오답 '+nr,due:'📅 다시 풀기 '+nd};
+      [].forEach.call(wrongSel.options,function(op){op.textContent=lab[op.value]});
+    }
   }
   if(gReset)gReset.addEventListener('click',function(){
     if(!resetArm){resetArm=1;gupd();setTimeout(function(){resetArm=0;gupd()},4000);return}
-    resetArm=0;graded={};gsave();qs.forEach(show);gupd();filter();
+    resetArm=0;graded={};hist={};retry={};gsave();hsave();qs.forEach(show);gupd();filter();
   });
   function show(q){
-    var g=graded[q.dataset.q],res=q.querySelector('.q-res');
-    q.classList.toggle('done',!!g);q.classList.toggle('ok',!!g&&g.r==='o');q.classList.toggle('ng',!!g&&g.r==='x');
-    if(res)res.textContent=g?(g.r==='o'?'✅ 맞음':'❌ 틀림'):'';
+    var id=q.dataset.q,gr=g(id),h=hist[id],res=q.querySelector('.q-res');
+    q.classList.toggle('done',!!gr);q.classList.toggle('ok',!!gr&&gr.r==='o');q.classList.toggle('ng',!!gr&&gr.r==='x');
+    q.classList.toggle('rep',!!gr&&gr.r==='x'&&rep(id));q.classList.toggle('retry',retry[id]===1);
+    if(res)res.textContent=gr?(gr.r==='o'?'✅ 맞음':(h&&h.w>=2?'❌ '+h.w+'회 틀림':'❌ 틀림')):'';
     var a=q.dataset.a;
     q.querySelectorAll('.opts li').forEach(function(li){
-      li.classList.toggle('right',!!g&&!!a&&li.dataset.o===a);
-      li.classList.toggle('wrong',!!g&&!!g.c&&li.dataset.o===String(g.c)&&g.c!=a);
+      li.classList.toggle('right',!!gr&&!!a&&li.dataset.o===a);
+      li.classList.toggle('wrong',!!gr&&!!gr.c&&li.dataset.o===String(gr.c)&&gr.c!=a);
     });
   }
   function set(q,r,c){
-    var id=q.dataset.q;graded[id]={r:r};if(c)graded[id].c=c;gsave();show(q);gupd();
+    var id=q.dataset.q;graded[id]={r:r};if(c)graded[id].c=c;if(retry[id])retry[id]=2;gsave();record(id,r);show(q);gupd();
     q.querySelector('details.ans').open=true;
   }
   if(score)qs.forEach(function(q){
@@ -1651,25 +1682,38 @@ details.howto .sub{margin-top:6px}
     show(q);
     if(a)q.querySelectorAll('.opts li').forEach(function(li){
       li.setAttribute('role','button');li.tabIndex=0;
-      function pick(){if(graded[q.dataset.q])return;set(q,li.dataset.o===a?'o':'x',+li.dataset.o)}
+      function pick(){if(g(q.dataset.q))return;set(q,li.dataset.o===a?'o':'x',+li.dataset.o)}
       li.addEventListener('click',pick);
       li.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});
     });
-    q.querySelectorAll('.q-self .btn').forEach(function(b){b.addEventListener('click',function(){set(q,b.dataset.r)})});
+    q.querySelectorAll('.q-self .btn').forEach(function(b){b.addEventListener('click',function(){if(!g(q.dataset.q))set(q,b.dataset.r)})});
     var redo=q.querySelector('.q-redo');
     if(redo)redo.addEventListener('click',function(){delete graded[q.dataset.q];gsave();show(q);gupd();q.querySelector('details.ans').open=false;filter()});
   });
   gupd();
   var chSel=document.getElementById('chSel');
   function filter(){
-    var star=onlyStar.classList.contains('on'),wrong=onlyWrong&&onlyWrong.classList.contains('on'),ch=chSel?chSel.value:'';
-    qs.forEach(function(q){q.classList.toggle('hidden',(star&&!q.classList.contains('marked'))||(wrong&&!q.classList.contains('ng'))||(ch&&q.dataset.ch!==ch))});
+    var star=onlyStar.classList.contains('on'),w=wrongSel?wrongSel.value:'',ch=chSel?chSel.value:'';
+    qs.forEach(function(q){var id=q.dataset.q;q.classList.toggle('hidden',(star&&!q.classList.contains('marked'))||(w==='x'&&!(graded[id]&&graded[id].r==='x'))||(w==='rep'&&!rep(id))||(w==='due'&&!retry[id])||(ch&&q.dataset.ch!==ch))});
     document.querySelectorAll('.section').forEach(function(s){
       s.classList.toggle('hidden',!s.querySelector('.q:not(.hidden)'));
     });
   }
   onlyStar.addEventListener('click',function(){onlyStar.classList.toggle('on');filter()});
-  if(onlyWrong)onlyWrong.addEventListener('click',function(){onlyWrong.classList.toggle('on');filter()});
+  // 📅 오답 다시 풀기: 복습할 때가 된 오답을 골라 답을 가리고 새로 풀게 함(고른 목록은 끌 때까지 유지)
+  function startRetry(){
+    retry={};qs.forEach(function(q){var id=q.dataset.q;if(due(id))retry[id]=1});
+    qs.forEach(function(q){show(q);if(retry[q.dataset.q])q.querySelector('details.ans').open=false});
+  }
+  function stopRetry(){retry={};qs.forEach(show)}
+  if(wrongSel){
+    wrongSel.addEventListener('change',function(){
+      if(wrongSel.value==='due')startRetry();else if(Object.keys(retry).length)stopRetry();
+      wrongSel.classList.toggle('on',!!wrongSel.value);gupd();filter();
+      if(wrongSel.value)window.scrollTo({top:document.querySelector('.tools').getBoundingClientRect().top+window.pageYOffset-1});
+    });
+    if(/[?&]review=1/.test(location.search)){wrongSel.value='due';wrongSel.dispatchEvent(new Event('change'))}
+  }
   if(chSel){
     try{chSel.value=sessionStorage.getItem(key+'-ch')||''}catch(e){}
     chSel.addEventListener('change',function(){try{sessionStorage.setItem(key+'-ch',chSel.value)}catch(e){}filter()});
@@ -1692,6 +1736,39 @@ details.howto .sub{margin-top:6px}
   var h=document.querySelector("header"),bk=h&&h.querySelector(".back");
   if(bk)bk.after(box);else if(h)h.prepend(box);
   apply(get());
+})();
+</script>
+<script>
+(function(){
+  function mark(el,q){
+    var ql=q.toLowerCase(),w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),ns=[],n,hitAns=false,hitTop=false;
+    while(n=w.nextNode())if(n.nodeValue.toLowerCase().indexOf(ql)>=0&&!n.parentNode.closest('mark,script,button'))ns.push(n);
+    ns.forEach(function(n){
+      var t=n.nodeValue,tl=t.toLowerCase(),f=document.createDocumentFragment(),i=0,j;
+      while((j=tl.indexOf(ql,i))>=0){f.appendChild(document.createTextNode(t.slice(i,j)));var m=document.createElement('mark');m.className='hl';m.textContent=t.slice(j,j+q.length);f.appendChild(m);i=j+q.length}
+      f.appendChild(document.createTextNode(t.slice(i)));
+      if(n.parentNode.closest('details.ans'))hitAns=true;else hitTop=true;
+      n.parentNode.replaceChild(f,n);
+    });
+    return hitAns&&!hitTop;
+  }
+  function go(){
+    var id;try{id=decodeURIComponent(location.hash.slice(1))}catch(e){return}
+    var el=id&&document.getElementById(id);
+    if(!el||!el.classList.contains('card'))return;
+    if(el.classList.contains('hidden')){
+      var cs=document.getElementById('chSel');if(cs&&cs.value){cs.value='';cs.dispatchEvent(new Event('change'))}
+      ['onlyStar'].forEach(function(b){b=document.getElementById(b);if(b&&b.classList.contains('on'))b.click()});
+      var ws=document.getElementById('wrongSel');if(ws&&ws.value){ws.value='';ws.dispatchEvent(new Event('change'))}
+    }
+    var q=null;try{q=new URLSearchParams(location.search).get('hl')}catch(e){}
+    if(q&&q.trim()&&!el.dataset.hl){el.dataset.hl=1;var d=el.querySelector('details.ans');if(mark(el,q.trim())&&d)d.open=true}
+    var tl=document.querySelector('.tools'),off=tl&&getComputedStyle(tl).position==='sticky'?tl.getBoundingClientRect().height+10:12;
+    window.scrollTo({top:Math.max(0,el.getBoundingClientRect().top+window.pageYOffset-off),behavior:'instant'});
+    el.classList.add('flash');setTimeout(function(){el.classList.remove('flash')},2600);
+  }
+  if(location.hash)setTimeout(go,60);
+  window.addEventListener('hashchange',go);
 })();
 </script>
 </body>
